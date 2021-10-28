@@ -5,7 +5,7 @@ echo "-----------------------------------------------------------------------"
 echo "Compiler and Debugger"
 echo "Compilers C++"
 sudo apt install crossbuild-essential-arm64 -y
-dpkg --add-architecture arm64 -y
+dpkg --add-architecture arm64 
 echo "-----------------------------------------------------------------------"
 echo "Comunications"
 echo "Wifi library"
