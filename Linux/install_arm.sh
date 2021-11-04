@@ -1,11 +1,11 @@
 #!/bin/sh
 #
 apt-get update
+dpkg --add-architecture armhf -y
 echo "-----------------------------------------------------------------------"
 echo "Compiler and Debugger"
 echo "Compilers C++"
 sudo apt install crossbuild-essential-armhf -y
-dpkg --add-architecture armhf -y
 echo "-----------------------------------------------------------------------"
 echo "Comunications"
 echo "Wifi library"
