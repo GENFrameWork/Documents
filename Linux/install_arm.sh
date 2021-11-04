@@ -1,7 +1,7 @@
 #!/bin/sh
 #
+dpkg --add-architecture armhf 
 apt-get update
-dpkg --add-architecture armhf -y
 echo "-----------------------------------------------------------------------"
 echo "Compiler and Debugger"
 echo "Compilers C++"

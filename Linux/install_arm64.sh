@@ -1,7 +1,7 @@
 #!/bin/sh
 #
-apt-get update
 dpkg --add-architecture arm64 
+apt-get update
 echo "-----------------------------------------------------------------------"
 echo "Compiler and Debugger"
 echo "Compilers C++"
