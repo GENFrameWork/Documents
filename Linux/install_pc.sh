@@ -36,7 +36,7 @@ apt-get install libsystemd-dev -y
 echo "Bluetooth"
 apt-get install libbluetooth-dev -y
 echo "PCap"
-apt-get install pcap-dev -y
+apt-get install libpcap-dev -y
 echo "-----------------------------------------------------------------------"
 echo "Sound"
 echo "Sound Linux"

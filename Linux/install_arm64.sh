@@ -21,6 +21,8 @@ apt-get install libnm-dev:arm64 -y
 apt-get install libsystemd-dev:arm64 -y
 echo "Bluetooth"
 apt-get install libbluetooth-dev:arm64 -y
+echo "PCap"
+apt-get install libpcap-dev:arm64 -y
 echo "-----------------------------------------------------------------------"
 echo "Sound"
 echo "Sound Linux"

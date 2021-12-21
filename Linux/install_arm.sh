@@ -21,6 +21,8 @@ apt-get install libnm-dev:armhf -y
 apt-get install libsystemd-dev:armhf -y
 echo "Bluetooth"
 apt-get install libbluetooth-dev:armhf -y
+echo "PCap"
+apt-get install libpcap-dev:armhf -y
 echo "-----------------------------------------------------------------------"
 echo "Sound"
 echo "Sound Linux"
