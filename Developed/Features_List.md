@@ -91,7 +91,9 @@
  XPROCESSMANAGER_FEATURE                              "Activate Process Manager"                                      
 
  LINUX_X11_FEATURE                                    "Activate Linux X11"                                            
- LINUX_VISUALSTUDIOCODEPAGE_FEATURE                   "Activate Linux CodePage Editor Visual Studio CP1252"                                   
+ 
+ LINUX_VISUALSTUDIOCODEPAGE_FEATURE                   "Activate Linux CodePage Editor Visual Studio CP1252"        
+ LINUX_VISUALSTUDIOUTF8_FEATURE                       "Activate Linux CodePage Editor UTF8"
 
 
 ### Hash / Cipher
