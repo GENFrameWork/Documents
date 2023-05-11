@@ -210,9 +210,10 @@
 
  DIO_APPLICATIONUPDATE_FEATURE                        "Data Input/Output Application Update"    
   
- DIO_NODESDEVICEDRIVER_SENSOR_AM2315_FEATURE          "Node Device Driver Sensor AM2315"
- DIO_NODEDEVICEDRIVER_ACTUATOR_GPIO_FEATURE           "Node Device Driver Actuator GPIO" 
- DIO_NODES_FEATURE                                    "Nodes modules"
+ DIO_NODEITEMHANDLER_SENSORAM2315_FEATURE             "Node Item Handler Sensor AM2315" 
+ DIO_NODEITEMHANDLER_SENSOR_GPIO_FEATURE              "Node Item Handler Sensor GPIO" 
+ DIO_NODEITEMHANDLER_ACTUATOR_GPIO_FEATURE            "Node Item Handler Actuator GPIO" 
+ DIO_NODE_FEATURE                                     "Nodes modules"
  DIO_NODEMANAGER_FEATURE                              "Node manager"
 
 
