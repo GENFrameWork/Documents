@@ -242,6 +242,8 @@
 
 ### Graphics
 
+ LINUX_X11_FEATURE                                    "X11 Devices"
+
  GRP_FEATURE                                          "Graphics"                                             
  GRP_FILE_FEATURE                                     "Graphics File"                                        
  GRP_2D_FEATURE                                       "Graphics 2D"                                          
