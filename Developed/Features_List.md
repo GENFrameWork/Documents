@@ -263,7 +263,8 @@
 
  ```
  option(INP_FEATURE                                         "Inputs"                                                    true )
- option(INP_SIMULATED_FEATURE                               "Inputs Simulated"                                          true )
+ option(INP_SIMULATE_FEATURE                                "Inputs Simulate"                                           true )
+ option(INP_CAPTURE_FEATURE                                 "Inputs Capture"                                            true )
  ```
 
 ### Sound
