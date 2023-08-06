@@ -236,6 +236,7 @@
  option(SCRIPT_LUA_FEATURE                                  "Script LUA Language"                                       true )
  option(SCRIPT_JAVASCRIPT_FEATURE                           "Script Javascript Language"                                true )
  option(SCRIPT_LIB_INPUTSIMULATE_FEATURE                    "Script Lib Input Simulated"                                true )
+ option(SCRIPT_LIB_WINDOW_FEATURE                           "Script Lib Window"                                         true )    
  ```
 
 ### Databases
