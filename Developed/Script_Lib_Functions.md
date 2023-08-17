@@ -1,0 +1,95 @@
+# GEN Script Libraries functions 
+
+           
+### Dir
+
+```
+IsItExists()
+ChangeDir() 
+```             
+
+### Math
+```
+Abs()
+```
+
+### Path
+```
+GetPathScript()
+```
+
+### Rand
+```
+RandMax()
+RandBetween()
+```
+
+### String
+```
+AddString()
+FindString()
+CompareString()
+ReplaceString()
+SPrintf()
+```
+
+### Timer
+```
+Sleep()
+```
+
+### System
+```
+System_GetType()
+System_Reboot()
+System_PowerOff()
+System_Logout()
+System_GetEnviromentVar()
+```
+
+### Process
+```
+OpenURL()
+ExecApplication()
+MakeCommand()
+TerminateAplication()
+TerminateAplicationWithWindow()
+```
+
+### Log
+```
+Log_AddEntry()
+XTRACE_PRINTCOLOR()
+```
+
+### Console
+```
+Console_GetChar()
+Console_PutChar()
+Console_Printf()
+```
+
+### CFG
+```
+GetFileCFGValue()
+```
+ 
+### Windows
+```
+Window_GetPosX()
+Window_GetPosY()
+Window_SetFocus()
+Window_SetPosition()
+Window_Resize()
+```
+
+### InputSimulate 
+```
+InpSim_PressKey()
+InpSim_PressKeyByLiteral()
+InpSim_PressKeyByText()
+InpSim_SetMousePos()
+InpSim_SetMouseClick()
+```
+
+
