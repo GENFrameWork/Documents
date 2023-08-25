@@ -262,6 +262,8 @@
 
  option(GRP_FEATURE                                         "Graphics"                                                  true )
  option(GRP_FILE_FEATURE                                    "Graphics File"                                             true )
+ option(GRP_VIDEO_FILE_FEATURE                              "Graphics Video File"                                       true )
+ option(GRP_VIDEO_FILE_AVI_FEATURE                          "Graphics Video File AVI"                                   true )
  option(GRP_2D_FEATURE                                      "Graphics 2D"                                               true )
  option(GRP_3D_FEATURE                                      "Graphics 2D"                                               true )
  option(GRP_OPENGL_FEATURE                                  "Graphics Open GL"                                          true )
