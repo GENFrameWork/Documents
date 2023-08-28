@@ -85,11 +85,15 @@ Window_Resize()
 
 ### InputSimulate 
 ```
-InpSim_PressKey()
-InpSim_PressKeyByLiteral()
-InpSim_PressKeyByText()
-InpSim_SetMousePos()
-InpSim_SetMouseClick()
+
+InpSim_Key_Press()
+InpSim_Key_UnPress()
+InpSim_Key_Click()
+InpSim_Key_ClickByLiteral()
+InpSim_Key_ClickByText()
+InpSim_Mouse_SetPos()
+InpSim_Mouse_Click()
+      
 ```
 
 
