@@ -43,6 +43,7 @@
  option(APP_CFG_DNSRESOLVED_FEATURE                         "Application CFG DNS Resolved"                              true )  
  option(APP_CFG_APPUPDATE_FEATURE                           "Application CFG Application Update"                        true )  
  option(APP_CFG_ALERTS_FEATURE                              "Application CFG Alerts"                                    true )  
+ option(APP_CFG_SCRIPTS_FEATURE                             "Application Scripts List"                                  true )  
  ```
 
 ### XUtils
