@@ -194,7 +194,7 @@
 
  option(DIO_PING_FEATURE                                    "Ping"                                                      true )    
 
- option(DIO_PCAP_FEATURE                                    "Cap"                                                       true )
+ option(DIO_PCAP_FEATURE                                    "PCap Library"                                              true )
 
  option(DIO_GPIO_FEATURE                                    "GPIO"                                                      true )
  option(DIO_GPIO_PCPARALLEL_FEATURE                         "GPIO PC Parallel"                                          true )
