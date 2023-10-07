@@ -4,7 +4,12 @@
 
  ```
  option(DEBUG_FEATURE                                       "Debug mode"                                                true )    
- option(GOOGLETEST_FEATURE                                  "Google Test functionality"                                 true )    
+ option(GOOGLETEST_FEATURE                                  "Google Test functionality"                                 true )  
+ 
+ option(LINUX_VISUALSTUDIOCODEPAGE_FEATURE                  "Linux CodePage Editor Visual Studio CP1252"                true )
+ option(LINUX_VISUALSTUDIOUTF8_FEATURE                      "Linux CodePage Editor UTF8"                                true ) 
+
+ option(LINUX_X11_FEATURE                                   "Linux X11"                                                 true )
  ```
 
 ### App Modes
@@ -91,10 +96,8 @@
  option(XEEPROMMEMORYMANAGER_FEATURE                        "EEPROM Memory Manager"                                     true )
  option(XPROCESSMANAGER_FEATURE                             "Process Manager"                                           true )
 
- option(LINUX_X11_FEATURE                                   "Linux X11"                                                 true )
- 
- option(LINUX_VISUALSTUDIOCODEPAGE_FEATURE                  "Linux CodePage Editor Visual Studio CP1252"                true )
- option(LINUX_VISUALSTUDIOUTF8_FEATURE                      "Linux CodePage Editor UTF8"                                true )
+ option(WINDOWS_XDESKTOPMANAGER_FEATURE                     "Windows Desktop Manager"                                   true )
+ option(WINDOWS_XVIRTUALDESKTOPMANAGER_FEATURE              "Windows Virtual Desktop Manager"                           true )
  ```
 
 ### Hash / Cipher
