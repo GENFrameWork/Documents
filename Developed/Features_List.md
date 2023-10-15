@@ -267,7 +267,7 @@
  option(LINUX_X11_FEATURE                                   "X11 Devices"                                               true )    
 
  option(GRP_FEATURE                                         "Graphics"                                                  true )
- option(GRP_FILE_FEATURE                                    "Graphics File"                                             true )
+ option(GRP_BITMAP_FILE_FEATURE                             "Graphics Files Bitmap Type"                                true )
  option(GRP_VIDEO_FILE_FEATURE                              "Graphics Video File"                                       true )
  option(GRP_VIDEO_FILE_AVI_FEATURE                          "Graphics Video File AVI"                                   true )
  option(GRP_2D_FEATURE                                      "Graphics 2D"                                               true )
