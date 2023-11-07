@@ -12,11 +12,17 @@ apt-get install -y pulseaudio vlc
 
 ## Windows 32bits
 
-call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" amd64_x86
+"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" amd64_x86
 
-\Projects\GENFrameWork\ThirdPartyLibraries\openal-soft\Platforms\Windows\x32
+GENFrameWork\ThirdPartyLibraries\openal-soft\Platforms\Windows\x32
 
-cmake -G Ninja -DLIBTYPE=STATIC ../../..
+cmake -G Ninja -DLIBTYPE=STATIC -DCMAKE_BUILD_TYPE=Debug ../../..
+
+cmake --build .
+
+copy OpenAL32.lib OpenAL32d.lib
+
+cmake -G Ninja -DLIBTYPE=STATIC -DCMAKE_BUILD_TYPE=Release ../../..
 
 cmake --build .
 
@@ -24,11 +30,17 @@ cmake --build .
 
 ## Windows 64bits
 
-call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" amd64
+"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" amd64
 
-\Projects\GENFrameWork\ThirdPartyLibraries\openal-soft\Platforms\Windows\x64
+GENFrameWork\ThirdPartyLibraries\openal-soft\Platforms\Windows\x64
 
-cmake -G Ninja -DLIBTYPE=STATIC ../../..
+cmake -G Ninja -DLIBTYPE=STATIC -DCMAKE_BUILD_TYPE=Debug ../../..
+
+cmake --build .
+
+copy OpenAL32.lib OpenAL32d.lib
+
+cmake -G Ninja -DLIBTYPE=STATIC -DCMAKE_BUILD_TYPE=Release ../../..
 
 cmake --build .
 
@@ -38,7 +50,13 @@ cmake --build .
 
 Projects/GENFrameWork/ThirdPartyLibraries/openal-soft/Platforms/Linux/x64
 
-cmake -G Ninja -DLIBTYPE=STATIC ../../..
+cmake -G Ninja -DLIBTYPE=STATIC -DCMAKE_BUILD_TYPE=Debug ../../..
+
+cmake --build .
+
+cp libopenal.a libopenald.a
+
+cmake -G Ninja -DLIBTYPE=STATIC -DCMAKE_BUILD_TYPE=Release ../../..
 
 cmake --build .
 
