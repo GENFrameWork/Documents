@@ -4,21 +4,13 @@
 
  ```
  option(DEBUG_FEATURE                                       "Debug mode"                                                true )    
- option(GOOGLETEST_FEATURE                                  "Google Test functionality"                                 true )  
- 
- option(LINUX_VISUALSTUDIOCODEPAGE_FEATURE                  "Linux CodePage Editor Visual Studio CP1252"                true )
- option(LINUX_VISUALSTUDIOUTF8_FEATURE                      "Linux CodePage Editor UTF8"                                true ) 
-
- option(LINUX_X11_FEATURE                                   "Linux X11"                                                 true )
+ option(GOOGLETEST_FEATURE                                  "Google Test functionality"                                 true )   
  ```
 
 ### App Modes
 
  ```
  option(APPMODE_SERVICE_FEATURE                             "Application service mode"                                  true ) 
-
- option(APPMODE_WINDOWS_DINAMIC                             "Activates Windows Dinamic mode /MD"                        true )    
-
  option(APPMODE_API_LIB_FEATURE                             "Activates the export/import of classes in a library"       true )        
  option(APPMODE_API_LIB_EXPORT_FEATURE                      "Activates the export of classes in a library"              true )      
  option(APPMODE_LIBRARY_DINAMIC_FEATURE                     "Application Library Dinamic mode"                          true )  
@@ -95,9 +87,6 @@
  option(XDRIVEIMAGEMANAGER_FEATURE                          "Drive Image Manager"                                       true )
  option(XEEPROMMEMORYMANAGER_FEATURE                        "EEPROM Memory Manager"                                     true )
  option(XPROCESSMANAGER_FEATURE                             "Process Manager"                                           true )
-
- option(WINDOWS_XDESKTOPMANAGER_FEATURE                     "Windows Desktop Manager"                                   true )
- option(WINDOWS_XVIRTUALDESKTOPMANAGER_FEATURE              "Windows Virtual Desktop Manager"                           true )
  ```
 
 ### Hash / Cipher
@@ -303,6 +292,11 @@
 ### Windows 
 
  ```
+ option(WINDOWS_XDESKTOPMANAGER_FEATURE                     "Windows Desktop Manager"                                   true )
+ option(WINDOWS_XVIRTUALDESKTOPMANAGER_FEATURE              "Windows Virtual Desktop Manager"                           true )
+ option(WINDOWS_STACKWALKER_FEATURE                         "Windows Stack Walcker Manager"                             true )
+
+ option(APPMODE_WINDOWS_DINAMIC                             "Activates Windows Dinamic mode /MD"                        true )    
  option(X_WINDOWS_VIRTUALDESKTOPMANAGER_FEATURE             "Windows Virtual Desktop Manager"                           true )                      
  option(INP_WINDOWS_KEYBOARDHOOK_FEATURE                    "Windows Keyboard Hook"                                     true )                 
  ```
@@ -310,6 +304,11 @@
 ### Linux
 
  ```
+ option(LINUX_VISUALSTUDIOCODEPAGE_FEATURE                  "Linux CodePage Editor Visual Studio CP1252"                true )
+ option(LINUX_VISUALSTUDIOUTF8_FEATURE                      "Linux CodePage Editor UTF8"                                true ) 
+ 
+ option(LINUX_X11_FEATURE                                   "Linux X11"                                                 true )
+
  option(DIO_LINUX_DBUS_FEATURE                              "Linux DBus"                                                true )              
  option(DIO_LINUX_NETWORKMANAGER_FEATURE                    "Linux Network Manager"                                     true )
  ```
