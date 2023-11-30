@@ -60,3 +60,19 @@ cmake -G Ninja -DLIBTYPE=STATIC -DCMAKE_BUILD_TYPE=Release ../../..
 
 cmake --build .
 
+
+
+## Linux ARM 64Bits (PC)
+
+Projects/GENFrameWork/ThirdPartyLibraries/openal-soft/Platforms/Linux/arm64
+
+cmake -G Ninja -DLIBTYPE=STATIC -DCMAKE_BUILD_TYPE=Debug ../../..
+
+cmake --build .
+
+mv libopenal.a libopenald.a
+
+cmake -G Ninja -DLIBTYPE=STATIC -DCMAKE_BUILD_TYPE=Release ../../..
+
+cmake --build .
+

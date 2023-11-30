@@ -41,9 +41,12 @@ echo "-----------------------------------------------------------------------"
 echo "Sound"
 echo "Sound Linux"
 apt-get install libasound2-dev -y
-echo  "OpenAL"
-apt-get install openal-info -y
-apt-get install libopenal-dev -y
+apt-get install pulseaudio -y
+apt-get install libpulse-dev -y
+apt-get install -y libsndfile1 libsndfile1-dev libffi-dev
+#echo  "OpenAL"
+#apt-get install openal-info -y
+#apt-get install libopenal-dev -y
 echo "-----------------------------------------------------------------------"
 echo "Databases"
 echo "PosgreSQL client"

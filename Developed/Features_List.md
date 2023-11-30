@@ -37,7 +37,7 @@
  option(APP_CFG_WEBSERVER_FEATURE                           "Application CFG Web Server"                                true )  
  option(APP_CFG_CHECKRESOURCESHARDWARE_FEATURE              "Application CFG Check Resorces HW"                         true )  
  option(APP_CFG_LOCATION_FEATURE                            "Application CFG Location"                                  true )  
- option(APP_CFG_DNSRESOLVED_FEATURE                         "Application CFG DNS Resolved"                              true )  
+ option(APP_CFG_DNSRESOLVER_FEATURE                         "Application CFG DNS "                              true )  
  option(APP_CFG_APPUPDATE_FEATURE                           "Application CFG Application Update"                        true )  
  option(APP_CFG_ALERTS_FEATURE                              "Application CFG Alerts"                                    true )  
  option(APP_CFG_SCRIPTS_FEATURE                             "Application Scripts List"                                  true )  
@@ -130,7 +130,8 @@
  option(DIO_CHECKCONNECTIONS_FEATURE                        "Check Connections"                                         true )
  option(DIO_NETWORKTINEPROTOCOL_FEATURE                     "Network Time Protocol"                                     true )
  option(DIO_DYNDNS_FEATURE                                  "DynDNS"                                                    true )
- option(DIO_DNSRESOLVED_FEATURE                             "DNS Resolved"                                              true )
+ option(DIO_DNSRESOLVER_FEATURE                             "DNS Resolver"                                              true )
+ option(DIO_DNSPROTOCOL_MITM_SERVER                         "DNS Protocol Man in the Middle Server"                     true )
  option(DIO_WEBCLIENT_FEATURE                               "Web Client"                                                true )
  option(DIO_WEBSERVER_FEATURE                               "Web Server"                                                true )
  option(DIO_SCRAPERWEB_FEATURE                              "Scraper Web"                                               true )
@@ -138,7 +139,7 @@
  option(DIO_SMTP_FEATURE                                    "SMTP (email)"                                              true )    
 
  option(DIO_SNMP_FEATURE                                    "SNMP (Simple Network Management Protocol)"                 true )
- option(DIO_NOTIFICATIONS_MANAGER_FEATURE                   "Notifications Nanager"                                     true )
+ option(DIO_NOTIFICATIONS_MANAGER_FEATURE                   "Notifications Manager"                                     true )
 
  option(DIO_STREAM_FEATURE                                  "Stream"                                                    true )    
  option(DIO_STREAMTLS_FEATURE                               "Stream TLS"                                                true )    
@@ -237,7 +238,8 @@
  option(SCRIPT_LIB_CONSOLE_FEATURE                          "Script Lib Console"                                        true ) 
  option(SCRIPT_LIB_CFG_FEATURE                              "Script Lib Config File"                                    true )   
  option(SCRIPT_LIB_WINDOW_FEATURE                           "Script Lib Window"                                         true ) 
- option(SCRIPT_LIB_INPUTSIMULATE_FEATURE                    "Script Lib Input Simulated"                                true )    
+ option(SCRIPT_LIB_INPUTSIMULATE_FEATURE                    "Script Lib Input Simulated"                                true ) 
+ option(SCRIPT_LIB_DEVTEST_FEATURE                          "Script Lib Developed Test Funcions"                        true )      
  ```
  
 

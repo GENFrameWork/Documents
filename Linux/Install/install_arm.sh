@@ -27,9 +27,10 @@ echo "-----------------------------------------------------------------------"
 echo "Sound"
 echo "Sound Linux"
 apt-get install libasound2-dev:armhf -y
-echo  "OpenAL"
-apt-get install openal-info:armhf -y
-apt-get install libopenal-dev:armhf -y
+apt-get install pulseaudio:armhf -y
+#echo  "OpenAL"
+#apt-get install openal-info:armhf -y
+#apt-get install libopenal-dev:armhf -y
 echo "-----------------------------------------------------------------------"
 echo "Databases"
 echo "PosgreSQL client"
