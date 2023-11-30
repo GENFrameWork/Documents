@@ -28,7 +28,7 @@ echo "Sound"
 echo "Sound Linux"
 apt-get install libasound2-dev:arm64 -y
 apt-get install pulseaudio:arm64 -y
-apt-get install libpulse-dev:arm64 -y
+#apt-get install libpulse-dev:arm64 -y
 #echo  "OpenAL"
 #apt-get install openal-info:arm64 -y
 #apt-get install libopenal-dev:arm64 -y
