@@ -254,9 +254,7 @@
 
 ### Graphics
 
- ```
- option(LINUX_X11_FEATURE                                   "X11 Devices"                                               true )    
-
+ ``` 
  option(GRP_FEATURE                                         "Graphics"                                                  true )
  option(GRP_BITMAP_FILE_FEATURE                             "Graphics Files Bitmap Type"                                true )
  option(GRP_VIDEO_FILE_FEATURE                              "Graphics Video File"                                       true )
