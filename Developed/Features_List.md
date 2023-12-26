@@ -138,6 +138,8 @@
  option(DIO_ATCMD_FEATURE                                   "AT Commands"                                               true )
  option(DIO_SMTP_FEATURE                                    "SMTP (email)"                                              true )    
 
+ option(DIOPING_NATIVE_FEATURE                              "Ping Native"                                               true )  
+
  option(DIO_SNMP_FEATURE                                    "SNMP (Simple Network Management Protocol)"                 true )
  option(DIO_NOTIFICATIONS_MANAGER_FEATURE                   "Notifications Manager"                                     true )
 
