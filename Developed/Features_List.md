@@ -37,7 +37,7 @@
  option(APP_CFG_WEBSERVER_FEATURE                           "Application CFG Web Server"                                true )  
  option(APP_CFG_CHECKRESOURCESHARDWARE_FEATURE              "Application CFG Check Resorces HW"                         true )  
  option(APP_CFG_LOCATION_FEATURE                            "Application CFG Location"                                  true )  
- option(APP_CFG_DNSRESOLVER_FEATURE                         "Application CFG DNS "                              true )  
+ option(APP_CFG_DNSRESOLVER_FEATURE                         "Application CFG DNS "                                      true )  
  option(APP_CFG_APPUPDATE_FEATURE                           "Application CFG Application Update"                        true )  
  option(APP_CFG_ALERTS_FEATURE                              "Application CFG Alerts"                                    true )  
  option(APP_CFG_SCRIPTS_FEATURE                             "Application Scripts List"                                  true )  
@@ -218,6 +218,12 @@
  option(DIO_NODEITEMHANDLER_GPIODIGITAL_FEATURE             "Node Item Handler GPIO Digital"                            true )
  option(DIO_NODE_FEATURE                                    "Nodes modules"                                             true )
  option(DIO_NODEMANAGER_FEATURE                             "Node manager"                                              true )
+ ```
+
+### Location
+
+ ```
+ option(LOCATION_FEATURE                                    "Location API"                                              true )    
  ```
 
 ### User interface
