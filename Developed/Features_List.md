@@ -37,7 +37,7 @@
  option(APP_CFG_WEBSERVER_FEATURE                           "Application CFG Web Server"                                true )  
  option(APP_CFG_CHECKRESOURCESHARDWARE_FEATURE              "Application CFG Check Resorces HW"                         true )  
  option(APP_CFG_LOCATION_FEATURE                            "Application CFG Location"                                  true )  
- option(APP_CFG_DNSRESOLVER_FEATURE                         "Application CFG DNS "                                      true )  
+ option(APP_CFG_DNSRESOLVER_FEATURE                         "Application CFG DNS"                                       true )  
  option(APP_CFG_APPUPDATE_FEATURE                           "Application CFG Application Update"                        true )  
  option(APP_CFG_ALERTS_FEATURE                              "Application CFG Alerts"                                    true )  
  option(APP_CFG_SCRIPTS_FEATURE                             "Application Scripts List"                                  true )  
