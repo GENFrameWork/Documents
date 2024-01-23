@@ -218,12 +218,9 @@
  option(DIO_NODEITEMHANDLER_GPIODIGITAL_FEATURE             "Node Item Handler GPIO Digital"                            true )
  option(DIO_NODE_FEATURE                                    "Nodes modules"                                             true )
  option(DIO_NODEMANAGER_FEATURE                             "Node manager"                                              true )
- ```
-
-### Location
-
- ```
- option(LOCATION_FEATURE                                    "Location API"                                              true )    
+ option(DIO_CAMERA_FEATURE                                  "Camera API"                                                true )
+ option(DIO_LOCATION_FEATURE                                "Location API"                                              true ) 
+ 
  ```
 
 ### User interface
