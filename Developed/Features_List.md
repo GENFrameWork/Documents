@@ -3,8 +3,11 @@
 ### Generic
 
  ```
- option(DEBUG_FEATURE                                       "Debug mode"                                                true )    
+ option(DEBUG_FEATURE                                       "Debug mode"                                                true ) 
+ 
  option(GOOGLETEST_FEATURE                                  "Google Test functionality"                                 true )   
+ option(GOOGLETEST_EXECFORDISCOVER_FEATURE                  "Activate Google Test Execution for discovery"              true )
+
  ```
 
 ### App Modes
