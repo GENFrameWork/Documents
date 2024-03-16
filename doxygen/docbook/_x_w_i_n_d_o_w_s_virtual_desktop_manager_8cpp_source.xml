@@ -1,0 +1,380 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source" xml:lang="en-US">
+<title>XWINDOWSVirtualDesktopManager.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/Platforms/Windows/XWINDOWSVirtualDesktopManager.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8h">XWINDOWSVirtualDesktopManager.h</link>&quot;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_path_8h">XPath.h</link>&quot;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_trace_8h">XTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00044"/>00044 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00046"/>00046 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00048"/>00048 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00049"/>00049 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00050"/>00050 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00052"/>00052 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00053"/>00053 <link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r">XWINDOWSVIRTUALDESKTOPMANAGER</link>*&#32;&#32;&#32;&#32;&#32;XWINDOWSVIRTUALDESKTOPMANAGER::instance&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00054"/>00054 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00055"/>00055 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00056"/>00056 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00057"/>00057 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00058"/>00058 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00059"/>00059 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00061"/>00061 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00062"/>00062 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_XWINDOWSVIRTUALDESKTOP</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00063"/>00063 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00064"/>00064 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00074"/><link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_1ad93992859c55ffb7a51b7ed0963b5498">00074</link> <link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_1ad93992859c55ffb7a51b7ed0963b5498">XWINDOWSVIRTUALDESKTOP::XWINDOWSVIRTUALDESKTOP</link>()
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00075"/>00075 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00076"/>00076 &#32;&#32;Clean();
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00077"/>00077 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00078"/>00078 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00079"/>00079 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00090"/><link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_1a846692af6af4f429e1ada38b75f04c3b">00090</link> <link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_1a846692af6af4f429e1ada38b75f04c3b">XWINDOWSVIRTUALDESKTOP::~XWINDOWSVIRTUALDESKTOP</link>()
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00091"/>00091 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00092"/>00092 &#32;&#32;Clean();
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00093"/>00093 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00094"/>00094 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00095"/>00095 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00105"/><link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_1a25cb267baca59cd89a180703f14a4097">00105</link> <link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_1a25cb267baca59cd89a180703f14a4097">XWINDOWSVIRTUALDESKTOP::GetName</link>()
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00106"/>00106 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00107"/>00107 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;name;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00108"/>00108 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00109"/>00109 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00110"/>00110 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00121"/>00121 <emphasis role="keywordtype">void</emphasis>&#32;XWINDOWSVIRTUALDESKTOP::Clean()
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00122"/>00122 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00123"/>00123 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00124"/>00124 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00125"/>00125 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00126"/>00126 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00127"/>00127 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00128"/>00128 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00129"/>00129 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00130"/>00130 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_XWINDOWSVIRTUALDESKTOPMANAGER</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00131"/>00131 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00132"/>00132 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00142"/><link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1aa40cc4222f883cf3250ecb710b693ae2">00142</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1aa40cc4222f883cf3250ecb710b693ae2">XWINDOWSVIRTUALDESKTOPMANAGER::GetIsInstanced</link>()
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00143"/>00143 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00144"/>00144 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;instance!=<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00145"/>00145 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00146"/>00146 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00147"/>00147 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00157"/><link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a49175baab48e4ec0665fd1dc56ed9cae">00157</link> <link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r">XWINDOWSVIRTUALDESKTOPMANAGER</link>&amp;&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a49175baab48e4ec0665fd1dc56ed9cae">XWINDOWSVIRTUALDESKTOPMANAGER::GetInstance</link>()
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00158"/>00158 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00159"/>00159 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!instance)&#32;instance&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r">XWINDOWSVIRTUALDESKTOPMANAGER</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00160"/>00160 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00161"/>00161 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(*instance);
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00162"/>00162 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00163"/>00163 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00164"/>00164 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00174"/><link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a0d14829dd4ea1b14e4368925312271e1">00174</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a0d14829dd4ea1b14e4368925312271e1">XWINDOWSVIRTUALDESKTOPMANAGER::DelInstance</link>()
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00175"/>00175 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00176"/>00176 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(instance)
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00177"/>00177 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00178"/>00178 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;instance;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00179"/>00179 &#32;&#32;&#32;&#32;&#32;&#32;instance&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00180"/>00180 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00181"/>00181 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00182"/>00182 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00183"/>00183 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00184"/>00184 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00185"/>00185 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00186"/>00186 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00187"/>00187 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00199"/><link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a3d6c3901b565cacc97e1dd2bd7b5fd6f">00199</link> <link linkend="_class_x_v_e_c_t_o_r">XVECTOR&lt;XWINDOWSVIRTUALDESKTOP*&gt;</link>*&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a3d6c3901b565cacc97e1dd2bd7b5fd6f">XWINDOWSVIRTUALDESKTOPMANAGER::EnumAllDesktops</link>()
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00200"/>00200 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00201"/>00201 &#32;&#32;listdesktops.<link linkend="_class_x_v_e_c_t_o_r_1abae5097402824f18f274e21e18b23bea">DeleteContents</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00202"/>00202 &#32;&#32;listdesktops.<link linkend="_class_x_v_e_c_t_o_r_1a57c72ab04fd14c60d1026e0a7b4a1887">DeleteAll</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00203"/>00203 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00204"/>00204 &#32;&#32;HWINSTA&#32;handle&#32;=&#32;GetProcessWindowStation();
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00205"/>00205 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00206"/>00206 &#32;&#32;BOOL&#32;status&#32;=&#32;EnumDesktops(handle,&#32;(DESKTOPENUMPROC)EnumDesktopProc,&#32;(LPARAM)(<emphasis role="keyword">this</emphasis>));
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00207"/>00207 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00208"/>00208 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;listdesktops;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00209"/>00209 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00210"/>00210 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00211"/>00211 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00223"/><link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1ad077490e1acb9a764dfb2b89d8fe4794">00223</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1ad077490e1acb9a764dfb2b89d8fe4794">XWINDOWSVIRTUALDESKTOPMANAGER::AddDesktopToList</link>(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;name)
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00224"/>00224 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00225"/>00225 &#32;&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p">XWINDOWSVIRTUALDESKTOP</link>*&#32;desktop&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p">XWINDOWSVIRTUALDESKTOP</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00226"/>00226 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!desktop)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00227"/>00227 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00228"/>00228 &#32;&#32;desktop-&gt;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_1a25cb267baca59cd89a180703f14a4097">GetName</link>()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1a4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(name);
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00229"/>00229 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00230"/>00230 &#32;&#32;listdesktops.<link linkend="_class_x_v_e_c_t_o_r_1a51a790aac8efd4603aee608ddcc83423">Add</link>(desktop);
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00231"/>00231 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00232"/>00232 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00233"/>00233 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00234"/>00234 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00235"/>00235 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00248"/><link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a4b69ccd0f7c7b33d98a8f926b65669aa">00248</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a4b69ccd0f7c7b33d98a8f926b65669aa">XWINDOWSVIRTUALDESKTOPMANAGER::CreateNewDesktop</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;name,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;addexplorer)
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00249"/>00249 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00250"/>00250 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!name)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00251"/>00251 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00252"/>00252 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a769e88c3c8df319634f99f6cfe73ff7f">IsDesktopCreated</link>(name))
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00253"/>00253 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00254"/>00254 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//XTRACE_PRINTCOLOR(1,&#32;__L(&quot;CreateNewDesktop&#32;[%s]&#32;-&gt;&#32;is&#32;desktop&#32;created.&quot;),&#32;name);</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00255"/>00255 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00256"/>00256 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00257"/>00257 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00258"/>00258 &#32;&#32;SECURITY_ATTRIBUTES&#32;sattribute&#32;&#32;=&#32;{&#32;<emphasis role="keyword">sizeof</emphasis>(SECURITY_ATTRIBUTES),&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;<link linkend="__x_s_t_m32___h_a_l_8h_1aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</link>&#32;};
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00259"/>00259 &#32;&#32;HDESK&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hnewdesktop&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00260"/>00260 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00261"/>00261 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00262"/>00262 &#32;&#32;hnewdesktop&#32;=&#32;::CreateDesktop(name,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;DF_ALLOWOTHERACCOUNTHOOK,&#32;GENERIC_ALL,&#32;&amp;sattribute);
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00263"/>00263 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(hnewdesktop)
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00264"/>00264 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00265"/>00265 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(addexplorer)
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00266"/>00266 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00267"/>00267 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_p_a_t_h">XPATH</link>&#32;pathexplorer;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00268"/>00268 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00269"/>00269 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pathexplorer.<link linkend="_class_x_s_t_r_i_n_g_1a5daae19734452be6010c65f3d812aa00">AdjustSize</link>(<link linkend="__x_base_8h_1a647026fb22c438e4f73db846255990e9">_MAXSTR</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00270"/>00270 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GetWindowsDirectory(pathexplorer.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;<link linkend="__x_base_8h_1a647026fb22c438e4f73db846255990e9">_MAXSTR</link>-1);
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00271"/>00271 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pathexplorer.<link linkend="_class_x_s_t_r_i_n_g_1a5daae19734452be6010c65f3d812aa00">AdjustSize</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00272"/>00272 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pathexplorer&#32;+=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;\\Explorer.Exe&quot;</emphasis>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00273"/>00273 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00274"/>00274 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;LaunchApplication(pathexplorer.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;name);
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00275"/>00275 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00276"/>00276 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00277"/>00277 &#32;&#32;&#32;&#32;&#32;&#32;CloseDesktop(hnewdesktop);
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00278"/>00278 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00279"/>00279 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a3d6c3901b565cacc97e1dd2bd7b5fd6f">EnumAllDesktops</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00280"/>00280 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00281"/>00281 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00282"/>00282 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00283"/>00283 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00284"/>00284 &#32;&#32;<emphasis role="comment">//XTRACE_PRINTCOLOR((status?1:4),&#32;__L(&quot;CreateNewDesktop&#32;[%s]&#32;-&gt;&#32;%s&quot;),&#32;name,&#32;(status?__L(&quot;Ok&quot;):__L(&quot;Error&quot;)));</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00285"/>00285 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00286"/>00286 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00287"/>00287 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00288"/>00288 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00289"/>00289 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00302"/><link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1aa0f824d94693708556c67a8c785fb19b">00302</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a4b69ccd0f7c7b33d98a8f926b65669aa">XWINDOWSVIRTUALDESKTOPMANAGER::CreateNewDesktop</link>(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;name,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;addexplorer)
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00303"/>00303 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00304"/>00304 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a4b69ccd0f7c7b33d98a8f926b65669aa">CreateNewDesktop</link>(name.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;addexplorer);
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00305"/>00305 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00306"/>00306 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00307"/>00307 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00320"/><link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1ab0c4ef843f8d264e86a021f5d1400197">00320</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1ab0c4ef843f8d264e86a021f5d1400197">XWINDOWSVIRTUALDESKTOPMANAGER::SwitchDesktop</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;desktopname,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;inherit)
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00321"/>00321 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00322"/>00322 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!desktopname)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00323"/>00323 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00324"/>00324 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00325"/>00325 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00326"/>00326 &#32;&#32;<emphasis role="comment">//HDESK&#32;hdesktoptoswitch&#32;=&#32;OpenDesktop(desktopname,&#32;DF_ALLOWOTHERACCOUNTHOOK,&#32;(inherit?TRUE:FALSE),&#32;GENERIC_ALL);</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00327"/>00327 &#32;&#32;HDESK&#32;hdesk&#32;=&#32;OpenDesktop(desktopname,&#32;0,&#32;<link linkend="__x_s_t_m32___h_a_l_8h_1aa93f0eb578d23995850d61f7d61c55c1">FALSE</link>,&#32;MAXIMUM_ALLOWED);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00328"/>00328 &#32;&#32;<emphasis role="comment">//XTRACE_PRINTCOLOR((hdesk?1:4),&#32;__L(&quot;OpenDesktop&#32;[%s]&#32;-&gt;&#32;%s&quot;),&#32;desktopname,&#32;(hdesk?__L(&quot;Ok&quot;):__L(&quot;Error&quot;)));</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00329"/>00329 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(hdesk)
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00330"/>00330 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00331"/>00331 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;(<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1ab0c4ef843f8d264e86a021f5d1400197">::SwitchDesktop</link>(hdesk)&#32;==&#32;<link linkend="__x_s_t_m32___h_a_l_8h_1aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</link>)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00332"/>00332 &#32;&#32;&#32;&#32;&#32;&#32;CloseDesktop(hdesk);
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00333"/>00333 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00334"/>00334 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00335"/>00335 &#32;&#32;<emphasis role="comment">//XTRACE_PRINTCOLOR((status?1:4),&#32;__L(&quot;SwitchDesktop&#32;[%s]&#32;-&gt;&#32;%s&quot;),&#32;desktopname,&#32;(status?__L(&quot;Ok&quot;):__L(&quot;Error&quot;)));</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00336"/>00336 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00337"/>00337 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00338"/>00338 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00339"/>00339 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00340"/>00340 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00353"/><link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a3ea93144a826c284a69006f148e2531f">00353</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1ab0c4ef843f8d264e86a021f5d1400197">XWINDOWSVIRTUALDESKTOPMANAGER::SwitchDesktop</link>(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;desktopname,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;inherit)
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00354"/>00354 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00355"/>00355 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1ab0c4ef843f8d264e86a021f5d1400197">SwitchDesktop</link>(desktopname.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;inherit);
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00356"/>00356 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00357"/>00357 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00369"/><link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a3deb41219765947b8a596eba172de083">00369</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a3deb41219765947b8a596eba172de083">XWINDOWSVIRTUALDESKTOPMANAGER::IsCurrentDesktop</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;desktopname)
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00370"/>00370 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00371"/>00371 &#32;&#32;HDESK&#32;&#32;&#32;&#32;hcurrentdesktop&#32;&#32;&#32;&#32;=&#32;GetThreadDesktop(GetCurrentThreadId());
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00372"/>00372 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;currentdesktopname;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00373"/>00373 &#32;&#32;DWORD&#32;&#32;&#32;&#32;sizedesktopname&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00374"/>00374 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00375"/>00375 &#32;&#32;currentdesktopname.<link linkend="_class_x_s_t_r_i_n_g_1a5daae19734452be6010c65f3d812aa00">AdjustSize</link>(<link linkend="__x_base_8h_1a647026fb22c438e4f73db846255990e9">_MAXSTR</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00376"/>00376 &#32;&#32;GetUserObjectInformation(hcurrentdesktop,&#32;UOI_NAME,&#32;currentdesktopname.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;<link linkend="__x_base_8h_1a647026fb22c438e4f73db846255990e9">_MAXSTR</link>&#32;-&#32;1,&#32;&amp;sizedesktopname);
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00377"/>00377 &#32;&#32;currentdesktopname.<link linkend="_class_x_s_t_r_i_n_g_1a5daae19734452be6010c65f3d812aa00">AdjustSize</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00378"/>00378 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00379"/>00379 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(!currentdesktopname.<link linkend="_class_x_s_t_r_i_n_g_1aa41b9d6abe3eca02494d6eb043ed50c2">Compare</link>(desktopname))?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00380"/>00380 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00381"/>00381 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00382"/>00382 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00394"/><link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a17b181a641bf895a30558a2ab1bc08f2">00394</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a3deb41219765947b8a596eba172de083">XWINDOWSVIRTUALDESKTOPMANAGER::IsCurrentDesktop</link>(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;desktopname)
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00395"/>00395 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00396"/>00396 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a3deb41219765947b8a596eba172de083">IsCurrentDesktop</link>(desktopname.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00397"/>00397 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00398"/>00398 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00399"/>00399 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00411"/><link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a769e88c3c8df319634f99f6cfe73ff7f">00411</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a769e88c3c8df319634f99f6cfe73ff7f">XWINDOWSVIRTUALDESKTOPMANAGER::IsDesktopCreated</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;desktopname)
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00412"/>00412 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00413"/>00413 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;found&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00414"/>00414 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;&#32;c&lt;listdesktops.<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>();&#32;c++)
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00415"/>00415 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00416"/>00416 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!listdesktops.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(c)-&gt;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_1a25cb267baca59cd89a180703f14a4097">GetName</link>()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1aa41b9d6abe3eca02494d6eb043ed50c2">Compare</link>(desktopname,&#32;<emphasis role="keyword">true</emphasis>))
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00417"/>00417 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00418"/>00418 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;found&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00419"/>00419 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00420"/>00420 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00421"/>00421 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00422"/>00422 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00423"/>00423 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;found;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00424"/>00424 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00425"/>00425 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00426"/>00426 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00438"/><link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1ad1a915684c66c780a33d292dd36987f8">00438</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a769e88c3c8df319634f99f6cfe73ff7f">XWINDOWSVIRTUALDESKTOPMANAGER::IsDesktopCreated</link>(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;desktopname)
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00439"/>00439 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00440"/>00440 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a769e88c3c8df319634f99f6cfe73ff7f">IsDesktopCreated</link>(desktopname.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00441"/>00441 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00442"/>00442 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00443"/>00443 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00455"/><link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1ab791a5b1eebfebae02e4f28fc8523a95">00455</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1ab791a5b1eebfebae02e4f28fc8523a95">XWINDOWSVIRTUALDESKTOPMANAGER::SwitchProcessSpecifiedDesktop</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;desktopname)
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00456"/>00456 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00457"/>00457 &#32;&#32;BOOL&#32;status&#32;=&#32;<link linkend="__x_s_t_m32___h_a_l_8h_1aa93f0eb578d23995850d61f7d61c55c1">FALSE</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00458"/>00458 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00459"/>00459 &#32;&#32;HWINSTA&#32;hwinsta0&#32;=&#32;OpenWindowStation(TEXT(<emphasis role="stringliteral">&quot;WinSta0&quot;</emphasis>),&#32;<link linkend="__x_s_t_m32___h_a_l_8h_1aa93f0eb578d23995850d61f7d61c55c1">FALSE</link>,&#32;MAXIMUM_ALLOWED);
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00460"/>00460 &#32;&#32;<emphasis role="comment">//XTRACE_PRINTCOLOR((hwinsta0?1:4),&#32;__L(&quot;SwitchProcessSpecifiedDesktop&#32;[%s]&#32;-&gt;&#32;OpenWindowStation&#32;%08X&quot;),&#32;desktopname,&#32;hwinsta0);</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00461"/>00461 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(hwinsta0)
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00462"/>00462 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00463"/>00463 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;SetProcessWindowStation(hwinsta0);
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00464"/>00464 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//XTRACE_PRINTCOLOR((status?1:4),&#32;__L(&quot;SwitchProcessSpecifiedDesktop&#32;[%s]&#32;&#32;SetProcessWindowStation&#32;-&gt;&#32;%s&quot;),&#32;desktopname,&#32;(status?__L(&quot;Ok&quot;):__L(&quot;Error&quot;)));</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00465"/>00465 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00466"/>00466 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00467"/>00467 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;HDESK&#32;hdesk&#32;=&#32;OpenDesktop(desktopname,&#32;0,&#32;<link linkend="__x_s_t_m32___h_a_l_8h_1aa93f0eb578d23995850d61f7d61c55c1">FALSE</link>,&#32;MAXIMUM_ALLOWED);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00468"/>00468 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//XTRACE_PRINTCOLOR//((hdesk?1:4),&#32;__L(&quot;SwitchProcessSpecifiedDesktop&#32;[%s]&#32;&#32;OpenDesktop&#32;-&gt;&#32;%08X&quot;),&#32;desktopname,&#32;hdesk);</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00469"/>00469 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(hdesk)
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00470"/>00470 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00471"/>00471 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;SetThreadDesktop(hdesk);
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00472"/>00472 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//XTRACE_PRINTCOLOR((status?1:4),&#32;__L(&quot;SwitchProcessSpecifiedDesktop&#32;[%s]&#32;-&gt;&#32;SetThreadDesktop&#32;%s&#32;error&#32;[%d]&quot;),&#32;desktopname,&#32;(status?__L(&quot;Ok&quot;):__L(&quot;Error&quot;)),&#32;GetLastError());</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00473"/>00473 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CloseDesktop(hdesk);
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00474"/>00474 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00475"/>00475 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00476"/>00476 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00477"/>00477 &#32;&#32;&#32;&#32;&#32;&#32;CloseWindowStation(hwinsta0);
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00478"/>00478 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00479"/>00479 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00480"/>00480 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(status?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00481"/>00481 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00482"/>00482 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00483"/>00483 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00495"/><link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a698aac6f63408ad3c5dfdfbf2606c4da">00495</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1ab791a5b1eebfebae02e4f28fc8523a95">XWINDOWSVIRTUALDESKTOPMANAGER::SwitchProcessSpecifiedDesktop</link>(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;desktopname)
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00496"/>00496 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00497"/>00497 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1ab791a5b1eebfebae02e4f28fc8523a95">SwitchProcessSpecifiedDesktop</link>(desktopname.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00498"/>00498 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00499"/>00499 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00500"/>00500 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00510"/><link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a089bbd8f57f912083f4c1970c0cdebe7">00510</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a089bbd8f57f912083f4c1970c0cdebe7">XWINDOWSVIRTUALDESKTOPMANAGER::IsUserInteractive</link>()
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00511"/>00511 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00512"/>00512 &#32;&#32;BOOL&#32;isuserinteractive&#32;=&#32;<link linkend="__x_s_t_m32___h_a_l_8h_1aa93f0eb578d23995850d61f7d61c55c1">FALSE</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00513"/>00513 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00514"/>00514 &#32;&#32;HWINSTA&#32;hwinstation&#32;=&#32;GetProcessWindowStation();
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00515"/>00515 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(hwinstation&#32;!=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>)
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00516"/>00516 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00517"/>00517 &#32;&#32;&#32;&#32;&#32;&#32;USEROBJECTFLAGS&#32;uof&#32;=&#32;{&#32;0&#32;};
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00518"/>00518 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(GetUserObjectInformation(hwinstation,&#32;UOI_FLAGS,&#32;&amp;uof,&#32;<emphasis role="keyword">sizeof</emphasis>(USEROBJECTFLAGS),&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>)&#32;&amp;&amp;&#32;((uof.dwFlags&#32;&amp;&#32;WSF_VISIBLE)&#32;==&#32;0))
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00519"/>00519 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;isuserinteractive&#32;=&#32;<link linkend="__x_s_t_m32___h_a_l_8h_1aa93f0eb578d23995850d61f7d61c55c1">FALSE</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00520"/>00520 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;isuserinteractive&#32;=&#32;<link linkend="__x_s_t_m32___h_a_l_8h_1aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00521"/>00521 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00522"/>00522 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00523"/>00523 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;isuserinteractive?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00524"/>00524 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00525"/>00525 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00526"/>00526 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00536"/>00536 XWINDOWSVIRTUALDESKTOPMANAGER::XWINDOWSVIRTUALDESKTOPMANAGER()
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00537"/>00537 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00538"/>00538 &#32;&#32;Clean();
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00539"/>00539 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00540"/>00540 &#32;&#32;enumdesktopfunc&#32;=&#32;(DESKTOPENUMPROC)XWINDOWSVIRTUALDESKTOPMANAGER::EnumDesktopProc;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00541"/>00541 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00542"/>00542 &#32;&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1a3d6c3901b565cacc97e1dd2bd7b5fd6f">EnumAllDesktops</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00543"/>00543 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00544"/>00544 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00545"/>00545 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00556"/>00556 XWINDOWSVIRTUALDESKTOPMANAGER::~XWINDOWSVIRTUALDESKTOPMANAGER()
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00557"/>00557 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00558"/>00558 &#32;&#32;listdesktops.<link linkend="_class_x_v_e_c_t_o_r_1abae5097402824f18f274e21e18b23bea">DeleteContents</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00559"/>00559 &#32;&#32;listdesktops.<link linkend="_class_x_v_e_c_t_o_r_1a57c72ab04fd14c60d1026e0a7b4a1887">DeleteAll</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00560"/>00560 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00561"/>00561 &#32;&#32;Clean();
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00562"/>00562 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00563"/>00563 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00564"/>00564 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00577"/>00577 <emphasis role="keywordtype">bool</emphasis>&#32;XWINDOWSVIRTUALDESKTOPMANAGER::LaunchApplication(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;applicationfilepath,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;desktopname)
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00578"/>00578 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00579"/>00579 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!applicationfilepath)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00580"/>00580 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!desktopname)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00581"/>00581 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00582"/>00582 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_s_t_r_i_n_g_1a7c3fa0dd7b650399470c76192fbd4916">XSTRING::GetSize</link>(applicationfilepath))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00583"/>00583 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_s_t_r_i_n_g_1a7c3fa0dd7b650399470c76192fbd4916">XSTRING::GetSize</link>(desktopname))&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00584"/>00584 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00585"/>00585 &#32;&#32;<link linkend="_class_x_p_a_t_h">XPATH</link>&#32;directoryapp;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00586"/>00586 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;status&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00587"/>00587 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00588"/>00588 &#32;&#32;directoryapp&#32;=&#32;applicationfilepath;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00589"/>00589 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00590"/>00590 &#32;&#32;directoryapp.<link linkend="_class_x_p_a_t_h_1a2b75bbcfaa62ecdc79912b6ac68ed277">SetOnlyDriveAndPath</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00591"/>00591 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00592"/>00592 &#32;&#32;STARTUPINFO&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sinfo&#32;=&#32;{&#32;0&#32;};
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00593"/>00593 &#32;&#32;PROCESS_INFORMATION&#32;pinfo&#32;=&#32;{&#32;0&#32;};
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00594"/>00594 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00595"/>00595 &#32;&#32;sinfo.cb&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">sizeof</emphasis>(sinfo);
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00596"/>00596 &#32;&#32;sinfo.lpDesktop&#32;=&#32;desktopname;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00597"/>00597 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00598"/>00598 &#32;&#32;<emphasis role="comment">//Lanuching&#32;a&#32;application&#32;into&#32;dekstop</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00599"/>00599 &#32;&#32;BOOL&#32;processreturn&#32;=&#32;CreateProcess(applicationfilepath&#32;,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00600"/>00600 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00601"/>00601 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00602"/>00602 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="__x_s_t_m32___h_a_l_8h_1aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</link>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00603"/>00603 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;NORMAL_PRIORITY_CLASS
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00604"/>00604 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00605"/>00605 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;directoryapp.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>()
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00606"/>00606 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;&amp;sinfo
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00607"/>00607 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;&amp;pinfo);
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00608"/>00608 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(processreturn)&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00609"/>00609 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00610"/>00610 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00611"/>00611 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00612"/>00612 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00613"/>00613 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00626"/>00626 BOOL&#32;__stdcall&#32;XWINDOWSVIRTUALDESKTOPMANAGER::EnumDesktopProc(LPTSTR&#32;namedesktop,&#32;LPARAM&#32;param)
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00627"/>00627 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00628"/>00628 &#32;&#32;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r">XWINDOWSVIRTUALDESKTOPMANAGER</link>*&#32;vdm&#32;=&#32;(<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r">XWINDOWSVIRTUALDESKTOPMANAGER</link>*)param;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00629"/>00629 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!vdm)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00630"/>00630 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00631"/>00631 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;name;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00632"/>00632 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00633"/>00633 &#32;&#32;name&#32;=&#32;namedesktop;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00634"/>00634 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00635"/>00635 &#32;&#32;vdm-&gt;<link linkend="_class_x_w_i_n_d_o_w_s_v_i_r_t_u_a_l_d_e_s_k_t_o_p_m_a_n_a_g_e_r_1ad077490e1acb9a764dfb2b89d8fe4794">AddDesktopToList</link>(name);
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00636"/>00636 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00637"/>00637 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_s_t_m32___h_a_l_8h_1aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00638"/>00638 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00639"/>00639 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00640"/>00640 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00651"/>00651 <emphasis role="keywordtype">void</emphasis>&#32;XWINDOWSVIRTUALDESKTOPMANAGER::Clean()
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00652"/>00652 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00653"/>00653 &#32;&#32;enumdesktopfunc&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00654"/>00654 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00655"/>00655 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00656"/>00656 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00657"/>00657 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00658"/>00658 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00659"/>00659 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00660"/>00660 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00661"/>00661 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00662"/>00662 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00663"/>00663 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00664"/>00664 
+<anchor xml:id="__x_w_i_n_d_o_w_s_virtual_desktop_manager_8cpp_source_1l00665"/>00665 
+</programlisting></section>

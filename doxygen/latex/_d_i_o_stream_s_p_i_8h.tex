@@ -1,0 +1,160 @@
+\doxysection{D\+:/\+Projects/\+GENFrame\+Work/\+GEN/\+Data\+IO/\+Streams/\+DIOStream\+SPI.h File Reference}
+\hypertarget{_d_i_o_stream_s_p_i_8h}{}\label{_d_i_o_stream_s_p_i_8h}\index{D:/Projects/GENFrameWork/GEN/DataIO/Streams/DIOStreamSPI.h@{D:/Projects/GENFrameWork/GEN/DataIO/Streams/DIOStreamSPI.h}}
+{\ttfamily \#include "{}XFSMachine.\+h"{}}\newline
+{\ttfamily \#include "{}XThread\+Collected.\+h"{}}\newline
+{\ttfamily \#include "{}DIOStream.\+h"{}}\newline
+{\ttfamily \#include "{}DIOStream\+SPIConfig.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_s_p_i}{DIOSTREAMSPI}}
+\begin{DoxyCompactList}\small\item\em Data Input/\+Output Stream SPI class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_a8d820730bd71e4c705e0b4b56d7742e2}{DIOSTREAMSPI\+\_\+\+MAXSIZEBUFFER}}~4\texorpdfstring{$\ast$}{*}1024
+\item 
+\#define \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_a27baa393eb4eadb9e94e49e4b656d1a7}{DIOSTREAMSPI\+\_\+\+SLEEP}}~Sleep(timedelay)
+\item 
+\#define \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_a20a071a5c2350917726efbcabced2993}{DIOSTREAMSPI\+\_\+\+SLEEPDOUBLE}}~Sleep(timedelaydouble)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_a96f3118de28a5ccd7be2a6a110eeb2d6}{DIOSTREAMSPI\+\_\+\+FSMEVENTS}} \{ \newline
+\mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_a96f3118de28a5ccd7be2a6a110eeb2d6ad2a8be778789f94173c5a8746037ef5a}{DIOSTREAMSPI\+\_\+\+FSMEVENT\+\_\+\+NONE}} = 0
+, \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_a96f3118de28a5ccd7be2a6a110eeb2d6a990dba83209e246afc1dce3f42e37e9f}{DIOSTREAMSPI\+\_\+\+FSMEVENT\+\_\+\+CONNECTED}}
+, \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_a96f3118de28a5ccd7be2a6a110eeb2d6aa43450cd41560243c1fd4b283e7641ba}{DIOSTREAMSPI\+\_\+\+FSMEVENT\+\_\+\+WAITINGTOREAD}}
+, \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_a96f3118de28a5ccd7be2a6a110eeb2d6ad953eadde9d1ae646d2273d36429bb89}{DIOSTREAMSPI\+\_\+\+FSMEVENT\+\_\+\+SENDINGDATA}}
+, \newline
+\mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_a96f3118de28a5ccd7be2a6a110eeb2d6ac94daaf9a9669281b41562649e81acfc}{DIOSTREAMSPI\+\_\+\+FSMEVENT\+\_\+\+DISCONNECTING}}
+, \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_a96f3118de28a5ccd7be2a6a110eeb2d6aa63b55580596a09156afe52647c9d83e}{DIOSTREAMSPI\+\_\+\+LASTEVENT}}
+ \}
+\item 
+enum \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_a98dc9f915c8f11e2899898cf195d3001}{DIOSTREAMSPI\+\_\+\+FSMSTATES}} \{ \newline
+\mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_a98dc9f915c8f11e2899898cf195d3001acec6009b55cc197b9942b8059f7a8628}{DIOSTREAMSPI\+\_\+\+FSMSTATE\+\_\+\+NONE}} = 0
+, \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_a98dc9f915c8f11e2899898cf195d3001a52592631ab3ce1eb8db4d848bb5160cd}{DIOSTREAMSPI\+\_\+\+FSMSTATE\+\_\+\+CONNECTED}}
+, \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_a98dc9f915c8f11e2899898cf195d3001a883a5c754686098ba72e32dd415c0297}{DIOSTREAMSPI\+\_\+\+FSMSTATE\+\_\+\+WAITINGTOREAD}}
+, \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_a98dc9f915c8f11e2899898cf195d3001a3ab9102a47e1285b192a8ce5836bb325}{DIOSTREAMSPI\+\_\+\+FSMSTATE\+\_\+\+SENDINGDATA}}
+, \newline
+\mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_a98dc9f915c8f11e2899898cf195d3001af6de7ed7f61ddcd53175bcbb14184d45}{DIOSTREAMSPI\+\_\+\+FSMSTATE\+\_\+\+DISCONNECTING}}
+, \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_a98dc9f915c8f11e2899898cf195d3001a758bd7c65d04d81fcb298d800c69f3d3}{DIOSTREAMSPI\+\_\+\+LASTSTATE}}
+ \}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\DoxyHorRuler{0}
+ 
+
+Definition in file \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_source}{DIOStream\+SPI.\+h}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_d_i_o_stream_s_p_i_8h_a8d820730bd71e4c705e0b4b56d7742e2}\label{_d_i_o_stream_s_p_i_8h_a8d820730bd71e4c705e0b4b56d7742e2} 
+\index{DIOStreamSPI.h@{DIOStreamSPI.h}!DIOSTREAMSPI\_MAXSIZEBUFFER@{DIOSTREAMSPI\_MAXSIZEBUFFER}}
+\index{DIOSTREAMSPI\_MAXSIZEBUFFER@{DIOSTREAMSPI\_MAXSIZEBUFFER}!DIOStreamSPI.h@{DIOStreamSPI.h}}
+\doxysubsubsection{\texorpdfstring{DIOSTREAMSPI\_MAXSIZEBUFFER}{DIOSTREAMSPI\_MAXSIZEBUFFER}}
+{\footnotesize\ttfamily \#define DIOSTREAMSPI\+\_\+\+MAXSIZEBUFFER~4\texorpdfstring{$\ast$}{*}1024}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_source_l00072}{72}} of file \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_source}{DIOStream\+SPI.\+h}}.
+
+\Hypertarget{_d_i_o_stream_s_p_i_8h_a27baa393eb4eadb9e94e49e4b656d1a7}\label{_d_i_o_stream_s_p_i_8h_a27baa393eb4eadb9e94e49e4b656d1a7} 
+\index{DIOStreamSPI.h@{DIOStreamSPI.h}!DIOSTREAMSPI\_SLEEP@{DIOSTREAMSPI\_SLEEP}}
+\index{DIOSTREAMSPI\_SLEEP@{DIOSTREAMSPI\_SLEEP}!DIOStreamSPI.h@{DIOStreamSPI.h}}
+\doxysubsubsection{\texorpdfstring{DIOSTREAMSPI\_SLEEP}{DIOSTREAMSPI\_SLEEP}}
+{\footnotesize\ttfamily \#define DIOSTREAMSPI\+\_\+\+SLEEP~Sleep(timedelay)}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_source_l00073}{73}} of file \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_source}{DIOStream\+SPI.\+h}}.
+
+\Hypertarget{_d_i_o_stream_s_p_i_8h_a20a071a5c2350917726efbcabced2993}\label{_d_i_o_stream_s_p_i_8h_a20a071a5c2350917726efbcabced2993} 
+\index{DIOStreamSPI.h@{DIOStreamSPI.h}!DIOSTREAMSPI\_SLEEPDOUBLE@{DIOSTREAMSPI\_SLEEPDOUBLE}}
+\index{DIOSTREAMSPI\_SLEEPDOUBLE@{DIOSTREAMSPI\_SLEEPDOUBLE}!DIOStreamSPI.h@{DIOStreamSPI.h}}
+\doxysubsubsection{\texorpdfstring{DIOSTREAMSPI\_SLEEPDOUBLE}{DIOSTREAMSPI\_SLEEPDOUBLE}}
+{\footnotesize\ttfamily \#define DIOSTREAMSPI\+\_\+\+SLEEPDOUBLE~Sleep(timedelaydouble)}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_source_l00074}{74}} of file \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_source}{DIOStream\+SPI.\+h}}.
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_d_i_o_stream_s_p_i_8h_a96f3118de28a5ccd7be2a6a110eeb2d6}\label{_d_i_o_stream_s_p_i_8h_a96f3118de28a5ccd7be2a6a110eeb2d6} 
+\index{DIOStreamSPI.h@{DIOStreamSPI.h}!DIOSTREAMSPI\_FSMEVENTS@{DIOSTREAMSPI\_FSMEVENTS}}
+\index{DIOSTREAMSPI\_FSMEVENTS@{DIOSTREAMSPI\_FSMEVENTS}!DIOStreamSPI.h@{DIOStreamSPI.h}}
+\doxysubsubsection{\texorpdfstring{DIOSTREAMSPI\_FSMEVENTS}{DIOSTREAMSPI\_FSMEVENTS}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_a96f3118de28a5ccd7be2a6a110eeb2d6}{DIOSTREAMSPI\+\_\+\+FSMEVENTS}}}
+
+\DoxyHorRuler{0}
+ \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIOSTREAMSPI\_FSMEVENT\_NONE@{DIOSTREAMSPI\_FSMEVENT\_NONE}!DIOStreamSPI.h@{DIOStreamSPI.h}}\index{DIOStreamSPI.h@{DIOStreamSPI.h}!DIOSTREAMSPI\_FSMEVENT\_NONE@{DIOSTREAMSPI\_FSMEVENT\_NONE}}}\Hypertarget{_d_i_o_stream_s_p_i_8h_a96f3118de28a5ccd7be2a6a110eeb2d6ad2a8be778789f94173c5a8746037ef5a}\label{_d_i_o_stream_s_p_i_8h_a96f3118de28a5ccd7be2a6a110eeb2d6ad2a8be778789f94173c5a8746037ef5a} 
+DIOSTREAMSPI\+\_\+\+FSMEVENT\+\_\+\+NONE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIOSTREAMSPI\_FSMEVENT\_CONNECTED@{DIOSTREAMSPI\_FSMEVENT\_CONNECTED}!DIOStreamSPI.h@{DIOStreamSPI.h}}\index{DIOStreamSPI.h@{DIOStreamSPI.h}!DIOSTREAMSPI\_FSMEVENT\_CONNECTED@{DIOSTREAMSPI\_FSMEVENT\_CONNECTED}}}\Hypertarget{_d_i_o_stream_s_p_i_8h_a96f3118de28a5ccd7be2a6a110eeb2d6a990dba83209e246afc1dce3f42e37e9f}\label{_d_i_o_stream_s_p_i_8h_a96f3118de28a5ccd7be2a6a110eeb2d6a990dba83209e246afc1dce3f42e37e9f} 
+DIOSTREAMSPI\+\_\+\+FSMEVENT\+\_\+\+CONNECTED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIOSTREAMSPI\_FSMEVENT\_WAITINGTOREAD@{DIOSTREAMSPI\_FSMEVENT\_WAITINGTOREAD}!DIOStreamSPI.h@{DIOStreamSPI.h}}\index{DIOStreamSPI.h@{DIOStreamSPI.h}!DIOSTREAMSPI\_FSMEVENT\_WAITINGTOREAD@{DIOSTREAMSPI\_FSMEVENT\_WAITINGTOREAD}}}\Hypertarget{_d_i_o_stream_s_p_i_8h_a96f3118de28a5ccd7be2a6a110eeb2d6aa43450cd41560243c1fd4b283e7641ba}\label{_d_i_o_stream_s_p_i_8h_a96f3118de28a5ccd7be2a6a110eeb2d6aa43450cd41560243c1fd4b283e7641ba} 
+DIOSTREAMSPI\+\_\+\+FSMEVENT\+\_\+\+WAITINGTOREAD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIOSTREAMSPI\_FSMEVENT\_SENDINGDATA@{DIOSTREAMSPI\_FSMEVENT\_SENDINGDATA}!DIOStreamSPI.h@{DIOStreamSPI.h}}\index{DIOStreamSPI.h@{DIOStreamSPI.h}!DIOSTREAMSPI\_FSMEVENT\_SENDINGDATA@{DIOSTREAMSPI\_FSMEVENT\_SENDINGDATA}}}\Hypertarget{_d_i_o_stream_s_p_i_8h_a96f3118de28a5ccd7be2a6a110eeb2d6ad953eadde9d1ae646d2273d36429bb89}\label{_d_i_o_stream_s_p_i_8h_a96f3118de28a5ccd7be2a6a110eeb2d6ad953eadde9d1ae646d2273d36429bb89} 
+DIOSTREAMSPI\+\_\+\+FSMEVENT\+\_\+\+SENDINGDATA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIOSTREAMSPI\_FSMEVENT\_DISCONNECTING@{DIOSTREAMSPI\_FSMEVENT\_DISCONNECTING}!DIOStreamSPI.h@{DIOStreamSPI.h}}\index{DIOStreamSPI.h@{DIOStreamSPI.h}!DIOSTREAMSPI\_FSMEVENT\_DISCONNECTING@{DIOSTREAMSPI\_FSMEVENT\_DISCONNECTING}}}\Hypertarget{_d_i_o_stream_s_p_i_8h_a96f3118de28a5ccd7be2a6a110eeb2d6ac94daaf9a9669281b41562649e81acfc}\label{_d_i_o_stream_s_p_i_8h_a96f3118de28a5ccd7be2a6a110eeb2d6ac94daaf9a9669281b41562649e81acfc} 
+DIOSTREAMSPI\+\_\+\+FSMEVENT\+\_\+\+DISCONNECTING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIOSTREAMSPI\_LASTEVENT@{DIOSTREAMSPI\_LASTEVENT}!DIOStreamSPI.h@{DIOStreamSPI.h}}\index{DIOStreamSPI.h@{DIOStreamSPI.h}!DIOSTREAMSPI\_LASTEVENT@{DIOSTREAMSPI\_LASTEVENT}}}\Hypertarget{_d_i_o_stream_s_p_i_8h_a96f3118de28a5ccd7be2a6a110eeb2d6aa63b55580596a09156afe52647c9d83e}\label{_d_i_o_stream_s_p_i_8h_a96f3118de28a5ccd7be2a6a110eeb2d6aa63b55580596a09156afe52647c9d83e} 
+DIOSTREAMSPI\+\_\+\+LASTEVENT&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_source_l00048}{48}} of file \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_source}{DIOStream\+SPI.\+h}}.
+
+\Hypertarget{_d_i_o_stream_s_p_i_8h_a98dc9f915c8f11e2899898cf195d3001}\label{_d_i_o_stream_s_p_i_8h_a98dc9f915c8f11e2899898cf195d3001} 
+\index{DIOStreamSPI.h@{DIOStreamSPI.h}!DIOSTREAMSPI\_FSMSTATES@{DIOSTREAMSPI\_FSMSTATES}}
+\index{DIOSTREAMSPI\_FSMSTATES@{DIOSTREAMSPI\_FSMSTATES}!DIOStreamSPI.h@{DIOStreamSPI.h}}
+\doxysubsubsection{\texorpdfstring{DIOSTREAMSPI\_FSMSTATES}{DIOSTREAMSPI\_FSMSTATES}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_a98dc9f915c8f11e2899898cf195d3001}{DIOSTREAMSPI\+\_\+\+FSMSTATES}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIOSTREAMSPI\_FSMSTATE\_NONE@{DIOSTREAMSPI\_FSMSTATE\_NONE}!DIOStreamSPI.h@{DIOStreamSPI.h}}\index{DIOStreamSPI.h@{DIOStreamSPI.h}!DIOSTREAMSPI\_FSMSTATE\_NONE@{DIOSTREAMSPI\_FSMSTATE\_NONE}}}\Hypertarget{_d_i_o_stream_s_p_i_8h_a98dc9f915c8f11e2899898cf195d3001acec6009b55cc197b9942b8059f7a8628}\label{_d_i_o_stream_s_p_i_8h_a98dc9f915c8f11e2899898cf195d3001acec6009b55cc197b9942b8059f7a8628} 
+DIOSTREAMSPI\+\_\+\+FSMSTATE\+\_\+\+NONE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIOSTREAMSPI\_FSMSTATE\_CONNECTED@{DIOSTREAMSPI\_FSMSTATE\_CONNECTED}!DIOStreamSPI.h@{DIOStreamSPI.h}}\index{DIOStreamSPI.h@{DIOStreamSPI.h}!DIOSTREAMSPI\_FSMSTATE\_CONNECTED@{DIOSTREAMSPI\_FSMSTATE\_CONNECTED}}}\Hypertarget{_d_i_o_stream_s_p_i_8h_a98dc9f915c8f11e2899898cf195d3001a52592631ab3ce1eb8db4d848bb5160cd}\label{_d_i_o_stream_s_p_i_8h_a98dc9f915c8f11e2899898cf195d3001a52592631ab3ce1eb8db4d848bb5160cd} 
+DIOSTREAMSPI\+\_\+\+FSMSTATE\+\_\+\+CONNECTED&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIOSTREAMSPI\_FSMSTATE\_WAITINGTOREAD@{DIOSTREAMSPI\_FSMSTATE\_WAITINGTOREAD}!DIOStreamSPI.h@{DIOStreamSPI.h}}\index{DIOStreamSPI.h@{DIOStreamSPI.h}!DIOSTREAMSPI\_FSMSTATE\_WAITINGTOREAD@{DIOSTREAMSPI\_FSMSTATE\_WAITINGTOREAD}}}\Hypertarget{_d_i_o_stream_s_p_i_8h_a98dc9f915c8f11e2899898cf195d3001a883a5c754686098ba72e32dd415c0297}\label{_d_i_o_stream_s_p_i_8h_a98dc9f915c8f11e2899898cf195d3001a883a5c754686098ba72e32dd415c0297} 
+DIOSTREAMSPI\+\_\+\+FSMSTATE\+\_\+\+WAITINGTOREAD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIOSTREAMSPI\_FSMSTATE\_SENDINGDATA@{DIOSTREAMSPI\_FSMSTATE\_SENDINGDATA}!DIOStreamSPI.h@{DIOStreamSPI.h}}\index{DIOStreamSPI.h@{DIOStreamSPI.h}!DIOSTREAMSPI\_FSMSTATE\_SENDINGDATA@{DIOSTREAMSPI\_FSMSTATE\_SENDINGDATA}}}\Hypertarget{_d_i_o_stream_s_p_i_8h_a98dc9f915c8f11e2899898cf195d3001a3ab9102a47e1285b192a8ce5836bb325}\label{_d_i_o_stream_s_p_i_8h_a98dc9f915c8f11e2899898cf195d3001a3ab9102a47e1285b192a8ce5836bb325} 
+DIOSTREAMSPI\+\_\+\+FSMSTATE\+\_\+\+SENDINGDATA&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIOSTREAMSPI\_FSMSTATE\_DISCONNECTING@{DIOSTREAMSPI\_FSMSTATE\_DISCONNECTING}!DIOStreamSPI.h@{DIOStreamSPI.h}}\index{DIOStreamSPI.h@{DIOStreamSPI.h}!DIOSTREAMSPI\_FSMSTATE\_DISCONNECTING@{DIOSTREAMSPI\_FSMSTATE\_DISCONNECTING}}}\Hypertarget{_d_i_o_stream_s_p_i_8h_a98dc9f915c8f11e2899898cf195d3001af6de7ed7f61ddcd53175bcbb14184d45}\label{_d_i_o_stream_s_p_i_8h_a98dc9f915c8f11e2899898cf195d3001af6de7ed7f61ddcd53175bcbb14184d45} 
+DIOSTREAMSPI\+\_\+\+FSMSTATE\+\_\+\+DISCONNECTING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DIOSTREAMSPI\_LASTSTATE@{DIOSTREAMSPI\_LASTSTATE}!DIOStreamSPI.h@{DIOStreamSPI.h}}\index{DIOStreamSPI.h@{DIOStreamSPI.h}!DIOSTREAMSPI\_LASTSTATE@{DIOSTREAMSPI\_LASTSTATE}}}\Hypertarget{_d_i_o_stream_s_p_i_8h_a98dc9f915c8f11e2899898cf195d3001a758bd7c65d04d81fcb298d800c69f3d3}\label{_d_i_o_stream_s_p_i_8h_a98dc9f915c8f11e2899898cf195d3001a758bd7c65d04d81fcb298d800c69f3d3} 
+DIOSTREAMSPI\+\_\+\+LASTSTATE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_source_l00059}{59}} of file \mbox{\hyperlink{_d_i_o_stream_s_p_i_8h_source}{DIOStream\+SPI.\+h}}.
+

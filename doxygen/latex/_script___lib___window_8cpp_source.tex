@@ -1,0 +1,917 @@
+\doxysection{Script\+\_\+\+Lib\+\_\+\+Window.\+cpp}
+\hypertarget{_script___lib___window_8cpp_source}{}\label{_script___lib___window_8cpp_source}\index{D:/Projects/GENFrameWork/GEN/Script/Lib/Script\_Lib\_Window.cpp@{D:/Projects/GENFrameWork/GEN/Script/Lib/Script\_Lib\_Window.cpp}}
+\mbox{\hyperlink{_script___lib___window_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00029}00029\ \textcolor{comment}{/*-\/-\/-\/-\/\ PRECOMPILATION\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#pragma\ region\ PRECOMPILATION\_INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_e_n___defines_8h}{GEN\_Defines.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00037}00037\ \textcolor{comment}{/*-\/-\/-\/-\/\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#pragma\ region\ INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_script___lib___window_8h}{Script\_Lib\_Window.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_variant_8h}{XVariant.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_process_manager_8h}{XProcessManager.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_a_p_p_base_8h}{APPBase.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00046}00046\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_a_p_p_main_8h}{APPMain.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00048}00048\ \textcolor{preprocessor}{\#ifdef\ SCRIPT\_LIB\_WINDOWS\_DEBUG}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00049}00049\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_a_p_p_graphics_8h}{APPGraphics.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00050}00050\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00052}00052\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_n_p_factory_8h}{INPFactory.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00053}00053\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_i_n_p_simulate_8h}{INPSimulate.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00055}00055\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_r_p_factory_8h}{GRPFactory.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00056}00056\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_r_p_screen_8h}{GRPScreen.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00057}00057\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_r_p_bitmap_8h}{GRPBitmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00058}00058\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_r_p_bitmap_file_8h}{GRPBitmapFile.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00060}00060\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_r_p_viewport_8h}{GRPViewport.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00061}00061\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_r_p_canvas_8h}{GRPCanvas.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00063}00063\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_script_8h}{Script.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00065}00065\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_memory___control_8h}{XMemory\_Control.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00067}00067\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00070}00070\ \textcolor{comment}{/*-\/-\/-\/-\/\ GENERAL\ VARIABLE\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00071}00071\ \textcolor{preprocessor}{\#pragma\ region\ GENERAL\_VARIABLE}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00073}\mbox{\hyperlink{_script___lib___window_8cpp_a318cf205366c9c9aa626d7d34b388c29}{00073}}\ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_script___lib___window_8cpp_a318cf205366c9c9aa626d7d34b388c29}{windowsposx}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00074}\mbox{\hyperlink{_script___lib___window_8cpp_a9285079eec854291139c795f1e1c30fa}{00074}}\ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_script___lib___window_8cpp_a9285079eec854291139c795f1e1c30fa}{windowsposy}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00076}00076\ \textcolor{preprocessor}{\#ifdef\ SCRIPT\_LIB\_WINDOWS\_DEBUG}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00077}00077\ \mbox{\hyperlink{class_a_p_p_g_r_a_p_h_i_c_s}{APPGRAPHICS}}*\ \ \ SCRIPT\_LIB\_WINDOW::appgraphics\ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00078}00078\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00080}00080\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00083}00083\ \textcolor{comment}{/*-\/-\/-\/-\/\ CLASS\ MEMBERS\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00084}00084\ \textcolor{preprocessor}{\#pragma\ region\ CLASS\_MEMBERS}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00094}\mbox{\hyperlink{group___s_c_r_i_p_t_ga23e708610a31c4f08e3fa5a0bef019b6}{00094}}\ \mbox{\hyperlink{group___s_c_r_i_p_t_ga23e708610a31c4f08e3fa5a0bef019b6}{SCRIPT\_LIB\_WINDOW::SCRIPT\_LIB\_WINDOW}}()\ :\ \mbox{\hyperlink{class_s_c_r_i_p_t___l_i_b}{SCRIPT\_LIB}}(\mbox{\hyperlink{_script___lib___window_8h_a43749120984e0f6ac2048a237e3857e3}{SCRIPT\_LIB\_NAME\_WINDOW}})}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00095}00095\ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00096}00096\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00097}00097\ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00098}00098\ \ \ bmpfindCFG\_difflimitpercent\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00099}00099\ \ \ bmpfindCFG\_pixelmargin\ \ \ \ \ \ =\ 10;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00100}00100\ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00111}\mbox{\hyperlink{group___s_c_r_i_p_t_ga4b945814c196188583ef317bcb821a6b}{00111}}\ \mbox{\hyperlink{group___s_c_r_i_p_t_ga4b945814c196188583ef317bcb821a6b}{SCRIPT\_LIB\_WINDOW::\string~SCRIPT\_LIB\_WINDOW}}()}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00112}00112\ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00113}00113\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00114}00114\ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00128}\mbox{\hyperlink{group___s_c_r_i_p_t_ga52d06ed6d5fb2c73904be02dc502d325}{00128}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___s_c_r_i_p_t_ga52d06ed6d5fb2c73904be02dc502d325}{SCRIPT\_LIB\_WINDOW::AddLibraryFunctions}}(\mbox{\hyperlink{class_s_c_r_i_p_t}{SCRIPT}}*\ script)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00129}00129\ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00130}00130\ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{class_s_c_r_i_p_t___l_i_b_a57660e73a6bae6e48432fd8db68b0d88}{script}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00132}00132\ \ \ this-\/>script\ =\ \mbox{\hyperlink{class_s_c_r_i_p_t___l_i_b_a57660e73a6bae6e48432fd8db68b0d88}{script}};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00134}00134\ \ \ \mbox{\hyperlink{class_s_c_r_i_p_t___l_i_b_a57660e73a6bae6e48432fd8db68b0d88}{script}}-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_ga362138cda217bfd4dc7a67a2b462c5ee}{AddLibraryFunction}}(\textcolor{keyword}{this},\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}Window\_GetPosX"{}})\ \ \ \ \ \ \ \ ,\ \mbox{\hyperlink{_script___lib___window_8h_a7b8ad655c2e9a6ce5cac04142869f492}{Call\_Window\_GetPosX}});}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00135}00135\ \ \ \mbox{\hyperlink{class_s_c_r_i_p_t___l_i_b_a57660e73a6bae6e48432fd8db68b0d88}{script}}-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_ga362138cda217bfd4dc7a67a2b462c5ee}{AddLibraryFunction}}(\textcolor{keyword}{this},\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}Window\_GetPosY"{}})\ \ \ \ \ \ \ \ ,\ \mbox{\hyperlink{_script___lib___window_8h_a5f897921a65d9ee77d2ee8bf8e83bbc9}{Call\_Window\_GetPosY}});}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00136}00136\ \ \ \mbox{\hyperlink{class_s_c_r_i_p_t___l_i_b_a57660e73a6bae6e48432fd8db68b0d88}{script}}-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_ga362138cda217bfd4dc7a67a2b462c5ee}{AddLibraryFunction}}(\textcolor{keyword}{this},\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}Window\_SetBmpFindCFG"{}})\ \ ,\ \mbox{\hyperlink{_script___lib___window_8h_a9778c0e15f5a52002f135132c2dd7823}{Call\_Window\_SetBmpFindCFG}});}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00137}00137\ \ \ \mbox{\hyperlink{class_s_c_r_i_p_t___l_i_b_a57660e73a6bae6e48432fd8db68b0d88}{script}}-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_ga362138cda217bfd4dc7a67a2b462c5ee}{AddLibraryFunction}}(\textcolor{keyword}{this},\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}Window\_SetFocus"{}})\ \ \ \ \ \ \ ,\ \mbox{\hyperlink{_script___lib___window_8h_a9460d8f0423990e40e724d7447e76391}{Call\_Window\_SetFocus}});}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00138}00138\ \ \ \mbox{\hyperlink{class_s_c_r_i_p_t___l_i_b_a57660e73a6bae6e48432fd8db68b0d88}{script}}-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_ga362138cda217bfd4dc7a67a2b462c5ee}{AddLibraryFunction}}(\textcolor{keyword}{this},\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}Window\_SetPosition"{}})\ \ \ \ ,\ \mbox{\hyperlink{_script___lib___window_8h_ae136463c2d428c17de5913733240c90d}{Call\_Window\_SetPosition}});}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00139}00139\ \ \ \mbox{\hyperlink{class_s_c_r_i_p_t___l_i_b_a57660e73a6bae6e48432fd8db68b0d88}{script}}-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_ga362138cda217bfd4dc7a67a2b462c5ee}{AddLibraryFunction}}(\textcolor{keyword}{this},\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}Window\_Resize"{}})\ \ \ \ \ \ \ \ \ ,\ \mbox{\hyperlink{_script___lib___window_8h_a8ec0984b5ef7fcbd41de6e6f885cf921}{Call\_Window\_Resize}});}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00140}00140\ \ \ \mbox{\hyperlink{class_s_c_r_i_p_t___l_i_b_a57660e73a6bae6e48432fd8db68b0d88}{script}}-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_ga362138cda217bfd4dc7a67a2b462c5ee}{AddLibraryFunction}}(\textcolor{keyword}{this},\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}Window\_Minimize"{}})\ \ \ \ \ \ \ ,\ \mbox{\hyperlink{_script___lib___window_8h_af9ee6bcd6cd90c189ac753d52891b922}{Call\_Window\_Minimize}});}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00141}00141\ \ \ \mbox{\hyperlink{class_s_c_r_i_p_t___l_i_b_a57660e73a6bae6e48432fd8db68b0d88}{script}}-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_ga362138cda217bfd4dc7a67a2b462c5ee}{AddLibraryFunction}}(\textcolor{keyword}{this},\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}Window\_Maximize"{}})\ \ \ \ \ \ \ ,\ \mbox{\hyperlink{_script___lib___window_8h_a0334b63e607be640ac40f6793429ed42}{Call\_Window\_Maximize}});}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00142}00142\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00143}00143\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00144}00144\ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00156}\mbox{\hyperlink{group___s_c_r_i_p_t_ga900a863da19d8695ed5021c63ede3832}{00156}}\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ \mbox{\hyperlink{group___s_c_r_i_p_t_ga900a863da19d8695ed5021c63ede3832}{SCRIPT\_LIB\_WINDOW::BmpFindCFG\_GetDiffLimitPercent}}()}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00157}00157\ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00158}00158\ \ \ \textcolor{keywordflow}{return}\ bmpfindCFG\_difflimitpercent;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00159}00159\ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00171}\mbox{\hyperlink{group___s_c_r_i_p_t_ga6c730afc36860762f228936f8f2a1935}{00171}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_c_r_i_p_t_ga6c730afc36860762f228936f8f2a1935}{SCRIPT\_LIB\_WINDOW::BmpFindCFG\_SetDiffLimitPercent}}(\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ difflimitpercent)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00172}00172\ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00173}00173\ \ \ bmpfindCFG\_difflimitpercent\ =\ difflimitpercent;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00174}00174\ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00186}\mbox{\hyperlink{group___s_c_r_i_p_t_gaeccfbd9191375fdac815405991e95435}{00186}}\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ \mbox{\hyperlink{group___s_c_r_i_p_t_gaeccfbd9191375fdac815405991e95435}{SCRIPT\_LIB\_WINDOW::BmpFindCFG\_GetPixelMargin}}()}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00187}00187\ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00188}00188\ \ \ \textcolor{keywordflow}{return}\ bmpfindCFG\_pixelmargin;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00189}00189\ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00201}\mbox{\hyperlink{group___s_c_r_i_p_t_ga4aad949097d043bba94a42beedcb21ff}{00201}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___s_c_r_i_p_t_ga4aad949097d043bba94a42beedcb21ff}{SCRIPT\_LIB\_WINDOW::BmpFindCFG\_SetPixelMargin}}(\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ pixelmargin)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00202}00202\ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00203}00203\ \ \ bmpfindCFG\_pixelmargin\ =\ pixelmargin;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00204}00204\ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00207}00207\ \textcolor{preprocessor}{\#ifdef\ SCRIPT\_LIB\_WINDOWS\_DEBUG}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00218}00218\ \mbox{\hyperlink{class_a_p_p_g_r_a_p_h_i_c_s}{APPGRAPHICS}}*\ SCRIPT\_LIB\_WINDOW::GetAppGraphics()}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00219}00219\ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00220}00220\ \ \ \textcolor{keywordflow}{return}\ appgraphics;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00221}00221\ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00222}00222\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00233}00233\ \textcolor{keywordtype}{void}\ SCRIPT\_LIB\_WINDOW::SetAppGraphics(\mbox{\hyperlink{class_a_p_p_g_r_a_p_h_i_c_s}{APPGRAPHICS}}*\ \_appgraphics)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00234}00234\ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00235}00235\ \ \ appgraphics\ =\ \_appgraphics;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00236}00236\ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00237}00237\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00238}00238\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00239}00239\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00248}00248\ \textcolor{keywordtype}{void}\ SCRIPT\_LIB\_WINDOW::Clean()}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00249}00249\ \{\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00250}00250\ \ \ \mbox{\hyperlink{_script___lib___window_8cpp_a318cf205366c9c9aa626d7d34b388c29}{windowsposx}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00251}00251\ \ \ \mbox{\hyperlink{_script___lib___window_8cpp_a9285079eec854291139c795f1e1c30fa}{windowsposy}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00252}00252\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00253}00253\ \ \ bmpfindCFG\_difflimitpercent\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00254}00254\ \ \ bmpfindCFG\_pixelmargin\ \ \ \ \ \ =\ 10;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00255}00255\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00256}00256\ \textcolor{preprocessor}{\ \ \#ifdef\ SCRIPT\_LIB\_WINDOWS\_DEBUG}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00257}00257\ \ \ appgraphics\ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00258}00258\ \textcolor{preprocessor}{\ \ \#endif}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00259}00259\ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00261}00261\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00262}00262\ \textcolor{comment}{/*-\/-\/-\/-\/\ LIBRARY\ FUNCTIONS\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00263}00263\ \textcolor{preprocessor}{\#pragma\ region\ LIBRARY\_FUNCTIONS}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00265}00265\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00278}\mbox{\hyperlink{_script___lib___window_8cpp_a7b8ad655c2e9a6ce5cac04142869f492}{00278}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_script___lib___window_8cpp_a7b8ad655c2e9a6ce5cac04142869f492}{Call\_Window\_GetPosX}}(\mbox{\hyperlink{class_s_c_r_i_p_t___l_i_b}{SCRIPT\_LIB}}*\ library,\ \mbox{\hyperlink{class_s_c_r_i_p_t}{SCRIPT}}*\ script,\ \mbox{\hyperlink{class_x_v_e_c_t_o_r}{XVECTOR<XVARIANT*>}}*\ params,\ \mbox{\hyperlink{class_x_v_a_r_i_a_n_t}{XVARIANT}}*\ returnvalue)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00279}00279\ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00280}00280\ \ \ \textcolor{keywordflow}{if}(!library)\ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00281}00281\ \ \ \textcolor{keywordflow}{if}(!script)\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00282}00282\ \ \ \textcolor{keywordflow}{if}(!params)\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00283}00283\ \ \ \textcolor{keywordflow}{if}(!returnvalue)\ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00284}00284\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00285}00285\ \ \ \mbox{\hyperlink{class_s_c_r_i_p_t___l_i_b___w_i_n_d_o_w}{SCRIPT\_LIB\_WINDOW}}*\ windows\_library\ =\ (\mbox{\hyperlink{class_s_c_r_i_p_t___l_i_b___w_i_n_d_o_w}{SCRIPT\_LIB\_WINDOW}}*)library;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00286}00286\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00287}00287\ \ \ returnvalue-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga238f6ef465ea6b1cc7f9882aee8c868f}{Set}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00288}00288\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00289}00289\ \ \ \textcolor{keywordflow}{if}(params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_ab9cec1d9ae7a1f5699f9dde55ccde2bf}{GetSize}}()<2)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00290}00290\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00291}00291\ \ \ \ \ \ \ script-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_ga9b6211aae3517ced521a3907ca6ef648}{HaveError}}(\mbox{\hyperlink{_script___error_code_8h_ab71f770a3544167b2b522becbd5acee6afec9a75f12d1cfee7bf5fc409e46b363}{SCRIPT\_ERRORCODE\_INSUF\_PARAMS}});}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00292}00292\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00293}00293\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00294}00294\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00295}00295\ \ \ \mbox{\hyperlink{_script___lib___window_8cpp_a318cf205366c9c9aa626d7d34b388c29}{windowsposx}}\ =\ 0xFFFFFF;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00296}00296\ \ \ \mbox{\hyperlink{_script___lib___window_8cpp_a9285079eec854291139c795f1e1c30fa}{windowsposy}}\ =\ 0xFFFFFF;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00297}00297\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00298}00298\ \ \ \mbox{\hyperlink{class_x_v_e_c_t_o_r}{XVECTOR<XPROCESS*>}}\ \ applist;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00299}00299\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ \ \ \ \ \ \ \ \ \ \ \ \ appname\ \ \ \ \ \ \ =\ (*params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(0));}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00300}00300\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ \ \ \ \ \ \ \ \ \ \ \ \ windowstitle\ \ =\ (*params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(1));}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00301}00301\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00302}00302\ \ \ \textcolor{keywordflow}{if}(GEN\_XPROCESSMANAGER.Application\_GetRunningList(applist,\ \textcolor{keyword}{true}))}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00303}00303\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00304}00304\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ c=0;\ c<applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_ab9cec1d9ae7a1f5699f9dde55ccde2bf}{GetSize}}();\ c++)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetName()-\/>Find(appname,\ \textcolor{keyword}{true})!=\ \mbox{\hyperlink{_x_string_8h_aee1ccda748b3ca0a483afb84276e3fc6}{XSTRING\_NOTFOUND}})\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetWindowTitle()-\/>Find(windowstitle,\ \textcolor{keyword}{false})\ !=\ \mbox{\hyperlink{_x_string_8h_aee1ccda748b3ca0a483afb84276e3fc6}{XSTRING\_NOTFOUND}})}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_script___lib___window_8cpp_a318cf205366c9c9aa626d7d34b388c29}{windowsposx}}\ =\ applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetWindowRect()-\/>x1;\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_script___lib___window_8cpp_a9285079eec854291139c795f1e1c30fa}{windowsposy}}\ =\ applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetWindowRect()-\/>y1;\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_ab9cec1d9ae7a1f5699f9dde55ccde2bf}{GetSize}}()\ >=\ 3)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ handle\_windows\ =\ applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetWindowHandle();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(handle\_windows)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_g_r_p_s_c_r_e_e_n}{GRPSCREEN}}*\ screen\ =\ GEN\_GRPFACTORY.CreateScreen();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(screen)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00320}00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ screen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_gaf9567248fe2bda34fc3793deb8dd7dc3}{SetHandle}}(handle\_windows);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ screen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga9230f541a690015a7aa087a61d68ed7a}{SetWidth}}(applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetWindowRect()-\/>x2\ -\/\ applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetWindowRect()-\/>x1);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ screen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga2b39330d27e80bb2e363267ca8a162da}{SetHeight}}(applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetWindowRect()-\/>y2\ -\/\ applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetWindowRect()-\/>y1);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_g_r_p_b_i_t_m_a_p}{GRPBITMAP}}*\ bitmapscreen\ =\ screen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga2fdfdabaf8a2756297a969d2bc49a703}{CaptureContent}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(bitmapscreen)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00329}00329\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00330}00330\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ SCRIPT\_LIB\_WINDOWS\_DEBUG}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ PutBitmap(0,\ 0,\ bitmapscreen);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00332}00332\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#endif\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00333}00333\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00334}00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00335}00335\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00336}00336\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ found\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00337}00337\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00338}00338\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ d=2;\ d<params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_ab9cec1d9ae7a1f5699f9dde55ccde2bf}{GetSize}}();\ d++)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00340}00340\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ bitmaprefname\ \ =\ (*params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(d));}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!bitmaprefname.\mbox{\hyperlink{group___x_u_t_i_l_s_gad26690161f8c1e2722771322b7370005}{IsEmpty}}())}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_x_p_a_t_h}{XPATH}}\ \ xpathbitmapref;\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00344}00344\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00345}00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GEN\_XPATHSMANAGER.GetPathOfSection(\mbox{\hyperlink{_x_paths_manager_8h_a574bf1ebb371f804090c20183c9ff7dda68b4408c8603faf590600665697db567}{XPATHSMANAGERSECTIONTYPE\_GRAPHICS}},\ xpathbitmapref);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xpathbitmapref.\mbox{\hyperlink{group___x_u_t_i_l_s_ga337e940d48f7178186adfbdf4d268ac7}{Slash\_Add}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00347}00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xpathbitmapref.\mbox{\hyperlink{group___x_u_t_i_l_s_gae19f84471c20a914d10a8ac757cacb9a}{Add}}(bitmaprefname);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00348}00348\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_g_r_p_b_i_t_m_a_p_f_i_l_e}{GRPBITMAPFILE}}*\ bitmapfileref\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_g_r_p_b_i_t_m_a_p_f_i_l_e}{GRPBITMAPFILE}}(xpathbitmapref);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(bitmapfileref)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00351}00351\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00352}00352\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ SCRIPT\_LIB\_WINDOWS\_DEBUG\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_x_p_a_t_h}{XPATH}}\ \ xpathbitmaptest;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00354}00354\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00355}00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GEN\_XPATHSMANAGER.GetPathOfSection(\mbox{\hyperlink{_x_paths_manager_8h_a574bf1ebb371f804090c20183c9ff7dda68b4408c8603faf590600665697db567}{XPATHSMANAGERSECTIONTYPE\_GRAPHICS}},\ xpathbitmaptest);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00356}00356\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xpathbitmaptest.\mbox{\hyperlink{group___x_u_t_i_l_s_ga337e940d48f7178186adfbdf4d268ac7}{Slash\_Add}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00357}00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xpathbitmaptest.\mbox{\hyperlink{group___x_u_t_i_l_s_gae19f84471c20a914d10a8ac757cacb9a}{Add}}(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}back.png"{}}));}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00358}00358\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00359}00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bitmapfileref-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_gaed33b47ced916c3fa55daf1098a2cb71}{Save}}(xpathbitmaptest,\ bitmapscreen);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00360}00360\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00361}00361\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00362}00362\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GEN\_XPATHSMANAGER.GetPathOfSection(XPATHSMANAGERSECTIONTYPE\_GRAPHICS,\ xpathbitmaptest);}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00363}00363\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xpathbitmaptest.Slash\_Add();}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00364}00364\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xpathbitmaptest.Add(\_\_L("{}image001.png"{}));}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00365}00365\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00366}00366\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GRPBITMAP*\ bitmaprefcap\ =\ GetBitmap(10,\ 418,\ 74,\ 11);}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00367}00367\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ if(bitmaprefcap)}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00368}00368\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00369}00369\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bitmapfileref-\/>Save(xpathbitmaptest,\ bitmaprefcap);}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00370}00370\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ delete\ bitmaprefcap;}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00371}00371\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00372}00372\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ */}\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00373}00373\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00374}00374\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00375}00375\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_g_r_p_b_i_t_m_a_p}{GRPBITMAP}}*\ bitmapref\ =\ bitmapfileref-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga93f2bb29d7197b2c2c2ab4bc329052aa}{Load}}();\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00376}00376\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(bitmapref)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00377}00377\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00378}00378\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ x\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00379}00379\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ y\ =\ 0;\ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00380}00380\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00381}00381\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#ifdef\ SCRIPT\_LIB\_WINDOWS\_DEBUG}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00382}00382\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(FindSubBitmap(bitmapscreen,\ bitmapref,\ x,\ y,\ windows\_library-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_ga900a863da19d8695ed5021c63ede3832}{BmpFindCFG\_GetDiffLimitPercent}}(),\ windows\_library-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_gaeccfbd9191375fdac815405991e95435}{BmpFindCFG\_GetPixelMargin}}()))\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00383}00383\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#else\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00384}00384\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(bitmapscreen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_gaf73ac47344352df591067147b60b8545}{FindSubBitmap}}(bitmapref,\ x,\ y,\ windows\_library-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_ga900a863da19d8695ed5021c63ede3832}{BmpFindCFG\_GetDiffLimitPercent}}(),\ windows\_library-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_gaeccfbd9191375fdac815405991e95435}{BmpFindCFG\_GetPixelMargin}}()))}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00385}00385\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \#endif\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00386}00386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00387}00387\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_script___lib___window_8cpp_a318cf205366c9c9aa626d7d34b388c29}{windowsposx}}\ +=\ (x\ +\ (bitmapref-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga5cc313280bd36df2306a440639752388}{GetWidth}}()\ /2)\ +\ applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetWindowBorderWidth());\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00388}00388\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_script___lib___window_8cpp_a9285079eec854291139c795f1e1c30fa}{windowsposy}}\ +=\ (y\ +\ (bitmapref-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga0829efc8aa7f6e50a5c6058617aa80d8}{GetHeight}}()/2)\ +\ applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetWindowTitleHeight());\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00389}00389\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ found\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00390}00390\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00391}00391\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00392}00392\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00393}00393\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ bitmapref;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00394}00394\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ bitmapfileref;\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00395}00395\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00396}00396\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00397}00397\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00398}00398\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00399}00399\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00400}00400\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00401}00401\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00402}00402\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(found)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00403}00403\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00404}00404\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00405}00405\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00406}00406\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00407}00407\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00408}00408\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!found)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00409}00409\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00410}00410\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_script___lib___window_8cpp_a318cf205366c9c9aa626d7d34b388c29}{windowsposx}}\ =\ 0xFFFFFE;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00411}00411\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_script___lib___window_8cpp_a9285079eec854291139c795f1e1c30fa}{windowsposy}}\ =\ 0xFFFFFE;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00412}00412\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00413}00413\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00414}00414\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ bitmapscreen;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00415}00415\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00416}00416\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GEN\_GRPFACTORY.DeleteScreen(screen);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00417}00417\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00418}00418\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00419}00419\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00420}00420\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00421}00421\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00422}00422\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00423}00423\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00424}00424\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00425}00425\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00426}00426\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00427}00427\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00428}00428\ \ \ applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_abae5097402824f18f274e21e18b23bea}{DeleteContents}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00429}00429\ \ \ applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a57c72ab04fd14c60d1026e0a7b4a1887}{DeleteAll}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00430}00430\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00431}00431\ \ \ (*returnvalue)\ =\ \mbox{\hyperlink{_script___lib___window_8cpp_a318cf205366c9c9aa626d7d34b388c29}{windowsposx}};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00432}00432\ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00433}00433\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00434}00434\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00447}\mbox{\hyperlink{_script___lib___window_8cpp_a5f897921a65d9ee77d2ee8bf8e83bbc9}{00447}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_script___lib___window_8cpp_a5f897921a65d9ee77d2ee8bf8e83bbc9}{Call\_Window\_GetPosY}}(\mbox{\hyperlink{class_s_c_r_i_p_t___l_i_b}{SCRIPT\_LIB}}*\ library,\ \mbox{\hyperlink{class_s_c_r_i_p_t}{SCRIPT}}*\ script,\ \mbox{\hyperlink{class_x_v_e_c_t_o_r}{XVECTOR<XVARIANT*>}}*\ params,\ \mbox{\hyperlink{class_x_v_a_r_i_a_n_t}{XVARIANT}}*\ returnvalue)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00448}00448\ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00449}00449\ \ \ \textcolor{keywordflow}{if}(!library)\ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00450}00450\ \ \ \textcolor{keywordflow}{if}(!script)\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00451}00451\ \ \ \textcolor{keywordflow}{if}(!params)\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00452}00452\ \ \ \textcolor{keywordflow}{if}(!returnvalue)\ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00453}00453\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00454}00454\ \ \ returnvalue-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga238f6ef465ea6b1cc7f9882aee8c868f}{Set}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00455}00455\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00456}00456\ \ \ \textcolor{keywordflow}{if}(params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_ab9cec1d9ae7a1f5699f9dde55ccde2bf}{GetSize}}()<2)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00457}00457\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00458}00458\ \ \ \ \ \ \ script-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_ga9b6211aae3517ced521a3907ca6ef648}{HaveError}}(\mbox{\hyperlink{_script___error_code_8h_ab71f770a3544167b2b522becbd5acee6afec9a75f12d1cfee7bf5fc409e46b363}{SCRIPT\_ERRORCODE\_INSUF\_PARAMS}});}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00459}00459\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00460}00460\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00461}00461\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00462}00462\ \ \ (*returnvalue)\ =\ \mbox{\hyperlink{_script___lib___window_8cpp_a9285079eec854291139c795f1e1c30fa}{windowsposy}};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00463}00463\ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00464}00464\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00465}00465\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00478}\mbox{\hyperlink{_script___lib___window_8cpp_a9778c0e15f5a52002f135132c2dd7823}{00478}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_script___lib___window_8cpp_a9778c0e15f5a52002f135132c2dd7823}{Call\_Window\_SetBmpFindCFG}}(\mbox{\hyperlink{class_s_c_r_i_p_t___l_i_b}{SCRIPT\_LIB}}*\ library,\ \mbox{\hyperlink{class_s_c_r_i_p_t}{SCRIPT}}*\ script,\ \mbox{\hyperlink{class_x_v_e_c_t_o_r}{XVECTOR<XVARIANT*>}}*\ params,\ \mbox{\hyperlink{class_x_v_a_r_i_a_n_t}{XVARIANT}}*\ returnvalue)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00479}00479\ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00480}00480\ \ \ \textcolor{keywordflow}{if}(!library)\ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00481}00481\ \ \ \textcolor{keywordflow}{if}(!script)\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00482}00482\ \ \ \textcolor{keywordflow}{if}(!params)\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00483}00483\ \ \ \textcolor{keywordflow}{if}(!returnvalue)\ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00484}00484\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00485}00485\ \ \ \mbox{\hyperlink{class_s_c_r_i_p_t___l_i_b___w_i_n_d_o_w}{SCRIPT\_LIB\_WINDOW}}*\ windows\_library\ =\ (\mbox{\hyperlink{class_s_c_r_i_p_t___l_i_b___w_i_n_d_o_w}{SCRIPT\_LIB\_WINDOW}}*)library;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00486}00486\ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ status\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00487}00487\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00488}00488\ \ \ returnvalue-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga238f6ef465ea6b1cc7f9882aee8c868f}{Set}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00489}00489\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00490}00490\ \ \ (*returnvalue)\ =\ status;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00491}00491\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00492}00492\ \ \ \textcolor{keywordflow}{if}(params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_ab9cec1d9ae7a1f5699f9dde55ccde2bf}{GetSize}}()<2)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00493}00493\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00494}00494\ \ \ \ \ \ \ script-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_ga9b6211aae3517ced521a3907ca6ef648}{HaveError}}(\mbox{\hyperlink{_script___error_code_8h_ab71f770a3544167b2b522becbd5acee6afec9a75f12d1cfee7bf5fc409e46b363}{SCRIPT\_ERRORCODE\_INSUF\_PARAMS}});}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00495}00495\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00496}00496\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00497}00497\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00498}00498\ \ \ \textcolor{keywordtype}{int}\ bmpfindCFG\_difflimitpercent\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00499}00499\ \ \ \textcolor{keywordtype}{int}\ bmpfindCFG\_pixelmargin\ \ \ \ \ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00500}00500\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00501}00501\ \ \ library-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_gabbf602df960ebb8d3a3f052cd23c8487}{GetParamConverted}}(params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(0),\ bmpfindCFG\_difflimitpercent);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00502}00502\ \ \ library-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_gabbf602df960ebb8d3a3f052cd23c8487}{GetParamConverted}}(params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(1),\ bmpfindCFG\_pixelmargin);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00503}00503\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00504}00504\ \ \ windows\_library-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_ga6c730afc36860762f228936f8f2a1935}{BmpFindCFG\_SetDiffLimitPercent}}((\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}})bmpfindCFG\_difflimitpercent);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00505}00505\ \ \ windows\_library-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_ga4aad949097d043bba94a42beedcb21ff}{BmpFindCFG\_SetPixelMargin}}((\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}})bmpfindCFG\_pixelmargin);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00506}00506\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00507}00507\ \ \ status\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00508}00508\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00509}00509\ \ \ (*returnvalue)\ =\ \ status;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00510}00510\ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00511}00511\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00524}\mbox{\hyperlink{_script___lib___window_8cpp_a9460d8f0423990e40e724d7447e76391}{00524}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_script___lib___window_8cpp_a9460d8f0423990e40e724d7447e76391}{Call\_Window\_SetFocus}}(\mbox{\hyperlink{class_s_c_r_i_p_t___l_i_b}{SCRIPT\_LIB}}*\ library,\ \mbox{\hyperlink{class_s_c_r_i_p_t}{SCRIPT}}*\ script,\ \mbox{\hyperlink{class_x_v_e_c_t_o_r}{XVECTOR<XVARIANT*>}}*\ params,\ \mbox{\hyperlink{class_x_v_a_r_i_a_n_t}{XVARIANT}}*\ returnvalue)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00525}00525\ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00526}00526\ \ \ \textcolor{keywordflow}{if}(!library)\ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00527}00527\ \ \ \textcolor{keywordflow}{if}(!script)\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00528}00528\ \ \ \textcolor{keywordflow}{if}(!params)\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00529}00529\ \ \ \textcolor{keywordflow}{if}(!returnvalue)\ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00530}00530\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00531}00531\ \ \ returnvalue-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga238f6ef465ea6b1cc7f9882aee8c868f}{Set}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00532}00532\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00533}00533\ \ \ \textcolor{keywordflow}{if}(params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_ab9cec1d9ae7a1f5699f9dde55ccde2bf}{GetSize}}()<2)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00534}00534\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00535}00535\ \ \ \ \ \ \ script-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_ga9b6211aae3517ced521a3907ca6ef648}{HaveError}}(\mbox{\hyperlink{_script___error_code_8h_ab71f770a3544167b2b522becbd5acee6afec9a75f12d1cfee7bf5fc409e46b363}{SCRIPT\_ERRORCODE\_INSUF\_PARAMS}});}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00536}00536\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00537}00537\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00538}00538\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00539}00539\ \ \ \mbox{\hyperlink{class_x_v_e_c_t_o_r}{XVECTOR<XPROCESS*>}}\ \ applist;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00540}00540\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ \ \ \ \ \ \ \ \ \ \ \ \ appname\ \ \ \ \ \ \ =\ (*params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(0));}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00541}00541\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ \ \ \ \ \ \ \ \ \ \ \ \ windowstitle\ \ =\ (*params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(1));}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00542}00542\ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ status\ \ \ \ \ \ \ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00543}00543\ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00544}00544\ \ \ \textcolor{keywordflow}{if}(GEN\_XPROCESSMANAGER.Application\_GetRunningList(applist,\ \textcolor{keyword}{true}))}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00545}00545\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00546}00546\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ c=0;\ c<applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_ab9cec1d9ae7a1f5699f9dde55ccde2bf}{GetSize}}();\ c++)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00547}00547\ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00548}00548\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetName()-\/>Find(appname,\ \textcolor{keyword}{true})!=\ \mbox{\hyperlink{_x_string_8h_aee1ccda748b3ca0a483afb84276e3fc6}{XSTRING\_NOTFOUND}})\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00549}00549\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00550}00550\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetWindowTitle()-\/>Find(windowstitle,\ \textcolor{keyword}{false})\ !=\ \mbox{\hyperlink{_x_string_8h_aee1ccda748b3ca0a483afb84276e3fc6}{XSTRING\_NOTFOUND}})}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00551}00551\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00552}00552\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ handle\_windows\ =\ applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetWindowHandle();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00553}00553\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00554}00554\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(handle\_windows)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00555}00555\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00556}00556\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_g_r_p_s_c_r_e_e_n}{GRPSCREEN}}*\ screen\ =\ GEN\_GRPFACTORY.CreateScreen();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00557}00557\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(screen)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00558}00558\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00559}00559\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ screen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_gaf9567248fe2bda34fc3793deb8dd7dc3}{SetHandle}}(handle\_windows);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00560}00560\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ screen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga850918d0a031a703a46244a7853eb645}{Set\_Focus}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00561}00561\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00562}00562\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GEN\_GRPFACTORY.DeleteScreen(screen);\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00563}00563\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00564}00564\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ status\ =\ \textcolor{keyword}{true};\ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00565}00565\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00566}00566\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00567}00567\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00568}00568\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00569}00569\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00570}00570\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00571}00571\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00572}00572\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00573}00573\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00574}00574\ \ \ applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_abae5097402824f18f274e21e18b23bea}{DeleteContents}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00575}00575\ \ \ applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a57c72ab04fd14c60d1026e0a7b4a1887}{DeleteAll}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00576}00576\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00577}00577\ \ \ (*returnvalue)\ =\ status;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00578}00578\ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00579}00579\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00580}00580\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00593}\mbox{\hyperlink{_script___lib___window_8cpp_ae136463c2d428c17de5913733240c90d}{00593}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_script___lib___window_8cpp_ae136463c2d428c17de5913733240c90d}{Call\_Window\_SetPosition}}(\mbox{\hyperlink{class_s_c_r_i_p_t___l_i_b}{SCRIPT\_LIB}}*\ library,\ \mbox{\hyperlink{class_s_c_r_i_p_t}{SCRIPT}}*\ script,\ \mbox{\hyperlink{class_x_v_e_c_t_o_r}{XVECTOR<XVARIANT*>}}*\ params,\ \mbox{\hyperlink{class_x_v_a_r_i_a_n_t}{XVARIANT}}*\ returnvalue)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00594}00594\ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00595}00595\ \ \ \textcolor{keywordflow}{if}(!library)\ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00596}00596\ \ \ \textcolor{keywordflow}{if}(!script)\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00597}00597\ \ \ \textcolor{keywordflow}{if}(!params)\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00598}00598\ \ \ \textcolor{keywordflow}{if}(!returnvalue)\ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00599}00599\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00600}00600\ \ \ returnvalue-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga238f6ef465ea6b1cc7f9882aee8c868f}{Set}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00601}00601\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00602}00602\ \ \ \textcolor{keywordflow}{if}(params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_ab9cec1d9ae7a1f5699f9dde55ccde2bf}{GetSize}}()<4)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00603}00603\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00604}00604\ \ \ \ \ \ \ script-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_ga9b6211aae3517ced521a3907ca6ef648}{HaveError}}(\mbox{\hyperlink{_script___error_code_8h_ab71f770a3544167b2b522becbd5acee6afec9a75f12d1cfee7bf5fc409e46b363}{SCRIPT\_ERRORCODE\_INSUF\_PARAMS}});}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00605}00605\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00606}00606\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00607}00607\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00608}00608\ \ \ \mbox{\hyperlink{class_x_v_e_c_t_o_r}{XVECTOR<XPROCESS*>}}\ \ applist;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00609}00609\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ \ \ \ \ \ \ \ \ \ \ \ \ appname\ \ \ \ \ \ \ =\ (*params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(0));}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00610}00610\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ \ \ \ \ \ \ \ \ \ \ \ \ windowstitle\ \ =\ (*params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(1));}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00611}00611\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ positionx\ \ \ \ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00612}00612\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ positiony\ \ \ \ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00613}00613\ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ status\ \ \ \ \ \ \ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00614}00614\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00615}00615\ \ \ library-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_gabbf602df960ebb8d3a3f052cd23c8487}{GetParamConverted}}(params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(2),\ positionx);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00616}00616\ \ \ library-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_gabbf602df960ebb8d3a3f052cd23c8487}{GetParamConverted}}(params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(3),\ positiony);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00617}00617\ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00618}00618\ \ \ \textcolor{keywordflow}{if}(GEN\_XPROCESSMANAGER.Application\_GetRunningList(applist,\ \textcolor{keyword}{true}))}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00619}00619\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00620}00620\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ c=0;\ c<applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_ab9cec1d9ae7a1f5699f9dde55ccde2bf}{GetSize}}();\ c++)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00621}00621\ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00622}00622\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetName()-\/>Find(appname,\ \textcolor{keyword}{true})!=\ \mbox{\hyperlink{_x_string_8h_aee1ccda748b3ca0a483afb84276e3fc6}{XSTRING\_NOTFOUND}})\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00623}00623\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00624}00624\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetWindowTitle()-\/>Find(windowstitle,\ \textcolor{keyword}{false})\ !=\ \mbox{\hyperlink{_x_string_8h_aee1ccda748b3ca0a483afb84276e3fc6}{XSTRING\_NOTFOUND}})}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00625}00625\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00626}00626\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ handle\_windows\ =\ applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetWindowHandle();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00627}00627\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00628}00628\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(handle\_windows)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00629}00629\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00630}00630\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_g_r_p_s_c_r_e_e_n}{GRPSCREEN}}*\ screen\ =\ GEN\_GRPFACTORY.CreateScreen();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00631}00631\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(screen)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00632}00632\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00633}00633\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ screen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_gaf9567248fe2bda34fc3793deb8dd7dc3}{SetHandle}}(handle\_windows);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00634}00634\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ screen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_gad3fd703ddafacbae548776b97893a916}{Set\_Position}}(positionx,\ positiony);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00635}00635\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00636}00636\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GEN\_GRPFACTORY.DeleteScreen(screen);\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00637}00637\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00638}00638\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ status\ =\ \textcolor{keyword}{true};\ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00639}00639\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00640}00640\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00641}00641\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00642}00642\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00643}00643\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00644}00644\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00645}00645\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00646}00646\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00647}00647\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00648}00648\ \ \ applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_abae5097402824f18f274e21e18b23bea}{DeleteContents}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00649}00649\ \ \ applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a57c72ab04fd14c60d1026e0a7b4a1887}{DeleteAll}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00650}00650\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00651}00651\ \ \ (*returnvalue)\ =\ status;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00652}00652\ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00653}00653\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00654}00654\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00667}\mbox{\hyperlink{_script___lib___window_8cpp_a8ec0984b5ef7fcbd41de6e6f885cf921}{00667}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_script___lib___window_8cpp_a8ec0984b5ef7fcbd41de6e6f885cf921}{Call\_Window\_Resize}}(\mbox{\hyperlink{class_s_c_r_i_p_t___l_i_b}{SCRIPT\_LIB}}*\ library,\ \mbox{\hyperlink{class_s_c_r_i_p_t}{SCRIPT}}*\ script,\ \mbox{\hyperlink{class_x_v_e_c_t_o_r}{XVECTOR<XVARIANT*>}}*\ params,\ \mbox{\hyperlink{class_x_v_a_r_i_a_n_t}{XVARIANT}}*\ returnvalue)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00668}00668\ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00669}00669\ \ \ \textcolor{keywordflow}{if}(!library)\ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00670}00670\ \ \ \textcolor{keywordflow}{if}(!script)\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00671}00671\ \ \ \textcolor{keywordflow}{if}(!params)\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00672}00672\ \ \ \textcolor{keywordflow}{if}(!returnvalue)\ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00673}00673\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00674}00674\ \ \ returnvalue-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga238f6ef465ea6b1cc7f9882aee8c868f}{Set}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00675}00675\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00676}00676\ \ \ \textcolor{keywordflow}{if}(params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_ab9cec1d9ae7a1f5699f9dde55ccde2bf}{GetSize}}()<4)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00677}00677\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00678}00678\ \ \ \ \ \ \ script-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_ga9b6211aae3517ced521a3907ca6ef648}{HaveError}}(\mbox{\hyperlink{_script___error_code_8h_ab71f770a3544167b2b522becbd5acee6afec9a75f12d1cfee7bf5fc409e46b363}{SCRIPT\_ERRORCODE\_INSUF\_PARAMS}});}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00679}00679\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00680}00680\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00681}00681\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00682}00682\ \ \ \mbox{\hyperlink{class_x_v_e_c_t_o_r}{XVECTOR<XPROCESS*>}}\ \ applist;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00683}00683\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ \ \ \ \ \ \ \ \ \ \ \ \ appname\ \ \ \ \ \ \ =\ (*params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(0));}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00684}00684\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ \ \ \ \ \ \ \ \ \ \ \ \ windowstitle\ \ =\ (*params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(1));}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00685}00685\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sizex\ \ \ \ \ \ \ \ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00686}00686\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sizey\ \ \ \ \ \ \ \ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00687}00687\ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ status\ \ \ \ \ \ \ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00688}00688\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00689}00689\ \ \ library-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_gabbf602df960ebb8d3a3f052cd23c8487}{GetParamConverted}}(params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(2),\ sizex);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00690}00690\ \ \ library-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_gabbf602df960ebb8d3a3f052cd23c8487}{GetParamConverted}}(params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(3),\ sizey);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00691}00691\ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00692}00692\ \ \ \textcolor{keywordflow}{if}(GEN\_XPROCESSMANAGER.Application\_GetRunningList(applist,\ \textcolor{keyword}{true}))}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00693}00693\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00694}00694\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ c=0;\ c<applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_ab9cec1d9ae7a1f5699f9dde55ccde2bf}{GetSize}}();\ c++)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00695}00695\ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00696}00696\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetName()-\/>Find(appname,\ \textcolor{keyword}{true})!=\ \mbox{\hyperlink{_x_string_8h_aee1ccda748b3ca0a483afb84276e3fc6}{XSTRING\_NOTFOUND}})\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00697}00697\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00698}00698\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetWindowTitle()-\/>Find(windowstitle,\ \textcolor{keyword}{false})\ !=\ \mbox{\hyperlink{_x_string_8h_aee1ccda748b3ca0a483afb84276e3fc6}{XSTRING\_NOTFOUND}})}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00699}00699\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00700}00700\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ handle\_windows\ =\ applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetWindowHandle();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00701}00701\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00702}00702\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(handle\_windows)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00703}00703\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00704}00704\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_g_r_p_s_c_r_e_e_n}{GRPSCREEN}}*\ screen\ =\ GEN\_GRPFACTORY.CreateScreen();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00705}00705\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(screen)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00706}00706\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00707}00707\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ screen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_gaf9567248fe2bda34fc3793deb8dd7dc3}{SetHandle}}(handle\_windows);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00708}00708\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ screen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga7d3127d2408800f5f0d29e519622e9da}{Resize}}(sizex,sizey);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00709}00709\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00710}00710\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GEN\_GRPFACTORY.DeleteScreen(screen);\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00711}00711\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00712}00712\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ status\ =\ \textcolor{keyword}{true};\ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00713}00713\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00714}00714\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00715}00715\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00716}00716\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00717}00717\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00718}00718\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00719}00719\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00720}00720\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00721}00721\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00722}00722\ \ \ applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_abae5097402824f18f274e21e18b23bea}{DeleteContents}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00723}00723\ \ \ applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a57c72ab04fd14c60d1026e0a7b4a1887}{DeleteAll}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00724}00724\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00725}00725\ \ \ (*returnvalue)\ =\ status;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00726}00726\ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00727}00727\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00728}00728\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00741}\mbox{\hyperlink{_script___lib___window_8cpp_af9ee6bcd6cd90c189ac753d52891b922}{00741}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_script___lib___window_8cpp_af9ee6bcd6cd90c189ac753d52891b922}{Call\_Window\_Minimize}}(\mbox{\hyperlink{class_s_c_r_i_p_t___l_i_b}{SCRIPT\_LIB}}*\ library,\ \mbox{\hyperlink{class_s_c_r_i_p_t}{SCRIPT}}*\ script,\ \mbox{\hyperlink{class_x_v_e_c_t_o_r}{XVECTOR<XVARIANT*>}}*\ params,\ \mbox{\hyperlink{class_x_v_a_r_i_a_n_t}{XVARIANT}}*\ returnvalue)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00742}00742\ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00743}00743\ \ \ \textcolor{keywordflow}{if}(!library)\ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00744}00744\ \ \ \textcolor{keywordflow}{if}(!script)\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00745}00745\ \ \ \textcolor{keywordflow}{if}(!params)\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00746}00746\ \ \ \textcolor{keywordflow}{if}(!returnvalue)\ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00747}00747\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00748}00748\ \ \ returnvalue-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga238f6ef465ea6b1cc7f9882aee8c868f}{Set}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00749}00749\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00750}00750\ \ \ \textcolor{keywordflow}{if}(params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_ab9cec1d9ae7a1f5699f9dde55ccde2bf}{GetSize}}()<3)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00751}00751\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00752}00752\ \ \ \ \ \ \ script-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_ga9b6211aae3517ced521a3907ca6ef648}{HaveError}}(\mbox{\hyperlink{_script___error_code_8h_ab71f770a3544167b2b522becbd5acee6afec9a75f12d1cfee7bf5fc409e46b363}{SCRIPT\_ERRORCODE\_INSUF\_PARAMS}});}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00753}00753\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00754}00754\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00755}00755\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00756}00756\ \ \ \mbox{\hyperlink{class_x_v_e_c_t_o_r}{XVECTOR<XPROCESS*>}}\ \ applist;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00757}00757\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ \ \ \ \ \ \ \ \ \ \ \ \ appname\ \ \ \ \ \ \ =\ (*params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(0));}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00758}00758\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ \ \ \ \ \ \ \ \ \ \ \ \ windowstitle\ \ =\ (*params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(1));}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00759}00759\ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ showstatus\ \ \ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00760}00760\ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ status\ \ \ \ \ \ \ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00761}00761\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00762}00762\ \ \ library-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_gabbf602df960ebb8d3a3f052cd23c8487}{GetParamConverted}}(params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(2),\ showstatus);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00763}00763\ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00764}00764\ \ \ \textcolor{keywordflow}{if}(GEN\_XPROCESSMANAGER.Application\_GetRunningList(applist,\ \textcolor{keyword}{true}))}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00765}00765\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00766}00766\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ c=0;\ c<applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_ab9cec1d9ae7a1f5699f9dde55ccde2bf}{GetSize}}();\ c++)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00767}00767\ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00768}00768\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetName()-\/>Find(appname,\ \textcolor{keyword}{true})!=\ \mbox{\hyperlink{_x_string_8h_aee1ccda748b3ca0a483afb84276e3fc6}{XSTRING\_NOTFOUND}})\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00769}00769\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00770}00770\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetWindowTitle()-\/>Find(windowstitle,\ \textcolor{keyword}{false})\ !=\ \mbox{\hyperlink{_x_string_8h_aee1ccda748b3ca0a483afb84276e3fc6}{XSTRING\_NOTFOUND}})}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00771}00771\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00772}00772\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ handle\_windows\ =\ applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetWindowHandle();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00773}00773\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00774}00774\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(handle\_windows)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00775}00775\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00776}00776\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_g_r_p_s_c_r_e_e_n}{GRPSCREEN}}*\ screen\ =\ GEN\_GRPFACTORY.CreateScreen();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00777}00777\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(screen)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00778}00778\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00779}00779\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ screen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_gaf9567248fe2bda34fc3793deb8dd7dc3}{SetHandle}}(handle\_windows);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00780}00780\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ status\ =\ screen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga77ff55b68e0db06a628694e036fd406f}{Minimize}}(showstatus);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00781}00781\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00782}00782\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GEN\_GRPFACTORY.DeleteScreen(screen);\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00783}00783\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00784}00784\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00785}00785\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00786}00786\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00787}00787\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00788}00788\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00789}00789\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00790}00790\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00791}00791\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00792}00792\ \ \ applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_abae5097402824f18f274e21e18b23bea}{DeleteContents}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00793}00793\ \ \ applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a57c72ab04fd14c60d1026e0a7b4a1887}{DeleteAll}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00794}00794\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00795}00795\ \ \ (*returnvalue)\ =\ status;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00796}00796\ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00797}00797\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00798}00798\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00811}\mbox{\hyperlink{_script___lib___window_8cpp_a0334b63e607be640ac40f6793429ed42}{00811}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{_script___lib___window_8cpp_a0334b63e607be640ac40f6793429ed42}{Call\_Window\_Maximize}}(\mbox{\hyperlink{class_s_c_r_i_p_t___l_i_b}{SCRIPT\_LIB}}*\ library,\ \mbox{\hyperlink{class_s_c_r_i_p_t}{SCRIPT}}*\ script,\ \mbox{\hyperlink{class_x_v_e_c_t_o_r}{XVECTOR<XVARIANT*>}}*\ params,\ \mbox{\hyperlink{class_x_v_a_r_i_a_n_t}{XVARIANT}}*\ returnvalue)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00812}00812\ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00813}00813\ \ \ \textcolor{keywordflow}{if}(!library)\ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00814}00814\ \ \ \textcolor{keywordflow}{if}(!script)\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00815}00815\ \ \ \textcolor{keywordflow}{if}(!params)\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00816}00816\ \ \ \textcolor{keywordflow}{if}(!returnvalue)\ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00817}00817\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00818}00818\ \ \ returnvalue-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga238f6ef465ea6b1cc7f9882aee8c868f}{Set}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00819}00819\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00820}00820\ \ \ \textcolor{keywordflow}{if}(params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_ab9cec1d9ae7a1f5699f9dde55ccde2bf}{GetSize}}()<3)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00821}00821\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00822}00822\ \ \ \ \ \ \ script-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_ga9b6211aae3517ced521a3907ca6ef648}{HaveError}}(\mbox{\hyperlink{_script___error_code_8h_ab71f770a3544167b2b522becbd5acee6afec9a75f12d1cfee7bf5fc409e46b363}{SCRIPT\_ERRORCODE\_INSUF\_PARAMS}});}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00823}00823\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00824}00824\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00825}00825\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00826}00826\ \ \ \mbox{\hyperlink{class_x_v_e_c_t_o_r}{XVECTOR<XPROCESS*>}}\ \ applist;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00827}00827\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ \ \ \ \ \ \ \ \ \ \ \ \ appname\ \ \ \ \ \ \ =\ (*params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(0));}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00828}00828\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ \ \ \ \ \ \ \ \ \ \ \ \ windowstitle\ \ =\ (*params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(1));}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00829}00829\ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ showstatus\ \ \ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00830}00830\ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ status\ \ \ \ \ \ \ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00831}00831\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00832}00832\ \ \ library-\/>\mbox{\hyperlink{group___s_c_r_i_p_t_gabbf602df960ebb8d3a3f052cd23c8487}{GetParamConverted}}(params-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(2),\ showstatus);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00833}00833\ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00834}00834\ \ \ \textcolor{keywordflow}{if}(GEN\_XPROCESSMANAGER.Application\_GetRunningList(applist,\ \textcolor{keyword}{true}))}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00835}00835\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00836}00836\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ c=0;\ c<applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_ab9cec1d9ae7a1f5699f9dde55ccde2bf}{GetSize}}();\ c++)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00837}00837\ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00838}00838\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetName()-\/>Find(appname,\ \textcolor{keyword}{true})!=\ \mbox{\hyperlink{_x_string_8h_aee1ccda748b3ca0a483afb84276e3fc6}{XSTRING\_NOTFOUND}})\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00839}00839\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00840}00840\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetWindowTitle()-\/>Find(windowstitle,\ \textcolor{keyword}{false})\ !=\ \mbox{\hyperlink{_x_string_8h_aee1ccda748b3ca0a483afb84276e3fc6}{XSTRING\_NOTFOUND}})}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00841}00841\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00842}00842\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}*\ handle\_windows\ =\ applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>GetWindowHandle();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00843}00843\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00844}00844\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(handle\_windows)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00845}00845\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00846}00846\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_g_r_p_s_c_r_e_e_n}{GRPSCREEN}}*\ screen\ =\ GEN\_GRPFACTORY.CreateScreen();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00847}00847\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(screen)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00848}00848\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00849}00849\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ screen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_gaf9567248fe2bda34fc3793deb8dd7dc3}{SetHandle}}(handle\_windows);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00850}00850\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ status\ =\ screen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga46d8de73c82c02b53610abbec780de23}{Maximize}}(showstatus);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00851}00851\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00852}00852\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GEN\_GRPFACTORY.DeleteScreen(screen);\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00853}00853\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00854}00854\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00855}00855\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00856}00856\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00857}00857\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00858}00858\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00859}00859\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00860}00860\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00861}00861\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00862}00862\ \ \ applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_abae5097402824f18f274e21e18b23bea}{DeleteContents}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00863}00863\ \ \ applist.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a57c72ab04fd14c60d1026e0a7b4a1887}{DeleteAll}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00864}00864\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00865}00865\ \ \ (*returnvalue)\ =\ status;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00866}00866\ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00867}00867\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00868}00868\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00869}00869\ \textcolor{preprocessor}{\#ifdef\ SCRIPT\_LIB\_WINDOWS\_DEBUG}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00870}00870\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00884}00884\ \textcolor{keywordtype}{bool}\ DifferencesPerCent(\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ ndiff,\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ max,\ \textcolor{keywordtype}{int}\ limit)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00885}00885\ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00886}00886\ \ \ \textcolor{keywordtype}{int}\ actualdiff\ =\ ((ndiff*100)/max);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00887}00887\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00888}00888\ \ \ \textcolor{keywordflow}{if}(actualdiff\ >\ limit)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00889}00889\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00890}00890\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00891}00891\ \}\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00892}00892\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00893}00893\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00907}00907\ \textcolor{keywordtype}{bool}\ IsSimilarPixel(\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ origin,\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ target,\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ margin)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00908}00908\ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00909}00909\ \ \ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ originRGBA\ =\ (\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*)\&origin;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00910}00910\ \ \ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ targetRGBA\ =\ (\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*)\&target;\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00911}00911\ \ \ \textcolor{keywordtype}{bool}\ \ \ status\ \ \ \ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00912}00912\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00913}00913\ \ \ \textcolor{keywordtype}{int}\ ncomponent\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00914}00914\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00915}00915\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ c=0;\ c<4;\ c++)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00916}00916\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00917}00917\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(abs(originRGBA[c]\ -\/\ targetRGBA[c])\ >\ margin)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00918}00918\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00919}00919\ \ \ \ \ \ \ \ \ \ \ ncomponent++;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00920}00920\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00921}00921\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00922}00922\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00923}00923\ \ \ \textcolor{keywordflow}{if}(!ncomponent)\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00924}00924\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00925}00925\ \ \ \ \ \ \ status\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00926}00926\ \ \ \ \ \}\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00927}00927\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00928}00928\ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00929}00929\ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00930}00930\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00931}00931\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00948}00948\ \textcolor{keywordtype}{bool}\ FindSubBitmap(\mbox{\hyperlink{class_g_r_p_b_i_t_m_a_p}{GRPBITMAP}}*\ bitmapscreen,\ \mbox{\hyperlink{class_g_r_p_b_i_t_m_a_p}{GRPBITMAP}}*\ bitmapref,\ \textcolor{keywordtype}{int}\&\ x,\ \textcolor{keywordtype}{int}\&\ y,\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ difflimitpercent,\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ pixelmargin)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00949}00949\ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00950}00950\ \ \ x\ =\ 0;\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00951}00951\ \ \ y\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00952}00952\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00953}00953\ \ \ \textcolor{keywordflow}{if}(!bitmapref)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00954}00954\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00955}00955\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00956}00956\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00957}00957\ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00958}00958\ \ \ \mbox{\hyperlink{class_g_r_p_b_i_t_m_a_p}{GRPBITMAP}}*\ \_bitmap\ =\ bitmapref-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga8410b794c1df13ec016545b0d4d71f6c}{ConvertToMode}}(bitmapscreen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga1a9445c147fafbcf926caecaa5a13430}{GetMode}}());}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00959}00959\ \ \ \textcolor{keywordflow}{if}(!\_bitmap)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00960}00960\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00961}00961\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00962}00962\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00963}00963\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00964}00964\ \ \ \textcolor{keywordflow}{if}(\_bitmap-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga1a9445c147fafbcf926caecaa5a13430}{GetMode}}()\ !=\ bitmapscreen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga1a9445c147fafbcf926caecaa5a13430}{GetMode}}())\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00965}00965\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00966}00966\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00967}00967\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00968}00968\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00969}00969\ \ \ \textcolor{keywordflow}{if}(!\_bitmap-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga313ad3e912d8093c4861260436b99a71}{GetBuffer}}())}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00970}00970\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00971}00971\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00972}00972\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00973}00973\ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00974}00974\ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}*\ \ \ bufferscreen\ \ \ \ \ \ \ \ =\ (\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}*)bitmapscreen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga313ad3e912d8093c4861260436b99a71}{GetBuffer}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00975}00975\ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}*\ \ \ bufferbitmap\ \ \ \ \ \ \ \ =\ (\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}*)\_bitmap-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga313ad3e912d8093c4861260436b99a71}{GetBuffer}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00976}00976\ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ \ \ \ sizepixel\ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}});}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00977}00977\ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ \ \ \ bufferscreensize\ \ \ \ =\ (bitmapscreen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_gad46bb9d22d6d2420b9de0ab915348a50}{GetBufferSize}}()\ /\ sizepixel)\ -\/\ \_bitmap-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga5cc313280bd36df2306a440639752388}{GetWidth}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00978}00978\ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ \ \ \ bufferbmplinesize\ \ \ =\ \_bitmap-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga5cc313280bd36df2306a440639752388}{GetWidth}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00979}00979\ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ \ \ \ ndiff\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00980}00980\ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ found\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00981}00981\ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00982}00982\ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ scrpos\ =\ 0;\ scrpos\ <\ bufferscreensize;\ scrpos++)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00983}00983\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00984}00984\ \ \ \ \ \ \ ndiff\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00985}00985\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ bmppos\ =\ 0;\ bmppos\ <\ bufferbmplinesize;\ bmppos++)\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00986}00986\ \ \ \ \ \ \ \ \ \{\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00987}00987\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(bufferscreen[scrpos\ +\ bmppos]\ !=\ bufferbitmap[bmppos])}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00988}00988\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00989}00989\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!IsSimilarPixel(bufferscreen[scrpos\ +\ bmppos],\ bufferbitmap[bmppos],\ pixelmargin))}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00990}00990\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00991}00991\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ndiff++;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00992}00992\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00993}00993\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00994}00994\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00995}00995\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//FillLineDebug(bitmapscreen,\ bufferscreen,\ scrpos\ +\ bmppos,\ 1,\ 0xFF0000FF);}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00996}00996\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00997}00997\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00998}00998\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l00999}00999\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01000}01000\ \ \ \ \ \ \ found\ =\ DifferencesPerCent(ndiff,\ bufferbmplinesize,\ difflimitpercent);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01001}01001\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(found)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01002}01002\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01003}01003\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ FillLineDebug(bitmapscreen,\ bufferscreen,\ scrpos,\ bufferbmplinesize,\ 0xFF0000FF);}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01004}01004\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01005}01005\ \ \ \ \ \ \ \ \ \ \ found\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01006}01006\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01007}01007\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ srcpixelsline\ \ =\ bitmapscreen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga5cc313280bd36df2306a440639752388}{GetWidth}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01008}01008\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ scrpos\_tmp\ \ \ \ \ =\ scrpos;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01009}01009\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ bmppos\_tmp\ \ \ \ \ =\ bufferbmplinesize;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01010}01010\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01011}01011\ \ \ \ \ \ \ \ \ \ \ x\ =\ \ (scrpos\ \%\ bitmapscreen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga5cc313280bd36df2306a440639752388}{GetWidth}}());}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01012}01012\ \ \ \ \ \ \ \ \ \ \ y\ =\ \ bitmapscreen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga0829efc8aa7f6e50a5c6058617aa80d8}{GetHeight}}()\ -\/\ (scrpos\ /\ srcpixelsline)\ -\/\ \_bitmap-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga0829efc8aa7f6e50a5c6058617aa80d8}{GetHeight}}();\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01013}01013\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01014}01014\ \ \ \ \ \ \ \ \ \ \ scrpos\_tmp\ +=\ srcpixelsline;\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01015}01015\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01016}01016\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ line\ =\ 1;\ line\ <\ \_bitmap-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga0829efc8aa7f6e50a5c6058617aa80d8}{GetHeight}}();\ line++)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01017}01017\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01018}01018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ndiff\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01019}01019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ bmppos\ =\ 0;\ bmppos\ <\ bufferbmplinesize;\ bmppos++)\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01020}01020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01021}01021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(scrpos\_tmp\ +\ bmppos\ >=\ bufferscreensize)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01022}01022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01023}01023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ndiff\ +=\ difflimitpercent;\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01024}01024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01025}01025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01026}01026\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01027}01027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(bufferscreen[scrpos\_tmp\ +\ bmppos]\ !=\ bufferbitmap[bmppos\_tmp])}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01028}01028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01029}01029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!IsSimilarPixel(bufferscreen[scrpos\_tmp\ +\ bmppos],\ bufferbitmap[bmppos\_tmp],\ pixelmargin))}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01030}01030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01031}01031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ndiff++;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01032}01032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01033}01033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01034}01034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01035}01035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ FillLineDebug(bitmapscreen,\ bufferscreen,\ scrpos\_tmp\ +\ bmppos,\ 1,\ 0xFF0000FF);}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01036}01036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01037}01037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01038}01038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01039}01039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bmppos\_tmp++;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01040}01040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01041}01041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01042}01042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ found\ =\ DifferencesPerCent(ndiff,\ bufferbmplinesize,\ difflimitpercent);\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01043}01043\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01044}01044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!found)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01045}01045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01046}01046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01047}01047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01048}01048\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01049}01049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//FillLineDebug(bitmapscreen,\ bufferscreen,\ scrpos\_tmp,\ bufferbmplinesize,\ 0xFF0000FF);}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01050}01050\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01051}01051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ scrpos\_tmp\ +=\ srcpixelsline;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01052}01052\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01053}01053\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01054}01054\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01055}01055\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(found)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01056}01056\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01057}01057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01058}01058\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01059}01059\ \ \ \ \ \ \ \ \ \}\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01060}01060\ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01061}01061\ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01062}01062\ \ \ \textcolor{keywordflow}{if}(!found)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01063}01063\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01064}01064\ \ \ \ \ \ \ x\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01065}01065\ \ \ \ \ \ \ y\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01066}01066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01067}01067\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01068}01068\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01069}01069\ \ \ \ \ \ \ \mbox{\hyperlink{class_g_r_p_v_i_e_w_p_o_r_t}{GRPVIEWPORT}}*\ viewport\ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01070}01070\ \ \ \ \ \ \ \mbox{\hyperlink{class_g_r_p_c_a_n_v_a_s}{GRPCANVAS}}*\ \ \ canvas\ \ \ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01071}01071\ \ \ \ \ \ \ \mbox{\hyperlink{class_g_r_p_s_c_r_e_e_n}{GRPSCREEN}}*\ \ \ screen\ \ \ =\ SCRIPT\_LIB\_WINDOW::GetAppGraphics()-\/>GetMainScreen();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01072}01072\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01073}01073\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(screen)\ viewport\ =\ screen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga73ed39fb7645d748507db2e7f1cb60fa}{GetViewport}}(0);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01074}01074\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(viewport)\ canvas\ =\ viewport-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga5f08ccf9264cd1ee8e220a96b12ef202}{GetCanvas}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01075}01075\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01076}01076\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(canvas)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01077}01077\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01078}01078\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_g_r_p2_d_color_8h_adf9a39696a2b6a88d8f0721078a1b8d0}{GRP2DCOLOR\_RGBA8}}\ \ colorred(255,\ 0,\ 0);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01079}01079\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01080}01080\ \ \ \ \ \ \ \ \ \ \ canvas-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga821fe1c194e26f33c9e693024c966251}{SetLineWidth}}(1.0f);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01081}01081\ \ \ \ \ \ \ \ \ \ \ canvas-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga785b68822760f9e5d1c15a19c5ad78a6}{SetLineColor}}(\&colorred);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01082}01082\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01083}01083\ \ \ \ \ \ \ \ \ \ \ canvas-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga789c718d8f97111a63c7d1dbd78ddfbc}{Rectangle}}(x,\ y,\ x\ +\ \_bitmap-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga5cc313280bd36df2306a440639752388}{GetWidth}}(),\ y\ +\ \_bitmap-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga0829efc8aa7f6e50a5c6058617aa80d8}{GetHeight}}());\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01084}01084\ \ \ \ \ \ \ \ \ \ \ canvas-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_gaeb443eefc5df0a36e38af241809a1f97}{PutPixel}}((x\ +\ \_bitmap-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga5cc313280bd36df2306a440639752388}{GetWidth}}()/2),\ y\ +\ (\_bitmap-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga0829efc8aa7f6e50a5c6058617aa80d8}{GetHeight}}()/2),\ \&colorred);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01085}01085\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01086}01086\ \ \ \ \ \ \ \ \ \ \ screen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga018f79516a8a80915f1e7681907ef848}{UpdateViewports}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01087}01087\ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01088}01088\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01089}01089\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01090}01090\ \ \ \textcolor{keyword}{delete}\ \_bitmap;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01091}01091\ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01092}01092\ \ \ \textcolor{keywordflow}{return}\ found;\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01093}01093\ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01094}01094\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01095}01095\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01109}01109\ \textcolor{keywordtype}{bool}\ PutBitmap(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \mbox{\hyperlink{class_g_r_p_b_i_t_m_a_p}{GRPBITMAP}}*\ bitmap)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01110}01110\ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01111}01111\ \ \ \textcolor{keywordflow}{if}(!SCRIPT\_LIB\_WINDOW::GetAppGraphics())}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01112}01112\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01113}01113\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01114}01114\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01115}01115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01116}01116\ \ \ \mbox{\hyperlink{class_g_r_p_v_i_e_w_p_o_r_t}{GRPVIEWPORT}}*\ viewport\ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01117}01117\ \ \ \mbox{\hyperlink{class_g_r_p_c_a_n_v_a_s}{GRPCANVAS}}*\ \ \ canvas\ \ \ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01118}01118\ \ \ \mbox{\hyperlink{class_g_r_p_s_c_r_e_e_n}{GRPSCREEN}}*\ \ \ screen\ \ \ =\ SCRIPT\_LIB\_WINDOW::GetAppGraphics()-\/>GetMainScreen();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01119}01119\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01120}01120\ \ \ \textcolor{keywordflow}{if}(screen)\ viewport\ =\ screen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga73ed39fb7645d748507db2e7f1cb60fa}{GetViewport}}(0);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01121}01121\ \ \ \textcolor{keywordflow}{if}(viewport)\ canvas\ =\ viewport-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga5f08ccf9264cd1ee8e220a96b12ef202}{GetCanvas}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01122}01122\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01123}01123\ \ \ \textcolor{keywordflow}{if}(canvas)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01124}01124\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01125}01125\ \ \ \ \ \ \ canvas-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_gace47e41b34f9f37cc1b82ab7fdc14998}{PutBitmap}}(x,\ y,\ bitmap);\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01126}01126\ \ \ \ \ \ \ screen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga018f79516a8a80915f1e7681907ef848}{UpdateViewports}}();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01127}01127\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01128}01128\ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01129}01129\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01130}01130\ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01131}01131\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01132}01132\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01147}01147\ \mbox{\hyperlink{class_g_r_p_b_i_t_m_a_p}{GRPBITMAP}}*\ GetBitmap(\textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y,\ \textcolor{keywordtype}{int}\ sizex,\ \textcolor{keywordtype}{int}\ sizey)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01148}01148\ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01149}01149\ \ \ \textcolor{keywordflow}{if}(!SCRIPT\_LIB\_WINDOW::GetAppGraphics())}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01150}01150\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01151}01151\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01152}01152\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01153}01153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01154}01154\ \ \ \mbox{\hyperlink{class_g_r_p_v_i_e_w_p_o_r_t}{GRPVIEWPORT}}*\ viewport\ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01155}01155\ \ \ \mbox{\hyperlink{class_g_r_p_c_a_n_v_a_s}{GRPCANVAS}}*\ \ \ canvas\ \ \ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01156}01156\ \ \ \mbox{\hyperlink{class_g_r_p_s_c_r_e_e_n}{GRPSCREEN}}*\ \ \ screen\ \ \ =\ SCRIPT\_LIB\_WINDOW::GetAppGraphics()-\/>GetMainScreen();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01157}01157\ \ \ \mbox{\hyperlink{class_g_r_p_b_i_t_m_a_p}{GRPBITMAP}}*\ \ \ bitmap\ \ \ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01158}01158\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01159}01159\ \ \ \textcolor{keywordflow}{if}(screen)\ viewport\ =\ screen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga73ed39fb7645d748507db2e7f1cb60fa}{GetViewport}}(0);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01160}01160\ \ \ \textcolor{keywordflow}{if}(viewport)\ canvas\ =\ viewport-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga5f08ccf9264cd1ee8e220a96b12ef202}{GetCanvas}}();}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01161}01161\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01162}01162\ \ \ \textcolor{keywordflow}{if}(canvas)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01163}01163\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01164}01164\ \ \ \ \ \ \ bitmap\ =\ canvas-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_gacc6361acdd49360371cc37e13e9f899e}{GetBitmap}}(x,\ y,\ sizex,\ sizey);\ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01165}01165\ \ \ \ \ \ \ screen-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga018f79516a8a80915f1e7681907ef848}{UpdateViewports}}();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01166}01166\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01167}01167\ \ \ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01168}01168\ \ \ \textcolor{keywordflow}{return}\ bitmap;}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01169}01169\ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01170}01170\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01171}01171\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01185}01185\ \textcolor{keywordtype}{void}\ FillLineDebug(\mbox{\hyperlink{class_g_r_p_b_i_t_m_a_p}{GRPBITMAP}}*\ bitmapscreen,\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}*\ \ bufferscreen,\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ scrpos,\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ linesize,\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ color)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01186}01186\ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01187}01187\ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ c=scrpos;\ c<(scrpos\ +\ linesize);\ c++)}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01188}01188\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01189}01189\ \ \ \ \ \ \ bufferscreen[c]\ =\ color;\ \textcolor{comment}{//\ 0xFF0000FF;}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01190}01190\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01191}01191\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01192}01192\ \ \ PutBitmap(0,\ 0,\ bitmapscreen);}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01193}01193\ \}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01194}01194\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01195}01195\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01196}01196\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01197}01197\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01198}01198\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01199}01199\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01200}01200\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01201}01201\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01202}01202\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01203}01203\ }
+\DoxyCodeLine{\Hypertarget{_script___lib___window_8cpp_source_l01204}01204\ }
+
+\end{DoxyCode}

@@ -1,0 +1,436 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source" xml:lang="en-US">
+<title>DIOI2CAirQualityCCS811.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/DataIO/Drivers/I2C/DIOI2CAirQualityCCS811.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_i2_c_air_quality_c_c_s811_8h">DIOI2CAirQualityCCS811.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&lt;math.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00044"/>00044 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_factory_8h">XFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_sleep_8h">XSleep.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_buffer_8h">XBuffer.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_trace_8h">XTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00049"/>00049 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00050"/>00050 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_factory_8h">DIOFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_i2_c_config_8h">DIOStreamI2CConfig.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_i2_c_8h">DIOStreamI2C.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00053"/>00053 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00054"/>00054 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00055"/>00055 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00056"/>00056 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00057"/>00057 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00058"/>00058 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00059"/>00059 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00060"/>00060 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00061"/>00061 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00062"/>00062 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00063"/>00063 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00064"/>00064 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00065"/>00065 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00066"/>00066 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00067"/>00067 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00068"/>00068 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00079"/><link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a5e734b2f7457d0094a13134f541311e2">00079</link> <link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a5e734b2f7457d0094a13134f541311e2">DIOI2CAIRQUALITYCCS811::DIOI2CAIRQUALITYCCS811</link>()&#32;:&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c">DIODEVICEI2C</link>()
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00080"/>00080 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00081"/>00081 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00082"/>00082 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00083"/>00083 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00084"/>00084 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00095"/><link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1aa30d39e01b14bf8b1fdfb7753ab1c00b">00095</link> <link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1aa30d39e01b14bf8b1fdfb7753ab1c00b">DIOI2CAIRQUALITYCCS811::~DIOI2CAIRQUALITYCCS811</link>()
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00096"/>00096 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00097"/>00097 &#32;&#32;<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1ae30407a970d25d05456c443578040a9d">End</link>();
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00098"/>00098 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00099"/>00099 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00100"/>00100 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00101"/>00101 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00102"/>00102 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00114"/><link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1adc11281643add6f5663c5ee27aad0f61">00114</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1adc11281643add6f5663c5ee27aad0f61">DIOI2CAIRQUALITYCCS811::GetHW_ID</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&amp;&#32;ID)
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00115"/>00115 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00116"/>00116 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00117"/>00117 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00118"/>00118 &#32;&#32;ID&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00119"/>00119 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00120"/>00120 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ReadRegister(<link linkend="__d_i_o_i2_c_air_quality_c_c_s811_8h_1a0d89706874182492f6716387905d54c2">DIOI2CAIRQUALITYCCS811_OFFSET_HW_ID</link>,&#32;ID);
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00121"/>00121 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00122"/>00122 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00123"/>00123 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00135"/><link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1ad8a462cf86712c971a54e712e053471f">00135</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1ad8a462cf86712c971a54e712e053471f">DIOI2CAIRQUALITYCCS811::GetHW_Version</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&amp;&#32;hwversion)
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00136"/>00136 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00137"/>00137 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00138"/>00138 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00139"/>00139 &#32;&#32;hwversion&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00140"/>00140 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00141"/>00141 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ReadRegister(<link linkend="__d_i_o_i2_c_air_quality_c_c_s811_8h_1a9398e7d18933f8c4ef4b124937d1be3d">DIOI2CAIRQUALITYCCS811_OFFSET_HW_VERSION</link>,&#32;hwversion);
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00142"/>00142 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00143"/>00143 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00144"/>00144 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00156"/><link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a0dee90c2a9b80127e22274d1a7bad84f">00156</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a0dee90c2a9b80127e22274d1a7bad84f">DIOI2CAIRQUALITYCCS811::GetBoot_Version</link>(<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&amp;&#32;bootversion)
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00157"/>00157 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00158"/>00158 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00159"/>00159 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00160"/>00160 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;data[2];
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00161"/>00161 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00162"/>00162 &#32;&#32;memset(data,&#32;0,&#32;<emphasis role="keyword">sizeof</emphasis>(data));
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00163"/>00163 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00164"/>00164 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;ReadRegister(<link linkend="__d_i_o_i2_c_air_quality_c_c_s811_8h_1a47ec7dbbaeaa051b10304f169d9b443f">DIOI2CAIRQUALITYCCS811_OFFSET_FW_BOOT_VERSION</link>,&#32;data,&#32;<emphasis role="keyword">sizeof</emphasis>(data));
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00165"/>00165 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00166"/>00166 &#32;&#32;bootversion&#32;&#32;&#32;=&#32;data[1];
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00167"/>00167 &#32;&#32;bootversion&#32;&lt;&lt;=&#32;8;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00168"/>00168 &#32;&#32;bootversion&#32;&#32;|=&#32;data[0];
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00169"/>00169 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00170"/>00170 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00171"/>00171 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00172"/>00172 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00173"/>00173 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00185"/><link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a604ef1b1172cbc9db3cb996fa91aaad4">00185</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a604ef1b1172cbc9db3cb996fa91aaad4">DIOI2CAIRQUALITYCCS811::GetApp_Version</link>(<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&amp;&#32;appversion)
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00186"/>00186 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00187"/>00187 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00188"/>00188 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00189"/>00189 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;data[2];
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00190"/>00190 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00191"/>00191 &#32;&#32;memset(data,&#32;0,&#32;<emphasis role="keyword">sizeof</emphasis>(data));
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00192"/>00192 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00193"/>00193 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;ReadRegister(<link linkend="__d_i_o_i2_c_air_quality_c_c_s811_8h_1a3a4aa8b6af0460324396b1eb8abe98b0">DIOI2CAIRQUALITYCCS811_OFFSET_FW_APP_VERSION</link>,&#32;data,&#32;<emphasis role="keyword">sizeof</emphasis>(data));
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00194"/>00194 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00195"/>00195 &#32;&#32;appversion&#32;&#32;&#32;=&#32;data[1];
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00196"/>00196 &#32;&#32;appversion&#32;&lt;&lt;=&#32;8;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00197"/>00197 &#32;&#32;appversion&#32;&#32;|=&#32;data[0];
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00198"/>00198 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00199"/>00199 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00200"/>00200 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00201"/>00201 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00202"/>00202 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00212"/><link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1acd187232ee4642a888976d78eebdffbc">00212</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1acd187232ee4642a888976d78eebdffbc">DIOI2CAIRQUALITYCCS811::ResetDevice</link>()
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00213"/>00213 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00214"/>00214 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00215"/>00215 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00216"/>00216 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;data[4]&#32;=&#32;{&#32;0x11,&#32;0xE5,&#32;0x72,&#32;0x8A&#32;};&#32;<emphasis role="comment">//&#32;Reset&#32;key</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00217"/>00217 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00218"/>00218 &#32;&#32;<emphasis role="comment">//Reset&#32;the&#32;device</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00219"/>00219 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;WriteRegister(<link linkend="__d_i_o_i2_c_air_quality_c_c_s811_8h_1a16a074184053f54e54aca6cb30ca843a">DIOI2CAIRQUALITYCCS811_OFFSET_SW_RESET</link>,&#32;data,&#32;<emphasis role="keyword">sizeof</emphasis>(data));
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00220"/>00220 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00221"/>00221 &#32;&#32;GEN_XSLEEP.MilliSeconds(500);
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00222"/>00222 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00223"/>00223 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00224"/>00224 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00225"/>00225 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00226"/>00226 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00236"/><link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1aebf96b35bc67451780ffb78a5f2fb0b5">00236</link> <link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1aebf96b35bc67451780ffb78a5f2fb0b5">DIOI2CAIRQUALITYCCS811::GetStatus</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&amp;&#32;sensorstatus)
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00237"/>00237 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00238"/>00238 &#32;&#32;sensorstatus&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00239"/>00239 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00240"/>00240 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;ReadRegister(<link linkend="__d_i_o_i2_c_air_quality_c_c_s811_8h_1ae4e2f32514ec986d6e7bd501b502fa2a">DIOI2CAIRQUALITYCCS811_OFFSET_STATUS</link>,&#32;sensorstatus);
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00241"/>00241 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;<emphasis role="keywordflow">return</emphasis>&#32;0x00;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00242"/>00242 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00243"/>00243 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00244"/>00244 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00245"/>00245 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00246"/>00246 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00256"/><link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a755b8569c01c1dbdd08cdf718a11c15c">00256</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a755b8569c01c1dbdd08cdf718a11c15c">DIOI2CAIRQUALITYCCS811::IsAppValid</link>()
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00257"/>00257 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00258"/>00258 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;sensorstatus&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00259"/>00259 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00260"/>00260 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1aebf96b35bc67451780ffb78a5f2fb0b5">GetStatus</link>(sensorstatus))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00261"/>00261 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00262"/>00262 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(sensorstatus&#32;&amp;&#32;(0x01&#32;&lt;&lt;&#32;4))?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00263"/>00263 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00264"/>00264 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00265"/>00265 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00277"/><link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a3ace08ac9964b2db8cfeb303aeffb45d">00277</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a3ace08ac9964b2db8cfeb303aeffb45d">DIOI2CAIRQUALITYCCS811::IsDataAvailable</link>()
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00278"/>00278 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00279"/>00279 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;sensorstatus&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00280"/>00280 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00281"/>00281 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1aebf96b35bc67451780ffb78a5f2fb0b5">GetStatus</link>(sensorstatus))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00282"/>00282 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00283"/>00283 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(sensorstatus&#32;&amp;&#32;(0x01&#32;&lt;&lt;&#32;3))?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00284"/>00284 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00285"/>00285 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00286"/>00286 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00296"/><link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a50f3ea05e21c14ec5da65f790d040da8">00296</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a50f3ea05e21c14ec5da65f790d040da8">DIOI2CAIRQUALITYCCS811::HaveStatusError</link>()
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00297"/>00297 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00298"/>00298 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;sensorstatus&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00299"/>00299 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00300"/>00300 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1aebf96b35bc67451780ffb78a5f2fb0b5">GetStatus</link>(sensorstatus))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00301"/>00301 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00302"/>00302 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(sensorstatus&#32;&amp;&#32;(0x01&#32;&lt;&lt;&#32;0))?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00303"/>00303 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00304"/>00304 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00305"/>00305 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00315"/><link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a63b30f5b30ad420f42c364df8ca0f1c9">00315</link> <link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a63b30f5b30ad420f42c364df8ca0f1c9">DIOI2CAIRQUALITYCCS811::GetStatusErrorCode</link>()
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00316"/>00316 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00317"/>00317 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;value&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00318"/>00318 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00319"/>00319 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;ReadRegister(<link linkend="__d_i_o_i2_c_air_quality_c_c_s811_8h_1acb3de9cf571a4e0aa912e8d007c3f3f8">DIOI2CAIRQUALITYCCS811_OFFSET_ERROR_ID</link>,&#32;value);
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00320"/>00320 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;<emphasis role="keywordflow">return</emphasis>&#32;0xFF;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00321"/>00321 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00322"/>00322 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;value;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00323"/>00323 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00324"/>00324 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00325"/>00325 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00335"/><link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a068ee6474c3705a66e1ed089dfaf6035">00335</link> <link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a068ee6474c3705a66e1ed089dfaf6035">DIOI2CAIRQUALITYCCS811::GetBaseline</link>()
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00336"/>00336 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00337"/>00337 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;&#32;data[2];
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00338"/>00338 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00339"/>00339 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;ReadRegister(<link linkend="__d_i_o_i2_c_air_quality_c_c_s811_8h_1ad7843d10cda690ad61dc459777d28313">DIOI2CAIRQUALITYCCS811_OFFSET_BASELINE</link>,&#32;data,&#32;2);
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00340"/>00340 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00341"/>00341 &#32;&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;baseline&#32;=&#32;((<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>)data[0]&#32;&lt;&lt;&#32;8)&#32;|&#32;data[1];
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00342"/>00342 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00343"/>00343 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00344"/>00344 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;baseline;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00345"/>00345 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00346"/>00346 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00347"/>00347 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00359"/><link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1ab1384b63535a51cd81eff66b821bce5d">00359</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1ab1384b63535a51cd81eff66b821bce5d">DIOI2CAIRQUALITYCCS811::SetBaseline</link>(<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;baseline)
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00360"/>00360 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00361"/>00361 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;data[2];
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00362"/>00362 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00363"/>00363 &#32;&#32;data[0]&#32;=&#32;(baseline&#32;&gt;&gt;&#32;8)&#32;&amp;&#32;0x00FF;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00364"/>00364 &#32;&#32;data[1]&#32;=&#32;baseline&#32;&amp;&#32;0x00FF;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00365"/>00365 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00366"/>00366 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;WriteRegister(<link linkend="__d_i_o_i2_c_air_quality_c_c_s811_8h_1a16a074184053f54e54aca6cb30ca843a">DIOI2CAIRQUALITYCCS811_OFFSET_SW_RESET</link>,&#32;data,&#32;<emphasis role="keyword">sizeof</emphasis>(data));
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00367"/>00367 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00368"/>00368 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00369"/>00369 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00385"/><link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a46ee3231709d336730f71e2459a5ff11">00385</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a46ee3231709d336730f71e2459a5ff11">DIOI2CAIRQUALITYCCS811::SetDriveMode</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;mode)
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00386"/>00386 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00387"/>00387 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(mode&#32;&gt;&#32;4)&#32;mode&#32;=&#32;4;&#32;<emphasis role="comment">//&#32;sanitize&#32;input</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00388"/>00388 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00389"/>00389 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;value&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00390"/>00390 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00391"/>00391 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;ReadRegister(<link linkend="__d_i_o_i2_c_air_quality_c_c_s811_8h_1a2c9b6d91091e825795dcd0b9ed215bfd">DIOI2CAIRQUALITYCCS811_OFFSET_MEAS_MODE</link>,&#32;value);&#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;Read&#32;what&apos;s&#32;currently&#32;there</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00392"/>00392 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00393"/>00393 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00394"/>00394 &#32;&#32;value&#32;&amp;=&#32;~(0x03&#32;&lt;&lt;&#32;4);&#32;&#32;<emphasis role="comment">//&#32;&#32;Clear&#32;DRIVE_MODE&#32;bits</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00395"/>00395 &#32;&#32;value&#32;|=&#32;&#32;(mode&#32;&lt;&lt;&#32;4);&#32;&#32;<emphasis role="comment">//&#32;&#32;Mask&#32;in&#32;mode</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00396"/>00396 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00397"/>00397 &#32;&#32;status&#32;=&#32;WriteRegister(<link linkend="__d_i_o_i2_c_air_quality_c_c_s811_8h_1a2c9b6d91091e825795dcd0b9ed215bfd">DIOI2CAIRQUALITYCCS811_OFFSET_MEAS_MODE</link>,&#32;value);
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00398"/>00398 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00399"/>00399 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00400"/>00400 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00401"/>00401 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00402"/>00402 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00415"/><link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a3a4a8a822c254a2c34d1ad2006c6b041">00415</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a3a4a8a822c254a2c34d1ad2006c6b041">DIOI2CAIRQUALITYCCS811::SetEnvironmentalData</link>(<emphasis role="keywordtype">float</emphasis>&#32;relativehumidity,&#32;<emphasis role="keywordtype">float</emphasis>&#32;temperature)
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00416"/>00416 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00417"/>00417 &#32;&#32;<emphasis role="keywordflow">if</emphasis>((temperature&#32;&lt;&#32;-25)&#32;&#32;&#32;&#32;||&#32;(temperature&#32;&gt;&#32;50))&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00418"/>00418 &#32;&#32;<emphasis role="keywordflow">if</emphasis>((relativehumidity&#32;&lt;&#32;0)&#32;||&#32;(relativehumidity&#32;&gt;&#32;100))&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00419"/>00419 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00420"/>00420 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;rhum&#32;&#32;&#32;=&#32;(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)(relativehumidity&#32;*&#32;1000);&#32;&#32;<emphasis role="comment">//42.348&#32;becomes&#32;42348</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00421"/>00421 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;temp&#32;&#32;&#32;=&#32;(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)(temperature&#32;&#32;&#32;&#32;&#32;&#32;*&#32;1000);&#32;&#32;<emphasis role="comment">//23.2&#32;becomes&#32;23200</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00422"/>00422 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00423"/>00423 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;envdata[4];
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00424"/>00424 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00425"/>00425 &#32;&#32;<emphasis role="comment">//Split&#32;value&#32;into&#32;7-bit&#32;integer&#32;and&#32;9-bit&#32;fractional</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00426"/>00426 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00427"/>00427 &#32;&#32;<emphasis role="comment">//Incorrect&#32;way&#32;from&#32;datasheet.</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00428"/>00428 &#32;&#32;<emphasis role="comment">//envData[0]&#32;=&#32;((rH&#32;%&#32;1000)&#32;/&#32;100)&#32;&gt;&#32;7&#32;?&#32;(rH&#32;/&#32;1000&#32;+&#32;1)&#32;&lt;&lt;&#32;1&#32;:&#32;(rH&#32;/&#32;1000)&#32;&lt;&lt;&#32;1;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00429"/>00429 &#32;&#32;<emphasis role="comment">//envData[1]&#32;=&#32;0;&#32;//CCS811&#32;only&#32;supports&#32;increments&#32;of&#32;0.5&#32;so&#32;bits&#32;7-0&#32;will&#32;always&#32;be&#32;zero</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00430"/>00430 &#32;&#32;<emphasis role="comment">//if&#32;(((rH&#32;%&#32;1000)&#32;/&#32;100)&#32;&gt;&#32;2&#32;&amp;&amp;&#32;(((rH&#32;%&#32;1000)&#32;/&#32;100)&#32;&lt;&#32;8))</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00431"/>00431 &#32;&#32;<emphasis role="comment">//{</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00432"/>00432 &#32;&#32;<emphasis role="comment">//&#32;&#32;envData[0]&#32;|=&#32;1;&#32;//Set&#32;9th&#32;bit&#32;of&#32;fractional&#32;to&#32;indicate&#32;0.5%</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00433"/>00433 &#32;&#32;<emphasis role="comment">//}</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00434"/>00434 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00435"/>00435 &#32;&#32;<emphasis role="comment">//Correct&#32;rounding.&#32;See&#32;issue&#32;8:&#32;https://github.com/sparkfun/Qwiic_BME280_CCS811_Combo/issues/8</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00436"/>00436 &#32;&#32;envdata[0]&#32;=&#32;(rhum&#32;+&#32;250)&#32;/&#32;500;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00437"/>00437 &#32;&#32;envdata[1]&#32;=&#32;0;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//CCS811&#32;only&#32;supports&#32;increments&#32;of&#32;0.5&#32;so&#32;bits&#32;7-0&#32;will&#32;always&#32;be&#32;zero</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00438"/>00438 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00439"/>00439 &#32;&#32;temp&#32;+=&#32;25000;&#32;<emphasis role="comment">//Add&#32;the&#32;25C&#32;offset</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00440"/>00440 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00441"/>00441 &#32;&#32;<emphasis role="comment">//Split&#32;value&#32;into&#32;7-bit&#32;integer&#32;and&#32;9-bit&#32;fractional</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00442"/>00442 &#32;&#32;<emphasis role="comment">//envData[2]&#32;=&#32;((temp&#32;%&#32;1000)&#32;/&#32;100)&#32;&gt;&#32;7&#32;?&#32;(temp&#32;/&#32;1000&#32;+&#32;1)&#32;&lt;&lt;&#32;1&#32;:&#32;(temp&#32;/&#32;1000)&#32;&lt;&lt;&#32;1;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00443"/>00443 &#32;&#32;<emphasis role="comment">//envData[3]&#32;=&#32;0;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00444"/>00444 &#32;&#32;<emphasis role="comment">//if&#32;(((temp&#32;%&#32;1000)&#32;/&#32;100)&#32;&gt;&#32;2&#32;&amp;&amp;&#32;(((temp&#32;%&#32;1000)&#32;/&#32;100)&#32;&lt;&#32;8))</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00445"/>00445 &#32;&#32;<emphasis role="comment">//{</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00446"/>00446 &#32;&#32;<emphasis role="comment">//&#32;&#32;envData[2]&#32;|=&#32;1;&#32;&#32;//Set&#32;9th&#32;bit&#32;of&#32;fractional&#32;to&#32;indicate&#32;0.5C</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00447"/>00447 &#32;&#32;<emphasis role="comment">//}</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00448"/>00448 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00449"/>00449 &#32;&#32;<emphasis role="comment">//Correct&#32;rounding</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00450"/>00450 &#32;&#32;envdata[2]&#32;=&#32;(temp&#32;+&#32;250)&#32;/&#32;500;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00451"/>00451 &#32;&#32;envdata[3]&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00452"/>00452 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00453"/>00453 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;WriteRegister(<link linkend="__d_i_o_i2_c_air_quality_c_c_s811_8h_1a9587c156beee626ac505c210b32e4df8">DIOI2CAIRQUALITYCCS811_OFFSET_ENV_DATA</link>,&#32;envdata,&#32;<emphasis role="keyword">sizeof</emphasis>(envdata));
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00454"/>00454 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00455"/>00455 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00456"/>00456 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00466"/><link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a14f68121b11da3cc199d1fadfbd4c9dc">00466</link> <emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a14f68121b11da3cc199d1fadfbd4c9dc">DIOI2CAIRQUALITYCCS811::GetReferenceResistance</link>()
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00467"/>00467 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00468"/>00468 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;referenceresistance;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00469"/>00469 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00470"/>00470 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00471"/>00471 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00483"/><link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a4df7625ee43cb975354cbe3896442094">00483</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a4df7625ee43cb975354cbe3896442094">DIOI2CAIRQUALITYCCS811::SetReferenceResistance</link>(<emphasis role="keywordtype">float</emphasis>&#32;referenceresistance)
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00484"/>00484 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00485"/>00485 &#32;&#32;this-&gt;referenceresistance&#32;=&#32;referenceresistance;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00486"/>00486 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00487"/>00487 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00488"/>00488 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00501"/><link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1af0fc4c1e741db620b476d6e2fb369d03">00501</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1af0fc4c1e741db620b476d6e2fb369d03">DIOI2CAIRQUALITYCCS811::ReadNTC</link>(<emphasis role="keywordtype">float</emphasis>&amp;&#32;temperature,&#32;<emphasis role="keywordtype">float</emphasis>&amp;&#32;resistance)
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00502"/>00502 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00503"/>00503 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;data[4];
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00504"/>00504 &#32;&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;vrefcounts&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00505"/>00505 &#32;&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;ntccounts&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00506"/>00506 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00507"/>00507 &#32;&#32;memset(data,&#32;0,&#32;<emphasis role="keyword">sizeof</emphasis>(data));
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00508"/>00508 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00509"/>00509 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;ReadRegister(<link linkend="__d_i_o_i2_c_air_quality_c_c_s811_8h_1af9b3ff23cbe100740510316e93507b24">DIOI2CAIRQUALITYCCS811_OFFSET_NTC</link>,&#32;data,&#32;<emphasis role="keyword">sizeof</emphasis>(data));
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00510"/>00510 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00511"/>00511 &#32;&#32;vrefcounts&#32;&#32;=&#32;((<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>)data[0]&#32;&lt;&lt;&#32;8)&#32;|&#32;data[1];
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00512"/>00512 &#32;&#32;ntccounts&#32;&#32;&#32;=&#32;((<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>)data[2]&#32;&lt;&lt;&#32;8)&#32;|&#32;data[3];
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00513"/>00513 &#32;&#32;resistance&#32;&#32;=&#32;((float)ntccounts&#32;*&#32;referenceresistance&#32;/&#32;(<emphasis role="keywordtype">float</emphasis>)vrefcounts);
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00514"/>00514 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00515"/>00515 &#32;&#32;temperature&#32;=&#32;(float)log((<emphasis role="keywordtype">long</emphasis>)resistance);
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00516"/>00516 &#32;&#32;temperature&#32;=&#32;(float)(1&#32;/&#32;(0.001129148&#32;+&#32;(0.000234125&#32;*&#32;temperature)&#32;+&#32;(0.0000000876741&#32;*&#32;temperature&#32;*&#32;temperature&#32;*&#32;temperature)));
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00517"/>00517 &#32;&#32;temperature&#32;=&#32;(float)(temperature&#32;-&#32;273.15);&#32;&#32;<emphasis role="comment">//&#32;Convert&#32;Kelvin&#32;to&#32;Celsius</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00518"/>00518 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00519"/>00519 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00520"/>00520 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00521"/>00521 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00522"/>00522 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00535"/><link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a81247767d4b9d4ad789a8cc56a641443">00535</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a81247767d4b9d4ad789a8cc56a641443">DIOI2CAIRQUALITYCCS811::ReadData</link>(<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&amp;&#32;TVOC,&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&amp;&#32;CO2)
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00536"/>00536 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00537"/>00537 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00538"/>00538 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_1affa2a228690e583d4c7c2a5f4adf9821">IsInitialized</link>())&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00539"/>00539 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00540"/>00540 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;data[4];
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00541"/>00541 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00542"/>00542 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00543"/>00543 &#32;&#32;memset(data,&#32;0,&#32;<emphasis role="keyword">sizeof</emphasis>(data));
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00544"/>00544 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00545"/>00545 &#32;&#32;TVOC&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00546"/>00546 &#32;&#32;CO2&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00547"/>00547 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00548"/>00548 &#32;&#32;status&#32;=&#32;ReadRegister(<link linkend="__d_i_o_i2_c_air_quality_c_c_s811_8h_1a2a70e3d0544d4473a3183d9554f71f29">DIOI2CAIRQUALITYCCS811_OFFSET_ALG_RESULT_DATA</link>,&#32;data,&#32;<emphasis role="keyword">sizeof</emphasis>(data));
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00549"/>00549 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00550"/>00550 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00551"/>00551 &#32;&#32;&#32;&#32;&#32;&#32;CO2&#32;&#32;=&#32;((<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>)data[0]&#32;&lt;&lt;&#32;8)&#32;|&#32;data[1];
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00552"/>00552 &#32;&#32;&#32;&#32;&#32;&#32;TVOC&#32;=&#32;((<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>)data[2]&#32;&lt;&lt;&#32;8)&#32;|&#32;data[3];
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00553"/>00553 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00554"/>00554 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00555"/>00555 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00556"/>00556 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00557"/>00557 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00558"/>00558 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00570"/><link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a389345ad35b089b41ed6b6d2d51834f0">00570</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a389345ad35b089b41ed6b6d2d51834f0">DIOI2CAIRQUALITYCCS811::SetInterrupt</link>(<emphasis role="keywordtype">bool</emphasis>&#32;activated)
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00571"/>00571 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00572"/>00572 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;value&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00573"/>00573 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00574"/>00574 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;ReadRegister(<link linkend="__d_i_o_i2_c_air_quality_c_c_s811_8h_1a2c9b6d91091e825795dcd0b9ed215bfd">DIOI2CAIRQUALITYCCS811_OFFSET_MEAS_MODE</link>,&#32;value);&#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;Read&#32;what&apos;s&#32;currently&#32;there</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00575"/>00575 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00576"/>00576 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00577"/>00577 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(activated)
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00578"/>00578 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00579"/>00579 &#32;&#32;&#32;&#32;&#32;&#32;value&#32;|=&#32;&#32;(0x01&#32;&lt;&lt;&#32;3);&#32;<emphasis role="comment">//Set&#32;INTERRUPT&#32;bit</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00580"/>00580 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00581"/>00581 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00582"/>00582 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00583"/>00583 &#32;&#32;&#32;&#32;&#32;&#32;value&#32;&amp;=&#32;~(0x01&#32;&lt;&lt;&#32;3);&#32;<emphasis role="comment">//Clear&#32;INTERRUPT&#32;bit</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00584"/>00584 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00585"/>00585 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00586"/>00586 &#32;&#32;status&#32;=&#32;WriteRegister(<link linkend="__d_i_o_i2_c_air_quality_c_c_s811_8h_1a2c9b6d91091e825795dcd0b9ed215bfd">DIOI2CAIRQUALITYCCS811_OFFSET_MEAS_MODE</link>,&#32;value);
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00587"/>00587 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00588"/>00588 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00589"/>00589 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00590"/>00590 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00591"/>00591 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00601"/><link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1ae30407a970d25d05456c443578040a9d">00601</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1ae30407a970d25d05456c443578040a9d">DIOI2CAIRQUALITYCCS811::End</link>()
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00602"/>00602 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00603"/>00603 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a97fa53ca512fb382b705033def5348c3">DIODEVICEI2C::End</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00604"/>00604 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00605"/>00605 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00606"/>00606 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00607"/>00607 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00608"/>00608 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00618"/>00618 <emphasis role="keywordtype">bool</emphasis>&#32;DIOI2CAIRQUALITYCCS811::IniDevice()
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00619"/>00619 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00620"/>00620 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1afe0d936f40e0b1b96b28efaf22ee119e">DIODEVICEI2C::IniDevice</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00621"/>00621 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00622"/>00622 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_i2_c_1afccebd8333bc1df1f36fb068af1c0a1a">Open</link>())
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00623"/>00623 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00624"/>00624 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_1acff76db4bc54a48fe2d2ceb165835c2f">WaitToConnected</link>(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1aa52a412cc095ba0e18211f4c994d69e2">timeout</link>))
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00625"/>00625 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00626"/>00626 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;ID&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00627"/>00627 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1adc11281643add6f5663c5ee27aad0f61">GetHW_ID</link>(ID))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00628"/>00628 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(ID&#32;!=&#32;<link linkend="__d_i_o_i2_c_air_quality_c_c_s811_8h_1a60a9b4af17612211d9a3ad01f94c5ca0">DIOI2CAIRQUALITYCCS811_HW_ID</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00629"/>00629 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00630"/>00630 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1a755b8569c01c1dbdd08cdf718a11c15c">IsAppValid</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00631"/>00631 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00632"/>00632 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_i2_c_a_i_r_q_u_a_l_i_t_y_c_c_s811_1acd187232ee4642a888976d78eebdffbc">ResetDevice</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00633"/>00633 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00634"/>00634 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;WriteRegister(<link linkend="__d_i_o_i2_c_air_quality_c_c_s811_8h_1a500dab0eb17935b5f35a18fbecb31632">DIOI2CAIRQUALITYCCS811_OFFSET_APP_START</link>,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;0);
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00635"/>00635 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00636"/>00636 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_1a2ce40a31520cdee813143e1f028ee629">DIODEVICE::Ini</link>();
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00637"/>00637 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00638"/>00638 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00639"/>00639 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00640"/>00640 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00641"/>00641 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00642"/>00642 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00643"/>00643 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00656"/>00656 <emphasis role="keywordtype">bool</emphasis>&#32;DIOI2CAIRQUALITYCCS811::ReadRegister(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;offset,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&amp;&#32;data)
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00657"/>00657 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00658"/>00658 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ReadRegister(offset,&#32;&amp;data,&#32;1);
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00659"/>00659 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00660"/>00660 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00661"/>00661 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00675"/>00675 <emphasis role="keywordtype">bool</emphasis>&#32;DIOI2CAIRQUALITYCCS811::ReadRegister(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;offset,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;data,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;sizedata)
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00676"/>00676 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00677"/>00677 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00678"/>00678 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00679"/>00679 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00680"/>00680 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00681"/>00681 &#32;&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_1ac04f4ad8ff28b97128a876063103dd50">Write</link>(&amp;offset,&#32;1)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00682"/>00682 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_1a59dc380e213dd083940c80663667dae7">WaitToFlushOutXBuffer</link>(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1aa52a412cc095ba0e18211f4c994d69e2">timeout</link>);
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00683"/>00683 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00684"/>00684 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00685"/>00685 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00686"/>00686 &#32;&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_1a6e20f03ff391343123fda221a5c2ed85">WaitToFilledReadingBuffer</link>(sizedata,&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1aa52a412cc095ba0e18211f4c994d69e2">timeout</link>);
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00687"/>00687 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;status&#32;=&#32;(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_1a20cd6c3635818f96468dee8bc601aec1">Read</link>(data,&#32;sizedata)&#32;==&#32;sizedata)?<emphasis role="keyword">true</emphasis>:false;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00688"/>00688 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00689"/>00689 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00690"/>00690 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00691"/>00691 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00692"/>00692 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00705"/>00705 <emphasis role="keywordtype">bool</emphasis>&#32;DIOI2CAIRQUALITYCCS811::WriteRegister(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;offset,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;data)
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00706"/>00706 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00707"/>00707 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;WriteRegister(offset,&#32;&amp;data,&#32;1);
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00708"/>00708 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00709"/>00709 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00710"/>00710 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00724"/>00724 <emphasis role="keywordtype">bool</emphasis>&#32;DIOI2CAIRQUALITYCCS811::WriteRegister(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;offset,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;data,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;sizedata)
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00725"/>00725 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00726"/>00726 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00727"/>00727 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00728"/>00728 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;buffer;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00729"/>00729 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;status;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00730"/>00730 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00731"/>00731 &#32;&#32;buffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>)offset);
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00732"/>00732 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(data&#32;&amp;&amp;&#32;sizedata)&#32;buffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>(data,&#32;sizedata);
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00733"/>00733 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00734"/>00734 &#32;&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_1ac04f4ad8ff28b97128a876063103dd50">Write</link>(buffer)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00735"/>00735 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_1a59dc380e213dd083940c80663667dae7">WaitToFlushOutXBuffer</link>(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1aa52a412cc095ba0e18211f4c994d69e2">timeout</link>);
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00736"/>00736 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00737"/>00737 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00738"/>00738 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00739"/>00739 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00740"/>00740 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00751"/>00751 <emphasis role="keywordtype">void</emphasis>&#32;DIOI2CAIRQUALITYCCS811::Clean()
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00752"/>00752 {
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00753"/>00753 &#32;&#32;referenceresistance&#32;&#32;&#32;=&#32;0.0f;
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00754"/>00754 }
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00755"/>00755 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00756"/>00756 
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00757"/>00757 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_i2_c_air_quality_c_c_s811_8cpp_source_1l00758"/>00758 
+</programlisting></section>

@@ -1,0 +1,1219 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_i_o_alerts_8cpp_source" xml:lang="en-US">
+<title>DIOAlerts.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/DataIO/DIOAlerts.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__d_i_o_alerts_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00037"/>00037 <emphasis role="preprocessor">#ifdef&#32;DIO_ALERTS_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00038"/>00038 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00040"/>00040 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00041"/>00041 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00042"/>00042 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_alerts_8h">DIOAlerts.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00044"/>00044 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_date_time_8h">XDateTime.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_file_t_x_t_8h">XFileTXT.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_file_j_s_o_n_8h">XFileJSON.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_rand_8h">XRand.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00049"/>00049 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_thread_collected_8h">XThreadCollected.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00050"/>00050 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__hash_c_r_c32_8h">HashCRC32.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00052"/>00052 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00053"/>00053 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_u_r_l_8h">DIOURL.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00054"/>00054 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_i_p_8h">DIOIP.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00055"/>00055 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_t_c_p_i_p_config_8h">DIOStreamTCPIPConfig.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00056"/>00056 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_u_d_p_config_8h">DIOStreamUDPConfig.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00057"/>00057 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_u_d_p_acknowledge_8h">DIOStreamUDPAcknowledge.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00058"/>00058 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_s_m_t_p_8h">DIOSMTP.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00059"/>00059 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_a_t_c_m_d_g_s_m_8h">DIOATCMDGSM.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00060"/>00060 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_web_client_8h">DIOWebClient.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00061"/>00061 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00062"/>00062 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00063"/>00063 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00064"/>00064 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00065"/>00065 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00066"/>00066 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00067"/>00067 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00068"/>00068 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00069"/>00069 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00070"/>00070 <link linkend="_class_d_i_o_a_l_e_r_t_s">DIOALERTS</link>*&#32;DIOALERTS::instance&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00071"/>00071 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00072"/>00072 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00073"/>00073 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00074"/>00074 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00075"/>00075 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00076"/>00076 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00077"/>00077 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00078"/>00078 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00079"/>00079 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_DIOALERT_CONDITION</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00080"/>00080 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00081"/>00081 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00091"/>00091 DIOALERT_CONDITION::DIOALERT_CONDITION()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00092"/>00092 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00093"/>00093 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00094"/>00094 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00095"/>00095 &#32;&#32;GEN_XFACTORY_CREATE(lasttimersend,&#32;CreateTimer())
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00096"/>00096 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00098"/>00098 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00109"/>00109 DIOALERT_CONDITION::~DIOALERT_CONDITION()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00110"/>00110 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00111"/>00111 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(lasttimersend)&#32;GEN_XFACTORY.DeleteTimer(lasttimersend);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00112"/>00112 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00113"/>00113 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00114"/>00114 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00115"/>00115 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00116"/>00116 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00126"/>00126 <emphasis role="keywordtype">int</emphasis>&#32;DIOALERT_CONDITION::GetTimeLimitForRepeat()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00127"/>00127 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00128"/>00128 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;timelimitforrepeat;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00129"/>00129 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00130"/>00130 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00131"/>00131 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00143"/>00143 <emphasis role="keywordtype">void</emphasis>&#32;DIOALERT_CONDITION::SetTimeLinitRepeat(<emphasis role="keywordtype">int</emphasis>&#32;timelimitforrepeat)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00144"/>00144 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00145"/>00145 &#32;&#32;this-&gt;timelimitforrepeat&#32;=&#32;timelimitforrepeat;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00146"/>00146 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00147"/>00147 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00148"/>00148 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00158"/>00158 <emphasis role="keywordtype">int</emphasis>&#32;DIOALERT_CONDITION::GetEveryNumberOfTimes()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00159"/>00159 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00160"/>00160 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;everynumberoftimes;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00161"/>00161 }&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00162"/>00162 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00163"/>00163 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00175"/>00175 <emphasis role="keywordtype">void</emphasis>&#32;DIOALERT_CONDITION::SetEveryNumberOfTimes(<emphasis role="keywordtype">int</emphasis>&#32;everynumberoftimes)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00176"/>00176 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00177"/>00177 &#32;&#32;this-&gt;everynumberoftimes&#32;=&#32;everynumberoftimes;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00178"/>00178 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00179"/>00179 &#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00180"/>00180 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00190"/>00190 <link linkend="_class_x_t_i_m_e_r">XTIMER</link>*&#32;DIOALERT_CONDITION::GetLastTimerSend()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00191"/>00191 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00192"/>00192 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;lasttimersend;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00193"/>00193 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00194"/>00194 &#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00195"/>00195 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00205"/>00205 <emphasis role="keywordtype">int</emphasis>&#32;DIOALERT_CONDITION::GetNSended()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00206"/>00206 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00207"/>00207 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;nsended;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00208"/>00208 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00209"/>00209 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00210"/>00210 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00222"/>00222 <emphasis role="keywordtype">void</emphasis>&#32;DIOALERT_CONDITION::SetNSended(<emphasis role="keywordtype">int</emphasis>&#32;nsended)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00223"/>00223 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00224"/>00224 &#32;&#32;this-&gt;nsended&#32;=&#32;nsended;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00225"/>00225 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00226"/>00226 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00227"/>00227 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00237"/>00237 <emphasis role="keywordtype">int</emphasis>&#32;DIOALERT_CONDITION::GetNTimesSended()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00238"/>00238 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00239"/>00239 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ntimessended;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00240"/>00240 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00241"/>00241 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00242"/>00242 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00254"/>00254 <emphasis role="keywordtype">void</emphasis>&#32;DIOALERT_CONDITION::SetNTimesSended(<emphasis role="keywordtype">int</emphasis>&#32;ntimessended)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00255"/>00255 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00256"/>00256 &#32;&#32;this-&gt;ntimessended&#32;=&#32;ntimessended;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00257"/>00257 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00258"/>00258 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00259"/>00259 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00270"/>00270 <emphasis role="keywordtype">void</emphasis>&#32;DIOALERT_CONDITION::Clean()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00271"/>00271 {&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00272"/>00272 &#32;&#32;timelimitforrepeat&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00273"/>00273 &#32;&#32;everynumberoftimes&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00274"/>00274 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00275"/>00275 &#32;&#32;lasttimersend&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00276"/>00276 &#32;&#32;nsended&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00277"/>00277 &#32;&#32;ntimessended&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00278"/>00278 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00279"/>00279 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00280"/>00280 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00281"/>00281 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00282"/>00282 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00283"/>00283 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00284"/>00284 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00285"/>00285 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00286"/>00286 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00296"/>00296 DIOALERT::DIOALERT()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00297"/>00297 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00298"/>00298 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00299"/>00299 &#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00300"/>00300 &#32;&#32;GEN_XFACTORY_CREATE(xdatetime,&#32;CreateDateTime())
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00301"/>00301 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00302"/>00302 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00303"/>00303 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00314"/>00314 DIOALERT::~DIOALERT()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00315"/>00315 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00316"/>00316 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xdatetime)&#32;GEN_XFACTORY.DeleteDateTime(xdatetime);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00317"/>00317 &#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00318"/>00318 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00319"/>00319 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00320"/>00320 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00321"/>00321 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00331"/>00331 <link linkend="_class_x_d_a_t_e_t_i_m_e">XDATETIME</link>*&#32;DIOALERT::GetDateTime()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00332"/>00332 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00333"/>00333 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;xdatetime;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00334"/>00334 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00335"/>00335 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00336"/>00336 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00346"/>00346 <link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;DIOALERT::GetApplicationID()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00347"/>00347 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00348"/>00348 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;applicationID;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00349"/>00349 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00350"/>00350 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00351"/>00351 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00365"/>00365 <emphasis role="keywordtype">bool</emphasis>&#32;DIOALERT::GetApplicationVersion(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;&#32;version,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;&#32;subversion,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;&#32;subversionerr)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00366"/>00366 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00367"/>00367 &#32;&#32;version&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;applicationversion;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00368"/>00368 &#32;&#32;subversion&#32;&#32;&#32;&#32;=&#32;applicationsubversion;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00369"/>00369 &#32;&#32;subversionerr&#32;=&#32;applicationsubversionerr;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00370"/>00370 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00371"/>00371 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00372"/>00372 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00373"/>00373 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00374"/>00374 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00388"/>00388 <emphasis role="keywordtype">bool</emphasis>&#32;DIOALERT::SetApplicationVersion(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;version,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;subversion,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;subversionerr)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00389"/>00389 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00390"/>00390 &#32;&#32;applicationversion&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;version;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00391"/>00391 &#32;&#32;applicationsubversion&#32;&#32;&#32;&#32;&#32;=&#32;subversion;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00392"/>00392 &#32;&#32;applicationsubversionerr&#32;&#32;=&#32;subversionerr;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00393"/>00393 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00394"/>00394 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00395"/>00395 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00396"/>00396 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00397"/>00397 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00407"/>00407 <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;DIOALERT::GetID()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00408"/>00408 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00409"/>00409 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ID;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00410"/>00410 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00411"/>00411 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00412"/>00412 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00424"/>00424 <emphasis role="keywordtype">void</emphasis>&#32;DIOALERT::SetID(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;ID)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00425"/>00425 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00426"/>00426 &#32;&#32;this-&gt;ID&#32;=&#32;ID;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00427"/>00427 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00428"/>00428 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00429"/>00429 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00441"/>00441 <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;DIOALERT::CalculateID(<emphasis role="keywordtype">bool</emphasis>&#32;withdatetime)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00442"/>00442 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00443"/>00443 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xdatetime)&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00444"/>00444 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00445"/>00445 &#32;&#32;<link linkend="_class_h_a_s_h_c_r_c32">HASHCRC32</link>*&#32;hashcrc32&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_h_a_s_h_c_r_c32">HASHCRC32</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00446"/>00446 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!hashcrc32)&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00447"/>00447 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00448"/>00448 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;IDstring;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00449"/>00449 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;levelstring;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00450"/>00450 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;ID&#32;=&#32;0;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00451"/>00451 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;status;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00452"/>00452 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00453"/>00453 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(withdatetime)&#32;xdatetime-&gt;GetDateTimeToString(<link linkend="__x_date_time_8h_1aa889ebf322bcebdb9b55ee85d1c5a729">XDATETIME_FORMAT_STANDARD</link>,&#32;IDstring);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00454"/>00454 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00455"/>00455 &#32;&#32;levelstring.<link linkend="_class_x_s_t_r_i_n_g_1a2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%s&#32;%d&quot;</emphasis>),&#32;applicationID.Get(),&#32;level);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00456"/>00456 &#32;&#32;IDstring&#32;+=&#32;levelstring;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00457"/>00457 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00458"/>00458 &#32;&#32;<link linkend="_class_x_r_a_n_d">XRAND</link>*&#32;GEN_XFACTORY_CREATE(xrand,&#32;CreateRand())
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00459"/>00459 &#32;&#32;if(xrand)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00460"/>00460 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00461"/>00461 &#32;&#32;&#32;&#32;&#32;&#32;levelstring.<link linkend="_class_x_s_t_r_i_n_g_1a2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;&#32;%d&#32;&quot;</emphasis>),&#32;xrand-&gt;Between(1000,&#32;10000000)&#32;*&#32;xrand-&gt;Between(1000,&#32;10000000));
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00462"/>00462 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY.DeleteRand(xrand);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00463"/>00463 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00464"/>00464 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00465"/>00465 &#32;&#32;IDstring&#32;+=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>);&#32;&#32;&#32;IDstring&#32;+=&#32;origin;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00466"/>00466 &#32;&#32;IDstring&#32;+=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>);&#32;&#32;&#32;IDstring&#32;+=&#32;title;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00467"/>00467 &#32;&#32;IDstring&#32;+=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>);&#32;&#32;&#32;IDstring&#32;+=&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a1c6fdaf3926ca3686a124fc5bb710b96">message</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00468"/>00468 &#32;&#32;IDstring&#32;+=&#32;levelstring;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00469"/>00469 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00470"/>00470 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;charstr;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00471"/>00471 &#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00472"/>00472 &#32;&#32;IDstring.<link linkend="_class_x_s_t_r_i_n_g_1acdbd12d83c920cfa06ac0ac1770adc29">ConvertToASCII</link>(charstr);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00473"/>00473 &#32;&#32;status&#32;=&#32;hashcrc32-&gt;<link linkend="_class_h_a_s_h_c_r_c32_1a170fa5c716219e92d4724553d6e8e0ce">Do</link>(charstr.<link linkend="_class_x_b_u_f_f_e_r_1a59d2c2b8d1c32098920f5d3eba0a5971">Get</link>(),&#32;IDstring.<link linkend="_class_x_s_t_r_i_n_g_1a7c3fa0dd7b650399470c76192fbd4916">GetSize</link>());
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00474"/>00474 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00475"/>00475 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;ID&#32;=&#32;hashcrc32-&gt;<link linkend="_class_h_a_s_h_c_r_c32_1ab33e363f6374a0e559e99f2f80e5abf6">GetResultCRC32</link>();&#32;<emphasis role="keywordflow">else</emphasis>&#32;ID&#32;=&#32;0;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00476"/>00476 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00477"/>00477 &#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;hashcrc32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00478"/>00478 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00479"/>00479 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ID;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00480"/>00480 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00481"/>00481 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00482"/>00482 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00492"/>00492 DIOALERTLEVEL&#32;DIOALERT::GetLevel()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00493"/>00493 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00494"/>00494 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;level;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00495"/>00495 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00496"/>00496 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00497"/>00497 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00509"/>00509 <emphasis role="keywordtype">void</emphasis>&#32;DIOALERT::SetLevel(DIOALERTLEVEL&#32;level)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00510"/>00510 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00511"/>00511 &#32;&#32;this-&gt;level=level;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00512"/>00512 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00513"/>00513 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00514"/>00514 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00524"/>00524 <link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;DIOALERT::GetOrigin()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00525"/>00525 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00526"/>00526 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;origin;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00527"/>00527 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00528"/>00528 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00529"/>00529 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00539"/>00539 <link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;DIOALERT::GetTitle()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00540"/>00540 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00541"/>00541 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;title;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00542"/>00542 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00543"/>00543 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00544"/>00544 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00554"/>00554 <link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;DIOALERT::Get_Message()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00555"/>00555 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00556"/>00556 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;<link linkend="__x_l_i_n_u_x_system_8cpp_1a1c6fdaf3926ca3686a124fc5bb710b96">message</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00557"/>00557 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00558"/>00558 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00559"/>00559 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00571"/>00571 <emphasis role="keywordtype">bool</emphasis>&#32;DIOALERT::CopyFrom(DIOALERT*&#32;alert)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00572"/>00572 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00573"/>00573 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!alert)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00574"/>00574 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00575"/>00575 &#32;&#32;xdatetime-&gt;CopyFrom(alert-&gt;GetDateTime());
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00576"/>00576 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00577"/>00577 &#32;&#32;applicationID&#32;=&#32;alert-&gt;GetApplicationID()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00578"/>00578 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00579"/>00579 &#32;&#32;alert-&gt;GetApplicationVersion(applicationversion,&#32;applicationsubversion,&#32;applicationsubversionerr);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00580"/>00580 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00581"/>00581 &#32;&#32;ID&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;alert-&gt;GetID();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00582"/>00582 &#32;&#32;level&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;alert-&gt;GetLevel();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00583"/>00583 &#32;&#32;origin&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;alert-&gt;GetOrigin()-&gt;Get();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00584"/>00584 &#32;&#32;title&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;alert-&gt;GetTitle()-&gt;Get();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00585"/>00585 &#32;&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a1c6fdaf3926ca3686a124fc5bb710b96">message</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;alert-&gt;Get_Message()-&gt;Get();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00586"/>00586 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00587"/>00587 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00588"/>00588 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00589"/>00589 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00590"/>00590 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00601"/>00601 <emphasis role="keywordtype">void</emphasis>&#32;DIOALERT::Clean()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00602"/>00602 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00603"/>00603 &#32;&#32;applicationversion&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00604"/>00604 &#32;&#32;applicationsubversion&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00605"/>00605 &#32;&#32;applicationsubversionerr&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00606"/>00606 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00607"/>00607 &#32;&#32;xdatetime&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00608"/>00608 &#32;&#32;ID&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00609"/>00609 &#32;&#32;level&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;DIOALERTLEVEL_UNKNOWN;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00610"/>00610 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00611"/>00611 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00612"/>00612 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00613"/>00613 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00614"/>00614 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00615"/>00615 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00616"/>00616 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00617"/>00617 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00618"/>00618 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00628"/>00628 <emphasis role="keywordtype">bool</emphasis>&#32;DIOALERTS::GetIsInstanced()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00629"/>00629 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00630"/>00630 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;instance!=<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00631"/>00631 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00632"/>00632 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00633"/>00633 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00643"/>00643 <link linkend="_class_d_i_o_a_l_e_r_t_s">DIOALERTS</link>&amp;&#32;DIOALERTS::GetInstance()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00644"/>00644 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00645"/>00645 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!instance)&#32;instance&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_a_l_e_r_t_s">DIOALERTS</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00646"/>00646 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00647"/>00647 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(*instance);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00648"/>00648 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00649"/>00649 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00650"/>00650 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00660"/>00660 <emphasis role="keywordtype">bool</emphasis>&#32;DIOALERTS::DelInstance()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00661"/>00661 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00662"/>00662 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!instance)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00663"/>00663 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00664"/>00664 &#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;instance;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00665"/>00665 &#32;&#32;instance&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00666"/>00666 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00667"/>00667 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00668"/>00668 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00669"/>00669 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00670"/>00670 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00680"/>00680 <emphasis role="keywordtype">bool</emphasis>&#32;DIOALERTS::Ini()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00681"/>00681 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00682"/>00682 &#32;&#32;End();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00683"/>00683 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00684"/>00684 &#32;&#32;<emphasis role="comment">//-------------------------</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00685"/>00685 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00686"/>00686 &#32;&#32;GEN_XFACTORY_CREATE(xmutexsending,&#32;Create_Mutex())
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00687"/>00687 &#32;&#32;if(!xmutexsending)&#32;return&#32;false;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00688"/>00688 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00689"/>00689 &#32;&#32;<emphasis role="comment">//-------------------------</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00690"/>00690 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00691"/>00691 &#32;&#32;SMTPdiostreamcfg&#32;=&#32;new&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_t_c_p_i_p_c_o_n_f_i_g">DIOSTREAMTCPIPCONFIG</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00692"/>00692 &#32;&#32;if(!SMTPdiostreamcfg)&#32;&#32;return&#32;false;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00693"/>00693 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00694"/>00694 &#32;&#32;SMTPdiostream&#32;=&#32;(<link linkend="_class_d_i_o_s_t_r_e_a_m">DIOSTREAM</link>*)GEN_DIOFACTORY.CreateStreamIO((<link linkend="_class_d_i_o_s_t_r_e_a_m_c_o_n_f_i_g">DIOSTREAMCONFIG</link>*)SMTPdiostreamcfg);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00695"/>00695 &#32;&#32;if(!SMTPdiostream)&#32;&#32;return&#32;false;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00696"/>00696 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00697"/>00697 &#32;&#32;SMTP&#32;=&#32;new&#32;<link linkend="_class_d_i_o_s_m_t_p">DIOSMTP</link>(&#32;SMTPdiostream);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00698"/>00698 &#32;&#32;if(!SMTP)&#32;return&#32;false;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00699"/>00699 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00700"/>00700 &#32;&#32;if(!SMTP-&gt;Ini())&#32;return&#32;false;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00701"/>00701 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00702"/>00702 &#32;&#32;<emphasis role="comment">//-------------------------</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00703"/>00703 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00704"/>00704 &#32;&#32;WEBdiowebclient&#32;=&#32;new&#32;<link linkend="_class_d_i_o_w_e_b_c_l_i_e_n_t">DIOWEBCLIENT</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00705"/>00705 &#32;&#32;if(!WEBdiowebclient)&#32;return&#32;false;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00706"/>00706 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00707"/>00707 &#32;&#32;<emphasis role="comment">//-------------------------</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00708"/>00708 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00709"/>00709 &#32;&#32;UDPdiostreamcfg&#32;=&#32;new&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_c_o_n_f_i_g">DIOSTREAMUDPCONFIG</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00710"/>00710 &#32;&#32;if(!UDPdiostreamcfg)&#32;&#32;return&#32;false;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00711"/>00711 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00712"/>00712 &#32;&#32;UDPdiostream&#32;=&#32;new&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_a_c_k_n_o_w_l_e_d_g_e">DIOSTREAMUDPACKNOWLEDGE</link>((<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_c_o_n_f_i_g">DIOSTREAMUDPCONFIG</link>*)UDPdiostreamcfg);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00713"/>00713 &#32;&#32;if(!UDPdiostream)&#32;&#32;return&#32;false;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00714"/>00714 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00715"/>00715 &#32;&#32;isinitialized&#32;&#32;=&#32;true;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00716"/>00716 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00717"/>00717 &#32;&#32;return&#32;true;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00718"/>00718 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00719"/>00719 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00720"/>00720 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00730"/>00730 <link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;<link linkend="_class_d_i_o_a_l_e_r_t_s">DIOALERTS</link>::GetApplicationID()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00731"/>00731 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00732"/>00732 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;applicationID;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00733"/>00733 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00734"/>00734 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00735"/>00735 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00749"/>00749 <emphasis role="keywordtype">bool</emphasis>&#32;DIOALERTS::GetApplicationVersion(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;&#32;version,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;&#32;subversion,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;&#32;subversionerr)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00750"/>00750 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00751"/>00751 &#32;&#32;version&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;applicationversion;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00752"/>00752 &#32;&#32;subversion&#32;&#32;&#32;&#32;=&#32;applicationsubversion;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00753"/>00753 &#32;&#32;subversionerr&#32;=&#32;applicationsubversionerr;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00754"/>00754 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00755"/>00755 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00756"/>00756 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00757"/>00757 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00758"/>00758 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00772"/>00772 <emphasis role="keywordtype">bool</emphasis>&#32;DIOALERTS::SetApplicationVersion(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;version,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;subversion,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;subversionerr)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00773"/>00773 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00774"/>00774 &#32;&#32;applicationversion&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;version;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00775"/>00775 &#32;&#32;applicationsubversion&#32;&#32;&#32;&#32;&#32;=&#32;subversion;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00776"/>00776 &#32;&#32;applicationsubversionerr&#32;&#32;=&#32;subversionerr;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00777"/>00777 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00778"/>00778 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00779"/>00779 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00780"/>00780 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00781"/>00781 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00791"/>00791 <link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;DIOALERTS::GetOrigin()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00792"/>00792 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00793"/>00793 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;origin;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00794"/>00794 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00795"/>00795 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00796"/>00796 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00806"/>00806 <emphasis role="keywordtype">bool</emphasis>&#32;DIOALERTS::IsSending()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00807"/>00807 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00808"/>00808 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;issending;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00809"/>00809 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00810"/>00810 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00811"/>00811 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00827"/>00827 DIOALERT*&#32;DIOALERTS::CreateAlert(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;applicationID,&#32;DIOALERTLEVEL&#32;level,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;origin,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;title,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a1c6fdaf3926ca3686a124fc5bb710b96">message</link>)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00828"/>00828 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00829"/>00829 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(level&#32;==&#32;DIOALERTLEVEL_UNKNOWN)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00830"/>00830 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00831"/>00831 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!origin)&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00832"/>00832 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!title)&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00833"/>00833 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="__x_l_i_n_u_x_system_8cpp_1a1c6fdaf3926ca3686a124fc5bb710b96">message</link>)&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00834"/>00834 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00835"/>00835 &#32;&#32;DIOALERT*&#32;alert&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;DIOALERT();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00836"/>00836 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(alert)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00837"/>00837 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00838"/>00838 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(alert-&gt;GetDateTime())&#32;alert-&gt;GetDateTime()-&gt;Read();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00839"/>00839 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00840"/>00840 &#32;&#32;&#32;&#32;&#32;&#32;alert-&gt;GetApplicationID()-&gt;Set(applicationID);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00841"/>00841 &#32;&#32;&#32;&#32;&#32;&#32;alert-&gt;SetApplicationVersion(applicationversion,&#32;applicationsubversion,&#32;applicationsubversionerr);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00842"/>00842 &#32;&#32;&#32;&#32;&#32;&#32;alert-&gt;SetLevel(level);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00843"/>00843 &#32;&#32;&#32;&#32;&#32;&#32;alert-&gt;GetOrigin()-&gt;Set(origin);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00844"/>00844 &#32;&#32;&#32;&#32;&#32;&#32;alert-&gt;GetTitle()-&gt;Set(title);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00845"/>00845 &#32;&#32;&#32;&#32;&#32;&#32;alert-&gt;Get_Message()-&gt;Set(<link linkend="__x_l_i_n_u_x_system_8cpp_1a1c6fdaf3926ca3686a124fc5bb710b96">message</link>);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00846"/>00846 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00847"/>00847 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;ID&#32;=&#32;alert-&gt;CalculateID(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00848"/>00848 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!ID)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00849"/>00849 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00850"/>00850 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;alert;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00851"/>00851 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00852"/>00852 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00853"/>00853 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00854"/>00854 &#32;&#32;&#32;&#32;&#32;&#32;alert-&gt;SetID(ID);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00855"/>00855 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00856"/>00856 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00857"/>00857 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;alert;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00858"/>00858 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00859"/>00859 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00860"/>00860 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00876"/>00876 DIOALERT*&#32;DIOALERTS::CreateAlert(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;applicationID,&#32;DIOALERTLEVEL&#32;level,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;origin,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;title,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a1c6fdaf3926ca3686a124fc5bb710b96">message</link>)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00877"/>00877 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00878"/>00878 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;CreateAlert(applicationID.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;level,&#32;origin.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;title.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a1c6fdaf3926ca3686a124fc5bb710b96">message</link>.Get());
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00879"/>00879 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00880"/>00880 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00881"/>00881 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00895"/>00895 DIOALERT*&#32;DIOALERTS::CreateAlert(DIOALERTLEVEL&#32;level,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;title,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a1c6fdaf3926ca3686a124fc5bb710b96">message</link>)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00896"/>00896 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00897"/>00897 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;CreateAlert(applicationID.Get(),&#32;level,&#32;origin.Get(),&#32;title,&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a1c6fdaf3926ca3686a124fc5bb710b96">message</link>);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00898"/>00898 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00899"/>00899 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00900"/>00900 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00914"/>00914 DIOALERT*&#32;DIOALERTS::CreateAlert(DIOALERTLEVEL&#32;level,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;title,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a1c6fdaf3926ca3686a124fc5bb710b96">message</link>)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00915"/>00915 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00916"/>00916 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;CreateAlert(applicationID.Get(),&#32;level,&#32;origin.Get(),&#32;title.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a1c6fdaf3926ca3686a124fc5bb710b96">message</link>.Get());
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00917"/>00917 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00918"/>00918 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00919"/>00919 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00937"/>00937 <emphasis role="keywordtype">bool</emphasis>&#32;DIOALERTS::Sender_SMTPConfig(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;URL,&#32;<emphasis role="keywordtype">int</emphasis>&#32;port,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;login,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;password,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;senderemail,&#32;<emphasis role="keywordtype">int</emphasis>&#32;nrecipients,...)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00938"/>00938 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00939"/>00939 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!isinitialized)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00940"/>00940 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00941"/>00941 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!SMTP)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00942"/>00942 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00943"/>00943 &#32;&#32;SMTPsenderisactive&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00944"/>00944 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00945"/>00945 &#32;&#32;SMTP-&gt;Server_GetURL()-&gt;Set(URL);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00946"/>00946 &#32;&#32;SMTP-&gt;Server_SetPort(port);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00947"/>00947 &#32;&#32;SMTP-&gt;Server_GetLogin()-&gt;Set(login);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00948"/>00948 &#32;&#32;SMTP-&gt;Server_GetPassword()-&gt;Set(password);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00949"/>00949 &#32;&#32;SMTP-&gt;GetSenderEmail()-&gt;Set(senderemail);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00950"/>00950 &#32;&#32;SMTP-&gt;SetContentType(<link linkend="__d_i_o_s_m_t_p_8h_1a774e555a34aaa2d8ecfaf6d4766c936ba5acf59ea0713bbba102c574c3b3cb93a">DIOSSMPTCONTENTTYPE_UTF8</link>);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00951"/>00951 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00952"/>00952 &#32;&#32;va_list&#32;&#32;arg;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00953"/>00953 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00954"/>00954 &#32;&#32;va_start(arg,&#32;nrecipients);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00955"/>00955 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00956"/>00956 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;nr&#32;=&#32;nrecipients;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00957"/>00957 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00958"/>00958 &#32;&#32;<emphasis role="keywordflow">while</emphasis>(nr)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00959"/>00959 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00960"/>00960 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;recipient&#32;=&#32;(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*)va_arg(arg,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00961"/>00961 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!recipient)&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00962"/>00962 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00963"/>00963 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__d_i_o_s_m_t_p_8h_1a2d670f524f7ab38383abf6840402e908">DIOSMTPRECIPIENTTYPE</link>&#32;&#32;type&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__d_i_o_s_m_t_p_8h_1a2d670f524f7ab38383abf6840402e908aedbebca5b40544412b4765de0f5c5c3a">DIOSMTPRECIPIENTTYPE_UNKNOWN</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00964"/>00964 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;test&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00965"/>00965 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;recipientstring;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00966"/>00966 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;name;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00967"/>00967 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;email;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00968"/>00968 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00969"/>00969 &#32;&#32;&#32;&#32;&#32;&#32;recipientstring&#32;=&#32;recipient;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00970"/>00970 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00971"/>00971 &#32;&#32;&#32;&#32;&#32;&#32;name.<link linkend="_class_x_s_t_r_i_n_g_1a5daae19734452be6010c65f3d812aa00">AdjustSize</link>(<link linkend="__x_base_8h_1a647026fb22c438e4f73db846255990e9">_MAXSTR</link>);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00972"/>00972 &#32;&#32;&#32;&#32;&#32;&#32;email.<link linkend="_class_x_s_t_r_i_n_g_1a5daae19734452be6010c65f3d812aa00">AdjustSize</link>(<link linkend="__x_base_8h_1a647026fb22c438e4f73db846255990e9">_MAXSTR</link>);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00973"/>00973 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00974"/>00974 &#32;&#32;&#32;&#32;&#32;&#32;recipientstring.<link linkend="_class_x_s_t_r_i_n_g_1af83a3f5f1eea20e04f8f11d221886633">UnFormat</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%d,%s,%s,%d&quot;</emphasis>),&#32;&amp;type,&#32;name.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;email.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;&amp;test);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00975"/>00975 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00976"/>00976 &#32;&#32;&#32;&#32;&#32;&#32;name.<link linkend="_class_x_s_t_r_i_n_g_1a5daae19734452be6010c65f3d812aa00">AdjustSize</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00977"/>00977 &#32;&#32;&#32;&#32;&#32;&#32;email.<link linkend="_class_x_s_t_r_i_n_g_1a5daae19734452be6010c65f3d812aa00">AdjustSize</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00978"/>00978 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00979"/>00979 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>((type&#32;==&#32;<link linkend="__d_i_o_s_m_t_p_8h_1a2d670f524f7ab38383abf6840402e908a2bcc854deb46058d88cc0562e32bcce5">DIOSMTPRECIPIENTTYPE_TO</link>)&#32;||&#32;(type&#32;==&#32;<link linkend="__d_i_o_s_m_t_p_8h_1a2d670f524f7ab38383abf6840402e908a4f3dd3ed823d1aac05b3cf9cb231126a">DIOSMTPRECIPIENTTYPE_CC</link>)&#32;||&#32;(type&#32;==&#32;<link linkend="__d_i_o_s_m_t_p_8h_1a2d670f524f7ab38383abf6840402e908a9057334f7b8766fd8761473d4e42144a">DIOSMTPRECIPIENTTYPE_BCC</link>))
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00980"/>00980 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00981"/>00981 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SMTP-&gt;AddRecipient(type,&#32;name&#32;,&#32;email,&#32;test?<emphasis role="keyword">true</emphasis>:false);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00982"/>00982 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00983"/>00983 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00984"/>00984 &#32;&#32;&#32;&#32;&#32;&#32;nr--;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00985"/>00985 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00986"/>00986 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00987"/>00987 &#32;&#32;va_end(arg);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00988"/>00988 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00989"/>00989 &#32;&#32;SMTPsenderisactive&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00990"/>00990 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00991"/>00991 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;SMTPsenderisactive;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00992"/>00992 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00993"/>00993 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l00994"/>00994 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01008"/>01008 <emphasis role="keywordtype">bool</emphasis>&#32;DIOALERTS::Sender_SMSConfig(<link linkend="_class_d_i_o_s_t_r_e_a_m">DIOSTREAM</link>*&#32;diostream,&#32;<emphasis role="keywordtype">int</emphasis>&#32;nrecipients,&#32;...)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01009"/>01009 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01010"/>01010 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!isinitialized)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01011"/>01011 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!diostream)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01012"/>01012 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01013"/>01013 &#32;&#32;SMSsenderisactive&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01014"/>01014 &#32;&#32;SMSdiostream&#32;&#32;&#32;&#32;&#32;&#32;=&#32;diostream;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01015"/>01015 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01016"/>01016 &#32;&#32;SMSrecipients.DeleteContents();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01017"/>01017 &#32;&#32;SMSrecipients.DeleteAll();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01018"/>01018 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01019"/>01019 &#32;&#32;va_list&#32;&#32;arg;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01020"/>01020 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01021"/>01021 &#32;&#32;va_start(arg,&#32;nrecipients);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01022"/>01022 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01023"/>01023 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;nr&#32;=&#32;nrecipients;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01024"/>01024 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01025"/>01025 &#32;&#32;<emphasis role="keywordflow">while</emphasis>(nr)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01026"/>01026 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01027"/>01027 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;recipient&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01028"/>01028 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(recipient)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01029"/>01029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01030"/>01030 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(*recipient)&#32;=&#32;(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*)va_arg(arg,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01031"/>01031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SMSrecipients.Add(recipient);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01032"/>01032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01033"/>01033 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01034"/>01034 &#32;&#32;&#32;&#32;&#32;&#32;nr--;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01035"/>01035 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01036"/>01036 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01037"/>01037 &#32;&#32;va_end(arg);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01038"/>01038 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01039"/>01039 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(SMSrecipients.GetSize())&#32;SMSsenderisactive&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01040"/>01040 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01041"/>01041 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;SMSsenderisactive;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01042"/>01042 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01043"/>01043 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01044"/>01044 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01059"/>01059 <emphasis role="keywordtype">bool</emphasis>&#32;DIOALERTS::Sender_WEBConfig(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;command,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;isuseget,&#32;<emphasis role="keywordtype">int</emphasis>&#32;nrecipients,&#32;...)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01060"/>01060 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01061"/>01061 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!isinitialized)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01062"/>01062 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!WEBdiowebclient)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01063"/>01063 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01064"/>01064 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;serveractive&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01065"/>01065 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01066"/>01066 &#32;&#32;WEBcommand&#32;&#32;=&#32;command;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01067"/>01067 &#32;&#32;WEBisuseget&#32;=&#32;isuseget;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01068"/>01068 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01069"/>01069 &#32;&#32;WEBsenderisactive&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01070"/>01070 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01071"/>01071 &#32;&#32;WEBrecipients.DeleteContents();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01072"/>01072 &#32;&#32;WEBrecipients.DeleteAll();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01073"/>01073 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01074"/>01074 &#32;&#32;va_list&#32;&#32;arg;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01075"/>01075 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01076"/>01076 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01077"/>01077 &#32;&#32;va_start(arg,&#32;nrecipients);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01078"/>01078 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01079"/>01079 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;nr&#32;=&#32;nrecipients;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01080"/>01080 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01081"/>01081 &#32;&#32;<emphasis role="keywordflow">while</emphasis>(nr)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01082"/>01082 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01083"/>01083 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_u_r_l">DIOURL</link>*&#32;recipient&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_u_r_l">DIOURL</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01084"/>01084 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(recipient)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01085"/>01085 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01086"/>01086 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(*recipient)&#32;=&#32;(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*)va_arg(arg,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01087"/>01087 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01088"/>01088 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(recipient-&gt;<link linkend="_class_d_i_o_u_r_l_1ac61e3923077f0416dc61606fc8b26e4f">HaveHTTPID</link>())&#32;recipient-&gt;<link linkend="_class_d_i_o_u_r_l_1a6b5c107feae53197f73bf3584b345f90">DeleteHTTPID</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01089"/>01089 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01090"/>01090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;WEBrecipients.Add(recipient);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01091"/>01091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01092"/>01092 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01093"/>01093 &#32;&#32;&#32;&#32;&#32;&#32;nr--;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01094"/>01094 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01095"/>01095 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01096"/>01096 &#32;&#32;va_end(arg);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01097"/>01097 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01098"/>01098 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(WEBrecipients.GetSize())
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01099"/>01099 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01100"/>01100 &#32;&#32;&#32;&#32;&#32;&#32;WEBsenderisactive&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01101"/>01101 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01102"/>01102 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;webpage;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01103"/>01103 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01104"/>01104 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;c=0;&#32;c&lt;nrecipients;&#32;c++)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01105"/>01105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01106"/>01106 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;url;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01107"/>01107 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01108"/>01108 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;url&#32;=&#32;WEBrecipients.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(c)-&gt;Get();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01109"/>01109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;url.<link linkend="_class_x_s_t_r_i_n_g_1ae52f1473bb03e9d7260c7722e19ce223">AddFormat</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;?%s&quot;</emphasis>)&#32;,&#32;WEBcommand.Get());
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01110"/>01110 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01111"/>01111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;WEBdiowebclient-&gt;Get(url.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;webpage);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01112"/>01112 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01113"/>01113 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01114"/>01114 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01115"/>01115 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01116"/>01116 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;serveractive&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01117"/>01117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01118"/>01118 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01119"/>01119 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01120"/>01120 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;serveractive;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01121"/>01121 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01122"/>01122 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01123"/>01123 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01137"/>01137 <emphasis role="keywordtype">bool</emphasis>&#32;DIOALERTS::Sender_UDPConfig(<emphasis role="keywordtype">int</emphasis>&#32;port,&#32;<emphasis role="keywordtype">int</emphasis>&#32;nrecipients,&#32;...)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01138"/>01138 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01139"/>01139 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!isinitialized)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01140"/>01140 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!port)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01141"/>01141 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01142"/>01142 &#32;&#32;UDPsenderisactive&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01143"/>01143 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01144"/>01144 &#32;&#32;UDPrecipients.DeleteContents();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01145"/>01145 &#32;&#32;UDPrecipients.DeleteAll();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01146"/>01146 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01147"/>01147 &#32;&#32;<link linkend="_class_d_i_o_u_r_l">DIOURL</link>*&#32;URL&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_u_r_l">DIOURL</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01148"/>01148 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!URL)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01149"/>01149 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01150"/>01150 &#32;&#32;va_list&#32;&#32;arg;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01151"/>01151 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01152"/>01152 &#32;&#32;va_start(arg,&#32;nrecipients);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01153"/>01153 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01154"/>01154 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;nr&#32;=&#32;nrecipients;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01155"/>01155 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01156"/>01156 &#32;&#32;<emphasis role="keywordflow">while</emphasis>(nr)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01157"/>01157 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01158"/>01158 &#32;&#32;&#32;&#32;&#32;&#32;(*URL)&#32;=&#32;(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*)va_arg(arg,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01159"/>01159 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01160"/>01160 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!URL-&gt;<link linkend="_class_x_s_t_r_i_n_g_1ad26690161f8c1e2722771322b7370005">IsEmpty</link>())
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01161"/>01161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01162"/>01162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_i_p">DIOIP</link>*&#32;IP&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_i_p">DIOIP</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01163"/>01163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(IP)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01164"/>01164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01165"/>01165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;URL-&gt;<link linkend="_class_d_i_o_u_r_l_1aead21c974345fd5c3367a6a4aa093596">ResolveURL</link>((*IP));
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01166"/>01166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UDPrecipients.Add(IP);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01167"/>01167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01168"/>01168 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01169"/>01169 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01170"/>01170 &#32;&#32;&#32;&#32;&#32;&#32;nr--;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01171"/>01171 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01172"/>01172 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01173"/>01173 &#32;&#32;va_end(arg);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01174"/>01174 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01175"/>01175 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(URL)&#32;<emphasis role="keyword">delete</emphasis>&#32;URL;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01176"/>01176 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01177"/>01177 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(UDPrecipients.GetSize())
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01178"/>01178 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01179"/>01179 &#32;&#32;&#32;&#32;&#32;&#32;UDPsenderisactive&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01180"/>01180 &#32;&#32;&#32;&#32;&#32;&#32;UDPdiostreamcfg-&gt;SetRemotePort(port);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01181"/>01181 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01182"/>01182 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01183"/>01183 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;UDPsenderisactive;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01184"/>01184 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01185"/>01185 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01186"/>01186 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01198"/>01198 <emphasis role="keywordtype">bool</emphasis>&#32;DIOALERTS::IsValidConditionToSend(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;conditionID)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01199"/>01199 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01200"/>01200 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;mustsend&#32;&#32;&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01201"/>01201 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01202"/>01202 &#32;&#32;DIOALERT_CONDITION*&#32;condition&#32;=&#32;GetCondition(conditionID);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01203"/>01203 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(condition)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01204"/>01204 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01205"/>01205 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//-------------------------------------------------------------</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01206"/>01206 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Firts&#32;send</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01207"/>01207 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01208"/>01208 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!condition-&gt;GetNSended())
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01209"/>01209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01210"/>01210 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;condition-&gt;GetLastTimerSend()-&gt;Reset();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01211"/>01211 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01212"/>01212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01213"/>01213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01214"/>01214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(condition-&gt;GetTimeLimitForRepeat())
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01215"/>01215 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01216"/>01216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)condition-&gt;GetTimeLimitForRepeat()&#32;&gt;&#32;condition-&gt;GetLastTimerSend()-&gt;GetMeasureSeconds())
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01217"/>01217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01218"/>01218 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;mustsend&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01219"/>01219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01220"/>01220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01221"/>01221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01222"/>01222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(condition-&gt;GetEveryNumberOfTimes())
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01223"/>01223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01224"/>01224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(condition-&gt;GetNTimesSended()&#32;&lt;&#32;condition-&gt;GetEveryNumberOfTimes())&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01225"/>01225 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01226"/>01226 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;mustsend&#32;=&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01227"/>01227 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01228"/>01228 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01229"/>01229 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01230"/>01230 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01231"/>01231 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01232"/>01232 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;mustsend;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01233"/>01233 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01234"/>01234 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01235"/>01235 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01248"/>01248 <emphasis role="keywordtype">int</emphasis>&#32;DIOALERTS::Send(DIOALERTSENDER&#32;sender,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;conditionID,&#32;DIOALERT*&#32;alert)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01249"/>01249 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01250"/>01250 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!isinitialized)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01251"/>01251 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01252"/>01252 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;&#32;statussend&#32;=&#32;0;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01253"/>01253 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01254"/>01254 &#32;&#32;xmutexsending-&gt;Lock();&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01255"/>01255 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01256"/>01256 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(IsValidConditionToSend(conditionID))
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01257"/>01257 &#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01258"/>01258 &#32;&#32;&#32;&#32;&#32;&#32;issending&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01259"/>01259 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01260"/>01260 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>((sender&#32;&amp;&#32;DIOALERTSSENDER_SMPT)&#32;&amp;&amp;&#32;(SMTPsenderisactive))&#32;statussend&#32;|=&#32;Sender_SMTPSend(alert)?&#32;DIOALERTSSENDER_SMPT:&#32;0;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01261"/>01261 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>((sender&#32;&amp;&#32;DIOALERTSSENDER_SMS)&#32;&#32;&amp;&amp;&#32;(SMSsenderisactive))&#32;&#32;statussend&#32;|=&#32;Sender_SMSSend(alert)&#32;?&#32;DIOALERTSSENDER_SMS&#32;:&#32;0;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01262"/>01262 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>((sender&#32;&amp;&#32;DIOALERTSSENDER_WEB)&#32;&#32;&amp;&amp;&#32;(WEBsenderisactive))&#32;&#32;statussend&#32;|=&#32;Sender_WEBSend(alert)&#32;?&#32;DIOALERTSSENDER_WEB&#32;:&#32;0;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01263"/>01263 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>((sender&#32;&amp;&#32;DIOALERTSSENDER_UDP)&#32;&#32;&amp;&amp;&#32;(UDPsenderisactive))&#32;&#32;statussend&#32;|=&#32;Sender_UDPSend(alert)&#32;?&#32;DIOALERTSSENDER_UDP&#32;:&#32;0;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01264"/>01264 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01265"/>01265 &#32;&#32;&#32;&#32;&#32;&#32;issending&#32;=&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01266"/>01266 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01267"/>01267 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01268"/>01268 &#32;&#32;DIOALERT_CONDITION*&#32;condition&#32;=&#32;GetCondition(conditionID);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01269"/>01269 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(condition)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01270"/>01270 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01271"/>01271 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(condition-&gt;GetNTimesSended()&#32;&gt;=&#32;condition-&gt;GetEveryNumberOfTimes())&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01272"/>01272 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01273"/>01273 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;condition-&gt;SetNTimesSended(0);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01274"/>01274 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01275"/>01275 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01276"/>01276 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(statussend)&#32;condition-&gt;GetLastTimerSend()-&gt;Reset();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01277"/>01277 &#32;&#32;&#32;&#32;&#32;&#32;condition-&gt;SetNSended(condition-&gt;GetNSended()+1);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01278"/>01278 &#32;&#32;&#32;&#32;&#32;&#32;condition-&gt;SetNTimesSended(condition-&gt;GetNTimesSended()+1);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01279"/>01279 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01280"/>01280 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01281"/>01281 &#32;&#32;xmutexsending-&gt;UnLock();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01282"/>01282 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01283"/>01283 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;statussend;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01284"/>01284 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01285"/>01285 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01286"/>01286 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01300"/>01300 <emphasis role="keywordtype">bool</emphasis>&#32;DIOALERTS::AddCondition(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;conditionID,&#32;<emphasis role="keywordtype">int</emphasis>&#32;timelimitforrepeat,&#32;<emphasis role="keywordtype">int</emphasis>&#32;everynumberoftimes)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01301"/>01301 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01302"/>01302 &#32;&#32;DIOALERT_CONDITION*&#32;condition&#32;=&#32;GetCondition(conditionID);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01303"/>01303 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;must_add&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01304"/>01304 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01305"/>01305 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!condition)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01306"/>01306 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01307"/>01307 &#32;&#32;&#32;&#32;&#32;&#32;condition&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;DIOALERT_CONDITION();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01308"/>01308 &#32;&#32;&#32;&#32;&#32;&#32;must_add&#32;&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01309"/>01309 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01310"/>01310 &#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01311"/>01311 &#32;&#32;condition-&gt;SetTimeLinitRepeat(timelimitforrepeat);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01312"/>01312 &#32;&#32;condition-&gt;SetEveryNumberOfTimes(everynumberoftimes);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01313"/>01313 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01314"/>01314 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(must_add)&#32;conditions.Add(conditionID,&#32;condition);&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01315"/>01315 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01316"/>01316 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01317"/>01317 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01318"/>01318 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01319"/>01319 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01331"/>01331 DIOALERT_CONDITION*&#32;DIOALERTS::GetCondition(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;conditionID)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01332"/>01332 {&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01333"/>01333 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;conditions.Get(conditionID);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01334"/>01334 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01335"/>01335 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01336"/>01336 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01346"/>01346 <emphasis role="keywordtype">bool</emphasis>&#32;DIOALERTS::DeleteAllConditions()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01347"/>01347 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01348"/>01348 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(conditions.IsEmpty())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01349"/>01349 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01350"/>01350 &#32;&#32;conditions.DeleteElementContents();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01351"/>01351 &#32;&#32;conditions.DeleteAll();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01352"/>01352 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01353"/>01353 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01354"/>01354 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01355"/>01355 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01356"/>01356 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01366"/>01366 <emphasis role="keywordtype">bool</emphasis>&#32;DIOALERTS::End()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01367"/>01367 {&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01368"/>01368 &#32;&#32;<emphasis role="keywordflow">while</emphasis>(issending)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01369"/>01369 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01370"/>01370 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XSLEEP.Seconds(100);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01371"/>01371 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01372"/>01372 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01373"/>01373 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexsending)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01374"/>01374 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01375"/>01375 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY.Delete_Mutex(xmutexsending);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01376"/>01376 &#32;&#32;&#32;&#32;&#32;&#32;xmutexsending&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01377"/>01377 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01378"/>01378 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01379"/>01379 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(SMTP)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01380"/>01380 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01381"/>01381 &#32;&#32;&#32;&#32;&#32;&#32;SMTP-&gt;End();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01382"/>01382 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;SMTP;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01383"/>01383 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01384"/>01384 &#32;&#32;&#32;&#32;&#32;&#32;SMTP&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01385"/>01385 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01386"/>01386 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01387"/>01387 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(SMTPdiostream)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01388"/>01388 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01389"/>01389 &#32;&#32;&#32;&#32;&#32;&#32;SMTPdiostream-&gt;Close();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01390"/>01390 &#32;&#32;&#32;&#32;&#32;&#32;GEN_DIOFACTORY.DeleteStreamIO(SMTPdiostream);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01391"/>01391 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01392"/>01392 &#32;&#32;&#32;&#32;&#32;&#32;SMTPdiostream&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01393"/>01393 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01394"/>01394 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01395"/>01395 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(SMTPdiostreamcfg)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01396"/>01396 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01397"/>01397 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;SMTPdiostreamcfg;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01398"/>01398 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01399"/>01399 &#32;&#32;&#32;&#32;&#32;&#32;SMTPdiostreamcfg&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01400"/>01400 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01401"/>01401 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01402"/>01402 &#32;&#32;SMTPsenderisactive&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01403"/>01403 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01404"/>01404 &#32;&#32;<emphasis role="comment">//------------------------------------------</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01405"/>01405 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01406"/>01406 &#32;&#32;SMSrecipients.DeleteContents();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01407"/>01407 &#32;&#32;SMSrecipients.DeleteAll();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01408"/>01408 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01409"/>01409 &#32;&#32;SMSsenderisactive&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01410"/>01410 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01411"/>01411 &#32;&#32;<emphasis role="comment">//------------------------------------------</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01412"/>01412 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01413"/>01413 &#32;&#32;WEBrecipients.DeleteContents();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01414"/>01414 &#32;&#32;WEBrecipients.DeleteAll();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01415"/>01415 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01416"/>01416 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(WEBdiowebclient)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01417"/>01417 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01418"/>01418 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;WEBdiowebclient;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01419"/>01419 &#32;&#32;&#32;&#32;&#32;&#32;WEBdiowebclient&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01420"/>01420 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01421"/>01421 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01422"/>01422 &#32;&#32;WEBsenderisactive&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01423"/>01423 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01424"/>01424 &#32;&#32;<emphasis role="comment">//------------------------------------------</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01425"/>01425 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01426"/>01426 &#32;&#32;UDPrecipients.DeleteContents();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01427"/>01427 &#32;&#32;UDPrecipients.DeleteAll();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01428"/>01428 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01429"/>01429 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(UDPdiostream)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01430"/>01430 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01431"/>01431 &#32;&#32;&#32;&#32;&#32;&#32;UDPdiostream-&gt;Close();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01432"/>01432 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;UDPdiostream;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01433"/>01433 &#32;&#32;&#32;&#32;&#32;&#32;UDPdiostream&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01434"/>01434 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01435"/>01435 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01436"/>01436 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(UDPdiostreamcfg)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01437"/>01437 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01438"/>01438 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;UDPdiostreamcfg;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01439"/>01439 &#32;&#32;&#32;&#32;&#32;&#32;UDPdiostreamcfg&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01440"/>01440 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01441"/>01441 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01442"/>01442 &#32;&#32;UDPsenderisactive&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01443"/>01443 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01444"/>01444 &#32;&#32;<emphasis role="comment">//------------------------------------------</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01445"/>01445 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01446"/>01446 &#32;&#32;DeleteAllConditions();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01447"/>01447 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01448"/>01448 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01449"/>01449 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01450"/>01450 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01451"/>01451 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01461"/>01461 DIOALERTS::DIOALERTS()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01462"/>01462 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01463"/>01463 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01464"/>01464 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01465"/>01465 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01466"/>01466 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01477"/>01477 DIOALERTS::~DIOALERTS()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01478"/>01478 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01479"/>01479 &#32;&#32;End();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01480"/>01480 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01481"/>01481 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01482"/>01482 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01483"/>01483 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01484"/>01484 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01496"/>01496 <emphasis role="keywordtype">bool</emphasis>&#32;DIOALERTS::Sender_SMTPSend(DIOALERT*&#32;alert)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01497"/>01497 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01498"/>01498 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!SMTP)&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01499"/>01499 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!alert)&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01500"/>01500 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01501"/>01501 &#32;&#32;SMTP-&gt;GetMessage()-&gt;DeleteAllLines();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01502"/>01502 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01503"/>01503 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;appIDstring;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01504"/>01504 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;appverstring;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01505"/>01505 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01506"/>01506 &#32;&#32;SMTP-&gt;GetSenderName()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1a4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(alert-&gt;GetApplicationID()-&gt;Get());
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01507"/>01507 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01508"/>01508 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(applicationversion&#32;||&#32;applicationsubversion&#32;&#32;||&#32;applicationsubversionerr)&#32;appverstring.<link linkend="_class_x_s_t_r_i_n_g_1a2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;&#32;%d.%d.%d&quot;</emphasis>),&#32;applicationversion,&#32;applicationsubversion,&#32;applicationsubversionerr);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01509"/>01509 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01510"/>01510 &#32;&#32;appIDstring&#32;=&#32;alert-&gt;GetApplicationID()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01511"/>01511 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!appverstring.<link linkend="_class_x_s_t_r_i_n_g_1ad26690161f8c1e2722771322b7370005">IsEmpty</link>())&#32;appIDstring&#32;+=&#32;appverstring.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01512"/>01512 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01513"/>01513 &#32;&#32;appIDstring&#32;+=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;:&#32;&quot;</emphasis>);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01514"/>01514 &#32;&#32;appIDstring&#32;+=&#32;alert-&gt;GetTitle()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01515"/>01515 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01516"/>01516 &#32;&#32;SMTP-&gt;GetSubject()-&gt;Set(appIDstring);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01517"/>01517 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01518"/>01518 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;body;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01519"/>01519 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01520"/>01520 &#32;&#32;body&#32;+=&#32;alert-&gt;GetOrigin()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01521"/>01521 &#32;&#32;body&#32;+=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;\r\n\r\n&quot;</emphasis>);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01522"/>01522 &#32;&#32;body&#32;+=&#32;alert-&gt;Get_Message()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01523"/>01523 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01524"/>01524 &#32;&#32;SMTP-&gt;GetMessage()-&gt;AddLine(body);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01525"/>01525 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01526"/>01526 &#32;&#32;SMTP-&gt;SetXPriority(<link linkend="__d_i_o_s_m_t_p_8h_1a0394d3ef15a8d25333c1e3f99a0a17a8a91690d8787aa6d72c8d5cd77db148564">DIOSMTPXPRIORITY_HIGH</link>);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01527"/>01527 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01528"/>01528 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;SMTP-&gt;Send();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01529"/>01529 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01530"/>01530 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01531"/>01531 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01543"/>01543 <emphasis role="keywordtype">bool</emphasis>&#32;DIOALERTS::Sender_SMSSend(DIOALERT*&#32;alert)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01544"/>01544 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01545"/>01545 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!alert)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01546"/>01546 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01547"/>01547 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01548"/>01548 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01549"/>01549 &#32;&#32;<link linkend="_class_d_i_o_a_t_c_m_d_g_s_m">DIOATCMDGSM</link>*&#32;SMSdioatcmdgsm&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_a_t_c_m_d_g_s_m">DIOATCMDGSM</link>(&#32;SMSdiostream);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01550"/>01550 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(SMSdioatcmdgsm)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01551"/>01551 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01552"/>01552 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(SMSdioatcmdgsm-&gt;<link linkend="_class_d_i_o_a_t_c_m_d_s_1ad19eb07d5abffb8726f0c81f7d01a42d">Ini</link>(30,&#32;<emphasis role="keyword">false</emphasis>,&#32;<emphasis role="keyword">false</emphasis>))
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01553"/>01553 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01554"/>01554 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;smstext;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01555"/>01555 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01556"/>01556 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(alert-&gt;GetApplicationID()-&gt;GetSize())
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01557"/>01557 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01558"/>01558 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;appverstring;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01559"/>01559 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01560"/>01560 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(applicationversion&#32;||&#32;applicationsubversion&#32;&#32;||&#32;applicationsubversionerr)&#32;appverstring.<link linkend="_class_x_s_t_r_i_n_g_1a2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;&#32;%d.%d.%d&quot;</emphasis>),&#32;applicationversion,&#32;applicationsubversion,&#32;applicationsubversionerr);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01561"/>01561 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01562"/>01562 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;smstext&#32;+=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;&lt;&quot;</emphasis>);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01563"/>01563 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;smstext&#32;+=&#32;alert-&gt;GetApplicationID()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01564"/>01564 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01565"/>01565 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!appverstring.<link linkend="_class_x_s_t_r_i_n_g_1ad26690161f8c1e2722771322b7370005">IsEmpty</link>())&#32;smstext&#32;+=&#32;appverstring.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01566"/>01566 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01567"/>01567 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;smstext&#32;+=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;&gt;&#32;&quot;</emphasis>);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01568"/>01568 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01569"/>01569 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01570"/>01570 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01571"/>01571 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(alert-&gt;GetTitle()-&gt;GetSize())
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01572"/>01572 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01573"/>01573 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;smstext&#32;+=&#32;alert-&gt;GetTitle()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01574"/>01574 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;smstext&#32;+=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;&#32;&quot;</emphasis>);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01575"/>01575 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01576"/>01576 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01577"/>01577 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01578"/>01578 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(alert-&gt;GetOrigin()-&gt;GetSize())
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01579"/>01579 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01580"/>01580 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;smstext&#32;+=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;(&quot;</emphasis>);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01581"/>01581 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;smstext&#32;+=&#32;alert-&gt;GetOrigin()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01582"/>01582 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;smstext&#32;+=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;)&quot;</emphasis>);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01583"/>01583 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01584"/>01584 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01585"/>01585 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(alert-&gt;Get_Message()-&gt;GetSize())
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01586"/>01586 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01587"/>01587 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;smstext&#32;+=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;:&quot;</emphasis>);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01588"/>01588 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;smstext&#32;+=&#32;alert-&gt;Get_Message()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01589"/>01589 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01590"/>01590 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01591"/>01591 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(smstext.<link linkend="_class_x_s_t_r_i_n_g_1a7c3fa0dd7b650399470c76192fbd4916">GetSize</link>()&gt;=160)&#32;smstext.<link linkend="_class_x_s_t_r_i_n_g_1a5daae19734452be6010c65f3d812aa00">AdjustSize</link>(160);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01592"/>01592 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01593"/>01593 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01594"/>01594 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01595"/>01595 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;c=0;&#32;c&lt;(int)SMSrecipients.GetSize();&#32;c++)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01596"/>01596 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01597"/>01597 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(SMSdioatcmdgsm-&gt;<link linkend="_class_d_i_o_a_t_c_m_d_g_s_m_1ad41379252d506353c469eb962ac8684c">SendSMS</link>(SMSrecipients.Get(c)-&gt;Get(),&#32;smstext.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>())&#32;!=&#32;<link linkend="__d_i_o_a_t_c_m_d_s_8h_1a76bd0eff6fbfc4ef2c900d1f95d1df61afeac28c323c26fc4dceed207322c6d24">DIOATCMD_ERROR_NONE</link>)&#32;&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01598"/>01598 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01599"/>01599 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01600"/>01600 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SMSdioatcmdgsm-&gt;<link linkend="_class_d_i_o_a_t_c_m_d_s_1a837c47111c50a9ce14f52acdc4990d96">End</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01601"/>01601 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01602"/>01602 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01603"/>01603 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;SMSdioatcmdgsm;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01604"/>01604 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01605"/>01605 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01606"/>01606 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01607"/>01607 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01608"/>01608 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01609"/>01609 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01621"/>01621 <emphasis role="keywordtype">bool</emphasis>&#32;DIOALERTS::Sender_WEBSend(DIOALERT*&#32;alert)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01622"/>01622 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01623"/>01623 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(WEBrecipients.IsEmpty())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01624"/>01624 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01625"/>01625 &#32;&#32;<link linkend="_class_d_i_o_u_r_l">DIOURL</link>&#32;&#32;&#32;&#32;url;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01626"/>01626 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;applicationIDstring;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01627"/>01627 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;applicationverstring;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01628"/>01628 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;&#32;&#32;webpage;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01629"/>01629 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;status&#32;&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01630"/>01630 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01631"/>01631 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(applicationversion&#32;||&#32;applicationsubversion&#32;&#32;||&#32;applicationsubversionerr)&#32;applicationverstring.<link linkend="_class_x_s_t_r_i_n_g_1a2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;&#32;%d.%d.%d&quot;</emphasis>),&#32;applicationversion,&#32;applicationsubversion,&#32;applicationsubversionerr);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01632"/>01632 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01633"/>01633 &#32;&#32;applicationIDstring&#32;=&#32;alert-&gt;GetApplicationID()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01634"/>01634 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!applicationverstring.<link linkend="_class_x_s_t_r_i_n_g_1ad26690161f8c1e2722771322b7370005">IsEmpty</link>())&#32;applicationIDstring&#32;+=&#32;applicationverstring.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01635"/>01635 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01636"/>01636 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;c=0;&#32;c&lt;(int)WEBrecipients.GetSize();&#32;c++)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01637"/>01637 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01638"/>01638 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_u_r_l">DIOURL</link>&#32;&#32;&#32;&#32;part;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01639"/>01639 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01640"/>01640 &#32;&#32;&#32;&#32;&#32;&#32;url&#32;=&#32;WEBrecipients.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(c)-&gt;Get();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01641"/>01641 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01642"/>01642 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(WEBisuseget)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01643"/>01643 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01644"/>01644 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;url.<link linkend="_class_d_i_o_u_r_l_1ae86f4a5918c05cff845a795e07148dfc">Slash_Delete</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01645"/>01645 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;url.<link linkend="_class_x_s_t_r_i_n_g_1ae52f1473bb03e9d7260c7722e19ce223">AddFormat</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;?%s&quot;</emphasis>)&#32;,&#32;WEBcommand.Get());
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01646"/>01646 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01647"/>01647 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!applicationIDstring.<link linkend="_class_x_s_t_r_i_n_g_1ad26690161f8c1e2722771322b7370005">IsEmpty</link>())&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01648"/>01648 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01649"/>01649 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;part&#32;=&#32;applicationIDstring.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01650"/>01650 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;part.<link linkend="_class_d_i_o_u_r_l_1a6e8f4cb35aa29f353a6c63364f0c7cc3">EncodeUnsafeChars</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01651"/>01651 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;url.<link linkend="_class_x_s_t_r_i_n_g_1ae52f1473bb03e9d7260c7722e19ce223">AddFormat</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;&amp;%s=%s&quot;</emphasis>),&#32;DIOALERTS_QSPARAM_APPLICATIONID,&#32;part.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01652"/>01652 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01653"/>01653 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01654"/>01654 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(alert-&gt;GetLevel())
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01655"/>01655 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01656"/>01656 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;part.<link linkend="_class_x_s_t_r_i_n_g_1a2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%d&quot;</emphasis>),&#32;alert-&gt;GetLevel());&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01657"/>01657 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;part.<link linkend="_class_d_i_o_u_r_l_1a6e8f4cb35aa29f353a6c63364f0c7cc3">EncodeUnsafeChars</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01658"/>01658 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;url.<link linkend="_class_x_s_t_r_i_n_g_1ae52f1473bb03e9d7260c7722e19ce223">AddFormat</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;&amp;%s=%s&quot;</emphasis>),&#32;DIOALERTS_QSPARAM_LEVEL,&#32;part.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01659"/>01659 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01660"/>01660 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01661"/>01661 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!alert-&gt;GetTitle()-&gt;IsEmpty())
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01662"/>01662 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01663"/>01663 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;part&#32;=&#32;alert-&gt;GetTitle()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01664"/>01664 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;part.<link linkend="_class_d_i_o_u_r_l_1a6e8f4cb35aa29f353a6c63364f0c7cc3">EncodeUnsafeChars</link>();&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01665"/>01665 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;url.<link linkend="_class_x_s_t_r_i_n_g_1ae52f1473bb03e9d7260c7722e19ce223">AddFormat</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;&amp;%s=%s&quot;</emphasis>),&#32;DIOALERTS_QSPARAM_TITLE,&#32;part.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01666"/>01666 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01667"/>01667 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01668"/>01668 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!alert-&gt;GetOrigin()-&gt;IsEmpty())&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01669"/>01669 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01670"/>01670 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;part&#32;=&#32;alert-&gt;GetOrigin()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01671"/>01671 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;part.<link linkend="_class_d_i_o_u_r_l_1a6e8f4cb35aa29f353a6c63364f0c7cc3">EncodeUnsafeChars</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01672"/>01672 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;url.<link linkend="_class_x_s_t_r_i_n_g_1ae52f1473bb03e9d7260c7722e19ce223">AddFormat</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;&amp;%s=%s&quot;</emphasis>),&#32;DIOALERTS_QSPARAM_ORIGIN,&#32;part.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01673"/>01673 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01674"/>01674 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01675"/>01675 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!alert-&gt;Get_Message()-&gt;IsEmpty())
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01676"/>01676 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01677"/>01677 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;part&#32;=&#32;alert-&gt;Get_Message()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01678"/>01678 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;part.<link linkend="_class_d_i_o_u_r_l_1a6e8f4cb35aa29f353a6c63364f0c7cc3">EncodeUnsafeChars</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01679"/>01679 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;url.<link linkend="_class_x_s_t_r_i_n_g_1ae52f1473bb03e9d7260c7722e19ce223">AddFormat</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;&amp;%s=%s&quot;</emphasis>),&#32;DIOALERTS_QSPARAM_MESSAGE,&#32;part.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01680"/>01680 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01681"/>01681 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01682"/>01682 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;WEBdiowebclient-&gt;Get(url.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;webpage);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01683"/>01683 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01684"/>01684 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01685"/>01685 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01686"/>01686 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;contents;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01687"/>01687 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_f_i_l_e_j_s_o_n">XFILEJSON</link>&#32;json;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01688"/>01688 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;&#32;&#32;postbuffer;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01689"/>01689 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01690"/>01690 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_f_i_l_e_j_s_o_n_o_b_j_e_c_t">XFILEJSONOBJECT</link>*&#32;root&#32;&#32;&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_f_i_l_e_j_s_o_n_o_b_j_e_c_t">XFILEJSONOBJECT</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01691"/>01691 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(root)&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01692"/>01692 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01693"/>01693 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_f_i_l_e_j_s_o_n_o_b_j_e_c_t">XFILEJSONOBJECT</link>*&#32;<link linkend="__main_proc_e_s_p32_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>&#32;&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_f_i_l_e_j_s_o_n_o_b_j_e_c_t">XFILEJSONOBJECT</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01694"/>01694 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="__main_proc_e_s_p32_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>)&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01695"/>01695 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01696"/>01696 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_file_j_s_o_n_8h_1a1af14d66a30d830f7e30afc86ae7a429">XFILEJSON_ADDVALUE</link>(<link linkend="__main_proc_e_s_p32_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>,&#32;DIOALERTS_QSPARAM_APPLICATIONID&#32;,&#32;applicationIDstring.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01697"/>01697 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_file_j_s_o_n_8h_1a1af14d66a30d830f7e30afc86ae7a429">XFILEJSON_ADDVALUE</link>(<link linkend="__main_proc_e_s_p32_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>,&#32;DIOALERTS_QSPARAM_LEVEL&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;(<emphasis role="keywordtype">int</emphasis>)alert-&gt;GetLevel());&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01698"/>01698 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_file_j_s_o_n_8h_1a1af14d66a30d830f7e30afc86ae7a429">XFILEJSON_ADDVALUE</link>(<link linkend="__main_proc_e_s_p32_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>,&#32;DIOALERTS_QSPARAM_TITLE&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;alert-&gt;GetTitle()-&gt;Get());
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01699"/>01699 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_file_j_s_o_n_8h_1a1af14d66a30d830f7e30afc86ae7a429">XFILEJSON_ADDVALUE</link>(<link linkend="__main_proc_e_s_p32_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>,&#32;DIOALERTS_QSPARAM_ORIGIN&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;alert-&gt;GetOrigin()-&gt;Get());
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01700"/>01700 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_file_j_s_o_n_8h_1a1af14d66a30d830f7e30afc86ae7a429">XFILEJSON_ADDVALUE</link>(<link linkend="__main_proc_e_s_p32_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>,&#32;DIOALERTS_QSPARAM_MESSAGE&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;alert-&gt;Get_Message()-&gt;Get());
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01701"/>01701 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01702"/>01702 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_file_j_s_o_n_8h_1a1af14d66a30d830f7e30afc86ae7a429">XFILEJSON_ADDVALUE</link>(root,&#32;WEBcommand.Get(),&#32;<link linkend="__main_proc_e_s_p32_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01703"/>01703 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01704"/>01704 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;json.<link linkend="_class_x_f_i_l_e_j_s_o_n_1aa2bc9ecb7b75feab00d7d2438029987d">SetRoot</link>(root);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01705"/>01705 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;json.<link linkend="_class_x_f_i_l_e_j_s_o_n_1a89d1db282f0f58b94fe99e69f2e70daa">EncodeAllLines</link>(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01706"/>01706 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01707"/>01707 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;c=0;&#32;c&lt;json.<link linkend="_class_x_f_i_l_e_t_x_t_1aea68e645b7632bd70b5def1c5c52551c">GetNLines</link>();&#32;c++)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01708"/>01708 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01709"/>01709 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;<emphasis role="keywordtype">string</emphasis>&#32;=&#32;json.<link linkend="_class_x_f_i_l_e_t_x_t_1adc394551e572ffa1e6c3b9e3ac117f59">GetLine</link>(c);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01710"/>01710 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<emphasis role="keywordtype">string</emphasis>)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01711"/>01711 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01712"/>01712 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;contents.<link linkend="_class_x_s_t_r_i_n_g_1ae19f84471c20a914d10a8ac757cacb9a">Add</link>(string-&gt;<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01713"/>01713 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01714"/>01714 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01715"/>01715 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01716"/>01716 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;json.<link linkend="_class_x_f_i_l_e_t_x_t_1a44658199a2510a12bc33457883a8511a">DeleteAllLines</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01717"/>01717 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;json.<link linkend="_class_x_f_i_l_e_j_s_o_n_1a04bd3243c5cbddacc0894349f3b082bb">DeleteAllObjects</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01718"/>01718 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01719"/>01719 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01720"/>01720 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01721"/>01721 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE,&#32;__L(&quot;%s&quot;),&#32;contents.Get());</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01722"/>01722 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01723"/>01723 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;postdata;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01724"/>01724 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01725"/>01725 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;contents.<link linkend="_class_x_s_t_r_i_n_g_1acdbd12d83c920cfa06ac0ac1770adc29">ConvertToASCII</link>(postdata);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01726"/>01726 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;postbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>(postdata.<link linkend="_class_x_b_u_f_f_e_r_1a59d2c2b8d1c32098920f5d3eba0a5971">Get</link>(),&#32;contents.<link linkend="_class_x_s_t_r_i_n_g_1a7c3fa0dd7b650399470c76192fbd4916">GetSize</link>());
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01727"/>01727 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01728"/>01728 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;WEBdiowebclient-&gt;Post(url.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;webpage,&#32;&amp;postbuffer);&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01729"/>01729 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01730"/>01730 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01731"/>01731 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01732"/>01732 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01733"/>01733 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01734"/>01734 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01735"/>01735 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01747"/>01747 <emphasis role="keywordtype">bool</emphasis>&#32;DIOALERTS::Sender_UDPSend(DIOALERT*&#32;alert)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01748"/>01748 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01749"/>01749 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!alert)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01750"/>01750 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!UDPdiostreamcfg)&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01751"/>01751 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!UDPdiostream)&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01752"/>01752 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01753"/>01753 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;&#32;&#32;&#32;&#32;xbuffer;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01754"/>01754 &#32;&#32;<link linkend="_class_h_a_s_h_c_r_c32">HASHCRC32</link>&#32;&#32;&#32;hashcrc32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01755"/>01755 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;&#32;&#32;&#32;&#32;CRC32;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01756"/>01756 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01757"/>01757 &#32;&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a0395231705663a2aeeee3b4be9d292bb">Delete</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01758"/>01758 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01759"/>01759 &#32;&#32;<emphasis role="comment">//&#32;Date&#32;time</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01760"/>01760 &#32;&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)alert-&gt;GetDateTime()-&gt;GetDay());&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Day</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01761"/>01761 &#32;&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)alert-&gt;GetDateTime()-&gt;GetMonth());&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Month</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01762"/>01762 &#32;&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)alert-&gt;GetDateTime()-&gt;GetYear());&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Year</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01763"/>01763 &#32;&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)alert-&gt;GetDateTime()-&gt;GetHours());&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Hours</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01764"/>01764 &#32;&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)alert-&gt;GetDateTime()-&gt;GetMinutes());&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Minutes</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01765"/>01765 &#32;&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)alert-&gt;GetDateTime()-&gt;GetSeconds());&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Seconds</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01766"/>01766 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01767"/>01767 &#32;&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)alert-&gt;GetApplicationID()-&gt;GetSize());&#32;&#32;&#32;&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((*alert-&gt;GetApplicationID()));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Aplication&#32;String</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01768"/>01768 &#32;&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)applicationversion);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Aplicatcion&#32;version</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01769"/>01769 &#32;&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)applicationsubversion);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Aplication&#32;&#32;subversion</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01770"/>01770 &#32;&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)applicationsubversionerr);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Application&#32;subversion&#32;err</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01771"/>01771 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01772"/>01772 &#32;&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)alert-&gt;GetID());&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;ID&#32;&#32;</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01773"/>01773 &#32;&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)alert-&gt;GetLevel());&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Level</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01774"/>01774 &#32;&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)alert-&gt;GetOrigin()-&gt;GetSize());&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((*alert-&gt;GetOrigin()));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Origin</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01775"/>01775 &#32;&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)alert-&gt;GetTitle()-&gt;GetSize());&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((*alert-&gt;GetTitle()));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Title</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01776"/>01776 &#32;&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)alert-&gt;Get_Message()-&gt;GetSize());&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((*alert-&gt;Get_Message()));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Message</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01777"/>01777 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01778"/>01778 &#32;&#32;hashcrc32.<link linkend="_class_h_a_s_h_c_r_c32_1ab01cc6a04a2c4ee67dcca98c7b233913">ResetResult</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01779"/>01779 &#32;&#32;hashcrc32.<link linkend="_class_h_a_s_h_c_r_c32_1a170fa5c716219e92d4724553d6e8e0ce">Do</link>(xbuffer);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01780"/>01780 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01781"/>01781 &#32;&#32;CRC32&#32;=&#32;hashcrc32.<link linkend="_class_h_a_s_h_c_r_c32_1ab33e363f6374a0e559e99f2f80e5abf6">GetResultCRC32</link>();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01782"/>01782 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01783"/>01783 &#32;&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)CRC32);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01784"/>01784 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01785"/>01785 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01786"/>01786 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;nsent&#32;=&#32;0;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01787"/>01787 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01788"/>01788 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;c=0;&#32;c&lt;(int)UDPrecipients.GetSize();&#32;c++)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01789"/>01789 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01790"/>01790 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_i_p">DIOIP</link>*&#32;ip&#32;=&#32;UDPrecipients.<link linkend="_class_d_i_o_i_p_a_d_d_r_e_s_s_1aa7fc98655c9aab8feb85758307d928f5">Get</link>(c);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01791"/>01791 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(ip)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01792"/>01792 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01793"/>01793 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;IPstring;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01794"/>01794 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01795"/>01795 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ip-&gt;<link linkend="_class_d_i_o_i_p_a_d_d_r_e_s_s_1a6a266ef4ef9e43473e91acc37a816725">GetXString</link>(IPstring);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01796"/>01796 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01797"/>01797 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UDPdiostreamcfg-&gt;SetMode(<link linkend="__d_i_o_stream_config_8h_1ae47ddf801d21b825b353ae3a3008ceccae2f1cd5b3bdb86e59afda7eb0f8a91a8">DIOSTREAMMODE_CLIENT</link>);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01798"/>01798 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UDPdiostreamcfg-&gt;GetRemoteURL()-&gt;Set(IPstring.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01799"/>01799 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UDPdiostreamcfg-&gt;SetIsUsedDatagrams(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01800"/>01800 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01801"/>01801 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;UDPdiostream-&gt;Open();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01802"/>01802 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01803"/>01803 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01804"/>01804 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;UDPdiostream-&gt;Write(xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a59d2c2b8d1c32098920f5d3eba0a5971">Get</link>(),&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a726a6143d8a9293a199f8033c8198a0a">GetSize</link>())?<emphasis role="keyword">true</emphasis>:false;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01805"/>01805 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;nsent++;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01806"/>01806 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UDPdiostream-&gt;Close();
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01807"/>01807 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01808"/>01808 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01809"/>01809 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01810"/>01810 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01811"/>01811 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(UDPrecipients.GetSize()&#32;==&#32;nsent)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01812"/>01812 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01813"/>01813 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01814"/>01814 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01825"/>01825 <emphasis role="keywordtype">void</emphasis>&#32;DIOALERTS::Clean()
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01826"/>01826 {
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01827"/>01827 &#32;&#32;isinitialized&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01828"/>01828 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01829"/>01829 &#32;&#32;applicationversion&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01830"/>01830 &#32;&#32;applicationsubversion&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01831"/>01831 &#32;&#32;applicationsubversionerr&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01832"/>01832 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01833"/>01833 &#32;&#32;xmutexsending&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01834"/>01834 &#32;&#32;issending&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01835"/>01835 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01836"/>01836 &#32;&#32;SMTPsenderisactive&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01837"/>01837 &#32;&#32;SMTPdiostreamcfg&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01838"/>01838 &#32;&#32;SMTPdiostream&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01839"/>01839 &#32;&#32;SMTP&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01840"/>01840 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01841"/>01841 &#32;&#32;SMSsenderisactive&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01842"/>01842 &#32;&#32;SMSdiostream&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01843"/>01843 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01844"/>01844 &#32;&#32;WEBsenderisactive&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01845"/>01845 &#32;&#32;WEBisuseget&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01846"/>01846 &#32;&#32;WEBdiowebclient&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01847"/>01847 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01848"/>01848 &#32;&#32;UDPsenderisactive&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01849"/>01849 &#32;&#32;UDPdiostreamcfg&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01850"/>01850 &#32;&#32;UDPdiostream&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01851"/>01851 }
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01852"/>01852 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01853"/>01853 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01854"/>01854 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01855"/>01855 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01856"/>01856 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01857"/>01857 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01858"/>01858 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01859"/>01859 
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01860"/>01860 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_i_o_alerts_8cpp_source_1l01861"/>01861 
+</programlisting></section>

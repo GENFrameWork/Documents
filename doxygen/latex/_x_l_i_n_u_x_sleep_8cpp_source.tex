@@ -1,0 +1,104 @@
+\doxysection{XLINUXSleep.\+cpp}
+\hypertarget{_x_l_i_n_u_x_sleep_8cpp_source}{}\label{_x_l_i_n_u_x_sleep_8cpp_source}\index{D:/Projects/GENFrameWork/GEN/Platforms/Linux/XLINUXSleep.cpp@{D:/Projects/GENFrameWork/GEN/Platforms/Linux/XLINUXSleep.cpp}}
+\mbox{\hyperlink{_x_l_i_n_u_x_sleep_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00029}00029\ \textcolor{comment}{/*-\/-\/-\/-\/\ PRECOMPILATION\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#pragma\ region\ PRECOMPILATION\_INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_e_n___defines_8h}{GEN\_Defines.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00037}00037\ \textcolor{comment}{/*-\/-\/-\/-\/\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#pragma\ region\ INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_l_i_n_u_x_sleep_8h}{XLINUXSleep.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00044}00044\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00046}00046\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00047}00047\ \textcolor{preprocessor}{\#include\ <fcntl.h>}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00048}00048\ \textcolor{preprocessor}{\#include\ <sys/time.h>}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00049}00049\ \textcolor{preprocessor}{\#include\ <sys/times.h>}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00050}00050\ \textcolor{preprocessor}{\#include\ <sys/types.h>}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00051}00051\ \textcolor{preprocessor}{\#include\ <sys/stat.h>}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00052}00052\ \textcolor{preprocessor}{\#include\ <sys/ioctl.h>}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00053}00053\ \textcolor{preprocessor}{\#include\ <linux/rtc.h>}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00055}00055\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_trace_8h}{XTrace.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00056}00056\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_l_i_n_u_x_file_8h}{XLINUXFile.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00058}00058\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_memory___control_8h}{XMemory\_Control.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00060}00060\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00063}00063\ \textcolor{comment}{/*-\/-\/-\/-\/\ GENERAL\ VARIABLE\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00064}00064\ \textcolor{preprocessor}{\#pragma\ region\ GENERAL\_VARIABLE}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00066}00066\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00069}00069\ \textcolor{comment}{/*-\/-\/-\/-\/\ CLASS\ MEMBERS\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00070}00070\ \textcolor{preprocessor}{\#pragma\ region\ CLASS\_MEMBERS}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00080}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_gadce172d910cbf0f6169dbe14525f2310}{00080}}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_gadce172d910cbf0f6169dbe14525f2310}{XLINUXSLEEP::XLINUXSLEEP}}()}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00081}00081\ \{}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00082}00082\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00083}00083\ \}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00094}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_gac40900be5b6060b8d0b554039b3da597}{00094}}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_gac40900be5b6060b8d0b554039b3da597}{XLINUXSLEEP::\string~XLINUXSLEEP}}()}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00095}00095\ \{}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00096}00096\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00097}00097\ \}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00109}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_gab0179354356cc231a17696034e9b2244}{00109}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_gab0179354356cc231a17696034e9b2244}{XLINUXSLEEP::Seconds}}(\textcolor{keywordtype}{int}\ seconds)}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00110}00110\ \{}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00111}00111\ \ \ sleep(seconds);}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00112}00112\ \}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00124}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga4648575b4001d89af0fde9542ad20128}{00124}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga4648575b4001d89af0fde9542ad20128}{XLINUXSLEEP::MilliSeconds}}(\textcolor{keywordtype}{int}\ milliseconds)}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00125}00125\ \{}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00126}00126\ \ \ usleep(milliseconds*1000);}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00127}00127\ \}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00139}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga1ea0fc7728c669688d570c00e1f70717}{00139}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga1ea0fc7728c669688d570c00e1f70717}{XLINUXSLEEP::MicroSeconds}}(\textcolor{keywordtype}{int}\ microseconds)}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00140}00140\ \{}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00141}00141\ \ \ usleep(microseconds);}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00142}00142\ \}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00154}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga7820695b92a682b77387d7b3d5d595d4}{00154}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga7820695b92a682b77387d7b3d5d595d4}{XLINUXSLEEP::NanoSeconds}}(\textcolor{keywordtype}{int}\ nanoseconds)}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00155}00155\ \{}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00156}00156\ \ \ \textcolor{keyword}{struct\ }timespec\ time\ \ =\ \{\ 0,\ nanoseconds\ \};}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00157}00157\ \ \ \textcolor{keyword}{struct\ }timespec\ time2\ =\ \{\ 0,\ 0\ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00159}00159\ \ \ nanosleep(\&time\ ,\ \&time2);}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00161}00161\ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00162}00162\ \textcolor{comment}{\ \ struct\ timespec\ delay\ =\ \{\ nanoseconds\ /\ 1000000000,\ nanoseconds\ \%\ 1000000000\ \};}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00163}00163\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00164}00164\ \textcolor{comment}{\ \ pselect(0,\ NULL,\ NULL,\ NULL,\ \&delay,\ NULL);}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00165}00165\ \textcolor{comment}{\ \ */}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00166}00166\ \}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00177}00177\ \textcolor{keywordtype}{void}\ XLINUXSLEEP::Clean()}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00178}00178\ \{}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00180}00180\ \}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00183}00183\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_sleep_8cpp_source_l00184}00184\ }
+
+\end{DoxyCode}

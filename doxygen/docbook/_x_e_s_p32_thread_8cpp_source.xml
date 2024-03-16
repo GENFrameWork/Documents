@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_e_s_p32_thread_8cpp_source" xml:lang="en-US">
+<title>XESP32Thread.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/Platforms/Microcontrollers/ESP32/XESP32Thread.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_e_s_p32_thread_8h">XESP32Thread.h</link>&quot;</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_sleep_8h">XSleep.h</link>&quot;</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_trace_8h">XTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_thread_list_non_preemptive_8h">XThreadListNonPreemptive.h</link>&quot;</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00045"/>00045 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00047"/>00047 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00049"/>00049 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00050"/>00050 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00051"/>00051 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00053"/>00053 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00054"/>00054 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00055"/>00055 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00056"/>00056 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00057"/>00057 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00058"/>00058 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00059"/>00059 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00061"/>00061 <emphasis role="comment">/*----&#32;CLASS&#32;ESP32MUTEX&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00062"/>00062 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_ESP32MUTEX</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00063"/>00063 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00064"/>00064 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00074"/><link linkend="_class_x_e_s_p32_m_u_t_e_x_1abc91f1c195616a0852f7aaef17c82818">00074</link> <link linkend="_class_x_e_s_p32_m_u_t_e_x_1abc91f1c195616a0852f7aaef17c82818">XESP32MUTEX::XESP32MUTEX</link>()
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00075"/>00075 {
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00076"/>00076 &#32;&#32;<link linkend="_class_x_e_s_p32_m_u_t_e_x_1a81675a8133a755f8af9200876094db3a">Clean</link>();
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00077"/>00077 }
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00078"/>00078 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00079"/>00079 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00090"/><link linkend="_class_x_e_s_p32_m_u_t_e_x_1a4f8bbd9667c2e6580dfe91c20c80cc7a">00090</link> <link linkend="_class_x_e_s_p32_m_u_t_e_x_1a4f8bbd9667c2e6580dfe91c20c80cc7a">XESP32MUTEX::~XESP32MUTEX</link>()
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00091"/>00091 {
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00092"/>00092 &#32;&#32;<link linkend="_class_x_e_s_p32_m_u_t_e_x_1a81675a8133a755f8af9200876094db3a">Clean</link>();
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00093"/>00093 }
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00094"/>00094 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00095"/>00095 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00105"/><link linkend="_class_x_e_s_p32_m_u_t_e_x_1a1d18947602a5dda1a5e5c8207e2dafd2">00105</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_e_s_p32_m_u_t_e_x_1a1d18947602a5dda1a5e5c8207e2dafd2">XESP32MUTEX::Lock</link>()
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00106"/>00106 {
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00107"/>00107 &#32;&#32;<link linkend="_class_x_e_s_p32_m_u_t_e_x_1a9b665812190779f715c901997aac6940">counterlock</link>++;
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00108"/>00108 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_e_s_p32_m_u_t_e_x_1a9b665812190779f715c901997aac6940">counterlock</link>)&#32;<link linkend="_class_x_m_u_t_e_x_1a784c2288217c31d8d78bf60f90ff8338">islock</link>&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00109"/>00109 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00110"/>00110 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00111"/>00111 }
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00112"/>00112 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00113"/>00113 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00123"/><link linkend="_class_x_e_s_p32_m_u_t_e_x_1a76ed39b887ac103387eae54689820266">00123</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_e_s_p32_m_u_t_e_x_1a76ed39b887ac103387eae54689820266">XESP32MUTEX::UnLock</link>()
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00124"/>00124 {
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00125"/>00125 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_e_s_p32_m_u_t_e_x_1a9b665812190779f715c901997aac6940">counterlock</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00126"/>00126 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00127"/>00127 &#32;&#32;<link linkend="_class_x_e_s_p32_m_u_t_e_x_1a9b665812190779f715c901997aac6940">counterlock</link>--;
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00128"/>00128 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_e_s_p32_m_u_t_e_x_1a9b665812190779f715c901997aac6940">counterlock</link>)&#32;&#32;<link linkend="_class_x_m_u_t_e_x_1a784c2288217c31d8d78bf60f90ff8338">islock</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00129"/>00129 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00130"/>00130 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00131"/>00131 }
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00132"/>00132 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00133"/>00133 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00144"/><link linkend="_class_x_e_s_p32_m_u_t_e_x_1a81675a8133a755f8af9200876094db3a">00144</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_x_e_s_p32_m_u_t_e_x_1a81675a8133a755f8af9200876094db3a">XESP32MUTEX::Clean</link>()
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00145"/>00145 {
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00146"/>00146 &#32;&#32;<link linkend="_class_x_e_s_p32_m_u_t_e_x_1a9b665812190779f715c901997aac6940">counterlock</link>&#32;&#32;=&#32;0;
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00147"/>00147 }
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00148"/>00148 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00149"/>00149 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00150"/>00150 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00151"/>00151 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00152"/>00152 <emphasis role="comment">/*----&#32;CLASS&#32;ESP32THREAD&#32;---------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00153"/>00153 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_ESP32THREAD</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00154"/>00154 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00155"/>00155 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00170"/><link linkend="_class_x_e_s_p32_t_h_r_e_a_d_1a4eaef44f180663d34787cac810971447">00170</link> <link linkend="_class_x_e_s_p32_t_h_r_e_a_d_1a4eaef44f180663d34787cac810971447">XESP32THREAD::XESP32THREAD</link>(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6">XTHREADGROUPID</link>&#32;groupID,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;ID,&#32;<link linkend="__x_thread_8h_1a75cd5e654ca0f2255ae2473172af98d6">XTHREADFUNCTION</link>&#32;function,&#32;<emphasis role="keywordtype">void</emphasis>*&#32;data)&#32;:&#32;<link linkend="_class_x_t_h_r_e_a_d">XTHREAD</link>(groupID,&#32;ID,&#32;function,&#32;data)
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00171"/>00171 {
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00172"/>00172 &#32;&#32;Clean();
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00173"/>00173 }
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00174"/>00174 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00175"/>00175 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00186"/><link linkend="_class_x_e_s_p32_t_h_r_e_a_d_1af669a96608e4e9a712e0ece63e6dcd58">00186</link> <link linkend="_class_x_e_s_p32_t_h_r_e_a_d_1af669a96608e4e9a712e0ece63e6dcd58">XESP32THREAD::~XESP32THREAD</link>()
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00187"/>00187 {
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00188"/>00188 &#32;&#32;<link linkend="_class_x_e_s_p32_t_h_r_e_a_d_1a0fcb59e400e5f1296860ff2aa5c71138">End</link>();
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00189"/>00189 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00190"/>00190 &#32;&#32;Clean();
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00191"/>00191 }
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00192"/>00192 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00193"/>00193 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00205"/><link linkend="_class_x_e_s_p32_t_h_r_e_a_d_1a8fb0e89f6c6f02d00e0784938e9b96db">00205</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_e_s_p32_t_h_r_e_a_d_1a8fb0e89f6c6f02d00e0784938e9b96db">XESP32THREAD::Ini</link>(<emphasis role="keywordtype">bool</emphasis>&#32;run)
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00206"/>00206 {
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00207"/>00207 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(run)
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00208"/>00208 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00209"/>00209 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_t_h_r_e_a_d_1a777dc032596d071d63fc47d55b8e6b04">Run</link>(<emphasis role="keyword">true</emphasis>))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00210"/>00210 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00211"/>00211 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<link linkend="_class_x_t_h_r_e_a_d_1ab906a8f23382bdc51d83df77f02ea13d">statusfunc</link>&#32;=&#32;<link linkend="__x_thread_8h_1a366a30be55b44789bcfebf624c8cb927a38a37e3fa13a372c1389ecbfa4b8af62">XTHREADSTATUS_STOP</link>;
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00212"/>00212 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00213"/>00213 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;<emphasis role="comment">//XTHREADLISTNONPREEMPTIVE::GetInstance().AddThread(this);</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00214"/>00214 }
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00215"/>00215 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00216"/>00216 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00228"/><link linkend="_class_x_e_s_p32_t_h_r_e_a_d_1aa6b710313e9d21e76109da2331a0d6c0">00228</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_e_s_p32_t_h_r_e_a_d_1aa6b710313e9d21e76109da2331a0d6c0">XESP32THREAD::Wait</link>(<emphasis role="keywordtype">int</emphasis>&#32;miliseconds)
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00229"/>00229 {
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00230"/>00230 &#32;&#32;GEN_XSLEEP.MilliSeconds(miliseconds);
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00231"/>00231 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00232"/>00232 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00233"/>00233 }
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00234"/>00234 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00235"/>00235 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00245"/><link linkend="_class_x_e_s_p32_t_h_r_e_a_d_1a0fcb59e400e5f1296860ff2aa5c71138">00245</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_e_s_p32_t_h_r_e_a_d_1a0fcb59e400e5f1296860ff2aa5c71138">XESP32THREAD::End</link>()
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00246"/>00246 {
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00247"/>00247 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_t_h_r_e_a_d_1ab906a8f23382bdc51d83df77f02ea13d">statusfunc</link>&#32;==&#32;<link linkend="__x_thread_8h_1a366a30be55b44789bcfebf624c8cb927a0810d58d25021355fa8ae7bf348ed610">XTHREADSTATUS_END</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00248"/>00248 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00249"/>00249 &#32;&#32;<link linkend="_class_x_t_h_r_e_a_d_1ab906a8f23382bdc51d83df77f02ea13d">statusfunc</link>&#32;=&#32;<link linkend="__x_thread_8h_1a366a30be55b44789bcfebf624c8cb927a93f78a60f2a85c943ec7559ae1893aec">XTHREADSTATUS_EXIT</link>;
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00250"/>00250 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00251"/>00251 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;<emphasis role="comment">//XTHREADLISTNONPREEMPTIVE::GetInstance().DeleteThread(this);</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00252"/>00252 }
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00253"/>00253 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00254"/>00254 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00265"/>00265 <emphasis role="keywordtype">void</emphasis>&#32;XESP32THREAD::Clean()
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00266"/>00266 {
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00267"/>00267 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00268"/>00268 }
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00269"/>00269 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00270"/>00270 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00271"/>00271 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00272"/>00272 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00273"/>00273 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00274"/>00274 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00275"/>00275 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00276"/>00276 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00277"/>00277 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00278"/>00278 
+<anchor xml:id="__x_e_s_p32_thread_8cpp_source_1l00279"/>00279 
+</programlisting></section>

@@ -1,0 +1,346 @@
+\doxysection{DIOMod\+Bus\+Electric\+Meter.\+cpp}
+\hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source}{}\label{_d_i_o_mod_bus_electric_meter_8cpp_source}\index{D:/Projects/GENFrameWork/GEN/DataIO/Protocols/DIOModBusElectricMeter.cpp@{D:/Projects/GENFrameWork/GEN/DataIO/Protocols/DIOModBusElectricMeter.cpp}}
+\mbox{\hyperlink{_d_i_o_mod_bus_electric_meter_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00029}00029\ \textcolor{comment}{/*-\/-\/-\/-\/\ PRECOMPILATION\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#pragma\ region\ PRECOMPILATION\_INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_e_n___defines_8h}{GEN\_Defines.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00037}00037\ \textcolor{comment}{/*-\/-\/-\/-\/\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#pragma\ region\ INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_i_o_mod_bus_electric_meter_8h}{DIOModBusElectricMeter.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ <stdarg.h>}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00044}00044\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00046}00046\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_date_time_8h}{XDateTime.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00047}00047\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_timer_8h}{XTimer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00048}00048\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_factory_8h}{XFactory.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00049}00049\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_f_s_machine_8h}{XFSMachine.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00050}00050\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_buffer_8h}{XBuffer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00051}00051\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_trace_8h}{XTrace.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00053}00053\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_i_o_stream_8h}{DIOStream.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00055}00055\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_memory___control_8h}{XMemory\_Control.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00057}00057\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00060}00060\ \textcolor{comment}{/*-\/-\/-\/-\/\ GENERAL\ VARIABLE\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00061}00061\ \textcolor{preprocessor}{\#pragma\ region\ GENERAL\_VARIABLE}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00063}00063\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00066}00066\ \textcolor{comment}{/*-\/-\/-\/-\/\ CLASS\ MEMBERS\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00067}00067\ \textcolor{preprocessor}{\#pragma\ region\ CLASS\_MEMBERS}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00070}00070\ \textcolor{preprocessor}{\#pragma\ region\ DIOMODBUSELECTRICMETERXEVENT}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00083}\mbox{\hyperlink{group___d_a_t_a_i_o_ga64c0785239d971ed9b9910464c9dd194}{00083}}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga64c0785239d971ed9b9910464c9dd194}{DIOMODBUSELECTRICMETERXEVENT::DIOMODBUSELECTRICMETERXEVENT}}(\mbox{\hyperlink{class_x_s_u_b_j_e_c_t}{XSUBJECT}}*\ subject,\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ type)\ :\ \mbox{\hyperlink{class_x_e_v_e_n_t}{XEVENT}}(subject,type)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00084}00084\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00085}00085\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00086}00086\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00097}\mbox{\hyperlink{group___d_a_t_a_i_o_ga0d3a86c325a5de5dcdc55bc72e0d4116}{00097}}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga0d3a86c325a5de5dcdc55bc72e0d4116}{DIOMODBUSELECTRICMETERXEVENT::\string~DIOMODBUSELECTRICMETERXEVENT}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00098}00098\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00099}00099\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00100}00100\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00111}00111\ \textcolor{keywordtype}{void}\ DIOMODBUSELECTRICMETERXEVENT::Clean()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00112}00112\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00114}00114\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00117}00117\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00120}00120\ \textcolor{preprocessor}{\#pragma\ region\ DIOMODBUSELECTRICMETER}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00133}\mbox{\hyperlink{group___d_a_t_a_i_o_gaab650c2873cd5f4ea8c22628fe28bf14}{00133}}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gaab650c2873cd5f4ea8c22628fe28bf14}{DIOMODBUSELECTRICMETER::DIOMODBUSELECTRICMETER}}(\mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m}{DIOSTREAM}}*\ diostream,\ \mbox{\hyperlink{_d_i_o_mod_bus___client_8h_af75a27698edb9b21e2c21cbe9c46cace}{DIOMODBUS\_CLIENTMODE}}\ mode)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00134}00134\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00135}00135\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00137}00137\ \ \ modbusprotocol\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_d_i_o_m_o_d_b_u_s___c_l_i_e_n_t}{DIOMODBUS\_CLIENT}}(diostream,\ mode);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00138}00138\ \ \ \textcolor{keywordflow}{if}(modbusprotocol)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00139}00139\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00140}00140\ \ \ \ \ \ \ \mbox{\hyperlink{group___x_u_t_i_l_s_gac83006698567c749aecf727dddef5d9c}{RegisterEvent}}(\mbox{\hyperlink{_d_i_o_mod_bus_electric_meter_8h_a2e891f1fe1ac9be1bb5710d9aefa0d67a0624f7001f9b4b241cb64fcde8b9b249}{DIOMODBUSELECTRICMETERXEVENT\_TYPE\_C\_TR\_AA\_READVALUES}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00141}00141\ \ \ \ \ \ \ \mbox{\hyperlink{group___x_u_t_i_l_s_gac83006698567c749aecf727dddef5d9c}{RegisterEvent}}(\mbox{\hyperlink{_d_i_o_mod_bus_electric_meter_8h_a2e891f1fe1ac9be1bb5710d9aefa0d67a8228728761151882fb73a70c7d3a93b8}{DIOMODBUSELECTRICMETERXEVENT\_TYPE\_C\_CI\_NU\_2\_READVALUE}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00143}00143\ \ \ \ \ \ \ GEN\_XFACTORY\_CREATE(xtimer,\ CreateTimer())}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00144}00144\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00145}00145\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00156}\mbox{\hyperlink{group___d_a_t_a_i_o_ga66cf199c9627316ddd1fc0d12a2401c9}{00156}}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga66cf199c9627316ddd1fc0d12a2401c9}{DIOMODBUSELECTRICMETER::\string~DIOMODBUSELECTRICMETER}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00157}00157\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00158}00158\ \ \ GEN\_XFACTORY.DeleteTimer(xtimer);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00160}00160\ \ \ \mbox{\hyperlink{group___d_a_t_a_i_o_gafd417f8f63884d17763bdcb1c4d5f7d9}{Disconnect}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00162}00162\ \ \ \mbox{\hyperlink{group___x_u_t_i_l_s_gab78992063b09d37612e7719e37d415bc}{DeRegisterEvent}}(\mbox{\hyperlink{_d_i_o_mod_bus_electric_meter_8h_a2e891f1fe1ac9be1bb5710d9aefa0d67a0624f7001f9b4b241cb64fcde8b9b249}{DIOMODBUSELECTRICMETERXEVENT\_TYPE\_C\_TR\_AA\_READVALUES}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00163}00163\ \ \ \mbox{\hyperlink{group___x_u_t_i_l_s_gab78992063b09d37612e7719e37d415bc}{DeRegisterEvent}}(\mbox{\hyperlink{_d_i_o_mod_bus_electric_meter_8h_a2e891f1fe1ac9be1bb5710d9aefa0d67a8228728761151882fb73a70c7d3a93b8}{DIOMODBUSELECTRICMETERXEVENT\_TYPE\_C\_CI\_NU\_2\_READVALUE}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00165}00165\ \ \ \textcolor{keyword}{delete}\ modbusprotocol;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00167}00167\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00168}00168\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00180}\mbox{\hyperlink{group___d_a_t_a_i_o_gafc1c7cfe15c33f7c4bbf73d003463e56}{00180}}\ \mbox{\hyperlink{class_d_i_o_m_o_d_b_u_s___c_l_i_e_n_t}{DIOMODBUS\_CLIENT}}*\ \mbox{\hyperlink{group___d_a_t_a_i_o_gafc1c7cfe15c33f7c4bbf73d003463e56}{DIOMODBUSELECTRICMETER::GetModBusProtocol}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00181}00181\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00182}00182\ \ \ \textcolor{keywordflow}{return}\ modbusprotocol;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00183}00183\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00199}\mbox{\hyperlink{group___d_a_t_a_i_o_gacc8712b2e1273d8b7c0e6d1729032955}{00199}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gacc8712b2e1273d8b7c0e6d1729032955}{DIOMODBUSELECTRICMETER::Connect}}(\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ unit,\ \textcolor{keywordtype}{bool}\ inlittleendian,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}})}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00200}00200\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00201}00201\ \ \ \textcolor{keywordflow}{if}(!modbusprotocol)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00202}00202\ \ \ \textcolor{keywordflow}{if}(!modbusprotocol-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gada86ee599071c1fa002eadbc412a90a6}{GetDIOStream}}())\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00204}00204\ \ \ \textcolor{keywordflow}{if}(modbusprotocol-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gada86ee599071c1fa002eadbc412a90a6}{GetDIOStream}}()-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga076ead754b614eb3ba77ccb3a9e45455}{GetConnectStatus}}()!=\mbox{\hyperlink{_d_i_o_stream_8h_ad10214ba9a07bd0f22017499f6f59a0fa516b51b4debec043e34f66f0d4710fa2}{DIOSTREAMSTATUS\_DISCONNECTED}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00206}00206\ \ \ \textcolor{keywordflow}{if}(!modbusprotocol-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga6cd6a67a8ec405fc8d7fd0a9967679fc}{Connect}}(unit,\mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}}))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00208}00208\ \ \ this-\/>unit\ \ \ \ \ \ \ \ \ \ \ \ =\ unit;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00209}00209\ \ \ this-\/>inlittleendian\ \ =\ inlittleendian;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00211}00211\ \ \ canceloperations\ \ \ \ \ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00213}00213\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00214}00214\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00232}\mbox{\hyperlink{group___d_a_t_a_i_o_gac2b77cfe25a326e56c682df165c4d853}{00232}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gac2b77cfe25a326e56c682df165c4d853}{DIOMODBUSELECTRICMETER::CMD\_C\_CI\_NU\_2\_ReadAllValues}}(\textcolor{keywordtype}{int}\ TM,\ \mbox{\hyperlink{class_x_d_a_t_e_t_i_m_e}{XDATETIME}}*\ timestart,\ \mbox{\hyperlink{class_x_d_a_t_e_t_i_m_e}{XDATETIME}}*\ timeend,\ \mbox{\hyperlink{class_x_v_e_c_t_o_r}{XVECTOR<DIO\_C\_CI\_NU\_2\_RESULT*>}}*\ results,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}})}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00233}00233\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00234}00234\ \ \ \textcolor{keywordflow}{if}(!results)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00235}00235\ \ \ \textcolor{keywordflow}{if}(!modbusprotocol)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00236}00236\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00237}00237\ \ \ \mbox{\hyperlink{class_x_b_u_f_f_e_r}{XBUFFER}}\ answer;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00238}00238\ \ \ \textcolor{keywordtype}{float}\ \ \ fresult\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00239}00239\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ iresult\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00240}00240\ \ \ \textcolor{keywordtype}{bool}\ \ \ \ status;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00242}00242\ \ \ status\ =\ modbusprotocol-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gada1805205ac598d5b714b2217097dbba}{ReadHoldingRegisters}}(50812,\ 14,\ answer,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00243}00243\ \ \ \textcolor{keywordflow}{if}(status)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00244}00244\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00245}00245\ \ \ \ \ \ \ \mbox{\hyperlink{class_d_i_o___c___c_i___n_u__2___r_e_s_u_l_t}{DIO\_C\_CI\_NU\_2\_RESULT}}*\ result;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00246}00246\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00247}00247\ \ \ \ \ \ \ result\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_d_i_o___c___c_i___n_u__2___r_e_s_u_l_t}{DIO\_C\_CI\_NU\_2\_RESULT}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00248}00248\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(result)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00249}00249\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga9029159ff5a7f824e3117eb4f6741edd}{GetDateTime}}()-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga0e2f3589654fc19d26c588506994fb20}{Read}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga9029159ff5a7f824e3117eb4f6741edd}{GetDateTime}}()-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga464db2ab1abdcf3f515de690340f518e}{SetSeconds}}(0);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00252}00252\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(TM)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1\ \ :\ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ c=0;\ c<8;\ c++)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga80949cb64bd3b96fdf741308c5965cdb}{GetIndexValues}}()-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a51a790aac8efd4603aee608ddcc83423}{Add}}(c+1);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga754978b1c14eb7fef19532a3f91f1359}{GetValues}}()-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a51a790aac8efd4603aee608ddcc83423}{Add}}(0);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ReadRegister(50780,\ 2,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}},\ iresult);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga80949cb64bd3b96fdf741308c5965cdb}{GetIndexValues}}()-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a51a790aac8efd4603aee608ddcc83423}{Add}}(1);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga754978b1c14eb7fef19532a3f91f1359}{GetValues}}()-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a51a790aac8efd4603aee608ddcc83423}{Add}}(iresult);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ReadRegister(50782,\ 2,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}},\ iresult);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga80949cb64bd3b96fdf741308c5965cdb}{GetIndexValues}}()-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a51a790aac8efd4603aee608ddcc83423}{Add}}(2);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga754978b1c14eb7fef19532a3f91f1359}{GetValues}}()-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a51a790aac8efd4603aee608ddcc83423}{Add}}(iresult);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00268}00268\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00270}00270\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00271}00271\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2\ \ :\ ReadRegister(51046,\ 2,\ 100,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}},\ fresult);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00273}00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga80949cb64bd3b96fdf741308c5965cdb}{GetIndexValues}}()-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a51a790aac8efd4603aee608ddcc83423}{Add}}(1);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00274}00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga754978b1c14eb7fef19532a3f91f1359}{GetValues}}()-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a51a790aac8efd4603aee608ddcc83423}{Add}}((\textcolor{keywordtype}{int})fresult);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ c=1;\ c<8;\ c++)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga80949cb64bd3b96fdf741308c5965cdb}{GetIndexValues}}()-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a51a790aac8efd4603aee608ddcc83423}{Add}}(c+1);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga754978b1c14eb7fef19532a3f91f1359}{GetValues}}()-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a51a790aac8efd4603aee608ddcc83423}{Add}}(0);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00281}00281\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00283}00283\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ default\ :\ status\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00286}00286\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00288}00288\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ results-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a51a790aac8efd4603aee608ddcc83423}{Add}}(result);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00291}00291\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00292}00292\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ status\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00293}00293\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00294}00294\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00295}00295\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00296}00296\ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00297}00297\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00298}00298\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00299}00299\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00311}\mbox{\hyperlink{group___d_a_t_a_i_o_ga62ac97a08b514ada235ce70021afeb3d}{00311}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga62ac97a08b514ada235ce70021afeb3d}{DIOMODBUSELECTRICMETER::CMD\_C\_CI\_NU\_2\_DeleteResults}}(\mbox{\hyperlink{class_x_v_e_c_t_o_r}{XVECTOR<DIO\_C\_CI\_NU\_2\_RESULT*>}}*\ results)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00312}00312\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00313}00313\ \ \ \textcolor{keywordflow}{if}(!results)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00314}00314\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00315}00315\ \ \ \textcolor{keywordflow}{if}(results-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_acfb28e72022a067c3a4635f0c14734fb}{IsEmpty}}())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00316}00316\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00317}00317\ \ \ results-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_abae5097402824f18f274e21e18b23bea}{DeleteContents}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00318}00318\ \ \ results-\/>\mbox{\hyperlink{class_x_v_e_c_t_o_r_a57c72ab04fd14c60d1026e0a7b4a1887}{DeleteAll}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00319}00319\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00320}00320\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00321}00321\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00322}00322\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00336}\mbox{\hyperlink{group___d_a_t_a_i_o_ga70e465b95991de36ba95e660313e055c}{00336}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga70e465b95991de36ba95e660313e055c}{DIOMODBUSELECTRICMETER::CMD\_C\_TR\_AA\_ReadValues}}(\mbox{\hyperlink{class_d_i_o___c___t_r___a_a___r_e_s_u_l_t}{DIO\_C\_TR\_AA\_RESULT}}*\ result,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}})}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00337}00337\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00338}00338\ \ \ \textcolor{keywordflow}{if}(!result)\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00339}00339\ \ \ \textcolor{keywordflow}{if}(!modbusprotocol)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00340}00340\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00341}00341\ \ \ \textcolor{keywordtype}{float}\ fresult\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00342}00342\ \ \ \textcolor{keywordtype}{int}\ \ \ iresult\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00343}00343\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00344}00344\ \ \ \textcolor{comment}{//\ Totalizadores\ Energeticos}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00345}00345\ \ \ ReadRegister(50780,\ 2,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}},\ iresult);\ \ \ \ \ \ \ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga88d08b8d0901cace7ded5d7489dbf34c}{SetActiveImport}}(iresult);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Activa\ Importacion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gadd5c370c7e836b93f81b5135396d4f78}{SetActiveExport}}(0);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Activa\ Exportacion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00347}00347\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00348}00348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga029c0efcf130f04267bbfb806298acd4}{SetReactiveQ}}(1,\ 0);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reactiva\ Q1}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga029c0efcf130f04267bbfb806298acd4}{SetReactiveQ}}(2,\ 0);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reactiva\ Q2}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga029c0efcf130f04267bbfb806298acd4}{SetReactiveQ}}(3,\ 0);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reactiva\ Q3}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00351}00351\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga029c0efcf130f04267bbfb806298acd4}{SetReactiveQ}}(4,\ 0);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reactiva\ Q4}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00352}00352\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00353}00353\ \ \ \textcolor{comment}{//\ Potencias\ Instantaneas}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00354}00354\ \ \ ReadRegister(50536,\ 2,\ \ 100,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}},\ fresult);\ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga5d6c04c2e56acea5f68e49129e02dd9d}{SetTotalActivePower}}((\textcolor{keywordtype}{int})fresult);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Potencia\ Activa\ \ \ \ Total}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00355}00355\ \ \ ReadRegister(50538,\ 2,\ \ 100,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}},\ fresult);\ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gaca113d81ed0d92cf78603f48fc257a84}{SetTotalReactivePower}}((\textcolor{keywordtype}{int})fresult);\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Potencia\ Reactiva\ \ Total}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00356}00356\ \ \ ReadRegister(50542,\ 2,\ 1000,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}},\ fresult);\ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gaf9d8f808d08dbe8f7b831baef3606a14}{SetTotalPowerFactor}}(fresult);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Factor\ de\ Potencia\ Total}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00357}00357\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00358}00358\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00359}00359\ \ \ ReadRegister(50544,\ 2,\ \ 100,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}},\ fresult);\ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gac41aa4cba57cc28b14c229083d542fab}{SetActivePowerPhase}}(1,\ (\textcolor{keywordtype}{int})(fresult));\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Potencia\ Activa\ \ \ \ Fase\ I}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00360}00360\ \ \ ReadRegister(50550,\ 2,\ \ 100,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}},\ fresult);\ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gaab04236ba47cfd44b13e11d55b8c663a}{SetReactivePowerPhase}}(1,\ (\textcolor{keywordtype}{int})(fresult));\ \ \ \ \ \ \ \textcolor{comment}{//\ Potencia\ Reactiva\ \ Fase\ I}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00361}00361\ \ \ ReadRegister(50562,\ 2,\ 1000,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}},\ fresult);\ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gaf0936e223530d2a5f5e79a81b7b3b240}{SetPowerFactorPhase}}(1,\ fresult);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Factor\ de\ Potencia\ Fase\ I}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00362}00362\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00363}00363\ \ \ ReadRegister(50546,\ 2,\ \ 100,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}},\ fresult);\ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gac41aa4cba57cc28b14c229083d542fab}{SetActivePowerPhase}}(2,\ (\textcolor{keywordtype}{int})(fresult));\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Potencia\ Activa\ \ \ \ Fase\ II}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00364}00364\ \ \ ReadRegister(50552,\ 2,\ \ 100,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}},\ fresult);\ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gaab04236ba47cfd44b13e11d55b8c663a}{SetReactivePowerPhase}}(2,\ (\textcolor{keywordtype}{int})(fresult));\ \ \ \ \ \ \ \textcolor{comment}{//\ Potencia\ Reactiva\ \ Fase\ II}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00365}00365\ \ \ ReadRegister(50564,\ 2,\ 1000,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}},\ fresult);\ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gaf0936e223530d2a5f5e79a81b7b3b240}{SetPowerFactorPhase}}(2,\ fresult);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Factor\ de\ Potencia\ Fase\ II}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00366}00366\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00367}00367\ \ \ ReadRegister(50548,\ 2,\ \ 100,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}},\ fresult);\ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gac41aa4cba57cc28b14c229083d542fab}{SetActivePowerPhase}}(3,\ (\textcolor{keywordtype}{int})(fresult));\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Potencia\ Activa\ \ \ \ Fase\ III}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00368}00368\ \ \ ReadRegister(50554,\ 2,\ \ 100,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}},\ fresult);\ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gaab04236ba47cfd44b13e11d55b8c663a}{SetReactivePowerPhase}}(3,\ (\textcolor{keywordtype}{int})(fresult));\ \ \ \ \ \ \ \textcolor{comment}{//\ Potencia\ Reactiva\ \ Fase\ III}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00369}00369\ \ \ ReadRegister(50566,\ 2,\ 1000,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}},\ fresult);\ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gaf0936e223530d2a5f5e79a81b7b3b240}{SetPowerFactorPhase}}(3,\ fresult);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Factor\ de\ Potencia\ Fase\ III}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00370}00370\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00371}00371\ \ \ \textcolor{comment}{//\ Valores\ Secundarios}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00372}00372\ \ \ ReadRegister(50520,\ 2,\ \ 100,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}},\ fresult);\ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga28792ddefbd7b3f2bcd052c6f87550d6}{SetVoltagePhase}}(1,\ fresult);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Tension\ \ \ \ Fase\ I}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00373}00373\ \ \ ReadRegister(50528,\ 2,\ 1000,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}},\ fresult);\ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga49866865166b560015d7fe0dc56269e3}{SetCurrentPhase}}(1,\ fresult);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Intensidad\ Fase\ I}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00374}00374\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00375}00375\ \ \ ReadRegister(50522,\ 2,\ \ 100,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}},\ fresult);\ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga28792ddefbd7b3f2bcd052c6f87550d6}{SetVoltagePhase}}(2,\ fresult);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Tension\ \ \ \ Fase\ II}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00376}00376\ \ \ ReadRegister(50530,\ 2,\ 1000,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}},\ fresult);\ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga49866865166b560015d7fe0dc56269e3}{SetCurrentPhase}}(2,\ fresult);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Intensidad\ Fase\ II}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00377}00377\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00378}00378\ \ \ ReadRegister(50524,\ 2,\ \ 100,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}},\ fresult);\ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga28792ddefbd7b3f2bcd052c6f87550d6}{SetVoltagePhase}}(3,\ fresult);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Tension\ \ \ \ Fase\ III}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00379}00379\ \ \ ReadRegister(50532,\ 2,\ 1000,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}},\ fresult);\ \ \ \ \ result-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga49866865166b560015d7fe0dc56269e3}{SetCurrentPhase}}(3,\ fresult);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Intensidad\ Fase\ III}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00380}00380\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00381}00381\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00382}00382\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00383}00383\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00384}00384\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00394}\mbox{\hyperlink{group___d_a_t_a_i_o_ga4777b744f590776195719130183ab8d8}{00394}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga4777b744f590776195719130183ab8d8}{DIOMODBUSELECTRICMETER::CancelOperations}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00395}00395\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00396}00396\ \ \ canceloperations\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00397}00397\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00398}00398\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00399}00399\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00400}00400\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00408}\mbox{\hyperlink{group___d_a_t_a_i_o_gafd417f8f63884d17763bdcb1c4d5f7d9}{00408}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gafd417f8f63884d17763bdcb1c4d5f7d9}{DIOMODBUSELECTRICMETER::Disconnect}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00409}00409\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00410}00410\ \ \ \textcolor{keywordflow}{if}(!modbusprotocol)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00411}00411\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00412}00412\ \ \ modbusprotocol-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga93fc101c73bf7fa13f509bd25c9dff10}{Disconnect}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00413}00413\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00414}00414\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00415}00415\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00431}00431\ \textcolor{keywordtype}{bool}\ DIOMODBUSELECTRICMETER::ReadRegister(\textcolor{keywordtype}{int}\ registerID,\ \textcolor{keywordtype}{int}\ nwords,\ \textcolor{keywordtype}{int}\ divisor,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}},\ \textcolor{keywordtype}{float}\&\ result)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00432}00432\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00433}00433\ \ \ \mbox{\hyperlink{class_x_b_u_f_f_e_r}{XBUFFER}}\ \ \ answer;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00434}00434\ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ \ \ \ dword\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00435}00435\ \ \ \mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}}\ \ \ \ \ word\ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00436}00436\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ data\ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00437}00437\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00438}00438\ \ \ result\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00439}00439\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00440}00440\ \ \ \textcolor{keywordflow}{if}(!modbusprotocol-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gada1805205ac598d5b714b2217097dbba}{ReadHoldingRegisters}}(registerID,\ nwords,\ answer,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}}))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00441}00441\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00442}00442\ \ \ \textcolor{keywordflow}{if}(nwords\ ==\ 2)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00443}00443\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00444}00444\ \ \ \ \ \ \ answer.\mbox{\hyperlink{group___x_u_t_i_l_s_ga59d2c2b8d1c32098920f5d3eba0a5971}{Get}}(dword);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00445}00445\ \ \ \ \ \ \ data\ =\ (int)dword;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00446}00446\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00447}00447\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00448}00448\ \ \ \textcolor{keywordflow}{if}(nwords\ ==\ 1)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00449}00449\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00450}00450\ \ \ \ \ \ \ answer.\mbox{\hyperlink{group___x_u_t_i_l_s_ga59d2c2b8d1c32098920f5d3eba0a5971}{Get}}(word);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00451}00451\ \ \ \ \ \ \ data\ =\ (int)word;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00452}00452\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00453}00453\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00454}00454\ \ \ result\ =\ ((float)data\ /\ divisor);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00455}00455\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00456}00456\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00457}00457\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00458}00458\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00459}00459\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00474}00474\ \textcolor{keywordtype}{bool}\ DIOMODBUSELECTRICMETER::ReadRegister(\textcolor{keywordtype}{int}\ registerID,\ \textcolor{keywordtype}{int}\ nwords,\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}},\ \textcolor{keywordtype}{int}\&\ result)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00475}00475\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00476}00476\ \ \ \mbox{\hyperlink{class_x_b_u_f_f_e_r}{XBUFFER}}\ \ \ answer;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00477}00477\ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ \ \ \ dword\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00478}00478\ \ \ \mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}}\ \ \ \ \ word\ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00479}00479\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00480}00480\ \ \ result\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00481}00481\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00482}00482\ \ \ \textcolor{keywordflow}{if}(!modbusprotocol-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gada1805205ac598d5b714b2217097dbba}{ReadHoldingRegisters}}(registerID,\ nwords,\ answer,\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a493b57f443cc38b3d3df9c1e584d9d82}{timeout}}))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00483}00483\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00484}00484\ \ \ \textcolor{keywordflow}{if}(nwords\ ==\ 2)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00485}00485\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00486}00486\ \ \ \ \ \ \ answer.\mbox{\hyperlink{group___x_u_t_i_l_s_ga59d2c2b8d1c32098920f5d3eba0a5971}{Get}}(dword);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00487}00487\ \ \ \ \ \ \ result\ =\ (int)dword;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00488}00488\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00489}00489\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00490}00490\ \ \ \textcolor{keywordflow}{if}(nwords\ ==\ 1)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00491}00491\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00492}00492\ \ \ \ \ \ \ answer.\mbox{\hyperlink{group___x_u_t_i_l_s_ga59d2c2b8d1c32098920f5d3eba0a5971}{Get}}(word);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00493}00493\ \ \ \ \ \ \ result\ =\ (int)word;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00494}00494\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00495}00495\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00496}00496\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00497}00497\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00498}00498\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00499}00499\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00508}00508\ \textcolor{keywordtype}{void}\ DIOMODBUSELECTRICMETER::Clean()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00509}00509\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00510}00510\ \ \ xtimer\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00511}00511\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00512}00512\ \ \ unit\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00513}00513\ \ \ inlittleendian\ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00514}00514\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00515}00515\ \ \ lastactiveenergysum\ \ \ \ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00516}00516\ \ \ lastreactiveenergysum\ \ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00517}00517\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00518}00518\ \ \ modbusprotocol\ \ \ \ \ \ \ \ \ \ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00519}00519\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00520}00520\ \ \ canceloperations\ \ \ \ \ \ \ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00521}00521\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00522}00522\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00523}00523\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_mod_bus_electric_meter_8cpp_source_l00524}00524\ \textcolor{preprocessor}{\#pragma\ endregion}}
+
+\end{DoxyCode}

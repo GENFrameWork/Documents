@@ -1,0 +1,200 @@
+\doxysection{Compress\+ZIP.\+cpp}
+\hypertarget{_compress_z_i_p_8cpp_source}{}\label{_compress_z_i_p_8cpp_source}\index{D:/Projects/GENFrameWork/GEN/Compress/CompressZIP.cpp@{D:/Projects/GENFrameWork/GEN/Compress/CompressZIP.cpp}}
+\mbox{\hyperlink{_compress_z_i_p_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00029}00029\ \textcolor{comment}{/*-\/-\/-\/-\/\ PRECOMPILATION\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#pragma\ region\ PRECOMPILATION\_INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_e_n___defines_8h}{GEN\_Defines.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00037}00037\ \textcolor{comment}{/*-\/-\/-\/-\/\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#pragma\ region\ INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_compress_z_i_p_8h}{CompressZIP.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ <zlib.h>}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00047}00047\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_buffer_8h}{XBuffer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00049}00049\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_memory___control_8h}{XMemory\_Control.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00051}00051\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00054}00054\ \textcolor{comment}{/*-\/-\/-\/-\/\ GENERAL\ VARIABLE\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00055}00055\ \textcolor{preprocessor}{\#pragma\ region\ GENERAL\_VARIABLE}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00057}00057\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00060}00060\ \textcolor{comment}{/*-\/-\/-\/-\/\ CLASS\ MEMBERS\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00061}00061\ \textcolor{preprocessor}{\#pragma\ region\ CLASS\_MEMBERS}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00071}\mbox{\hyperlink{group___c_o_m_p_r_e_s_s_ga4e2aac56cb16d466069ea1ab3d9caab0}{00071}}\ \mbox{\hyperlink{group___c_o_m_p_r_e_s_s_ga4e2aac56cb16d466069ea1ab3d9caab0}{COMPRESS\_ZIP::COMPRESS\_ZIP}}()\ :\ \mbox{\hyperlink{class_c_o_m_p_r_e_s_s_b_a_s_e}{COMPRESSBASE}}()}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00072}00072\ \{}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00073}00073\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00075}00075\ \ \ \mbox{\hyperlink{group___c_o_m_p_r_e_s_s_ga9a7d68961c2af05ba8e21f6584cde06f}{SetType}}(\mbox{\hyperlink{_compress_base_8h_ae531f940df1055ce7c28e7cbc784a22fa9438c2ed0a009fc2c34ea854915e3c1d}{COMPRESSBASE\_TYPE\_ZIP}});}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00076}00076\ \}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00087}\mbox{\hyperlink{group___c_o_m_p_r_e_s_s_ga8ed93199cba1ebc6af5c65af868e9bec}{00087}}\ \mbox{\hyperlink{group___c_o_m_p_r_e_s_s_ga8ed93199cba1ebc6af5c65af868e9bec}{COMPRESS\_ZIP::\string~COMPRESS\_ZIP}}()}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00088}00088\ \{}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00089}00089\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00090}00090\ \}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00106}\mbox{\hyperlink{group___c_o_m_p_r_e_s_s_gadc99544a9131a4546a8a0918cb463acb}{00106}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___c_o_m_p_r_e_s_s_gadc99544a9131a4546a8a0918cb463acb}{COMPRESS\_ZIP::Compress}}(\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ source,\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ size,\mbox{\hyperlink{class_x_b_u_f_f_e_r}{XBUFFER}}*\ xbuffer)}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00107}00107\ \{}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00108}00108\ \ \ \textcolor{keywordflow}{if}(!source)\ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00109}00109\ \ \ \textcolor{keywordflow}{if}(!size)\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00110}00110\ \ \ \textcolor{keywordflow}{if}(!xbuffer)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00112}00112\ \ \ xbuffer-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga0395231705663a2aeeee3b4be9d292bb}{Delete}}();}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00113}00113\ \ \ xbuffer-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_gacf69e379f1d0bf812ae9c1157eac172c}{Resize}}(size);}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00115}00115\ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ csize\ =\ size;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00117}00117\ \ \ ZCompress(xbuffer-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga59d2c2b8d1c32098920f5d3eba0a5971}{Get}}(),\ \&csize,\ source,\ size);}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00119}00119\ \ \ xbuffer-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_gacf69e379f1d0bf812ae9c1157eac172c}{Resize}}(csize);}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00121}00121\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00122}00122\ \}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00138}\mbox{\hyperlink{group___c_o_m_p_r_e_s_s_gaa05a323d6736f2c4ad7941efe600f04e}{00138}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___c_o_m_p_r_e_s_s_gaa05a323d6736f2c4ad7941efe600f04e}{COMPRESS\_ZIP::Decompress}}(\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ source,\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ size,\mbox{\hyperlink{class_x_b_u_f_f_e_r}{XBUFFER}}*\ xbuffer)}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00139}00139\ \{}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00140}00140\ \ \ \textcolor{keywordflow}{if}(!source)\ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00141}00141\ \ \ \textcolor{keywordflow}{if}(!size)\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00142}00142\ \ \ \textcolor{keywordflow}{if}(!xbuffer)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00144}00144\ \ \ \textcolor{comment}{//xbuffer-\/>Delete();}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00145}00145\ \ \ \textcolor{comment}{//xbuffer-\/>Resize(xbuffer-\/>size);}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00147}00147\ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ csize\ =\ xbuffer-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga726a6143d8a9293a199f8033c8198a0a}{GetSize}}();}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00149}00149\ \ \ ZDecompress(xbuffer-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga59d2c2b8d1c32098920f5d3eba0a5971}{Get}}(),\ \&csize,\ source,\ size);}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00151}00151\ \ \ \textcolor{comment}{//xbuffer-\/>Resize(csize);}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00153}00153\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00154}00154\ \}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00171}00171\ \textcolor{keywordtype}{int}\ COMPRESS\_ZIP::ZCompress(\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ target,\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}*\ targetsize,\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ source,\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ sourcesize)}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00172}00172\ \{}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00173}00173\ \ \ z\_stream\ stream;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00174}00174\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ err;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00175}00175\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ nExtraChunks;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00176}00176\ \ \ uInt\ \ \ \ \ destlen;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00178}00178\ \ \ stream.next\_in\ \ =\ (Bytef*)source;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00179}00179\ \ \ stream.avail\_in\ =\ (uInt)sourcesize;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00180}00180\ \ \ destlen\ \ \ \ \ \ \ \ \ =\ (uInt)*targetsize;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00182}00182\ \ \ \textcolor{keywordflow}{if}\ ((uLong)destlen\ !=\ (uLong)*targetsize)\ \textcolor{keywordflow}{return}\ Z\_BUF\_ERROR;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00184}00184\ \ \ stream.zalloc\ =\ (alloc\_func)0;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00185}00185\ \ \ stream.zfree\ =\ (free\_func)0;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00186}00186\ \ \ stream.opaque\ =\ (voidpf)0;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00188}00188\ \ \ err\ =\ deflateInit(\&stream,\ Z\_DEFAULT\_COMPRESSION);}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00189}00189\ \ \ \textcolor{keywordflow}{if}\ (err\ !=\ Z\_OK)\ \textcolor{keywordflow}{return}\ err;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00191}00191\ \ \ nExtraChunks\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00193}00193\ \ \ \textcolor{keywordflow}{do}\{\ stream.next\_out\ =\ target;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00194}00194\ \ \ \ \ \ \ stream.avail\_out\ =\ destlen;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00196}00196\ \ \ \ \ \ \ err\ =\ deflate(\&stream,\ Z\_FINISH);}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00197}00197\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(err==Z\_STREAM\_END)\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00199}00199\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (err\ !=\ Z\_OK)}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00200}00200\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ deflateEnd(\&stream);}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ err;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00203}00203\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00205}00205\ \ \ \ \ \ \ nExtraChunks\ +=\ 1;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00207}00207\ \ \ \ \ \}\textcolor{keywordflow}{while}(stream.avail\_out\ ==\ 0);}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00209}00209\ \ *targetsize\ =\ stream.total\_out;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00211}00211\ \ err\ =\ deflateEnd(\&stream);}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00212}00212\ \ \textcolor{keywordflow}{if}(err!=\ Z\_OK)\ \textcolor{keywordflow}{return}\ err;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00213}00213\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00214}00214\ \ \textcolor{keywordflow}{return}\ nExtraChunks\ ?\ Z\_BUF\_ERROR\ :\ Z\_OK;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00215}00215\ \}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00232}00232\ \textcolor{keywordtype}{int}\ COMPRESS\_ZIP::ZDecompress(\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ target,\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}*\ targetsize,\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ source,\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ sourcesize)}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00233}00233\ \{}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00234}00234\ \ \ z\_stream\ stream;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00235}00235\ \ \ \textcolor{keywordtype}{int}\ err;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00236}00236\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00237}00237\ \ \ \textcolor{keywordtype}{int}\ nExtraChunks;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00238}00238\ \ \ uInt\ destlen;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00239}00239\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00240}00240\ \ \ stream.next\_in\ =\ (Bytef*)source;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00241}00241\ \ \ stream.avail\_in\ =\ (uInt)sourcesize;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00242}00242\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00243}00243\ \ \ \textcolor{comment}{/*\ Check\ for\ source\ >\ 64K\ on\ 16-\/bit\ machine:\ */}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00244}00244\ \ \ \textcolor{keywordflow}{if}\ ((uLong)stream.avail\_in\ !=\ (uLong)sourcesize)\ \textcolor{keywordflow}{return}\ Z\_BUF\_ERROR;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00245}00245\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00246}00246\ \ \ destlen\ =\ (uInt)*targetsize;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00247}00247\ \ \ \textcolor{keywordflow}{if}\ ((uLong)destlen\ !=\ (uLong)*targetsize)\ \textcolor{keywordflow}{return}\ Z\_BUF\_ERROR;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00248}00248\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00249}00249\ \ \ stream.zalloc\ =\ (alloc\_func)0;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00250}00250\ \ \ stream.zfree\ =\ (free\_func)0;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00252}00252\ \ \ err\ =\ inflateInit(\&stream);}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00253}00253\ \ \ \textcolor{keywordflow}{if}\ (err\ !=\ Z\_OK)\ \textcolor{keywordflow}{return}\ err;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00254}00254\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00255}00255\ \ \ nExtraChunks\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00257}00257\ \ \ \textcolor{keywordflow}{do}\{\ stream.next\_out\ =\ target;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00258}00258\ \ \ \ \ \ \ stream.avail\_out\ =\ destlen;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00259}00259\ \ \ \ \ \ \ err\ =\ inflate(\&stream,\ Z\_FINISH);}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00260}00260\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(err==Z\_STREAM\_END)\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00261}00261\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00262}00262\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(err\ ==\ Z\_NEED\_DICT\ ||\ (err\ ==\ Z\_BUF\_ERROR\ \&\&\ stream.avail\_in\ ==\ 0))\ err\ =\ Z\_DATA\_ERROR;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00263}00263\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00264}00264\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(err!=Z\_BUF\_ERROR)}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00265}00265\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ inflateEnd(\&stream);}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ err;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00268}00268\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00269}00269\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00270}00270\ \ \ \ \ \ \ nExtraChunks\ +=\ 1;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00271}00271\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00272}00272\ \ \ \ \ \}\ \textcolor{keywordflow}{while}(stream.avail\_out\ ==\ 0);}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00273}00273\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00274}00274\ \ \ *targetsize\ =\ stream.total\_out;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00276}00276\ \ \ err\ =\ inflateEnd(\&stream);}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00277}00277\ \ \ \textcolor{keywordflow}{if}(err!=Z\_OK)\ \textcolor{keywordflow}{return}\ err;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00278}00278\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00279}00279\ \ \ \textcolor{keywordflow}{return}\ nExtraChunks\ ?\ Z\_BUF\_ERROR\ :\ Z\_OK;}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00280}00280\ \}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00281}00281\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00291}00291\ \textcolor{keywordtype}{void}\ COMPRESS\_ZIP::Clean()}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00292}00292\ \{}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00293}00293\ \ \ \mbox{\hyperlink{class_c_o_m_p_r_e_s_s_b_a_s_e_a912f2c51ea571d790654cebe7754c772}{param1}}\ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00294}00294\ \}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00295}00295\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00296}00296\ }
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00297}00297\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_compress_z_i_p_8cpp_source_l00298}00298\ }
+
+\end{DoxyCode}

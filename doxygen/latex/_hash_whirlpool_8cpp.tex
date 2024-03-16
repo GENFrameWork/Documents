@@ -1,0 +1,202 @@
+\doxysection{D\+:/\+Projects/\+GENFrame\+Work/\+GEN/\+Cipher/\+Hash\+Whirlpool.cpp File Reference}
+\hypertarget{_hash_whirlpool_8cpp}{}\label{_hash_whirlpool_8cpp}\index{D:/Projects/GENFrameWork/GEN/Cipher/HashWhirlpool.cpp@{D:/Projects/GENFrameWork/GEN/Cipher/HashWhirlpool.cpp}}
+{\ttfamily \#include "{}GEN\+\_\+\+Defines.\+h"{}}\newline
+{\ttfamily \#include "{}Hash\+Whirlpool.\+h"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include "{}XBuffer.\+h"{}}\newline
+{\ttfamily \#include "{}XMemory\+\_\+\+Control.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_hash_whirlpool_8cpp_a6334d34b3f8c1e83c6beaaf7f79ad5af}{LL}}(v)~(v\#\#ULL)
+\item 
+\#define \mbox{\hyperlink{_hash_whirlpool_8cpp_ad3e56d67d07f5ced4028419807b214dd}{ONE32}}~0xffffffffU
+\item 
+\#define \mbox{\hyperlink{_hash_whirlpool_8cpp_aa595954041b9758bbe549d2448167e04}{ONE8}}~0xffU
+\item 
+\#define \mbox{\hyperlink{_hash_whirlpool_8cpp_ad036f0165e309c31821319a52a4dc2d1}{ONE16}}~0xffffU
+\item 
+\#define \mbox{\hyperlink{_hash_whirlpool_8cpp_a94dc5201b3731f408f7d47c3b5ce983c}{ONE64}}~\mbox{\hyperlink{_hash_whirlpool_8cpp_a6334d34b3f8c1e83c6beaaf7f79ad5af}{LL}}(0xffffffffffffffff)
+\item 
+\#define \mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(x)~((x) \& \mbox{\hyperlink{_hash_whirlpool_8cpp_aa595954041b9758bbe549d2448167e04}{ONE8}})
+\item 
+\#define \mbox{\hyperlink{_hash_whirlpool_8cpp_a51531d8a5e7fb42142ac35c0f6488745}{T16}}(x)~((x) \& \mbox{\hyperlink{_hash_whirlpool_8cpp_ad036f0165e309c31821319a52a4dc2d1}{ONE16}})
+\item 
+\#define \mbox{\hyperlink{_hash_whirlpool_8cpp_a9f52a9d9145a1f027fd1a79070a49e4b}{T32}}(x)~((x) \& \mbox{\hyperlink{_hash_whirlpool_8cpp_ad3e56d67d07f5ced4028419807b214dd}{ONE32}})
+\item 
+\#define \mbox{\hyperlink{_hash_whirlpool_8cpp_ac25644f5912069154e204b1d557d0eda}{T64}}(x)~((x) \& \mbox{\hyperlink{_hash_whirlpool_8cpp_a94dc5201b3731f408f7d47c3b5ce983c}{ONE64}})
+\item 
+\#define \mbox{\hyperlink{_hash_whirlpool_8cpp_a3721df74aa1812d2a89b914bed00a05c}{ROTR64}}(v,  n)~(((v) $>$$>$ (n)) \texorpdfstring{$\vert$}{|} \mbox{\hyperlink{_hash_whirlpool_8cpp_ac25644f5912069154e204b1d557d0eda}{T64}}((v) $<$$<$ (64 -\/ (n))))
+\item 
+\#define \mbox{\hyperlink{_hash_whirlpool_8cpp_ab66a8dd74414b28a87115ee13468c5b0}{U8\+TO32\+\_\+\+BIG}}(c)~(((\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})\mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(\texorpdfstring{$\ast$}{*}(c)) $<$$<$ 24) \texorpdfstring{$\vert$}{|} ((\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})\mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(\texorpdfstring{$\ast$}{*}((c) + 1)) $<$$<$ 16) \texorpdfstring{$\vert$}{|} ((\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})\mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(\texorpdfstring{$\ast$}{*}((c) + 2)) $<$$<$ 8) \texorpdfstring{$\vert$}{|} ((\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})\mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(\texorpdfstring{$\ast$}{*}((c) + 3))))
+\item 
+\#define \mbox{\hyperlink{_hash_whirlpool_8cpp_ad8184508656107f7393e03463bdd8509}{U8\+TO32\+\_\+\+LITTLE}}(c)~(((\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})\mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(\texorpdfstring{$\ast$}{*}(c))) \texorpdfstring{$\vert$}{|} ((\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})\mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(\texorpdfstring{$\ast$}{*}((c) + 1)) $<$$<$ 8) \texorpdfstring{$\vert$}{|} (\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})\mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(\texorpdfstring{$\ast$}{*}((c) + 2)) $<$$<$ 16) \texorpdfstring{$\vert$}{|} ((\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})\mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(\texorpdfstring{$\ast$}{*}((c) + 3)) $<$$<$ 24))
+\item 
+\#define \mbox{\hyperlink{_hash_whirlpool_8cpp_a0785f47ecccc7ee3738826f70d5c81b1}{U32\+TO8\+\_\+\+BIG}}(c,  v)~do \{ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}} x = (v); \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}} \texorpdfstring{$\ast$}{*}d = (c); d\mbox{[}0\mbox{]} = \mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(x $>$$>$ 24); d\mbox{[}1\mbox{]} = \mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(x $>$$>$ 16); d\mbox{[}2\mbox{]} = \mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(x $>$$>$ 8); d\mbox{[}3\mbox{]} = \mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(x); \} while (0)
+\item 
+\#define \mbox{\hyperlink{_hash_whirlpool_8cpp_a4647f35be316f3daedddfd54c172adf7}{U32\+TO8\+\_\+\+LITTLE}}(c,  v)~do \{ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}} x = (v); \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}} \texorpdfstring{$\ast$}{*}d = (c); d\mbox{[}0\mbox{]} = \mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(x); d\mbox{[}1\mbox{]} = \mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(x $>$$>$ 8); d\mbox{[}2\mbox{]} = \mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(x $>$$>$ 16); d\mbox{[}3\mbox{]} = \mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(x $>$$>$ 24); \} while (0)
+\item 
+\#define \mbox{\hyperlink{_hash_whirlpool_8cpp_a453d6c05303385256d9893904b125483}{ROTL32}}(v,  n)~(\mbox{\hyperlink{_hash_whirlpool_8cpp_a9f52a9d9145a1f027fd1a79070a49e4b}{T32}}((v) $<$$<$ (n)) \texorpdfstring{$\vert$}{|} ((v) $>$$>$ (32 -\/ (n))))
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\DoxyHorRuler{0}
+ 
+
+Definition in file \mbox{\hyperlink{_hash_whirlpool_8cpp_source}{Hash\+Whirlpool.\+cpp}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_hash_whirlpool_8cpp_a6334d34b3f8c1e83c6beaaf7f79ad5af}\label{_hash_whirlpool_8cpp_a6334d34b3f8c1e83c6beaaf7f79ad5af} 
+\index{HashWhirlpool.cpp@{HashWhirlpool.cpp}!LL@{LL}}
+\index{LL@{LL}!HashWhirlpool.cpp@{HashWhirlpool.cpp}}
+\doxysubsubsection{\texorpdfstring{LL}{LL}}
+{\footnotesize\ttfamily \#define LL(\begin{DoxyParamCaption}\item[{}]{v }\end{DoxyParamCaption})~(v\#\#ULL)}
+
+\DoxyHorRuler{0}
+ 
+
+Definition at line \mbox{\hyperlink{_hash_whirlpool_8cpp_source_l00054}{54}} of file \mbox{\hyperlink{_hash_whirlpool_8cpp_source}{Hash\+Whirlpool.\+cpp}}.
+
+\Hypertarget{_hash_whirlpool_8cpp_ad036f0165e309c31821319a52a4dc2d1}\label{_hash_whirlpool_8cpp_ad036f0165e309c31821319a52a4dc2d1} 
+\index{HashWhirlpool.cpp@{HashWhirlpool.cpp}!ONE16@{ONE16}}
+\index{ONE16@{ONE16}!HashWhirlpool.cpp@{HashWhirlpool.cpp}}
+\doxysubsubsection{\texorpdfstring{ONE16}{ONE16}}
+{\footnotesize\ttfamily \#define ONE16~0xffffU}
+
+
+
+Definition at line \mbox{\hyperlink{_hash_whirlpool_8cpp_source_l00058}{58}} of file \mbox{\hyperlink{_hash_whirlpool_8cpp_source}{Hash\+Whirlpool.\+cpp}}.
+
+\Hypertarget{_hash_whirlpool_8cpp_ad3e56d67d07f5ced4028419807b214dd}\label{_hash_whirlpool_8cpp_ad3e56d67d07f5ced4028419807b214dd} 
+\index{HashWhirlpool.cpp@{HashWhirlpool.cpp}!ONE32@{ONE32}}
+\index{ONE32@{ONE32}!HashWhirlpool.cpp@{HashWhirlpool.cpp}}
+\doxysubsubsection{\texorpdfstring{ONE32}{ONE32}}
+{\footnotesize\ttfamily \#define ONE32~0xffffffffU}
+
+
+
+Definition at line \mbox{\hyperlink{_hash_whirlpool_8cpp_source_l00056}{56}} of file \mbox{\hyperlink{_hash_whirlpool_8cpp_source}{Hash\+Whirlpool.\+cpp}}.
+
+\Hypertarget{_hash_whirlpool_8cpp_a94dc5201b3731f408f7d47c3b5ce983c}\label{_hash_whirlpool_8cpp_a94dc5201b3731f408f7d47c3b5ce983c} 
+\index{HashWhirlpool.cpp@{HashWhirlpool.cpp}!ONE64@{ONE64}}
+\index{ONE64@{ONE64}!HashWhirlpool.cpp@{HashWhirlpool.cpp}}
+\doxysubsubsection{\texorpdfstring{ONE64}{ONE64}}
+{\footnotesize\ttfamily \#define ONE64~\mbox{\hyperlink{_hash_whirlpool_8cpp_a6334d34b3f8c1e83c6beaaf7f79ad5af}{LL}}(0xffffffffffffffff)}
+
+
+
+Definition at line \mbox{\hyperlink{_hash_whirlpool_8cpp_source_l00059}{59}} of file \mbox{\hyperlink{_hash_whirlpool_8cpp_source}{Hash\+Whirlpool.\+cpp}}.
+
+\Hypertarget{_hash_whirlpool_8cpp_aa595954041b9758bbe549d2448167e04}\label{_hash_whirlpool_8cpp_aa595954041b9758bbe549d2448167e04} 
+\index{HashWhirlpool.cpp@{HashWhirlpool.cpp}!ONE8@{ONE8}}
+\index{ONE8@{ONE8}!HashWhirlpool.cpp@{HashWhirlpool.cpp}}
+\doxysubsubsection{\texorpdfstring{ONE8}{ONE8}}
+{\footnotesize\ttfamily \#define ONE8~0xffU}
+
+
+
+Definition at line \mbox{\hyperlink{_hash_whirlpool_8cpp_source_l00057}{57}} of file \mbox{\hyperlink{_hash_whirlpool_8cpp_source}{Hash\+Whirlpool.\+cpp}}.
+
+\Hypertarget{_hash_whirlpool_8cpp_a453d6c05303385256d9893904b125483}\label{_hash_whirlpool_8cpp_a453d6c05303385256d9893904b125483} 
+\index{HashWhirlpool.cpp@{HashWhirlpool.cpp}!ROTL32@{ROTL32}}
+\index{ROTL32@{ROTL32}!HashWhirlpool.cpp@{HashWhirlpool.cpp}}
+\doxysubsubsection{\texorpdfstring{ROTL32}{ROTL32}}
+{\footnotesize\ttfamily \#define ROTL32(\begin{DoxyParamCaption}\item[{}]{v,  }\item[{}]{n }\end{DoxyParamCaption})~(\mbox{\hyperlink{_hash_whirlpool_8cpp_a9f52a9d9145a1f027fd1a79070a49e4b}{T32}}((v) $<$$<$ (n)) \texorpdfstring{$\vert$}{|} ((v) $>$$>$ (32 -\/ (n))))}
+
+
+
+Definition at line \mbox{\hyperlink{_hash_whirlpool_8cpp_source_l00072}{72}} of file \mbox{\hyperlink{_hash_whirlpool_8cpp_source}{Hash\+Whirlpool.\+cpp}}.
+
+\Hypertarget{_hash_whirlpool_8cpp_a3721df74aa1812d2a89b914bed00a05c}\label{_hash_whirlpool_8cpp_a3721df74aa1812d2a89b914bed00a05c} 
+\index{HashWhirlpool.cpp@{HashWhirlpool.cpp}!ROTR64@{ROTR64}}
+\index{ROTR64@{ROTR64}!HashWhirlpool.cpp@{HashWhirlpool.cpp}}
+\doxysubsubsection{\texorpdfstring{ROTR64}{ROTR64}}
+{\footnotesize\ttfamily \#define ROTR64(\begin{DoxyParamCaption}\item[{}]{v,  }\item[{}]{n }\end{DoxyParamCaption})~(((v) $>$$>$ (n)) \texorpdfstring{$\vert$}{|} \mbox{\hyperlink{_hash_whirlpool_8cpp_ac25644f5912069154e204b1d557d0eda}{T64}}((v) $<$$<$ (64 -\/ (n))))}
+
+
+
+Definition at line \mbox{\hyperlink{_hash_whirlpool_8cpp_source_l00066}{66}} of file \mbox{\hyperlink{_hash_whirlpool_8cpp_source}{Hash\+Whirlpool.\+cpp}}.
+
+\Hypertarget{_hash_whirlpool_8cpp_a51531d8a5e7fb42142ac35c0f6488745}\label{_hash_whirlpool_8cpp_a51531d8a5e7fb42142ac35c0f6488745} 
+\index{HashWhirlpool.cpp@{HashWhirlpool.cpp}!T16@{T16}}
+\index{T16@{T16}!HashWhirlpool.cpp@{HashWhirlpool.cpp}}
+\doxysubsubsection{\texorpdfstring{T16}{T16}}
+{\footnotesize\ttfamily \#define T16(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((x) \& \mbox{\hyperlink{_hash_whirlpool_8cpp_ad036f0165e309c31821319a52a4dc2d1}{ONE16}})}
+
+
+
+Definition at line \mbox{\hyperlink{_hash_whirlpool_8cpp_source_l00062}{62}} of file \mbox{\hyperlink{_hash_whirlpool_8cpp_source}{Hash\+Whirlpool.\+cpp}}.
+
+\Hypertarget{_hash_whirlpool_8cpp_a9f52a9d9145a1f027fd1a79070a49e4b}\label{_hash_whirlpool_8cpp_a9f52a9d9145a1f027fd1a79070a49e4b} 
+\index{HashWhirlpool.cpp@{HashWhirlpool.cpp}!T32@{T32}}
+\index{T32@{T32}!HashWhirlpool.cpp@{HashWhirlpool.cpp}}
+\doxysubsubsection{\texorpdfstring{T32}{T32}}
+{\footnotesize\ttfamily \#define T32(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((x) \& \mbox{\hyperlink{_hash_whirlpool_8cpp_ad3e56d67d07f5ced4028419807b214dd}{ONE32}})}
+
+
+
+Definition at line \mbox{\hyperlink{_hash_whirlpool_8cpp_source_l00063}{63}} of file \mbox{\hyperlink{_hash_whirlpool_8cpp_source}{Hash\+Whirlpool.\+cpp}}.
+
+\Hypertarget{_hash_whirlpool_8cpp_ac25644f5912069154e204b1d557d0eda}\label{_hash_whirlpool_8cpp_ac25644f5912069154e204b1d557d0eda} 
+\index{HashWhirlpool.cpp@{HashWhirlpool.cpp}!T64@{T64}}
+\index{T64@{T64}!HashWhirlpool.cpp@{HashWhirlpool.cpp}}
+\doxysubsubsection{\texorpdfstring{T64}{T64}}
+{\footnotesize\ttfamily \#define T64(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((x) \& \mbox{\hyperlink{_hash_whirlpool_8cpp_a94dc5201b3731f408f7d47c3b5ce983c}{ONE64}})}
+
+
+
+Definition at line \mbox{\hyperlink{_hash_whirlpool_8cpp_source_l00064}{64}} of file \mbox{\hyperlink{_hash_whirlpool_8cpp_source}{Hash\+Whirlpool.\+cpp}}.
+
+\Hypertarget{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}\label{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db} 
+\index{HashWhirlpool.cpp@{HashWhirlpool.cpp}!T8@{T8}}
+\index{T8@{T8}!HashWhirlpool.cpp@{HashWhirlpool.cpp}}
+\doxysubsubsection{\texorpdfstring{T8}{T8}}
+{\footnotesize\ttfamily \#define T8(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~((x) \& \mbox{\hyperlink{_hash_whirlpool_8cpp_aa595954041b9758bbe549d2448167e04}{ONE8}})}
+
+
+
+Definition at line \mbox{\hyperlink{_hash_whirlpool_8cpp_source_l00061}{61}} of file \mbox{\hyperlink{_hash_whirlpool_8cpp_source}{Hash\+Whirlpool.\+cpp}}.
+
+\Hypertarget{_hash_whirlpool_8cpp_a0785f47ecccc7ee3738826f70d5c81b1}\label{_hash_whirlpool_8cpp_a0785f47ecccc7ee3738826f70d5c81b1} 
+\index{HashWhirlpool.cpp@{HashWhirlpool.cpp}!U32TO8\_BIG@{U32TO8\_BIG}}
+\index{U32TO8\_BIG@{U32TO8\_BIG}!HashWhirlpool.cpp@{HashWhirlpool.cpp}}
+\doxysubsubsection{\texorpdfstring{U32TO8\_BIG}{U32TO8\_BIG}}
+{\footnotesize\ttfamily \#define U32\+TO8\+\_\+\+BIG(\begin{DoxyParamCaption}\item[{}]{c,  }\item[{}]{v }\end{DoxyParamCaption})~do \{ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}} x = (v); \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}} \texorpdfstring{$\ast$}{*}d = (c); d\mbox{[}0\mbox{]} = \mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(x $>$$>$ 24); d\mbox{[}1\mbox{]} = \mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(x $>$$>$ 16); d\mbox{[}2\mbox{]} = \mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(x $>$$>$ 8); d\mbox{[}3\mbox{]} = \mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(x); \} while (0)}
+
+
+
+Definition at line \mbox{\hyperlink{_hash_whirlpool_8cpp_source_l00070}{70}} of file \mbox{\hyperlink{_hash_whirlpool_8cpp_source}{Hash\+Whirlpool.\+cpp}}.
+
+\Hypertarget{_hash_whirlpool_8cpp_a4647f35be316f3daedddfd54c172adf7}\label{_hash_whirlpool_8cpp_a4647f35be316f3daedddfd54c172adf7} 
+\index{HashWhirlpool.cpp@{HashWhirlpool.cpp}!U32TO8\_LITTLE@{U32TO8\_LITTLE}}
+\index{U32TO8\_LITTLE@{U32TO8\_LITTLE}!HashWhirlpool.cpp@{HashWhirlpool.cpp}}
+\doxysubsubsection{\texorpdfstring{U32TO8\_LITTLE}{U32TO8\_LITTLE}}
+{\footnotesize\ttfamily \#define U32\+TO8\+\_\+\+LITTLE(\begin{DoxyParamCaption}\item[{}]{c,  }\item[{}]{v }\end{DoxyParamCaption})~do \{ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}} x = (v); \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}} \texorpdfstring{$\ast$}{*}d = (c); d\mbox{[}0\mbox{]} = \mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(x); d\mbox{[}1\mbox{]} = \mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(x $>$$>$ 8); d\mbox{[}2\mbox{]} = \mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(x $>$$>$ 16); d\mbox{[}3\mbox{]} = \mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(x $>$$>$ 24); \} while (0)}
+
+
+
+Definition at line \mbox{\hyperlink{_hash_whirlpool_8cpp_source_l00071}{71}} of file \mbox{\hyperlink{_hash_whirlpool_8cpp_source}{Hash\+Whirlpool.\+cpp}}.
+
+\Hypertarget{_hash_whirlpool_8cpp_ab66a8dd74414b28a87115ee13468c5b0}\label{_hash_whirlpool_8cpp_ab66a8dd74414b28a87115ee13468c5b0} 
+\index{HashWhirlpool.cpp@{HashWhirlpool.cpp}!U8TO32\_BIG@{U8TO32\_BIG}}
+\index{U8TO32\_BIG@{U8TO32\_BIG}!HashWhirlpool.cpp@{HashWhirlpool.cpp}}
+\doxysubsubsection{\texorpdfstring{U8TO32\_BIG}{U8TO32\_BIG}}
+{\footnotesize\ttfamily \#define U8\+TO32\+\_\+\+BIG(\begin{DoxyParamCaption}\item[{}]{c }\end{DoxyParamCaption})~(((\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})\mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(\texorpdfstring{$\ast$}{*}(c)) $<$$<$ 24) \texorpdfstring{$\vert$}{|} ((\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})\mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(\texorpdfstring{$\ast$}{*}((c) + 1)) $<$$<$ 16) \texorpdfstring{$\vert$}{|} ((\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})\mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(\texorpdfstring{$\ast$}{*}((c) + 2)) $<$$<$ 8) \texorpdfstring{$\vert$}{|} ((\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})\mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(\texorpdfstring{$\ast$}{*}((c) + 3))))}
+
+
+
+Definition at line \mbox{\hyperlink{_hash_whirlpool_8cpp_source_l00068}{68}} of file \mbox{\hyperlink{_hash_whirlpool_8cpp_source}{Hash\+Whirlpool.\+cpp}}.
+
+\Hypertarget{_hash_whirlpool_8cpp_ad8184508656107f7393e03463bdd8509}\label{_hash_whirlpool_8cpp_ad8184508656107f7393e03463bdd8509} 
+\index{HashWhirlpool.cpp@{HashWhirlpool.cpp}!U8TO32\_LITTLE@{U8TO32\_LITTLE}}
+\index{U8TO32\_LITTLE@{U8TO32\_LITTLE}!HashWhirlpool.cpp@{HashWhirlpool.cpp}}
+\doxysubsubsection{\texorpdfstring{U8TO32\_LITTLE}{U8TO32\_LITTLE}}
+{\footnotesize\ttfamily \#define U8\+TO32\+\_\+\+LITTLE(\begin{DoxyParamCaption}\item[{}]{c }\end{DoxyParamCaption})~(((\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})\mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(\texorpdfstring{$\ast$}{*}(c))) \texorpdfstring{$\vert$}{|} ((\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})\mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(\texorpdfstring{$\ast$}{*}((c) + 1)) $<$$<$ 8) \texorpdfstring{$\vert$}{|} (\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})\mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(\texorpdfstring{$\ast$}{*}((c) + 2)) $<$$<$ 16) \texorpdfstring{$\vert$}{|} ((\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})\mbox{\hyperlink{_hash_whirlpool_8cpp_ac9c0c4392247ecd8074c1a53128e08db}{T8}}(\texorpdfstring{$\ast$}{*}((c) + 3)) $<$$<$ 24))}
+
+
+
+Definition at line \mbox{\hyperlink{_hash_whirlpool_8cpp_source_l00069}{69}} of file \mbox{\hyperlink{_hash_whirlpool_8cpp_source}{Hash\+Whirlpool.\+cpp}}.
+

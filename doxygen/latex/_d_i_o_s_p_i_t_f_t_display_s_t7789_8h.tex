@@ -1,0 +1,531 @@
+\doxysection{D\+:/\+Projects/\+GENFrame\+Work/\+GEN/\+Data\+IO/\+Drivers/\+SPI/\+DIOSPITFTDisplay\+ST7789.h File Reference}
+\hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h}{}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h}\index{D:/Projects/GENFrameWork/GEN/DataIO/Drivers/SPI/DIOSPITFTDisplayST7789.h@{D:/Projects/GENFrameWork/GEN/DataIO/Drivers/SPI/DIOSPITFTDisplayST7789.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdarg.\+h$>$}\newline
+{\ttfamily \#include "{}DIOGPIO.\+h"{}}\newline
+{\ttfamily \#include "{}DIODevice\+SPI.\+h"{}}\newline
+{\ttfamily \#include "{}DIODisplay\+Device.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_d_i_o_s_p_i_t_f_t_d_i_s_p_l_a_y_s_t7789}{DIOSPITFTDISPLAYST7789}}
+\begin{DoxyCompactList}\small\item\em Data Input/\+Output SPI Display TFT ST7789 class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a7278437e5abd86c15306139a006f08f8}{DIOSPITFTDISPLAYST7789\+\_\+\+DC\+\_\+\+DATA}}~GEN\+\_\+\+DIOGPIO.\+Set\+Value(Get\+GPIOEntry\+ID(\mbox{\hyperlink{_d_i_o_display_device_8h_a7d34e282b7fa582a6b6060e30a748973a375f48fea26d4e6d6d883e896df7066f}{DIODISPLAYDEVICE\+\_\+\+INDEX\+\_\+\+GPIOENTRYID\+\_\+\+DC}}), true);
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a078fb3210f1941b05bc8e4ac0e972bd2}{DIOSPITFTDISPLAYST7789\+\_\+\+DC\+\_\+\+CMD}}~GEN\+\_\+\+DIOGPIO.\+Set\+Value(Get\+GPIOEntry\+ID(\mbox{\hyperlink{_d_i_o_display_device_8h_a7d34e282b7fa582a6b6060e30a748973a375f48fea26d4e6d6d883e896df7066f}{DIODISPLAYDEVICE\+\_\+\+INDEX\+\_\+\+GPIOENTRYID\+\_\+\+DC}}), false);
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a35b2f40c9296b2c684440eb7741335c1}{DIOSPITFTDISPLAYST7789\+\_\+\+TFTWIDTH}}~240
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a5327bb4b34bd3e818a7c52e87ab9caca}{DIOSPITFTDISPLAYST7789\+\_\+\+TFTHEIGHT}}~240
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a6c2b4f1c92f0b9efd0275c47c9c8e45b}{DIOSPITFTDISPLAYST7789\+\_\+240x240\+\_\+\+XSTART}}~0
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_acc3614a8ff125b0df8493b5ea7be1211}{DIOSPITFTDISPLAYST7789\+\_\+240x240\+\_\+\+YSTART}}~0
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_ad3267d2a767a549442ebe34ec0a84bca}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+NOP}}~0x00
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a5b1e0616cacdaa3cc78b50589eb56f0c}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+SWRESET}}~0x01
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a699b2310d0407ca5e36e3ed11fdd343e}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+RDDID}}~0x04
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a1771050f62fe5ba83a5546148c3e88ea}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+RDDST}}~0x09
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_aa43a1d18beae75e1f227fd7e28ae54b0}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+SLPIN}}~0x10
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a702403f17c2a9cc03bfc4b954aac699e}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+SLPOUT}}~0x11
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_ac22195c9e299a8f3466618f6ab3a8233}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+PTLON}}~0x12
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_abed65cc9da42906a6fb939b2d7495fd6}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+NORON}}~0x13
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a90e08b4271abfa913231726979ccbd88}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+INVOFF}}~0x20
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_adee680df7eb926242c9c4467f8f4a590}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+INVON}}~0x21
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a2bc7b66883c37dc1a220ad1bb1a2223d}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+DISPOFF}}~0x28
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_aad36fdfa1c6954d8f7f46245077c6ead}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+DISPON}}~0x29
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_aeb7ad7508983c40540382db714c1b88d}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+CASET}}~0x2A
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_af1d0b83427c749660254fde1a7413678}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+RASET}}~0x2B
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_ae984323b6147279c4e629f84b3d06bb1}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+RAMWR}}~0x2C
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a6619f531289da8db8d3bb5c97d2c198d}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+RAMRD}}~0x2E
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a77058de87751b35acbb1194125ce4c33}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+PTLAR}}~0x30
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a095ebdf5b90b80375a37b4ae14b26da5}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+COLMOD}}~0x3A
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_ab8f346b08a4388e0c3fe4b982ee5de8c}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+MADCTL}}~0x36
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_ad97088b0ede7a7027db0b9446bf0de6a}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+MADCTL\+\_\+\+MY}}~0x80
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a87b303d297c8d6372f80671e55193b09}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+MADCTL\+\_\+\+MX}}~0x40
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_af98f36a91d55b16ee88fd020a03147e3}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+MADCTL\+\_\+\+MV}}~0x20
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a6b7d20d3d927f41e112f54d94a6c13f7}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+MADCTL\+\_\+\+ML}}~0x10
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_abfda009e9a8f21fd93321598a435c280}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+MADCTL\+\_\+\+RGB}}~0x00
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_ac0b3790b3b1db520bdfe868ef9d58ea0}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+RDID1}}~0x\+DA
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a051a50614c47c762c6d63d431a6dd439}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+RDID2}}~0x\+DB
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_ad60a985b4fad5cc915fbea2039236d46}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+RDID3}}~0x\+DC
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a84be5fdf8abfdd8784eb90de56340558}{DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+RDID4}}~0x\+DD
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_ae181e25d9854367b35fcedcea12511a0}{DIOSPITFTDISPLAYST7789\+\_\+\+COLOR\+\_\+\+BLACK}}~0x0000
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_aff372ac87afec928ffa621c9ded983f1}{DIOSPITFTDISPLAYST7789\+\_\+\+COLOR\+\_\+\+BLUE}}~0x001F
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_acf056eacdf4a6a627b078d2fe417c064}{DIOSPITFTDISPLAYST7789\+\_\+\+COLOR\+\_\+\+RED}}~0x\+F800
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a7fd842d2e6ec6165246f3de4637f85c7}{DIOSPITFTDISPLAYST7789\+\_\+\+COLOR\+\_\+\+GREEN}}~0x07\+E0
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a5c1a0c7131b4ab01f7c476fc9b75f7f6}{DIOSPITFTDISPLAYST7789\+\_\+\+COLOR\+\_\+\+CYAN}}~0x07\+FF
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_aa2609fa65c76b436fc2bec39917c84d7}{DIOSPITFTDISPLAYST7789\+\_\+\+COLOR\+\_\+\+MAGENTA}}~0x\+F81F
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a957714dd4fe3adde0fd339b8ddfa8abe}{DIOSPITFTDISPLAYST7789\+\_\+\+COLOR\+\_\+\+YELLOW}}~0x\+FFE0
+\item 
+\#define \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_add7053bf929bdb65610930025a050106}{DIOSPITFTDISPLAYST7789\+\_\+\+COLOR\+\_\+\+WHITE}}~0x\+FFFF
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\DoxyHorRuler{0}
+ 
+
+Definition in file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a6c2b4f1c92f0b9efd0275c47c9c8e45b}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a6c2b4f1c92f0b9efd0275c47c9c8e45b} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_240x240\_XSTART@{DIOSPITFTDISPLAYST7789\_240x240\_XSTART}}
+\index{DIOSPITFTDISPLAYST7789\_240x240\_XSTART@{DIOSPITFTDISPLAYST7789\_240x240\_XSTART}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_240x240\_XSTART}{DIOSPITFTDISPLAYST7789\_240x240\_XSTART}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+240x240\+\_\+\+XSTART~0}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00055}{55}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_acc3614a8ff125b0df8493b5ea7be1211}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_acc3614a8ff125b0df8493b5ea7be1211} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_240x240\_YSTART@{DIOSPITFTDISPLAYST7789\_240x240\_YSTART}}
+\index{DIOSPITFTDISPLAYST7789\_240x240\_YSTART@{DIOSPITFTDISPLAYST7789\_240x240\_YSTART}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_240x240\_YSTART}{DIOSPITFTDISPLAYST7789\_240x240\_YSTART}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+240x240\+\_\+\+YSTART~0}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00056}{56}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_aeb7ad7508983c40540382db714c1b88d}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_aeb7ad7508983c40540382db714c1b88d} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_CASET@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_CASET}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_CASET@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_CASET}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_CASET}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_CASET}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+CASET~0x2A}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00072}{72}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a095ebdf5b90b80375a37b4ae14b26da5}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a095ebdf5b90b80375a37b4ae14b26da5} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_COLMOD@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_COLMOD}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_COLMOD@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_COLMOD}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_COLMOD}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_COLMOD}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+COLMOD~0x3A}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00078}{78}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a2bc7b66883c37dc1a220ad1bb1a2223d}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a2bc7b66883c37dc1a220ad1bb1a2223d} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_DISPOFF@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_DISPOFF}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_DISPOFF@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_DISPOFF}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_DISPOFF}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_DISPOFF}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+DISPOFF~0x28}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00070}{70}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_aad36fdfa1c6954d8f7f46245077c6ead}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_aad36fdfa1c6954d8f7f46245077c6ead} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_DISPON@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_DISPON}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_DISPON@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_DISPON}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_DISPON}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_DISPON}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+DISPON~0x29}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00071}{71}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a90e08b4271abfa913231726979ccbd88}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a90e08b4271abfa913231726979ccbd88} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_INVOFF@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_INVOFF}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_INVOFF@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_INVOFF}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_INVOFF}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_INVOFF}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+INVOFF~0x20}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00068}{68}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_adee680df7eb926242c9c4467f8f4a590}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_adee680df7eb926242c9c4467f8f4a590} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_INVON@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_INVON}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_INVON@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_INVON}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_INVON}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_INVON}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+INVON~0x21}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00069}{69}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_ab8f346b08a4388e0c3fe4b982ee5de8c}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_ab8f346b08a4388e0c3fe4b982ee5de8c} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+MADCTL~0x36}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00079}{79}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a6b7d20d3d927f41e112f54d94a6c13f7}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a6b7d20d3d927f41e112f54d94a6c13f7} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_ML@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_ML}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_ML@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_ML}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_ML}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_ML}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+MADCTL\+\_\+\+ML~0x10}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00084}{84}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_af98f36a91d55b16ee88fd020a03147e3}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_af98f36a91d55b16ee88fd020a03147e3} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_MV@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_MV}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_MV@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_MV}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_MV}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_MV}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+MADCTL\+\_\+\+MV~0x20}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00083}{83}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a87b303d297c8d6372f80671e55193b09}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a87b303d297c8d6372f80671e55193b09} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_MX@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_MX}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_MX@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_MX}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_MX}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_MX}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+MADCTL\+\_\+\+MX~0x40}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00082}{82}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_ad97088b0ede7a7027db0b9446bf0de6a}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_ad97088b0ede7a7027db0b9446bf0de6a} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_MY@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_MY}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_MY@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_MY}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_MY}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_MY}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+MADCTL\+\_\+\+MY~0x80}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00081}{81}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_abfda009e9a8f21fd93321598a435c280}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_abfda009e9a8f21fd93321598a435c280} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_RGB@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_RGB}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_RGB@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_RGB}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_RGB}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_MADCTL\_RGB}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+MADCTL\+\_\+\+RGB~0x00}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00085}{85}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_ad3267d2a767a549442ebe34ec0a84bca}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_ad3267d2a767a549442ebe34ec0a84bca} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_NOP@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_NOP}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_NOP@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_NOP}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_NOP}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_NOP}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+NOP~0x00}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00058}{58}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_abed65cc9da42906a6fb939b2d7495fd6}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_abed65cc9da42906a6fb939b2d7495fd6} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_NORON@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_NORON}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_NORON@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_NORON}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_NORON}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_NORON}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+NORON~0x13}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00066}{66}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a77058de87751b35acbb1194125ce4c33}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a77058de87751b35acbb1194125ce4c33} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_PTLAR@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_PTLAR}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_PTLAR@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_PTLAR}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_PTLAR}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_PTLAR}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+PTLAR~0x30}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00077}{77}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_ac22195c9e299a8f3466618f6ab3a8233}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_ac22195c9e299a8f3466618f6ab3a8233} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_PTLON@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_PTLON}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_PTLON@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_PTLON}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_PTLON}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_PTLON}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+PTLON~0x12}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00065}{65}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a6619f531289da8db8d3bb5c97d2c198d}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a6619f531289da8db8d3bb5c97d2c198d} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RAMRD@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RAMRD}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RAMRD@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RAMRD}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RAMRD}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RAMRD}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+RAMRD~0x2E}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00075}{75}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_ae984323b6147279c4e629f84b3d06bb1}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_ae984323b6147279c4e629f84b3d06bb1} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RAMWR@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RAMWR}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RAMWR@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RAMWR}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RAMWR}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RAMWR}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+RAMWR~0x2C}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00074}{74}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_af1d0b83427c749660254fde1a7413678}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_af1d0b83427c749660254fde1a7413678} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RASET@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RASET}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RASET@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RASET}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RASET}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RASET}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+RASET~0x2B}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00073}{73}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a699b2310d0407ca5e36e3ed11fdd343e}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a699b2310d0407ca5e36e3ed11fdd343e} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDDID@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDDID}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDDID@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDDID}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDDID}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDDID}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+RDDID~0x04}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00060}{60}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a1771050f62fe5ba83a5546148c3e88ea}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a1771050f62fe5ba83a5546148c3e88ea} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDDST@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDDST}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDDST@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDDST}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDDST}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDDST}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+RDDST~0x09}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00061}{61}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_ac0b3790b3b1db520bdfe868ef9d58ea0}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_ac0b3790b3b1db520bdfe868ef9d58ea0} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDID1@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDID1}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDID1@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDID1}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDID1}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDID1}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+RDID1~0x\+DA}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00087}{87}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a051a50614c47c762c6d63d431a6dd439}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a051a50614c47c762c6d63d431a6dd439} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDID2@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDID2}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDID2@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDID2}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDID2}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDID2}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+RDID2~0x\+DB}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00088}{88}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_ad60a985b4fad5cc915fbea2039236d46}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_ad60a985b4fad5cc915fbea2039236d46} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDID3@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDID3}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDID3@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDID3}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDID3}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDID3}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+RDID3~0x\+DC}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00089}{89}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a84be5fdf8abfdd8784eb90de56340558}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a84be5fdf8abfdd8784eb90de56340558} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDID4@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDID4}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDID4@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDID4}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDID4}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_RDID4}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+RDID4~0x\+DD}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00090}{90}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_aa43a1d18beae75e1f227fd7e28ae54b0}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_aa43a1d18beae75e1f227fd7e28ae54b0} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_SLPIN@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_SLPIN}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_SLPIN@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_SLPIN}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_SLPIN}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_SLPIN}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+SLPIN~0x10}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00063}{63}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a702403f17c2a9cc03bfc4b954aac699e}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a702403f17c2a9cc03bfc4b954aac699e} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_SLPOUT@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_SLPOUT}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_SLPOUT@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_SLPOUT}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_SLPOUT}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_SLPOUT}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+SLPOUT~0x11}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00064}{64}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a5b1e0616cacdaa3cc78b50589eb56f0c}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a5b1e0616cacdaa3cc78b50589eb56f0c} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_SWRESET@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_SWRESET}}
+\index{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_SWRESET@{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_SWRESET}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_SWRESET}{DIOSPITFTDISPLAYST7789\_CMD\_ST7789\_SWRESET}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+CMD\+\_\+\+ST7789\+\_\+\+SWRESET~0x01}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00059}{59}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_ae181e25d9854367b35fcedcea12511a0}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_ae181e25d9854367b35fcedcea12511a0} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_COLOR\_BLACK@{DIOSPITFTDISPLAYST7789\_COLOR\_BLACK}}
+\index{DIOSPITFTDISPLAYST7789\_COLOR\_BLACK@{DIOSPITFTDISPLAYST7789\_COLOR\_BLACK}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_COLOR\_BLACK}{DIOSPITFTDISPLAYST7789\_COLOR\_BLACK}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+COLOR\+\_\+\+BLACK~0x0000}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00092}{92}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_aff372ac87afec928ffa621c9ded983f1}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_aff372ac87afec928ffa621c9ded983f1} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_COLOR\_BLUE@{DIOSPITFTDISPLAYST7789\_COLOR\_BLUE}}
+\index{DIOSPITFTDISPLAYST7789\_COLOR\_BLUE@{DIOSPITFTDISPLAYST7789\_COLOR\_BLUE}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_COLOR\_BLUE}{DIOSPITFTDISPLAYST7789\_COLOR\_BLUE}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+COLOR\+\_\+\+BLUE~0x001F}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00093}{93}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a5c1a0c7131b4ab01f7c476fc9b75f7f6}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a5c1a0c7131b4ab01f7c476fc9b75f7f6} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_COLOR\_CYAN@{DIOSPITFTDISPLAYST7789\_COLOR\_CYAN}}
+\index{DIOSPITFTDISPLAYST7789\_COLOR\_CYAN@{DIOSPITFTDISPLAYST7789\_COLOR\_CYAN}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_COLOR\_CYAN}{DIOSPITFTDISPLAYST7789\_COLOR\_CYAN}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+COLOR\+\_\+\+CYAN~0x07\+FF}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00096}{96}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a7fd842d2e6ec6165246f3de4637f85c7}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a7fd842d2e6ec6165246f3de4637f85c7} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_COLOR\_GREEN@{DIOSPITFTDISPLAYST7789\_COLOR\_GREEN}}
+\index{DIOSPITFTDISPLAYST7789\_COLOR\_GREEN@{DIOSPITFTDISPLAYST7789\_COLOR\_GREEN}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_COLOR\_GREEN}{DIOSPITFTDISPLAYST7789\_COLOR\_GREEN}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+COLOR\+\_\+\+GREEN~0x07\+E0}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00095}{95}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_aa2609fa65c76b436fc2bec39917c84d7}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_aa2609fa65c76b436fc2bec39917c84d7} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_COLOR\_MAGENTA@{DIOSPITFTDISPLAYST7789\_COLOR\_MAGENTA}}
+\index{DIOSPITFTDISPLAYST7789\_COLOR\_MAGENTA@{DIOSPITFTDISPLAYST7789\_COLOR\_MAGENTA}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_COLOR\_MAGENTA}{DIOSPITFTDISPLAYST7789\_COLOR\_MAGENTA}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+COLOR\+\_\+\+MAGENTA~0x\+F81F}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00097}{97}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_acf056eacdf4a6a627b078d2fe417c064}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_acf056eacdf4a6a627b078d2fe417c064} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_COLOR\_RED@{DIOSPITFTDISPLAYST7789\_COLOR\_RED}}
+\index{DIOSPITFTDISPLAYST7789\_COLOR\_RED@{DIOSPITFTDISPLAYST7789\_COLOR\_RED}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_COLOR\_RED}{DIOSPITFTDISPLAYST7789\_COLOR\_RED}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+COLOR\+\_\+\+RED~0x\+F800}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00094}{94}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_add7053bf929bdb65610930025a050106}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_add7053bf929bdb65610930025a050106} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_COLOR\_WHITE@{DIOSPITFTDISPLAYST7789\_COLOR\_WHITE}}
+\index{DIOSPITFTDISPLAYST7789\_COLOR\_WHITE@{DIOSPITFTDISPLAYST7789\_COLOR\_WHITE}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_COLOR\_WHITE}{DIOSPITFTDISPLAYST7789\_COLOR\_WHITE}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+COLOR\+\_\+\+WHITE~0x\+FFFF}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00099}{99}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a957714dd4fe3adde0fd339b8ddfa8abe}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a957714dd4fe3adde0fd339b8ddfa8abe} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_COLOR\_YELLOW@{DIOSPITFTDISPLAYST7789\_COLOR\_YELLOW}}
+\index{DIOSPITFTDISPLAYST7789\_COLOR\_YELLOW@{DIOSPITFTDISPLAYST7789\_COLOR\_YELLOW}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_COLOR\_YELLOW}{DIOSPITFTDISPLAYST7789\_COLOR\_YELLOW}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+COLOR\+\_\+\+YELLOW~0x\+FFE0}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00098}{98}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a078fb3210f1941b05bc8e4ac0e972bd2}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a078fb3210f1941b05bc8e4ac0e972bd2} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_DC\_CMD@{DIOSPITFTDISPLAYST7789\_DC\_CMD}}
+\index{DIOSPITFTDISPLAYST7789\_DC\_CMD@{DIOSPITFTDISPLAYST7789\_DC\_CMD}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_DC\_CMD}{DIOSPITFTDISPLAYST7789\_DC\_CMD}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+DC\+\_\+\+CMD~GEN\+\_\+\+DIOGPIO.\+Set\+Value(Get\+GPIOEntry\+ID(\mbox{\hyperlink{_d_i_o_display_device_8h_a7d34e282b7fa582a6b6060e30a748973a375f48fea26d4e6d6d883e896df7066f}{DIODISPLAYDEVICE\+\_\+\+INDEX\+\_\+\+GPIOENTRYID\+\_\+\+DC}}), false);}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00050}{50}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a7278437e5abd86c15306139a006f08f8}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a7278437e5abd86c15306139a006f08f8} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_DC\_DATA@{DIOSPITFTDISPLAYST7789\_DC\_DATA}}
+\index{DIOSPITFTDISPLAYST7789\_DC\_DATA@{DIOSPITFTDISPLAYST7789\_DC\_DATA}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_DC\_DATA}{DIOSPITFTDISPLAYST7789\_DC\_DATA}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+DC\+\_\+\+DATA~GEN\+\_\+\+DIOGPIO.\+Set\+Value(Get\+GPIOEntry\+ID(\mbox{\hyperlink{_d_i_o_display_device_8h_a7d34e282b7fa582a6b6060e30a748973a375f48fea26d4e6d6d883e896df7066f}{DIODISPLAYDEVICE\+\_\+\+INDEX\+\_\+\+GPIOENTRYID\+\_\+\+DC}}), true);}
+
+\DoxyHorRuler{0}
+ 
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00049}{49}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a5327bb4b34bd3e818a7c52e87ab9caca}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a5327bb4b34bd3e818a7c52e87ab9caca} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_TFTHEIGHT@{DIOSPITFTDISPLAYST7789\_TFTHEIGHT}}
+\index{DIOSPITFTDISPLAYST7789\_TFTHEIGHT@{DIOSPITFTDISPLAYST7789\_TFTHEIGHT}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_TFTHEIGHT}{DIOSPITFTDISPLAYST7789\_TFTHEIGHT}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+TFTHEIGHT~240}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00053}{53}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+
+\Hypertarget{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a35b2f40c9296b2c684440eb7741335c1}\label{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_a35b2f40c9296b2c684440eb7741335c1} 
+\index{DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}!DIOSPITFTDISPLAYST7789\_TFTWIDTH@{DIOSPITFTDISPLAYST7789\_TFTWIDTH}}
+\index{DIOSPITFTDISPLAYST7789\_TFTWIDTH@{DIOSPITFTDISPLAYST7789\_TFTWIDTH}!DIOSPITFTDisplayST7789.h@{DIOSPITFTDisplayST7789.h}}
+\doxysubsubsection{\texorpdfstring{DIOSPITFTDISPLAYST7789\_TFTWIDTH}{DIOSPITFTDISPLAYST7789\_TFTWIDTH}}
+{\footnotesize\ttfamily \#define DIOSPITFTDISPLAYST7789\+\_\+\+TFTWIDTH~240}
+
+
+
+Definition at line \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source_l00052}{52}} of file \mbox{\hyperlink{_d_i_o_s_p_i_t_f_t_display_s_t7789_8h_source}{DIOSPITFTDisplay\+ST7789.\+h}}.
+

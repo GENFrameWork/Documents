@@ -1,0 +1,458 @@
+\doxysection{DIOLINUXNetwork\+Manager.\+cpp}
+\hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source}{}\label{_d_i_o_l_i_n_u_x_network_manager_8cpp_source}\index{D:/Projects/GENFrameWork/GEN/Platforms/Linux/DIOLINUXNetworkManager.cpp@{D:/Projects/GENFrameWork/GEN/Platforms/Linux/DIOLINUXNetworkManager.cpp}}
+\mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00029}00029\ \textcolor{comment}{/*-\/-\/-\/-\/\ PRECOMPILATION\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#pragma\ region\ PRECOMPILATION\_INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_e_n___defines_8h}{GEN\_Defines.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00037}00037\ \textcolor{comment}{/*-\/-\/-\/-\/\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#pragma\ region\ INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h}{DIOLINUXNetworkManager.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ <NetworkManager.h>}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00044}00044\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_trace_8h}{XTrace.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00046}00046\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_i_o_l_i_n_u_x_d_bus___x_event_8h}{DIOLINUXDBus\_XEvent.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00047}00047\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_i_o_l_i_n_u_x_d_bus_8h}{DIOLINUXDBus.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00049}00049\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_memory___control_8h}{XMemory\_Control.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00051}00051\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00054}00054\ \textcolor{comment}{/*-\/-\/-\/-\/\ GENERAL\ VARIABLE\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00055}00055\ \textcolor{preprocessor}{\#pragma\ region\ GENERAL\_VARIABLE}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00057}00057\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00060}00060\ \textcolor{comment}{/*-\/-\/-\/-\/\ CLASS\ MEMBERS\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00061}00061\ \textcolor{preprocessor}{\#pragma\ region\ CLASS\_MEMBERS}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00071}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga205c0fb800f12af29a577d40ee320e9e}{00071}}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga205c0fb800f12af29a577d40ee320e9e}{DIOLINUXNETWORKMANAGER::DIOLINUXNETWORKMANAGER}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00072}00072\ \{\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00073}00073\ \ \ Clean();\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00075}00075\ \ \ dbus\_destination\ =\ \mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_a6328427ed30d4a6abb2cd84b0fa2016d}{DIOLINUXNETWORKMANAGER\_DEFAULT\_DBUS\_DESTINATION}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00076}00076\ \ \ dbus\_path\ \ \ \ \ \ \ \ =\ \mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_aa3b63cfa7b8430753426b0682790cd97}{DIOLINUXNETWORKMANAGER\_DEFAULT\_DBUS\_PATH}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00077}00077\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00088}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_gaf88e98ed0b901316df8f4ab11e947fe0}{00088}}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_gaf88e98ed0b901316df8f4ab11e947fe0}{DIOLINUXNETWORKMANAGER::\string~DIOLINUXNETWORKMANAGER}}()\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00089}00089\ \{\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00090}00090\ \ \ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga9885f0bc9c77ab6c01c86e84ea68b649}{End}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00092}00092\ \ \ Clean();\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00093}00093\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00105}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga58e01ca151008c53af90e6ee89b80859}{00105}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga58e01ca151008c53af90e6ee89b80859}{DIOLINUXNETWORKMANAGER::Ini}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00106}00106\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00107}00107\ \ \ \textcolor{keywordtype}{bool}\ status;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00109}00109\ \ \ dbus\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_d_i_o_l_i_n_u_x_d_b_u_s}{DIOLINUXDBUS}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00110}00110\ \ \ \textcolor{keywordflow}{if}(!dbus)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00112}00112\ \ \ status\ =\ dbus-\/>\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga47f9bf27dd9c7e503973f0749252786f}{Ini}}();\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00113}00113\ \ \ \textcolor{keywordflow}{if}(status)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00114}00114\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00115}00115\ \ \ \ \ \ \ \mbox{\hyperlink{group___x_u_t_i_l_s_ga137f7c55eb9b778873286232d22a5c12}{SubscribeEvent}}(\mbox{\hyperlink{_d_i_o_l_i_n_u_x_d_bus___x_event_8h_a6d05026db04cbf314d53b5ce119e5942a9d95453460e650b9fcb645ed0b3f650b}{DIOLINUXDBUS\_XEVENT\_TYPE\_SIGNAL}}\ \ ,\ dbus);\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00116}00116\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00118}00118\ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00119}00119\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00133}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga1718b14594426ef634782ea90a25acbc}{00133}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga1718b14594426ef634782ea90a25acbc}{DIOLINUXNETWORKMANAGER::Enable}}(\textcolor{keywordtype}{bool}\ on)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00134}00134\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00135}00135\ \ \ \mbox{\hyperlink{class_d_i_o_l_i_n_u_x_d_b_u_s___m_e_s_s_a_g_e}{DIOLINUXDBUS\_MESSAGE}}\ \ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}};\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00136}00136\ \ \ \mbox{\hyperlink{class_d_i_o_l_i_n_u_x_d_b_u_s___m_e_s_s_a_g_e}{DIOLINUXDBUS\_MESSAGE}}\ \ reply;\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00137}00137\ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ status\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00139}00139\ \ \ \textcolor{keywordflow}{if}(!dbus)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00141}00141\ \ \ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga59347468574d148efc8171097ed40cb3}{GetDestination}}()-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga4e97e075650e9bc8cfb7deb28e4c9ce4}{Set}}(\mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_a6328427ed30d4a6abb2cd84b0fa2016d}{DIOLINUXNETWORKMANAGER\_DEFAULT\_DBUS\_DESTINATION}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00142}00142\ \ \ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.GetPath()-\/>Set(\mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_aa3b63cfa7b8430753426b0682790cd97}{DIOLINUXNETWORKMANAGER\_DEFAULT\_DBUS\_PATH}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00143}00143\ \ \ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.GetIFace()-\/>Set(\mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_abe0b9801b0e6627ae98bd16c6d951133}{DIOLINUXNETWORKMANAGER\_DEFAULT\_DBUS\_IFACE\_MAIN}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00145}00145\ \ \ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.GetMethod()-\/>Set(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}Enable"{}}));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00147}00147\ \ \ status\ =\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.Create();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00148}00148\ \ \ \textcolor{keywordflow}{if}(status)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00149}00149\ \ \ \ \ \{\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00150}00150\ \ \ \ \ \ \ \mbox{\hyperlink{class_d_i_o_l_i_n_u_x_d_b_u_s___a_r_g_u_m_e_n_t_s}{DIOLINUXDBUS\_ARGUMENTS}}\ arguments(\textcolor{keyword}{true},\ \&\mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00152}00152\ \ \ \ \ \ \ arguments.\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_gaa30002f57fd70eb2805f7992d8c7dbbf}{Append}}(on);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00153}00153\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00154}00154\ \ \ \ \ \ \ status\ =\ dbus-\/>\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga692df8d68eff448d65c655db73abcf57}{CallMethod}}(\mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}},\ reply);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00155}00155\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(status)\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00160}00160\ \ \ \ \ \ \ reply.\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga4bbe6ed33c6309f1007527157c5e06f9}{Delete}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00162}00162\ \ \ \ \ \ \ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.Delete();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00163}00163\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00164}00164\ \ \ \ \ \textcolor{keywordflow}{else}\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00165}00165\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00166}00166\ \ \ \ \ \ \ \mbox{\hyperlink{_x_trace_8h_ad3489a73cc8c0aa8e64f91a03735e525}{XTRACE\_PRINTCOLOR}}(\mbox{\hyperlink{_x_trace_8h_a435ffc0233bcfc5e0e15d9965a071c52}{XTRACE\_COLOR\_RED}},\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}[DBUS]\ Error\ create\ message\ [\%s]\ [\%s]"{}}),\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.GetIFace()-\/>Get(),\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.GetMethod()-\/>Get());}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00167}00167\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00169}00169\ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00170}00170\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00182}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga1fcb10276721de02de1e731fb817d0f1}{00182}}\ \mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_a835a79ed57fb8c967d0c8c058fa6b1a0}{DIOLINUXNETWORKMANAGER\_STATE}}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga1fcb10276721de02de1e731fb817d0f1}{DIOLINUXNETWORKMANAGER::GetConnectionState}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00183}00183\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00184}00184\ \ \ \mbox{\hyperlink{class_d_i_o_l_i_n_u_x_d_b_u_s___m_e_s_s_a_g_e}{DIOLINUXDBUS\_MESSAGE}}\ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}};\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00185}00185\ \ \ \mbox{\hyperlink{class_d_i_o_l_i_n_u_x_d_b_u_s___m_e_s_s_a_g_e}{DIOLINUXDBUS\_MESSAGE}}\ \ \ \ \ \ \ \ \ \ reply;\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00186}00186\ \ \ \mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_a835a79ed57fb8c967d0c8c058fa6b1a0}{DIOLINUXNETWORKMANAGER\_STATE}}\ \ state\ \ \ =\ \mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_a835a79ed57fb8c967d0c8c058fa6b1a0aaacf107d61faf0bb3b771a9c477f2621}{DIOLINUXNETWORKMANAGER\_STATE\_UNKNOWN}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00187}00187\ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ status\ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00189}00189\ \ \ \textcolor{keywordflow}{if}(!dbus)\ \textcolor{keywordflow}{return}\ state;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00191}00191\ \ \ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga59347468574d148efc8171097ed40cb3}{GetDestination}}()-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga4e97e075650e9bc8cfb7deb28e4c9ce4}{Set}}(\mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_a6328427ed30d4a6abb2cd84b0fa2016d}{DIOLINUXNETWORKMANAGER\_DEFAULT\_DBUS\_DESTINATION}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00192}00192\ \ \ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.GetPath()-\/>Set(\mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_aa3b63cfa7b8430753426b0682790cd97}{DIOLINUXNETWORKMANAGER\_DEFAULT\_DBUS\_PATH}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00193}00193\ \ \ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.GetIFace()-\/>Set(\mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_abe0b9801b0e6627ae98bd16c6d951133}{DIOLINUXNETWORKMANAGER\_DEFAULT\_DBUS\_IFACE\_MAIN}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00195}00195\ \ \ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.GetMethod()-\/>Set(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}state"{}}));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00197}00197\ \ \ status\ =\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.Create();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00198}00198\ \ \ \textcolor{keywordflow}{if}(status)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00199}00199\ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00200}00200\ \ \ \ \ \ \ status\ =\ dbus-\/>\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga692df8d68eff448d65c655db73abcf57}{CallMethod}}(\mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}},\ reply);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00201}00201\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(status)\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ result\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00204}00204\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ reply.\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga0628c13ffc95147259e3bc8a3bd2a838}{GetResult}}(result);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(result)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_STATE\_UNKNOWN\ \ \ \ \ \ \ \ \ \ \ :\ state\ =\ \mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_a835a79ed57fb8c967d0c8c058fa6b1a0aaacf107d61faf0bb3b771a9c477f2621}{DIOLINUXNETWORKMANAGER\_STATE\_UNKNOWN}};\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_STATE\_ASLEEP\ \ \ \ \ \ \ \ \ \ \ \ :\ state\ =\ \mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_a835a79ed57fb8c967d0c8c058fa6b1a0af71af0198cc5b87099c4f64ac8ec87f0}{DIOLINUXNETWORKMANAGER\_STATE\_ASLEEP}};\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_STATE\_DISCONNECTED\ \ \ \ \ \ :\ state\ =\ \mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_a835a79ed57fb8c967d0c8c058fa6b1a0af95a4da0328cf6f9ed4b9fc053ff56b7}{DIOLINUXNETWORKMANAGER\_STATE\_DISCONNECTED}};\ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_STATE\_DISCONNECTING\ \ \ \ \ :\ state\ =\ \mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_a835a79ed57fb8c967d0c8c058fa6b1a0ab6f422c57aa628a1f64e6c459851c357}{DIOLINUXNETWORKMANAGER\_STATE\_DISCONNECTING}};\ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_STATE\_CONNECTING\ \ \ \ \ \ \ \ :\ state\ =\ \mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_a835a79ed57fb8c967d0c8c058fa6b1a0a2baa11cd111f4bb6e14d84db1d7847e4}{DIOLINUXNETWORKMANAGER\_STATE\_CONNECTING}};\ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_STATE\_CONNECTED\_LOCAL\ \ \ :\ state\ =\ \mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_a835a79ed57fb8c967d0c8c058fa6b1a0a9654cdbfbd3af6dc93b2cf1a2b79efa6}{DIOLINUXNETWORKMANAGER\_STATE\_CONNECTED\_LOCAL}};\ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_STATE\_CONNECTED\_SITE\ \ \ \ :\ state\ =\ \mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_a835a79ed57fb8c967d0c8c058fa6b1a0a4e0d1a38d988639dbe9bbd609b8d9ab9}{DIOLINUXNETWORKMANAGER\_STATE\_CONNECTED\_SITE}};\ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_STATE\_CONNECTED\_GLOBAL\ \ :\ state\ =\ \mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_a835a79ed57fb8c967d0c8c058fa6b1a0a62fc0aa9b60b3a514dee6526459d31e4}{DIOLINUXNETWORKMANAGER\_STATE\_CONNECTED\_GLOBAL}};\ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00219}00219\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00220}00220\ \ \ \ \ \ \ reply.\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga4bbe6ed33c6309f1007527157c5e06f9}{Delete}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00221}00221\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00222}00222\ \ \ \ \ \ \ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.Delete();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00223}00223\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00224}00224\ \ \ \ \ \textcolor{keywordflow}{else}\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00225}00225\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00226}00226\ \ \ \ \ \ \ \mbox{\hyperlink{_x_trace_8h_ad3489a73cc8c0aa8e64f91a03735e525}{XTRACE\_PRINTCOLOR}}(\mbox{\hyperlink{_x_trace_8h_a435ffc0233bcfc5e0e15d9965a071c52}{XTRACE\_COLOR\_RED}},\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}[DBUS]\ Error\ create\ message\ [\%s]\ [\%s]"{}}),\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.GetIFace()-\/>Get(),\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.GetMethod()-\/>Get());}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00227}00227\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00229}00229\ \ \ \textcolor{keywordflow}{return}\ state;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00230}00230\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00231}00231\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00244}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_gabec8f888d4868b7c0ca0f59cadaea766}{00244}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_gabec8f888d4868b7c0ca0f59cadaea766}{DIOLINUXNETWORKMANAGER::GetDevices}}(\mbox{\hyperlink{class_x_v_e_c_t_o_r}{XVECTOR<DIOSTREAMDEVICEIP*>}}\&\ devices)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00245}00245\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00246}00246\ \ \ \mbox{\hyperlink{class_x_v_e_c_t_o_r}{XVECTOR<XSTRING*>}}\ pathdevices;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00247}00247\ \ \ \mbox{\hyperlink{class_x_v_a_r_i_a_n_t}{XVARIANT}}\ \ \ \ \ \ \ \ \ \ value;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00248}00248\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ \ \ \ \ \ \ \ \ \ \ valuestr;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00250}00250\ \ \ \textcolor{keywordflow}{if}(!dbus)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00252}00252\ \ \ GetDevicePathList(pathdevices);\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00253}00253\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00254}00254\ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ c=0;\ c<pathdevices.\mbox{\hyperlink{class_x_v_e_c_t_o_r_ab9cec1d9ae7a1f5699f9dde55ccde2bf}{GetSize}}();\ c++)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00255}00255\ \ \ \ \ \{\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00256}00256\ \ \ \ \ \ \ \mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_i_p}{DIOSTREAMDEVICEIP}}*\ deviceIP\ =\ \ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_i_p}{DIOSTREAMDEVICEIP}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00257}00257\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(deviceIP)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00258}00258\ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ deviceIP-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga74026e419acdcfcd941ba928f9523e35}{SetIndex}}(c);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ GetProperty(\mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_afb154388bef8f3ac0ff6cbdfd4c6a3e2}{DIOLINUXNETWORKMANAGER\_DEFAULT\_DBUS\_IFACE\_DEVICE}},\ pathdevices.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>Get(),\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}DeviceType"{}})\ ,\ value);\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ devicetype\ =\ value;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00263}00263\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ deviceIP-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gafe824eb63680870c9fcc57423b857841}{SetIPType}}(\mbox{\hyperlink{_d_i_o_stream_device_i_p_8h_a63a390efd90dbf7d67b3a03483c3fac7aab4747f52b9fd12ade11dbf270f02d0c}{DIOSTREAMIPDEVICE\_TYPE\_UNKNOWN}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00265}00265\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(devicetype)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_DEVICE\_TYPE\_UNKNOWN\ \ \ \ \ \ \ :\ \textcolor{comment}{//\ unknown\ device}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00270}00270\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_DEVICE\_TYPE\_GENERIC\ \ \ \ \ \ \ :\ \textcolor{comment}{//\ generic\ support\ for\ unrecognized\ device\ types}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deviceIP-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gafe824eb63680870c9fcc57423b857841}{SetIPType}}(\mbox{\hyperlink{_d_i_o_stream_device_i_p_8h_a63a390efd90dbf7d67b3a03483c3fac7af660444e83580ea83960ca4b9651b7ec}{DIOSTREAMIPDEVICE\_TYPE\_LOOPBACK}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00273}00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00274}00274\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_DEVICE\_TYPE\_ETHERNET\ \ \ \ \ \ :\ \textcolor{comment}{//\ a\ wired\ ethernet\ device\ }}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deviceIP-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gafe824eb63680870c9fcc57423b857841}{SetIPType}}(\mbox{\hyperlink{_d_i_o_stream_device_i_p_8h_a63a390efd90dbf7d67b3a03483c3fac7abe5bdec90f5462c8e4081f0b3f174980}{DIOSTREAMIPDEVICE\_TYPE\_ETHERNET}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00278}00278\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_DEVICE\_TYPE\_WIFI\ \ \ \ \ \ \ \ \ \ :\ \textcolor{comment}{//\ an\ 802.11\ Wi-\/Fi\ device}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deviceIP-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gafe824eb63680870c9fcc57423b857841}{SetIPType}}(\mbox{\hyperlink{_d_i_o_stream_device_i_p_8h_a63a390efd90dbf7d67b3a03483c3fac7a15b66b166a70112d8477acc66358398c}{DIOSTREAMIPDEVICE\_TYPE\_WIFI}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00283}00283\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_DEVICE\_TYPE\_UNUSED1\ \ \ \ \ \ \ :\ \textcolor{comment}{//\ not\ used}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_DEVICE\_TYPE\_UNUSED2\ \ \ \ \ \ \ :\ \textcolor{comment}{//\ not\ used}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_DEVICE\_TYPE\_BT\ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{comment}{//\ a\ Bluetooth\ device\ supporting\ PAN\ or\ DUN\ access\ protocols}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_DEVICE\_TYPE\_OLPC\_MESH\ \ \ \ \ :\ \textcolor{comment}{//\ an\ OLPC\ XO\ mesh\ networking\ device}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_DEVICE\_TYPE\_WIMAX\ \ \ \ \ \ \ \ \ :\ \textcolor{comment}{//\ an\ 802.16e\ Mobile\ WiMAX\ broadband\ device}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_DEVICE\_TYPE\_MODEM\ \ \ \ \ \ \ \ \ :\ \textcolor{comment}{//\ a\ modem\ supporting\ analog\ telephone,\ CDMA/EVDO,\ GSM/UMTS,\ or\ LTE\ network\ access\ protocols}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_DEVICE\_TYPE\_INFINIBAND\ \ \ \ :\ \textcolor{comment}{//\ an\ IP-\/over-\/InfiniBand\ device}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_DEVICE\_TYPE\_BOND\ \ \ \ \ \ \ \ \ \ :\ \textcolor{comment}{//\ a\ bond\ master\ interface}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_DEVICE\_TYPE\_VLAN\ \ \ \ \ \ \ \ \ \ :\ \textcolor{comment}{//\ an\ 802.1Q\ VLAN\ interface}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_DEVICE\_TYPE\_ADSL\ \ \ \ \ \ \ \ \ \ :\ \textcolor{comment}{//\ ADSL\ modem}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_DEVICE\_TYPE\_BRIDGE\ \ \ \ \ \ \ \ :\ \textcolor{comment}{//\ a\ bridge\ master\ interface}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_DEVICE\_TYPE\_TEAM\ \ \ \ \ \ \ \ \ \ :\ \textcolor{comment}{//\ a\ team\ master\ interface}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_DEVICE\_TYPE\_TUN\ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{comment}{//\ a\ TUN\ or\ TAP\ interface}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_DEVICE\_TYPE\_IP\_TUNNEL\ \ \ \ \ :\ \textcolor{comment}{//\ a\ IP\ tunnel\ interface}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_DEVICE\_TYPE\_MACVLAN\ \ \ \ \ \ \ :\ \textcolor{comment}{//\ a\ MACVLAN\ interface}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_DEVICE\_TYPE\_VXLAN\ \ \ \ \ \ \ \ \ :\ \textcolor{comment}{//\ a\ VXLAN\ interface}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NM\_DEVICE\_TYPE\_VETH\ \ \ \ \ \ \ \ \ \ :\ \textcolor{comment}{//\ a\ VETH\ interface}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//case\ NM\_DEVICE\_TYPE\_MACSE\ \ \ \ \ \ \ \ \ :\ //\ a\ MACsec\ interface}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//case\ NM\_DEVICE\_TYPE\_DUMMY\ \ \ \ \ \ \ \ \ :\ //\ a\ dummy\ interface\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{/*\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00305}00305\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ NM\_DEVICE\_TYPE\_PPP\ \ \ \ \ \ \ \ \ \ \ :\ //\ a\ PPP\ interface}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00306}00306\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ deviceIP-\/>SetIPType(DIOSTREAMIPDEVICE\_TYPE\_PPP);}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00307}00307\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ break;}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00308}00308\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00309}00309\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ NM\_DEVICE\_TYPE\_OVS\_INTERFACE\ :\ //\ a\ Open\ vSwitch\ interface}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00310}00310\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ NM\_DEVICE\_TYPE\_OVS\_PORT\ \ \ \ \ \ :\ //\ a\ Open\ vSwitch\ port}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00311}00311\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ NM\_DEVICE\_TYPE\_OVS\_BRIDGE\ \ \ \ :\ //\ a\ Open\ vSwitch\ bridge}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00312}00312\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ NM\_DEVICE\_TYPE\_WPAN\ \ \ \ \ \ \ \ \ \ :\ //\ a\ IEEE\ 802.15.4\ (WPAN)\ MAC\ Layer\ Device}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00313}00313\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ NM\_DEVICE\_TYPE\_6LOWPAN\ \ \ \ \ \ \ :\ //\ 6LoWPAN\ interface}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00314}00314\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ NM\_DEVICE\_TYPE\_WIREGUARD\ \ \ \ \ :\ //\ a\ WireGuard\ interface}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00315}00315\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ NM\_DEVICE\_TYPE\_WIFI\_P2P\ \ \ \ \ \ :\ //\ an\ 802.11\ Wi-\/Fi\ P2P\ device.\ Since:\ 1.16.}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00316}00316\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ case\ NM\_DEVICE\_TYPE\_VRF\ \ \ \ \ \ \ \ \ \ \ :\ //\ A\ VRF\ (Virtual\ Routing\ and\ Forwarding)\ interface.\ Since:\ 1.24.}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00317}00317\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ break;}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00318}00318\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00320}00320\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ GetProperty(\mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_afb154388bef8f3ac0ff6cbdfd4c6a3e2}{DIOLINUXNETWORKMANAGER\_DEFAULT\_DBUS\_IFACE\_DEVICE}},\ pathdevices.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>Get(),\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}Interface"{}})\ \ ,\ value);\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ value.\mbox{\hyperlink{group___x_u_t_i_l_s_gab6e330e6a2e5e4c4c3edcef8304763a6}{ToString}}(valuestr);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ deviceIP-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gad0a1f98026ecc0162838d1100c55a7e7}{GetName}}()-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga4e97e075650e9bc8cfb7deb28e4c9ce4}{Set}}(valuestr.\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}());}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ value.\mbox{\hyperlink{group___x_u_t_i_l_s_ga238f6ef465ea6b1cc7f9882aee8c868f}{Set}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00325}00325\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ GetProperty(\mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_afb154388bef8f3ac0ff6cbdfd4c6a3e2}{DIOLINUXNETWORKMANAGER\_DEFAULT\_DBUS\_IFACE\_DEVICE}},\ pathdevices.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>Get(),\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}Udi"{}})\ ,\ value);\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ value.\mbox{\hyperlink{group___x_u_t_i_l_s_gab6e330e6a2e5e4c4c3edcef8304763a6}{ToString}}(valuestr);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ deviceIP-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga13a17779ef8fb0b1c225b7b014c5a421}{GetResource}}()-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga4e97e075650e9bc8cfb7deb28e4c9ce4}{Set}}(valuestr.\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}());}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00329}00329\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00330}00330\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00331}00331\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00332}00332\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ GetProperty(\mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_afb154388bef8f3ac0ff6cbdfd4c6a3e2}{DIOLINUXNETWORKMANAGER\_DEFAULT\_DBUS\_IFACE\_DEVICE}},\ pathdevices.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c)-\/>Get(),\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}Ip4Config"{}})\ ,\ value);\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00334}00334\ \ \ \ \ \ \ \ \ \ \ value.\mbox{\hyperlink{group___x_u_t_i_l_s_gab6e330e6a2e5e4c4c3edcef8304763a6}{ToString}}(valuestr);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00335}00335\ \ \ \ \ \ \ \ \ \ \ GetProperty(\mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_a3a6c660d6c44ce4c7ae82f42d046b075}{DIOLINUXNETWORKMANAGER\_DEFAULT\_DBUS\_IFACE\_IP4CONFIG}},\ valuestr.\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}(),\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}Gateway"{}}),\ value);\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00336}00336\ \ \ \ \ \ \ \ \ \ \ GetProperty(\mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_a3a6c660d6c44ce4c7ae82f42d046b075}{DIOLINUXNETWORKMANAGER\_DEFAULT\_DBUS\_IFACE\_IP4CONFIG}},\ valuestr.\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}(),\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}AddressData"{}}),\ value);\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00337}00337\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00338}00338\ \ \ \ \ \ \ \ \ \ \ devices.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a51a790aac8efd4603aee608ddcc83423}{Add}}(deviceIP);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00339}00339\ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00340}00340\ \ \ \ \ \}\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00341}00341\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00342}00342\ \ \ pathdevices.\mbox{\hyperlink{class_x_v_e_c_t_o_r_abae5097402824f18f274e21e18b23bea}{DeleteContents}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00343}00343\ \ \ pathdevices.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a57c72ab04fd14c60d1026e0a7b4a1887}{DeleteAll}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00344}00344\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00345}00345\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00346}00346\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00347}00347\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00348}00348\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00361}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga2febf66174e263f2cf092479652516ee}{00361}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga2febf66174e263f2cf092479652516ee}{DIOLINUXNETWORKMANAGER::Signal\_Add}}(\mbox{\hyperlink{_x_string_8h_a03209152a681f02e4ba73b6681dd4968}{XCHAR}}*\ type,\ \mbox{\hyperlink{_x_string_8h_a03209152a681f02e4ba73b6681dd4968}{XCHAR}}*\ name)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00362}00362\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00363}00363\ \ \ \textcolor{keywordflow}{if}(!dbus)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00364}00364\ \ \ \textcolor{keywordflow}{if}(!dbus-\/>\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga270425835f483535688ff61bcd45f6f9}{IsConnected}}())\ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00365}00365\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00366}00366\ \ \ \textcolor{keywordflow}{return}\ dbus-\/>\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_gac2fae23142759f0b56e60d0a60c586d6}{Signal\_Add}}(type,\ name);\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00367}00367\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00368}00368\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00369}00369\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00382}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_gab58d3892e1b9f1f0a14a8545d5dd7813}{00382}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga2febf66174e263f2cf092479652516ee}{DIOLINUXNETWORKMANAGER::Signal\_Add}}(\mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\&\ type,\ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\&\ name)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00383}00383\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00384}00384\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga2febf66174e263f2cf092479652516ee}{Signal\_Add}}(type.\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}(),\ name.\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}());}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00385}00385\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00386}00386\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00387}00387\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00397}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga9885f0bc9c77ab6c01c86e84ea68b649}{00397}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga9885f0bc9c77ab6c01c86e84ea68b649}{DIOLINUXNETWORKMANAGER::End}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00398}00398\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00399}00399\ \ \ \textcolor{keywordflow}{if}(dbus)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00400}00400\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00401}00401\ \ \ \ \ \ \ \mbox{\hyperlink{group___x_u_t_i_l_s_ga29ac06a26ba8e86f5f097de361ce7df5}{UnSubscribeEvent}}(\mbox{\hyperlink{_d_i_o_l_i_n_u_x_d_bus___x_event_8h_a6d05026db04cbf314d53b5ce119e5942a9d95453460e650b9fcb645ed0b3f650b}{DIOLINUXDBUS\_XEVENT\_TYPE\_SIGNAL}}\ \ ,\ dbus);\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00402}00402\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00403}00403\ \ \ \ \ \ \ dbus-\/>\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga91f4c5d64dff440934b5a2bfc019c3c0}{End}}();\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00404}00404\ \ \ \ \ \ \ \textcolor{keyword}{delete}\ dbus;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00405}00405\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00406}00406\ \ \ \ \ \ \ dbus\ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00407}00407\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00408}00408\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00409}00409\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00410}00410\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00411}00411\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00412}00412\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00424}00424\ \textcolor{keywordtype}{bool}\ DIOLINUXNETWORKMANAGER::GetDevicePathList(\mbox{\hyperlink{class_x_v_e_c_t_o_r}{XVECTOR<XSTRING*>}}\&\ pathdevices)\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00425}00425\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00426}00426\ \ \ \mbox{\hyperlink{class_d_i_o_l_i_n_u_x_d_b_u_s___m_e_s_s_a_g_e}{DIOLINUXDBUS\_MESSAGE}}\ \ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}};\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00427}00427\ \ \ \mbox{\hyperlink{class_d_i_o_l_i_n_u_x_d_b_u_s___m_e_s_s_a_g_e}{DIOLINUXDBUS\_MESSAGE}}\ \ reply;\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00428}00428\ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ status\ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00429}00429\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00430}00430\ \ \ pathdevices.\mbox{\hyperlink{class_x_v_e_c_t_o_r_abae5097402824f18f274e21e18b23bea}{DeleteContents}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00431}00431\ \ \ pathdevices.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a57c72ab04fd14c60d1026e0a7b4a1887}{DeleteAll}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00432}00432\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00433}00433\ \ \ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.GetDestination()-\/>Set(\mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_a6328427ed30d4a6abb2cd84b0fa2016d}{DIOLINUXNETWORKMANAGER\_DEFAULT\_DBUS\_DESTINATION}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00434}00434\ \ \ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.GetPath()-\/>Set(\mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_aa3b63cfa7b8430753426b0682790cd97}{DIOLINUXNETWORKMANAGER\_DEFAULT\_DBUS\_PATH}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00435}00435\ \ \ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.GetIFace()-\/>Set(\mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_abe0b9801b0e6627ae98bd16c6d951133}{DIOLINUXNETWORKMANAGER\_DEFAULT\_DBUS\_IFACE\_MAIN}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00436}00436\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00437}00437\ \ \ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.GetMethod()-\/>Set(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}GetDevices"{}}));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00438}00438\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00439}00439\ \ \ status\ =\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.Create();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00440}00440\ \ \ \textcolor{keywordflow}{if}(!status)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00441}00441\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00442}00442\ \ \ status\ =\ dbus-\/>\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga692df8d68eff448d65c655db73abcf57}{CallMethod}}(\mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}},\ reply);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00443}00443\ \ \ \textcolor{keywordflow}{if}(status)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00444}00444\ \ \ \ \ \{\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00445}00445\ \ \ \ \ \ \ status\ =\ reply.\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga0628c13ffc95147259e3bc8a3bd2a838}{GetResult}}(pathdevices);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00446}00446\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(status)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00447}00447\ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00448}00448\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ c=0;\ c<pathdevices.\mbox{\hyperlink{class_x_v_e_c_t_o_r_ab9cec1d9ae7a1f5699f9dde55ccde2bf}{GetSize}}();\ c++)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00449}00449\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00450}00450\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_trace_8h_ad3489a73cc8c0aa8e64f91a03735e525}{XTRACE\_PRINTCOLOR}}((status?\mbox{\hyperlink{_x_trace_8h_ade81e1905d604ef7eb03d194ba1332d4}{XTRACE\_COLOR\_BLUE}}:\mbox{\hyperlink{_x_trace_8h_a435ffc0233bcfc5e0e15d9965a071c52}{XTRACE\_COLOR\_RED}}),\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}\%s"{}}),\ pathdevices.Get(c)-\/>Get());}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00451}00451\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00452}00452\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00453}00453\ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00454}00454\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00455}00455\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_trace_8h_ad3489a73cc8c0aa8e64f91a03735e525}{XTRACE\_PRINTCOLOR}}(\mbox{\hyperlink{_x_trace_8h_a435ffc0233bcfc5e0e15d9965a071c52}{XTRACE\_COLOR\_RED}},\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}[DBUS]\ Error\ get\ result\ ..."{}}));\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00456}00456\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00457}00457\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00458}00458\ \ \ \ \ \ \ reply.\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga4bbe6ed33c6309f1007527157c5e06f9}{Delete}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00459}00459\ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00460}00460\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00461}00461\ \ \ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.Delete();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00462}00462\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00463}00463\ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00464}00464\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00465}00465\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00466}00466\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00481}00481\ \textcolor{keywordtype}{bool}\ DIOLINUXNETWORKMANAGER::GetProperty(\mbox{\hyperlink{_x_string_8h_a03209152a681f02e4ba73b6681dd4968}{XCHAR}}*\ iface,\ \mbox{\hyperlink{_x_string_8h_a03209152a681f02e4ba73b6681dd4968}{XCHAR}}*\ pathdevice,\ \mbox{\hyperlink{_x_string_8h_a03209152a681f02e4ba73b6681dd4968}{XCHAR}}*\ propertyname,\ \mbox{\hyperlink{class_x_v_a_r_i_a_n_t}{XVARIANT}}\&\ result)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00482}00482\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00483}00483\ \ \ \mbox{\hyperlink{class_d_i_o_l_i_n_u_x_d_b_u_s___m_e_s_s_a_g_e}{DIOLINUXDBUS\_MESSAGE}}\ \ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}};\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00484}00484\ \ \ \mbox{\hyperlink{class_d_i_o_l_i_n_u_x_d_b_u_s___m_e_s_s_a_g_e}{DIOLINUXDBUS\_MESSAGE}}\ \ reply;\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00485}00485\ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ status\ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00486}00486\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00487}00487\ \ \ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga59347468574d148efc8171097ed40cb3}{GetDestination}}()-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga4e97e075650e9bc8cfb7deb28e4c9ce4}{Set}}(\mbox{\hyperlink{_d_i_o_l_i_n_u_x_network_manager_8h_a6328427ed30d4a6abb2cd84b0fa2016d}{DIOLINUXNETWORKMANAGER\_DEFAULT\_DBUS\_DESTINATION}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00488}00488\ \ \ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.GetPath()-\/>Set(pathdevice);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00489}00489\ \ \ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.GetIFace()-\/>Set(\mbox{\hyperlink{_d_i_o_l_i_n_u_x_d_bus_8h_af17a351e680be7230289afffa5641eaa}{DIOLINUXDBUS\_IFACE\_PROPERTIES}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00490}00490\ \ \ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.GetMethod()-\/>Set(\textcolor{stringliteral}{"{}Get"{}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00491}00491\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00492}00492\ \ \ status\ =\ \mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}}.Create();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00493}00493\ \ \ \textcolor{keywordflow}{if}(status)\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00494}00494\ \ \ \ \ \{\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00495}00495\ \ \ \ \ \ \ \mbox{\hyperlink{class_d_i_o_l_i_n_u_x_d_b_u_s___a_r_g_u_m_e_n_t_s}{DIOLINUXDBUS\_ARGUMENTS}}\ arg\_in(\textcolor{keyword}{true},\ \&\mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00496}00496\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00497}00497\ \ \ \ \ \ \ arg\_in.AppendIterator(iface);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00498}00498\ \ \ \ \ \ \ arg\_in.AppendIterator(propertyname);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00499}00499\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00500}00500\ \ \ \ \ \ \ status\ =\ dbus-\/>\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga692df8d68eff448d65c655db73abcf57}{CallMethod}}(\mbox{\hyperlink{_x_l_i_n_u_x_system_8cpp_a1c6fdaf3926ca3686a124fc5bb710b96}{message}},\ reply);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00501}00501\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(status)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00502}00502\ \ \ \ \ \ \ \ \ \{\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00503}00503\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_d_i_o_l_i_n_u_x_d_b_u_s___a_r_g_u_m_e_n_t_s}{DIOLINUXDBUS\_ARGUMENTS}}\ arg\_out(\textcolor{keyword}{false},\ \&reply);\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00504}00504\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00505}00505\ \ \ \ \ \ \ \ \ \ \ arg\_out.GetResultInteractor(result);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00506}00506\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00507}00507\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00508}00508\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00509}00509\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(result.\mbox{\hyperlink{group___x_u_t_i_l_s_ga70075e357dea2d13c7e1763e8800cbc6}{GetType}}())}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00510}00510\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00511}00511\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_x_variant_8h_ae6ba470d0708534cb56c359929a9eb30a0682c21ee1b1232726cb8b297a49877a}{XVARIANT\_TYPE\_NULL}}\ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00512}00512\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00513}00513\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_x_variant_8h_ae6ba470d0708534cb56c359929a9eb30a305762bcab4b2dea59faec9e1f2ac469}{XVARIANT\_TYPE\_INTEGER}}\ \ \ \ \ \ \ \ :\ \{\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ value;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00514}00514\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ value\ =\ (\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})result;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00515}00515\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00516}00516\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_trace_8h_ad3489a73cc8c0aa8e64f91a03735e525}{XTRACE\_PRINTCOLOR}}(\mbox{\hyperlink{_x_trace_8h_ade81e1905d604ef7eb03d194ba1332d4}{XTRACE\_COLOR\_BLUE}},\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}Property\ INTEGER\ :\ \%08X"{}}),\ value);\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00517}00517\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00518}00518\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00519}00519\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00520}00520\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_x_variant_8h_ae6ba470d0708534cb56c359929a9eb30a031ba416ada9f26c882035b6362e706d}{XVARIANT\_TYPE\_DOUBLEINTEGER}}\ \ :}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00521}00521\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_x_variant_8h_ae6ba470d0708534cb56c359929a9eb30a1552719dfa33f81edbc31c7a23bdc0ba}{XVARIANT\_TYPE\_FLOAT}}\ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00522}00522\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_x_variant_8h_ae6ba470d0708534cb56c359929a9eb30a46db8e9289146509beac43d8635b7aaa}{XVARIANT\_TYPE\_DOUBLE}}\ \ \ \ \ \ \ \ \ :\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00523}00523\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00524}00524\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_x_variant_8h_ae6ba470d0708534cb56c359929a9eb30a8b1d914135954ef8a76868e3b9d2cd57}{XVARIANT\_TYPE\_CHAR}}\ \ \ \ \ \ \ \ \ \ \ :\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00525}00525\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_x_variant_8h_ae6ba470d0708534cb56c359929a9eb30afafdac05237e03b2501445f0722d3ff7}{XVARIANT\_TYPE\_XCHAR}}\ \ \ \ \ \ \ \ \ \ :\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00526}00526\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_x_variant_8h_ae6ba470d0708534cb56c359929a9eb30a00999511cd590a4129f4b000b47239ab}{XVARIANT\_TYPE\_STRING}}\ \ \ \ \ \ \ \ \ :\ \{\ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ value;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00527}00527\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result.\mbox{\hyperlink{group___x_u_t_i_l_s_gab6e330e6a2e5e4c4c3edcef8304763a6}{ToString}}(value);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00528}00528\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00529}00529\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_trace_8h_ad3489a73cc8c0aa8e64f91a03735e525}{XTRACE\_PRINTCOLOR}}(\mbox{\hyperlink{_x_trace_8h_ade81e1905d604ef7eb03d194ba1332d4}{XTRACE\_COLOR\_BLUE}},\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}Property\ STRING\ :\ \%s"{}}),\ value.\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}());\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00530}00530\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00531}00531\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00532}00532\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00533}00533\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_x_variant_8h_ae6ba470d0708534cb56c359929a9eb30adff6bc2c85057592481304e28ea64c6a}{XVARIANT\_TYPE\_DATE}}\ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00534}00534\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_x_variant_8h_ae6ba470d0708534cb56c359929a9eb30a75b298fa666f6379ee8a3338848e972f}{XVARIANT\_TYPE\_TIME}}\ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00535}00535\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_x_variant_8h_ae6ba470d0708534cb56c359929a9eb30a1f80bef5d5af98fb8c86665adaa046d9}{XVARIANT\_TYPE\_DATETIME}}\ \ \ \ \ \ \ :\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00536}00536\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00537}00537\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00538}00538\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00539}00539\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00540}00540\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00541}00541\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00542}00542\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00543}00543\ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00544}00544\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00545}00545\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00546}00546\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00557}00557\ \textcolor{keywordtype}{void}\ DIOLINUXNETWORKMANAGER::HandleEvent\_Signal(\mbox{\hyperlink{class_d_i_o_l_i_n_u_x_d_b_u_s___x_e_v_e_n_t}{DIOLINUXDBUS\_XEVENT}}*\ event)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00558}00558\ \{\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00559}00559\ \ \ \textcolor{keywordflow}{switch}(event-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_gad15fe1d0cc2abdad0e33425b937211ce}{GetEventType}}())}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00560}00560\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00561}00561\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_d_i_o_l_i_n_u_x_d_bus___x_event_8h_a6d05026db04cbf314d53b5ce119e5942a9d95453460e650b9fcb645ed0b3f650b}{DIOLINUXDBUS\_XEVENT\_TYPE\_SIGNAL}}\ \ \ \ \ \ :\ \{\ \mbox{\hyperlink{class_d_i_o_l_i_n_u_x_d_b_u_s___s_i_g_n_a_l}{DIOLINUXDBUS\_SIGNAL}}*\ signal\ =\ \textcolor{keyword}{event}-\/>GetSignal();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00562}00562\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(signal)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00563}00563\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00564}00564\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_trace_8h_ad3489a73cc8c0aa8e64f91a03735e525}{XTRACE\_PRINTCOLOR}}(\mbox{\hyperlink{_x_trace_8h_ade81e1905d604ef7eb03d194ba1332d4}{XTRACE\_COLOR\_BLUE}},\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}[Network\ Manager]\ Signal\ [\%s]\ [\%s]"{}}),\ signal-\/>\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_gadca8bb0311ee89da4b9ccc81e72a44f9}{GetType}}()-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}(),\ signal-\/>\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_gaebe94d3978d2e69085d1fb35a673faae}{GetName}}()-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}());\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00565}00565\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00566}00566\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00567}00567\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00568}00568\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00569}00569\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00570}00570\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00571}00571\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00572}00572\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00583}00583\ \textcolor{keywordtype}{void}\ DIOLINUXNETWORKMANAGER::HandleEvent(\mbox{\hyperlink{class_x_e_v_e_n_t}{XEVENT}}*\ xevent)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00584}00584\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00585}00585\ \ \ \textcolor{keywordflow}{if}(!xevent)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00586}00586\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00587}00587\ \ \ \textcolor{keywordflow}{switch}(xevent-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga5fd619f9604c67639b9eda9aa0ac120b}{GetEventFamily}}())}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00588}00588\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00589}00589\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_x_event_8h_aabf5f0b55ced84b808fb2c2e45dbb1e8a77325c0bb2319c7b52d5190b92e18c4d}{XEVENT\_TYPE\_LINUX\_DBUS}}\ \ \ \ \ \ :\ \ \{\ \mbox{\hyperlink{class_d_i_o_l_i_n_u_x_d_b_u_s___x_e_v_e_n_t}{DIOLINUXDBUS\_XEVENT}}*\ \textcolor{keyword}{event}\ =\ (\mbox{\hyperlink{class_d_i_o_l_i_n_u_x_d_b_u_s___x_e_v_e_n_t}{DIOLINUXDBUS\_XEVENT}}*)xevent;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00590}00590\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!event)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00591}00591\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00592}00592\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HandleEvent\_Signal(event);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00593}00593\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00594}00594\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00595}00595\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00596}00596\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00597}00597\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00598}00598\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00599}00599\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00608}00608\ \textcolor{keywordtype}{void}\ DIOLINUXNETWORKMANAGER::Clean()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00609}00609\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00610}00610\ \ \ dbus\ \ \ \ \ \ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00611}00611\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00612}00612\ \ \ dbus\_destination.\mbox{\hyperlink{group___x_u_t_i_l_s_ga9275997c1605fa79646c301e63a77d06}{Empty}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00613}00613\ \ \ dbus\_path.\mbox{\hyperlink{group___x_u_t_i_l_s_ga9275997c1605fa79646c301e63a77d06}{Empty}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00614}00614\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00615}00615\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00616}00616\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00617}00617\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00618}00618\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00619}00619\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_l_i_n_u_x_network_manager_8cpp_source_l00620}00620\ }
+
+\end{DoxyCode}

@@ -1,0 +1,286 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source" xml:lang="en-US">
+<title>DIOStreamUDPLocalEnumServers.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/DataIO/Streams/DIOStreamUDPLocalEnumServers.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_u_d_p_local_enum_servers_8h">DIOStreamUDPLocalEnumServers.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_factory_8h">XFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_buffer_8h">XBuffer.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_thread_collected_8h">XThreadCollected.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00045"/>00045 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__hash_c_r_c32_8h">HashCRC32.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00047"/>00047 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_factory_8h">DIOFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00049"/>00049 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_device_i_p_8h">DIOStreamDeviceIP.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00050"/>00050 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_u_d_p_config_8h">DIOStreamUDPConfig.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_u_d_p_8h">DIOStreamUDP.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00052"/>00052 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00053"/>00053 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00054"/>00054 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00055"/>00055 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00056"/>00056 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00057"/>00057 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00058"/>00058 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00059"/>00059 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00061"/>00061 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00062"/>00062 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00063"/>00063 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00064"/>00064 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00065"/>00065 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00066"/>00066 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00067"/>00067 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00077"/><link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1af511735053486fa165370ba2266db0cc">00077</link> <link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1af511735053486fa165370ba2266db0cc">DIOSTREAMUDPLOCALENUMSERVERS::DIOSTREAMUDPLOCALENUMSERVERS</link>():&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_s_e_r_v_e_r_s">DIOSTREAMENUMSERVERS</link>()
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00078"/>00078 {
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00079"/>00079 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00080"/>00080 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00081"/>00081 &#32;&#32;xthread&#32;&#32;=&#32;<link linkend="__x_thread_collected_8h_1aad503e3655b9ff78d3ac660d1f1f5534">CREATEXTHREAD</link>(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6ab8479c55eebafff2cd86d042ae6937fb">XTHREADGROUPID_DIOSTREAMUDP</link>,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;DIOSTREAMUDPLOCALENUMSERVERS::DIOSTREAMUDPLOCALENUMSERVERS&quot;</emphasis>),&#32;ThreadDiscoveryLocalServer,&#32;<emphasis role="keyword">this</emphasis>);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00082"/>00082 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xthread)&#32;xthread-&gt;Ini(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00083"/>00083 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00084"/>00084 &#32;&#32;diostreamudpcfg&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_c_o_n_f_i_g">DIOSTREAMUDPCONFIG</link>();
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00085"/>00085 &#32;&#32;diostreamudp&#32;&#32;&#32;&#32;=&#32;(<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p">DIOSTREAMUDP</link>*)GEN_DIOFACTORY.CreateStreamIO(diostreamudpcfg);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00086"/>00086 }
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00087"/>00087 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00088"/>00088 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00099"/><link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1a0f66283c6afbc5df64515f02061039d5">00099</link> <link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1a0f66283c6afbc5df64515f02061039d5">DIOSTREAMUDPLOCALENUMSERVERS::~DIOSTREAMUDPLOCALENUMSERVERS</link>()
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00100"/>00100 {
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00101"/>00101 &#32;&#32;GEN_DIOFACTORY.DeleteStreamIO(diostreamudp);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00102"/>00102 &#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;diostreamudpcfg;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00103"/>00103 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00104"/>00104 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xthread)
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00105"/>00105 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00106"/>00106 &#32;&#32;&#32;&#32;&#32;&#32;xthread-&gt;End();
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_thread_collected_8h_1a18fb843f5fbad51464b68d705ed29b8a">DELETEXTHREAD</link>(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6ab8479c55eebafff2cd86d042ae6937fb">XTHREADGROUPID_DIOSTREAMUDP</link>,&#32;xthread);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00108"/>00108 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00109"/>00109 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00110"/>00110 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00111"/>00111 }
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00112"/>00112 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00113"/>00113 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00123"/><link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1aa7653918cd88c573805dd28c1b5d64d8">00123</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1aa7653918cd88c573805dd28c1b5d64d8">DIOSTREAMUDPLOCALENUMSERVERS::Search</link>()
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00124"/>00124 {
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00125"/>00125 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xthread)&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00126"/>00126 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_s_e_r_v_e_r_s_1ac68f7a68ba7b5e5b5e18bab4b3ee1e53">issearching</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00127"/>00127 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00128"/>00128 &#32;&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_d_e_v_i_c_e_s_1a7e28daebfcf9208e28370eead9dabe9f">DelAllDevices</link>();
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00129"/>00129 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00130"/>00130 &#32;&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_s_e_r_v_e_r_s_1ac68f7a68ba7b5e5b5e18bab4b3ee1e53">issearching</link>&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00131"/>00131 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00132"/>00132 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;xthread-&gt;Run(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00133"/>00133 }
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00134"/>00134 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00135"/>00135 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00147"/><link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1a125cd6c1b6ee554b53232bc76030cd75">00147</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1a125cd6c1b6ee554b53232bc76030cd75">DIOSTREAMUDPLOCALENUMSERVERS::StopSearch</link>(<emphasis role="keywordtype">bool</emphasis>&#32;waitend)
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00148"/>00148 {
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00149"/>00149 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xthread)&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00150"/>00150 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_s_e_r_v_e_r_s_1ac68f7a68ba7b5e5b5e18bab4b3ee1e53">issearching</link>)&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00151"/>00151 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00152"/>00152 &#32;&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_s_e_r_v_e_r_s_1ac68f7a68ba7b5e5b5e18bab4b3ee1e53">issearching</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00153"/>00153 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00154"/>00154 &#32;&#32;xthread-&gt;Run(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00155"/>00155 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00156"/>00156 &#32;&#32;xthread-&gt;Wait();
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00157"/>00157 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00158"/>00158 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00159"/>00159 }
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00160"/>00160 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00161"/>00161 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00173"/><link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1a29a98363a752b478fcd1b1eec5d96ae7">00173</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1a29a98363a752b478fcd1b1eec5d96ae7">DIOSTREAMUDPLOCALENUMSERVERS::IsDeviceAvailable</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;resource)
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00174"/>00174 {
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00175"/>00175 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;c=0;c&lt;(int)<link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_d_e_v_i_c_e_s_1ace3b6536060dcc534847e7483ab2d8b7">GetDevices</link>()-&gt;<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>();c++)
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00176"/>00176 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00177"/>00177 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_i_p">DIOSTREAMDEVICEIP</link>*&#32;device&#32;=&#32;(<link linkend="_class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_i_p">DIOSTREAMDEVICEIP</link>*)<link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_d_e_v_i_c_e_s_1ace3b6536060dcc534847e7483ab2d8b7">GetDevices</link>()-&gt;<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(c);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00178"/>00178 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(device)
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00179"/>00179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00180"/>00180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;IPstring;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00181"/>00181 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00182"/>00182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;device-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_i_p_1afbf7a2e1a9ce6b1b2d6c1b193c80f5f9">GetIP</link>()-&gt;<link linkend="_class_d_i_o_i_p_a_d_d_r_e_s_s_1a6a266ef4ef9e43473e91acc37a816725">GetXString</link>(IPstring);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00183"/>00183 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00184"/>00184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!IPstring.<link linkend="_class_x_s_t_r_i_n_g_1aa41b9d6abe3eca02494d6eb043ed50c2">Compare</link>(resource))
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00185"/>00185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00186"/>00186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00187"/>00187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00188"/>00188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00189"/>00189 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00190"/>00190 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00191"/>00191 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00192"/>00192 }
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00193"/>00193 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00194"/>00194 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00204"/><link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1a1c87df723dc46afd6d0e61559e2fbf8b">00204</link> <link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_c_o_n_f_i_g">DIOSTREAMUDPCONFIG</link>*&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1a1c87df723dc46afd6d0e61559e2fbf8b">DIOSTREAMUDPLOCALENUMSERVERS::GetDIOStreamUDPCFG</link>()
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00205"/>00205 {
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00206"/>00206 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;diostreamudpcfg;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00207"/>00207 }
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00208"/>00208 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00209"/>00209 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00219"/><link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1a96f4cbb3ce19aa39c16581e8ceacd05e">00219</link> <link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p">DIOSTREAMUDP</link>*&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1a96f4cbb3ce19aa39c16581e8ceacd05e">DIOSTREAMUDPLOCALENUMSERVERS::GetDIOStreamUDP</link>()
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00220"/>00220 {
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00221"/>00221 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;diostreamudp;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00222"/>00222 }
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00223"/>00223 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00224"/>00224 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00234"/><link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1a2d147a319c909b3ebeff3f0af95e0d89">00234</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1a2d147a319c909b3ebeff3f0af95e0d89">DIOSTREAMUDPLOCALENUMSERVERS::SendSignal</link>()
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00235"/>00235 {
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00236"/>00236 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!diostreamudp)&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00237"/>00237 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!diostreamudpcfg)&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00238"/>00238 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00239"/>00239 &#32;&#32;diostreamudpcfg-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_c_o_n_f_i_g_1a458e110078121992cb1597c8a184c02d">SetMode</link>(<link linkend="__d_i_o_stream_config_8h_1ae47ddf801d21b825b353ae3a3008ceccae2f1cd5b3bdb86e59afda7eb0f8a91a8">DIOSTREAMMODE_CLIENT</link>);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00240"/>00240 &#32;&#32;diostreamudpcfg-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_c_o_n_f_i_g_1aafb879a73b99ae95ab6f25bbf838e309">SetBroadcastModeActive</link>(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00241"/>00241 &#32;&#32;diostreamudpcfg-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_c_o_n_f_i_g_1a5d3d2983d54913f4ce5d5118eb629a68">SetRemotePort</link>(port);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00242"/>00242 &#32;&#32;diostreamudpcfg-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_c_o_n_f_i_g_1a7b848570dc12aadbd8f1564a094ca13a">SetIsUsedDatagrams</link>(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00243"/>00243 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00244"/>00244 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(diostreamudp-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_1a8a6d7369be30f160abf2c060c2a76ece">Open</link>())
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00245"/>00245 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00246"/>00246 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;&#32;&#32;string;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00247"/>00247 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;&#32;&#32;&#32;&#32;xbuffer;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00248"/>00248 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;&#32;&#32;&#32;&#32;xbufferexchange;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00249"/>00249 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_h_a_s_h_c_r_c32">HASHCRC32</link>&#32;&#32;&#32;crc32;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00250"/>00250 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00251"/>00251 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>.Format(<link linkend="__d_i_o_stream_u_d_p_local_enum_servers_8h_1aad66463a15fc95b67db07564e98aa05a">DIOSTREAMUDPLOCALENUMSERVERSID</link>,<link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_s_e_r_v_e_r_s_1ad5a94abac0d071f2207885ccc27e5a3a">ID</link>);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00252"/>00252 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00253"/>00253 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>.ConvertToExchangeXBuffer(xbufferexchange);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00254"/>00254 &#32;&#32;&#32;&#32;&#32;&#32;crc32.<link linkend="_class_h_a_s_h_c_r_c32_1a170fa5c716219e92d4724553d6e8e0ce">Do</link>(xbufferexchange.<link linkend="_class_x_b_u_f_f_e_r_1a59d2c2b8d1c32098920f5d3eba0a5971">Get</link>(),&#32;xbufferexchange.<link linkend="_class_x_b_u_f_f_e_r_1a726a6143d8a9293a199f8033c8198a0a">GetSize</link>());
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00255"/>00255 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00256"/>00256 &#32;&#32;&#32;&#32;&#32;&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)crc32.<link linkend="_class_h_a_s_h_c_r_c32_1ab33e363f6374a0e559e99f2f80e5abf6">GetResultCRC32</link>());
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00257"/>00257 &#32;&#32;&#32;&#32;&#32;&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>(xbufferexchange.<link linkend="_class_x_b_u_f_f_e_r_1a59d2c2b8d1c32098920f5d3eba0a5971">Get</link>(),&#32;xbufferexchange.<link linkend="_class_x_b_u_f_f_e_r_1a726a6143d8a9293a199f8033c8198a0a">GetSize</link>());
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00258"/>00258 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00259"/>00259 &#32;&#32;&#32;&#32;&#32;&#32;diostreamudp-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_1ac04f4ad8ff28b97128a876063103dd50">Write</link>(xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a59d2c2b8d1c32098920f5d3eba0a5971">Get</link>(),xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a726a6143d8a9293a199f8033c8198a0a">GetSize</link>());
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00260"/>00260 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00261"/>00261 &#32;&#32;&#32;&#32;&#32;&#32;diostreamudp-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_1aa72c9d5a82a294b6df2eb6125e9dc093">WaitToFlushXBuffers</link>(5);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00262"/>00262 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00263"/>00263 &#32;&#32;&#32;&#32;&#32;&#32;diostreamudp-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_1a42f9eb4342ba828c033258fae3ceafa6">Close</link>();
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00264"/>00264 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00265"/>00265 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00266"/>00266 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00267"/>00267 }
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00268"/>00268 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00269"/>00269 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00279"/><link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1a125dfd590d6887a4e98941feb87d3dec">00279</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1a125dfd590d6887a4e98941feb87d3dec">DIOSTREAMUDPLOCALENUMSERVERS::GetPort</link>()
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00280"/>00280 {
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00281"/>00281 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;port;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00282"/>00282 }
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00283"/>00283 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00284"/>00284 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00296"/><link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1acfa84eb043459539bb7e9b2caa5dfd17">00296</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1acfa84eb043459539bb7e9b2caa5dfd17">DIOSTREAMUDPLOCALENUMSERVERS::SetPort</link>(<emphasis role="keywordtype">int</emphasis>&#32;port)
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00297"/>00297 {
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00298"/>00298 &#32;&#32;this-&gt;port&#32;=&#32;port;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00299"/>00299 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00300"/>00300 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00301"/>00301 }
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00302"/>00302 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00303"/>00303 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00315"/>00315 <emphasis role="keywordtype">void</emphasis>&#32;DIOSTREAMUDPLOCALENUMSERVERS::ThreadDiscoveryLocalServer(<emphasis role="keywordtype">void</emphasis>*&#32;data)
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00316"/>00316 {
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00317"/>00317 &#32;&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s">DIOSTREAMUDPLOCALENUMSERVERS</link>*&#32;discoveryenum&#32;=&#32;(<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s">DIOSTREAMUDPLOCALENUMSERVERS</link>*)data;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00318"/>00318 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!discoveryenum)&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00319"/>00319 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00320"/>00320 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!discoveryenum-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1a96f4cbb3ce19aa39c16581e8ceacd05e">GetDIOStreamUDP</link>())&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00321"/>00321 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!discoveryenum-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1a1c87df723dc46afd6d0e61559e2fbf8b">GetDIOStreamUDPCFG</link>())&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00322"/>00322 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00323"/>00323 &#32;&#32;discoveryenum-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_s_e_r_v_e_r_s_1ac68f7a68ba7b5e5b5e18bab4b3ee1e53">issearching</link>&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00324"/>00324 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00325"/>00325 &#32;&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_c_o_n_f_i_g">DIOSTREAMUDPCONFIG</link>*&#32;diostreamudpcfg&#32;=&#32;discoveryenum-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1a1c87df723dc46afd6d0e61559e2fbf8b">GetDIOStreamUDPCFG</link>();
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00326"/>00326 &#32;&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p">DIOSTREAMUDP</link>*&#32;&#32;&#32;&#32;&#32;&#32;&#32;diostreamudp&#32;&#32;&#32;&#32;=&#32;discoveryenum-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1a96f4cbb3ce19aa39c16581e8ceacd05e">GetDIOStreamUDP</link>();
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00327"/>00327 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00328"/>00328 &#32;&#32;diostreamudpcfg-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_c_o_n_f_i_g_1a458e110078121992cb1597c8a184c02d">SetMode</link>(<link linkend="__d_i_o_stream_config_8h_1ae47ddf801d21b825b353ae3a3008cecca3fe2791007dc244b29efb7227d887c4e">DIOSTREAMMODE_SERVER</link>);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00329"/>00329 &#32;&#32;diostreamudpcfg-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_c_o_n_f_i_g_1aafb879a73b99ae95ab6f25bbf838e309">SetBroadcastModeActive</link>(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00330"/>00330 &#32;&#32;diostreamudpcfg-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_c_o_n_f_i_g_1a5d3d2983d54913f4ce5d5118eb629a68">SetRemotePort</link>(discoveryenum-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1a125dfd590d6887a4e98941feb87d3dec">GetPort</link>());
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00331"/>00331 &#32;&#32;diostreamudpcfg-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_c_o_n_f_i_g_1a7b848570dc12aadbd8f1564a094ca13a">SetIsUsedDatagrams</link>(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00332"/>00332 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00333"/>00333 &#32;&#32;discoveryenum-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_s_e_r_v_e_r_s_1abf51832a0a999e4f2fb074571d58fccd">xtimer</link>-&gt;<link linkend="_class_x_t_i_m_e_r_1a461fee3826d400d29bc47f58f2c5d898">Reset</link>();
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00334"/>00334 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00335"/>00335 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(diostreamudp-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_1a8a6d7369be30f160abf2c060c2a76ece">Open</link>())
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00336"/>00336 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00337"/>00337 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>(discoveryenum-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_s_e_r_v_e_r_s_1ac68f7a68ba7b5e5b5e18bab4b3ee1e53">issearching</link>)
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00338"/>00338 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00339"/>00339 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(discoveryenum-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_s_e_r_v_e_r_s_1ab9f9de6f31e1be2cd31ddd0c04a8b63a">searchtimeout</link>)
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00340"/>00340 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00341"/>00341 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(discoveryenum-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_s_e_r_v_e_r_s_1abf51832a0a999e4f2fb074571d58fccd">xtimer</link>-&gt;<link linkend="_class_x_t_i_m_e_r_1a02ae3c82df51ec1ed16288fe102d9d8b">GetMeasureSeconds</link>()&gt;=discoveryenum-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_s_e_r_v_e_r_s_1ab9f9de6f31e1be2cd31ddd0c04a8b63a">searchtimeout</link>)&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00342"/>00342 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00343"/>00343 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00344"/>00344 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;&#32;data;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00345"/>00345 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;address;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00346"/>00346 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;&#32;&#32;&#32;port;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00347"/>00347 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00348"/>00348 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(diostreamudp-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_1aa79b54f9fc15cac61e872b01c590aff6">ReadDatagram</link>(address,&#32;port,&#32;data))
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00349"/>00349 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00350"/>00350 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;&#32;&#32;string;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00351"/>00351 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;&#32;&#32;string2(256);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00352"/>00352 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_s_e_r_v_e_r_s_1ad5a94abac0d071f2207885ccc27e5a3a">ID</link>&#32;=&#32;discoveryenum-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_s_e_r_v_e_r_s_1aa0da86f5cf89e65df36434f651477efb">GetID</link>();
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00353"/>00353 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_h_a_s_h_c_r_c32">HASHCRC32</link>&#32;&#32;&#32;crc32;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00354"/>00354 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;&#32;&#32;&#32;&#32;crc32result[2];
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00355"/>00355 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00356"/>00356 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;data.<link linkend="_class_x_b_u_f_f_e_r_1aa18ae97bc16eca76dad45de57c4dd08c">Extract</link>(crc32result[0]);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00357"/>00357 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00358"/>00358 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>.Format(<link linkend="__d_i_o_stream_u_d_p_local_enum_servers_8h_1aad66463a15fc95b67db07564e98aa05a">DIOSTREAMUDPLOCALENUMSERVERSID</link>,<link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_s_e_r_v_e_r_s_1ad5a94abac0d071f2207885ccc27e5a3a">ID</link>);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00359"/>00359 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00360"/>00360 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;string2.Set((<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>*)data.<link linkend="_class_x_b_u_f_f_e_r_1a59d2c2b8d1c32098920f5d3eba0a5971">Get</link>());
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00361"/>00361 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;string2.AdjustSize();
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00362"/>00362 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00363"/>00363 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<emphasis role="keywordtype">string</emphasis>.Compare(string2))
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00364"/>00364 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00365"/>00365 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;xbufferexchange;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00366"/>00366 &#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00367"/>00367 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;string2.ConvertToExchangeXBuffer(xbufferexchange);&#32;&#32;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00368"/>00368 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;crc32.<link linkend="_class_h_a_s_h_c_r_c32_1a170fa5c716219e92d4724553d6e8e0ce">Do</link>(xbufferexchange.<link linkend="_class_x_b_u_f_f_e_r_1a59d2c2b8d1c32098920f5d3eba0a5971">Get</link>(),&#32;xbufferexchange.<link linkend="_class_x_b_u_f_f_e_r_1a726a6143d8a9293a199f8033c8198a0a">GetSize</link>());
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00369"/>00369 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00370"/>00370 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;crc32result[1]&#32;=&#32;crc32.<link linkend="_class_h_a_s_h_c_r_c32_1ab33e363f6374a0e559e99f2f80e5abf6">GetResultCRC32</link>();
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00371"/>00371 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00372"/>00372 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(crc32result[0]&#32;==&#32;crc32result[1])
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00373"/>00373 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00374"/>00374 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!discoveryenum-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_l_o_c_a_l_e_n_u_m_s_e_r_v_e_r_s_1a29a98363a752b478fcd1b1eec5d96ae7">IsDeviceAvailable</link>(address.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>()))
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00375"/>00375 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00376"/>00376 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_i_p">DIOSTREAMDEVICEIP</link>*&#32;device&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_i_p">DIOSTREAMDEVICEIP</link>();
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00377"/>00377 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(device)
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00378"/>00378 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00379"/>00379 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;device-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_i_p_1afbf7a2e1a9ce6b1b2d6c1b193c80f5f9">GetIP</link>()-&gt;<link linkend="_class_d_i_o_i_p_a_d_d_r_e_s_s_1a1955ea08de61edcd19d7806e64ed9aaa">Set</link>(address);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00380"/>00380 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;discoveryenum-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_d_e_v_i_c_e_s_1a3e44fe2c01c37fb9ac792fb0b692599b">devices</link>.<link linkend="_class_x_v_e_c_t_o_r_1a51a790aac8efd4603aee608ddcc83423">Add</link>(device);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00381"/>00381 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00382"/>00382 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!discoveryenum-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_s_e_r_v_e_r_s_1ab9f9de6f31e1be2cd31ddd0c04a8b63a">searchtimeout</link>)&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00383"/>00383 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00384"/>00384 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00385"/>00385 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00386"/>00386 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00387"/>00387 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00388"/>00388 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00389"/>00389 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00390"/>00390 &#32;&#32;&#32;&#32;&#32;&#32;diostreamudp-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_1aa72c9d5a82a294b6df2eb6125e9dc093">WaitToFlushXBuffers</link>(5);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00391"/>00391 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00392"/>00392 &#32;&#32;&#32;&#32;&#32;&#32;diostreamudp-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_1a42f9eb4342ba828c033258fae3ceafa6">Close</link>();
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00393"/>00393 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00394"/>00394 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00395"/>00395 &#32;&#32;discoveryenum-&gt;xthread-&gt;Run(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00396"/>00396 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00397"/>00397 &#32;&#32;discoveryenum-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_s_e_r_v_e_r_s_1ac68f7a68ba7b5e5b5e18bab4b3ee1e53">issearching</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00398"/>00398 }
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00399"/>00399 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00400"/>00400 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00411"/>00411 <emphasis role="keywordtype">void</emphasis>&#32;DIOSTREAMUDPLOCALENUMSERVERS::Clean()
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00412"/>00412 {
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00413"/>00413 &#32;&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_d_e_v_i_c_e_s_1aa9091e14369e60949c054911ed55a405">type</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__d_i_o_stream_enum_devices_8h_1a002fa6ddc871265914f8862eefde794ea0c5c557e03f77f1d801166a2a87331cf">DIOSTREAMENUMTYPE_TCPIP_LOCAL_SERVERS</link>;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00414"/>00414 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00415"/>00415 &#32;&#32;diostreamudpcfg&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00416"/>00416 &#32;&#32;diostreamudp&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00417"/>00417 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00418"/>00418 &#32;&#32;port&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00419"/>00419 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00420"/>00420 &#32;&#32;xthread&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00421"/>00421 }
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00422"/>00422 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00423"/>00423 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00424"/>00424 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00425"/>00425 
+<anchor xml:id="__d_i_o_stream_u_d_p_local_enum_servers_8cpp_source_1l00426"/>00426 
+</programlisting></section>

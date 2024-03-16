@@ -1,0 +1,397 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__g_r_p_bitmap_file_8cpp_source" xml:lang="en-US">
+<title>GRPBitmapFile.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/Graphic/Files/Bitmap/GRPBitmapFile.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_r_p_bitmap_file_8h">GRPBitmapFile.h</link>&quot;</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&lt;string.h&gt;</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00043"/>00043 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_factory_8h">XFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00045"/>00045 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_r_p_properties_8h">GRPProperties.h</link>&quot;</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_r_p_bitmap_8h">GRPBitmap.h</link>&quot;</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_r_p_bitmap_sequence_8h">GRPBitmapSequence.h</link>&quot;</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00049"/>00049 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00050"/>00050 <emphasis role="preprocessor">#ifdef&#32;GRP_BITMAP_FILE_BMP_ACTIVE</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">&#32;&#32;#include&#32;&quot;<link linkend="__g_r_p_bitmap_file_b_m_p_8h">GRPBitmapFileBMP.h</link>&quot;</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00053"/>00053 <emphasis role="preprocessor">#ifdef&#32;GRP_BITMAP_FILE_JPG_ACTIVE</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00054"/>00054 <emphasis role="preprocessor">&#32;&#32;#include&#32;&quot;<link linkend="__g_r_p_bitmap_file_j_p_g_8h">GRPBitmapFileJPG.h</link>&quot;</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00055"/>00055 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00056"/>00056 <emphasis role="preprocessor">#ifdef&#32;GRP_BITMAP_FILE_PNG_ACTIVE</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00057"/>00057 <emphasis role="preprocessor">&#32;&#32;#include&#32;&quot;<link linkend="__g_r_p_bitmap_file_p_n_g_8h">GRPBitmapFilePNG.h</link>&quot;</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00058"/>00058 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00059"/>00059 <emphasis role="preprocessor">#ifdef&#32;GRP_BITMAP_FILE_TGA_ACTIVE</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00060"/>00060 <emphasis role="preprocessor">&#32;&#32;#include&#32;&quot;<link linkend="__g_r_p_bitmap_file_t_g_a_8h">GRPBitmapFileTGA.h</link>&quot;</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00061"/>00061 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00062"/>00062 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00063"/>00063 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00064"/>00064 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00065"/>00065 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00066"/>00066 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00067"/>00067 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00068"/>00068 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00069"/>00069 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00070"/>00070 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00071"/>00071 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00072"/>00072 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00073"/>00073 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00074"/>00074 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00075"/>00075 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00076"/>00076 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00077"/>00077 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00078"/>00078 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_GRPBITMAPFILEBASE</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00079"/>00079 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00080"/>00080 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00090"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_a_s_e_1a82ecdaecce0bcadc8d1e931d37672b81">00090</link> <link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_a_s_e_1a82ecdaecce0bcadc8d1e931d37672b81">GRPBITMAPFILEBASE::GRPBITMAPFILEBASE</link>():&#32;<link linkend="_class_x_f_i_l_e_c_o_n_t_a_i_n_e_r">XFILECONTAINER</link>()
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00091"/>00091 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00092"/>00092 &#32;&#32;Clean();
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00093"/>00093 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00094"/>00094 &#32;&#32;GEN_XFACTORY_CREATE(<link linkend="_class_x_f_i_l_e_c_o_n_t_a_i_n_e_r_1a95d94561b38b12abc55ac65f06d66be1">file</link>,&#32;Create_File())
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00095"/>00095 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00096"/>00096 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00097"/>00097 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00108"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_a_s_e_1ada9add0a0335f3081293580bea132be6">00108</link> <link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_a_s_e_1ada9add0a0335f3081293580bea132be6">GRPBITMAPFILEBASE::~GRPBITMAPFILEBASE</link>()
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00109"/>00109 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00110"/>00110 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_f_i_l_e_c_o_n_t_a_i_n_e_r_1a95d94561b38b12abc55ac65f06d66be1">file</link>)&#32;GEN_XFACTORY.Delete_File(<link linkend="_class_x_f_i_l_e_c_o_n_t_a_i_n_e_r_1a95d94561b38b12abc55ac65f06d66be1">file</link>);
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00111"/>00111 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00112"/>00112 &#32;&#32;Clean();
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00113"/>00113 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00114"/>00114 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00115"/>00115 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00128"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_a_s_e_1a53f8befdd5b4defd48c9cd6ff8e1c6ba">00128</link> <link linkend="_class_g_r_p_b_i_t_m_a_p">GRPBITMAP</link>*&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_a_s_e_1a53f8befdd5b4defd48c9cd6ff8e1c6ba">GRPBITMAPFILEBASE::CreateBitmapFromFile</link>(<link linkend="_class_x_p_a_t_h">XPATH</link>&amp;&#32;xpath,&#32;<link linkend="__g_r_p_properties_8h_1af987094c3c6c0910d472c6c95a548365">GRPPROPERTYMODE</link>&#32;forcemode)
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00129"/>00129 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00130"/>00130 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00131"/>00131 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00132"/>00132 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00133"/>00133 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00147"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_a_s_e_1aeaa52860c12e6e19be6cefdb7251a418">00147</link> <link linkend="_class_g_r_p_b_i_t_m_a_p">GRPBITMAP</link>*&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_a_s_e_1aeaa52860c12e6e19be6cefdb7251a418">GRPBITMAPFILEBASE::CreateBitmapFromBuffer</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;buffer,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;size,&#32;<link linkend="__g_r_p_properties_8h_1af987094c3c6c0910d472c6c95a548365">GRPPROPERTYMODE</link>&#32;forcemode)
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00148"/>00148 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00149"/>00149 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00150"/>00150 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00151"/>00151 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00152"/>00152 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00166"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_a_s_e_1acb3d935f22863eec0800833ed5f57ea7">00166</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_a_s_e_1acb3d935f22863eec0800833ed5f57ea7">GRPBITMAPFILEBASE::CreateFileFromBitmap</link>(<link linkend="_class_x_p_a_t_h">XPATH</link>&amp;&#32;xpath,&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p">GRPBITMAP</link>*&#32;bitmap,&#32;<emphasis role="keywordtype">int</emphasis>&#32;quality)
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00167"/>00167 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00168"/>00168 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00169"/>00169 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00170"/>00170 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00171"/>00171 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00183"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_a_s_e_1a567e0043ec8e740b0365a635be7b7a3e">00183</link> <link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_a_s_e_1a567e0043ec8e740b0365a635be7b7a3e">GRPBITMAPFILEBASE::ReadImageBufferFromFile</link>(<link linkend="_class_x_p_a_t_h">XPATH</link>&amp;&#32;xpath)
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00184"/>00184 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00185"/>00185 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00186"/>00186 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00187"/>00187 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00188"/>00188 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00201"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_a_s_e_1af085dd454ff8f5c9dc35f3433b0a871b">00201</link> <link linkend="_class_g_r_p_b_i_t_m_a_p">GRPBITMAP</link>*&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_a_s_e_1af085dd454ff8f5c9dc35f3433b0a871b">GRPBITMAPFILEBASE::ForceModeOfBitmap</link>(<link linkend="__g_r_p_properties_8h_1af987094c3c6c0910d472c6c95a548365">GRPPROPERTYMODE</link>&#32;forcemode,&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p">GRPBITMAP</link>*&#32;bitmap)
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00202"/>00202 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00203"/>00203 &#32;&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p">GRPBITMAP</link>*&#32;newbitmap&#32;=&#32;bitmap;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00204"/>00204 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!newbitmap)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00205"/>00205 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00206"/>00206 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(forcemode&#32;==&#32;<link linkend="__g_r_p_properties_8h_1af987094c3c6c0910d472c6c95a548365a8d8362661aa67a4abc4e66f90a1a7bfd">GRPPROPERTYMODE_XX_UNKNOWN</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;bitmap;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00207"/>00207 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(forcemode&#32;==&#32;bitmap-&gt;<link linkend="_class_g_r_p_p_r_o_p_e_r_t_i_e_s_1a1a9445c147fafbcf926caecaa5a13430">GetMode</link>())&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;bitmap;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00208"/>00208 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00209"/>00209 &#32;&#32;newbitmap&#32;=&#32;bitmap-&gt;<link linkend="_class_g_r_p_b_i_t_m_a_p_1a8410b794c1df13ec016545b0d4d71f6c">ConvertToMode</link>(forcemode);
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00210"/>00210 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!newbitmap)&#32;<emphasis role="keywordflow">return</emphasis>&#32;bitmap;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00211"/>00211 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00212"/>00212 &#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;bitmap;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00213"/>00213 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00214"/>00214 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;newbitmap;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00215"/>00215 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00216"/>00216 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00217"/>00217 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00230"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_a_s_e_1a2326531c9eef704c3960c7f44ccae526">00230</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_a_s_e_1a2326531c9eef704c3960c7f44ccae526">GRPBITMAPFILEBASE::Open</link>(<link linkend="_class_x_p_a_t_h">XPATH</link>&amp;&#32;xpath,<emphasis role="keywordtype">bool</emphasis>&#32;readonly)
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00231"/>00231 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00232"/>00232 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_f_i_l_e_c_o_n_t_a_i_n_e_r_1a95d94561b38b12abc55ac65f06d66be1">file</link>)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00233"/>00233 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_f_i_l_e_c_o_n_t_a_i_n_e_r_1a95d94561b38b12abc55ac65f06d66be1">file</link>-&gt;<link linkend="_class_x_f_i_l_e_1a43349ac3160e391c95164fe83825fdfc">Open</link>(xpath,readonly))&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00234"/>00234 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00235"/>00235 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00236"/>00236 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00237"/>00237 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00238"/>00238 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00250"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_a_s_e_1adbc41519652512b18c6c31dd0351e464">00250</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_a_s_e_1adbc41519652512b18c6c31dd0351e464">GRPBITMAPFILEBASE::Create</link>(<link linkend="_class_x_p_a_t_h">XPATH</link>&amp;&#32;xpath)
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00251"/>00251 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00252"/>00252 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_f_i_l_e_c_o_n_t_a_i_n_e_r_1a95d94561b38b12abc55ac65f06d66be1">file</link>)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00253"/>00253 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_f_i_l_e_c_o_n_t_a_i_n_e_r_1a95d94561b38b12abc55ac65f06d66be1">file</link>-&gt;<link linkend="_class_x_f_i_l_e_1a6a208808c185e4a7f6cad154f99cca41">Create</link>(xpath))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00254"/>00254 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00255"/>00255 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00256"/>00256 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00257"/>00257 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00258"/>00258 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00268"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_a_s_e_1a65b0ccaf50dd769a2481d39483fee3c9">00268</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_a_s_e_1a65b0ccaf50dd769a2481d39483fee3c9">GRPBITMAPFILEBASE::Close</link>()
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00269"/>00269 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00270"/>00270 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_f_i_l_e_c_o_n_t_a_i_n_e_r_1a95d94561b38b12abc55ac65f06d66be1">file</link>-&gt;<link linkend="_class_x_f_i_l_e_1af7d78f174cb8eeb52cafe94524d3885b">Close</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00271"/>00271 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00272"/>00272 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00273"/>00273 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00274"/>00274 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00275"/>00275 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00286"/>00286 <emphasis role="keywordtype">void</emphasis>&#32;GRPBITMAPFILEBASE::Clean()
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00287"/>00287 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00288"/>00288 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00289"/>00289 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00290"/>00290 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00291"/>00291 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00292"/>00292 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00293"/>00293 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00294"/>00294 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00295"/>00295 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_GRPBITMAPFILE</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00296"/>00296 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00297"/>00297 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00307"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1aac913fc933ceab584a3e115702eda983">00307</link> <link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1aac913fc933ceab584a3e115702eda983">GRPBITMAPFILE::GRPBITMAPFILE</link>()
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00308"/>00308 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00309"/>00309 &#32;&#32;Clean();
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00310"/>00310 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00311"/>00311 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00312"/>00312 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00324"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1a407b0b6a2e680b57d051d84cb878a825">00324</link> <link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1aac913fc933ceab584a3e115702eda983">GRPBITMAPFILE::GRPBITMAPFILE</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;xpath)
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00325"/>00325 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00326"/>00326 &#32;&#32;Clean();
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00327"/>00327 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00328"/>00328 &#32;&#32;this-&gt;xpath&#32;=&#32;xpath;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00329"/>00329 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00330"/>00330 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00331"/>00331 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00343"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1ae00ce767e998463a62cafaa99a6c4f39">00343</link> <link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1aac913fc933ceab584a3e115702eda983">GRPBITMAPFILE::GRPBITMAPFILE</link>(<link linkend="_class_x_p_a_t_h">XPATH</link>&amp;&#32;xpath)
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00344"/>00344 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00345"/>00345 &#32;&#32;Clean();
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00346"/>00346 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00347"/>00347 &#32;&#32;this-&gt;xpath&#32;=&#32;xpath;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00348"/>00348 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00349"/>00349 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00350"/>00350 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00361"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1ab567e9f9ee11aeb4dd35d93e269c0c6b">00361</link> <link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1ab567e9f9ee11aeb4dd35d93e269c0c6b">GRPBITMAPFILE::~GRPBITMAPFILE</link>()
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00362"/>00362 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00363"/>00363 &#32;&#32;Clean();
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00364"/>00364 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00365"/>00365 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00366"/>00366 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00376"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1a9d9d811e9befcb1b753b66ff4b0aa901">00376</link> <link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1a9d9d811e9befcb1b753b66ff4b0aa901">GRPBITMAPFILE::GetPath</link>()
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00377"/>00377 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00378"/>00378 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;xpath.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00379"/>00379 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00380"/>00380 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00381"/>00381 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00393"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1a368dbeb2b5f753685de973ed26bf987e">00393</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1a368dbeb2b5f753685de973ed26bf987e">GRPBITMAPFILE::SetPath</link>(<link linkend="_class_x_p_a_t_h">XPATH</link>&amp;&#32;xpath)
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00394"/>00394 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00395"/>00395 &#32;&#32;this-&gt;xpath&#32;=&#32;xpath;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00396"/>00396 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00397"/>00397 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00398"/>00398 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00410"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1ac3330f7263ed6a1219a155b344a24382">00410</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1a368dbeb2b5f753685de973ed26bf987e">GRPBITMAPFILE::SetPath</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;xpath)
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00411"/>00411 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00412"/>00412 &#32;&#32;this-&gt;xpath&#32;=&#32;xpath;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00413"/>00413 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00414"/>00414 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00415"/>00415 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00427"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1a2886f15d8368da7c3293d4fbfabbef65">00427</link> <link linkend="__g_r_p_bitmap_file_8h_1abf4a05d33fbd2a4ee94ab900a8b4a86c">GRPBITMAPFILE_TYPE</link>&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1a2886f15d8368da7c3293d4fbfabbef65">GRPBITMAPFILE::GetTypeFromExtenxion</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;xpath)
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00428"/>00428 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00429"/>00429 &#32;&#32;<link linkend="_class_x_p_a_t_h">XPATH</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_xpath;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00430"/>00430 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ext;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00431"/>00431 &#32;&#32;<link linkend="__g_r_p_bitmap_file_8h_1abf4a05d33fbd2a4ee94ab900a8b4a86c">GRPBITMAPFILE_TYPE</link>&#32;&#32;type&#32;=&#32;<link linkend="__g_r_p_bitmap_file_8h_1abf4a05d33fbd2a4ee94ab900a8b4a86ca0f13cba1fb27ccea262f717852db51a2">GRPBITMAPFILE_TYPE_UNKNOWN</link>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00432"/>00432 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00433"/>00433 &#32;&#32;_xpath&#32;=&#32;xpath;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00434"/>00434 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00435"/>00435 &#32;&#32;_xpath.<link linkend="_class_x_p_a_t_h_1a15bf9dc61ade260a93c19abe3d9a49ed">GetExt</link>(ext);
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00436"/>00436 &#32;&#32;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00437"/>00437 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!ext.<link linkend="_class_x_s_t_r_i_n_g_1aa41b9d6abe3eca02494d6eb043ed50c2">Compare</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;.jpg&quot;</emphasis>),&#32;&#32;<emphasis role="keyword">true</emphasis>))&#32;&#32;type&#32;=&#32;<link linkend="__g_r_p_bitmap_file_8h_1abf4a05d33fbd2a4ee94ab900a8b4a86ca7540760444ff1027011676b8a64868a6">GRPBITMAPFILE_TYPE_JPG</link>;&#32;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00438"/>00438 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!ext.<link linkend="_class_x_s_t_r_i_n_g_1aa41b9d6abe3eca02494d6eb043ed50c2">Compare</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;.jpeg&quot;</emphasis>),&#32;<emphasis role="keyword">true</emphasis>))&#32;&#32;type&#32;=&#32;<link linkend="__g_r_p_bitmap_file_8h_1abf4a05d33fbd2a4ee94ab900a8b4a86ca7540760444ff1027011676b8a64868a6">GRPBITMAPFILE_TYPE_JPG</link>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00439"/>00439 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!ext.<link linkend="_class_x_s_t_r_i_n_g_1aa41b9d6abe3eca02494d6eb043ed50c2">Compare</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;.png&quot;</emphasis>),&#32;&#32;<emphasis role="keyword">true</emphasis>))&#32;&#32;type&#32;=&#32;<link linkend="__g_r_p_bitmap_file_8h_1abf4a05d33fbd2a4ee94ab900a8b4a86ca20cf6f86a7f4d4a728b03123d77593d0">GRPBITMAPFILE_TYPE_PNG</link>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00440"/>00440 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!ext.<link linkend="_class_x_s_t_r_i_n_g_1aa41b9d6abe3eca02494d6eb043ed50c2">Compare</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;.bmp&quot;</emphasis>),&#32;&#32;<emphasis role="keyword">true</emphasis>))&#32;&#32;type&#32;=&#32;<link linkend="__g_r_p_bitmap_file_8h_1abf4a05d33fbd2a4ee94ab900a8b4a86ca55ea03ae7b6942c41f25cb9f7e4bde15">GRPBITMAPFILE_TYPE_BMP</link>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00441"/>00441 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!ext.<link linkend="_class_x_s_t_r_i_n_g_1aa41b9d6abe3eca02494d6eb043ed50c2">Compare</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;.tga&quot;</emphasis>),&#32;&#32;<emphasis role="keyword">true</emphasis>))&#32;&#32;type&#32;=&#32;<link linkend="__g_r_p_bitmap_file_8h_1abf4a05d33fbd2a4ee94ab900a8b4a86ca2355f8f253a5d28a1c2d5527e8f8375a">GRPBITMAPFILE_TYPE_TGA</link>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00442"/>00442 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00443"/>00443 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;type;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00444"/>00444 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00445"/>00445 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00446"/>00446 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00459"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1a93f2bb29d7197b2c2c2ab4bc329052aa">00459</link> <link linkend="_class_g_r_p_b_i_t_m_a_p">GRPBITMAP</link>*&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1a93f2bb29d7197b2c2c2ab4bc329052aa">GRPBITMAPFILE::Load</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;xpath,&#32;<link linkend="__g_r_p_properties_8h_1af987094c3c6c0910d472c6c95a548365">GRPPROPERTYMODE</link>&#32;forcemode)
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00460"/>00460 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00461"/>00461 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xpath)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00462"/>00462 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00463"/>00463 &#32;&#32;<link linkend="_class_x_p_a_t_h">XPATH</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_xpath;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00464"/>00464 &#32;&#32;<link linkend="__g_r_p_bitmap_file_8h_1abf4a05d33fbd2a4ee94ab900a8b4a86c">GRPBITMAPFILE_TYPE</link>&#32;&#32;type&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1a2886f15d8368da7c3293d4fbfabbef65">GetTypeFromExtenxion</link>(xpath);
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00465"/>00465 &#32;&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_a_s_e">GRPBITMAPFILEBASE</link>*&#32;&#32;grpfilebase&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00466"/>00466 &#32;&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p">GRPBITMAP</link>*&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;bitmap&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00467"/>00467 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00468"/>00468 &#32;&#32;_xpath&#32;=&#32;xpath;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00469"/>00469 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00470"/>00470 &#32;&#32;<emphasis role="keywordflow">switch</emphasis>(type)
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00471"/>00471 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00472"/>00472 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__g_r_p_bitmap_file_8h_1abf4a05d33fbd2a4ee94ab900a8b4a86ca0f13cba1fb27ccea262f717852db51a2">GRPBITMAPFILE_TYPE_UNKNOWN</link>&#32;:&#32;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00473"/>00473 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;default&#32;:&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00474"/>00474 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00475"/>00475 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;GRP_BITMAP_FILE_BMP_ACTIVE</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00476"/>00476 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__g_r_p_bitmap_file_8h_1abf4a05d33fbd2a4ee94ab900a8b4a86ca55ea03ae7b6942c41f25cb9f7e4bde15">GRPBITMAPFILE_TYPE_BMP</link>&#32;&#32;&#32;&#32;&#32;:&#32;grpfilebase&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_m_p">GRPBITMAPFILEBMP</link>();&#32;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00477"/>00477 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00478"/>00478 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00479"/>00479 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00480"/>00480 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;GRP_BITMAP_FILE_JPG_ACTIVE</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00481"/>00481 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__g_r_p_bitmap_file_8h_1abf4a05d33fbd2a4ee94ab900a8b4a86ca7540760444ff1027011676b8a64868a6">GRPBITMAPFILE_TYPE_JPG</link>&#32;&#32;&#32;&#32;&#32;:&#32;grpfilebase&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_j_p_g">GRPBITMAPFILEJPG</link>();&#32;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00482"/>00482 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00483"/>00483 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00484"/>00484 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00485"/>00485 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;GRP_BITMAP_FILE_PNG_ACTIVE</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00486"/>00486 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__g_r_p_bitmap_file_8h_1abf4a05d33fbd2a4ee94ab900a8b4a86ca20cf6f86a7f4d4a728b03123d77593d0">GRPBITMAPFILE_TYPE_PNG</link>&#32;&#32;&#32;&#32;&#32;:&#32;grpfilebase&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_p_n_g">GRPBITMAPFILEPNG</link>();&#32;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00487"/>00487 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00488"/>00488 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00489"/>00489 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00490"/>00490 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;GRP_BITMAP_FILE_JPG_ACTIVE</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00491"/>00491 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__g_r_p_bitmap_file_8h_1abf4a05d33fbd2a4ee94ab900a8b4a86ca2355f8f253a5d28a1c2d5527e8f8375a">GRPBITMAPFILE_TYPE_TGA</link>&#32;&#32;&#32;&#32;&#32;:&#32;grpfilebase&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_t_g_a">GRPBITMAPFILETGA</link>();&#32;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00492"/>00492 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;&#32;&#32;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00493"/>00493 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00494"/>00494 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00495"/>00495 &#32;&#32;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00496"/>00496 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(grpfilebase)
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00497"/>00497 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00498"/>00498 &#32;&#32;&#32;&#32;&#32;&#32;bitmap&#32;=&#32;grpfilebase-&gt;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_a_s_e_1a53f8befdd5b4defd48c9cd6ff8e1c6ba">CreateBitmapFromFile</link>(_xpath,&#32;forcemode);
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00499"/>00499 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00500"/>00500 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;grpfilebase;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00501"/>00501 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00502"/>00502 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00503"/>00503 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;bitmap;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00504"/>00504 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00505"/>00505 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00506"/>00506 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00519"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1a05c3fe2a26d225ea2d4c0821d7fdbfde">00519</link> <link linkend="_class_g_r_p_b_i_t_m_a_p">GRPBITMAP</link>*&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1a93f2bb29d7197b2c2c2ab4bc329052aa">GRPBITMAPFILE::Load</link>(<link linkend="_class_x_p_a_t_h">XPATH</link>&amp;&#32;xpath,&#32;<link linkend="__g_r_p_properties_8h_1af987094c3c6c0910d472c6c95a548365">GRPPROPERTYMODE</link>&#32;forcemode)
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00520"/>00520 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00521"/>00521 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1a93f2bb29d7197b2c2c2ab4bc329052aa">Load</link>(xpath.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;forcemode);
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00522"/>00522 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00523"/>00523 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00524"/>00524 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00536"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1a617f8489050e58998f103626cdff93d7">00536</link> <link linkend="_class_g_r_p_b_i_t_m_a_p">GRPBITMAP</link>*&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1a93f2bb29d7197b2c2c2ab4bc329052aa">GRPBITMAPFILE::Load</link>(<link linkend="__g_r_p_properties_8h_1af987094c3c6c0910d472c6c95a548365">GRPPROPERTYMODE</link>&#32;forcemode)
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00537"/>00537 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00538"/>00538 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xpath.<link linkend="_class_x_s_t_r_i_n_g_1ad26690161f8c1e2722771322b7370005">IsEmpty</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00539"/>00539 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00540"/>00540 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1a93f2bb29d7197b2c2c2ab4bc329052aa">Load</link>(xpath,&#32;forcemode);
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00541"/>00541 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00542"/>00542 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00543"/>00543 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00557"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1aed33b47ced916c3fa55daf1098a2cb71">00557</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1aed33b47ced916c3fa55daf1098a2cb71">GRPBITMAPFILE::Save</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;xpath,&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p">GRPBITMAP</link>*&#32;bitmap,&#32;<emphasis role="keywordtype">int</emphasis>&#32;quality)
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00558"/>00558 {&#32;&#32;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00559"/>00559 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xpath)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00560"/>00560 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00561"/>00561 &#32;&#32;<link linkend="_class_x_p_a_t_h">XPATH</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_xpath;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00562"/>00562 &#32;&#32;<link linkend="__g_r_p_bitmap_file_8h_1abf4a05d33fbd2a4ee94ab900a8b4a86c">GRPBITMAPFILE_TYPE</link>&#32;&#32;type&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1a2886f15d8368da7c3293d4fbfabbef65">GetTypeFromExtenxion</link>(xpath);
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00563"/>00563 &#32;&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_a_s_e">GRPBITMAPFILEBASE</link>*&#32;&#32;grpfilebase&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;&#32;&#32;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00564"/>00564 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00565"/>00565 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00566"/>00566 &#32;&#32;_xpath&#32;=&#32;xpath;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00567"/>00567 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00568"/>00568 &#32;&#32;<emphasis role="keywordflow">switch</emphasis>(type)
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00569"/>00569 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00570"/>00570 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__g_r_p_bitmap_file_8h_1abf4a05d33fbd2a4ee94ab900a8b4a86ca0f13cba1fb27ccea262f717852db51a2">GRPBITMAPFILE_TYPE_UNKNOWN</link>&#32;:&#32;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00571"/>00571 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;default&#32;&#32;&#32;:&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00572"/>00572 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00573"/>00573 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;GRP_BITMAP_FILE_BMP_ACTIVE</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00574"/>00574 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__g_r_p_bitmap_file_8h_1abf4a05d33fbd2a4ee94ab900a8b4a86ca55ea03ae7b6942c41f25cb9f7e4bde15">GRPBITMAPFILE_TYPE_BMP</link>&#32;&#32;&#32;&#32;&#32;:&#32;grpfilebase&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_m_p">GRPBITMAPFILEBMP</link>();&#32;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00575"/>00575 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00576"/>00576 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00577"/>00577 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00578"/>00578 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;GRP_BITMAP_FILE_JPG_ACTIVE</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00579"/>00579 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__g_r_p_bitmap_file_8h_1abf4a05d33fbd2a4ee94ab900a8b4a86ca7540760444ff1027011676b8a64868a6">GRPBITMAPFILE_TYPE_JPG</link>&#32;&#32;&#32;&#32;&#32;:&#32;grpfilebase&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_j_p_g">GRPBITMAPFILEJPG</link>();&#32;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00580"/>00580 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00581"/>00581 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00582"/>00582 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00583"/>00583 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;GRP_BITMAP_FILE_PNG_ACTIVE</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00584"/>00584 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__g_r_p_bitmap_file_8h_1abf4a05d33fbd2a4ee94ab900a8b4a86ca20cf6f86a7f4d4a728b03123d77593d0">GRPBITMAPFILE_TYPE_PNG</link>&#32;&#32;&#32;&#32;&#32;:&#32;grpfilebase&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_p_n_g">GRPBITMAPFILEPNG</link>();&#32;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00585"/>00585 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00586"/>00586 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00587"/>00587 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00588"/>00588 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;GRP_BITMAP_FILE_JPG_ACTIVE</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00589"/>00589 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__g_r_p_bitmap_file_8h_1abf4a05d33fbd2a4ee94ab900a8b4a86ca2355f8f253a5d28a1c2d5527e8f8375a">GRPBITMAPFILE_TYPE_TGA</link>&#32;&#32;&#32;&#32;&#32;:&#32;grpfilebase&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_t_g_a">GRPBITMAPFILETGA</link>();&#32;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00590"/>00590 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;&#32;&#32;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00591"/>00591 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00592"/>00592 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00593"/>00593 &#32;&#32;&#32;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00594"/>00594 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(grpfilebase)
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00595"/>00595 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00596"/>00596 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;grpfilebase-&gt;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_b_a_s_e_1acb3d935f22863eec0800833ed5f57ea7">CreateFileFromBitmap</link>(_xpath,&#32;bitmap,&#32;quality);
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00597"/>00597 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;grpfilebase;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00598"/>00598 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00599"/>00599 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00600"/>00600 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00601"/>00601 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00602"/>00602 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00603"/>00603 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00617"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1ada54b506a275a86c6e9d66f561422179">00617</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1aed33b47ced916c3fa55daf1098a2cb71">GRPBITMAPFILE::Save</link>(<link linkend="_class_x_p_a_t_h">XPATH</link>&amp;&#32;xpath,&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p">GRPBITMAP</link>*&#32;bitmap,&#32;<emphasis role="keywordtype">int</emphasis>&#32;quality)
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00618"/>00618 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00619"/>00619 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1aed33b47ced916c3fa55daf1098a2cb71">Save</link>(xpath.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;bitmap,&#32;quality);
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00620"/>00620 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00621"/>00621 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00622"/>00622 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00635"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1a721d89ece772b17de8ab5fe0188ba652">00635</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1aed33b47ced916c3fa55daf1098a2cb71">GRPBITMAPFILE::Save</link>(<link linkend="_class_g_r_p_b_i_t_m_a_p">GRPBITMAP</link>*&#32;bitmap,&#32;<emphasis role="keywordtype">int</emphasis>&#32;quality)
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00636"/>00636 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00637"/>00637 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xpath.<link linkend="_class_x_s_t_r_i_n_g_1ad26690161f8c1e2722771322b7370005">IsEmpty</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00638"/>00638 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00639"/>00639 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1aed33b47ced916c3fa55daf1098a2cb71">Save</link>(xpath,&#32;bitmap,&#32;quality);
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00640"/>00640 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00641"/>00641 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00642"/>00642 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00656"/><link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1af75b9f0e8d0a4fe6b4a35daed0836331">00656</link> <link linkend="_class_g_r_p_b_i_t_m_a_p_s_e_q_u_e_n_c_e">GRPBITMAPSEQUENCE</link>*&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1af75b9f0e8d0a4fe6b4a35daed0836331">GRPBITMAPFILE::LoadSequence</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;namemask,&#32;<emphasis role="keywordtype">int</emphasis>&#32;inisequence,&#32;<emphasis role="keywordtype">int</emphasis>&#32;endsequence)
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00657"/>00657 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00658"/>00658 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xpath.<link linkend="_class_x_s_t_r_i_n_g_1ad26690161f8c1e2722771322b7370005">IsEmpty</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00659"/>00659 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00660"/>00660 &#32;&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_s_e_q_u_e_n_c_e">GRPBITMAPSEQUENCE</link>*&#32;bitmapsequence&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_s_e_q_u_e_n_c_e">GRPBITMAPSEQUENCE</link>();
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00661"/>00661 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!bitmapsequence)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00662"/>00662 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00663"/>00663 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;namefile;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00664"/>00664 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00665"/>00665 &#32;&#32;<emphasis role="comment">//xpath.GetNamefileExt(namefile);</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00666"/>00666 &#32;&#32;<emphasis role="comment">//if(!namefile.IsEmpty())&#32;return&#32;NULL;</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00667"/>00667 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00668"/>00668 &#32;&#32;<emphasis role="comment">//&#32;The&#32;sequence&#32;is&#32;in&#32;individual&#32;files&#32;in&#32;a&#32;directory.&#32;Sequence&#32;numbers&#32;must&#32;be&#32;continuos</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00669"/>00669 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;nfiles&#32;=&#32;inisequence;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00670"/>00670 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00671"/>00671 &#32;&#32;<emphasis role="keywordflow">while</emphasis>((nfiles&#32;&lt;&#32;endsequence)||&#32;(endsequence&#32;&lt;&#32;0))
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00672"/>00672 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00673"/>00673 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_p_a_t_h">XPATH</link>&#32;xpathtemp;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00674"/>00674 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;existfile&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00675"/>00675 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00676"/>00676 &#32;&#32;&#32;&#32;&#32;&#32;namefile.<link linkend="_class_x_s_t_r_i_n_g_1a2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(namemask,&#32;nfiles);
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00677"/>00677 &#32;&#32;&#32;&#32;&#32;&#32;xpathtemp.<link linkend="_class_x_p_a_t_h_1a3a6ae344b7a9f3467a37fb516443f62b">Create</link>(2,&#32;xpath.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;namefile.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00678"/>00678 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00679"/>00679 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_f_i_l_e">XFILE</link>*&#32;GEN_XFACTORY_CREATE(xfile,&#32;Create_File())
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00680"/>00680 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xfile)
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00681"/>00681 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00682"/>00682 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;existfile&#32;=&#32;xfile-&gt;<link linkend="_class_x_f_i_l_e_1a84a131f05e84da14df618acbee4d343c">Exist</link>(xpathtemp);
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00683"/>00683 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY.Delete_File(xfile);
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00684"/>00684 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00685"/>00685 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00686"/>00686 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!existfile)&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00687"/>00687 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00688"/>00688 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p">GRPBITMAP</link>*&#32;bitmap&#32;=&#32;<link linkend="_class_g_r_p_b_i_t_m_a_p_f_i_l_e_1a93f2bb29d7197b2c2c2ab4bc329052aa">Load</link>(xpathtemp);
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00689"/>00689 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!bitmap)&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00690"/>00690 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00691"/>00691 &#32;&#32;&#32;&#32;&#32;&#32;bitmapsequence-&gt;<link linkend="_class_g_r_p_b_i_t_m_a_p_s_e_q_u_e_n_c_e_1a92c924c1e5e3beb73e3d5d4f48c8fd49">AddFrame</link>(bitmap);
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00692"/>00692 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00693"/>00693 &#32;&#32;&#32;&#32;&#32;&#32;nfiles++;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00694"/>00694 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00695"/>00695 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00696"/>00696 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;bitmapsequence;
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00697"/>00697 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00698"/>00698 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00699"/>00699 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00710"/>00710 <emphasis role="keywordtype">void</emphasis>&#32;GRPBITMAPFILE::Clean()
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00711"/>00711 {
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00712"/>00712 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00713"/>00713 }
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00714"/>00714 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00715"/>00715 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00716"/>00716 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00717"/>00717 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00718"/>00718 
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00719"/>00719 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__g_r_p_bitmap_file_8cpp_source_1l00720"/>00720 
+</programlisting></section>

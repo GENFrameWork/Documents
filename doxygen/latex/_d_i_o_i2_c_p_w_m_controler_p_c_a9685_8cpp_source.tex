@@ -1,0 +1,192 @@
+\doxysection{DIOI2\+CPWMControler\+PCA9685.\+cpp}
+\hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source}{}\label{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source}\index{D:/Projects/GENFrameWork/GEN/DataIO/Drivers/I2C/DIOI2CPWMControlerPCA9685.cpp@{D:/Projects/GENFrameWork/GEN/DataIO/Drivers/I2C/DIOI2CPWMControlerPCA9685.cpp}}
+\mbox{\hyperlink{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00029}00029\ \textcolor{comment}{/*-\/-\/-\/-\/\ PRECOMPILATION\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#pragma\ region\ PRECOMPILATION\_INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_e_n___defines_8h}{GEN\_Defines.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00037}00037\ \textcolor{comment}{/*-\/-\/-\/-\/\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#pragma\ region\ INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8h}{DIOI2CPWMControlerPCA9685.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00044}00044\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_factory_8h}{XFactory.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_buffer_8h}{XBuffer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00046}00046\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_trace_8h}{XTrace.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00048}00048\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_i_o_factory_8h}{DIOFactory.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00049}00049\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_i_o_stream_i2_c_config_8h}{DIOStreamI2CConfig.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00050}00050\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_i_o_stream_i2_c_8h}{DIOStreamI2C.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00052}00052\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_memory___control_8h}{XMemory\_Control.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00054}00054\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00057}00057\ \textcolor{comment}{/*-\/-\/-\/-\/\ GENERAL\ VARIABLE\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00058}00058\ \textcolor{preprocessor}{\#pragma\ region\ GENERAL\_VARIABLE}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00060}00060\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00063}00063\ \textcolor{comment}{/*-\/-\/-\/-\/\ CLASS\ MEMBERS\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00064}00064\ \textcolor{preprocessor}{\#pragma\ region\ CLASS\_MEMBERS}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00074}\mbox{\hyperlink{group___d_a_t_a_i_o_gaa05f2024716eace3d148ce1e1d8f0f63}{00074}}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gaa05f2024716eace3d148ce1e1d8f0f63}{DIOI2CPWMCONTROLERPCA9685::DIOI2CPWMCONTROLERPCA9685}}():\ \mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c}{DIODEVICEI2C}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00075}00075\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00076}00076\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00077}00077\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00088}\mbox{\hyperlink{group___d_a_t_a_i_o_gac5900c142dbffc318eea2b36239e14fa}{00088}}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gac5900c142dbffc318eea2b36239e14fa}{DIOI2CPWMCONTROLERPCA9685::\string~DIOI2CPWMCONTROLERPCA9685}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00089}00089\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00090}00090\ \ \ \mbox{\hyperlink{group___d_a_t_a_i_o_gaee907bab4bd22e4554196ac3856707f8}{End}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00092}00092\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00093}00093\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00105}\mbox{\hyperlink{group___d_a_t_a_i_o_gac9541f5fc552145800c6b05f251594a4}{00105}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gac9541f5fc552145800c6b05f251594a4}{DIOI2CPWMCONTROLERPCA9685::Reset}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00106}00106\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00107}00107\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gab63d5d241486b51e04577f0ef2e49934}{SendCommand}}(\mbox{\hyperlink{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8h_a577f320efdc6e2227338b9ddec243581}{DIOI2CPWMCONTROLERPCA9685\_MODE1}},\ 0x00);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00108}00108\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00122}\mbox{\hyperlink{group___d_a_t_a_i_o_gaa1f2cbbe1cdd7bf4b9b0efdc7e0e9e0b}{00122}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gaa1f2cbbe1cdd7bf4b9b0efdc7e0e9e0b}{DIOI2CPWMCONTROLERPCA9685::SetPWMFrequency}}(\textcolor{keywordtype}{float}\ frequency)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00123}00123\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00124}00124\ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{group___d_a_t_a_i_o_gaffa2a228690e583d4c7c2a5f4adf9821}{IsInitialized}}())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00126}00126\ \ \ \textcolor{keywordtype}{float}\ prescaleval;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00128}00128\ \ \ prescaleval\ \ =\ 25000000;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ 25MHz}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00129}00129\ \ \ prescaleval\ /=\ 4096;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ 12\ bits}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00130}00130\ \ \ prescaleval\ /=\ frequency;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00131}00131\ \ \ prescaleval\ -\/=\ 1;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00133}00133\ \ \ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ prescale\ \ \ \ \ =\ (\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}})floor(prescaleval\ +\ 0.5f);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00134}00134\ \ \ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ oldmode;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00135}00135\ \ \ \textcolor{keywordtype}{bool}\ \ status;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00137}00137\ \ \ \textcolor{comment}{//XTRACE\_PRINTCOLOR(1,\ \_\_L("{}Estimated\ pre-\/scale:\ \%f"{}),\ prescaleval);}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00138}00138\ \ \ \textcolor{comment}{//XTRACE\_PRINTCOLOR(1,\ \_\_L("{}Final\ pre-\/scale\ \ \ \ :\ \%d"{}),\ prescale);}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00140}00140\ \ \ status\ =\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga6371026b83634bbf0f6d461d6c8b9ceb}{ReadCommand}}(\mbox{\hyperlink{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8h_a577f320efdc6e2227338b9ddec243581}{DIOI2CPWMCONTROLERPCA9685\_MODE1}},\ oldmode);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00141}00141\ \ \ \textcolor{keywordflow}{if}(!status)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00143}00143\ \ \ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ newmode\ =\ (oldmode\&0x7F)\ |\ 0x10;\ \textcolor{comment}{//\ sleep}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00145}00145\ \ \ status\ =\ \mbox{\hyperlink{group___d_a_t_a_i_o_gab63d5d241486b51e04577f0ef2e49934}{SendCommand}}(\mbox{\hyperlink{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8h_a577f320efdc6e2227338b9ddec243581}{DIOI2CPWMCONTROLERPCA9685\_MODE1}}\ \ \ \ \ \ ,\ newmode);\ \ \ \ \ \ \ \textcolor{comment}{//\ go\ to\ sleep}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00146}00146\ \ \ \textcolor{keywordflow}{if}(!status)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00148}00148\ \ \ status\ =\ \mbox{\hyperlink{group___d_a_t_a_i_o_gab63d5d241486b51e04577f0ef2e49934}{SendCommand}}(\mbox{\hyperlink{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8h_adf9b183a95b8d8fbfc938aa0d68cb22b}{DIOI2CPWMCONTROLERPCA9685\_PRESCALE}}\ ,\ prescale);\ \ \ \ \ \ \textcolor{comment}{//\ set\ the\ prescaler}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00149}00149\ \ \ \textcolor{keywordflow}{if}(!status)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00151}00151\ \ \ status\ =\ \mbox{\hyperlink{group___d_a_t_a_i_o_gab63d5d241486b51e04577f0ef2e49934}{SendCommand}}(\mbox{\hyperlink{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8h_a577f320efdc6e2227338b9ddec243581}{DIOI2CPWMCONTROLERPCA9685\_MODE1}}\ \ \ \ \ \ ,\ oldmode);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00152}00152\ \ \ \textcolor{keywordflow}{if}(!status)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00154}00154\ \ \ \mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_ad206923256e4098b522390fdf0ff1429}{xtimerout}}-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga879adad06314285ac12f88ec8a6bb466}{SetMilliSeconds}}(50);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00156}00156\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gab63d5d241486b51e04577f0ef2e49934}{SendCommand}}(\mbox{\hyperlink{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8h_a577f320efdc6e2227338b9ddec243581}{DIOI2CPWMCONTROLERPCA9685\_MODE1}},\ (oldmode\ |\ 0x80));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00157}00157\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00174}\mbox{\hyperlink{group___d_a_t_a_i_o_ga2e66bfe4d7bc51d1232333a02979741e}{00174}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga2e66bfe4d7bc51d1232333a02979741e}{DIOI2CPWMCONTROLERPCA9685::SetPWM}}(\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ channel,\ \mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}}\ on,\ \mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}}\ off,\ \textcolor{keywordtype}{bool}\ wait)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00175}00175\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00176}00176\ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{group___d_a_t_a_i_o_gaffa2a228690e583d4c7c2a5f4adf9821}{IsInitialized}}())\ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00178}00178\ \ \ \textcolor{comment}{//XTRACE\_PRINTCOLOR(XTRACE\_COLORGREEN,\ \_\_L("{}PC9685\ set\ channel(\%d),\ on(\%d),\ off(\%d),\ wait(\%s)"{}),\ channel,\ on,\ off,\ wait?\_\_L("{}true"{}):\_\_L("{}false"{}));}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00180}00180\ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{group___d_a_t_a_i_o_gab63d5d241486b51e04577f0ef2e49934}{SendCommand}}(\mbox{\hyperlink{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8h_a14f1d9c7b3d63d63721d22153ac91b27}{DIOI2CPWMCONTROLERPCA9685\_LED0\_ON\_L}}\ \ +\ (4*channel),\ (on\ \ \&\ \ 0xFF),\ wait))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00181}00181\ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{group___d_a_t_a_i_o_gab63d5d241486b51e04577f0ef2e49934}{SendCommand}}(\mbox{\hyperlink{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8h_aa39c4b2fcc0b0482b9fe8561559ac01d}{DIOI2CPWMCONTROLERPCA9685\_LED0\_ON\_H}}\ \ +\ (4*channel),\ (on\ \ >>\ 0x08),\ wait))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00182}00182\ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{group___d_a_t_a_i_o_gab63d5d241486b51e04577f0ef2e49934}{SendCommand}}(\mbox{\hyperlink{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8h_a185df0de47e322bf5ba2da9156d414d2}{DIOI2CPWMCONTROLERPCA9685\_LED0\_OFF\_L}}\ +\ (4*channel),\ (off\ \&\ \ 0xFF),\ wait))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00183}00183\ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{group___d_a_t_a_i_o_gab63d5d241486b51e04577f0ef2e49934}{SendCommand}}(\mbox{\hyperlink{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8h_a21701fa6003e7d75e7e066887fc3f45a}{DIOI2CPWMCONTROLERPCA9685\_LED0\_OFF\_H}}\ +\ (4*channel),\ (off\ >>\ 0x08),\ wait))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00185}00185\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00186}00186\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00198}\mbox{\hyperlink{group___d_a_t_a_i_o_gaee907bab4bd22e4554196ac3856707f8}{00198}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gaee907bab4bd22e4554196ac3856707f8}{DIOI2CPWMCONTROLERPCA9685::End}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00199}00199\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00200}00200\ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{group___d_a_t_a_i_o_ga97fa53ca512fb382b705033def5348c3}{DIODEVICEI2C::End}}())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00201}00201\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00202}00202\ \ \ \mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_a7293420cb705c8cb76ea8a774a382e3f}{isinitialized}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00204}00204\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00205}00205\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00217}00217\ \textcolor{keywordtype}{bool}\ DIOI2CPWMCONTROLERPCA9685::IniDevice()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00218}00218\ \{\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00219}00219\ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{group___d_a_t_a_i_o_gafe0d936f40e0b1b96b28efaf22ee119e}{DIODEVICEI2C::IniDevice}}())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00220}00220\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00221}00221\ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_a3b497a58b1ba1b029aa63b269f43dbb0}{diostream}}-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gafccebd8333bc1df1f36fb068af1c0a1a}{Open}}())\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00222}00222\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00223}00223\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_a3b497a58b1ba1b029aa63b269f43dbb0}{diostream}}-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gacff76db4bc54a48fe2d2ceb165835c2f}{WaitToConnected}}(\mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_aa52a412cc095ba0e18211f4c994d69e2}{timeout}}))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00224}00224\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00225}00225\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{group___d_a_t_a_i_o_ga2ce40a31520cdee813143e1f028ee629}{DIODEVICE::Ini}}())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00226}00226\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00227}00227\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00228}00228\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00230}00230\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00231}00231\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00233}00233\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00246}\mbox{\hyperlink{group___d_a_t_a_i_o_ga6371026b83634bbf0f6d461d6c8b9ceb}{00246}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga6371026b83634bbf0f6d461d6c8b9ceb}{DIOI2CPWMCONTROLERPCA9685::ReadCommand}}(\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ cmd,\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\&\ value)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00247}00247\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00248}00248\ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_a3b497a58b1ba1b029aa63b269f43dbb0}{diostream}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00250}00250\ \ \ \textcolor{keywordtype}{bool}\ \ status;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00252}00252\ \ \ status\ =\ \mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_a3b497a58b1ba1b029aa63b269f43dbb0}{diostream}}-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gac04f4ad8ff28b97128a876063103dd50}{Write}}(\&cmd,\ 1)?\textcolor{keyword}{true}:\textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00253}00253\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00254}00254\ \ \ \textcolor{keywordflow}{if}(status)\ status\ =\ \mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_a3b497a58b1ba1b029aa63b269f43dbb0}{diostream}}-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga59dc380e213dd083940c80663667dae7}{WaitToFlushOutXBuffer}}(\mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_aa52a412cc095ba0e18211f4c994d69e2}{timeout}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00255}00255\ \ \ \textcolor{keywordflow}{if}(!status)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00257}00257\ \ \ status\ =\ \mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_a3b497a58b1ba1b029aa63b269f43dbb0}{diostream}}-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga6e20f03ff391343123fda221a5c2ed85}{WaitToFilledReadingBuffer}}(1,\ \mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_aa52a412cc095ba0e18211f4c994d69e2}{timeout}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00258}00258\ \ \ \textcolor{keywordflow}{if}(status)\ status\ =\ \mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_a3b497a58b1ba1b029aa63b269f43dbb0}{diostream}}-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga20cd6c3635818f96468dee8bc601aec1}{Read}}(\&value,\ 1)?\textcolor{keyword}{true}:\textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00259}00259\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00260}00260\ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00261}00261\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00262}00262\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00263}00263\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00277}\mbox{\hyperlink{group___d_a_t_a_i_o_gab63d5d241486b51e04577f0ef2e49934}{00277}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gab63d5d241486b51e04577f0ef2e49934}{DIOI2CPWMCONTROLERPCA9685::SendCommand}}(\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ cmd,\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ value,\ \textcolor{keywordtype}{bool}\ wait)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00278}00278\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00279}00279\ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_a3b497a58b1ba1b029aa63b269f43dbb0}{diostream}})\ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00280}00280\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00281}00281\ \ \ \mbox{\hyperlink{class_x_b_u_f_f_e_r}{XBUFFER}}\ xbuffer;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00283}00283\ \ \ xbuffer.\mbox{\hyperlink{group___x_u_t_i_l_s_ga03212e4f31a9d07995ac4f72db1dd0cf}{Add}}((\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}})cmd);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00284}00284\ \ \ xbuffer.\mbox{\hyperlink{group___x_u_t_i_l_s_ga03212e4f31a9d07995ac4f72db1dd0cf}{Add}}((\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}})value);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00285}00285\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00286}00286\ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ size\_written\ =\ \mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_a3b497a58b1ba1b029aa63b269f43dbb0}{diostream}}-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gac04f4ad8ff28b97128a876063103dd50}{Write}}(xbuffer);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00287}00287\ \ \ \textcolor{keywordtype}{bool}\ status\ =\ (size\_written>0)?\textcolor{keyword}{true}:\textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00288}00288\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00289}00289\ \ \ \textcolor{keywordflow}{if}(wait)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00290}00290\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00291}00291\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(status)\ status\ =\ \mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_a3b497a58b1ba1b029aa63b269f43dbb0}{diostream}}-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga59dc380e213dd083940c80663667dae7}{WaitToFlushOutXBuffer}}(\mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_aa52a412cc095ba0e18211f4c994d69e2}{timeout}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00292}00292\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00293}00293\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00294}00294\ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00295}00295\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00296}00296\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00297}00297\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00306}00306\ \textcolor{keywordtype}{void}\ DIOI2CPWMCONTROLERPCA9685::Clean()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00307}00307\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00308}00308\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00309}00309\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00310}00310\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00311}00311\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00312}00312\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_p_w_m_controler_p_c_a9685_8cpp_source_l00313}00313\ }
+
+\end{DoxyCode}

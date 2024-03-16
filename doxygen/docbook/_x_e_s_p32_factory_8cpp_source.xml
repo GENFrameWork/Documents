@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_e_s_p32_factory_8cpp_source" xml:lang="en-US">
+<title>XESP32Factory.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/Platforms/Microcontrollers/ESP32/XESP32Factory.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_e_s_p32_factory_8h">XESP32Factory.h</link>&quot;</emphasis>
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_thread_collected_8h">XThreadCollected.h</link>&quot;</emphasis>
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00043"/>00043 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_e_s_p32_date_time_8h">XESP32DateTime.h</link>&quot;</emphasis>
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_e_s_p32_timer_8h">XESP32Timer.h</link>&quot;</emphasis>
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_e_s_p32_rand_8h">XESP32Rand.h</link>&quot;</emphasis>
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_e_s_p32_file_8h">XESP32File.h</link>&quot;</emphasis>
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_e_s_p32_dir_8h">XESP32Dir.h</link>&quot;</emphasis>
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00049"/>00049 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_e_s_p32_system_8h">XESP32System.h</link>&quot;</emphasis>
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00050"/>00050 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_e_s_p32_thread_8h">XESP32Thread.h</link>&quot;</emphasis>
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00051"/>00051 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_factory_macros_8h">XFactoryMacros.h</link>&quot;</emphasis>
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00053"/>00053 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00054"/>00054 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00055"/>00055 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00056"/>00056 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00057"/>00057 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00058"/>00058 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00059"/>00059 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00060"/>00060 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00061"/>00061 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00062"/>00062 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00063"/>00063 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00064"/>00064 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00065"/>00065 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00066"/>00066 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00067"/>00067 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00068"/>00068 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00069"/>00069 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00070"/>00070 <link linkend="__x_factory_macros_8h_1a6def18b38ffab6fb52746f4f6de08384">CREATEFUNC</link>(<link linkend="_class_x_e_s_p32_f_a_c_t_o_r_y">XESP32FACTORY</link>&#32;&#32;,&#32;<link linkend="_class_x_t_i_m_e_r">XTIMER</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="_class_x_e_s_p32_t_i_m_e_r">XESP32TIMER</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;CreateTimer)
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00071"/>00071 <link linkend="__x_factory_macros_8h_1a0ebafd1585be0b82957568b9931469dc">DELETEFUNC</link>(<link linkend="_class_x_e_s_p32_f_a_c_t_o_r_y">XESP32FACTORY</link>&#32;&#32;,&#32;<link linkend="_class_x_t_i_m_e_r">XTIMER</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="_class_x_e_s_p32_t_i_m_e_r">XESP32TIMER</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;DeleteTimer)
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00072"/>00072 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00073"/>00073 <link linkend="__x_factory_macros_8h_1a6def18b38ffab6fb52746f4f6de08384">CREATEFUNC</link>(<link linkend="_class_x_e_s_p32_f_a_c_t_o_r_y">XESP32FACTORY</link>&#32;&#32;,&#32;<link linkend="_class_x_d_a_t_e_t_i_m_e">XDATETIME</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="_class_x_e_s_p32_d_a_t_e_t_i_m_e">XESP32DATETIME</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;CreateDateTime)
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00074"/>00074 <link linkend="__x_factory_macros_8h_1a0ebafd1585be0b82957568b9931469dc">DELETEFUNC</link>(<link linkend="_class_x_e_s_p32_f_a_c_t_o_r_y">XESP32FACTORY</link>&#32;&#32;,&#32;<link linkend="_class_x_d_a_t_e_t_i_m_e">XDATETIME</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="_class_x_e_s_p32_d_a_t_e_t_i_m_e">XESP32DATETIME</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;DeleteDateTime)
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00075"/>00075 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00076"/>00076 <link linkend="__x_factory_macros_8h_1a6def18b38ffab6fb52746f4f6de08384">CREATEFUNC</link>(<link linkend="_class_x_e_s_p32_f_a_c_t_o_r_y">XESP32FACTORY</link>&#32;&#32;,&#32;<link linkend="_class_x_r_a_n_d">XRAND</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="_class_x_e_s_p32_r_a_n_d">XESP32RAND</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;CreateRand)
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00077"/>00077 <link linkend="__x_factory_macros_8h_1a0ebafd1585be0b82957568b9931469dc">DELETEFUNC</link>(<link linkend="_class_x_e_s_p32_f_a_c_t_o_r_y">XESP32FACTORY</link>&#32;&#32;,&#32;<link linkend="_class_x_r_a_n_d">XRAND</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="_class_x_e_s_p32_r_a_n_d">XESP32RAND</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;DeleteRand)
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00078"/>00078 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00079"/>00079 <link linkend="__x_factory_macros_8h_1a6def18b38ffab6fb52746f4f6de08384">CREATEFUNC</link>(<link linkend="_class_x_e_s_p32_f_a_c_t_o_r_y">XESP32FACTORY</link>&#32;&#32;,&#32;<link linkend="_class_x_f_i_l_e">XFILE</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="_class_x_e_s_p32_f_i_l_e">XESP32FILE</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;Create_File)
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00080"/>00080 <link linkend="__x_factory_macros_8h_1a0ebafd1585be0b82957568b9931469dc">DELETEFUNC</link>(<link linkend="_class_x_e_s_p32_f_a_c_t_o_r_y">XESP32FACTORY</link>&#32;&#32;,&#32;<link linkend="_class_x_f_i_l_e">XFILE</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="_class_x_e_s_p32_f_i_l_e">XESP32FILE</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;Delete_File)
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00081"/>00081 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00082"/>00082 <link linkend="__x_factory_macros_8h_1a6def18b38ffab6fb52746f4f6de08384">CREATEFUNC</link>(<link linkend="_class_x_e_s_p32_f_a_c_t_o_r_y">XESP32FACTORY</link>&#32;&#32;,&#32;<link linkend="_class_x_d_i_r">XDIR</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="_class_x_e_s_p32_d_i_r">XESP32DIR</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;Create_Dir)
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00083"/>00083 <link linkend="__x_factory_macros_8h_1a0ebafd1585be0b82957568b9931469dc">DELETEFUNC</link>(<link linkend="_class_x_e_s_p32_f_a_c_t_o_r_y">XESP32FACTORY</link>&#32;&#32;,&#32;<link linkend="_class_x_d_i_r">XDIR</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="_class_x_e_s_p32_d_i_r">XESP32DIR</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;Delete_Dir)
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00084"/>00084 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00085"/>00085 <link linkend="__x_factory_macros_8h_1a6def18b38ffab6fb52746f4f6de08384">CREATEFUNC</link>(<link linkend="_class_x_e_s_p32_f_a_c_t_o_r_y">XESP32FACTORY</link>&#32;&#32;,&#32;<link linkend="_class_x_s_y_s_t_e_m">XSYSTEM</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="_class_x_e_s_p32_s_y_s_t_e_m">XESP32SYSTEM</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;CreateSystem)
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00086"/>00086 <link linkend="__x_factory_macros_8h_1a0ebafd1585be0b82957568b9931469dc">DELETEFUNC</link>(<link linkend="_class_x_e_s_p32_f_a_c_t_o_r_y">XESP32FACTORY</link>&#32;&#32;,&#32;<link linkend="_class_x_s_y_s_t_e_m">XSYSTEM</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="_class_x_e_s_p32_s_y_s_t_e_m">XESP32SYSTEM</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;DeleteSystem)
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00087"/>00087 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00088"/>00088 <link linkend="__x_factory_macros_8h_1a6def18b38ffab6fb52746f4f6de08384">CREATEFUNC</link>(<link linkend="_class_x_e_s_p32_f_a_c_t_o_r_y">XESP32FACTORY</link>&#32;&#32;,&#32;<link linkend="_class_x_m_u_t_e_x">XMUTEX</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="_class_x_e_s_p32_m_u_t_e_x">XESP32MUTEX</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;Create_Mutex)
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00089"/>00089 <link linkend="__x_factory_macros_8h_1a0ebafd1585be0b82957568b9931469dc">DELETEFUNC</link>(<link linkend="_class_x_e_s_p32_f_a_c_t_o_r_y">XESP32FACTORY</link>&#32;&#32;,&#32;<link linkend="_class_x_m_u_t_e_x">XMUTEX</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="_class_x_e_s_p32_m_u_t_e_x">XESP32MUTEX</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;Delete_Mutex)
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00090"/>00090 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00091"/>00091 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00092"/>00092 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00106"/><link linkend="_class_x_e_s_p32_f_a_c_t_o_r_y_1a26832c60e1d6a7fa6b976cf6f3b355f7">00106</link> <link linkend="_class_x_t_h_r_e_a_d">XTHREAD</link>*&#32;<link linkend="_class_x_e_s_p32_f_a_c_t_o_r_y">XESP32FACTORY</link>::CreateThread(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6">XTHREADGROUPID</link>&#32;groupID,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;ID,<link linkend="__x_thread_8h_1a75cd5e654ca0f2255ae2473172af98d6">XTHREADFUNCTION</link>&#32;function,<emphasis role="keywordtype">void</emphasis>*&#32;data)
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00107"/>00107 {
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00108"/>00108 &#32;&#32;<link linkend="_class_x_e_s_p32_t_h_r_e_a_d">XESP32THREAD</link>*&#32;_class&#32;=&#32;&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_e_s_p32_t_h_r_e_a_d">XESP32THREAD</link>(groupID,&#32;ID,function,data);
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00109"/>00109 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(<link linkend="_class_x_t_h_r_e_a_d">XTHREAD</link>*)_class;
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00110"/>00110 }
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00111"/>00111 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00112"/>00112 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00125"/><link linkend="_class_x_e_s_p32_f_a_c_t_o_r_y_1abfe5281048bbf258612c5794a10ab684">00125</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_e_s_p32_f_a_c_t_o_r_y_1abfe5281048bbf258612c5794a10ab684">XESP32FACTORY::DeleteThread</link>(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6">XTHREADGROUPID</link>&#32;groupID,&#32;<link linkend="_class_x_t_h_r_e_a_d">XTHREAD</link>*&#32;xthread)
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00126"/>00126 {
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00127"/>00127 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xthread)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00128"/>00128 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00129"/>00129 &#32;&#32;<link linkend="_class_x_e_s_p32_t_h_r_e_a_d">XESP32THREAD</link>*&#32;_xthread&#32;=&#32;(<link linkend="_class_x_e_s_p32_t_h_r_e_a_d">XESP32THREAD</link>*)xthread;
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00130"/>00130 &#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;_xthread;
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00131"/>00131 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00132"/>00132 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00133"/>00133 };
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00134"/>00134 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00135"/>00135 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00136"/>00136 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00137"/>00137 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00138"/>00138 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00139"/>00139 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00140"/>00140 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00141"/>00141 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00142"/>00142 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00143"/>00143 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00144"/>00144 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00145"/>00145 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00146"/>00146 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00147"/>00147 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00148"/>00148 
+<anchor xml:id="__x_e_s_p32_factory_8cpp_source_1l00149"/>00149 
+</programlisting></section>

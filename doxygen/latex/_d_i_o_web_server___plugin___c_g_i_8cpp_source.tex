@@ -1,0 +1,144 @@
+\doxysection{DIOWeb\+Server\+\_\+\+Plugin\+\_\+\+CGI.\+cpp}
+\hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source}{}\label{_d_i_o_web_server___plugin___c_g_i_8cpp_source}\index{D:/Projects/GENFrameWork/GEN/DataIO/Web/DIOWebServer\_Plugin\_CGI.cpp@{D:/Projects/GENFrameWork/GEN/DataIO/Web/DIOWebServer\_Plugin\_CGI.cpp}}
+\mbox{\hyperlink{_d_i_o_web_server___plugin___c_g_i_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00029}00029\ \textcolor{comment}{/*-\/-\/-\/-\/\ PRECOMPILATION\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#pragma\ region\ PRECOMPILATION\_INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_e_n___defines_8h}{GEN\_Defines.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00037}00037\ \textcolor{comment}{/*-\/-\/-\/-\/\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#pragma\ region\ INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_i_o_web_server___plugin___c_g_i_8h}{DIOWebServer\_Plugin\_CGI.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_file_t_x_t_8h}{XFileTXT.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_system_8h}{XSystem.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00044}00044\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_process_manager_8h}{XProcessManager.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_trace_8h}{XTrace.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00047}00047\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_i_o_web_server___query_strings_8h}{DIOWebServer\_QueryStrings.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00048}00048\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_i_o_web_server_8h}{DIOWebServer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00050}00050\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_memory___control_8h}{XMemory\_Control.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00052}00052\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00055}00055\ \textcolor{comment}{/*-\/-\/-\/-\/\ GENERAL\ VARIABLE\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00056}00056\ \textcolor{preprocessor}{\#pragma\ region\ GENERAL\_VARIABLE}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00058}00058\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00061}00061\ \textcolor{comment}{/*-\/-\/-\/-\/\ CLASS\ MEMBERS\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00062}00062\ \textcolor{preprocessor}{\#pragma\ region\ CLASS\_MEMBERS}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00072}\mbox{\hyperlink{group___d_a_t_a_i_o_ga3deac5a135b921bd20e920339efcf7f9}{00072}}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga3deac5a135b921bd20e920339efcf7f9}{DIOWEBSERVER\_PLUGIN\_CGI::DIOWEBSERVER\_PLUGIN\_CGI}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00073}00073\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00074}00074\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00076}00076\ \ \ \mbox{\hyperlink{group___d_a_t_a_i_o_ga32b82df251d71bd94418daee37baf571}{GetName}}()-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga4e97e075650e9bc8cfb7deb28e4c9ce4}{Set}}(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}CGI\ Pluging"{}}));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00077}00077\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00088}\mbox{\hyperlink{group___d_a_t_a_i_o_ga616d239f96c4bb7c6de08c73664b1c0d}{00088}}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga616d239f96c4bb7c6de08c73664b1c0d}{DIOWEBSERVER\_PLUGIN\_CGI::\string~DIOWEBSERVER\_PLUGIN\_CGI}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00089}00089\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00090}00090\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00091}00091\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00106}\mbox{\hyperlink{group___d_a_t_a_i_o_ga081cd965ff0fd1e9dad8ea5b9dc66bcd}{00106}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga081cd965ff0fd1e9dad8ea5b9dc66bcd}{DIOWEBSERVER\_PLUGIN\_CGI::Config}}(\mbox{\hyperlink{class_x_p_a_t_h}{XPATH}}*\ pathCGIinterpreter,\ \mbox{\hyperlink{_x_string_8h_a03209152a681f02e4ba73b6681dd4968}{XCHAR}}*\ nameexec)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00107}00107\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00108}00108\ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{class_d_i_o_w_e_b_s_e_r_v_e_r___p_l_u_g_i_n___c_g_i_acab594e0c7dd0aea68091ad6b4adae5c}{pathCGIinterpreter}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00110}00110\ \ \ this-\/>pathCGIinterpreter\ \ =\ \mbox{\hyperlink{class_d_i_o_w_e_b_s_e_r_v_e_r___p_l_u_g_i_n___c_g_i_acab594e0c7dd0aea68091ad6b4adae5c}{pathCGIinterpreter}}-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00111}00111\ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_d_i_o_w_e_b_s_e_r_v_e_r___p_l_u_g_i_n___c_g_i_a211f6f114932e7867c4faf9414aa49bd}{nameexec}})\ this-\/>nameexec\ =\ \mbox{\hyperlink{class_d_i_o_w_e_b_s_e_r_v_e_r___p_l_u_g_i_n___c_g_i_a211f6f114932e7867c4faf9414aa49bd}{nameexec}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00113}00113\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00114}00114\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00132}\mbox{\hyperlink{group___d_a_t_a_i_o_ga0c0c2ae72cb626df0302cf14e7dd1794}{00132}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga0c0c2ae72cb626df0302cf14e7dd1794}{DIOWEBSERVER\_PLUGIN\_CGI::PageExtension}}(\mbox{\hyperlink{class_x_p_a_t_h}{XPATH}}\&\ pathfile,\ \mbox{\hyperlink{class_d_i_o_w_e_b_s_e_r_v_e_r___r_e_q_u_e_s_t}{DIOWEBSERVER\_REQUEST}}*\ request,\ \mbox{\hyperlink{class_d_i_o_w_e_b_s_e_r_v_e_r___q_u_e_r_y_s_t_r_i_n_g_s}{DIOWEBSERVER\_QUERYSTRINGS}}*\ querystrings,\ \mbox{\hyperlink{_d_i_o_web_header_8h_af9fedb93d298b98046ab46815eea73c9}{DIOWEBHEADER\_RESULT}}\&\ headerresult,\ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\&\ result)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00133}00133\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00134}00134\ \ \ \textcolor{keywordflow}{if}(!request)\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00135}00135\ \ \ \textcolor{keywordflow}{if}(!querystrings)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00137}00137\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ allparam;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00139}00139\ \ \ headerresult\ =\ \mbox{\hyperlink{_d_i_o_web_header_8h_af9fedb93d298b98046ab46815eea73c9ab8191662e79a5d19951b99742ce3d688}{DIOWEBHEADER\_RESULT\_OK}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00141}00141\ \ \ querystrings-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga8377ce444df4ab754108af053babdabf}{GetAllParam}}(allparam);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00143}00143\ \ \ \mbox{\hyperlink{class_x_p_a_t_h}{XPATH}}\ pathexec;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00145}00145\ \ \ pathexec\ \ =\ \mbox{\hyperlink{class_d_i_o_w_e_b_s_e_r_v_e_r___p_l_u_g_i_n___c_g_i_acab594e0c7dd0aea68091ad6b4adae5c}{pathCGIinterpreter}}.\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00146}00146\ \ \ pathexec.\mbox{\hyperlink{group___x_u_t_i_l_s_ga337e940d48f7178186adfbdf4d268ac7}{Slash\_Add}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00147}00147\ \ \ pathexec\ +=\ \mbox{\hyperlink{class_d_i_o_w_e_b_s_e_r_v_e_r___p_l_u_g_i_n___c_g_i_a211f6f114932e7867c4faf9414aa49bd}{nameexec}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00149}00149\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ methodstring;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00150}00150\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ returnerror\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00151}00151\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ in;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00152}00152\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ sizein\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00153}00153\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ sizeinstr;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00154}00154\ \ \ \textcolor{keywordtype}{bool}\ \ \ \ status;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00156}00156\ \ \ \textcolor{keywordflow}{if}(request-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gac306980f2811a5b9a8f197ad86050171}{GetData}}())}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00157}00157\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00158}00158\ \ \ \ \ \ \ sizein\ =\ request-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gac306980f2811a5b9a8f197ad86050171}{GetData}}()-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga726a6143d8a9293a199f8033c8198a0a}{GetSize}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00159}00159\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(sizein)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ in.\mbox{\hyperlink{group___x_u_t_i_l_s_gae19f84471c20a914d10a8ac757cacb9a}{Add}}((*request-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gac306980f2811a5b9a8f197ad86050171}{GetData}}()));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ sizeinstr.\mbox{\hyperlink{group___x_u_t_i_l_s_ga2177bf8a150174dfd155c7fe1b7b2af9}{Format}}(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}\%d"{}}),\ sizein);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00165}00165\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00167}00167\ \ \ \textcolor{keywordflow}{switch}(request-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga8d81513c10146c65a73117e7b1d8303e}{GetMethod}}())}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00168}00168\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00169}00169\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_d_i_o_web_header_8h_a1be00bd8c26973333189c37b3ca55f27a803f86cdd09f7cdc73a540888bd5fe80}{DIOWEBHEADER\_METHOD\_GET}}\ \ \ \ \ :\ methodstring\ =\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}\(\backslash\)"{}GET\(\backslash\)"{}"{}});\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00170}00170\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_d_i_o_web_header_8h_a1be00bd8c26973333189c37b3ca55f27a04e3eed0b55d7732f40bb67263f210b7}{DIOWEBHEADER\_METHOD\_POST}}\ \ \ \ :\ methodstring\ =\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}\(\backslash\)"{}POST\(\backslash\)"{}"{}});\ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00171}00171\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_d_i_o_web_header_8h_a1be00bd8c26973333189c37b3ca55f27ab91e7d21726a43726f2730629b836872}{DIOWEBHEADER\_METHOD\_PUT}}\ \ \ \ \ :\ methodstring\ =\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}\(\backslash\)"{}PUT\(\backslash\)"{}"{}});\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00172}00172\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_d_i_o_web_header_8h_a1be00bd8c26973333189c37b3ca55f27ab4a26a2cf0f7e1def4d09cb9c50fe2ed}{DIOWEBHEADER\_METHOD\_DELETE}}\ \ :\ methodstring\ =\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}\(\backslash\)"{}DELETE\(\backslash\)"{}"{}});\ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ default\ \ \ \ \ \ :\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00174}00174\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00177}00177\ \ \ GEN\_XSYSTEM.SetEnviromentVariable(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}GATEWAY\_INTERFACE"{}})\ ,\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}CGI/1.1"{}}));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00178}00178\ \ \ GEN\_XSYSTEM.SetEnviromentVariable(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}REQUEST\_METHOD"{}})\ \ \ \ ,\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}POST"{}}));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00179}00179\ \ \ GEN\_XSYSTEM.SetEnviromentVariable(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}SCRIPT\_FILENAME"{}})\ \ \ ,\ pathfile.\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}());}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00180}00180\ \ \ GEN\_XSYSTEM.SetEnviromentVariable(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}CONTENT\_LENGTH"{}})\ \ \ \ ,\ sizeinstr.\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}());}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00181}00181\ \ \ GEN\_XSYSTEM.SetEnviromentVariable(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}REDIRECT\_STATUS"{}})\ \ \ ,\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}true"{}}));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00182}00182\ \ \ GEN\_XSYSTEM.SetEnviromentVariable(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}CONTENT\_TYPE"{}})\ \ \ \ \ \ ,\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}application/x-\/www-\/form-\/urlencoded"{}}));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00184}00184\ \ \ \textcolor{keywordflow}{if}(request-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga8d81513c10146c65a73117e7b1d8303e}{GetMethod}}()\ ==\ \mbox{\hyperlink{_d_i_o_web_header_8h_a1be00bd8c26973333189c37b3ca55f27a803f86cdd09f7cdc73a540888bd5fe80}{DIOWEBHEADER\_METHOD\_GET}})\ GEN\_XSYSTEM.SetEnviromentVariable(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}QUERY\_STRING"{}}),\ allparam.\mbox{\hyperlink{group___x_u_t_i_l_s_ga7c3fa0dd7b650399470c76192fbd4916}{GetSize}}()?allparam.\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}():\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}\(\backslash\)"{}\(\backslash\)"{}"{}}));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00186}00186\ \ \ status\ =\ GEN\_XPROCESSMANAGER.Application\_Execute(pathexec.\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}(),\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}},\ \&in,\ \&result,\ \&returnerror);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00188}00188\ \ \ GEN\_XSYSTEM.DelEnviromentVariable(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}GATEWAY\_INTERFACE"{}}));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00189}00189\ \ \ GEN\_XSYSTEM.DelEnviromentVariable(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}REQUEST\_METHOD"{}}));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00190}00190\ \ \ GEN\_XSYSTEM.DelEnviromentVariable(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}SCRIPT\_FILENAME"{}}));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00191}00191\ \ \ GEN\_XSYSTEM.DelEnviromentVariable(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}CONTENT\_LENGTH"{}}));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00192}00192\ \ \ GEN\_XSYSTEM.DelEnviromentVariable(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}REDIRECT\_STATUS"{}}));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00193}00193\ \ \ GEN\_XSYSTEM.DelEnviromentVariable(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}CONTENT\_TYPE"{}}));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00194}00194\ \ \ GEN\_XSYSTEM.DelEnviromentVariable(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}QUERY\_STRING"{}}));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00196}00196\ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00197}00197\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00208}00208\ \textcolor{keywordtype}{void}\ DIOWEBSERVER\_PLUGIN\_CGI::Clean()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00209}00209\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00210}00210\ \ \ \mbox{\hyperlink{class_d_i_o_w_e_b_s_e_r_v_e_r___p_l_u_g_i_n___c_g_i_acab594e0c7dd0aea68091ad6b4adae5c}{pathCGIinterpreter}}.\mbox{\hyperlink{group___x_u_t_i_l_s_ga9275997c1605fa79646c301e63a77d06}{Empty}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00211}00211\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00213}00213\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00214}00214\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_web_server___plugin___c_g_i_8cpp_source_l00215}00215\ }
+
+\end{DoxyCode}

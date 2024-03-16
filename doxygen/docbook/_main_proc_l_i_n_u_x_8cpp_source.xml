@@ -1,0 +1,1092 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__main_proc_l_i_n_u_x_8cpp_source" xml:lang="en-US">
+<title>MainProcLINUX.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/Platforms/Linux/MainProcLINUX.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00041"/>00041 <emphasis role="preprocessor">#include&#32;&lt;stdlib.h&gt;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&lt;stdarg.h&gt;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&lt;utmp.h&gt;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&lt;time.h&gt;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&lt;malloc.h&gt;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&lt;unistd.h&gt;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&lt;string.h&gt;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&lt;wchar.h&gt;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00049"/>00049 <emphasis role="preprocessor">#include&#32;&lt;fcntl.h&gt;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00050"/>00050 <emphasis role="preprocessor">#include&#32;&lt;errno.h&gt;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#include&#32;&lt;syslog.h&gt;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#include&#32;&lt;signal.h&gt;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00053"/>00053 <emphasis role="preprocessor">#include&#32;&lt;sys/types.h&gt;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00054"/>00054 <emphasis role="preprocessor">#include&#32;&lt;sys/stat.h&gt;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00055"/>00055 <emphasis role="preprocessor">#include&#32;&lt;sys/fcntl.h&gt;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00056"/>00056 <emphasis role="preprocessor">#include&#32;&lt;execinfo.h&gt;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00057"/>00057 <emphasis role="preprocessor">#include&#32;&lt;errno.h&gt;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00058"/>00058 <emphasis role="preprocessor">#include&#32;&lt;cxxabi.h&gt;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00059"/>00059 <emphasis role="preprocessor">#include&#32;&lt;arpa/inet.h&gt;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00060"/>00060 <emphasis role="preprocessor">#include&#32;&lt;netdb.h&gt;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00061"/>00061 <emphasis role="preprocessor">#include&#32;&lt;fenv.h&gt;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00062"/>00062 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00063"/>00063 <emphasis role="preprocessor">#ifdef&#32;GOOGLETEST_ACTIVE&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00064"/>00064 <emphasis role="preprocessor">#include&#32;&quot;gtest/gtest.h&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00065"/>00065 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00066"/>00066 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00067"/>00067 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__main_proc_l_i_n_u_x_8h">MainProcLINUX.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00068"/>00068 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00069"/>00069 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_l_i_n_u_x_factory_8h">XLINUXFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00070"/>00070 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_l_i_n_u_x_rand_8h">XLINUXRand.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00071"/>00071 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_l_i_n_u_x_sleep_8h">XLINUXSleep.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00072"/>00072 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_l_i_n_u_x_system_8h">XLINUXSystem.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00073"/>00073 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_l_i_n_u_x_trace_8h">XLINUXTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00074"/>00074 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00075"/>00075 <emphasis role="preprocessor">#ifdef&#32;XPROCESSMANAGER_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00076"/>00076 <emphasis role="preprocessor">&#32;&#32;#include&#32;&quot;<link linkend="__x_l_i_n_u_x_process_manager_8h">XLINUXProcessManager.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00077"/>00077 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00078"/>00078 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00079"/>00079 <emphasis role="preprocessor">#ifdef&#32;XSHAREDMEMORYMANAGER_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00080"/>00080 <emphasis role="preprocessor">&#32;&#32;#include&#32;&quot;<link linkend="__x_l_i_n_u_x_shared_memory_manager_8h">XLINUXSharedMemoryManager.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00081"/>00081 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00082"/>00082 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00083"/>00083 <emphasis role="preprocessor">#ifdef&#32;XDRIVEIMAGE_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00084"/>00084 <emphasis role="preprocessor">&#32;&#32;#include&#32;&quot;XLINUXDriveImage.h&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00085"/>00085 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00086"/>00086 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00087"/>00087 <emphasis role="preprocessor">#ifdef&#32;XEEPROMMEMORYMANAGER_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00088"/>00088 <emphasis role="preprocessor">&#32;&#32;#include&#32;&quot;<link linkend="__x_l_i_n_u_x_e_e_p_r_o_m_memory_manager_8h">XLINUXEEPROMMemoryManager.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00089"/>00089 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00090"/>00090 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00091"/>00091 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00092"/>00092 <emphasis role="preprocessor">#ifdef&#32;GRP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00093"/>00093 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_r_p_l_i_n_u_x_factory_8h">GRPLINUXFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00094"/>00094 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00095"/>00095 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00096"/>00096 <emphasis role="preprocessor">#ifdef&#32;INP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00097"/>00097 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__i_n_p_manager_8h">INPManager.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00098"/>00098 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__i_n_p_factory_8h">INPFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00099"/>00099 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__i_n_p_l_i_n_u_x_factory_8h">INPLINUXFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00100"/>00100 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00101"/>00101 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00102"/>00102 <emphasis role="preprocessor">#ifdef&#32;SND_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00103"/>00103 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__s_n_d_l_i_n_u_x_factory_8h">SNDLINUXFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00104"/>00104 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00105"/>00105 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00106"/>00106 <emphasis role="preprocessor">#ifdef&#32;DIO_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00107"/>00107 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_d_n_s_resolver_8h">DIODNSResolver.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00108"/>00108 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_factory_8h">DIOLINUXFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00109"/>00109 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00110"/>00110 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;DIO_GPIO_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00111"/>00111 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00112"/>00112 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_g_p_i_o_8h">DIOLINUXGPIO.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00113"/>00113 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00114"/>00114 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#ifdef&#32;HW_PC</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00115"/>00115 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;DIO_GPIO_PCPARALLEL_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00116"/>00116 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8h">DIOLINUXGPIOPCParallel.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00117"/>00117 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00118"/>00118 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00119"/>00119 &#32;&#32;&#32;&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00120"/>00120 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#ifdef&#32;HW_RASPBERRYPI</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00121"/>00121 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_g_p_i_o_raspberry_pi_8h">DIOLINUXGPIORaspberryPi.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00122"/>00122 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00123"/>00123 &#32;&#32;&#32;&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00124"/>00124 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#if&#32;defined(HW_ARM)&#32;||&#32;defined(HW_ARM64)</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00125"/>00125 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_g_p_i_o_a_r_m_8h">DIOLINUXGPIOARM.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00126"/>00126 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00127"/>00127 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00128"/>00128 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00129"/>00129 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00130"/>00130 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;DIO_PING_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00131"/>00131 <emphasis role="preprocessor">&#32;&#32;#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_ping_8h">DIOLINUXPing.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00132"/>00132 <emphasis role="preprocessor">&#32;&#32;#include&#32;&quot;<link linkend="__d_i_o_ping_8h">DIOPing.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00133"/>00133 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00134"/>00134 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00135"/>00135 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;DIO_ALERTS_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00136"/>00136 <emphasis role="preprocessor">&#32;&#32;#include&#32;&quot;<link linkend="__d_i_o_alerts_8h">DIOAlerts.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00137"/>00137 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00138"/>00138 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00139"/>00139 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00140"/>00140 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__version_frame_work_8h">VersionFrameWork.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00141"/>00141 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00142"/>00142 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_rand_8h">XRand.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00143"/>00143 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_sleep_8h">XSleep.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00144"/>00144 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_path_8h">XPath.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00145"/>00145 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_string_8h">XString.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00146"/>00146 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_log_8h">XLog.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00147"/>00147 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_file_8h">XFile.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00148"/>00148 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_timer_8h">XTimer.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00149"/>00149 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_thread_collected_8h">XThreadCollected.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00150"/>00150 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_date_time_8h">XDateTime.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00151"/>00151 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_translation___g_e_n_8h">XTranslation_GEN.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00152"/>00152 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_translation_8h">XTranslation.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00153"/>00153 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_publisher_8h">XPublisher.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00154"/>00154 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00155"/>00155 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__a_p_p_base_8h">APPBase.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00156"/>00156 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00157"/>00157 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00158"/>00158 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00159"/>00159 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00160"/>00160 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00161"/>00161 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00162"/>00162 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00163"/>00163 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00164"/>00164 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00165"/>00165 <emphasis role="preprocessor">#ifdef&#32;XTRACE_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00166"/>00166 <link linkend="_class_x_l_i_n_u_x_t_r_a_c_e">XLINUXTRACE</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;linuxdebugtrace;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00167"/>00167 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00168"/>00168 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00169"/><link linkend="__main_proc_l_i_n_u_x_8cpp_1a1833cf9b3760fbeeebc04340c234765b">00169</link> <link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x">MAINPROCLINUX</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a1833cf9b3760fbeeebc04340c234765b">mainproclinux</link>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00170"/><link linkend="__main_proc_l_i_n_u_x_8cpp_1a2f34067d0aceaaed132126c539d9d0ff">00170</link> <emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a2f34067d0aceaaed132126c539d9d0ff">libmainproclinux</link>&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00171"/><link linkend="__main_proc_l_i_n_u_x_8cpp_1a63f86790c2440be0cfa934f6c43b3f8c">00171</link> <link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a63f86790c2440be0cfa934f6c43b3f8c">allexceptiontext</link>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00172"/>00172 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00173"/>00173 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00174"/>00174 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00175"/>00175 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00176"/>00176 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00177"/>00177 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00178"/>00178 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00179"/>00179 <emphasis role="keywordtype">void</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a30eccbcde43b4c0fe2b16961cf3ff96b">Signal_Ini</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(<emphasis role="keywordtype">void</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00180"/>00180 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Signal_Handler&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(<emphasis role="keywordtype">int</emphasis>&#32;sig);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00181"/>00181 <emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a2c287523e9e66411d08e971972132e25">Signal_Printf</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(<emphasis role="keywordtype">bool</emphasis>&#32;iserror,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;title,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;mask,&#32;...);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00182"/>00182 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;&#32;&#32;&#32;Signal_PrintfStackTrace&#32;&#32;&#32;(FILE&#32;*out&#32;=&#32;stderr,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;max_frames&#32;=&#32;63);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00183"/>00183 <emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a9fc6fb76b6a936ab7d971e1149af888c">Signal_RunLevel</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>&amp;&#32;previous,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>&amp;&#32;actual);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00184"/>00184 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00185"/>00185 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00186"/>00186 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MAINPROCLINUX</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00187"/>00187 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00188"/>00188 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00198"/><link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1a20eeadd2b1638404cf594fd85aaf8571">00198</link> <link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1a20eeadd2b1638404cf594fd85aaf8571">MAINPROCLINUX::MAINPROCLINUX</link>()
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00199"/>00199 {
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00200"/>00200 &#32;&#32;Clean();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00201"/>00201 }
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00202"/>00202 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00203"/>00203 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00214"/><link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1acda34333fc63cd16aded141c3d692715">00214</link> <link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1acda34333fc63cd16aded141c3d692715">MAINPROCLINUX::~MAINPROCLINUX</link>()
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00215"/>00215 {
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00216"/>00216 &#32;&#32;Clean();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00217"/>00217 }
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00218"/>00218 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00219"/>00219 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00232"/><link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1ac4dc3d71616720ef6ef9c4a723499fe8">00232</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1ac4dc3d71616720ef6ef9c4a723499fe8">MAINPROCLINUX::Ini</link>(<link linkend="_class_a_p_p_m_a_i_n">APPMAIN</link>*&#32;appmain,&#32;<link linkend="__a_p_p_base_8h_1a6991af6c033a919680a6fa0b86f097f2">APPBASE_APPLICATIONMODE_TYPE</link>&#32;applicationmode)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00233"/>00233 {
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00234"/>00234 &#32;&#32;this-&gt;appmain&#32;=&#32;<link linkend="_class_m_a_i_n_p_r_o_c_1a09b338a1053d25140660176f4ba8ada3">appmain</link>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00235"/>00235 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00236"/>00236 &#32;&#32;<emphasis role="comment">//---------------------------------------------------------------------------</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00237"/>00237 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;FPE_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00238"/>00238 &#32;&#32;feenableexcept(FE_DIVBYZERO&#32;|&#32;FE_OVERFLOW&#32;<emphasis role="comment">/*|&#32;FE_UNDERFLOW&#32;|&#32;FE_INEXACT*/</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00239"/>00239 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00240"/>00240 &#32;&#32;<emphasis role="comment">//---------------------------------------------------------------------------</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00241"/>00241 &#32;&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00242"/>00242 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1a008cba82f81f106727477c71cd2f809f">Factorys_Ini</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00243"/>00243 &#32;&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00244"/>00244 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;APP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00245"/>00245 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00246"/>00246 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_m_a_i_n_p_r_o_c_1a09b338a1053d25140660176f4ba8ada3">appmain</link>)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00247"/>00247 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_m_a_i_n_p_r_o_c_1a09b338a1053d25140660176f4ba8ada3">appmain</link>-&gt;<link linkend="_class_a_p_p_m_a_i_n_1a7ec2ce73d999c87734b4fd2e6d40bffb">Create</link>())&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00248"/>00248 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_m_a_i_n_p_r_o_c_1a09b338a1053d25140660176f4ba8ada3">appmain</link>-&gt;<link linkend="_class_a_p_p_m_a_i_n_1abcd96e0ac68d041dd307005e2496638d">Ini</link>(<emphasis role="keyword">this</emphasis>,&#32;applicationmode))&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00249"/>00249 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00250"/>00250 <emphasis role="preprocessor">&#32;&#32;#else</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00251"/>00251 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00252"/>00252 &#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="__main_proc_8cpp_1a47d21028ecd52962c912b0d803b2ff82">Main_Proc_PlatformIni</link>)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00253"/>00253 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00254"/>00254 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="__main_proc_8cpp_1a47d21028ecd52962c912b0d803b2ff82">Main_Proc_PlatformIni</link>(<emphasis role="keyword">this</emphasis>))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00255"/>00255 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00256"/>00256 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00257"/>00257 &#32;&#32;GEN_XPATHSMANAGER.GetAppExecPath()-&gt;Set(<link linkend="_class_m_a_i_n_p_r_o_c_1ac16bbb769317df25864505c7e7c1771c">GetXPathExec</link>()-&gt;Get());
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00258"/>00258 &#32;&#32;<link linkend="_class_m_a_i_n_p_r_o_c_1ac16bbb769317df25864505c7e7c1771c">GetXPathExec</link>()-&gt;<link linkend="_class_x_p_a_t_h_1a2b75bbcfaa62ecdc79912b6ac68ed277">SetOnlyDriveAndPath</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00259"/>00259 &#32;&#32;GEN_XPATHSMANAGER.AddPathSection(<link linkend="__x_paths_manager_8h_1a574bf1ebb371f804090c20183c9ff7dda88a87711c3fd397f03e75c5a6867fc28">XPATHSMANAGERSECTIONTYPE_ROOT</link>&#32;,&#32;(*<link linkend="_class_m_a_i_n_p_r_o_c_1ac16bbb769317df25864505c7e7c1771c">GetXPathExec</link>()));
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00260"/>00260 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00261"/>00261 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="__main_proc_8cpp_1a8f8ac76e1927db99e4de64dd699d9028">Main_Proc_Ini</link>)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00262"/>00262 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00263"/>00263 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="__main_proc_8cpp_1a8f8ac76e1927db99e4de64dd699d9028">Main_Proc_Ini</link>(<emphasis role="keyword">this</emphasis>))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00264"/>00264 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00265"/>00265 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00266"/>00266 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00267"/>00267 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00268"/>00268 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00269"/>00269 }
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00270"/>00270 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00271"/>00271 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00281"/><link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1af570c92d8eda30e7dce795b44d92084c">00281</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1af570c92d8eda30e7dce795b44d92084c">MAINPROCLINUX::Update</link>()
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00282"/>00282 {
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00283"/>00283 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;INP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00284"/>00284 &#32;&#32;GEN_INPMANAGER.Update();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00285"/>00285 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00286"/>00286 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00287"/>00287 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;APP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00288"/>00288 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00289"/>00289 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_m_a_i_n_p_r_o_c_1a09b338a1053d25140660176f4ba8ada3">appmain</link>)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00290"/>00290 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00291"/>00291 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_m_a_i_n_p_r_o_c_1a09b338a1053d25140660176f4ba8ada3">appmain</link>-&gt;<link linkend="_class_a_p_p_m_a_i_n_1a380ae38e7fe3c02cb7a2eb0fa54cb5ce">Update</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00292"/>00292 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00293"/>00293 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00294"/>00294 <emphasis role="preprocessor">&#32;&#32;#else</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00295"/>00295 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00296"/>00296 &#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="__main_proc_8cpp_1a09d103a86728395ab5143a584be890de">Main_Proc_Update</link>)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00297"/>00297 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00298"/>00298 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="__main_proc_8cpp_1a09d103a86728395ab5143a584be890de">Main_Proc_Update</link>(<emphasis role="keyword">this</emphasis>))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00299"/>00299 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00300"/>00300 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00301"/>00301 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00302"/>00302 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00303"/>00303 <emphasis role="preprocessor">&#32;&#32;#ifndef&#32;GRP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00304"/>00304 &#32;&#32;usleep(5000);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00305"/>00305 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00306"/>00306 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00307"/>00307 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00308"/>00308 }
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00309"/>00309 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00310"/>00310 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00320"/><link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1a105c6b8ddb941fa4fbccce046fb10304">00320</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1a105c6b8ddb941fa4fbccce046fb10304">MAINPROCLINUX::End</link>()
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00321"/>00321 {
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00322"/>00322 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;APP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00323"/>00323 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00324"/>00324 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_m_a_i_n_p_r_o_c_1a09b338a1053d25140660176f4ba8ada3">appmain</link>)&#32;<link linkend="_class_m_a_i_n_p_r_o_c_1a09b338a1053d25140660176f4ba8ada3">appmain</link>-&gt;<link linkend="_class_a_p_p_m_a_i_n_1add944be5665daa45baa865d7d15214a9">End</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00325"/>00325 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00326"/>00326 <emphasis role="preprocessor">&#32;&#32;#else</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00327"/>00327 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00328"/>00328 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="__main_proc_8cpp_1a7dddfdb386e99f41661d284091ed87f3">Main_Proc_End</link>)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00329"/>00329 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00330"/>00330 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="__main_proc_8cpp_1a7dddfdb386e99f41661d284091ed87f3">Main_Proc_End</link>(<emphasis role="keyword">this</emphasis>))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00331"/>00331 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00332"/>00332 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00333"/>00333 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00334"/>00334 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00335"/>00335 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;APP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00336"/>00336 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00337"/>00337 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_m_a_i_n_p_r_o_c_1a09b338a1053d25140660176f4ba8ada3">appmain</link>)&#32;<link linkend="_class_m_a_i_n_p_r_o_c_1a09b338a1053d25140660176f4ba8ada3">appmain</link>-&gt;<link linkend="_class_a_p_p_m_a_i_n_1a26ebe4f503149e3e1b8ae89aef286f9a">Delete</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00338"/>00338 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00339"/>00339 <emphasis role="preprocessor">&#32;&#32;#else</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00340"/>00340 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00341"/>00341 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="__main_proc_8cpp_1ab80fb8685c48c9d1de7954f2508d256c">Main_Proc_PlatformEnd</link>)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00342"/>00342 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00343"/>00343 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="__main_proc_8cpp_1ab80fb8685c48c9d1de7954f2508d256c">Main_Proc_PlatformEnd</link>(<emphasis role="keyword">this</emphasis>))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00344"/>00344 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00345"/>00345 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00346"/>00346 <emphasis role="preprocessor">&#32;&#32;#endif&#32;&#32;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00347"/>00347 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00348"/>00348 &#32;&#32;<link linkend="_class_m_a_i_n_p_r_o_c_1aa2aff4e5ac767790eddc6f6707b7af51">DeleteAllExecParams</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00349"/>00349 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00350"/>00350 &#32;&#32;GEN_VERSION.DelInstance();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00351"/>00351 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00352"/>00352 &#32;&#32;<link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1ae11d0b6e4a3b3d83d5922a619a2326f5">Factorys_End</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00353"/>00353 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00354"/>00354 &#32;&#32;<link linkend="__x_file_8h_1a9e8aab286aee9488ba13769f0d741b0b">XFILE_DISPLAYNOTCLOSEFILES</link>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00355"/>00355 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00356"/>00356 &#32;&#32;<link linkend="__x_memory___control_8h_1a041a4e588d4e8f866c5d46727543ba80">XMEMORY_CONTROL_DEACTIVATED</link>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00357"/>00357 &#32;&#32;<link linkend="__x_memory___control_8h_1a0ec218a86bf7506dad87c644ada09800">XMEMORY_CONTROL_DISPLAYMEMORYLEAKS</link>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00358"/>00358 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00359"/>00359 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00360"/>00360 }
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00361"/>00361 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00362"/>00362 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00372"/><link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1a008cba82f81f106727477c71cd2f809f">00372</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1a008cba82f81f106727477c71cd2f809f">MAINPROCLINUX::Factorys_Ini</link>()
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00373"/>00373 {
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00374"/>00374 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_f_a_c_t_o_r_y_1ac90e09ebcf9e3742ddda46ccdfee6f23">XFACTORY::SetInstance</link>(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_l_i_n_u_x_f_a_c_t_o_r_y">XLINUXFACTORY</link>()))&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00375"/>00375 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00376"/>00376 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00377"/>00377 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00378"/>00378 &#32;&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00379"/>00379 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;XSYSTEM_ACTIVE&#32;&#32;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00380"/>00380 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_s_y_s_t_e_m_1a29189cab62d37dce2a557b9170ea3a26">XSYSTEM::SetInstance</link>(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_l_i_n_u_x_s_y_s_t_e_m">XLINUXSYSTEM</link>()))&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00381"/>00381 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00382"/>00382 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00383"/>00383 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00384"/>00384 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r_1ac95db3e8f5e7039ae31ceec8cdead6e0">XBUFFER::SetGlobalHardwareUseLittleEndian</link>(GEN_XSYSTEM.HardwareUseLittleEndian());
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00385"/>00385 <emphasis role="preprocessor">&#32;&#32;#endif&#32;&#32;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00386"/>00386 &#32;&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00387"/>00387 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_r_a_n_d_1a21e6002f94625d24b3118f2097e3ce0a">XRAND::SetInstance</link>(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_l_i_n_u_x_r_a_n_d">XLINUXRAND</link>()))&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00388"/>00388 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00389"/>00389 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00390"/>00390 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00391"/>00391 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00392"/>00392 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;XSLEEP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00393"/>00393 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_s_l_e_e_p_1a699e30b12ab2c34a247331b6934d3e39">XSLEEP::SetInstance</link>(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_l_i_n_u_x_s_l_e_e_p">XLINUXSLEEP</link>()))&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00394"/>00394 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00395"/>00395 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00396"/>00396 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00397"/>00397 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00398"/>00398 &#32;&#32;&#32;&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00399"/>00399 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;XPROCESSMANAGER_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00400"/>00400 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_p_r_o_c_e_s_s_m_a_n_a_g_e_r_1a4aaa23db02ccc007b23eccc1e534e163">XPROCESSMANAGER::SetInstance</link>(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_l_i_n_u_x_p_r_o_c_e_s_s_m_a_n_a_g_e_r">XLINUXPROCESSMANAGER</link>()))&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00401"/>00401 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00402"/>00402 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00403"/>00403 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00404"/>00404 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00405"/>00405 &#32;&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00406"/>00406 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;XSHAREDMEMORYMANAGER_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00407"/>00407 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1ad7d6da455691836d2a3232fda61173a6">XSHAREDMEMORYMANAGER::SetInstance</link>(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_l_i_n_u_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r">XLINUXSHAREDMEMORYMANAGER</link>()))&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00408"/>00408 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00409"/>00409 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00410"/>00410 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00411"/>00411 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00412"/>00412 &#32;&#32;&#32;&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00413"/>00413 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;XDRIVEIMAGE_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00414"/>00414 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!XDRIVEIMAGE::SetInstance(<emphasis role="keyword">new</emphasis>&#32;XLINUXDRIVEIMAGE()))&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00415"/>00415 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00416"/>00416 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00417"/>00417 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00418"/>00418 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00419"/>00419 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00420"/>00420 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;XEEPROMMEMORYMANAGER_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00421"/>00421 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_e_e_p_r_o_m_m_e_m_o_r_y_m_a_n_a_g_e_r_1aaac0cda9c8011f506601ee91bef26bc9">XEEPROMMEMORYMANAGER::SetInstance</link>(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_l_i_n_u_x_e_e_p_r_o_m_m_e_m_o_r_y_m_a_n_a_g_e_r">XLINUXEEPROMMEMORYMANAGER</link>()))&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00422"/>00422 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00423"/>00423 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00424"/>00424 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00425"/>00425 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00426"/>00426 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00427"/>00427 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;XTRACE_VIRTUALCLOCKTICK</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00428"/>00428 &#32;&#32;xtimerclock&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;XTIMERCLOCK();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00429"/>00429 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xtimerclock)&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00430"/>00430 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00431"/>00431 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00432"/>00432 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00433"/>00433 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00434"/>00434 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00435"/>00435 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;INP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00436"/>00436 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_i_n_p_f_a_c_t_o_r_y_1a66f5f935fe734d622d217372eb752d81">INPFACTORY::SetInstance</link>(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_i_n_p_l_i_n_u_x_f_a_c_t_o_r_y">INPLINUXFACTORY</link>()))&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00437"/>00437 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00438"/>00438 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00439"/>00439 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00440"/>00440 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00441"/>00441 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00442"/>00442 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;DIO_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00443"/>00443 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!DIOFACTORY::SetInstance(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_l_i_n_u_x_f_a_c_t_o_r_y">DIOLINUXFACTORY</link>()))&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00444"/>00444 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00445"/>00445 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00446"/>00446 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00447"/>00447 &#32;&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00448"/>00448 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#ifdef&#32;DIO_GPIO_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00449"/>00449 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00450"/>00450 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;HW_PC</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00451"/>00451 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;DIO_GPIO_PCPARALLEL_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00452"/>00452 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_g_p_i_o_1ae4278de9149375359ac11f20a6ca67ee">DIOGPIO::SetInstance</link>(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_l_i_n_u_x_g_p_i_o_p_c_p_a_r_a_l_l_e_l">DIOLINUXGPIOPCPARALLEL</link>()))&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00453"/>00453 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00454"/>00454 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00455"/>00455 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00456"/>00456 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00457"/>00457 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00458"/>00458 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00459"/>00459 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;HW_RASPBERRYPI</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00460"/>00460 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_g_p_i_o_1ae4278de9149375359ac11f20a6ca67ee">DIOGPIO::SetInstance</link>(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_l_i_n_u_x_g_p_i_o_r_a_s_p_b_e_r_r_y_p_i">DIOLINUXGPIORASPBERRYPI</link>()))&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00461"/>00461 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00462"/>00462 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00463"/>00463 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00464"/>00464 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00465"/>00465 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00466"/>00466 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#if&#32;defined(HW_ARM)&#32;||&#32;defined(HW_ARM64)</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00467"/>00467 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_g_p_i_o_1ae4278de9149375359ac11f20a6ca67ee">DIOGPIO::SetInstance</link>(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_l_i_n_u_x_g_p_i_o_a_r_m">DIOLINUXGPIOARM</link>()))&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00468"/>00468 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00469"/>00469 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00470"/>00470 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00471"/>00471 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00472"/>00472 &#32;&#32;&#32;&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00473"/>00473 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_g_p_i_o_1a376b13e4fe398f0768cadadb7c97bda3">DIOGPIO::GetInstance</link>().<link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1ac4dc3d71616720ef6ef9c4a723499fe8">Ini</link>())&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00474"/>00474 &#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00475"/>00475 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00476"/>00476 &#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00477"/>00477 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00478"/>00478 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00479"/>00479 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00480"/>00480 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#ifdef&#32;DIO_PING_ACTIVE&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00481"/>00481 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_p_i_n_g_1a7a251ef02eff6917fb140b776f62e7bd">DIOPING::SetInstance</link>(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_l_i_n_u_x_p_i_n_g">DIOLINUXPING</link>()))&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00482"/>00482 &#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00483"/>00483 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00484"/>00484 &#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00485"/>00485 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00486"/>00486 &#32;&#32;&#32;&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00487"/>00487 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00488"/>00488 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00489"/>00489 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;SND_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00490"/>00490 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_s_n_d_f_a_c_t_o_r_y_1ad9e03e3da26caff9f452d52fdd15f116">SNDFACTORY::SetInstance</link>(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_s_n_d_l_i_n_u_x_f_a_c_t_o_r_y">SNDLINUXFACTORY</link>()))&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00491"/>00491 &#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00492"/>00492 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00493"/>00493 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00494"/>00494 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00495"/>00495 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_s_n_d_f_a_c_t_o_r_y_1a6b20a03fe108ba0d6bcb3de8f59deaf4">SNDFACTORY::GetInstance</link>().<link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1ac4dc3d71616720ef6ef9c4a723499fe8">Ini</link>())&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00496"/>00496 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00497"/>00497 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;return&#32;false;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00498"/>00498 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00499"/>00499 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00500"/>00500 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00501"/>00501 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;GRP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00502"/>00502 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_g_r_p_f_a_c_t_o_r_y_1a8e3bb3243b4523043caadf28c13d98ff">GRPFACTORY::SetInstance</link>(<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_g_r_p_l_i_n_u_x_f_a_c_t_o_r_y">GRPLINUXFACTORY</link>()))&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00503"/>00503 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00504"/>00504 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00505"/>00505 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00506"/>00506 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00507"/>00507 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00508"/>00508 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00509"/>00509 }
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00510"/>00510 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00511"/>00511 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00521"/><link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1ae11d0b6e4a3b3d83d5922a619a2326f5">00521</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1ae11d0b6e4a3b3d83d5922a619a2326f5">MAINPROCLINUX::Factorys_End</link>()
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00522"/>00522 {
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00523"/>00523 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;GRP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00524"/>00524 &#32;&#32;<link linkend="_class_g_r_p_f_a_c_t_o_r_y_1a0ef09af13056174aea64661bd19df94e">GRPFACTORY::DelInstance</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00525"/>00525 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00526"/>00526 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00527"/>00527 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;SND_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00528"/>00528 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_s_n_d_f_a_c_t_o_r_y_1a55ee3b95517ddeec57f3087e722d26e5">SNDFACTORY::GetIsInstanced</link>())
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00529"/>00529 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00530"/>00530 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_n_d_f_a_c_t_o_r_y_1a6b20a03fe108ba0d6bcb3de8f59deaf4">SNDFACTORY::GetInstance</link>().<link linkend="_class_s_n_d_f_a_c_t_o_r_y_1a988e41c22b9cc745788f688e3d58dcf8">End</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00531"/>00531 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_n_d_f_a_c_t_o_r_y_1a11bff2b537937044c040eda6f310ad71">SNDFACTORY::DelInstance</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00532"/>00532 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00533"/>00533 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00534"/>00534 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00535"/>00535 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;DIO_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00536"/>00536 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#ifdef&#32;DIO_GPIO_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00537"/>00537 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_d_i_o_g_p_i_o_1ae0c9d6f03a9920da0405858970ed3c19">DIOGPIO::GetIsInstanced</link>())
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00538"/>00538 &#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00539"/>00539 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_g_p_i_o_1a376b13e4fe398f0768cadadb7c97bda3">DIOGPIO::GetInstance</link>().<link linkend="_class_d_i_o_g_p_i_o_1a33ff07acaa5b157f48ee3b37bb40e5d5">End</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00540"/>00540 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_g_p_i_o_1a3c14eb35c95d7425d5b74c9ebda781e6">DIOGPIO::DelInstance</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00541"/>00541 &#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00542"/>00542 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00543"/>00543 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00544"/>00544 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#ifdef&#32;DIO_STREAMUDP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00545"/>00545 &#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_d_n_s_r_e_s_o_l_v_e_r_1af81c841121f33cd2f80824a92ee19a49">DIODNSRESOLVER::DelInstance</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00546"/>00546 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00547"/>00547 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00548"/>00548 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#ifdef&#32;DIO_PING_ACTIVE&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00549"/>00549 &#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_p_i_n_g_1ad2d4ca046ecb016cc48e647466f5903c">DIOPING::DelInstance</link>();&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00550"/>00550 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00551"/>00551 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00552"/>00552 &#32;&#32;DIOFACTORY::DelInstance();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00553"/>00553 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00554"/>00554 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00555"/>00555 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;INP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00556"/>00556 &#32;&#32;<link linkend="_class_i_n_p_m_a_n_a_g_e_r_1af7d7c3ce5de34e47f8e4f37dfb58c74f">INPMANAGER::DelInstance</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00557"/>00557 &#32;&#32;<link linkend="_class_i_n_p_f_a_c_t_o_r_y_1a4a3f20d474016ce294c1ddf473bda80c">INPFACTORY::DelInstance</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00558"/>00558 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00559"/>00559 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00560"/>00560 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;XTRACE_VIRTUALCLOCKTICK</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00561"/>00561 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xtimerclock)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00562"/>00562 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00563"/>00563 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;xtimerclock;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00564"/>00564 &#32;&#32;&#32;&#32;&#32;&#32;xtimerclock&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00565"/>00565 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00566"/>00566 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00567"/>00567 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00568"/>00568 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;DIO_ALERTS_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00569"/>00569 &#32;&#32;DIOALERTS::DelInstance();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00570"/>00570 <emphasis role="preprocessor">&#32;&#32;#endif&#32;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00571"/>00571 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00572"/>00572 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;XLOG_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00573"/>00573 &#32;&#32;<link linkend="_class_x_l_o_g_1aa0ad084cbbb3d5e4c7f4d4eff4932f41">XLOG::DelInstance</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00574"/>00574 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00575"/>00575 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00576"/>00576 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00577"/>00577 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;XPROCESSMANAGER_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00578"/>00578 &#32;&#32;<link linkend="_class_x_p_r_o_c_e_s_s_m_a_n_a_g_e_r_1a2ff49550debfb9bc9d190c50d126992f">XPROCESSMANAGER::DelInstance</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00579"/>00579 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00580"/>00580 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00581"/>00581 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;XEEPROMMEMORYMANAGER_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00582"/>00582 &#32;&#32;<link linkend="_class_x_e_e_p_r_o_m_m_e_m_o_r_y_m_a_n_a_g_e_r_1ac10948aeb440a63d84cd1f4546eb510a">XEEPROMMEMORYMANAGER::DelInstance</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00583"/>00583 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00584"/>00584 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00585"/>00585 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;XDRIVEIMAGE_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00586"/>00586 &#32;&#32;XDRIVEIMAGE::DelInstance();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00587"/>00587 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00588"/>00588 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00589"/>00589 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;XSHAREDMEMORYMANAGER_ACTIVE&#32;&#32;&#32;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00590"/>00590 &#32;&#32;<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1ae946c25d1055654c940a3b53b8ef7564">XSHAREDMEMORYMANAGER::DelInstance</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00591"/>00591 <emphasis role="preprocessor">&#32;&#32;#endif&#32;&#32;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00592"/>00592 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00593"/>00593 &#32;&#32;<link linkend="_class_x_p_a_t_h_s_m_a_n_a_g_e_r_1a4d3701ec70e6ee78ca90e1d6764d4b1a">XPATHSMANAGER::DelInstance</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00594"/>00594 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00595"/>00595 &#32;&#32;<link linkend="_class_x_t_r_a_n_s_l_a_t_i_o_n_1a9b84e09b184edef5f4e97c2165036d92">XTRANSLATION::DelInstance</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00596"/>00596 &#32;&#32;<link linkend="_class_x_t_r_a_n_s_l_a_t_i_o_n___g_e_n_1a2a380ecf0e37a78e5ee98676e2a070f9">XTRANSLATION_GEN::DelInstance</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00597"/>00597 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00598"/>00598 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;XSLEEP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00599"/>00599 &#32;&#32;<link linkend="_class_x_s_l_e_e_p_1a10c10431ed188718ce23622f058f50ab">XSLEEP::DelInstance</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00600"/>00600 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00601"/>00601 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00602"/>00602 &#32;&#32;<link linkend="_class_x_r_a_n_d_1ab9d19784c5ff3faa03e744224c1ad2c3">XRAND::DelInstance</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00603"/>00603 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00604"/>00604 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;XSYSTEM_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00605"/>00605 &#32;&#32;<link linkend="_class_x_s_y_s_t_e_m_1aad9f77d850184c13149d7f4cd526eab3">XSYSTEM::DelInstance</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00606"/>00606 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00607"/>00607 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00608"/>00608 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;XPUBLISHER_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00609"/>00609 &#32;&#32;<link linkend="_class_x_p_u_b_l_i_s_h_e_r_1a26edb2432d284144113240ff00caa1f4">XPUBLISHER::DelInstance</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00610"/>00610 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00611"/>00611 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00612"/>00612 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;XTHREADCOLLECTED_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00613"/>00613 &#32;&#32;XTHREADSCOLLECTEDMANAGER::DelInstance();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00614"/>00614 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00615"/>00615 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00616"/>00616 &#32;&#32;<link linkend="_class_x_f_a_c_t_o_r_y_1af539fb1685f39758e3844098f9916ef1">XFACTORY::DelInstance</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00617"/>00617 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00618"/>00618 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00619"/>00619 }
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00620"/>00620 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00621"/>00621 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00632"/>00632 <emphasis role="keywordtype">void</emphasis>&#32;MAINPROCLINUX::Clean()
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00633"/>00633 {
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00634"/>00634 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00635"/>00635 }
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00636"/>00636 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00637"/>00637 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00638"/>00638 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00639"/>00639 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00640"/>00640 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00641"/>00641 <emphasis role="preprocessor">#pragma&#32;region&#32;MAINENTRYS</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00642"/>00642 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00643"/>00643 <emphasis role="comment">/*--------------------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00644"/>00644 <emphasis role="comment">/*&#32;&#32;main&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;Linux&#32;normal&#32;entry&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00645"/>00645 <emphasis role="comment">/*&#32;&#32;LIBRARY_Ini&#32;:&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00646"/>00646 <emphasis role="comment">/*&#32;&#32;LIBRARY_End&#32;:&#32;Linux&#32;Library&#32;entry&#32;(Construct&#32;/&#32;Destruct)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00647"/>00647 <emphasis role="comment">/*&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00648"/>00648 <emphasis role="comment">/*--------------------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00649"/>00649 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00650"/>00650 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00651"/>00651 <emphasis role="preprocessor">#if&#32;!defined(APPMODE_LIBRARY_STATIC)&#32;&amp;&amp;&#32;!defined(APPMODE_LIBRARY_DINAMIC)</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00652"/>00652 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00665"/><link linkend="__main_proc_l_i_n_u_x_8cpp_1a0ddf1224851353fc92bfbff6f499fa97">00665</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__main_proc_e_s_p32_8cpp_1ae66f6b31b5ad750f1fe042a706a4e3d4">main</link>(<emphasis role="keywordtype">int</emphasis>&#32;argc,&#32;<emphasis role="keywordtype">char</emphasis>*&#32;argv[])
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00666"/>00666 {
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00667"/>00667 &#32;&#32;<link linkend="__x_memory___control_8h_1a4ec99eb06a0099c67e9036a85f35965e">XMEMORY_CONTROL_ACTIVATED</link>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00668"/>00668 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00669"/>00669 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;GOOGLETEST_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00670"/>00670 &#32;&#32;testing::InitGoogleTest(&amp;argc,&#32;argv);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00671"/>00671 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00672"/>00672 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00673"/>00673 &#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a30eccbcde43b4c0fe2b16961cf3ff96b">Signal_Ini</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00674"/>00674 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00675"/>00675 &#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;&#32;sztmp[64];
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00676"/>00676 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;&#32;pathsize&#32;=&#32;512;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00677"/>00677 &#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;&#32;path[pathsize];
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00678"/>00678 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00679"/>00679 &#32;&#32;memset(path,&#32;0,&#32;pathsize);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00680"/>00680 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00681"/>00681 &#32;&#32;sprintf(sztmp,&#32;<emphasis role="stringliteral">&quot;/proc/%d/exe&quot;</emphasis>,&#32;getpid());
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00682"/>00682 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;rb&#32;=&#32;readlink(sztmp,&#32;path,&#32;pathsize);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00683"/>00683 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(rb&#32;&gt;=&#32;0)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00684"/>00684 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00685"/>00685 &#32;&#32;&#32;&#32;&#32;&#32;path[rb]&#32;=&#32;<emphasis role="charliteral">&apos;\0&apos;</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00686"/>00686 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a1833cf9b3760fbeeebc04340c234765b">mainproclinux</link>.<link linkend="_class_m_a_i_n_p_r_o_c_1ac16bbb769317df25864505c7e7c1771c">GetXPathExec</link>()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1a4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(path);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00687"/>00687 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00688"/>00688 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a1833cf9b3760fbeeebc04340c234765b">mainproclinux</link>.<link linkend="_class_m_a_i_n_p_r_o_c_1ac16bbb769317df25864505c7e7c1771c">GetXPathExec</link>()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1a4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(argv[0]);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00689"/>00689 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00690"/>00690 &#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a1833cf9b3760fbeeebc04340c234765b">mainproclinux</link>.<link linkend="_class_m_a_i_n_p_r_o_c_1a8d4d738700869d89a7083602846eb848">CreateParams</link>(argc,&#32;argv);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00691"/>00691 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00692"/>00692 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;status&#32;=&#32;0;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00693"/>00693 &#32;&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00694"/>00694 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;APP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00695"/>00695 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="__main_proc_l_i_n_u_x_8cpp_1a1833cf9b3760fbeeebc04340c234765b">mainproclinux</link>.<link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1ac4dc3d71616720ef6ef9c4a723499fe8">Ini</link>(&amp;<link linkend="__a_p_p_main_8h_1a30881accd0aa260bddea7ebc6f7be462">GEN_appmain</link>,&#32;<link linkend="__a_p_p_base_8h_1a6991af6c033a919680a6fa0b86f097f2a9a8a095c0dd9d9f15a0ef0c3861c8a5e">APPBASE_APPLICATIONMODE_TYPE_APPLICATION</link>))
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00696"/>00696 <emphasis role="preprocessor">&#32;&#32;#else</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00697"/>00697 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="__main_proc_l_i_n_u_x_8cpp_1a1833cf9b3760fbeeebc04340c234765b">mainproclinux</link>.<link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1ac4dc3d71616720ef6ef9c4a723499fe8">Ini</link>())
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00698"/>00698 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00699"/>00699 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00700"/>00700 &#32;&#32;&#32;&#32;&#32;&#32;status=1;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00701"/>00701 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00702"/>00702 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00703"/>00703 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00704"/>00704 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00705"/>00705 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;GOOGLETEST_ACTIVE&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00706"/>00706 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;code&#32;=&#32;RUN_ALL_TESTS();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00707"/>00707 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(code)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00708"/>00708 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00709"/>00709 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;1;&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00710"/>00710 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00711"/>00711 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#else</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00712"/>00712 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>(<link linkend="__main_proc_l_i_n_u_x_8cpp_1a1833cf9b3760fbeeebc04340c234765b">mainproclinux</link>.<link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1af570c92d8eda30e7dce795b44d92084c">Update</link>());
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00713"/>00713 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00714"/>00714 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00715"/>00715 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00716"/>00716 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;returncode&#32;=&#32;0;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00717"/>00717 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00718"/>00718 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;APP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00719"/>00719 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="__main_proc_l_i_n_u_x_8cpp_1a1833cf9b3760fbeeebc04340c234765b">mainproclinux</link>.<link linkend="_class_m_a_i_n_p_r_o_c_1ae927c90fc15d4c8874ae58eb6dcdfda3">GetAppMain</link>())
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00720"/>00720 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00721"/>00721 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="__main_proc_l_i_n_u_x_8cpp_1a1833cf9b3760fbeeebc04340c234765b">mainproclinux</link>.<link linkend="_class_m_a_i_n_p_r_o_c_1ae927c90fc15d4c8874ae58eb6dcdfda3">GetAppMain</link>()-&gt;<link linkend="_class_a_p_p_m_a_i_n_1ab41ec9e501bf74712579c0d2b9591ca1">GetApplication</link>())
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00722"/>00722 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00723"/>00723 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;returncode&#32;=&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a1833cf9b3760fbeeebc04340c234765b">mainproclinux</link>.<link linkend="_class_m_a_i_n_p_r_o_c_1ae927c90fc15d4c8874ae58eb6dcdfda3">GetAppMain</link>()-&gt;<link linkend="_class_a_p_p_m_a_i_n_1ab41ec9e501bf74712579c0d2b9591ca1">GetApplication</link>()-&gt;<link linkend="_class_a_p_p_b_a_s_e_1a0e63edbe1d73c1861c6463a7bc366bc6">GetExitType</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00724"/>00724 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00725"/>00725 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00726"/>00726 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00727"/>00727 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00728"/>00728 &#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a1833cf9b3760fbeeebc04340c234765b">mainproclinux</link>.<link linkend="_class_m_a_i_n_p_r_o_c_1ac16bbb769317df25864505c7e7c1771c">GetXPathExec</link>()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1a9275997c1605fa79646c301e63a77d06">Empty</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00729"/>00729 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00730"/>00730 &#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a1833cf9b3760fbeeebc04340c234765b">mainproclinux</link>.<link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1a105c6b8ddb941fa4fbccce046fb10304">End</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00731"/>00731 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00732"/>00732 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;returncode;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00733"/>00733 }
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00734"/>00734 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00735"/>00735 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00736"/>00736 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00737"/>00737 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00738"/>00738 <emphasis role="preprocessor">#ifdef&#32;APPMODE_LIBRARY_DINAMIC</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00739"/>00739 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00740"/>00740 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00741"/>00741 <emphasis role="keyword">extern</emphasis>&#32;<emphasis role="stringliteral">&quot;C&quot;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00742"/>00742 {
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00743"/>00743 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00744"/>00744 __attribute__((constructor))
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00756"/>00756 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;LIBRARY_Ini(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00757"/>00757 {
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00758"/>00758 &#32;&#32;<link linkend="__x_memory___control_8h_1a4ec99eb06a0099c67e9036a85f35965e">XMEMORY_CONTROL_ACTIVATED</link>&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00759"/>00759 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00760"/>00760 &#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;&#32;xpathexecutable[<link linkend="__x_base_8h_1aa6f778be0fa978c63a163140b58c7a77">_MAXPATH</link>];
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00761"/>00761 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;&#32;status&#32;=&#32;0;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00762"/>00762 &#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;&#32;sztmp[64];
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00763"/>00763 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00764"/>00764 &#32;&#32;memset(xpathexecutable,&#32;0,&#32;<link linkend="__x_base_8h_1aa6f778be0fa978c63a163140b58c7a77">_MAXPATH</link>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00765"/>00765 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00766"/>00766 &#32;&#32;sprintf(sztmp,&#32;<emphasis role="stringliteral">&quot;/proc/%d/exe&quot;</emphasis>,&#32;getpid());
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00767"/>00767 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;rb&#32;=&#32;readlink(sztmp,&#32;xpathexecutable,&#32;<link linkend="__x_base_8h_1aa6f778be0fa978c63a163140b58c7a77">_MAXPATH</link>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00768"/>00768 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(rb&#32;&gt;=&#32;0)&#32;xpathexecutable[rb]&#32;=&#32;<emphasis role="charliteral">&apos;\0&apos;</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00769"/>00769 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00770"/>00770 &#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a1833cf9b3760fbeeebc04340c234765b">mainproclinux</link>.<link linkend="_class_m_a_i_n_p_r_o_c_1ac16bbb769317df25864505c7e7c1771c">GetXPathExec</link>()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1a4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(xpathexecutable);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00771"/>00771 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;APP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00772"/>00772 &#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a1833cf9b3760fbeeebc04340c234765b">mainproclinux</link>.<link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1ac4dc3d71616720ef6ef9c4a723499fe8">Ini</link>(&amp;<link linkend="__a_p_p_main_8h_1a30881accd0aa260bddea7ebc6f7be462">GEN_appmain</link>,&#32;<link linkend="__a_p_p_base_8h_1a6991af6c033a919680a6fa0b86f097f2a61264bc4de24c97dba76366242cce6a8">APPBASE_APPLICATIONMODE_TYPE_DINAMICLIBRARY</link>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00773"/>00773 <emphasis role="preprocessor">&#32;&#32;#else</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00774"/>00774 &#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a1833cf9b3760fbeeebc04340c234765b">mainproclinux</link>.<link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1ac4dc3d71616720ef6ef9c4a723499fe8">Ini</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00775"/>00775 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00776"/>00776 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00777"/>00777 &#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a2f34067d0aceaaed132126c539d9d0ff">libmainproclinux</link>&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00778"/>00778 }
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00779"/>00779 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00780"/>00780 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00781"/>00781 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00782"/>00782 __attribute__((destructor))
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00794"/>00794 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;LIBRARY_End(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00795"/>00795 {
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00796"/>00796 &#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a1833cf9b3760fbeeebc04340c234765b">mainproclinux</link>.<link linkend="_class_m_a_i_n_p_r_o_c_1ac16bbb769317df25864505c7e7c1771c">GetXPathExec</link>()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1a9275997c1605fa79646c301e63a77d06">Empty</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00797"/>00797 &#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a1833cf9b3760fbeeebc04340c234765b">mainproclinux</link>.<link linkend="_class_m_a_i_n_p_r_o_c_l_i_n_u_x_1a105c6b8ddb941fa4fbccce046fb10304">End</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00798"/>00798 }
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00799"/>00799 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00800"/>00800 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00801"/>00801 }
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00802"/>00802 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00803"/>00803 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00804"/>00804 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00805"/>00805 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00806"/>00806 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00807"/>00807 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00808"/>00808 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00809"/>00809 <emphasis role="preprocessor">#pragma&#32;region&#32;SIGNAL_FUNCTIONS</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00810"/>00810 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00811"/>00811 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00823"/><link linkend="__main_proc_l_i_n_u_x_8cpp_1a30eccbcde43b4c0fe2b16961cf3ff96b">00823</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a30eccbcde43b4c0fe2b16961cf3ff96b">Signal_Ini</link>(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00824"/>00824 {
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00825"/>00825 &#32;&#32;<emphasis role="comment">/*</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00826"/>00826 <emphasis role="comment">&#32;&#32;signalaction.sa_handler&#32;=&#32;Signal_Handler;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00827"/>00827 <emphasis role="comment">&#32;&#32;sigemptyset(&amp;signalaction.sa_mask);</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00828"/>00828 <emphasis role="comment">&#32;&#32;signalaction.sa_flags&#32;&#32;&#32;=&#32;SA_SIGINFO&#32;|&#32;SA_UNSUPPORTED&#32;|&#32;SA_EXPOSE_TAGBITS;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00829"/>00829 <emphasis role="comment">&#32;&#32;signalaction.sa_mask&#32;&#32;&#32;&#32;=&#32;signalaction.sa_mask;</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00830"/>00830 <emphasis role="comment"></emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00831"/>00831 <emphasis role="comment">&#32;&#32;sigaddset(&amp;signalaction.sa_mask,&#32;SIGHUP);&#32;&#32;&#32;&#32;&#32;&#32;&#32;sigaction(SIGHUP&#32;&#32;&#32;&#32;,&#32;&amp;signalaction&#32;,&#32;(struct&#32;sigaction*)NULL);</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00832"/>00832 <emphasis role="comment">&#32;&#32;sigaddset(&amp;signalaction.sa_mask,&#32;SIGINT);&#32;&#32;&#32;&#32;&#32;&#32;&#32;sigaction(SIGINT&#32;&#32;&#32;&#32;,&#32;&amp;signalaction&#32;,&#32;(struct&#32;sigaction*)NULL);</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00833"/>00833 <emphasis role="comment">&#32;&#32;sigaddset(&amp;signalaction.sa_mask,&#32;SIGQUIT);&#32;&#32;&#32;&#32;&#32;&#32;sigaction(SIGQUIT&#32;&#32;&#32;,&#32;&amp;signalaction&#32;,&#32;(struct&#32;sigaction*)NULL);</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00834"/>00834 <emphasis role="comment">&#32;&#32;sigaddset(&amp;signalaction.sa_mask,&#32;SIGILL);&#32;&#32;&#32;&#32;&#32;&#32;&#32;sigaction(SIGILL&#32;&#32;&#32;&#32;,&#32;&amp;signalaction&#32;,&#32;(struct&#32;sigaction*)NULL);</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00835"/>00835 <emphasis role="comment">&#32;&#32;sigaddset(&amp;signalaction.sa_mask,&#32;SIGBUS);&#32;&#32;&#32;&#32;&#32;&#32;&#32;sigaction(SIGBUS&#32;&#32;&#32;&#32;,&#32;&amp;signalaction&#32;,&#32;(struct&#32;sigaction*)NULL);</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00836"/>00836 <emphasis role="comment">&#32;&#32;sigaddset(&amp;signalaction.sa_mask,&#32;SIGFPE);&#32;&#32;&#32;&#32;&#32;&#32;&#32;sigaction(SIGFPE&#32;&#32;&#32;&#32;,&#32;&amp;signalaction&#32;,&#32;(struct&#32;sigaction*)NULL);</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00837"/>00837 <emphasis role="comment">//sigaddset(&amp;signalaction.sa_mask,&#32;SIGKILL);&#32;&#32;&#32;&#32;&#32;&#32;sigaction(SIGKILL&#32;&#32;&#32;,&#32;&amp;signalaction&#32;,&#32;(struct&#32;sigaction*)NULL);&#32;&#32;&#32;//&#32;Not&#32;Available</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00838"/>00838 <emphasis role="comment">&#32;&#32;sigaddset(&amp;signalaction.sa_mask,&#32;SIGSEGV);&#32;&#32;&#32;&#32;&#32;&#32;sigaction(SIGSEGV&#32;&#32;&#32;,&#32;&amp;signalaction&#32;,&#32;(struct&#32;sigaction*)NULL);</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00839"/>00839 <emphasis role="comment">&#32;&#32;sigaddset(&amp;signalaction.sa_mask,&#32;SIGTERM);&#32;&#32;&#32;&#32;&#32;&#32;sigaction(SIGTERM&#32;&#32;&#32;,&#32;&amp;signalaction&#32;,&#32;(struct&#32;sigaction*)NULL);</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00840"/>00840 <emphasis role="comment">&#32;&#32;sigaddset(&amp;signalaction.sa_mask,&#32;SIGSTKFLT);&#32;&#32;&#32;&#32;sigaction(SIGSTKFLT&#32;,&#32;&amp;signalaction&#32;,&#32;(struct&#32;sigaction*)NULL);</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00841"/>00841 <emphasis role="comment">//sigaddset(&amp;signalaction.sa_mask,&#32;SIGSTOP);&#32;&#32;&#32;&#32;&#32;&#32;sigaction(SIGSTOP&#32;&#32;&#32;,&#32;&amp;signalaction&#32;,&#32;(struct&#32;sigaction*)NULL);&#32;&#32;&#32;//&#32;Not&#32;Available</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00842"/>00842 <emphasis role="comment">&#32;&#32;sigaddset(&amp;signalaction.sa_mask,&#32;SIGTSTP);&#32;&#32;&#32;&#32;&#32;&#32;sigaction(SIGTSTP&#32;&#32;&#32;,&#32;&amp;signalaction&#32;,&#32;(struct&#32;sigaction*)NULL);</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00843"/>00843 <emphasis role="comment">&#32;&#32;sigaddset(&amp;signalaction.sa_mask,&#32;SIGABRT);&#32;&#32;&#32;&#32;&#32;&#32;sigaction(SIGABRT&#32;&#32;&#32;,&#32;&amp;signalaction&#32;,&#32;(struct&#32;sigaction*)NULL);</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00844"/>00844 <emphasis role="comment"></emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00845"/>00845 <emphasis role="comment">&#32;&#32;sigaddset(&amp;signalaction.sa_mask,&#32;SIGUSR1);&#32;&#32;&#32;&#32;&#32;&#32;sigaction(SIGUSR1&#32;&#32;&#32;,&#32;&amp;signalaction&#32;,&#32;(struct&#32;sigaction*)NULL);</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00846"/>00846 <emphasis role="comment">&#32;&#32;sigaddset(&amp;signalaction.sa_mask,&#32;SIGUSR2);&#32;&#32;&#32;&#32;&#32;&#32;sigaction(SIGUSR2&#32;&#32;&#32;,&#32;&amp;signalaction&#32;,&#32;(struct&#32;sigaction*)NULL);</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00847"/>00847 <emphasis role="comment">&#32;&#32;*/</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00848"/>00848 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00849"/>00849 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00850"/>00850 &#32;&#32;<emphasis role="keyword">struct&#32;</emphasis>sigaction&#32;&#32;act;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00851"/>00851 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;i&#32;=&#32;0;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00852"/>00852 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00853"/>00853 &#32;&#32;memset(&amp;act,&#32;0,&#32;<emphasis role="keyword">sizeof</emphasis>&#32;act);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00854"/>00854 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00855"/>00855 &#32;&#32;sigemptyset(&amp;act.sa_mask);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00856"/>00856 &#32;&#32;act.sa_handler&#32;=&#32;Signal_Handler;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00857"/>00857 &#32;&#32;act.sa_flags&#32;=&#32;0;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00858"/>00858 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00859"/>00859 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(i&#32;=&#32;SIGRTMIN;&#32;i&#32;&lt;=&#32;SIGRTMAX;&#32;i++)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00860"/>00860 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00861"/>00861 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(sigaction(i,&#32;&amp;act,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>))&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00862"/>00862 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00863"/>00863 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fprintf(stderr,&#32;<emphasis role="stringliteral">&quot;Cannot&#32;install&#32;realtime&#32;signal&#32;%d&#32;handler:&#32;%s.\n&quot;</emphasis>,&#32;i,&#32;strerror(errno));
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00864"/>00864 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;exit(EXIT_FAILURE);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00865"/>00865 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00866"/>00866 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00867"/>00867 &#32;&#32;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00868"/>00868 }
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00869"/>00869 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00870"/>00870 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00882"/>00882 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Signal_Handler(<emphasis role="keywordtype">int</emphasis>&#32;sig)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00883"/>00883 {
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00884"/>00884 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;signalstr;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00885"/>00885 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;description;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00886"/>00886 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;string;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00887"/>00887 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;iserror&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00888"/>00888 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00889"/>00889 &#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a63f86790c2440be0cfa934f6c43b3f8c">allexceptiontext</link>.<link linkend="_class_x_s_t_r_i_n_g_1a9275997c1605fa79646c301e63a77d06">Empty</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00890"/>00890 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00891"/>00891 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;APP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00892"/>00892 &#32;&#32;<link linkend="_class_a_p_p_b_a_s_e">APPBASE</link>*&#32;app&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00893"/>00893 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="__main_proc_l_i_n_u_x_8cpp_1a1833cf9b3760fbeeebc04340c234765b">mainproclinux</link>.<link linkend="_class_m_a_i_n_p_r_o_c_1ae927c90fc15d4c8874ae58eb6dcdfda3">GetAppMain</link>())&#32;app&#32;=&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a1833cf9b3760fbeeebc04340c234765b">mainproclinux</link>.<link linkend="_class_m_a_i_n_p_r_o_c_1ae927c90fc15d4c8874ae58eb6dcdfda3">GetAppMain</link>()-&gt;<link linkend="_class_a_p_p_m_a_i_n_1ab41ec9e501bf74712579c0d2b9591ca1">GetApplication</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00894"/>00894 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00895"/>00895 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(app)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00896"/>00896 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00897"/>00897 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(app-&gt;<link linkend="_class_a_p_p_b_a_s_e_1a0e63edbe1d73c1861c6463a7bc366bc6">GetExitType</link>()!=<link linkend="__a_p_p_base_8h_1a0d453795cc12518ffc2d165172ba8571ad6720c1420d04c42abb267752930708e">APPBASE_EXITTYPE_UNKNOWN</link>)&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00898"/>00898 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00899"/>00899 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00900"/>00900 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00901"/>00901 &#32;&#32;<emphasis role="keywordflow">switch</emphasis>(sig)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00902"/>00902 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00903"/>00903 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGSEGV&#32;&#32;&#32;&#32;:&#32;iserror&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00904"/>00904 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;signalstr&#32;&#32;&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;SEGV&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00905"/>00905 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;description&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;Segmentation&#32;fault.&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00906"/>00906 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00907"/>00907 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00908"/>00908 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGBUS&#32;&#32;&#32;&#32;&#32;:&#32;iserror&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00909"/>00909 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;signalstr&#32;&#32;&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;BUS&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00910"/>00910 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;description&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;Bus&#32;fault.&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00911"/>00911 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00912"/>00912 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00913"/>00913 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGFPE&#32;&#32;&#32;&#32;&#32;:&#32;iserror&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00914"/>00914 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;signalstr&#32;&#32;&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;FPE&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00915"/>00915 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;description&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;Erroneous&#32;arithmetic&#32;operation&#32;(such&#32;as&#32;divide&#32;by&#32;zero).&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00916"/>00916 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00917"/>00917 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00918"/>00918 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGABRT&#32;&#32;&#32;&#32;:&#32;iserror&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00919"/>00919 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;signalstr&#32;&#32;&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;ABRT&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00920"/>00920 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;description&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;Error:&#32;Abnormal&#32;termination&#32;condition.&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00921"/>00921 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00922"/>00922 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00923"/>00923 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGSTKFLT&#32;&#32;:&#32;iserror&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00924"/>00924 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;signalstr&#32;&#32;&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;STKFLT&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00925"/>00925 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;description&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;Error:&#32;Stack&#32;fault.&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00926"/>00926 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00927"/>00927 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00928"/>00928 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGILL&#32;&#32;&#32;&#32;&#32;:&#32;iserror&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00929"/>00929 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;signalstr&#32;&#32;&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;ILL&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00930"/>00930 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;description&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;Error:&#32;Illegal&#32;instruction.&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00931"/>00931 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00932"/>00932 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00933"/>00933 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00934"/>00934 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGHUP&#32;&#32;&#32;&#32;&#32;:&#32;signalstr&#32;&#32;&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;HUP&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00935"/>00935 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;description&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;Program&#32;hanged&#32;up.&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00936"/>00936 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00937"/>00937 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00938"/>00938 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGTERM&#32;&#32;&#32;&#32;:&#32;signalstr&#32;&#32;&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;TERM&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00939"/>00939 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;description&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;Termination&#32;request,&#32;sent&#32;to&#32;the&#32;program.&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00940"/>00940 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00941"/>00941 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00942"/>00942 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGINT&#32;&#32;&#32;&#32;&#32;:&#32;signalstr&#32;&#32;&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;INT&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00943"/>00943 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;description&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;External&#32;interrupt,&#32;usually&#32;initiated&#32;by&#32;the&#32;user.&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00944"/>00944 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00945"/>00945 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00946"/>00946 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGQUIT&#32;&#32;&#32;&#32;:&#32;signalstr&#32;&#32;&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;QUIT&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00947"/>00947 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;description&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;Terminal&#32;quit.&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00948"/>00948 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00949"/>00949 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00950"/>00950 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGTSTP&#32;&#32;&#32;&#32;:&#32;signalstr&#32;&#32;&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;TSTP&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00951"/>00951 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;description&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;Terminal&#32;stop&#32;signalstr.&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00952"/>00952 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00953"/>00953 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00954"/>00954 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGKILL&#32;&#32;&#32;&#32;:&#32;<emphasis role="comment">//&#32;Not&#32;Available&#32;-&gt;&#32;Kill&#32;(can&apos;t&#32;be&#32;caught&#32;or&#32;ignored).</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00955"/>00955 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00956"/>00956 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00957"/>00957 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGSTOP&#32;&#32;&#32;&#32;:&#32;<emphasis role="comment">//&#32;Not&#32;Available&#32;-&gt;&#32;Stop&#32;executing(can&apos;t&#32;be&#32;caught&#32;or&#32;ignored).</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00958"/>00958 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00959"/>00959 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGUSR1&#32;&#32;&#32;&#32;:
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00960"/>00960 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGUSR2&#32;&#32;&#32;&#32;:&#32;&#32;&#32;signalstr&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;USR&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00961"/>00961 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;description&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;User&#32;signal&#32;received.&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00962"/>00962 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00963"/>00963 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00964"/>00964 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00965"/>00965 &#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a2c287523e9e66411d08e971972132e25">Signal_Printf</link>(iserror,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;SIGNAL&quot;</emphasis>),&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;[SIG%s]&#32;Error:&#32;%s&quot;</emphasis>),&#32;signalstr.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;description.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00966"/>00966 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00967"/>00967 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;APP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00968"/>00968 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(app)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00969"/>00969 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00970"/>00970 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(app-&gt;<link linkend="_class_a_p_p_b_a_s_e_1af66b5b2f02c71b24e7935fc66fe15169">GetTimerGlobal</link>())
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00971"/>00971 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00972"/>00972 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;string2;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00973"/>00973 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00974"/>00974 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;app-&gt;<link linkend="_class_a_p_p_b_a_s_e_1af66b5b2f02c71b24e7935fc66fe15169">GetTimerGlobal</link>()-&gt;<link linkend="_class_x_t_i_m_e_r_1ab0b380bd590991d71201c2988b0cb0ad">GetMeasureString</link>(string2,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00975"/>00975 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a2c287523e9e66411d08e971972132e25">Signal_Printf</link>(<emphasis role="keyword">false</emphasis>,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;Time&#32;working:&#32;%s.&quot;</emphasis>),&#32;string2.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00976"/>00976 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00977"/>00977 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00978"/>00978 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00979"/>00979 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00980"/>00980 &#32;&#32;<emphasis role="keywordflow">switch</emphasis>(sig)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00981"/>00981 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00982"/>00982 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGSEGV&#32;&#32;&#32;&#32;:
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00983"/>00983 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGBUS&#32;&#32;&#32;&#32;&#32;:
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00984"/>00984 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGFPE&#32;&#32;&#32;&#32;&#32;:
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00985"/>00985 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGABRT&#32;&#32;&#32;&#32;:
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00986"/>00986 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGSTKFLT&#32;&#32;:
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00987"/>00987 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGILL&#32;&#32;&#32;&#32;&#32;:&#32;{&#32;Signal_PrintfStackTrace();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00988"/>00988 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00989"/>00989 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>.Format(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;SIGNAL&#32;%s:&#32;%s&quot;</emphasis>),&#32;signalstr.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;description.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00990"/>00990 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00991"/>00991 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;DIO_ALERTS_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00992"/>00992 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DIOALERT*&#32;alert&#32;=&#32;GEN_DIOALERTS.CreateAlert(DIOALERTLEVEL_DANGER,&#32;<emphasis role="keywordtype">string</emphasis>.Get(),&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a63f86790c2440be0cfa934f6c43b3f8c">allexceptiontext</link>.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00993"/>00993 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(alert)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00994"/>00994 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00995"/>00995 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GEN_DIOALERTS.Send(DIOALERTSSENDER_ALL,&#32;<link linkend="__d_i_o_alerts___conditions_8h_1ae708aa45da1cc875af6022c73bc04dd0a09150a71789c7edde52efd0d4fd412f2">DIOALERTS_CONDITIONS_ID_GENINTERN_EXCEPTION</link>,&#32;alert);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00996"/>00996 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;alert;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00997"/>00997 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00998"/>00998 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l00999"/>00999 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01000"/>01000 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a63f86790c2440be0cfa934f6c43b3f8c">allexceptiontext</link>.<link linkend="_class_x_s_t_r_i_n_g_1a9275997c1605fa79646c301e63a77d06">Empty</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01001"/>01001 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01002"/>01002 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;fprintf(stderr,<emphasis role="stringliteral">&quot;&#32;\n&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01003"/>01003 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01004"/>01004 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;APP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01005"/>01005 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(app)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01006"/>01006 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01007"/>01007 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;app-&gt;<link linkend="_class_a_p_p_b_a_s_e_1ab786ff96665db906915e81ad3a7e9db4">SetExitType</link>(<link linkend="__a_p_p_base_8h_1a0d453795cc12518ffc2d165172ba8571a61c366c723aa090578ef9e4e26846018">APPBASE_EXITTYPE_BY_SERIOUSERROR</link>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01008"/>01008 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;app-&gt;<link linkend="_class_a_p_p_b_a_s_e_1a87cf558da03bcb2e1b5b901fd6de539d">AppProc_End</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01009"/>01009 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01010"/>01010 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01011"/>01011 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01012"/>01012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;signal(sig,&#32;SIG_DFL);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01013"/>01013 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;kill(getpid(),&#32;sig);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01014"/>01014 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01015"/>01015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//exit(sig);</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01016"/>01016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01017"/>01017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01018"/>01018 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01019"/>01019 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01020"/>01020 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGINT&#32;&#32;&#32;&#32;&#32;:
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01021"/>01021 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;APP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01022"/>01022 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(app)&#32;app-&gt;<link linkend="_class_a_p_p_b_a_s_e_1ab786ff96665db906915e81ad3a7e9db4">SetExitType</link>(<link linkend="__a_p_p_base_8h_1a0d453795cc12518ffc2d165172ba8571a8050ae14d02e2fdeb45933ce2a982b49">APPBASE_EXITTYPE_BY_USER</link>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01023"/>01023 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01024"/>01024 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a63f86790c2440be0cfa934f6c43b3f8c">allexceptiontext</link>.<link linkend="_class_x_s_t_r_i_n_g_1a9275997c1605fa79646c301e63a77d06">Empty</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01025"/>01025 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01026"/>01026 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01027"/>01027 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGQUIT&#32;&#32;&#32;&#32;:
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01028"/>01028 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;APP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01029"/>01029 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(app)&#32;app-&gt;<link linkend="_class_a_p_p_b_a_s_e_1ab786ff96665db906915e81ad3a7e9db4">SetExitType</link>(<link linkend="__a_p_p_base_8h_1a0d453795cc12518ffc2d165172ba8571a474cb585257d27a5cbff68a679f1c525">APPBASE_EXITTYPE_BY_SHUTDOWN</link>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01030"/>01030 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01031"/>01031 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a63f86790c2440be0cfa934f6c43b3f8c">allexceptiontext</link>.<link linkend="_class_x_s_t_r_i_n_g_1a9275997c1605fa79646c301e63a77d06">Empty</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01032"/>01032 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01033"/>01033 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01034"/>01034 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGHUP&#32;&#32;&#32;&#32;&#32;:
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01035"/>01035 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;SIGTERM&#32;&#32;&#32;&#32;:&#32;{&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>&#32;previous;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01036"/>01036 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>&#32;actual;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01037"/>01037 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01038"/>01038 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;APP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01039"/>01039 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(app)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01040"/>01040 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01041"/>01041 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(app-&gt;<link linkend="_class_a_p_p_b_a_s_e_1a0e63edbe1d73c1861c6463a7bc366bc6">GetExitType</link>()!=<link linkend="__a_p_p_base_8h_1a0d453795cc12518ffc2d165172ba8571ad6720c1420d04c42abb267752930708e">APPBASE_EXITTYPE_UNKNOWN</link>)&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01042"/>01042 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01043"/>01043 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01044"/>01044 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01045"/>01045 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="__main_proc_l_i_n_u_x_8cpp_1a9fc6fb76b6a936ab7d971e1149af888c">Signal_RunLevel</link>(previous,&#32;actual))
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01046"/>01046 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01047"/>01047 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(actual&#32;==&#32;<link linkend="__x_string_8h_1ab483f167129a5d1941ea1d30f3df8d8a">__C</link>(<emphasis role="charliteral">&apos;0&apos;</emphasis>))
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01048"/>01048 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01049"/>01049 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;APP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01050"/>01050 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(app)&#32;app-&gt;<link linkend="_class_a_p_p_b_a_s_e_1ab786ff96665db906915e81ad3a7e9db4">SetExitType</link>(<link linkend="__a_p_p_base_8h_1a0d453795cc12518ffc2d165172ba8571a474cb585257d27a5cbff68a679f1c525">APPBASE_EXITTYPE_BY_SHUTDOWN</link>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01051"/>01051 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01052"/>01052 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a63f86790c2440be0cfa934f6c43b3f8c">allexceptiontext</link>.<link linkend="_class_x_s_t_r_i_n_g_1a9275997c1605fa79646c301e63a77d06">Empty</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01053"/>01053 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01054"/>01054 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01055"/>01055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01056"/>01056 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01057"/>01057 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;APP_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01058"/>01058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(app)&#32;app-&gt;<link linkend="_class_a_p_p_b_a_s_e_1ab786ff96665db906915e81ad3a7e9db4">SetExitType</link>(<link linkend="__a_p_p_base_8h_1a0d453795cc12518ffc2d165172ba8571a8050ae14d02e2fdeb45933ce2a982b49">APPBASE_EXITTYPE_BY_USER</link>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01059"/>01059 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01060"/>01060 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a63f86790c2440be0cfa934f6c43b3f8c">allexceptiontext</link>.<link linkend="_class_x_s_t_r_i_n_g_1a9275997c1605fa79646c301e63a77d06">Empty</link>();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01061"/>01061 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01062"/>01062 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01063"/>01063 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01064"/>01064 }
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01065"/>01065 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01066"/>01066 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01081"/><link linkend="__main_proc_l_i_n_u_x_8cpp_1a2c287523e9e66411d08e971972132e25">01081</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a2c287523e9e66411d08e971972132e25">Signal_Printf</link>(<emphasis role="keywordtype">bool</emphasis>&#32;iserror,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;title,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;mask,&#32;...)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01082"/>01082 {
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01083"/>01083 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;outstring;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01084"/>01084 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01085"/>01085 &#32;&#32;va_list&#32;arg;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01086"/>01086 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01087"/>01087 &#32;&#32;va_start(arg,&#32;mask);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01088"/>01088 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01089"/>01089 &#32;&#32;outstring.<link linkend="_class_x_s_t_r_i_n_g_1af133c586a68352ab6639b75261cf28d0">FormatArg</link>(mask,&#32;&amp;arg);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01090"/>01090 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01091"/>01091 &#32;&#32;va_end(arg);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01092"/>01092 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01093"/>01093 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;do_log&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01094"/>01094 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01095"/>01095 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;XLOG_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01096"/>01096 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(GEN_XLOG.IsActive())
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01097"/>01097 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01098"/>01098 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XLOG.SetFilters(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;&quot;</emphasis>));
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01099"/>01099 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01100"/>01100 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(GEN_XLOG.AddEntry(iserror?<link linkend="__x_log_8h_1ae1355d3a7970c84298e4ead76cba266da926800a951286d5e6d1ca672577d1858">XLOGLEVEL_ERROR</link>:<link linkend="__x_log_8h_1ae1355d3a7970c84298e4ead76cba266dabc8397fcb1d6292f9003bb6550d24217">XLOGLEVEL_WARNING</link>,&#32;title,&#32;<emphasis role="keyword">false</emphasis>,&#32;outstring.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>()))
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01101"/>01101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01102"/>01102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;do_log&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01103"/>01103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01104"/>01104 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01105"/>01105 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01106"/>01106 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01107"/>01107 &#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a63f86790c2440be0cfa934f6c43b3f8c">allexceptiontext</link>&#32;+=&#32;outstring;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01108"/>01108 &#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a63f86790c2440be0cfa934f6c43b3f8c">allexceptiontext</link>&#32;+=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;\r\n&quot;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01109"/>01109 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01110"/>01110 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;XTRACE_ACTIVE</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01111"/>01111 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!do_log)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01112"/>01112 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01113"/>01113 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;level&#32;=&#32;iserror?4:0;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01114"/>01114 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01115"/>01115 &#32;&#32;&#32;&#32;&#32;<link linkend="__x_trace_8h_1ad3489a73cc8c0aa8e64f91a03735e525">XTRACE_PRINTCOLOR</link>(level,&#32;outstring.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01116"/>01116 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01117"/>01117 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01118"/>01118 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01119"/>01119 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01120"/>01120 }
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01121"/>01121 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01122"/>01122 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01135"/>01135 <emphasis role="keyword">static</emphasis>&#32;<emphasis role="keyword">inline</emphasis>&#32;<emphasis role="keywordtype">void</emphasis>&#32;Signal_PrintfStackTrace(FILE&#32;*out,&#32;<emphasis role="keywordtype">unsigned</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;max_frames)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01136"/>01136 {
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01137"/>01137 &#32;&#32;<emphasis role="keywordtype">void</emphasis>*&#32;&#32;addrlist[max_frames+1];&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;storage&#32;array&#32;for&#32;stack&#32;trace&#32;address&#32;data</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01138"/>01138 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;addrlen&#32;=&#32;0;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01139"/>01139 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01140"/>01140 &#32;&#32;memset(addrlist,0,&#32;<emphasis role="keyword">sizeof</emphasis>(addrlist));
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01141"/>01141 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01142"/>01142 &#32;&#32;addrlen&#32;=&#32;backtrace(addrlist,&#32;<emphasis role="keyword">sizeof</emphasis>(addrlist)&#32;/&#32;<emphasis role="keyword">sizeof</emphasis>(<emphasis role="keywordtype">void</emphasis>*));&#32;&#32;<emphasis role="comment">//&#32;retrieve&#32;current&#32;stack&#32;addresses</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01143"/>01143 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01144"/>01144 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(addrlen&#32;==&#32;0)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01145"/>01145 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01146"/>01146 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a2c287523e9e66411d08e971972132e25">Signal_Printf</link>(<emphasis role="keyword">true</emphasis>,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;Stack&#32;trace:&#32;Not&#32;available.&quot;</emphasis>));
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01147"/>01147 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01148"/>01148 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01149"/>01149 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a2c287523e9e66411d08e971972132e25">Signal_Printf</link>(<emphasis role="keyword">true</emphasis>,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;Stack&#32;trace:&#32;(%d)&#32;calls&quot;</emphasis>),addrlen);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01150"/>01150 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01151"/>01151 &#32;&#32;<emphasis role="comment">//&#32;resolve&#32;addresses&#32;into&#32;strings&#32;containing&#32;&quot;filename(function+address)&quot;,</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01152"/>01152 &#32;&#32;<emphasis role="comment">//&#32;Actually&#32;it&#32;will&#32;be&#32;##&#32;program&#32;address&#32;function&#32;+&#32;offset</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01153"/>01153 &#32;&#32;<emphasis role="comment">//&#32;this&#32;array&#32;must&#32;be&#32;free()-ed</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01154"/>01154 &#32;&#32;<emphasis role="keywordtype">char</emphasis>**&#32;symbollist&#32;=&#32;backtrace_symbols(&#32;addrlist,&#32;addrlen&#32;);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01155"/>01155 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01156"/>01156 &#32;&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;funcnamesize&#32;=&#32;1204;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01157"/>01157 &#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;&#32;&#32;funcname[1024];
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01158"/>01158 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01159"/>01159 &#32;&#32;<emphasis role="comment">//&#32;iterate&#32;over&#32;the&#32;returned&#32;symbol&#32;lines.&#32;skip&#32;the&#32;first,&#32;it&#32;is&#32;the</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01160"/>01160 &#32;&#32;<emphasis role="comment">//&#32;address&#32;of&#32;this&#32;function.</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01161"/>01161 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;i&#32;=&#32;0;&#32;i&#32;&lt;&#32;addrlen;&#32;i++)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01162"/>01162 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01163"/>01163 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>*&#32;begin_name&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01164"/>01164 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>*&#32;begin_offset&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01165"/>01165 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>*&#32;end_offset&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01166"/>01166 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01167"/>01167 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;beginname;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01168"/>01168 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;beginoffset;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01169"/>01169 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;endoffset;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01170"/>01170 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;symbol;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01171"/>01171 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01172"/>01172 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;find&#32;parentheses&#32;and&#32;+address&#32;offset&#32;surrounding&#32;the&#32;mangled&#32;name</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01173"/>01173 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01174"/>01174 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">char</emphasis>&#32;*p&#32;=&#32;symbollist[i];&#32;*p;&#32;++p)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01175"/>01175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01176"/>01176 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(*p&#32;==&#32;<emphasis role="charliteral">&apos;(&apos;</emphasis>)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01177"/>01177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01178"/>01178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;begin_name&#32;=&#32;p;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01179"/>01179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01180"/>01180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01181"/>01181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01182"/>01182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(*p&#32;==&#32;<emphasis role="charliteral">&apos;+&apos;</emphasis>)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01183"/>01183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01184"/>01184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;begin_offset&#32;=&#32;p;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01185"/>01185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01186"/>01186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01187"/>01187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01188"/>01188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(&#32;*p&#32;==&#32;<emphasis role="charliteral">&apos;)&apos;</emphasis>&#32;&amp;&amp;&#32;(&#32;begin_offset&#32;||&#32;begin_name&#32;))&#32;&#32;end_offset&#32;=&#32;p;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01189"/>01189 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01190"/>01190 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01191"/>01191 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01192"/>01192 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01193"/>01193 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(begin_name&#32;&amp;&amp;&#32;end_offset&#32;&amp;&amp;&#32;(begin_name&#32;&lt;&#32;end_offset))
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01194"/>01194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01195"/>01195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*begin_name++&#32;&#32;&#32;=&#32;<emphasis role="charliteral">&apos;\0&apos;</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01196"/>01196 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*end_offset++&#32;&#32;&#32;=&#32;<emphasis role="charliteral">&apos;\0&apos;</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01197"/>01197 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01198"/>01198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(begin_offset)&#32;*begin_offset++&#32;=&#32;<emphasis role="charliteral">&apos;\0&apos;</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01199"/>01199 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01200"/>01200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;&#32;status&#32;=&#32;-1;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01201"/>01201 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>*&#32;ret&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01202"/>01202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;mangled&#32;name&#32;is&#32;now&#32;in&#32;[begin_name,&#32;begin_offset)&#32;and&#32;caller</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01203"/>01203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;offset&#32;in&#32;[begin_offset,&#32;end_offset).&#32;now&#32;apply</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01204"/>01204 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;__cxa_demangle():</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01205"/>01205 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01206"/>01206 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//#ifndef&#32;HW_PC_OLD</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01207"/>01207 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;abi::__cxa_demangle(begin_name,&#32;funcname,&#32;&amp;funcnamesize,&#32;&amp;status);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01208"/>01208 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01209"/>01209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>*&#32;fname&#32;=&#32;begin_name;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01210"/>01210 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(status&#32;==&#32;0)&#32;&#32;fname&#32;=&#32;ret;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01211"/>01211 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;beginname&#32;&#32;&#32;=&#32;fname;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01212"/>01212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//#endif</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01213"/>01213 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01214"/>01214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;endoffset&#32;&#32;&#32;=&#32;end_offset;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01215"/>01215 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;symbol&#32;&#32;&#32;&#32;&#32;&#32;=&#32;symbollist[i];
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01216"/>01216 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01217"/>01217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(begin_offset)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01218"/>01218 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01219"/>01219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;beginoffset&#32;=&#32;begin_offset;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01220"/>01220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a2c287523e9e66411d08e971972132e25">Signal_Printf</link>(<emphasis role="keyword">true</emphasis>,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%-40s&#32;(%-40s&#32;&#32;+&#32;%-6s)&#32;%s&quot;</emphasis>),&#32;symbol.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;beginname.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;beginoffset.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;endoffset.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01221"/>01221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01222"/>01222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01223"/>01223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01224"/>01224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a2c287523e9e66411d08e971972132e25">Signal_Printf</link>(<emphasis role="keyword">true</emphasis>,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%-40s&#32;(%-40s&#32;&#32;&#32;&#32;%-6s)&#32;%s&quot;</emphasis>),&#32;symbol.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;beginname.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;&quot;</emphasis>),&#32;endoffset.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01225"/>01225 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01226"/>01226 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01227"/>01227 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01228"/>01228 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01229"/>01229 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;symbol&#32;&#32;&#32;&#32;&#32;&#32;=&#32;symbollist[i];
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01230"/>01230 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;couldn&apos;t&#32;parse&#32;the&#32;line?&#32;print&#32;the&#32;whole&#32;line.</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01231"/>01231 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a2c287523e9e66411d08e971972132e25">Signal_Printf</link>(<emphasis role="keyword">true</emphasis>,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%-40s&quot;</emphasis>),&#32;symbol.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01232"/>01232 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01233"/>01233 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01234"/>01234 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01235"/>01235 &#32;&#32;free(symbollist);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01236"/>01236 }
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01237"/>01237 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01238"/>01238 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01251"/><link linkend="__main_proc_l_i_n_u_x_8cpp_1a9fc6fb76b6a936ab7d971e1149af888c">01251</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="__main_proc_l_i_n_u_x_8cpp_1a9fc6fb76b6a936ab7d971e1149af888c">Signal_RunLevel</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>&amp;&#32;previous,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>&amp;&#32;actual)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01252"/>01252 {
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01253"/>01253 &#32;&#32;<emphasis role="keyword">struct&#32;</emphasis>utmp*&#32;ut;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01254"/>01254 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01255"/>01255 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01256"/>01256 &#32;&#32;previous&#32;=&#32;0;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01257"/>01257 &#32;&#32;actual&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01258"/>01258 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01259"/>01259 &#32;&#32;setutent();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01260"/>01260 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01261"/>01261 &#32;&#32;<emphasis role="keywordflow">while</emphasis>((ut&#32;=&#32;getutent())&#32;!=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01262"/>01262 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01263"/>01263 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(ut-&gt;ut_type&#32;==&#32;RUN_LVL)
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01264"/>01264 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01265"/>01265 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;previous&#32;=&#32;(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>)(ut-&gt;ut_pid&#32;/&#32;256);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01266"/>01266 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!previous)&#32;previous&#32;=&#32;<link linkend="__x_string_8h_1ab483f167129a5d1941ea1d30f3df8d8a">__C</link>(<emphasis role="charliteral">&apos;N&apos;</emphasis>);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01267"/>01267 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01268"/>01268 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;actual&#32;&#32;&#32;=&#32;(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>)(ut-&gt;ut_pid&#32;%&#32;256);
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01269"/>01269 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01270"/>01270 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01271"/>01271 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01272"/>01272 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01273"/>01273 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01274"/>01274 &#32;&#32;endutent();
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01275"/>01275 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01276"/>01276 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01277"/>01277 }
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01278"/>01278 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01279"/>01279 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01280"/>01280 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01281"/>01281 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01282"/>01282 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01283"/>01283 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01284"/>01284 
+<anchor xml:id="__main_proc_l_i_n_u_x_8cpp_source_1l01285"/>01285 
+</programlisting></section>

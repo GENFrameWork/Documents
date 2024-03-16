@@ -1,0 +1,81 @@
+\doxysection{XLINUXTimer.\+cpp}
+\hypertarget{_x_l_i_n_u_x_timer_8cpp_source}{}\label{_x_l_i_n_u_x_timer_8cpp_source}\index{D:/Projects/GENFrameWork/GEN/Platforms/Linux/XLINUXTimer.cpp@{D:/Projects/GENFrameWork/GEN/Platforms/Linux/XLINUXTimer.cpp}}
+\mbox{\hyperlink{_x_l_i_n_u_x_timer_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00029}00029\ \textcolor{comment}{/*-\/-\/-\/-\/\ PRECOMPILATION\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#pragma\ region\ PRECOMPILATION\_INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_e_n___defines_8h}{GEN\_Defines.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00037}00037\ \textcolor{comment}{/*-\/-\/-\/-\/\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#pragma\ region\ INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_l_i_n_u_x_timer_8h}{XLINUXTimer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00044}00044\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00046}00046\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00047}00047\ \textcolor{preprocessor}{\#include\ <fcntl.h>}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00048}00048\ \textcolor{preprocessor}{\#include\ <sys/time.h>}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00049}00049\ \textcolor{preprocessor}{\#include\ <sys/times.h>}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00050}00050\ \textcolor{preprocessor}{\#include\ <sys/types.h>}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00051}00051\ \textcolor{preprocessor}{\#include\ <sys/stat.h>}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00052}00052\ \textcolor{preprocessor}{\#include\ <sys/ioctl.h>}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00053}00053\ \textcolor{preprocessor}{\#include\ <linux/rtc.h>}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00055}00055\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_trace_8h}{XTrace.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00057}00057\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_memory___control_8h}{XMemory\_Control.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00059}00059\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00062}00062\ \textcolor{comment}{/*-\/-\/-\/-\/\ GENERAL\ VARIABLE\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00063}00063\ \textcolor{preprocessor}{\#pragma\ region\ GENERAL\_VARIABLE}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00065}00065\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00068}00068\ \textcolor{comment}{/*-\/-\/-\/-\/\ CLASS\ MEMBERS\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00069}00069\ \textcolor{preprocessor}{\#pragma\ region\ CLASS\_MEMBERS}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00079}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_gad88a066e0704cd563c4ac3ccb3028edb}{00079}}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_gad88a066e0704cd563c4ac3ccb3028edb}{XLINUXTIMER::XLINUXTIMER}}()}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00080}00080\ \{}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00081}00081\ \ \ \mbox{\hyperlink{group___x_u_t_i_l_s_ga461fee3826d400d29bc47f58f2c5d898}{Reset}}();}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00082}00082\ \}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00093}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_gab80bcde16e61d78a6e34f7d570996818}{00093}}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_gab80bcde16e61d78a6e34f7d570996818}{XLINUXTIMER::\string~XLINUXTIMER}}()}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00094}00094\ \{}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00096}00096\ \}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00108}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga3411a9b50bb3971f935b4ab79472820a}{00108}}\ \mbox{\hyperlink{_x_base_8h_a86128ef639d896f7b12288868ddb7ad5}{XQWORD}}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___l_i_n_u_x_ga3411a9b50bb3971f935b4ab79472820a}{XLINUXTIMER::GetMicroSecondsTickCounter}}()}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00109}00109\ \{\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00110}00110\ \ \ \mbox{\hyperlink{_x_base_8h_a86128ef639d896f7b12288868ddb7ad5}{XQWORD}}\ elapsedtime\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00111}00111\ \ \ \textcolor{keyword}{struct\ }timespec\ t1;}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00113}00113\ \textcolor{preprocessor}{\ \ \#ifdef\ CLOCK\_MONOTONIC}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00114}00114\ \ \ clock\_gettime(CLOCK\_MONOTONIC,\ \&t1);}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00115}00115\ \textcolor{preprocessor}{\ \ \#else}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00116}00116\ \ \ clock\_gettime(CLOCK\_REALTIME,\ \&t1);}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00117}00117\ \textcolor{preprocessor}{\ \ \#endif}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00119}00119\ \ \ elapsedtime\ =\ (\mbox{\hyperlink{_x_base_8h_a86128ef639d896f7b12288868ddb7ad5}{XQWORD}})(((\textcolor{keywordtype}{double})(t1.tv\_sec)\ *\ 1000000)\ +\ (double)(t1.tv\_nsec/1000));\ \textcolor{comment}{//\ to\ us}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00121}00121\ \ \ \textcolor{keywordflow}{return}\ elapsedtime;}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00122}00122\ \}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00125}00125\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_x_l_i_n_u_x_timer_8cpp_source_l00126}00126\ }
+
+\end{DoxyCode}

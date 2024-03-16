@@ -1,0 +1,169 @@
+\doxysection{Hash\+CKS16.\+cpp}
+\hypertarget{_hash_c_k_s16_8cpp_source}{}\label{_hash_c_k_s16_8cpp_source}\index{D:/Projects/GENFrameWork/GEN/Cipher/HashCKS16.cpp@{D:/Projects/GENFrameWork/GEN/Cipher/HashCKS16.cpp}}
+\mbox{\hyperlink{_hash_c_k_s16_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00029}00029\ \textcolor{comment}{/*-\/-\/-\/-\/\ PRECOMPILATION\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#pragma\ region\ PRECOMPILATION\_INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_e_n___defines_8h}{GEN\_Defines.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00037}00037\ \textcolor{comment}{/*-\/-\/-\/-\/\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#pragma\ region\ INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_hash_c_k_s16_8h}{HashCKS16.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_buffer_8h}{XBuffer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_factory_8h}{XFactory.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_memory___control_8h}{XMemory\_Control.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00047}00047\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00050}00050\ \textcolor{comment}{/*-\/-\/-\/-\/\ GENERAL\ VARIABLE\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00051}00051\ \textcolor{preprocessor}{\#pragma\ region\ GENERAL\_VARIABLE}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00053}00053\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00056}00056\ \textcolor{comment}{/*-\/-\/-\/-\/\ CLASS\ MEMBERS\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00057}00057\ \textcolor{preprocessor}{\#pragma\ region\ CLASS\_MEMBERS}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00067}\mbox{\hyperlink{group___c_i_p_h_e_r_ga752909139a14c902372ede9a1de48bc6}{00067}}\ \mbox{\hyperlink{group___c_i_p_h_e_r_ga752909139a14c902372ede9a1de48bc6}{HASHCKS16::HASHCKS16}}()\ :\ \mbox{\hyperlink{class_h_a_s_h}{HASH}}()}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00068}00068\ \{}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00069}00069\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00071}00071\ \ \ \mbox{\hyperlink{class_h_a_s_h_ad5af89903501908c4dcda95b37a5a785}{type}}\ =\ \mbox{\hyperlink{_hash_8h_acf4dd3cf891bcd5c364340e2828a7ec9aadafad7370fee9d3865da78c2dbc5010}{HASHTYPE\_CKS16}};}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00073}00073\ \ \ resulttmp\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_x_b_u_f_f_e_r}{XBUFFER}}();}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00075}00075\ \ \ \mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}}\ value\ =\ 0x0000;}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00076}00076\ \ \ resulttmp-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga03212e4f31a9d07995ac4f72db1dd0cf}{Add}}((\mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}})value);}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00078}00078\ \ \ Ini();}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00079}00079\ \}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00090}\mbox{\hyperlink{group___c_i_p_h_e_r_ga841d2535c393842b19a6185cb65ee484}{00090}}\ \mbox{\hyperlink{group___c_i_p_h_e_r_ga841d2535c393842b19a6185cb65ee484}{HASHCKS16::\string~HASHCKS16}}()}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00091}00091\ \{}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00092}00092\ \ \ \textcolor{keywordflow}{if}(resulttmp)}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00093}00093\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00094}00094\ \ \ \ \ \ \ \textcolor{keyword}{delete}\ resulttmp;}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00095}00095\ \ \ \ \ \ \ resulttmp\ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00096}00096\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00098}00098\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00099}00099\ \}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00114}\mbox{\hyperlink{group___c_i_p_h_e_r_ga74fed69a3d2a5bdf583138ab277cb12f}{00114}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___c_i_p_h_e_r_ga74fed69a3d2a5bdf583138ab277cb12f}{HASHCKS16::Do}}(\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ input,\ \mbox{\hyperlink{_x_base_8h_a86128ef639d896f7b12288868ddb7ad5}{XQWORD}}\ size)}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00115}00115\ \{}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00116}00116\ \ \ \textcolor{keywordflow}{if}(!size)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00118}00118\ \ \ \mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}}\ value\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00120}00120\ \ \ resulttmp-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_gaa18ae97bc16eca76dad45de57c4dd08c}{Extract}}(value);}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00122}00122\ \ \ \textcolor{keywordflow}{for}(\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ c=0;\ c<size;\ c++)}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00123}00123\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00124}00124\ \ \ \ \ \ \ value\ =\ Update(value,\ (*(\mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}}*)input));}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00125}00125\ \ \ \ \ \ \ input\ =\ input\ +\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}});\ \textcolor{comment}{//\ need\ to\ offset\ the\ input\ by\ 16\ bits,\ as\ we\ are\ adding\ 16\ by\ 16}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00126}00126\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00128}00128\ \ \ value\ =\ \string~value;}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00130}00130\ \ \ resulttmp-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga03212e4f31a9d07995ac4f72db1dd0cf}{Add}}((\mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}})value);}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00132}00132\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00133}00133\ \}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00145}\mbox{\hyperlink{group___c_i_p_h_e_r_gaa41c29814aef657deeee1a6a58c6bd3c}{00145}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___c_i_p_h_e_r_gaa41c29814aef657deeee1a6a58c6bd3c}{HASHCKS16::ResetResult}}()}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00146}00146\ \{}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00147}00147\ \ \ \mbox{\hyperlink{group___c_i_p_h_e_r_ga6844bc505aecfe2b878ef45f9d905e3e}{HASH::ResetResult}}();}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00149}00149\ \ \ resulttmp-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga0395231705663a2aeeee3b4be9d292bb}{Delete}}();}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00151}00151\ \ \ \mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}}\ value\ =\ 0x0000;}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00152}00152\ \ \ resulttmp-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga03212e4f31a9d07995ac4f72db1dd0cf}{Add}}((\mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}})value);}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00154}00154\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00155}00155\ \}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00167}\mbox{\hyperlink{group___c_i_p_h_e_r_gabc962938e2b83b28cbac9cb0726053ee}{00167}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group___c_i_p_h_e_r_gabc962938e2b83b28cbac9cb0726053ee}{HASHCKS16::GetDefaultSize}}()}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00168}00168\ \{}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00169}00169\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}});}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00170}00170\ \}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00182}\mbox{\hyperlink{group___c_i_p_h_e_r_ga459faf4c581154e58cb7a7e963442214}{00182}}\ \mbox{\hyperlink{class_x_b_u_f_f_e_r}{XBUFFER}}*\ \mbox{\hyperlink{group___c_i_p_h_e_r_ga459faf4c581154e58cb7a7e963442214}{HASHCKS16::GetResult}}()}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00183}00183\ \{}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00184}00184\ \ \ \mbox{\hyperlink{group___c_i_p_h_e_r_ga58ad31a0f21ff2597f8308d21e712d8e}{GetResultCKS16}}();}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00186}00186\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_h_a_s_h_ae0e98c634df2385915a73f5226864094}{result}};}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00187}00187\ \}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00201}\mbox{\hyperlink{group___c_i_p_h_e_r_ga960726efdbb096895eb76981bb1c5daa}{00201}}\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ \mbox{\hyperlink{group___c_i_p_h_e_r_ga459faf4c581154e58cb7a7e963442214}{HASHCKS16::GetResult}}(\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\&\ resultsize)}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00202}00202\ \{}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00203}00203\ \ \ \mbox{\hyperlink{group___c_i_p_h_e_r_ga58ad31a0f21ff2597f8308d21e712d8e}{GetResultCKS16}}();}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00205}00205\ \ \ resultsize\ =\ \mbox{\hyperlink{class_h_a_s_h_ae0e98c634df2385915a73f5226864094}{result}}-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga726a6143d8a9293a199f8033c8198a0a}{GetSize}}();}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00207}00207\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_h_a_s_h_ae0e98c634df2385915a73f5226864094}{result}}-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga59d2c2b8d1c32098920f5d3eba0a5971}{Get}}();}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00208}00208\ \}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00210}00210\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00220}\mbox{\hyperlink{group___c_i_p_h_e_r_ga58ad31a0f21ff2597f8308d21e712d8e}{00220}}\ \mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}}\ \mbox{\hyperlink{group___c_i_p_h_e_r_ga58ad31a0f21ff2597f8308d21e712d8e}{HASHCKS16::GetResultCKS16}}()}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00221}00221\ \{}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00222}00222\ \ \ \mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}}\ value\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00224}00224\ \ \ \mbox{\hyperlink{class_h_a_s_h_ae0e98c634df2385915a73f5226864094}{result}}-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga0395231705663a2aeeee3b4be9d292bb}{Delete}}();}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00226}00226\ \ \ resulttmp-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_gaa18ae97bc16eca76dad45de57c4dd08c}{Extract}}(value);}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00228}00228\ \ \ value\ \string^=\ 0x0000;}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00230}00230\ \ \ \mbox{\hyperlink{class_h_a_s_h_ae0e98c634df2385915a73f5226864094}{result}}-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga03212e4f31a9d07995ac4f72db1dd0cf}{Add}}((\mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}})value);}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00231}00231\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00232}00232\ \ \ \textcolor{keywordflow}{return}\ value;}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00233}00233\ \}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00235}00235\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00245}00245\ \textcolor{keywordtype}{void}\ HASHCKS16::Ini(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00246}00246\ \{}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00248}00248\ \}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00263}00263\ \mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}}\ HASHCKS16::Update(\mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}}\ CKS16,\ \mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}}\ c)}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00264}00264\ \{}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00265}00265\ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ tmp\ =\ (\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})CKS16\ +\ (\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})c;}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00267}00267\ \ \ \textcolor{comment}{//\ loop\ while\ we\ have\ a\ carry}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00268}00268\ \ \ \textcolor{keywordflow}{while}(tmp\ >\ 0xFFFF)}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00269}00269\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00270}00270\ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}}\ carry\ =\ (tmp\ >>\ 16)\ \&\ (0xFFFF);}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00271}00271\ \ \ \ \ \ \ tmp\ =\ tmp\ +\ carry;}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00272}00272\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00273}00273\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00274}00274\ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}})tmp;}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00275}00275\ \}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00276}00276\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00277}00277\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00286}00286\ \textcolor{keywordtype}{void}\ HASHCKS16::Clean()}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00287}00287\ \{}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00288}00288\ \ \ resulttmp\ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00289}00289\ \}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00290}00290\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00291}00291\ }
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00292}00292\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_hash_c_k_s16_8cpp_source_l00293}00293\ }
+
+\end{DoxyCode}

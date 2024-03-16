@@ -1,0 +1,514 @@
+\doxysection{GRPLINUXScreen\+X11.\+cpp}
+\hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source}{}\label{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source}\index{D:/Projects/GENFrameWork/GEN/Platforms/Linux/GRPLINUXScreenX11.cpp@{D:/Projects/GENFrameWork/GEN/Platforms/Linux/GRPLINUXScreenX11.cpp}}
+\mbox{\hyperlink{_g_r_p_l_i_n_u_x_screen_x11_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00029}00029\ \textcolor{comment}{/*-\/-\/-\/-\/\ PRECOMPILATION\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#pragma\ region\ PRECOMPILATION\_INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_e_n___defines_8h}{GEN\_Defines.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00037}00037\ \textcolor{preprocessor}{\#ifdef\ LINUX\_X11\_ACTIVE}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00040}00040\ \textcolor{comment}{/*-\/-\/-\/-\/\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00041}00041\ \textcolor{preprocessor}{\#pragma\ region\ INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_r_p_l_i_n_u_x_screen_x11_8h}{GRPLINUXScreenX11.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_trace_8h}{XTrace.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00047}00047\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_r_p_canvas_8h}{GRPCanvas.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00049}00049\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_memory___control_8h}{XMemory\_Control.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00051}00051\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00054}00054\ \textcolor{comment}{/*-\/-\/-\/-\/\ GENERAL\ VARIABLE\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00055}00055\ \textcolor{preprocessor}{\#pragma\ region\ GENERAL\_VARIABLE}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00057}00057\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00060}00060\ \textcolor{comment}{/*-\/-\/-\/-\/\ CLASS\ MEMBERS\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00061}00061\ \textcolor{preprocessor}{\#pragma\ region\ CLASS\_MEMBERS}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00071}00071\ GRPLINUXSCREENX11::GRPLINUXSCREENX11():\ \mbox{\hyperlink{class_g_r_p_s_c_r_e_e_n}{GRPSCREEN}}()}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00072}00072\ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00073}00073\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00075}00075\ \ \ type\ =\ \mbox{\hyperlink{_g_r_p_screen_8h_a13ec223f83fb0f13672bfa7b4f0abcb2a826707b209cf4cb191d70a9d2ca9750a}{GRPSCREENTYPE\_LINUX\_X11}};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00077}00077\ \ \ display\ =\ XOpenDisplay(\mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}});}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00078}00078\ \ \ \textcolor{keywordflow}{if}(display)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00079}00079\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00080}00080\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ width\ \ =\ DisplayWidth\ \ (display,\ DefaultScreen\ (display));}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00081}00081\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ height\ =\ DisplayHeight\ (display,\ DefaultScreen\ (display));}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00082}00082\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ depth\ \ =\ DefaultDepth\ \ (display,\ DefaultScreen\ (display));}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00084}00084\ \ \ \ \ \ \ originalwidth\ \ \ =\ width;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00085}00085\ \ \ \ \ \ \ originalheight\ \ =\ height;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00087}00087\ \ \ \ \ \ \ SetSize(width,\ height);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00088}00088\ \ \ \ \ \ \ SetMaxSize(width,\ height);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00090}00090\ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(depth)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \ \ 8\ :\ SetMode(\mbox{\hyperlink{_g_r_p_properties_8h_af987094c3c6c0910d472c6c95a548365a9207ca848d5052d2735cc569785cc701}{GRPPROPERTYMODE\_08\_INDEX}});\ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \ 16\ :\ SetMode(\mbox{\hyperlink{_g_r_p_properties_8h_af987094c3c6c0910d472c6c95a548365a79643bdbeae1e79973771780d48194f1}{GRPPROPERTYMODE\_16\_RGB\_565}});\ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \ 24\ :\ SetMode(\mbox{\hyperlink{_g_r_p_properties_8h_af987094c3c6c0910d472c6c95a548365afd21f0dc81224177cb44aec0fc7fc324}{GRPPROPERTYMODE\_24\_BGR\_888}});\ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \ 32\ :\ SetMode(\mbox{\hyperlink{_g_r_p_properties_8h_af987094c3c6c0910d472c6c95a548365a745e53fb66eed25ca4ee68167c68a48d}{GRPPROPERTYMODE\_32\_BGRA\_8888}});\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00098}00098\ \ \ \ \ \ \ SetIsBufferInverse(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00099}00099\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00100}00100\ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00111}00111\ GRPLINUXSCREENX11::\string~GRPLINUXSCREENX11()}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00112}00112\ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00113}00113\ \ \ \textcolor{keywordflow}{if}(!display)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00114}00114\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00115}00115\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00116}00116\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00117}00117\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00118}00118\ \ \ ScreenResolution(display,\ root,\ originalwidth,\ originalheight,\ 60,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00120}00120\ \ \ Delete();}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00122}00122\ \ \ \textcolor{comment}{//XCloseDisplay(display);}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00123}00123\ \ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00124}00124\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00125}00125\ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00139}00139\ \textcolor{keywordtype}{bool}\ GRPLINUXSCREENX11::Create(\textcolor{keywordtype}{bool}\ show)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00140}00140\ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00141}00141\ \ \ \textcolor{keywordflow}{if}(!display)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00143}00143\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ screen;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00144}00144\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ depth;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00145}00145\ \ \ Visual*\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ visual;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00146}00146\ \ \ XSetWindowAttributes\ \ attributes;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00147}00147\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wndwidth\ \ =\ DisplayWidth\ (display,\ DefaultScreen\ (display));}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00148}00148\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wndheight\ =\ DisplayHeight\ (display,\ DefaultScreen\ (display));}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00150}00150\ \ \ screen\ \ \ \ \ =\ DefaultScreen(display);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00151}00151\ \ \ root\ \ \ \ \ \ \ =\ RootWindow(display,screen);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00152}00152\ \ \ depth\ \ \ \ \ \ =\ DefaultDepth(display,screen);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00153}00153\ \ \ visual\ \ \ \ \ =\ DefaultVisual(display,screen);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00155}00155\ \ \ attributes.background\_pixel\ \ \ =\ XBlackPixel(display,screen);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00156}00156\ \ \ attributes.border\_pixel\ \ \ \ \ \ \ =\ XBlackPixel(display,screen);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00157}00157\ \ \ attributes.override\_redirect\ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00159}00159\ \ \ \textcolor{keywordtype}{int}\ x\ =\ (wndwidth\ \ -\/\ width)\ \ /\ 2;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00160}00160\ \ \ \textcolor{keywordtype}{int}\ y\ =\ (wndheight\ -\/\ height)\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00162}00162\ \ \ window\ =\ \ XCreateWindow(display,RootWindow(display,screen),x\ ,y\ ,\ width,\ height,\ 1,depth,\ 0\ \textcolor{comment}{/*InputOutput*/},\ visual,\ CWBackPixel\ |\ CWBorderPixel\ |\ CWOverrideRedirect,\&attributes);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00163}00163\ \ \ \textcolor{keywordflow}{if}(!window)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00165}00165\ \ \ \textcolor{keywordflow}{if}(IsFullScreen())}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00166}00166\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00167}00167\ \ \ \ \ \ \ Atom\ wm\_state\ \ \ =\ XInternAtom\ (display,\ \textcolor{stringliteral}{"{}\_NET\_WM\_STATE"{}},\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00168}00168\ \ \ \ \ \ \ Atom\ wm\_fullscreen\ =\ XInternAtom\ (display,\ \textcolor{stringliteral}{"{}\_NET\_WM\_STATE\_FULLSCREEN"{}},\ \textcolor{keyword}{true}\ );}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00170}00170\ \ \ \ \ \ \ XChangeProperty(display,\ window,\ wm\_state,\ XA\_ATOM,\ 32,\ PropModeReplace,\ (\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\ *)\&wm\_fullscreen,\ 1);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00172}00172\ \ \ \ \ \ \ ScreenResolution(display,\ root,\ width,\ height,\ 60,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00173}00173\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00175}00175\ \ \ XMapWindow(display,\ window);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00176}00176\ \ \ XMoveWindow(display,\ window,x,y);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00178}00178\ \ \ CreateBuffers();}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00180}00180\ \ \ XFlush(display);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00182}00182\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group___g_r_a_p_h_i_c_ga6fa475c9228a35f6e835dfcd759eafbb}{GRPSCREEN::Create}}(show);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00183}00183\ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00195}00195\ \textcolor{keywordtype}{bool}\ GRPLINUXSCREENX11::Update()}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00196}00196\ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00197}00197\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00198}00198\ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00212}00212\ \textcolor{keywordtype}{bool}\ GRPLINUXSCREENX11::Update(\mbox{\hyperlink{class_g_r_p_c_a_n_v_a_s}{GRPCANVAS}}*\ canvas)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00213}00213\ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00214}00214\ \ \ \textcolor{keywordflow}{if}(!display)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00215}00215\ \ \ \textcolor{keywordflow}{if}(!window)\ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00216}00216\ \ \ \textcolor{keywordflow}{if}(!canvas)\ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00218}00218\ \ \ GC\ gc\ =\ XCreateGC(display,\ window,\ 0,\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}});}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00219}00219\ \ \ \textcolor{keywordflow}{if}(gc)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00220}00220\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00221}00221\ \ \ \ \ \ \ XSync(display,\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00222}00222\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00223}00223\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(IsEqualSizeTo(canvas)\ ==\ \mbox{\hyperlink{_x_base_8h_a146f6c83bfa09e308b1f8e423085c8d4}{ISEQUAL}})}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ XImage*\ image\ =\ CreateXImageFromBuffer(display,\ DefaultScreen(display),\ (\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*)canvas-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_ga17c51ff97e0d74bc3510b2eff0dd9abf}{GetBuffer}}(),\ width,\ height);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(image)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ XPutImage(display,\ window,\ gc,\ image,\ 0,\ 0,\ 0,\ 0,\ width,\ height);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ XDestroyImage(image);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00231}00231\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00233}00233\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ canvas-\/>\mbox{\hyperlink{group___g_r_a_p_h_i_c_gab887fce477778abe690c6fdc74fc6d8c}{CopyBufferRenderToScreen}}(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00235}00235\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ XImage*\ image\ =\ CreateXImageFromBuffer(display,\ DefaultScreen(display),\ (\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*)buffer,\ width,\ height);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(image)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ XPutImage(display,\ window,\ gc,\ image,\ 0,\ 0,\ 0,\ 0,\ width,\ height);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ XDestroyImage(image);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00242}00242\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00244}00244\ \ \ \ \ \ \ XFreeGC(display,\ gc);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00245}00245\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00246}00246\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00247}00247\ \ \ XFlush(display);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00248}00248\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00249}00249\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00250}00250\ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00252}00252\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00262}00262\ \textcolor{keywordtype}{bool}\ GRPLINUXSCREENX11::Delete()}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00263}00263\ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00264}00264\ \ \ \textcolor{keywordflow}{if}(!display)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00265}00265\ \ \ \textcolor{keywordflow}{if}(!window)\ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00267}00267\ \ \ DeleteBuffers();}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00268}00268\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00269}00269\ \ \ XDestroyWindow(display,\ window);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00270}00270\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00271}00271\ \ \ isactive\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00272}00272\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00273}00273\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00274}00274\ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00276}00276\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00289}00289\ \textcolor{keywordtype}{bool}\ GRPLINUXSCREENX11::Resize(\textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00290}00290\ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00291}00291\ \ \ XResizeWindow(display,\ window,\ width,\ height);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00292}00292\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00293}00293\ \ \ \textcolor{keywordflow}{return}\ UpdateSize(width,\ height);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00294}00294\ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00295}00295\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00296}00296\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00308}00308\ \textcolor{keywordtype}{bool}\ GRPLINUXSCREENX11::Show(\textcolor{keywordtype}{bool}\ active)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00309}00309\ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00310}00310\ \ \ isshow\ \ =\ active;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00311}00311\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00312}00312\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00313}00313\ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00314}00314\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00315}00315\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00327}00327\ \textcolor{keywordtype}{bool}\ GRPLINUXSCREENX11::ShowCursor(\textcolor{keywordtype}{bool}\ active)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00328}00328\ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00329}00329\ \ \ \textcolor{keywordflow}{if}(!active)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00330}00330\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00331}00331\ \ \ \ \ \ \ \textcolor{comment}{//\ vars\ to\ make\ blank\ cursor}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00332}00332\ \ \ \ \ \ \ Pixmap\ \ blank;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00333}00333\ \ \ \ \ \ \ XColor\ \ dummy;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00334}00334\ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ \ \ \ data[1]\ =\ \{\ 0\ \};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00335}00335\ \ \ \ \ \ \ Cursor\ \ cursor;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00337}00337\ \ \ \ \ \ \ \textcolor{comment}{//\ make\ a\ blank\ cursor}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00338}00338\ \ \ \ \ \ \ blank\ =\ XCreateBitmapFromData(display,\ window,\ data,\ 1,\ 1);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00339}00339\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(blank\ !=\ None)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00340}00340\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ cursor\ =\ XCreatePixmapCursor(display,\ blank,\ blank,\ \&dummy,\ \&dummy,\ 0,\ 0);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ XFreePixmap(display,\ blank);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ XDefineCursor(display,\ window,cursor);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00344}00344\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00345}00345\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00346}00346\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00347}00347\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00348}00348\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00349}00349\ \ \ \ \ \ \ XUndefineCursor(display,\ window);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00350}00350\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00351}00351\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00352}00352\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00353}00353\ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00354}00354\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00355}00355\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00365}00365\ \textcolor{keywordtype}{void}*\ GRPLINUXSCREENX11::GetHandle()}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00366}00366\ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00367}00367\ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{void}*)window;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00368}00368\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00369}00369\ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00370}00370\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00371}00371\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00381}00381\ \textcolor{keywordtype}{bool}\ \ GRPLINUXSCREENX11::IsDesktop()}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00382}00382\ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00383}00383\ \ \ \textcolor{keywordflow}{return}\ isdesktop;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00384}00384\ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00385}00385\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00386}00386\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00396}00396\ \textcolor{keywordtype}{void}\ GRPLINUXSCREENX11::SetIsDesktop(\textcolor{keywordtype}{bool}\ isdesktop)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00397}00397\ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00398}00398\ \ \ this-\/>isdesktop\ =\ isdesktop;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00399}00399\ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00400}00400\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00401}00401\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00411}00411\ \textcolor{keywordtype}{bool}\ GRPLINUXSCREENX11::HasFocus()}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00412}00412\ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00413}00413\ \ \ Window\ focus;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00414}00414\ \ \ \textcolor{keywordtype}{int}\ \ \ \ status\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00415}00415\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00416}00416\ \ \ XGetInputFocus(display,\ \&focus,\ \&status);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00417}00417\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00418}00418\ \ \ \textcolor{keywordflow}{if}(focus\ ==\ \ window)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00419}00419\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00420}00420\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00421}00421\ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00422}00422\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00423}00423\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00433}00433\ Display*\ GRPLINUXSCREENX11::GetDisplay()}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00434}00434\ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00435}00435\ \ \ \textcolor{keywordflow}{return}\ display;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00436}00436\ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00437}00437\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00438}00438\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00448}00448\ Window*\ GRPLINUXSCREENX11::GetWindow()}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00449}00449\ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00450}00450\ \ \ \textcolor{keywordflow}{return}\ \&window;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00451}00451\ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00452}00452\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00453}00453\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00470}00470\ \textcolor{keywordtype}{int}\ GRPLINUXSCREENX11::ScreenResolution(Display*\ display,\ Window\ \ root,\ \textcolor{keywordtype}{int}\ xsz,\ \textcolor{keywordtype}{int}\ ysz,\ \textcolor{keywordtype}{int}\ rate,\ \textcolor{keywordtype}{int}\ just\_checking)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00471}00471\ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00472}00472\ \ \ XRRScreenConfiguration*\ \ \ xrr\_config\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00473}00473\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ event\_base;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00474}00474\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ error\_base;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00475}00475\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ver\_major;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00476}00476\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ver\_minor;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00477}00477\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ use\_rate;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00478}00478\ \ \ Status\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00479}00479\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00480}00480\ \ \ \textcolor{keywordflow}{if}(!display)\ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00481}00481\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00482}00482\ \ \ \textcolor{comment}{//\ must\ check\ at\ runtime\ for\ the\ availability\ of\ the\ extension}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00483}00483\ \ \ \textcolor{keywordflow}{if}(!XRRQueryExtension(display,\ \&event\_base,\ \&error\_base))}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00484}00484\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00485}00485\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00486}00486\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00487}00487\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00488}00488\ \ \ XRRQueryVersion(display,\ \&ver\_major,\ \&ver\_minor);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00489}00489\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00490}00490\ \ \ \textcolor{comment}{//\ we\ only\ heed\ the\ rate\ if\ we\ CAN\ actually\ use\ it\ (Xrandr\ >=\ 1.1)\ and\ the\ user\ actually\ cares\ about\ it\ (rate\ >\ 0)}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00491}00491\ \ \ use\_rate\ =\ (\ rate\ >\ 0\ )\ \&\&\ (\ (\ ver\_major\ >\ 1\ )\ ||\ ((\ ver\_major\ ==\ 1\ )\ \&\&\ (\ ver\_minor\ >=\ 1\ )));}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00492}00492\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00493}00493\ \ \ \textcolor{comment}{//\ this\ loop\ is\ only\ so\ that\ the\ whole\ thing\ will\ be\ repeated\ if\ someone\ else\ changes\ video\ mode\ between\ our\ query\ of\ the\ current\ information\ and\ the\ attempt\ to\ change\ it.}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00494}00494\ \ \ \textcolor{keywordflow}{do}\{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00495}00495\ \ \ \ \ \ \ \ \ XRRScreenSize*\ \ ssizes;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00496}00496\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{short}*\ \ \ \ \ \ \ \ \ \ rates;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00497}00497\ \ \ \ \ \ \ \ \ Rotation\ \ \ \ \ \ \ \ rot;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00498}00498\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ i;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00499}00499\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ ssizes\_count;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00500}00500\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ rates\_count;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00501}00501\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ curr;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00502}00502\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ \ \ \ \ \ \ \ \ res\_idx\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00503}00503\ \ \ \ \ \ \ \ \ Time\ timestamp,\ cfg\_timestamp;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00504}00504\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00505}00505\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(xrr\_config)\ XRRFreeScreenConfigInfo(xrr\_config);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00506}00506\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00507}00507\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!(xrr\_config\ =\ XRRGetScreenInfo(display,\ root)))}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00508}00508\ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00509}00509\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//fgWarning("{}XRRGetScreenInfo\ failed"{});}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00510}00510\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00511}00511\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00512}00512\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00513}00513\ \ \ \ \ \ \ \ \ ssizes\ \ \ \ =\ XRRConfigSizes(xrr\_config,\ \&ssizes\_count);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00514}00514\ \ \ \ \ \ \ \ \ curr\ \ \ \ \ \ =\ XRRConfigCurrentConfiguration(xrr\_config,\ \&rot);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00515}00515\ \ \ \ \ \ \ \ \ timestamp\ =\ XRRConfigTimes(xrr\_config,\ \&cfg\_timestamp);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00516}00516\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00517}00517\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ either\ of\ xsz\ or\ ysz\ are\ unspecified,\ use\ the\ current\ values}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00518}00518\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(xsz\ <=\ 0)\ xsz\ =\ \ ssizes[curr].width;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00519}00519\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(ysz\ <=\ 0)\ ysz\ =\ \ ssizes[curr].height;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00520}00520\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00521}00521\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(xsz\ ==\ ssizes[curr].width\ \&\&\ ysz\ ==\ ssizes[curr].height)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00522}00522\ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00523}00523\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ no\ need\ to\ switch,\ we're\ already\ in\ the\ requested\ resolution}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00524}00524\ \ \ \ \ \ \ \ \ \ \ \ \ res\_idx\ =\ curr;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00525}00525\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00526}00526\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00527}00527\ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00528}00528\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(i=0;\ i<ssizes\_count;\ i++)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00529}00529\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00530}00530\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(ssizes[i].width\ ==\ xsz\ \&\&\ ssizes[i].height\ ==\ ysz)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00531}00531\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00532}00532\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ res\_idx\ =\ i;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00533}00533\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ \ \textcolor{comment}{//\ found\ it}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00534}00534\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00535}00535\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00536}00536\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00537}00537\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00538}00538\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(res\_idx\ ==\ -\/1)\ \textcolor{keywordflow}{break};\ \ \textcolor{comment}{//\ no\ matching\ resolution}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00539}00539\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00540}00540\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#if\ (\ RANDR\_MAJOR\ >\ 1\ )\ ||\ (\ (\ RANDR\_MAJOR\ ==\ 1\ )\ \&\&\ (\ RANDR\_MINOR\ >=\ 1\ )\ )}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00541}00541\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(use\_rate)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00542}00542\ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00543}00543\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ for\ the\ selected\ resolution,\ let's\ find\ out\ if\ there\ is\ a\ matching\ refresh\ rate\ available.}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00544}00544\ \ \ \ \ \ \ \ \ \ \ \ \ rates\ =\ XRRConfigRates(xrr\_config,\ res\_idx,\ \&rates\_count);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00545}00545\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00546}00546\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(i=0;\ i<rates\_count;\ i++)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00547}00547\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00548}00548\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(rates[i]\ ==\ rate)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00549}00549\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00550}00550\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00551}00551\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00552}00552\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00553}00553\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00554}00554\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i\ ==\ rates\_count)\ \textcolor{keywordflow}{break};\ \textcolor{comment}{//\ no\ matching\ rate}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00555}00555\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00556}00556\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00557}00557\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00558}00558\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(just\_checking)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00559}00559\ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00560}00560\ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00561}00561\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00562}00562\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00563}00563\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00564}00564\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#if\ (\ RANDR\_MAJOR\ >\ 1\ )\ ||\ (\ (\ RANDR\_MAJOR\ ==\ 1\ )\ \&\&\ (\ RANDR\_MINOR\ >=\ 1\ )\ )}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00565}00565\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(use\_rate)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00566}00566\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ XRRSetScreenConfigAndRate(display,\ xrr\_config,\ root,\ res\_idx,\ rot,\ rate,\ timestamp);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00567}00567\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00568}00568\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endif}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00569}00569\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result\ =\ XRRSetScreenConfig(display,\ xrr\_config,\ root,\ res\_idx,\ rot,\ timestamp);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00570}00570\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00571}00571\ \ \ \ \ \}\ \textcolor{keywordflow}{while}(result\ ==\ RRSetConfigInvalidTime);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00572}00572\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00573}00573\ \ \ \textcolor{keywordflow}{if}(xrr\_config)\ XRRFreeScreenConfigInfo(xrr\_config);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00574}00574\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00575}00575\ \ \ \textcolor{keywordflow}{if}(result\ ==\ 0)\ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00576}00576\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00577}00577\ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00578}00578\ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00579}00579\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00580}00580\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00596}00596\ XImage*\ GRPLINUXSCREENX11::CreateXImageFromBuffer(Display*\ display,\ \textcolor{keywordtype}{int}\ screen,\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ buffer,\ \textcolor{keywordtype}{int}\ width,\ \textcolor{keywordtype}{int}\ height)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00597}00597\ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00598}00598\ \ \ XImage*\ image\ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00599}00599\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ depth;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00600}00600\ \ \ Visual*\ visual;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00601}00601\ \ \ \textcolor{keywordtype}{double}\ \ rratio;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00602}00602\ \ \ \textcolor{keywordtype}{double}\ \ gratio;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00603}00603\ \ \ \textcolor{keywordtype}{double}\ \ bratio;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00604}00604\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ outindex\ \ \ \ \ \ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00605}00605\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ numbufferbytes\ =\ (3\ *\ (width\ *\ height));}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00606}00606\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00607}00607\ \ \ depth\ \ =\ DefaultDepth(display,screen);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00608}00608\ \ \ visual\ =\ DefaultVisual(display,screen);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00609}00609\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00610}00610\ \ \ rratio\ =\ visual-\/>red\_mask\ \ \ /\ 255.0;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00611}00611\ \ \ gratio\ =\ visual-\/>green\_mask\ /\ 255.0;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00612}00612\ \ \ bratio\ =\ visual-\/>blue\_mask\ \ /\ 255.0;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00613}00613\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00614}00614\ \ \ \textcolor{keywordflow}{if}(depth\ >=\ 24)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00615}00615\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00616}00616\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ \ numnewbufferbytes\ =\ (4\ *\ (width\ *\ height));}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00617}00617\ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}*\ newbuffer\ \ \ \ \ \ \ \ =\ (\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}*)malloc(numnewbufferbytes);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00618}00618\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00619}00619\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ index=0;index<numbufferbytes;)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00620}00620\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00621}00621\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ b\ =\ (buffer[index++]\ *\ bratio);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00622}00622\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ g\ =\ (buffer[index++]\ *\ gratio);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00623}00623\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ r\ =\ (buffer[index++]\ *\ rratio);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00624}00624\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00625}00625\ \ \ \ \ \ \ \ \ \ \ r\ \&=\ visual-\/>red\_mask;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00626}00626\ \ \ \ \ \ \ \ \ \ \ g\ \&=\ visual-\/>green\_mask;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00627}00627\ \ \ \ \ \ \ \ \ \ \ b\ \&=\ visual-\/>blue\_mask;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00628}00628\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00629}00629\ \ \ \ \ \ \ \ \ \ \ newbuffer[outindex]\ =\ r\ |\ g\ |\ b;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00630}00630\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00631}00631\ \ \ \ \ \ \ \ \ \ \ ++outindex;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00632}00632\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00633}00633\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00634}00634\ \ \ \ \ \ \ image\ =\ XCreateImage\ (display,\ CopyFromParent,\ depth,\ \ ZPixmap,\ 0,\ (\textcolor{keywordtype}{char}\ *)newbuffer,width,\ height,\ 32,\ 0);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00635}00635\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00636}00636\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00637}00637\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00638}00638\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(depth\ >=\ 15)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00639}00639\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00640}00640\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ numnewbufferbytes\ =\ (2\ *\ (width\ *\ height));}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00641}00641\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}}*\ newbuffer\ \ \ \ \ \ \ \ \ \ =\ (\mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}}*)malloc(numnewbufferbytes);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00642}00642\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00643}00643\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ index=0;index<numbufferbytes;)}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00644}00644\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00645}00645\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ b\ =\ (buffer[index++]\ *\ bratio);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00646}00646\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ g\ =\ (buffer[index++]\ *\ gratio);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00647}00647\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ r\ =\ (buffer[index++]\ *\ rratio);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00648}00648\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00649}00649\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r\ \&=\ visual-\/>red\_mask;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00650}00650\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ g\ \&=\ visual-\/>green\_mask;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00651}00651\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ b\ \&=\ visual-\/>blue\_mask;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00652}00652\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00653}00653\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ newbuffer[outindex]\ =\ r\ |\ g\ |\ b;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00654}00654\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00655}00655\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++outindex;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00656}00656\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00657}00657\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00658}00658\ \ \ \ \ \ \ \ \ \ \ image\ =\ XCreateImage(display,\ CopyFromParent,\ depth,\ ZPixmap,\ 0,\ (\textcolor{keywordtype}{char}*)newbuffer,\ width,\ height,\ 16,\ 0);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00659}00659\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00660}00660\ \ \ \ \ \ \ \ \ \}\ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00661}00661\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00662}00662\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00663}00663\ \ \ XInitImage(image);}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00664}00664\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00665}00665\ \ \ \textcolor{keywordflow}{if}(LSBFirst\ ==\ GetByteOrder())}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00666}00666\ \ \ \ \ \ \ \ \ \ \ image-\/>byte\_order\ =\ LSBFirst;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00667}00667\ \ \ \ \ \textcolor{keywordflow}{else}\ image-\/>byte\_order\ =\ MSBFirst;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00668}00668\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00669}00669\ \ \ image-\/>bitmap\_bit\_order\ =\ MSBFirst;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00670}00670\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00671}00671\ \ \ \textcolor{keywordflow}{return}\ image;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00672}00672\ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00673}00673\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00674}00674\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00684}00684\ \textcolor{keywordtype}{int}\ GRPLINUXSCREENX11::GetByteOrder()}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00685}00685\ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00686}00686\ \ \ \textcolor{keyword}{union}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00687}00687\ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00688}00688\ \ \ \ \ \textcolor{keywordtype}{char}\ c[\textcolor{keyword}{sizeof}(short)];}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00689}00689\ \ \ \ \ \textcolor{keywordtype}{short}\ s;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00690}00690\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00691}00691\ \ \ \}\ order;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00692}00692\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00693}00693\ \ \ order.s\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00694}00694\ \ \ \textcolor{keywordflow}{if}((1\ ==\ order.c[0]))}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00695}00695\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00696}00696\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ LSBFirst;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00697}00697\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00698}00698\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00699}00699\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00700}00700\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ MSBFirst;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00701}00701\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00702}00702\ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00703}00703\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00704}00704\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00713}00713\ \textcolor{keywordtype}{void}\ GRPLINUXSCREENX11::Clean()}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00714}00714\ \{}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00715}00715\ \ \ display\ \ \ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00716}00716\ \ \ window\ \ \ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00717}00717\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00718}00718\ \ \ isdesktop\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00719}00719\ \}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00720}00720\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00721}00721\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00722}00722\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00723}00723\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00724}00724\ }
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00725}00725\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_g_r_p_l_i_n_u_x_screen_x11_8cpp_source_l00726}00726\ }
+
+\end{DoxyCode}

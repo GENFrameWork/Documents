@@ -1,0 +1,284 @@
+\doxysection{DIOESP32\+Stream\+USB.\+cpp}
+\hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source}{}\label{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source}\index{D:/Projects/GENFrameWork/GEN/Platforms/Microcontrollers/ESP32/DIOESP32StreamUSB.cpp@{D:/Projects/GENFrameWork/GEN/Platforms/Microcontrollers/ESP32/DIOESP32StreamUSB.cpp}}
+\mbox{\hyperlink{_d_i_o_e_s_p32_stream_u_s_b_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00029}00029\ \textcolor{comment}{/*-\/-\/-\/-\/\ PRECOMPILATION\ CONTROL\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_e_n___defines_8h}{GEN\_Defines.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00033}00033\ \textcolor{preprocessor}{\#if\ defined(DIO\_ACTIVE)\ \&\&\ defined(DIO\_STREAMUSB\_ACTIVE)}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00035}00035\ \textcolor{comment}{/*-\/-\/-\/-\/\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00037}00037\ \textcolor{preprocessor}{\#include\ "{}XESP32\_HAL.h"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#include\ "{}usbd\_cdc\_if.h"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00039}00039\ \textcolor{preprocessor}{\#include\ "{}usb\_device.h"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00041}00041\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_factory_8h}{XFactory.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_thread_collected_8h}{XThreadCollected.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00044}00044\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_i_o_stream_x_event_8h}{DIOStreamXEvent.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_i_o_stream_u_s_b_config_8h}{DIOStreamUSBConfig.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00047}00047\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_i_o_e_s_p32_stream_u_s_b_8h}{DIOESP32StreamUSB.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00049}00049\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_memory___control_8h}{XMemory\_Control.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00051}00051\ \textcolor{comment}{/*-\/-\/-\/-\/\ GENERAL\ VARIABLE\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00053}00053\ \mbox{\hyperlink{class_d_i_o_e_s_p32_s_t_r_e_a_m_u_s_b}{DIOESP32STREAMUSB}}*\ \ \ \ \ \ diostreamusbptrhandle\ =\ \ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00055}00055\ \textcolor{comment}{/*-\/-\/-\/-\/\ CLASS\ MEMBERS\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00066}00066\ DIOESP32STREAMUSB::DIOESP32STREAMUSB()\ :\ \mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_u_s_b}{DIOSTREAMUSB}}(),\ \mbox{\hyperlink{class_x_f_s_m_a_c_h_i_n_e}{XFSMACHINE}}(0)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00067}00067\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00068}00068\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00070}00070\ \ \ AddState(\ DIOESP32USBFSMSTATE\_NONE\ \ \ \ \ \ \ \ \ \ \ \ \ \ ,}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ DIOESP32USBFSMEVENT\_CONNECTED\ \ \ \ \ \ \ ,\ DIOESP32USBFSMSTATE\_CONNECTED\ \ \ \ \ \ \ \ ,}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ DIOESP32USBFSMEVENT\_DISCONNECTING\ \ \ ,\ DIOESP32USBFSMSTATE\_DISCONNECTING\ \ \ \ ,}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_f_s_machine_8h_a33b7db38a7e9ca04fb2aa62ea3b2af33}{XFSMACHINESTATE\_EVENTDEFEND}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00075}00075\ \ \ AddState(\ DIOESP32USBFSMSTATE\_CONNECTED\ \ \ \ \ \ \ ,}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ DIOESP32USBFSMEVENT\_WAITINGTOREAD\ \ \ ,\ DIOESP32USBFSMSTATE\_WAITINGTOREAD\ \ \ \ ,}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ DIOESP32USBFSMEVENT\_DISCONNECTING\ \ \ ,\ DIOESP32USBFSMSTATE\_DISCONNECTING\ \ \ \ ,}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_f_s_machine_8h_a33b7db38a7e9ca04fb2aa62ea3b2af33}{XFSMACHINESTATE\_EVENTDEFEND}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00080}00080\ \ \ AddState(\ DIOESP32USBFSMSTATE\_WAITINGTOREAD\ \ \ ,}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ DIOESP32USBFSMEVENT\_CONNECTED\ \ \ \ \ \ \ ,\ DIOESP32USBFSMSTATE\_CONNECTED\ \ \ \ \ \ \ \ ,}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ DIOESP32USBFSMEVENT\_DISCONNECTING\ \ \ ,\ DIOESP32USBFSMSTATE\_DISCONNECTING\ \ \ \ ,}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_f_s_machine_8h_a33b7db38a7e9ca04fb2aa62ea3b2af33}{XFSMACHINESTATE\_EVENTDEFEND}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00085}00085\ \ \ AddState(\ DIOESP32USBFSMSTATE\_DISCONNECTING\ \ \ ,}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ DIOESP32USBFSMEVENT\_CONNECTED\ \ \ \ \ \ \ ,\ DIOESP32USBFSMSTATE\_CONNECTED\ \ \ \ \ \ \ \ ,}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ DIOESP32USBFSMEVENT\_WAITINGTOREAD\ \ \ ,\ DIOESP32USBFSMSTATE\_WAITINGTOREAD\ \ \ \ ,}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_f_s_machine_8h_a33b7db38a7e9ca04fb2aa62ea3b2af33}{XFSMACHINESTATE\_EVENTDEFEND}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00090}00090\ \ \ threadconnection\ =\ \mbox{\hyperlink{_x_thread_collected_8h_aad503e3655b9ff78d3ac660d1f1f5534}{CREATEXTHREAD}}(\mbox{\hyperlink{_x_thread_8h_a32ad650cdcf0656f543da04bc3ac68a6a84cb8ce10e9d83f06cdd1b368d0b67ea}{XTHREADGROUPID\_DIOSTREAMUSB}},\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}DIOESP32STREAMUSB::DIOESP32STREAMUSB"{}}),\ ThreadConnection,\ (\textcolor{keywordtype}{void}*)\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00091}00091\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00103}00103\ DIOESP32STREAMUSB::\string~DIOESP32STREAMUSB()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00104}00104\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00105}00105\ \ \ Close();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00107}00107\ \ \ \textcolor{keywordflow}{if}(threadconnection)\ \mbox{\hyperlink{_x_thread_collected_8h_a18fb843f5fbad51464b68d705ed29b8a}{DELETEXTHREAD}}(\mbox{\hyperlink{_x_thread_8h_a32ad650cdcf0656f543da04bc3ac68a6a84cb8ce10e9d83f06cdd1b368d0b67ea}{XTHREADGROUPID\_DIOSTREAMUSB}},\ threadconnection);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00109}00109\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00110}00110\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00123}00123\ \mbox{\hyperlink{_d_i_o_stream_8h_ad10214ba9a07bd0f22017499f6f59a0f}{DIOSTREAMSTATUS}}\ DIOESP32STREAMUSB::GetConnectStatus()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00124}00124\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00125}00125\ \ \ \textcolor{keywordflow}{if}(!config)\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_d_i_o_stream_8h_ad10214ba9a07bd0f22017499f6f59a0fa516b51b4debec043e34f66f0d4710fa2}{DIOSTREAMSTATUS\_DISCONNECTED}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00127}00127\ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00128}00128\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00141}00141\ \textcolor{keywordtype}{bool}\ DIOESP32STREAMUSB::Open()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00142}00142\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00143}00143\ \ \ \textcolor{keywordflow}{if}(!threadconnection)\ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00145}00145\ \ \ MX\_USB\_DEVICE\_Init();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00147}00147\ \ \ diostreamusbptrhandle\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00149}00149\ \ \ SetEvent(DIOESP32USBFSMEVENT\_CONNECTED);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00151}00151\ \ \ status\ =\ \mbox{\hyperlink{_d_i_o_stream_8h_ad10214ba9a07bd0f22017499f6f59a0fa264f9a9556afb61979d377ba92266a76}{DIOSTREAMSTATUS\_CONNECTED}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00153}00153\ \ \ ResetXBuffers();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00154}00154\ \ \ ResetConnectionStatistics();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00156}00156\ \ \ \textcolor{keywordflow}{return}\ threadconnection-\/>Ini();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00157}00157\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00173}00173\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ DIOESP32STREAMUSB::WriteDirect(\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ buffer,\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ size)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00174}00174\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00175}00175\ \ \ \textcolor{keywordflow}{if}(GetConnectStatus()==\mbox{\hyperlink{_d_i_o_stream_8h_ad10214ba9a07bd0f22017499f6f59a0fa516b51b4debec043e34f66f0d4710fa2}{DIOSTREAMSTATUS\_DISCONNECTED}})\ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00177}00177\ \ \ \textcolor{keywordflow}{if}(CDC\_Transmit\_FS((uint8\_t*)buffer,\ (\mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}})size)\ ==\ USBD\_OK)\ \textcolor{keywordflow}{return}\ size;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00179}00179\ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00180}00180\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00196}00196\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ DIOESP32STREAMUSB::Write(\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ buffer,\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ size)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00197}00197\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00198}00198\ \ \ \textcolor{keywordflow}{if}(!outbuffer)\ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00200}00200\ \ \ \textcolor{keywordflow}{while}(outbuffer-\/>IsBlocked())}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00201}00201\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00203}00203\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00205}00205\ \ \ \textcolor{keywordflow}{if}(!outbuffer-\/>Add(buffer,size))\ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00207}00207\ \ \ nbyteswrite+=size;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00208}00208\ \ \ \textcolor{keywordflow}{if}(xtimernotactivity)\ xtimernotactivity-\/>Reset();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00210}00210\ \ \ outbuffer-\/>SetBlocked(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00212}00212\ \ \ \textcolor{keywordflow}{return}\ size;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00213}00213\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00226}00226\ \textcolor{keywordtype}{bool}\ DIOESP32STREAMUSB::Disconnect()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00227}00227\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00228}00228\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00229}00229\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00231}00231\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00242}00242\ \textcolor{keywordtype}{bool}\ DIOESP32STREAMUSB::Close()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00243}00243\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00244}00244\ \ \ \textcolor{keywordflow}{if}(!threadconnection)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00245}00245\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00246}00246\ \ \ threadconnection-\/>End();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00248}00248\ \ \ \textcolor{keywordflow}{if}(GetConnectStatus()==\mbox{\hyperlink{_d_i_o_stream_8h_ad10214ba9a07bd0f22017499f6f59a0fa516b51b4debec043e34f66f0d4710fa2}{DIOSTREAMSTATUS\_DISCONNECTED}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00250}00250\ \ \ diostreamusbptrhandle\ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00252}00252\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00253}00253\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00254}00254\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00255}00255\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00267}00267\ \textcolor{keywordtype}{bool}\ DIOESP32STREAMUSB::CleanBuffers()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00268}00268\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00269}00269\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00270}00270\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00271}00271\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00272}00272\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00273}00273\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00274}00274\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00285}00285\ \textcolor{keywordtype}{void}\ DIOESP32STREAMUSB::HAL\_USB\_RxCpltCallback(uint8\_t*\ buffer,\ uint32\_t\ *len)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00286}00286\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00287}00287\ \ \ \textcolor{keywordflow}{if}(GetConnectStatus()\ ==\ \mbox{\hyperlink{_d_i_o_stream_8h_ad10214ba9a07bd0f22017499f6f59a0fa516b51b4debec043e34f66f0d4710fa2}{DIOSTREAMSTATUS\_DISCONNECTED}})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00288}00288\ \ \ \textcolor{keywordflow}{if}(IsBlockRead())\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00290}00290\ \ \ \textcolor{keywordflow}{if}(!inbuffer-\/>IsBlocked())}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00291}00291\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00292}00292\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(readcache.GetSize())}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00293}00293\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ inbuffer-\/>Add(readcache);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ readcache.Delete();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00296}00296\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00297}00297\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00298}00298\ \ \ \ \ \ \ inbuffer-\/>Add((\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*)buffer,\ (\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})(*len));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00299}00299\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00300}00300\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00301}00301\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00302}00302\ \ \ \ \ \ \ readcache.Add((\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*)buffer,\ (\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})(*len));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00303}00303\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00304}00304\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00305}00305\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00306}00306\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00307}00307\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00317}00317\ \textcolor{keywordtype}{void}\ DIOESP32STREAMUSB::ThreadConnection(\textcolor{keywordtype}{void}*\ param)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00318}00318\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00319}00319\ \ \ \mbox{\hyperlink{class_d_i_o_e_s_p32_s_t_r_e_a_m_u_s_b}{DIOESP32STREAMUSB}}*\ diostream\ =\ (\mbox{\hyperlink{class_d_i_o_e_s_p32_s_t_r_e_a_m_u_s_b}{DIOESP32STREAMUSB}}*)param;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00320}00320\ \ \ \textcolor{keywordflow}{if}(!diostream)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00321}00321\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00322}00322\ \ \ \textcolor{keywordflow}{if}(diostream-\/>GetEvent()==DIOESP32USBFSMEVENT\_NONE)\ \textcolor{comment}{//\ No\ hay\ nuevos\ Eventos}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00323}00323\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00324}00324\ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(diostream-\/>GetCurrentState())}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00325}00325\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ DIOESP32USBFSMSTATE\_NONE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00327}00327\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ DIOESP32USBFSMSTATE\_CONNECTED\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00329}00329\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ DIOESP32USBFSMSTATE\_WAITINGTOREAD\ \ \ \ \ \ \ \ \ \ \ \ :\ \{\ \textcolor{keywordflow}{if}(!diostream-\/>IsBlockRead())}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!diostream-\/>inbuffer-\/>IsBlocked())}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00334}00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(diostream-\/>readcache.GetSize())}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00335}00335\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00336}00336\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ diostream-\/>inbuffer-\/>Add(diostream-\/>readcache);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00337}00337\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ diostream-\/>readcache.Delete();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00338}00338\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00340}00340\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00341}00341\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!diostream-\/>IsBlockWrite())}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00344}00344\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!diostream-\/>outbuffer-\/>IsBlocked())}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00345}00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ esize\ =\ diostream-\/>outbuffer-\/>GetSize();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00347}00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(esize>\mbox{\hyperlink{_d_i_o_stream_8h_aad641424d597536a03a19645768c03b4}{DIOSTREAM\_MAXBUFFER}})\ esize\ =\ \mbox{\hyperlink{_d_i_o_stream_8h_aad641424d597536a03a19645768c03b4}{DIOSTREAM\_MAXBUFFER}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00348}00348\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(esize)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00351}00351\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ diostream-\/>outbuffer-\/>Get(diostream-\/>writebuffer,\ esize,\ 0);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00352}00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(diostream-\/>WriteDirect(diostream-\/>writebuffer,\ esize))}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00354}00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ diostream-\/>outbuffer-\/>Extract(\mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}},\ 0,\ esize);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00355}00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00356}00356\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00357}00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00358}00358\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00359}00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00360}00360\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00361}00361\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00362}00362\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ DIOESP32USBFSMSTATE\_DISCONNECTING\ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00363}00363\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00364}00364\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00365}00365\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00366}00366\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00367}00367\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00368}00368\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(diostream-\/>GetEvent()<DIOESP32USB\_LASTEVENT)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00369}00369\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00370}00370\ \ \ \ \ \ \ \ \ \ \ diostream-\/>CheckTransition();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00371}00371\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00372}00372\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(diostream-\/>GetCurrentState())}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00373}00373\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00374}00374\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ DIOESP32USBFSMSTATE\_NONE\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00375}00375\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00376}00376\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ DIOESP32USBFSMSTATE\_CONNECTED\ \ \ \ \ \ \ \ \ \ \ \ :\ \{\ \mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_x_e_v_e_n_t}{DIOSTREAMXEVENT}}\ xevent(diostream,\mbox{\hyperlink{_d_i_o_stream_x_event_8h_a03855c794a83f8d6c636156f111c4829a51978d78ab30f0f5237c9d2b78a80a85}{DIOSTREAMXEVENT\_TYPE\_CONNECTED}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00377}00377\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xevent.SetDIOStream(diostream);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00378}00378\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ diostream-\/>PostEvent(\&xevent);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00379}00379\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00380}00380\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ diostream-\/>SetEvent(DIOESP32USBFSMEVENT\_WAITINGTOREAD);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00382}00382\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00383}00383\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00384}00384\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ DIOESP32USBFSMSTATE\_WAITINGTOREAD\ \ \ \ \ \ \ \ :\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00385}00385\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00386}00386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ DIOESP32USBFSMSTATE\_DISCONNECTING\ \ \ \ \ \ \ \ :\ \{\ \mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_x_e_v_e_n_t}{DIOSTREAMXEVENT}}\ xevent(diostream,\mbox{\hyperlink{_d_i_o_stream_x_event_8h_a03855c794a83f8d6c636156f111c4829ae953bc0973c4cdebf1b26ed06c424b52}{DIOSTREAMXEVENT\_TYPE\_DISCONNECTED}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00387}00387\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ xevent.SetDIOStream(diostream);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00388}00388\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ diostream-\/>PostEvent(\&xevent);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00389}00389\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00390}00390\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ diostream-\/>status\ =\ \mbox{\hyperlink{_d_i_o_stream_8h_ad10214ba9a07bd0f22017499f6f59a0fa516b51b4debec043e34f66f0d4710fa2}{DIOSTREAMSTATUS\_DISCONNECTED}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00391}00391\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00392}00392\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00393}00393\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00394}00394\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00395}00395\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00396}00396\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00397}00397\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00398}00398\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00399}00399\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00408}00408\ \textcolor{keywordtype}{void}\ DIOESP32STREAMUSB::Clean()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00409}00409\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00410}00410\ \ \ threadconnection\ \ \ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00411}00411\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00412}00412\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00413}00413\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00414}00414\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00415}00415\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00416}00416\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_e_s_p32_stream_u_s_b_8cpp_source_l00417}00417\ }
+
+\end{DoxyCode}

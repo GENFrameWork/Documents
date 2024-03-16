@@ -1,0 +1,96 @@
+\doxysection{XANDROIDDebug\+Trace.\+cpp}
+\hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source}{}\label{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source}\index{D:/Projects/GENFrameWork/GEN/Platforms/Android/XANDROIDDebugTrace.cpp@{D:/Projects/GENFrameWork/GEN/Platforms/Android/XANDROIDDebugTrace.cpp}}
+\mbox{\hyperlink{_x_a_n_d_r_o_i_d_debug_trace_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00029}00029\ \textcolor{comment}{/*-\/-\/-\/-\/\ PRECOMPILATION\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#pragma\ region\ PRECOMPILATION\_INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_e_n___defines_8h}{GEN\_Defines.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00037}00037\ \textcolor{preprocessor}{\#ifdef\ XDEBUG\_TRACE}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00040}00040\ \textcolor{comment}{/*-\/-\/-\/-\/\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00041}00041\ \textcolor{preprocessor}{\#pragma\ region\ INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_a_n_d_r_o_i_d_debug_trace_8h}{XANDROIDDebugTrace.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00046}00046\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00047}00047\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00048}00048\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00049}00049\ \textcolor{preprocessor}{\#include\ <signal.h>}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00050}00050\ \textcolor{preprocessor}{\#include\ <arpa/inet.h>}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00051}00051\ \textcolor{preprocessor}{\#include\ <netdb.h>}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00052}00052\ \textcolor{preprocessor}{\#include\ <fcntl.h>}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00053}00053\ \textcolor{preprocessor}{\#include\ <sys/types.h>}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00054}00054\ \textcolor{preprocessor}{\#include\ <sys/stat.h>}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00055}00055\ \textcolor{preprocessor}{\#include\ <android/log.h>}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00057}00057\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_memory___control_8h}{XMemory\_Control.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00059}00059\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00062}00062\ \textcolor{comment}{/*-\/-\/-\/-\/\ GENERAL\ VARIABLE\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00063}00063\ \textcolor{preprocessor}{\#pragma\ region\ GENERAL\_VARIABLE}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00065}00065\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00068}00068\ \textcolor{comment}{/*-\/-\/-\/-\/\ CLASS\ MEMBERS\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00069}00069\ \textcolor{preprocessor}{\#pragma\ region\ CLASS\_MEMBERS}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00079}00079\ XANDROIDDEBUGTRACE::XANDROIDDEBUGTRACE()}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00080}00080\ \{}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00082}00082\ \}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00093}00093\ XANDROIDDEBUGTRACE::\string~XANDROIDDEBUGTRACE()}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00094}00094\ \{}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00096}00096\ \}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00110}00110\ \textcolor{keywordtype}{void}\ XANDROIDDEBUGTRACE::PrintSpecial(XDEBUGTRACE\_TARGET*\ target,\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ level,\ \mbox{\hyperlink{_x_string_8h_a03209152a681f02e4ba73b6681dd4968}{XCHAR}}*\ \textcolor{keywordtype}{string})}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00111}00111\ \{}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00112}00112\ \ \ \textcolor{keywordflow}{if}(!target)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00113}00113\ \ \ \textcolor{keywordflow}{if}(!target-\/>GetAim()[0])\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00115}00115\ \ \ Lock();}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00117}00117\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ line;}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00118}00118\ \ \ line\ =\ string;}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00120}00120\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ test[]\ =\ \textcolor{stringliteral}{"{}prueba"{}};}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00122}00122\ \ \ \mbox{\hyperlink{class_x_b_u_f_f_e_r}{XBUFFER}}\ charstr;}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00124}00124\ \ \ line.\mbox{\hyperlink{group___x_u_t_i_l_s_gacdbd12d83c920cfa06ac0ac1770adc29}{ConvertToASCII}}(charstr);}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00125}00125\ \ \ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00126}00126\ \ \ \textcolor{keywordflow}{switch}(level)}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00127}00127\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00128}00128\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \ 0\ :\ XANDROIDDEBUG\_LOG\_INFO((\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*)charstr.\mbox{\hyperlink{group___x_u_t_i_l_s_ga66e2dbd897e717ce38e395d6ad87b754}{GetPtrChar}}());\ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00129}00129\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \ 1\ :\ XANDROIDDEBUG\_LOG\_ERROR((\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*)charstr.\mbox{\hyperlink{group___x_u_t_i_l_s_ga66e2dbd897e717ce38e395d6ad87b754}{GetPtrChar}}());\ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00130}00130\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \ 2\ :\ XANDROIDDEBUG\_LOG\_WARNING((\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*)charstr.\mbox{\hyperlink{group___x_u_t_i_l_s_ga66e2dbd897e717ce38e395d6ad87b754}{GetPtrChar}}());\ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00131}00131\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \ 3\ :}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00132}00132\ \ \ \ \ \ \ default\ :\ XANDROIDDEBUG\_LOG\_DEBUG((\textcolor{keywordtype}{char}*)charstr.\mbox{\hyperlink{group___x_u_t_i_l_s_ga66e2dbd897e717ce38e395d6ad87b754}{GetPtrChar}}());\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00133}00133\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00134}00134\ \ \ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00135}00135\ \ \ UnLock();}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00136}00136\ \}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00139}00139\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00142}00142\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_x_a_n_d_r_o_i_d_debug_trace_8cpp_source_l00143}00143\ }
+
+\end{DoxyCode}

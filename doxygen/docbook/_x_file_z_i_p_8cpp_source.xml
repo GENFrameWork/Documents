@@ -1,0 +1,1000 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_file_z_i_p_8cpp_source" xml:lang="en-US">
+<title>XFileZIP.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/XUtils/XFiles/XFileZIP.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__x_file_z_i_p_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_file_z_i_p_8h">XFileZIP.h</link>&quot;</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_factory_8h">XFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_date_time_8h">XDateTime.h</link>&quot;</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_path_8h">XPath.h</link>&quot;</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_file_z_i_p___x_event_8h">XFileZIP_XEvent.h</link>&quot;</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00046"/>00046 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00048"/>00048 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00049"/>00049 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00050"/>00050 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00051"/>00051 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00052"/>00052 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00053"/>00053 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00054"/>00054 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00055"/>00055 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00056"/>00056 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00057"/>00057 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00058"/>00058 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00059"/>00059 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00060"/>00060 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00061"/>00061 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00062"/>00062 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00063"/>00063 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00064"/>00064 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_XFILECMPZIP</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00065"/>00065 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00066"/>00066 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00079"/><link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a1f0e0fbc8e38c515b6b85490b7978565">00079</link> <link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a1f0e0fbc8e38c515b6b85490b7978565">XFILECMPZIP::XFILECMPZIP</link>(<emphasis role="keywordtype">bool</emphasis>&#32;compress,&#32;<emphasis role="keywordtype">void</emphasis>*&#32;filehdl)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00080"/>00080 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00081"/>00081 &#32;&#32;Clean();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00082"/>00082 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00083"/>00083 &#32;&#32;this-&gt;filehdl&#32;&#32;=&#32;filehdl;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00084"/>00084 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00085"/>00085 &#32;&#32;zipoper&#32;=&#32;compress;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00086"/>00086 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00087"/>00087 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!zipoper)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00088"/>00088 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;unz_file_info64&#32;info;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>*&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_name&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>[<link linkend="__x_base_8h_1aa6f778be0fa978c63a163140b58c7a77">_MAXPATH</link>];
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">char</emphasis>*&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_comment&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>[<link linkend="__x_base_8h_1aa6f778be0fa978c63a163140b58c7a77">_MAXPATH</link>];
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00092"/>00092 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(_name&#32;&amp;&amp;&#32;_comment)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00095"/>00095 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;err&#32;=&#32;unzGetCurrentFileInfo64(filehdl,&#32;&amp;info,&#32;_name,&#32;<link linkend="__x_base_8h_1aa6f778be0fa978c63a163140b58c7a77">_MAXPATH</link>,<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;0,&#32;_comment,&#32;<link linkend="__x_base_8h_1a647026fb22c438e4f73db846255990e9">_MAXSTR</link>);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(err&#32;==&#32;UNZ_OK)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;name&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;_name;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;comment&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;_comment;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00101"/>00101 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;method&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;info.compression_method;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00103"/>00103 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;uncompresssize&#32;=&#32;info.uncompressed_size;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;compresssize&#32;&#32;&#32;=&#32;info.compressed_size;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00106"/>00106 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CRC32&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;info.crc;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00108"/>00108 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;on&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00112"/>00112 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;[]&#32;_name;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;[]&#32;_comment;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00115"/>00115 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00116"/>00116 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;&#32;on&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00117"/>00117 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00118"/>00118 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00119"/>00119 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00130"/><link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a2e3c7edea69d6d5c366102dee77c43e5">00130</link> <link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a2e3c7edea69d6d5c366102dee77c43e5">XFILECMPZIP::~XFILECMPZIP</link>()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00131"/>00131 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00132"/>00132 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(open)&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a1aee98060c7a65b222a719d8c15ef440">Close</link>();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00133"/>00133 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00134"/>00134 &#32;&#32;Clean();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00135"/>00135 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00136"/>00136 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00137"/>00137 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00149"/><link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1aec51bf3ec8aeee83aa9d21c7438e49d7">00149</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1aec51bf3ec8aeee83aa9d21c7438e49d7">XFILECMPZIP::Open</link>(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;password)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00150"/>00150 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00151"/>00151 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;err;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00152"/>00152 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00153"/>00153 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!on)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00154"/>00154 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00155"/>00155 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!zipoper)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00156"/>00156 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00157"/>00157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!SelectCurrenFile())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00158"/>00158 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00159"/>00159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!password.<link linkend="_class_x_s_t_r_i_n_g_1ad26690161f8c1e2722771322b7370005">IsEmpty</link>())
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00160"/>00160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00161"/>00161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;charstr;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00163"/>00163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;password.<link linkend="_class_x_s_t_r_i_n_g_1acdbd12d83c920cfa06ac0ac1770adc29">ConvertToASCII</link>(charstr);&#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00165"/>00165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;err&#32;=&#32;unzOpenCurrentFilePassword((unzFile)filehdl,&#32;charstr.<link linkend="_class_x_b_u_f_f_e_r_1a66e2dbd897e717ce38e395d6ad87b754">GetPtrChar</link>());&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00166"/>00166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00167"/>00167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;err&#32;=&#32;unzOpenCurrentFile((unzFile)filehdl);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00168"/>00168 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00169"/>00169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(err!=UNZ_OK)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00170"/>00170 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00171"/>00171 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00172"/>00172 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00173"/>00173 &#32;&#32;open&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00174"/>00174 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00175"/>00175 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;open;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00176"/>00176 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00177"/>00177 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00178"/>00178 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00192"/><link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a48fdd615d49917481be7d77d1a486d52">00192</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a48fdd615d49917481be7d77d1a486d52">XFILECMPZIP::Create</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;crcfile,&#32;zip_fileinfo*&#32;zfinfo,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;password)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00193"/>00193 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00194"/>00194 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;err;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00195"/>00195 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;opt_compress_level&#32;=&#32;Z_DEFAULT_COMPRESSION;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00196"/>00196 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00197"/>00197 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!on)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00198"/>00198 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00199"/>00199 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;namestr;&#32;&#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00200"/>00200 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;_password;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00201"/>00201 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;passwordstr;&#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00202"/>00202 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00203"/>00203 &#32;&#32;_password&#32;=&#32;password;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00204"/>00204 &#32;&#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00205"/>00205 &#32;&#32;name.<link linkend="_class_x_s_t_r_i_n_g_1acdbd12d83c920cfa06ac0ac1770adc29">ConvertToASCII</link>(namestr);&#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00206"/>00206 &#32;&#32;_password.<link linkend="_class_x_s_t_r_i_n_g_1acdbd12d83c920cfa06ac0ac1770adc29">ConvertToASCII</link>(passwordstr);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00207"/>00207 &#32;&#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00208"/>00208 &#32;&#32;err&#32;=&#32;zipOpenNewFileInZip3(filehdl,&#32;namestr.<link linkend="_class_x_b_u_f_f_e_r_1a66e2dbd897e717ce38e395d6ad87b754">GetPtrChar</link>()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00209"/>00209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;zfinfo
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00210"/>00210 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,0,<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,0,<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>&#32;<emphasis role="comment">/*&#32;comment*/</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00211"/>00211 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,(opt_compress_level&#32;!=&#32;0)&#32;?&#32;Z_DEFLATED&#32;:&#32;0
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00212"/>00212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;opt_compress_level,0
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00213"/>00213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;-MAX_WBITS,&#32;DEF_MEM_LEVEL,&#32;Z_DEFAULT_STRATEGY
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00214"/>00214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;password?passwordstr.<link linkend="_class_x_b_u_f_f_e_r_1a66e2dbd897e717ce38e395d6ad87b754">GetPtrChar</link>():<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00215"/>00215 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;crcfile);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00216"/>00216 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00217"/>00217 &#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00218"/>00218 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(err!=ZIP_OK)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00219"/>00219 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00220"/>00220 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00221"/>00221 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00222"/>00222 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00223"/>00223 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00233"/><link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1afb6ec25be2490d3735fbfd767d7f82ce">00233</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1afb6ec25be2490d3735fbfd767d7f82ce">XFILECMPZIP::IsActive</link>()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00234"/>00234 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00235"/>00235 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;on;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00236"/>00236 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00237"/>00237 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00238"/>00238 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00248"/><link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a7cc5a4bdacd40c0edc8004950e30d06e">00248</link> <link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a7cc5a4bdacd40c0edc8004950e30d06e">XFILECMPZIP::GetName</link>()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00249"/>00249 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00250"/>00250 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!on)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00251"/>00251 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00252"/>00252 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;name.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00253"/>00253 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00254"/>00254 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00255"/>00255 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00267"/><link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1ab2ca658886b6063b21ce09946bbc2a51">00267</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1ab2ca658886b6063b21ce09946bbc2a51">XFILECMPZIP::SetName</link>(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;name)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00268"/>00268 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00269"/>00269 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(name.<link linkend="_class_x_s_t_r_i_n_g_1ad26690161f8c1e2722771322b7370005">IsEmpty</link>())&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00270"/>00270 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00271"/>00271 &#32;&#32;this-&gt;name&#32;=&#32;name;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00272"/>00272 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00273"/>00273 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00274"/>00274 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00284"/><link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a5a6edc6e8dd4f0f4688ee81464c95556">00284</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a5a6edc6e8dd4f0f4688ee81464c95556">XFILECMPZIP::IsDirectory</link>()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00285"/>00285 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00286"/>00286 &#32;&#32;<link linkend="_class_x_p_a_t_h">XPATH</link>&#32;xpath;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00287"/>00287 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00288"/>00288 &#32;&#32;xpath&#32;=&#32;name.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00289"/>00289 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00290"/>00290 &#32;&#32;<emphasis role="keywordflow">if</emphasis>((xpath.<link linkend="_class_x_p_a_t_h_1aafb954c8ccc621da26ea77904fcf3685">Slash_HaveAtLast</link>())&#32;&amp;&amp;&#32;(!<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a21b0b720edc943ab3bb5becee413c8c1">Size</link>())&#32;&amp;&amp;&#32;(!<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a93d458c1e391344c19c74bf4a64531dd">UnCompressSize</link>()))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00291"/>00291 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00292"/>00292 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00293"/>00293 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00294"/>00294 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00295"/>00295 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00305"/><link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a21b0b720edc943ab3bb5becee413c8c1">00305</link> <link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a21b0b720edc943ab3bb5becee413c8c1">XFILECMPZIP::Size</link>()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00306"/>00306 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00307"/>00307 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!on)&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00308"/>00308 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00309"/>00309 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;compresssize;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00310"/>00310 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00311"/>00311 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00312"/>00312 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00322"/><link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a93d458c1e391344c19c74bf4a64531dd">00322</link> <link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a93d458c1e391344c19c74bf4a64531dd">XFILECMPZIP::UnCompressSize</link>()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00323"/>00323 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00324"/>00324 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!on)&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00325"/>00325 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00326"/>00326 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;uncompresssize;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00327"/>00327 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00328"/>00328 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00329"/>00329 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00339"/><link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a22b6493c602edcdef4a2f43ce0bb1dd3">00339</link> <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a22b6493c602edcdef4a2f43ce0bb1dd3">XFILECMPZIP::GetCRC32</link>()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00340"/>00340 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00341"/>00341 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!on)&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00342"/>00342 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00343"/>00343 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;CRC32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00344"/>00344 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00345"/>00345 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00346"/>00346 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00358"/><link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1ae03d91f99525769ff5cafe91f81d70e5">00358</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1ae03d91f99525769ff5cafe91f81d70e5">XFILECMPZIP::GetSeek</link>(<emphasis role="keywordtype">int</emphasis>*&#32;position)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00359"/>00359 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00360"/>00360 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!on)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00361"/>00361 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00362"/>00362 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!zipoper)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00363"/>00363 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00364"/>00364 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!open)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00365"/>00365 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00366"/>00366 &#32;&#32;&#32;&#32;&#32;&#32;(*position)=unztell(filehdl);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00367"/>00367 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00368"/>00368 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00369"/>00369 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00370"/>00370 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00371"/>00371 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00372"/>00372 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00373"/>00373 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00386"/><link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a9df97e2da7b13dc06671117203d4a6ea">00386</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a9df97e2da7b13dc06671117203d4a6ea">XFILECMPZIP::Read</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;buffer,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;size)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00387"/>00387 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00388"/>00388 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!on)&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00389"/>00389 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(zipoper)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00390"/>00390 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00391"/>00391 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(unzReadCurrentFile(filehdl,buffer,size)&#32;!=&#32;(<emphasis role="keywordtype">int</emphasis>)size)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00392"/>00392 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00393"/>00393 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00394"/>00394 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00395"/>00395 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00396"/>00396 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00409"/><link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a511045ad3dcd59fc14e4995a916dba67">00409</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a9df97e2da7b13dc06671117203d4a6ea">XFILECMPZIP::Read</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;buffer,&#32;<emphasis role="keywordtype">int</emphasis>*&#32;size)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00410"/>00410 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00411"/>00411 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;_size;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00412"/>00412 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00413"/>00413 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00414"/>00414 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!on)&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00415"/>00415 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(zipoper)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00416"/>00416 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00417"/>00417 &#32;&#32;_size=unzReadCurrentFile(filehdl,buffer,(*size));
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00418"/>00418 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(_size!=(*size))&#32;&#32;status=<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00419"/>00419 &#32;&#32;(*size)=_size;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00420"/>00420 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00421"/>00421 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00422"/>00422 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00423"/>00423 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00424"/>00424 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00437"/><link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a2eb9576f70cee5d3bfbb9ccaf18809f7">00437</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a2eb9576f70cee5d3bfbb9ccaf18809f7">XFILECMPZIP::Write</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;buffer,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;size)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00438"/>00438 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00439"/>00439 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!on)&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00440"/>00440 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!zipoper)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00441"/>00441 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00442"/>00442 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(zipWriteInFileInZip(filehdl,buffer,size)!=ZIP_OK)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00443"/>00443 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00444"/>00444 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00445"/>00445 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00446"/>00446 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00447"/>00447 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00457"/><link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a6801b97f99fe5279a957dee33a04ce8f">00457</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a6801b97f99fe5279a957dee33a04ce8f">XFILECMPZIP::IsEOF</link>()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00458"/>00458 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00459"/>00459 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(zipoper)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00460"/>00460 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00461"/>00461 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(unzeof(filehdl))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00462"/>00462 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00463"/>00463 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00464"/>00464 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00465"/>00465 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00466"/>00466 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00476"/><link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a1aee98060c7a65b222a719d8c15ef440">00476</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a1aee98060c7a65b222a719d8c15ef440">XFILECMPZIP::Close</link>()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00477"/>00477 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00478"/>00478 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;err;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00479"/>00479 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00480"/>00480 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!on)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00481"/>00481 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00482"/>00482 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!zipoper)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00483"/>00483 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00484"/>00484 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!SelectCurrenFile())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00485"/>00485 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00486"/>00486 &#32;&#32;&#32;&#32;&#32;&#32;&#32;err=unzCloseCurrentFile(filehdl);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00487"/>00487 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(err!=UNZ_OK)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00488"/>00488 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00489"/>00489 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00490"/>00490 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00491"/>00491 &#32;&#32;&#32;&#32;&#32;&#32;err=zipCloseFileInZip(filehdl);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00492"/>00492 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(err!=ZIP_OK)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00493"/>00493 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00494"/>00494 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00495"/>00495 &#32;&#32;open&#32;=<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00496"/>00496 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00497"/>00497 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00498"/>00498 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00499"/>00499 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00500"/>00500 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00511"/>00511 <emphasis role="keywordtype">void</emphasis>&#32;XFILECMPZIP::Clean()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00512"/>00512 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00513"/>00513 &#32;&#32;filehdl&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00514"/>00514 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00515"/>00515 &#32;&#32;on&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00516"/>00516 &#32;&#32;zipoper&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00517"/>00517 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00518"/>00518 &#32;&#32;method&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00519"/>00519 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00520"/>00520 &#32;&#32;uncompresssize&#32;&#32;=&#32;0;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00521"/>00521 &#32;&#32;compresssize&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00522"/>00522 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00523"/>00523 &#32;&#32;CRC32&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00524"/>00524 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00525"/>00525 &#32;&#32;open&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00526"/>00526 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00527"/>00527 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00528"/>00528 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00538"/>00538 <emphasis role="keywordtype">bool</emphasis>&#32;XFILECMPZIP::SelectCurrenFile()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00539"/>00539 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00540"/>00540 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;err;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00541"/>00541 &#32;&#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00542"/>00542 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;charstr;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00543"/>00543 &#32;&#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00544"/>00544 &#32;&#32;name.<link linkend="_class_x_s_t_r_i_n_g_1acdbd12d83c920cfa06ac0ac1770adc29">ConvertToASCII</link>(charstr);&#32;&#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00545"/>00545 &#32;&#32;err=unzLocateFile((unzFile)filehdl,&#32;charstr.<link linkend="_class_x_b_u_f_f_e_r_1a66e2dbd897e717ce38e395d6ad87b754">GetPtrChar</link>(),&#32;0);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00546"/>00546 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(err!=UNZ_OK)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00547"/>00547 &#32;&#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00548"/>00548 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00549"/>00549 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00550"/>00550 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00551"/>00551 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00552"/>00552 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00553"/>00553 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00554"/>00554 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00555"/>00555 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_XFILEZIP</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00556"/>00556 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00557"/>00557 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00569"/><link linkend="_class_x_f_i_l_e_z_i_p_1a2c04ab5898afd02748c134ab50b49d1b">00569</link> <link linkend="_class_x_f_i_l_e_z_i_p_1a2c04ab5898afd02748c134ab50b49d1b">XFILEZIP::XFILEZIP</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;maxsizebuffer)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00570"/>00570 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00571"/>00571 &#32;&#32;Clean();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00572"/>00572 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00573"/>00573 &#32;&#32;this-&gt;maxsizebuffer&#32;=&#32;maxsizebuffer;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00574"/>00574 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00575"/>00575 &#32;&#32;GEN_XFACTORY_CREATE(xdatetime,&#32;CreateDateTime())
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00576"/>00576 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00577"/>00577 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00578"/>00578 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00589"/><link linkend="_class_x_f_i_l_e_z_i_p_1af6f52a9168740905365ec4213b214727">00589</link> <link linkend="_class_x_f_i_l_e_z_i_p_1af6f52a9168740905365ec4213b214727">XFILEZIP::~XFILEZIP</link>()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00590"/>00590 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00591"/>00591 &#32;&#32;<link linkend="_class_x_f_i_l_e_z_i_p_1a3eb4e2dd196de773d651e6ae4a5fe533">Close</link>();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00592"/>00592 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00593"/>00593 &#32;&#32;GEN_XFACTORY.DeleteDateTime(xdatetime);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00594"/>00594 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00595"/>00595 &#32;&#32;Clean();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00596"/>00596 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00597"/>00597 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00598"/>00598 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00608"/><link linkend="_class_x_f_i_l_e_z_i_p_1add58b9d05ac884a86562575c53057abd">00608</link> <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;<link linkend="_class_x_f_i_l_e_z_i_p_1add58b9d05ac884a86562575c53057abd">XFILEZIP::GetMaxSizeBuffer</link>()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00609"/>00609 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00610"/>00610 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;maxsizebuffer;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00611"/>00611 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00612"/>00612 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00613"/>00613 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00625"/><link linkend="_class_x_f_i_l_e_z_i_p_1ae535d7957c55ecc6106fc74e9f33fe9e">00625</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_x_f_i_l_e_z_i_p_1ae535d7957c55ecc6106fc74e9f33fe9e">XFILEZIP::SetMaxSizeBuffer</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;maxsizebuffer)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00626"/>00626 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00627"/>00627 &#32;&#32;this-&gt;maxsizebuffer&#32;=&#32;maxsizebuffer;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00628"/>00628 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00629"/>00629 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00630"/>00630 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00642"/><link linkend="_class_x_f_i_l_e_z_i_p_1ab374eb98850c40a628ae9169c4652dac">00642</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_f_i_l_e_z_i_p_1ab374eb98850c40a628ae9169c4652dac">XFILEZIP::Open</link>(<link linkend="_class_x_p_a_t_h">XPATH</link>&amp;&#32;xpath)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00643"/>00643 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00644"/>00644 &#32;&#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00645"/>00645 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;charstr;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00646"/>00646 &#32;&#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00647"/>00647 &#32;&#32;xpath.<link linkend="_class_x_s_t_r_i_n_g_1acdbd12d83c920cfa06ac0ac1770adc29">ConvertToASCII</link>(charstr);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00648"/>00648 &#32;&#32;&#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00649"/>00649 &#32;&#32;filehdl=zipOpen(charstr.<link linkend="_class_x_b_u_f_f_e_r_1a66e2dbd897e717ce38e395d6ad87b754">GetPtrChar</link>(),&#32;APPEND_STATUS_ADDINZIP);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00650"/>00650 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!filehdl)&#32;&#32;filehdl&#32;=&#32;zipOpen(charstr.<link linkend="_class_x_b_u_f_f_e_r_1a66e2dbd897e717ce38e395d6ad87b754">GetPtrChar</link>(),&#32;APPEND_STATUS_CREATE);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00651"/>00651 &#32;&#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00652"/>00652 &#32;&#32;lastoperationpercent&#32;&#32;=&#32;filehdl&#32;?&#32;100.0f&#32;:&#32;0.0f;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00653"/>00653 &#32;&#32;lasterror&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;filehdl&#32;?&#32;<link linkend="__x_file_z_i_p_8h_1afd9a642036e79f4f20c4adbdffc20985a20ef7e61de24c6306ab4d12cf7eaa8eb">XFILEZIP_ERROR_NONE</link>&#32;:&#32;<link linkend="__x_file_z_i_p_8h_1afd9a642036e79f4f20c4adbdffc20985acb2074a3b47a02583953b9a0b78cda91">XFILEZIP_ERROR_ZIP_OPEN</link>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00654"/>00654 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00655"/>00655 &#32;&#32;<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t">XFILEZIP_XEVENT</link>&#32;xevent(<emphasis role="keyword">this</emphasis>,&#32;<link linkend="__x_file_z_i_p___x_event_8h_1ab3060e55201862a40bd4d21751f545b0a7c861ba13b00dc4c9c14efa228042e98">XFILEZIP_XEVENT_TYPE_ZIP_OPEN</link>);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00656"/>00656 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00657"/>00657 &#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1a633f5e40df6107cc5acda12e9d7a52a4">GetFileName</link>()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1a4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(xpath.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00658"/>00658 &#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1a59e7fb1af067f3b008e6906d4edec679">SetFileCompress</link>(<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00659"/>00659 &#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1afb7f7950b5839bea7ad5488dea57e116">SetError</link>(lasterror);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00660"/>00660 &#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1a0393e9f9ef5b4a2ff0b1bf5b8883bff7">SetOperationPercent</link>(lastoperationpercent);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00661"/>00661 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00662"/>00662 &#32;&#32;<link linkend="_class_x_s_u_b_j_e_c_t_1adb65926d5f56410c9243d2f7c69a87a3">PostEvent</link>(&amp;xevent);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00663"/>00663 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00664"/>00664 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!filehdl)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00665"/>00665 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00666"/>00666 &#32;&#32;xpathzip&#32;=&#32;xpath;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00667"/>00667 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00668"/>00668 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00669"/>00669 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00670"/>00670 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00671"/>00671 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00683"/><link linkend="_class_x_f_i_l_e_z_i_p_1a3882dff411acdbf068a9437f37513c7d">00683</link> <link linkend="_class_x_f_i_l_e_c_m_p_z_i_p">XFILECMPZIP</link>*&#32;<link linkend="_class_x_f_i_l_e_z_i_p_1a3882dff411acdbf068a9437f37513c7d">XFILEZIP::CreateFileCmp</link>(<link linkend="_class_x_p_a_t_h">XPATH</link>&amp;&#32;xpath)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00684"/>00684 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00685"/>00685 &#32;&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p">XFILECMPZIP</link>*&#32;filecmp&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p">XFILECMPZIP</link>(<emphasis role="keyword">true</emphasis>,filehdl);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00686"/>00686 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(filecmp)&#32;filecmp-&gt;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1ab2ca658886b6063b21ce09946bbc2a51">SetName</link>(xpath);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00687"/>00687 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00688"/>00688 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;filecmp;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00689"/>00689 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00690"/>00690 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00691"/>00691 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00703"/><link linkend="_class_x_f_i_l_e_z_i_p_1ab42d4d1de5ed08d49b0952962207f4d6">00703</link> <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;<link linkend="_class_x_f_i_l_e_z_i_p_1ab42d4d1de5ed08d49b0952962207f4d6">XFILEZIP::GetFileCRC</link>(<link linkend="_class_x_f_i_l_e">XFILE</link>*&#32;&#32;xfile)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00704"/>00704 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00705"/>00705 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xfile)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00706"/>00706 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xfile-&gt;<link linkend="_class_x_f_i_l_e_1a20d1c37c3a66f2b5044c340293cbf8ec">IsOpen</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00707"/>00707 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00708"/>00708 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;&#32;buffer&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>[maxsizebuffer];
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00709"/>00709 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;size;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00710"/>00710 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;crcfile&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00711"/>00711 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00712"/>00712 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!buffer)&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00713"/>00713 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00714"/>00714 &#32;&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;position&#32;=&#32;0;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00715"/>00715 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00716"/>00716 &#32;&#32;xfile-&gt;<link linkend="_class_x_f_i_l_e_1ad8b82877267eec8cc024ae02b7c7eef8">GetPosition</link>(position);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00717"/>00717 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00718"/>00718 &#32;&#32;<emphasis role="keywordflow">do</emphasis>{&#32;size&#32;=&#32;maxsizebuffer;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00719"/>00719 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00720"/>00720 &#32;&#32;&#32;&#32;&#32;&#32;xfile-&gt;<link linkend="_class_x_f_i_l_e_1ae316e4ea22c9f1fb9a2965f21d0dac4a">Read</link>(buffer,&amp;size);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00721"/>00721 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(size)&#32;crcfile&#32;=&#32;crc32(crcfile,buffer,size);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00722"/>00722 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00723"/>00723 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">while</emphasis>(size&#32;==&#32;maxsizebuffer);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00724"/>00724 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00725"/>00725 &#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;[]&#32;buffer;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00726"/>00726 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00727"/>00727 &#32;&#32;xfile-&gt;<link linkend="_class_x_f_i_l_e_1aa1eb97dcf7209887546fc32d69db5dcd">SetPosition</link>(position);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00728"/>00728 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00729"/>00729 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;crcfile;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00730"/>00730 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00731"/>00731 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00732"/>00732 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00746"/><link linkend="_class_x_f_i_l_e_z_i_p_1abf9fd727e4d4dbd86275853b5a6dd886">00746</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_f_i_l_e_z_i_p_1abf9fd727e4d4dbd86275853b5a6dd886">XFILEZIP::AddFile</link>(<link linkend="_class_x_p_a_t_h">XPATH</link>&amp;&#32;xpath,&#32;<link linkend="_class_x_p_a_t_h">XPATH</link>&amp;&#32;xpathnew,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;password)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00747"/>00747 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00748"/>00748 &#32;&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p">XFILECMPZIP</link>*&#32;filecmp;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00749"/>00749 &#32;&#32;<link linkend="_class_x_f_i_l_e">XFILE</link>*&#32;&#32;&#32;&#32;&#32;&#32;&#32;xfile;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00750"/>00750 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00751"/>00751 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00752"/>00752 &#32;&#32;GEN_XFACTORY_CREATE(xfile,&#32;Create_File())
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00753"/>00753 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xfile)&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00754"/>00754 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00755"/>00755 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xfile-&gt;<link linkend="_class_x_f_i_l_e_1a43349ac3160e391c95164fe83825fdfc">Open</link>(xpath))
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00756"/>00756 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00757"/>00757 &#32;&#32;&#32;&#32;&#32;&#32;filecmp&#32;=&#32;<link linkend="_class_x_f_i_l_e_z_i_p_1a3882dff411acdbf068a9437f37513c7d">CreateFileCmp</link>((xpathnew.<link linkend="_class_x_s_t_r_i_n_g_1ad26690161f8c1e2722771322b7370005">IsEmpty</link>()?xpath:xpathnew));
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00758"/>00758 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(filecmp)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00759"/>00759 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00760"/>00760 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;zip_fileinfo&#32;&#32;&#32;zfinfo;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00761"/>00761 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;crcfile&#32;=&#32;<link linkend="_class_x_f_i_l_e_z_i_p_1ab42d4d1de5ed08d49b0952962207f4d6">GetFileCRC</link>(xfile);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00762"/>00762 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00763"/>00763 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;memset(&amp;zfinfo,0,<emphasis role="keyword">sizeof</emphasis>(zip_fileinfo));
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00764"/>00764 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00765"/>00765 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xdatetime)&#32;xdatetime-&gt;<link linkend="_class_x_d_a_t_e_t_i_m_e_1a51cab60fff7f87323f37f7dc7b368033">GetFileDateTime</link>(xpath,&#32;&amp;zfinfo.tmz_date,&#32;(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>*)&amp;zfinfo.dosDate);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00766"/>00766 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00767"/>00767 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(filecmp-&gt;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a48fdd615d49917481be7d77d1a486d52">Create</link>(crcfile,&#32;&amp;zfinfo,&#32;password))
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00768"/>00768 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00769"/>00769 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;buffer&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>[maxsizebuffer];
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00770"/>00770 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;size&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00771"/>00771 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;totalsize&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00772"/>00772 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;totalsizefile&#32;=&#32;xfile-&gt;<link linkend="_class_x_f_i_l_e_1a3d5b9c0020c23ffb0ded5aeb105a6fb1">GetSize</link>();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00773"/>00773 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t">XFILEZIP_XEVENT</link>&#32;xevent(<emphasis role="keyword">this</emphasis>,&#32;<link linkend="__x_file_z_i_p___x_event_8h_1ab3060e55201862a40bd4d21751f545b0a8e257e2d7ff34ee1158c89a86060a8e8">XFILEZIP_XEVENT_TYPE_UNZIP_OPEN</link>);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00774"/>00774 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00775"/>00775 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(buffer)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00776"/>00776 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00777"/>00777 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">do</emphasis>{&#32;size&#32;=&#32;maxsizebuffer;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00778"/>00778 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00779"/>00779 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xfile-&gt;<link linkend="_class_x_f_i_l_e_1ae316e4ea22c9f1fb9a2965f21d0dac4a">Read</link>(buffer,&#32;&amp;size);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00780"/>00780 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(size)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00781"/>00781 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00782"/>00782 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;filecmp-&gt;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a2eb9576f70cee5d3bfbb9ccaf18809f7">Write</link>(buffer,&#32;size);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00783"/>00783 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00784"/>00784 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00785"/>00785 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;totalsize&#32;+=&#32;size;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00786"/>00786 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lastoperationpercent&#32;=&#32;((float)(totalsize*100)&#32;/&#32;totalsizefile);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00787"/>00787 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00788"/>00788 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00789"/>00789 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00790"/>00790 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lasterror&#32;=&#32;status&#32;?&#32;<link linkend="__x_file_z_i_p_8h_1afd9a642036e79f4f20c4adbdffc20985a20ef7e61de24c6306ab4d12cf7eaa8eb">XFILEZIP_ERROR_NONE</link>&#32;:&#32;<link linkend="__x_file_z_i_p_8h_1afd9a642036e79f4f20c4adbdffc20985ae435d16c2f29156d3fea05d7b6631851">XFILEZIP_ERROR_ZIP_ADDFILE</link>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00791"/>00791 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00792"/>00792 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1a633f5e40df6107cc5acda12e9d7a52a4">GetFileName</link>()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1a4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(xpathzip.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00793"/>00793 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1a59e7fb1af067f3b008e6906d4edec679">SetFileCompress</link>(filecmp);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00794"/>00794 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1afb7f7950b5839bea7ad5488dea57e116">SetError</link>(lasterror);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00795"/>00795 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1a0393e9f9ef5b4a2ff0b1bf5b8883bff7">SetOperationPercent</link>(lastoperationpercent);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00796"/>00796 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00797"/>00797 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_u_b_j_e_c_t_1adb65926d5f56410c9243d2f7c69a87a3">PostEvent</link>(&amp;xevent);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00798"/>00798 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00799"/>00799 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00800"/>00800 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00801"/>00801 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">while</emphasis>(size&#32;==&#32;maxsizebuffer);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00802"/>00802 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00803"/>00803 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00804"/>00804 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;[]&#32;buffer;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00805"/>00805 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00806"/>00806 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;filecmp-&gt;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a1aee98060c7a65b222a719d8c15ef440">Close</link>();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00807"/>00807 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00808"/>00808 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00809"/>00809 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;filecmp;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00810"/>00810 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00811"/>00811 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00812"/>00812 &#32;&#32;&#32;&#32;&#32;&#32;xfile-&gt;<link linkend="_class_x_f_i_l_e_1af7d78f174cb8eeb52cafe94524d3885b">Close</link>();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00813"/>00813 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00814"/>00814 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00815"/>00815 &#32;&#32;GEN_XFACTORY.Delete_File(xfile);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00816"/>00816 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00817"/>00817 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00818"/>00818 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00819"/>00819 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00820"/>00820 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00830"/><link linkend="_class_x_f_i_l_e_z_i_p_1a3eb4e2dd196de773d651e6ae4a5fe533">00830</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_f_i_l_e_z_i_p_1a3eb4e2dd196de773d651e6ae4a5fe533">XFILEZIP::Close</link>()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00831"/>00831 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00832"/>00832 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!filehdl)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00833"/>00833 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00834"/>00834 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;(zipClose(filehdl&#32;,<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>)&#32;==&#32;ZIP_OK)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00835"/>00835 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00836"/>00836 &#32;&#32;lastoperationpercent&#32;&#32;=&#32;status&#32;?&#32;100.0f&#32;:&#32;0.0f;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00837"/>00837 &#32;&#32;lasterror&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;status&#32;?&#32;<link linkend="__x_file_z_i_p_8h_1afd9a642036e79f4f20c4adbdffc20985a20ef7e61de24c6306ab4d12cf7eaa8eb">XFILEZIP_ERROR_NONE</link>&#32;:&#32;<link linkend="__x_file_z_i_p_8h_1afd9a642036e79f4f20c4adbdffc20985a06c7582f257fbd4b033978d2902a5d74">XFILEZIP_ERROR_ZIP_CLOSE</link>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00838"/>00838 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00839"/>00839 &#32;&#32;<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t">XFILEZIP_XEVENT</link>&#32;xevent(<emphasis role="keyword">this</emphasis>,&#32;<link linkend="__x_file_z_i_p___x_event_8h_1ab3060e55201862a40bd4d21751f545b0a4c6004efc550ebe7ec17d49a0ef0d10b">XFILEZIP_XEVENT_TYPE_ZIP_CLOSE</link>);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00840"/>00840 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00841"/>00841 &#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1a633f5e40df6107cc5acda12e9d7a52a4">GetFileName</link>()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1a4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(xpathzip.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00842"/>00842 &#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1a59e7fb1af067f3b008e6906d4edec679">SetFileCompress</link>(<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00843"/>00843 &#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1afb7f7950b5839bea7ad5488dea57e116">SetError</link>(lasterror);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00844"/>00844 &#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1a0393e9f9ef5b4a2ff0b1bf5b8883bff7">SetOperationPercent</link>(lastoperationpercent);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00845"/>00845 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00846"/>00846 &#32;&#32;<link linkend="_class_x_s_u_b_j_e_c_t_1adb65926d5f56410c9243d2f7c69a87a3">PostEvent</link>(&amp;xevent);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00847"/>00847 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00848"/>00848 &#32;&#32;filehdl&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00849"/>00849 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00850"/>00850 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00851"/>00851 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00852"/>00852 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00853"/>00853 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00863"/><link linkend="_class_x_f_i_l_e_z_i_p_1a44ea4c8736fd38cb91020d0740c8fc9b">00863</link> <emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_class_x_f_i_l_e_z_i_p_1a44ea4c8736fd38cb91020d0740c8fc9b">XFILEZIP::GetLastOperationPercent</link>()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00864"/>00864 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00865"/>00865 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;lastoperationpercent;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00866"/>00866 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00867"/>00867 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00868"/>00868 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00878"/><link linkend="_class_x_f_i_l_e_z_i_p_1a2fa4963b900d58960ce51b3bcd9e15e8">00878</link> <link linkend="__x_file_z_i_p_8h_1afd9a642036e79f4f20c4adbdffc20985">XFILEZIP_ERROR</link>&#32;<link linkend="_class_x_f_i_l_e_z_i_p_1a2fa4963b900d58960ce51b3bcd9e15e8">XFILEZIP::GetLastError</link>()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00879"/>00879 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00880"/>00880 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;lasterror;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00881"/>00881 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00882"/>00882 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00883"/>00883 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00894"/>00894 <emphasis role="keywordtype">void</emphasis>&#32;XFILEZIP::Clean()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00895"/>00895 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00896"/>00896 &#32;&#32;xdatetime&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00897"/>00897 &#32;&#32;filehdl&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00898"/>00898 &#32;&#32;maxsizebuffer&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00899"/>00899 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00900"/>00900 &#32;&#32;lastoperationpercent&#32;&#32;=&#32;0.0f;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00901"/>00901 &#32;&#32;lasterror&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_file_z_i_p_8h_1afd9a642036e79f4f20c4adbdffc20985a20ef7e61de24c6306ab4d12cf7eaa8eb">XFILEZIP_ERROR_NONE</link>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00902"/>00902 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00903"/>00903 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00904"/>00904 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00905"/>00905 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00906"/>00906 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00907"/>00907 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00908"/>00908 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_XFILEUNZIP</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00909"/>00909 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00910"/>00910 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00922"/><link linkend="_class_x_f_i_l_e_u_n_z_i_p_1add66d746e0c27502af17da7a7b450a23">00922</link> <link linkend="_class_x_f_i_l_e_u_n_z_i_p_1add66d746e0c27502af17da7a7b450a23">XFILEUNZIP::XFILEUNZIP</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;maxsizebuffer)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00923"/>00923 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00924"/>00924 &#32;&#32;Clean();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00925"/>00925 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00926"/>00926 &#32;&#32;this-&gt;maxsizebuffer&#32;=&#32;maxsizebuffer;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00927"/>00927 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00928"/>00928 &#32;&#32;<link linkend="_class_x_s_u_b_j_e_c_t_1ac83006698567c749aecf727dddef5d9c">RegisterEvent</link>(<link linkend="__x_file_z_i_p___x_event_8h_1ab3060e55201862a40bd4d21751f545b0a8e257e2d7ff34ee1158c89a86060a8e8">XFILEZIP_XEVENT_TYPE_UNZIP_OPEN</link>);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00929"/>00929 &#32;&#32;<link linkend="_class_x_s_u_b_j_e_c_t_1ac83006698567c749aecf727dddef5d9c">RegisterEvent</link>(<link linkend="__x_file_z_i_p___x_event_8h_1ab3060e55201862a40bd4d21751f545b0ad988c8a3d28937baf1fcb7077e589f5a">XFILEZIP_XEVENT_TYPE_UNZIP_EXTRACTFILE</link>);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00930"/>00930 &#32;&#32;<link linkend="_class_x_s_u_b_j_e_c_t_1ac83006698567c749aecf727dddef5d9c">RegisterEvent</link>(<link linkend="__x_file_z_i_p___x_event_8h_1ab3060e55201862a40bd4d21751f545b0a50e0efaa188cccf0b2212b87d72878e7">XFILEZIP_XEVENT_TYPE_UNZIP_CLOSE</link>);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00931"/>00931 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00932"/>00932 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00933"/>00933 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00944"/><link linkend="_class_x_f_i_l_e_u_n_z_i_p_1a52d07f66862b6359e410399ed88ccda3">00944</link> <link linkend="_class_x_f_i_l_e_u_n_z_i_p_1a52d07f66862b6359e410399ed88ccda3">XFILEUNZIP::~XFILEUNZIP</link>()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00945"/>00945 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00946"/>00946 &#32;&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1a5da6f0dca6c6a8931aad49fbc0bb1b9d">Close</link>();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00947"/>00947 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00948"/>00948 &#32;&#32;<link linkend="_class_x_s_u_b_j_e_c_t_1ab78992063b09d37612e7719e37d415bc">DeRegisterEvent</link>(<link linkend="__x_file_z_i_p___x_event_8h_1ab3060e55201862a40bd4d21751f545b0a8e257e2d7ff34ee1158c89a86060a8e8">XFILEZIP_XEVENT_TYPE_UNZIP_OPEN</link>);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00949"/>00949 &#32;&#32;<link linkend="_class_x_s_u_b_j_e_c_t_1ab78992063b09d37612e7719e37d415bc">DeRegisterEvent</link>(<link linkend="__x_file_z_i_p___x_event_8h_1ab3060e55201862a40bd4d21751f545b0ad988c8a3d28937baf1fcb7077e589f5a">XFILEZIP_XEVENT_TYPE_UNZIP_EXTRACTFILE</link>);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00950"/>00950 &#32;&#32;<link linkend="_class_x_s_u_b_j_e_c_t_1ab78992063b09d37612e7719e37d415bc">DeRegisterEvent</link>(<link linkend="__x_file_z_i_p___x_event_8h_1ab3060e55201862a40bd4d21751f545b0a50e0efaa188cccf0b2212b87d72878e7">XFILEZIP_XEVENT_TYPE_UNZIP_CLOSE</link>);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00951"/>00951 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00952"/>00952 &#32;&#32;Clean();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00953"/>00953 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00954"/>00954 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00955"/>00955 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00965"/><link linkend="_class_x_f_i_l_e_u_n_z_i_p_1af62fe7197bf123325d9aaf5b08086886">00965</link> <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1af62fe7197bf123325d9aaf5b08086886">XFILEUNZIP::GetMaxSizeBuffer</link>()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00966"/>00966 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00967"/>00967 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;maxsizebuffer;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00968"/>00968 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00969"/>00969 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00970"/>00970 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00982"/><link linkend="_class_x_f_i_l_e_u_n_z_i_p_1a0987dfac76b4f70658cdc6e20245e161">00982</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1a0987dfac76b4f70658cdc6e20245e161">XFILEUNZIP::SetMaxSizeBuffer</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;maxsizebuffer)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00983"/>00983 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00984"/>00984 &#32;&#32;this-&gt;maxsizebuffer&#32;=&#32;maxsizebuffer;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00985"/>00985 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00986"/>00986 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00987"/>00987 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l00999"/><link linkend="_class_x_f_i_l_e_u_n_z_i_p_1af40b321f7318e2b8e931ad8f8f2677d9">00999</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1af40b321f7318e2b8e931ad8f8f2677d9">XFILEUNZIP::Open</link>(<link linkend="_class_x_p_a_t_h">XPATH</link>&amp;&#32;xpath)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01000"/>01000 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01001"/>01001 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xpath.<link linkend="_class_x_s_t_r_i_n_g_1ad26690161f8c1e2722771322b7370005">IsEmpty</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01002"/>01002 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01003"/>01003 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;charstr;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01004"/>01004 &#32;&#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01005"/>01005 &#32;&#32;xpath.<link linkend="_class_x_s_t_r_i_n_g_1acdbd12d83c920cfa06ac0ac1770adc29">ConvertToASCII</link>(charstr);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01006"/>01006 &#32;&#32;filehdl&#32;=&#32;unzOpen(charstr.<link linkend="_class_x_b_u_f_f_e_r_1a66e2dbd897e717ce38e395d6ad87b754">GetPtrChar</link>());
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01007"/>01007 &#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01008"/>01008 &#32;&#32;lastoperationpercent&#32;&#32;=&#32;filehdl&#32;?&#32;100.0f&#32;:&#32;0.0f;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01009"/>01009 &#32;&#32;lasterror&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;filehdl&#32;?&#32;<link linkend="__x_file_z_i_p_8h_1afd9a642036e79f4f20c4adbdffc20985a20ef7e61de24c6306ab4d12cf7eaa8eb">XFILEZIP_ERROR_NONE</link>&#32;:&#32;<link linkend="__x_file_z_i_p_8h_1afd9a642036e79f4f20c4adbdffc20985ac81c26a4941040ee4e4baaab50232f23">XFILEZIP_ERROR_UNZIP_OPEN</link>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01010"/>01010 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01011"/>01011 &#32;&#32;<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t">XFILEZIP_XEVENT</link>&#32;xevent(<emphasis role="keyword">this</emphasis>,&#32;<link linkend="__x_file_z_i_p___x_event_8h_1ab3060e55201862a40bd4d21751f545b0a8e257e2d7ff34ee1158c89a86060a8e8">XFILEZIP_XEVENT_TYPE_UNZIP_OPEN</link>);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01012"/>01012 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01013"/>01013 &#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1a633f5e40df6107cc5acda12e9d7a52a4">GetFileName</link>()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1a4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(xpath.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01014"/>01014 &#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1a59e7fb1af067f3b008e6906d4edec679">SetFileCompress</link>(<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01015"/>01015 &#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1afb7f7950b5839bea7ad5488dea57e116">SetError</link>(lasterror);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01016"/>01016 &#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1a0393e9f9ef5b4a2ff0b1bf5b8883bff7">SetOperationPercent</link>(lastoperationpercent);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01017"/>01017 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01018"/>01018 &#32;&#32;<link linkend="_class_x_s_u_b_j_e_c_t_1adb65926d5f56410c9243d2f7c69a87a3">PostEvent</link>(&amp;xevent);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01019"/>01019 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01020"/>01020 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!filehdl)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01021"/>01021 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01022"/>01022 &#32;&#32;xpathunzip&#32;=&#32;xpath;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01023"/>01023 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01024"/>01024 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01025"/>01025 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01026"/>01026 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01027"/>01027 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01037"/><link linkend="_class_x_f_i_l_e_u_n_z_i_p_1a3852b7e071259c6fa6ecd99d435427b0">01037</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1a3852b7e071259c6fa6ecd99d435427b0">XFILEUNZIP::GetNFiles</link>()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01038"/>01038 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01039"/>01039 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;nfiles&#32;=&#32;0;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01040"/>01040 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01041"/>01041 &#32;&#32;<emphasis role="keywordflow">while</emphasis>(1)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01042"/>01042 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01043"/>01043 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p">XFILECMPZIP</link>*&#32;filecmp&#32;=&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1ab6b9faf78c90e68d55d758945dbbf0d5">GotoFile</link>(nfiles);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01044"/>01044 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!filecmp)&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01045"/>01045 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01046"/>01046 &#32;&#32;&#32;&#32;&#32;&#32;nfiles++;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01047"/>01047 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01048"/>01048 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;filecmp;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01049"/>01049 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01050"/>01050 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01051"/>01051 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;nfiles;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01052"/>01052 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01053"/>01053 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01054"/>01054 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01066"/><link linkend="_class_x_f_i_l_e_u_n_z_i_p_1ab6b9faf78c90e68d55d758945dbbf0d5">01066</link> <link linkend="_class_x_f_i_l_e_c_m_p_z_i_p">XFILECMPZIP</link>*&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1ab6b9faf78c90e68d55d758945dbbf0d5">XFILEUNZIP::GotoFile</link>(<emphasis role="keywordtype">bool</emphasis>&#32;first)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01067"/>01067 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01068"/>01068 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;err;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01069"/>01069 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01070"/>01070 &#32;&#32;err&#32;=first?unzGoToFirstFile(filehdl):unzGoToNextFile(filehdl);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01071"/>01071 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(err!=UNZ_OK)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01072"/>01072 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01073"/>01073 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;CreateCurrentFile();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01074"/>01074 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01075"/>01075 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01076"/>01076 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01088"/><link linkend="_class_x_f_i_l_e_u_n_z_i_p_1af2235712edbd3e549491db0941183a30">01088</link> <link linkend="_class_x_f_i_l_e_c_m_p_z_i_p">XFILECMPZIP</link>*&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1ab6b9faf78c90e68d55d758945dbbf0d5">XFILEUNZIP::GotoFile</link>(<link linkend="_class_x_p_a_t_h">XPATH</link>&amp;&#32;xpath)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01089"/>01089 {&#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01090"/>01090 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;charstr;&#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01091"/>01091 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;&#32;&#32;&#32;err;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01092"/>01092 &#32;&#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01093"/>01093 &#32;&#32;xpath.<link linkend="_class_x_s_t_r_i_n_g_1acdbd12d83c920cfa06ac0ac1770adc29">ConvertToASCII</link>(charstr);&#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01094"/>01094 &#32;&#32;err=unzLocateFile(filehdl,&#32;charstr.<link linkend="_class_x_b_u_f_f_e_r_1a66e2dbd897e717ce38e395d6ad87b754">GetPtrChar</link>(),&#32;0);&#32;&#32;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01095"/>01095 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(err!=UNZ_OK)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01096"/>01096 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01097"/>01097 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;CreateCurrentFile();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01098"/>01098 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01099"/>01099 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01100"/>01100 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01112"/><link linkend="_class_x_f_i_l_e_u_n_z_i_p_1a27878dcdc3c032cb912fb674b4231830">01112</link> <link linkend="_class_x_f_i_l_e_c_m_p_z_i_p">XFILECMPZIP</link>*&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1ab6b9faf78c90e68d55d758945dbbf0d5">XFILEUNZIP::GotoFile</link>(<emphasis role="keywordtype">int</emphasis>&#32;index)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01113"/>01113 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01114"/>01114 &#32;&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p">XFILECMPZIP</link>*&#32;filecmp&#32;=&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1ab6b9faf78c90e68d55d758945dbbf0d5">GotoFile</link>(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01115"/>01115 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01116"/>01116 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;c=0;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01117"/>01117 &#32;&#32;<emphasis role="keywordflow">do</emphasis>{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01118"/>01118 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(index==c)&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01119"/>01119 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01120"/>01120 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;filecmp;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01121"/>01121 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01122"/>01122 &#32;&#32;&#32;&#32;&#32;&#32;c++;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01123"/>01123 &#32;&#32;&#32;&#32;&#32;&#32;filecmp&#32;=&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1ab6b9faf78c90e68d55d758945dbbf0d5">GotoFile</link>(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01124"/>01124 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01125"/>01125 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">while</emphasis>(filecmp);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01126"/>01126 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01127"/>01127 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;filecmp;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01128"/>01128 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01129"/>01129 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01130"/>01130 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01143"/><link linkend="_class_x_f_i_l_e_u_n_z_i_p_1a932b5e7ef617b3dcc27cb7867b6e3fab">01143</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1a932b5e7ef617b3dcc27cb7867b6e3fab">XFILEUNZIP::DelFile</link>(<emphasis role="keywordtype">int</emphasis>&#32;index,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;password)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01144"/>01144 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01145"/>01145 &#32;&#32;<link linkend="_class_x_p_a_t_h">XPATH</link>&#32;&#32;&#32;&#32;&#32;xpathorigin;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01146"/>01146 &#32;&#32;<link linkend="_class_x_p_a_t_h">XPATH</link>&#32;&#32;&#32;&#32;&#32;xpathtarget;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01147"/>01147 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01148"/>01148 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01149"/>01149 &#32;&#32;<link linkend="_class_x_f_i_l_e">XFILE</link>*&#32;GEN_XFACTORY_CREATE(xfile,&#32;Create_File())
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01150"/>01150 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xfile)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01151"/>01151 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01152"/>01152 &#32;&#32;<link linkend="_class_x_f_i_l_e_z_i_p">XFILEZIP</link>*&#32;filezip&#32;&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_f_i_l_e_z_i_p">XFILEZIP</link>();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01153"/>01153 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!filezip)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01154"/>01154 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01155"/>01155 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY.Delete_File(xfile);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01156"/>01156 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01157"/>01157 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01158"/>01158 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01159"/>01159 &#32;&#32;xpathorigin&#32;&#32;=&#32;xpathunzip;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01160"/>01160 &#32;&#32;xpathorigin.<link linkend="_class_x_p_a_t_h_1a2b75bbcfaa62ecdc79912b6ac68ed277">SetOnlyDriveAndPath</link>();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01161"/>01161 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01162"/>01162 &#32;&#32;xpathtarget&#32;=&#32;xpathunzip;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01163"/>01163 &#32;&#32;xpathtarget.<link linkend="_class_x_p_a_t_h_1adb90217b282fe0e6de3d79eaba0c6e51">AddToNameFile</link>(<emphasis role="keyword">true</emphasis>,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;#TEMPO#_&quot;</emphasis>));
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01164"/>01164 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01165"/>01165 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!filezip-&gt;<link linkend="_class_x_f_i_l_e_z_i_p_1ab374eb98850c40a628ae9169c4652dac">Open</link>(xpathtarget))
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01166"/>01166 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01167"/>01167 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;filezip;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01168"/>01168 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY.Delete_File(xfile);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01169"/>01169 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01170"/>01170 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01171"/>01171 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01172"/>01172 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01173"/>01173 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;_index&#32;=0;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01174"/>01174 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01175"/>01175 &#32;&#32;<emphasis role="keywordflow">while</emphasis>(1)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01176"/>01176 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01177"/>01177 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(index&#32;!=&#32;_index)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01178"/>01178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01179"/>01179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_p_a_t_h">XPATH</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xpathuncmpfile;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01180"/>01180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_p_a_t_h">XPATH</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;cmpfilename;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01181"/>01181 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01182"/>01182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p">XFILECMPZIP</link>*&#32;filecmp&#32;=&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1ab6b9faf78c90e68d55d758945dbbf0d5">GotoFile</link>(_index);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01183"/>01183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!filecmp)&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01184"/>01184 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01185"/>01185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;cmpfilename&#32;=&#32;filecmp-&gt;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a7cc5a4bdacd40c0edc8004950e30d06e">GetName</link>();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01186"/>01186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;filecmp;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01187"/>01187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;filecmp&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01188"/>01188 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01189"/>01189 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xpathuncmpfile&#32;=&#32;cmpfilename;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01190"/>01190 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xpathuncmpfile.<link linkend="_class_x_p_a_t_h_1adb90217b282fe0e6de3d79eaba0c6e51">AddToNameFile</link>(<emphasis role="keyword">true</emphasis>,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;#TEMPO#_&quot;</emphasis>));
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01191"/>01191 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xpathuncmpfile.<link linkend="_class_x_s_t_r_i_n_g_1acae4462012fcb5ee07db15505877d40a">DeleteCharacter</link>(<link linkend="__x_string_8h_1ab483f167129a5d1941ea1d30f3df8d8a">__C</link>(<emphasis role="charliteral">&apos;/&apos;</emphasis>));
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01192"/>01192 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01193"/>01193 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1accdf0eef3fe5cd75eb9e8a0ca4b15b8a">DecompressFile</link>(_index&#32;,&#32;xpathorigin,&#32;xpathuncmpfile.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;password))
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01194"/>01194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01195"/>01195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_p_a_t_h">XPATH</link>&#32;xpathtozip;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01196"/>01196 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01197"/>01197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xpathtozip&#32;=&#32;xpathorigin;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01198"/>01198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xpathtozip.<link linkend="_class_x_p_a_t_h_1a337e940d48f7178186adfbdf4d268ac7">Slash_Add</link>();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01199"/>01199 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xpathtozip&#32;+=&#32;xpathuncmpfile;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01200"/>01200 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01201"/>01201 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(filezip-&gt;<link linkend="_class_x_f_i_l_e_z_i_p_1abf9fd727e4d4dbd86275853b5a6dd886">AddFile</link>(xpathtozip,&#32;cmpfilename,&#32;password))
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01202"/>01202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01203"/>01203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xfile)&#32;xfile-&gt;Erase(xpathtozip);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01204"/>01204 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01205"/>01205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01206"/>01206 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01207"/>01207 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01208"/>01208 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01209"/>01209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01210"/>01210 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01211"/>01211 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01212"/>01212 &#32;&#32;&#32;&#32;&#32;&#32;_index++;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01213"/>01213 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01214"/>01214 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01215"/>01215 &#32;&#32;lastoperationpercent&#32;=&#32;status&#32;?&#32;100.0f&#32;:&#32;0.0f;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01216"/>01216 &#32;&#32;lasterror&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;status&#32;?&#32;<link linkend="__x_file_z_i_p_8h_1afd9a642036e79f4f20c4adbdffc20985a20ef7e61de24c6306ab4d12cf7eaa8eb">XFILEZIP_ERROR_NONE</link>&#32;:&#32;<link linkend="__x_file_z_i_p_8h_1afd9a642036e79f4f20c4adbdffc20985a869f330fe7e05efe953804c842a9060f">XFILEZIP_ERROR_UNZIP_DELETEFILECMP</link>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01217"/>01217 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01218"/>01218 &#32;&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p">XFILECMPZIP</link>*&#32;&#32;&#32;&#32;filecmp&#32;=&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1ab6b9faf78c90e68d55d758945dbbf0d5">GotoFile</link>(index);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01219"/>01219 &#32;&#32;<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t">XFILEZIP_XEVENT</link>&#32;xevent(<emphasis role="keyword">this</emphasis>,&#32;<link linkend="__x_file_z_i_p___x_event_8h_1ab3060e55201862a40bd4d21751f545b0a38a58c25c6526a442b51bd3a1b3f5b60">XFILEZIP_XEVENT_TYPE_UNZIP_DELFILE</link>);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01220"/>01220 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01221"/>01221 &#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1a633f5e40df6107cc5acda12e9d7a52a4">GetFileName</link>()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1a4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(xpathunzip.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01222"/>01222 &#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1a59e7fb1af067f3b008e6906d4edec679">SetFileCompress</link>(filecmp);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01223"/>01223 &#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1a0393e9f9ef5b4a2ff0b1bf5b8883bff7">SetOperationPercent</link>(lastoperationpercent);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01224"/>01224 &#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1afb7f7950b5839bea7ad5488dea57e116">SetError</link>(lasterror);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01225"/>01225 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01226"/>01226 &#32;&#32;<link linkend="_class_x_s_u_b_j_e_c_t_1adb65926d5f56410c9243d2f7c69a87a3">PostEvent</link>(&amp;xevent);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01227"/>01227 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01228"/>01228 &#32;&#32;filezip-&gt;<link linkend="_class_x_f_i_l_e_z_i_p_1a3eb4e2dd196de773d651e6ae4a5fe533">Close</link>();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01229"/>01229 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01230"/>01230 &#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;filezip;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01231"/>01231 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01232"/>01232 &#32;&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1a5da6f0dca6c6a8931aad49fbc0bb1b9d">Close</link>();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01233"/>01233 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01234"/>01234 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01235"/>01235 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01236"/>01236 &#32;&#32;&#32;&#32;&#32;&#32;xpathorigin&#32;&#32;=&#32;xpathunzip;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01237"/>01237 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xfile)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01238"/>01238 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01239"/>01239 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;xfile-&gt;Erase(xpathorigin);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01240"/>01240 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;status&#32;=&#32;xfile-&gt;Rename(xpathtarget,&#32;xpathorigin);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01241"/>01241 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01242"/>01242 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01243"/>01243 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01244"/>01244 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xfile)&#32;GEN_XFACTORY.Delete_File(xfile);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01245"/>01245 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01246"/>01246 &#32;&#32;xpathorigin&#32;&#32;=&#32;xpathunzip;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01247"/>01247 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1af40b321f7318e2b8e931ad8f8f2677d9">Open</link>(xpathorigin);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01248"/>01248 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01249"/>01249 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01250"/>01250 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01251"/>01251 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01266"/><link linkend="_class_x_f_i_l_e_u_n_z_i_p_1accdf0eef3fe5cd75eb9e8a0ca4b15b8a">01266</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1accdf0eef3fe5cd75eb9e8a0ca4b15b8a">XFILEUNZIP::DecompressFile</link>(<emphasis role="keywordtype">int</emphasis>&#32;sourceindex&#32;,<link linkend="_class_x_p_a_t_h">XPATH</link>&amp;&#32;xpathtarget,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;nametarget,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;password)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01267"/>01267 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01268"/>01268 &#32;&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p">XFILECMPZIP</link>*&#32;filecmp&#32;=&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1ab6b9faf78c90e68d55d758945dbbf0d5">GotoFile</link>(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01269"/>01269 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01270"/>01270 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;c=0;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01271"/>01271 &#32;&#32;<emphasis role="keywordflow">do</emphasis>{&#32;<emphasis role="keywordflow">if</emphasis>(sourceindex==c)&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01272"/>01272 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01273"/>01273 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;filecmp;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01274"/>01274 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01275"/>01275 &#32;&#32;&#32;&#32;&#32;&#32;c++;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01276"/>01276 &#32;&#32;&#32;&#32;&#32;&#32;filecmp&#32;=&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1ab6b9faf78c90e68d55d758945dbbf0d5">GotoFile</link>(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01277"/>01277 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01278"/>01278 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">while</emphasis>(filecmp);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01279"/>01279 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01280"/>01280 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!filecmp)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01281"/>01281 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01282"/>01282 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1accdf0eef3fe5cd75eb9e8a0ca4b15b8a">DecompressFile</link>(filecmp,xpathtarget,nametarget,password);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01283"/>01283 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01284"/>01284 &#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;filecmp;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01285"/>01285 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01286"/>01286 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01287"/>01287 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01288"/>01288 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01289"/>01289 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01304"/><link linkend="_class_x_f_i_l_e_u_n_z_i_p_1a4927f5988add83a20f8613849125cd72">01304</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1accdf0eef3fe5cd75eb9e8a0ca4b15b8a">XFILEUNZIP::DecompressFile</link>(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;namesource,<link linkend="_class_x_p_a_t_h">XPATH</link>&amp;&#32;xpathtarget,<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;nametarget,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;password)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01305"/>01305 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01306"/>01306 &#32;&#32;<link linkend="_class_x_p_a_t_h">XPATH</link>&#32;xpath(namesource);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01307"/>01307 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01308"/>01308 &#32;&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p">XFILECMPZIP</link>*&#32;filecmp&#32;=&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1ab6b9faf78c90e68d55d758945dbbf0d5">GotoFile</link>(xpath);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01309"/>01309 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!filecmp)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01310"/>01310 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01311"/>01311 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1accdf0eef3fe5cd75eb9e8a0ca4b15b8a">DecompressFile</link>(filecmp,xpathtarget,nametarget,password);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01312"/>01312 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01313"/>01313 &#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;filecmp;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01314"/>01314 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01315"/>01315 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01316"/>01316 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01317"/>01317 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01318"/>01318 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01333"/><link linkend="_class_x_f_i_l_e_u_n_z_i_p_1ad1e7f3804fc2a49d6b4610d84eeaf70c">01333</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1accdf0eef3fe5cd75eb9e8a0ca4b15b8a">XFILEUNZIP::DecompressFile</link>(<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p">XFILECMPZIP</link>*&#32;filecmp,&#32;<link linkend="_class_x_p_a_t_h">XPATH</link>&amp;&#32;xpathtarget,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;nametarget,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;password)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01334"/>01334 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01335"/>01335 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01336"/>01336 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01337"/>01337 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!filecmp)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01338"/>01338 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01339"/>01339 &#32;&#32;<link linkend="_class_x_p_a_t_h">XPATH</link>&#32;xpath;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01340"/>01340 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01341"/>01341 &#32;&#32;xpath&#32;=&#32;xpathtarget;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01342"/>01342 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01343"/>01343 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!nametarget)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01344"/>01344 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01345"/>01345 &#32;&#32;&#32;&#32;&#32;&#32;xpath&#32;+=&#32;filecmp-&gt;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a7cc5a4bdacd40c0edc8004950e30d06e">GetName</link>();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01346"/>01346 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01347"/>01347 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01348"/>01348 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01349"/>01349 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!nametarget[0])
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01350"/>01350 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01351"/>01351 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xpath&#32;+=&#32;filecmp-&gt;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a7cc5a4bdacd40c0edc8004950e30d06e">GetName</link>();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01352"/>01352 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01353"/>01353 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;xpath&#32;+=&#32;nametarget;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01354"/>01354 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01355"/>01355 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01356"/>01356 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;_password(password);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01357"/>01357 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01358"/>01358 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(filecmp-&gt;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1aec51bf3ec8aeee83aa9d21c7438e49d7">Open</link>(_password))
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01359"/>01359 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01360"/>01360 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_f_i_l_e">XFILE</link>*&#32;GEN_XFACTORY_CREATE(xfile,&#32;Create_File())
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01361"/>01361 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xfile)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01362"/>01362 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01363"/>01363 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xfile-&gt;Create(xpath))
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01364"/>01364 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01365"/>01365 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;buffer=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>[maxsizebuffer];
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01366"/>01366 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(buffer)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01367"/>01367 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01368"/>01368 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;totalbytesread&#32;=&#32;0;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01369"/>01369 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;&#32;&#32;bytesread&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01370"/>01370 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01371"/>01371 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">do</emphasis>&#32;{&#32;&#32;<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t">XFILEZIP_XEVENT</link>&#32;xevent(<emphasis role="keyword">this</emphasis>,&#32;<link linkend="__x_file_z_i_p___x_event_8h_1ab3060e55201862a40bd4d21751f545b0ad988c8a3d28937baf1fcb7077e589f5a">XFILEZIP_XEVENT_TYPE_UNZIP_EXTRACTFILE</link>);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01372"/>01372 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01373"/>01373 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1a633f5e40df6107cc5acda12e9d7a52a4">GetFileName</link>()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1a4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(xpathunzip.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01374"/>01374 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1a59e7fb1af067f3b008e6906d4edec679">SetFileCompress</link>(filecmp);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01375"/>01375 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01376"/>01376 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;bytesread&#32;=&#32;maxsizebuffer;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01377"/>01377 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;memset(buffer,&#32;0,&#32;maxsizebuffer);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01378"/>01378 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01379"/>01379 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;filecmp-&gt;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a9df97e2da7b13dc06671117203d4a6ea">Read</link>(buffer,&#32;&amp;bytesread);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01380"/>01380 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(bytesread)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01381"/>01381 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01382"/>01382 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;xfile-&gt;Write(buffer,&#32;bytesread);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01383"/>01383 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01384"/>01384 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01385"/>01385 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;totalbytesread&#32;+=&#32;bytesread;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01386"/>01386 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01387"/>01387 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lasterror&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_file_z_i_p_8h_1afd9a642036e79f4f20c4adbdffc20985a20ef7e61de24c6306ab4d12cf7eaa8eb">XFILEZIP_ERROR_NONE</link>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01388"/>01388 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lastoperationpercent&#32;=&#32;(float)(totalbytesread*100)&#32;/&#32;filecmp-&gt;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a93d458c1e391344c19c74bf4a64531dd">UnCompressSize</link>();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01389"/>01389 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01390"/>01390 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1a0393e9f9ef5b4a2ff0b1bf5b8883bff7">SetOperationPercent</link>(lastoperationpercent);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01391"/>01391 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01392"/>01392 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;lasterror&#32;=&#32;<link linkend="__x_file_z_i_p_8h_1afd9a642036e79f4f20c4adbdffc20985a7650317f37654bc4f8beaf457b73a8dc">XFILEZIP_ERROR_UNZIP_EXTRACTFILEWRITE</link>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01393"/>01393 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01394"/>01394 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;lasterror&#32;=&#32;<link linkend="__x_file_z_i_p_8h_1afd9a642036e79f4f20c4adbdffc20985a813a588cbdd51d21eca68a5a4f54f9a2">XFILEZIP_ERROR_UNZIP_EXTRACTFILEREAD</link>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01395"/>01395 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01396"/>01396 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01397"/>01397 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1afb7f7950b5839bea7ad5488dea57e116">SetError</link>(lasterror);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01398"/>01398 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01399"/>01399 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_u_b_j_e_c_t_1adb65926d5f56410c9243d2f7c69a87a3">PostEvent</link>(&amp;xevent);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01400"/>01400 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01401"/>01401 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01402"/>01402 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01403"/>01403 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">while</emphasis>(bytesread&#32;==&#32;(<emphasis role="keywordtype">int</emphasis>)maxsizebuffer);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01404"/>01404 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01405"/>01405 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;[]&#32;buffer;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01406"/>01406 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01407"/>01407 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(filecmp-&gt;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a93d458c1e391344c19c74bf4a64531dd">UnCompressSize</link>()&#32;!=&#32;xfile-&gt;GetSize())&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01408"/>01408 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01409"/>01409 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01410"/>01410 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xfile-&gt;Close();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01411"/>01411 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01412"/>01412 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01413"/>01413 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;xfile;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01414"/>01414 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01415"/>01415 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01416"/>01416 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01417"/>01417 &#32;&#32;&#32;&#32;&#32;&#32;filecmp-&gt;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1a1aee98060c7a65b222a719d8c15ef440">Close</link>();
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01418"/>01418 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01419"/>01419 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01420"/>01420 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01421"/>01421 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01422"/>01422 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01423"/>01423 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01433"/><link linkend="_class_x_f_i_l_e_u_n_z_i_p_1a5da6f0dca6c6a8931aad49fbc0bb1b9d">01433</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1a5da6f0dca6c6a8931aad49fbc0bb1b9d">XFILEUNZIP::Close</link>()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01434"/>01434 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01435"/>01435 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!filehdl)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01436"/>01436 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01437"/>01437 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;(unzClose(filehdl)&#32;==&#32;UNZ_OK)&#32;?&#32;<emphasis role="keyword">true</emphasis>&#32;:&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01438"/>01438 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01439"/>01439 &#32;&#32;lastoperationpercent&#32;&#32;=&#32;status&#32;?&#32;100.0f&#32;:&#32;0.0f;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01440"/>01440 &#32;&#32;lasterror&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_file_z_i_p_8h_1afd9a642036e79f4f20c4adbdffc20985a20ef7e61de24c6306ab4d12cf7eaa8eb">XFILEZIP_ERROR_NONE</link>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01441"/>01441 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01442"/>01442 &#32;&#32;<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t">XFILEZIP_XEVENT</link>&#32;xevent(<emphasis role="keyword">this</emphasis>,&#32;<link linkend="__x_file_z_i_p___x_event_8h_1ab3060e55201862a40bd4d21751f545b0a50e0efaa188cccf0b2212b87d72878e7">XFILEZIP_XEVENT_TYPE_UNZIP_CLOSE</link>);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01443"/>01443 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01444"/>01444 &#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1a633f5e40df6107cc5acda12e9d7a52a4">GetFileName</link>()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1a4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(xpathunzip.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01445"/>01445 &#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1a59e7fb1af067f3b008e6906d4edec679">SetFileCompress</link>(<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01446"/>01446 &#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1afb7f7950b5839bea7ad5488dea57e116">SetError</link>(lasterror);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01447"/>01447 &#32;&#32;xevent.<link linkend="_class_x_f_i_l_e_z_i_p___x_e_v_e_n_t_1a0393e9f9ef5b4a2ff0b1bf5b8883bff7">SetOperationPercent</link>(lastoperationpercent);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01448"/>01448 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01449"/>01449 &#32;&#32;<link linkend="_class_x_s_u_b_j_e_c_t_1adb65926d5f56410c9243d2f7c69a87a3">PostEvent</link>(&amp;xevent);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01450"/>01450 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01451"/>01451 &#32;&#32;filehdl&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01452"/>01452 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01453"/>01453 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01454"/>01454 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01455"/>01455 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01456"/>01456 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01466"/><link linkend="_class_x_f_i_l_e_u_n_z_i_p_1a6e9eb6792f830c68be5ec788228dc488">01466</link> <emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1a6e9eb6792f830c68be5ec788228dc488">XFILEUNZIP::GetLastOperationPercent</link>()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01467"/>01467 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01468"/>01468 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;lastoperationpercent;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01469"/>01469 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01470"/>01470 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01471"/>01471 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01481"/><link linkend="_class_x_f_i_l_e_u_n_z_i_p_1a08b75ed82891e295c39c5831463ceb11">01481</link> <link linkend="__x_file_z_i_p_8h_1afd9a642036e79f4f20c4adbdffc20985">XFILEZIP_ERROR</link>&#32;<link linkend="_class_x_f_i_l_e_u_n_z_i_p_1a08b75ed82891e295c39c5831463ceb11">XFILEUNZIP::GetLastError</link>()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01482"/>01482 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01483"/>01483 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;lasterror;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01484"/>01484 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01485"/>01485 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01486"/>01486 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01496"/>01496 <link linkend="_class_x_f_i_l_e_c_m_p_z_i_p">XFILECMPZIP</link>*&#32;XFILEUNZIP::CreateCurrentFile()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01497"/>01497 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01498"/>01498 &#32;&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p">XFILECMPZIP</link>*&#32;filecmp;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01499"/>01499 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01500"/>01500 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!filehdl)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01501"/>01501 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01502"/>01502 &#32;&#32;filecmp&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p">XFILECMPZIP</link>(<emphasis role="keyword">false</emphasis>,(<emphasis role="keywordtype">void</emphasis>*)filehdl);
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01503"/>01503 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!filecmp)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01504"/>01504 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01505"/>01505 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!filecmp-&gt;<link linkend="_class_x_f_i_l_e_c_m_p_z_i_p_1afb6ec25be2490d3735fbfd767d7f82ce">IsActive</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01506"/>01506 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01507"/>01507 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;filecmp;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01508"/>01508 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01509"/>01509 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01510"/>01510 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01521"/>01521 <emphasis role="keywordtype">void</emphasis>&#32;XFILEUNZIP::Clean()
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01522"/>01522 {
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01523"/>01523 &#32;&#32;filehdl&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01524"/>01524 &#32;&#32;maxsizebuffer&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01525"/>01525 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01526"/>01526 &#32;&#32;lastoperationpercent&#32;&#32;=&#32;0.0f;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01527"/>01527 &#32;&#32;lasterror&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_file_z_i_p_8h_1afd9a642036e79f4f20c4adbdffc20985a20ef7e61de24c6306ab4d12cf7eaa8eb">XFILEZIP_ERROR_NONE</link>;
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01528"/>01528 }
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01529"/>01529 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01530"/>01530 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01531"/>01531 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01532"/>01532 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01533"/>01533 
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01534"/>01534 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_file_z_i_p_8cpp_source_1l01535"/>01535 
+</programlisting></section>

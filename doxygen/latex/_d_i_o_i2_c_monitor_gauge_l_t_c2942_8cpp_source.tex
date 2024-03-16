@@ -1,0 +1,255 @@
+\doxysection{DIOI2\+CMonitor\+Gauge\+LTC2942.\+cpp}
+\hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source}{}\label{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source}\index{D:/Projects/GENFrameWork/GEN/DataIO/Drivers/I2C/DIOI2CMonitorGaugeLTC2942.cpp@{D:/Projects/GENFrameWork/GEN/DataIO/Drivers/I2C/DIOI2CMonitorGaugeLTC2942.cpp}}
+\mbox{\hyperlink{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00029}00029\ \textcolor{comment}{/*-\/-\/-\/-\/\ PRECOMPILATION\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#pragma\ region\ PRECOMPILATION\_INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_e_n___defines_8h}{GEN\_Defines.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00037}00037\ \textcolor{comment}{/*-\/-\/-\/-\/\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#pragma\ region\ INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8h}{DIOI2CMonitorGaugeLTC2942.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_factory_8h}{XFactory.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00046}00046\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_sleep_8h}{XSleep.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00047}00047\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_buffer_8h}{XBuffer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00048}00048\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_trace_8h}{XTrace.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00050}00050\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_i_o_factory_8h}{DIOFactory.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00051}00051\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_i_o_stream_i2_c_config_8h}{DIOStreamI2CConfig.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00052}00052\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_i_o_stream_i2_c_8h}{DIOStreamI2C.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00054}00054\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_memory___control_8h}{XMemory\_Control.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00056}00056\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00059}00059\ \textcolor{comment}{/*-\/-\/-\/-\/\ GENERAL\ VARIABLE\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00060}00060\ \textcolor{preprocessor}{\#pragma\ region\ GENERAL\_VARIABLE}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00062}00062\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00065}00065\ \textcolor{comment}{/*-\/-\/-\/-\/\ CLASS\ MEMBERS\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00066}00066\ \textcolor{preprocessor}{\#pragma\ region\ CLASS\_MEMBERS}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00076}\mbox{\hyperlink{group___d_a_t_a_i_o_gaabca7c4418d6b1fae07ef01c69d2cbe5}{00076}}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gaabca7c4418d6b1fae07ef01c69d2cbe5}{DIOI2CMONITORGAUGELTC2942::DIOI2CMONITORGAUGELTC2942}}()\ :\ \mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c}{DIODEVICEI2C}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00077}00077\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00078}00078\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00079}00079\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00090}\mbox{\hyperlink{group___d_a_t_a_i_o_ga8aa29bb999f7683d31b3cf6a6e29114f}{00090}}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga8aa29bb999f7683d31b3cf6a6e29114f}{DIOI2CMONITORGAUGELTC2942::\string~DIOI2CMONITORGAUGELTC2942}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00091}00091\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00092}00092\ \ \ \mbox{\hyperlink{group___d_a_t_a_i_o_gaac73de4c1dd4e0e674f3d736a30c44ce}{End}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00094}00094\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00095}00095\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00107}\mbox{\hyperlink{group___d_a_t_a_i_o_ga789cc7d32d264118c7321466c6dbb52d}{00107}}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga789cc7d32d264118c7321466c6dbb52d}{DIOI2CMONITORGAUGELTC2942::GetVoltage}}\ (\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00108}00108\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00109}00109\ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_a3b497a58b1ba1b029aa63b269f43dbb0}{diostream}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00110}00110\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00111}00111\ \ \ \textcolor{keywordtype}{float}\ voltage\_return\ \ =\ 0;\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00112}00112\ \ \ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ buffer[2]\ \ \ \ \ \ \ =\ \{\ 0,\ 0\ \};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00113}00113\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00114}00114\ \ \ \textcolor{keywordflow}{if}(!ReadRegister(\mbox{\hyperlink{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8h_a320be1594706331fb1e3022045b1e74d}{DIOI2CMONITORGAUGELTC2942\_REG\_VOL\_H}},\ buffer,\ 2))\ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00115}00115\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00116}00116\ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ read\_value\ =\ buffer[1]\ |\ (buffer[0]\ <<\ 8);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00118}00118\ \ \ \textcolor{keywordflow}{if}(read\_value\ ==\ \mbox{\hyperlink{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8h_a38e74b43467c9d33661da8b71cc40056}{DIOI2CMONITORGAUGELTC2942\_VOLTAGE\_READ\_ERROR}})}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00119}00119\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00120}00120\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00121}00121\ \ \ \ \ \}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00123}00123\ \ \ voltage\_return\ =\ (float)read\_value;\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00124}00124\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00125}00125\ \ \ \textcolor{keywordflow}{return}\ ((voltage\_return*\ 6000)\ /\ 65535)/1000;\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00126}00126\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00140}\mbox{\hyperlink{group___d_a_t_a_i_o_gad78c04a72336637de2a074c1182dbacc}{00140}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gad78c04a72336637de2a074c1182dbacc}{DIOI2CMONITORGAUGELTC2942::SetAC}}(\mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}}\ ac)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00141}00141\ \{\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00142}00142\ \ \ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ ctrl;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00143}00143\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00144}00144\ \ \ \textcolor{comment}{//\ Backup\ control\ register\ }}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00145}00145\ \ \ \textcolor{keywordflow}{if}(!ReadRegister(\mbox{\hyperlink{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8h_a73c8029df0ed2d2a75467386c26d7b22}{DIOI2CMONITORGAUGELTC2942\_REG\_CONTROL}},ctrl))\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00146}00146\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00147}00147\ \ \ \textcolor{comment}{//\ Shutdown\ analog\ section\ before\ programming\ new\ AC\ value\ }}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00148}00148\ \ \ \textcolor{keywordflow}{if}(!WriteRegister(\mbox{\hyperlink{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8h_a73c8029df0ed2d2a75467386c26d7b22}{DIOI2CMONITORGAUGELTC2942\_REG\_CONTROL}},\ ctrl\ |\ \mbox{\hyperlink{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8h_aa6d5e09bb19f9dc3dc3ed5384e166e4a}{DIOI2CMONITORGAUGELTC2942\_CTL\_SHUTDOWN}}))\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00149}00149\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00150}00150\ \ \ \textcolor{comment}{//\ Program\ new\ AC\ value\ }}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00151}00151\ \ \ \textcolor{keywordflow}{if}(!WriteRegister(\mbox{\hyperlink{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8h_a2881b06d5e20763eaf84d3d392c9806c}{DIOI2CMONITORGAUGELTC2942\_REG\_AC\_H}},\ ac\ >>\ 8)!=0)\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00152}00152\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00153}00153\ \ \ \textcolor{keywordflow}{if}(!WriteRegister(\mbox{\hyperlink{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8h_a8f88175eb33c8413a5f383734ed1101a}{DIOI2CMONITORGAUGELTC2942\_REG\_AC\_L}},\ ac\ \&\ 0xFF)!=0)\ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00154}00154\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00155}00155\ \ \ \textcolor{comment}{//\ Restore\ control\ register\ }}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00156}00156\ \ \ \textcolor{keywordflow}{if}(!WriteRegister(\mbox{\hyperlink{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8h_a73c8029df0ed2d2a75467386c26d7b22}{DIOI2CMONITORGAUGELTC2942\_REG\_CONTROL}},\ ctrl)!=0)\ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00157}00157\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00158}00158\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00159}00159\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00171}\mbox{\hyperlink{group___d_a_t_a_i_o_gaadce036611b0b0d54d8f620813630301}{00171}}\ \mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gaadce036611b0b0d54d8f620813630301}{DIOI2CMONITORGAUGELTC2942::GetAC}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00172}00172\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00173}00173\ \ \ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ \ \ buffer[2]\ =\ \{\ 0,\ 0\ \};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00174}00174\ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ \ AC\_value\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00175}00175\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00176}00176\ \ \ \textcolor{keywordflow}{if}(!ReadRegister(\mbox{\hyperlink{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8h_a2881b06d5e20763eaf84d3d392c9806c}{DIOI2CMONITORGAUGELTC2942\_REG\_AC\_H}},\ buffer,\ 2))\ \textcolor{keywordflow}{return}\ 0;\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00177}00177\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00178}00178\ \ \ AC\_value\ =\ buffer[1]\ |\ (buffer[0]\ <<\ 8);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00180}00180\ \ \ \textcolor{keywordflow}{return}\ AC\_value;\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00181}00181\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00193}\mbox{\hyperlink{group___d_a_t_a_i_o_ga12f8c187fbc0faca8088f451b7c95323}{00193}}\ \mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga12f8c187fbc0faca8088f451b7c95323}{DIOI2CMONITORGAUGELTC2942::GetMaxAC}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00194}00194\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00195}00195\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8h_ac126293368afa0f48b5f45b30a01c8b6}{DIOI2CMONITORGAUGELTC2942\_AC\_MAXVALUE}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00196}00196\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00208}\mbox{\hyperlink{group___d_a_t_a_i_o_gaac73de4c1dd4e0e674f3d736a30c44ce}{00208}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gaac73de4c1dd4e0e674f3d736a30c44ce}{DIOI2CMONITORGAUGELTC2942::End}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00209}00209\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00210}00210\ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{group___d_a_t_a_i_o_ga97fa53ca512fb382b705033def5348c3}{DIODEVICEI2C::End}}())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00212}00212\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00213}00213\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00225}00225\ \textcolor{keywordtype}{bool}\ DIOI2CMONITORGAUGELTC2942::IniDevice()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00226}00226\ \{\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00227}00227\ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{group___d_a_t_a_i_o_gafe0d936f40e0b1b96b28efaf22ee119e}{DIODEVICEI2C::IniDevice}}())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00229}00229\ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_a3b497a58b1ba1b029aa63b269f43dbb0}{diostream}}-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gafccebd8333bc1df1f36fb068af1c0a1a}{Open}}())}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00230}00230\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00231}00231\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_a3b497a58b1ba1b029aa63b269f43dbb0}{diostream}}-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gacff76db4bc54a48fe2d2ceb165835c2f}{WaitToConnected}}(\mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_aa52a412cc095ba0e18211f4c994d69e2}{timeout}}))}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00232}00232\ \ \ \ \ \ \ \ \ \{\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!Initialize())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga2ce40a31520cdee813143e1f028ee629}{DIODEVICE::Ini}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00236}00236\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00237}00237\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00239}00239\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00240}00240\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00242}00242\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00252}00252\ \textcolor{keywordtype}{bool}\ DIOI2CMONITORGAUGELTC2942::Initialize()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00253}00253\ \{\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00254}00254\ \ \ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ ctrl;\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00255}00255\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00256}00256\ \ \ \textcolor{keywordflow}{if}(!ReadRegister(\mbox{\hyperlink{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8h_a73c8029df0ed2d2a75467386c26d7b22}{DIOI2CMONITORGAUGELTC2942\_REG\_CONTROL}},\ ctrl))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00257}00257\ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00258}00258\ \ \ \ \ \textcolor{comment}{//\ Enable\ auto\ measurement\ of\ battery\ voltage\ and\ temperature\ }}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00259}00259\ \ \ \ \ ctrl\ \&=\ \mbox{\hyperlink{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8h_a4e2af05021102182ce07f2bea74fc840}{DIOI2CMONITORGAUGELTC2942\_CTL\_ADC\_MSK}};\ \ \textcolor{comment}{//\ clear\ ADC\ mode\ bits}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00260}00260\ \ \ \ \ ctrl\ |=\ \mbox{\hyperlink{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8h_a0d10dc75ad9efc5531384bc230b996d2a9204b23e5be6cc7d7a434b3233dee730}{DIOI2CMONITORGAUGELTC2942\_ADC\_AUTO}};\ \ \ \ \ \textcolor{comment}{//\ configure\ mode}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00261}00261\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00262}00262\ \ \ \ \ \textcolor{comment}{//\ Enable\ analog\ section\ of\ the\ chip\ }}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00263}00263\ \ \ \ \ ctrl\ \&=\ \string~DIOI2CMONITORGAUGELTC2942\_CTL\_SHUTDOWN;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00264}00264\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00265}00265\ \ \ \ \ \textcolor{comment}{//\ Set\ prescaler\ M\ value\ }}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00266}00266\ \ \ \textcolor{comment}{//\ }}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00267}00267\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.085mAh\ 表 50momh\ 表 M}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00268}00268\ \ \ \textcolor{comment}{//\ \ \ \ qLSB\ =\ \ \ \ \ \ \ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ =\ }}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00269}00269\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RSENSE\ 表 128}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00270}00270\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00271}00271\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.085mAh\ 表 50momh\ 表 16}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00272}00272\ \ \ \textcolor{comment}{//\ \ \ \ qLSB\ =\ \ \ \ \ \ \ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ =\ 0,0133mAh\ -\/>\ \ MaxValue:\ 870,38mAh\ (not\ valid)}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00273}00273\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 40momh\ 表 128\ \ }}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00274}00274\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00275}00275\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.085mAh\ 表 50momh\ 表 32}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00276}00276\ \ \ \textcolor{comment}{//\ \ \ \ qLSB\ =\ \ \ \ \ \ \ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\ =\ 0,0265625mAh\ -\/>\ \ MaxValue:\ 1.740,7mAh\ valid}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00277}00277\ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 40momh\ 表 128\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00278}00278\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00279}00279\ \ \ \textcolor{comment}{//\ M=32\ for\ 1050mA\ battery\ AC\ max\ value\ 39.530\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00280}00280\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00281}00281\ \ \ \ \ ctrl\ \&=\ \mbox{\hyperlink{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8h_ad0091aab5b3f9221c3ef749b9dd85826}{DIOI2CMONITORGAUGELTC2942\_CTL\_PSCM\_MSK}};\ \ \ \ \ \ \textcolor{comment}{//\ clear\ prescaler\ M\ bits}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00282}00282\ \ \ \ \ ctrl\ |=\ \mbox{\hyperlink{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8h_ab24b9734506c9279fb7e382f2398da84ab58981383a7d8b8ec2a872b25dd6b38e}{DIOI2CMONITORGAUGELTC2942\_PSCM\_32}};\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ configure\ new\ value}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00283}00283\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00284}00284\ \ \ \ \ \textcolor{comment}{//\ Disable\ AL/CC\ pin\ }}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00285}00285\ \ \ \ \ ctrl\ \&=\ \mbox{\hyperlink{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8h_a19ce188e93fd11d1bc29d729c8cc7b20}{DIOI2CMONITORGAUGELTC2942\_CTL\_ALCC\_MSK}};\ \ \ \ \ \textcolor{comment}{//\ clear\ AL/CC\ bits}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00286}00286\ \ \ \ \ ctrl\ |=\ \mbox{\hyperlink{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8h_ad4d6e559c08b1047d1c60b678ffc8ca0a267aafc9f1bbd69d8eab348e45d28398}{DIOI2CMONITORGAUGELTC2942\_ALCC\_DISABLED}};\ \ \ \ \textcolor{comment}{//\ configure\ new\ value}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00287}00287\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00288}00288\ \ \ \ \ \textcolor{comment}{//\ Write\ control\ register\ }}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00289}00289\ \ \ \ \ \textcolor{keywordflow}{if}(!WriteRegister(\mbox{\hyperlink{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8h_a73c8029df0ed2d2a75467386c26d7b22}{DIOI2CMONITORGAUGELTC2942\_REG\_CONTROL}},\ ctrl))}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00290}00290\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00291}00291\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00292}00292\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00293}00293\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00294}00294\ \ \ \textcolor{comment}{//\ Checks\ if\ there\ was\ power\ off\ and\ sets\ de\ acumulator\ in\ middle\ value}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00295}00295\ \ \ \mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}}\ currentAC\ =\ \mbox{\hyperlink{group___d_a_t_a_i_o_gaadce036611b0b0d54d8f620813630301}{GetAC}}();\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00296}00296\ \ \ \textcolor{keywordflow}{if}(currentAC\ >=\ 0x7FF0)\ \ \mbox{\hyperlink{group___d_a_t_a_i_o_gad78c04a72336637de2a074c1182dbacc}{SetAC}}(\mbox{\hyperlink{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8h_ac126293368afa0f48b5f45b30a01c8b6}{DIOI2CMONITORGAUGELTC2942\_AC\_MAXVALUE}}/2);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00298}00298\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00299}00299\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00300}00300\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00301}00301\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00314}00314\ \textcolor{keywordtype}{bool}\ DIOI2CMONITORGAUGELTC2942::ReadRegister(\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ offset,\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\&\ data)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00315}00315\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00316}00316\ \ \ \textcolor{keywordflow}{return}\ ReadRegister(offset,\ \&data,\ 1);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00317}00317\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00318}00318\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00319}00319\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00333}00333\ \textcolor{keywordtype}{bool}\ DIOI2CMONITORGAUGELTC2942::ReadRegister(\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ offset,\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ data,\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ sizedata)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00334}00334\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00335}00335\ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_a3b497a58b1ba1b029aa63b269f43dbb0}{diostream}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00337}00337\ \ \ \textcolor{keywordtype}{bool}\ status;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00338}00338\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00339}00339\ \ \ status\ =\ \mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_a3b497a58b1ba1b029aa63b269f43dbb0}{diostream}}-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gac04f4ad8ff28b97128a876063103dd50}{Write}}(\&offset,\ 1)?\textcolor{keyword}{true}:\textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00340}00340\ \ \ \textcolor{keywordflow}{if}(status)\ status\ =\ \mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_a3b497a58b1ba1b029aa63b269f43dbb0}{diostream}}-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga59dc380e213dd083940c80663667dae7}{WaitToFlushOutXBuffer}}(\mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_aa52a412cc095ba0e18211f4c994d69e2}{timeout}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00341}00341\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00342}00342\ \ \ \textcolor{keywordflow}{if}(!status)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00343}00343\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00344}00344\ \ \ status\ =\ \mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_a3b497a58b1ba1b029aa63b269f43dbb0}{diostream}}-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga6e20f03ff391343123fda221a5c2ed85}{WaitToFilledReadingBuffer}}(sizedata,\ \mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_aa52a412cc095ba0e18211f4c994d69e2}{timeout}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00345}00345\ \ \ \textcolor{keywordflow}{if}(status)\ status\ =\ (\mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_a3b497a58b1ba1b029aa63b269f43dbb0}{diostream}}-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga20cd6c3635818f96468dee8bc601aec1}{Read}}(data,\ sizedata)\ ==\ sizedata)?\textcolor{keyword}{true}:false;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00346}00346\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00347}00347\ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00348}00348\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00349}00349\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00350}00350\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00363}00363\ \textcolor{keywordtype}{bool}\ DIOI2CMONITORGAUGELTC2942::WriteRegister(\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ offset,\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ data)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00364}00364\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00365}00365\ \ \ \textcolor{keywordflow}{return}\ WriteRegister(offset,\ \&data,\ 1);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00366}00366\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00367}00367\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00368}00368\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00382}00382\ \textcolor{keywordtype}{bool}\ DIOI2CMONITORGAUGELTC2942::WriteRegister(\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ offset,\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ data,\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ sizedata)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00383}00383\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00384}00384\ \ \ \textcolor{keywordflow}{if}(!\mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_a3b497a58b1ba1b029aa63b269f43dbb0}{diostream}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00385}00385\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00386}00386\ \ \ \mbox{\hyperlink{class_x_b_u_f_f_e_r}{XBUFFER}}\ buffer;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00387}00387\ \ \ \textcolor{keywordtype}{bool}\ \ \ \ status;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00388}00388\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00389}00389\ \ \ buffer.\mbox{\hyperlink{group___x_u_t_i_l_s_ga03212e4f31a9d07995ac4f72db1dd0cf}{Add}}((\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}})offset);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00390}00390\ \ \ \textcolor{keywordflow}{if}(data\ \&\&\ sizedata)\ buffer.\mbox{\hyperlink{group___x_u_t_i_l_s_ga03212e4f31a9d07995ac4f72db1dd0cf}{Add}}(data,\ sizedata);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00391}00391\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00392}00392\ \ \ status\ =\ \mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_a3b497a58b1ba1b029aa63b269f43dbb0}{diostream}}-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gac04f4ad8ff28b97128a876063103dd50}{Write}}(buffer)?\textcolor{keyword}{true}:\textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00393}00393\ \ \ \textcolor{keywordflow}{if}(status)\ status\ =\ \mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_a3b497a58b1ba1b029aa63b269f43dbb0}{diostream}}-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga59dc380e213dd083940c80663667dae7}{WaitToFlushOutXBuffer}}(\mbox{\hyperlink{class_d_i_o_d_e_v_i_c_e_i2_c_aa52a412cc095ba0e18211f4c994d69e2}{timeout}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00394}00394\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00395}00395\ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00396}00396\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00397}00397\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00398}00398\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00407}00407\ \textcolor{keywordtype}{void}\ DIOI2CMONITORGAUGELTC2942::Clean()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00408}00408\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00409}00409\ \ \ referenceresistance\ \ \ =\ 0.0f;\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00410}00410\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00411}00411\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00412}00412\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00413}00413\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_i2_c_monitor_gauge_l_t_c2942_8cpp_source_l00414}00414\ }
+
+\end{DoxyCode}

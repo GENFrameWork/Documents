@@ -1,0 +1,266 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_file_x_d_b_8cpp_source" xml:lang="en-US">
+<title>XFileXDB.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/XUtils/XFiles/XFileXDB.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__x_file_x_d_b_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_file_x_d_b_8h">XFileXDB.h</link>&quot;</emphasis>
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&lt;string.h&gt;</emphasis>
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00043"/>00043 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_buffer_8h">XBuffer.h</link>&quot;</emphasis>
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_factory_8h">XFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_trace_8h">XTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00047"/>00047 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__hash_8h">Hash.h</link>&quot;</emphasis>
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00049"/>00049 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00050"/>00050 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00051"/>00051 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00053"/>00053 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00054"/>00054 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00055"/>00055 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00056"/>00056 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00057"/>00057 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00058"/>00058 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00059"/>00059 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00061"/>00061 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00062"/>00062 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00063"/>00063 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00064"/>00064 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00076"/><link linkend="_class_x_f_i_l_e_x_d_b_1a1cf989cdbf22318a8daec52694401dfe">00076</link> <link linkend="_class_x_f_i_l_e_x_d_b_1a1cf989cdbf22318a8daec52694401dfe">XFILEXDB::XFILEXDB</link>(<link linkend="_class_h_a_s_h">HASH</link>*&#32;hash)&#32;:&#32;<link linkend="_class_x_f_i_l_e_h_a_s_h">XFILEHASH</link>(hash)
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00077"/>00077 {
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00078"/>00078 &#32;&#32;Clean();
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00079"/>00079 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00080"/>00080 &#32;&#32;this-&gt;hash&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1a5fd310434eea5e2cc310660d07b19fe6">hash</link>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00081"/>00081 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00082"/>00082 &#32;&#32;<link linkend="_class_x_f_i_l_e_h_a_s_h_1a61576601f938b804b0108f6095278e02">Set</link>(<link linkend="__x_file_i_d_8h_1a2d4555e8a52b4d40bd973b7483071ddf">XFILE_XDB_ID</link>,&#32;<link linkend="__x_file_x_d_b_8h_1ac1169c67a950633ebd841c3021b1225e">XFILEXDB_TYPE</link>,&#32;<link linkend="__x_file_x_d_b_8h_1aacae82dfe8f1fb4921592d85d8fbba97">XFILEXDB_VERSION</link>,&#32;<link linkend="__x_file_x_d_b_8h_1a20dc6e934389d886a5a2b2c7b924a30c">XFILEXDB_IDSTRING</link>);
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00083"/>00083 }
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00084"/>00084 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00085"/>00085 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00098"/><link linkend="_class_x_f_i_l_e_x_d_b_1a80ad61f18d3814780c517338a67f4d8b">00098</link> <link linkend="_class_x_f_i_l_e_x_d_b_1a1cf989cdbf22318a8daec52694401dfe">XFILEXDB::XFILEXDB</link>(<link linkend="_class_h_a_s_h">HASH</link>*&#32;hash,&#32;<link linkend="_class_x_p_a_t_h">XPATH</link>&amp;&#32;xpath)
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00099"/>00099 &#32;&#32;:&#32;<link linkend="_class_x_f_i_l_e_h_a_s_h">XFILEHASH</link>(hash)
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00100"/>00100 {
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00101"/>00101 &#32;&#32;Clean();
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00102"/>00102 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00103"/>00103 &#32;&#32;this-&gt;hash&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1a5fd310434eea5e2cc310660d07b19fe6">hash</link>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00104"/>00104 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00105"/>00105 &#32;&#32;<link linkend="_class_x_f_i_l_e_h_a_s_h_1a61576601f938b804b0108f6095278e02">Set</link>(<link linkend="__x_file_i_d_8h_1a2d4555e8a52b4d40bd973b7483071ddf">XFILE_XDB_ID</link>,&#32;<link linkend="__x_file_x_d_b_8h_1ac1169c67a950633ebd841c3021b1225e">XFILEXDB_TYPE</link>,&#32;<link linkend="__x_file_x_d_b_8h_1aacae82dfe8f1fb4921592d85d8fbba97">XFILEXDB_VERSION</link>,&#32;<link linkend="__x_file_x_d_b_8h_1a20dc6e934389d886a5a2b2c7b924a30c">XFILEXDB_IDSTRING</link>);
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00106"/>00106 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00107"/>00107 &#32;&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1a70abfc931a47877473a80730491619fc">SetPath</link>(<link linkend="_class_x_f_i_l_e_x_d_b_1adf37d76d3a0fb8803872058288ef9657">xpath</link>);
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00108"/>00108 }
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00109"/>00109 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00110"/>00110 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00121"/><link linkend="_class_x_f_i_l_e_x_d_b_1af9ad353ae27a88b2e079f99ff7a8f694">00121</link> <link linkend="_class_x_f_i_l_e_x_d_b_1af9ad353ae27a88b2e079f99ff7a8f694">XFILEXDB::~XFILEXDB</link>()
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00122"/>00122 {
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00123"/>00123 &#32;&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1a91454914b10cbaf06ce297515d25254a">End</link>();
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00124"/>00124 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00125"/>00125 &#32;&#32;Clean();
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00126"/>00126 }
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00127"/>00127 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00128"/>00128 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00140"/><link linkend="_class_x_f_i_l_e_x_d_b_1a70abfc931a47877473a80730491619fc">00140</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1a70abfc931a47877473a80730491619fc">XFILEXDB::SetPath</link>(<link linkend="_class_x_p_a_t_h">XPATH</link>&amp;&#32;xpath)
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00141"/>00141 {
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00142"/>00142 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_f_i_l_e_x_d_b_1adf37d76d3a0fb8803872058288ef9657">xpath</link>.<link linkend="_class_x_s_t_r_i_n_g_1ad26690161f8c1e2722771322b7370005">IsEmpty</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00143"/>00143 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00144"/>00144 &#32;&#32;this-&gt;xpath&#32;=&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1adf37d76d3a0fb8803872058288ef9657">xpath</link>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00145"/>00145 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00146"/>00146 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00147"/>00147 }
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00148"/>00148 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00149"/>00149 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00159"/><link linkend="_class_x_f_i_l_e_x_d_b_1a41fa7802b2412ca47f624ceb78ed560b">00159</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1a41fa7802b2412ca47f624ceb78ed560b">XFILEXDB::Ini</link>()
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00160"/>00160 {
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00161"/>00161 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1aab33ea75f8ed5465e89d53ea918e8d75">OpenFile</link>();
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00162"/>00162 }
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00163"/>00163 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00164"/>00164 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00174"/><link linkend="_class_x_f_i_l_e_x_d_b_1a91454914b10cbaf06ce297515d25254a">00174</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1a91454914b10cbaf06ce297515d25254a">XFILEXDB::End</link>()
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00175"/>00175 {
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00176"/>00176 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1a3b654fe6e9ffa262286bd22a52f870c6">CloseFile</link>();
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00177"/>00177 }
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00178"/>00178 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00179"/>00179 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00189"/><link linkend="_class_x_f_i_l_e_x_d_b_1a2246e9e3b77cc37a6edac8c2c84c93e7">00189</link> <link linkend="_class_x_m_a_p">XMAP&lt;XDWORD, XDWORD&gt;</link>*&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1a2246e9e3b77cc37a6edac8c2c84c93e7">XFILEXDB::GetIndexMap</link>()
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00190"/>00190 {
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00191"/>00191 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;<link linkend="_class_x_f_i_l_e_x_d_b_1adf5ff95d15c9b3ab8319473923b3067d">indexmap</link>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00192"/>00192 }
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00193"/>00193 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00194"/>00194 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00204"/><link linkend="_class_x_f_i_l_e_x_d_b_1aab33ea75f8ed5465e89d53ea918e8d75">00204</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1aab33ea75f8ed5465e89d53ea918e8d75">XFILEXDB::OpenFile</link>()
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00205"/>00205 {
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00206"/>00206 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_f_i_l_e_h_a_s_h_1af79fa577ce33fc69fbfb9d255a980a5f">Open</link>(this-&gt;<link linkend="_class_x_f_i_l_e_x_d_b_1adf37d76d3a0fb8803872058288ef9657">xpath</link>))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00207"/>00207 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00208"/>00208 &#32;&#32;<link linkend="_class_x_f_i_l_e_c_o_n_t_a_i_n_e_r_1aa84337f93ddde60b65dd8eaf65e3b05f">GetPrimaryFile</link>()-&gt;<link linkend="_class_x_f_i_l_e_1ae316e4ea22c9f1fb9a2965f21d0dac4a">Read</link>((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;<link linkend="_class_x_f_i_l_e_x_d_b_1a1348ca70c9cf119fededcf6f6a47b46f">nrecords</link>,<emphasis role="keyword">sizeof</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>));
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00209"/>00209 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00210"/>00210 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_f_i_l_e_x_d_b_1a1348ca70c9cf119fededcf6f6a47b46f">nrecords</link>)
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00211"/>00211 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00212"/>00212 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_f_i_l_e_h_a_s_h_1ab7ca763bbc927c056559b4836b3c1f0d">Close</link>();
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00213"/>00213 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00214"/>00214 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00215"/>00215 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00216"/>00216 &#32;&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1adf5ff95d15c9b3ab8319473923b3067d">indexmap</link>.<link linkend="_class_x_m_a_p_1a3ef060fbf2ce6b1e7ce40fad02263a3c">SetIsMulti</link>(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00217"/>00217 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;c=0;c&lt;<link linkend="_class_x_f_i_l_e_x_d_b_1a1348ca70c9cf119fededcf6f6a47b46f">nrecords</link>;c++)
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00218"/>00218 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00219"/>00219 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;ID&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00220"/>00220 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;filepos&#32;&#32;=&#32;0;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00221"/>00221 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00222"/>00222 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_f_i_l_e_c_o_n_t_a_i_n_e_r_1aa84337f93ddde60b65dd8eaf65e3b05f">GetPrimaryFile</link>()-&gt;<link linkend="_class_x_f_i_l_e_1ae316e4ea22c9f1fb9a2965f21d0dac4a">Read</link>((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;ID&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>));
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00223"/>00223 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_f_i_l_e_c_o_n_t_a_i_n_e_r_1aa84337f93ddde60b65dd8eaf65e3b05f">GetPrimaryFile</link>()-&gt;<link linkend="_class_x_f_i_l_e_1ae316e4ea22c9f1fb9a2965f21d0dac4a">Read</link>((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;filepos&#32;,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>));
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00224"/>00224 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00225"/>00225 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//XTRACE_PRINTCOLOR(1,__L(&quot;ID:&#32;%08X&quot;),&#32;ID);</emphasis>
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00226"/>00226 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00227"/>00227 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1adf5ff95d15c9b3ab8319473923b3067d">indexmap</link>.<link linkend="_class_x_m_a_p_1a6dd238dccfceb726042b588a23107318">Add</link>(ID,filepos);
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00228"/>00228 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00229"/>00229 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00230"/>00230 &#32;&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1adf5ff95d15c9b3ab8319473923b3067d">indexmap</link>.<link linkend="_class_x_m_a_p_1a3ef060fbf2ce6b1e7ce40fad02263a3c">SetIsMulti</link>(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00231"/>00231 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00232"/>00232 &#32;&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1ae590e190c0939560d7fb4a33fb245165">isopen</link>=<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00233"/>00233 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00234"/>00234 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00235"/>00235 }
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00236"/>00236 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00237"/>00237 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00247"/><link linkend="_class_x_f_i_l_e_x_d_b_1a1e1dc6108cfd4e3c695c87170b77778b">00247</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1a1e1dc6108cfd4e3c695c87170b77778b">XFILEXDB::GetNumberRecords</link>()
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00248"/>00248 {
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00249"/>00249 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1a1348ca70c9cf119fededcf6f6a47b46f">nrecords</link>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00250"/>00250 }
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00251"/>00251 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00252"/>00252 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00264"/><link linkend="_class_x_f_i_l_e_x_d_b_1ad0683836da10af906b0b4a5070b0840b">00264</link> <link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>*&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1ad0683836da10af906b0b4a5070b0840b">XFILEXDB::GetRecord</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;ID)
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00265"/>00265 {
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00266"/>00266 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_f_i_l_e_x_d_b_1ae590e190c0939560d7fb4a33fb245165">isopen</link>)
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00267"/>00267 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00268"/>00268 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_f_i_l_e_x_d_b_1aab33ea75f8ed5465e89d53ea918e8d75">OpenFile</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00269"/>00269 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00270"/>00270 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00271"/>00271 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_f_i_l_e_x_d_b_1a1348ca70c9cf119fededcf6f6a47b46f">nrecords</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00272"/>00272 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00273"/>00273 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;filepos&#32;=&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1af439f0990784d83719e04412a7d0ae33">GetPosition</link>(ID);
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00274"/>00274 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!filepos)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00275"/>00275 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00276"/>00276 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;size;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00277"/>00277 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00278"/>00278 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_f_i_l_e_c_o_n_t_a_i_n_e_r_1aa84337f93ddde60b65dd8eaf65e3b05f">GetPrimaryFile</link>()-&gt;SetPosition(filepos))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00279"/>00279 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00280"/>00280 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_f_i_l_e_c_o_n_t_a_i_n_e_r_1aa84337f93ddde60b65dd8eaf65e3b05f">GetPrimaryFile</link>()-&gt;Read((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;size&#32;,<emphasis role="keyword">sizeof</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00281"/>00281 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00282"/>00282 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>*&#32;xbuffer&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>();
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00283"/>00283 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xbuffer)
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00284"/>00284 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00285"/>00285 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(size)
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00286"/>00286 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00287"/>00287 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xbuffer-&gt;<link linkend="_class_x_b_u_f_f_e_r_1acf69e379f1d0bf812ae9c1157eac172c">Resize</link>(size);
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00288"/>00288 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xbuffer-&gt;<link linkend="_class_x_b_u_f_f_e_r_1a8a6897988fdcf361b48b20497933d911">FillBuffer</link>();
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00289"/>00289 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00290"/>00290 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00291"/>00291 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_f_i_l_e_c_o_n_t_a_i_n_e_r_1aa84337f93ddde60b65dd8eaf65e3b05f">GetPrimaryFile</link>()-&gt;Read((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)xbuffer-&gt;<link linkend="_class_x_b_u_f_f_e_r_1a59d2c2b8d1c32098920f5d3eba0a5971">Get</link>()&#32;,&#32;size))
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00292"/>00292 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00293"/>00293 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;xbuffer;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00294"/>00294 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00295"/>00295 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00296"/>00296 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00297"/>00297 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;xbuffer;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00298"/>00298 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00299"/>00299 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00300"/>00300 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00301"/>00301 }
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00302"/>00302 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00303"/>00303 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00315"/><link linkend="_class_x_f_i_l_e_x_d_b_1a1022e7ce3c3bfc8633d6f4d9c840c209">00315</link> <link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>*&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1a1022e7ce3c3bfc8633d6f4d9c840c209">XFILEXDB::GetRecordIndex</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;index)
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00316"/>00316 {
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00317"/>00317 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_f_i_l_e_x_d_b_1ae590e190c0939560d7fb4a33fb245165">isopen</link>)
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00318"/>00318 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00319"/>00319 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_f_i_l_e_x_d_b_1aab33ea75f8ed5465e89d53ea918e8d75">OpenFile</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00320"/>00320 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00321"/>00321 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00322"/>00322 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_f_i_l_e_x_d_b_1a1348ca70c9cf119fededcf6f6a47b46f">nrecords</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00323"/>00323 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00324"/>00324 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;filepos&#32;=&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1adf5ff95d15c9b3ab8319473923b3067d">indexmap</link>.<link linkend="_class_x_m_a_p_1a7b4332f4b7696dd7da952cc17fe7c255">GetElement</link>(index);
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00325"/>00325 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!filepos)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00326"/>00326 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00327"/>00327 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;size;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00328"/>00328 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00329"/>00329 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_f_i_l_e_c_o_n_t_a_i_n_e_r_1aa84337f93ddde60b65dd8eaf65e3b05f">GetPrimaryFile</link>()-&gt;SetPosition(filepos))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00330"/>00330 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00331"/>00331 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_f_i_l_e_c_o_n_t_a_i_n_e_r_1aa84337f93ddde60b65dd8eaf65e3b05f">GetPrimaryFile</link>()-&gt;Read((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;size&#32;,<emphasis role="keyword">sizeof</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00332"/>00332 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00333"/>00333 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>*&#32;xbuffer&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>();
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00334"/>00334 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xbuffer)
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00335"/>00335 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00336"/>00336 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(size)
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00337"/>00337 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00338"/>00338 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xbuffer-&gt;<link linkend="_class_x_b_u_f_f_e_r_1acf69e379f1d0bf812ae9c1157eac172c">Resize</link>(size);
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00339"/>00339 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xbuffer-&gt;<link linkend="_class_x_b_u_f_f_e_r_1a8a6897988fdcf361b48b20497933d911">FillBuffer</link>();
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00340"/>00340 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00341"/>00341 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00342"/>00342 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_f_i_l_e_c_o_n_t_a_i_n_e_r_1aa84337f93ddde60b65dd8eaf65e3b05f">GetPrimaryFile</link>()-&gt;Read((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)xbuffer-&gt;<link linkend="_class_x_b_u_f_f_e_r_1a59d2c2b8d1c32098920f5d3eba0a5971">Get</link>()&#32;,&#32;size))
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00343"/>00343 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00344"/>00344 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;xbuffer;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00345"/>00345 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00346"/>00346 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00347"/>00347 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00348"/>00348 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;xbuffer;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00349"/>00349 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00350"/>00350 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00351"/>00351 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00352"/>00352 }
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00353"/>00353 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00354"/>00354 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00366"/><link linkend="_class_x_f_i_l_e_x_d_b_1af439f0990784d83719e04412a7d0ae33">00366</link> <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1af439f0990784d83719e04412a7d0ae33">XFILEXDB::GetPosition</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;ID)
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00367"/>00367 {
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00368"/>00368 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_f_i_l_e_x_d_b_1ae590e190c0939560d7fb4a33fb245165">isopen</link>)
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00369"/>00369 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00370"/>00370 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_f_i_l_e_x_d_b_1aab33ea75f8ed5465e89d53ea918e8d75">OpenFile</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00371"/>00371 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00372"/>00372 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00373"/>00373 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_f_i_l_e_x_d_b_1a1348ca70c9cf119fededcf6f6a47b46f">nrecords</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00374"/>00374 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00375"/>00375 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;indexfilepos&#32;=&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1adf5ff95d15c9b3ab8319473923b3067d">indexmap</link>.<link linkend="_class_x_m_a_p_1af059da1bdb01f7efce7faf5abf454d9c">Find</link>(ID);
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00376"/>00376 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(indexfilepos==-1)&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00377"/>00377 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00378"/>00378 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;filepos&#32;=&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1adf5ff95d15c9b3ab8319473923b3067d">indexmap</link>.<link linkend="_class_x_m_a_p_1a7b4332f4b7696dd7da952cc17fe7c255">GetElement</link>(indexfilepos);
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00379"/>00379 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00380"/>00380 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;filepos;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00381"/>00381 }
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00382"/>00382 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00383"/>00383 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00393"/><link linkend="_class_x_f_i_l_e_x_d_b_1a3b654fe6e9ffa262286bd22a52f870c6">00393</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1a3b654fe6e9ffa262286bd22a52f870c6">XFILEXDB::CloseFile</link>()
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00394"/>00394 {
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00395"/>00395 &#32;&#32;<link linkend="_class_x_f_i_l_e_h_a_s_h_1ab7ca763bbc927c056559b4836b3c1f0d">Close</link>();
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00396"/>00396 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00397"/>00397 &#32;&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1a1348ca70c9cf119fededcf6f6a47b46f">nrecords</link>&#32;=&#32;0;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00398"/>00398 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00399"/>00399 &#32;&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1adf5ff95d15c9b3ab8319473923b3067d">indexmap</link>.<link linkend="_class_x_m_a_p_1a02e7b8a15144553d81f2e8ec217845f6">DeleteAll</link>();
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00400"/>00400 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00401"/>00401 &#32;&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1ae590e190c0939560d7fb4a33fb245165">isopen</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00402"/>00402 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00403"/>00403 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00404"/>00404 }
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00405"/>00405 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00406"/>00406 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00417"/>00417 <emphasis role="keywordtype">void</emphasis>&#32;XFILEXDB::Clean()
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00418"/>00418 {
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00419"/>00419 &#32;&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1adf37d76d3a0fb8803872058288ef9657">xpath</link>.<link linkend="_class_x_s_t_r_i_n_g_1a9275997c1605fa79646c301e63a77d06">Empty</link>();
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00420"/>00420 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00421"/>00421 &#32;&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1ae590e190c0939560d7fb4a33fb245165">isopen</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00422"/>00422 &#32;&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1a1348ca70c9cf119fededcf6f6a47b46f">nrecords</link>&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00423"/>00423 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00424"/>00424 &#32;&#32;<link linkend="_class_x_f_i_l_e_x_d_b_1adf5ff95d15c9b3ab8319473923b3067d">indexmap</link>.<link linkend="_class_x_m_a_p_1a02e7b8a15144553d81f2e8ec217845f6">DeleteAll</link>();
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00425"/>00425 }
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00426"/>00426 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00427"/>00427 
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00428"/>00428 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_file_x_d_b_8cpp_source_1l00429"/>00429 
+</programlisting></section>

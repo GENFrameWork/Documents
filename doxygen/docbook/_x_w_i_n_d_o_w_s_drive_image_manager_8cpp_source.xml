@@ -1,0 +1,551 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source" xml:lang="en-US">
+<title>XWINDOWSDriveImageManager.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/Platforms/Windows/XWINDOWSDriveImageManager.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_w_i_n_d_o_w_s_drive_image_manager_8h">XWINDOWSDriveImageManager.h</link>&quot;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_buffer_8h">XBuffer.h</link>&quot;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_drive_image_manager___x_event_8h">XDriveImageManager_XEvent.h</link>&quot;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00044"/>00044 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00046"/>00046 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00048"/>00048 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00049"/>00049 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00050"/>00050 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00052"/>00052 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00053"/>00053 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00054"/>00054 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00055"/>00055 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00056"/>00056 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00057"/>00057 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00058"/>00058 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00059"/>00059 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00069"/><link linkend="_class_x_w_i_n_d_o_w_s_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r_1a2199c47248058b687ba233dc5d074c1b">00069</link> <link linkend="_class_x_w_i_n_d_o_w_s_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r_1a2199c47248058b687ba233dc5d074c1b">XWINDOWSDRIVEIMAGEMANAGER::XWINDOWSDRIVEIMAGEMANAGER</link>()
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00070"/>00070 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00071"/>00071 &#32;&#32;Clean();
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00072"/>00072 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00073"/>00073 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00074"/>00074 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00085"/><link linkend="_class_x_w_i_n_d_o_w_s_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r_1a504f51e7ee30419b43ccd7ed36e61211">00085</link> <link linkend="_class_x_w_i_n_d_o_w_s_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r_1a504f51e7ee30419b43ccd7ed36e61211">XWINDOWSDRIVEIMAGEMANAGER::~XWINDOWSDRIVEIMAGEMANAGER</link>()
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00086"/>00086 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00087"/>00087 &#32;&#32;Clean();
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00088"/>00088 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00089"/>00089 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00090"/>00090 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00102"/><link linkend="_class_x_w_i_n_d_o_w_s_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r_1aeeee68dad0449ed4fac744d6a2fd365c">00102</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r_1aeeee68dad0449ed4fac744d6a2fd365c">XWINDOWSDRIVEIMAGEMANAGER::GetDrives</link>(<link linkend="_class_x_v_e_c_t_o_r">XVECTOR&lt;XDRIVEIMAGEMANAGER_DRIVE*&gt;</link>&amp;&#32;drives)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00103"/>00103 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00104"/>00104 &#32;&#32;drives.<link linkend="_class_x_v_e_c_t_o_r_1abae5097402824f18f274e21e18b23bea">DeleteContents</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00105"/>00105 &#32;&#32;drives.<link linkend="_class_x_v_e_c_t_o_r_1a57c72ab04fd14c60d1026e0a7b4a1887">DeleteAll</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00106"/>00106 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00107"/>00107 &#32;&#32;<link linkend="_class_x_p_a_t_h">XPATH</link>&#32;&#32;&#32;path;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00108"/>00108 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;drivemask&#32;=&#32;GetLogicalDrives();
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00109"/>00109 &#32;&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;&#32;ID&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00110"/>00110 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;&#32;&#32;&#32;c&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00111"/>00111 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00112"/>00112 &#32;&#32;<emphasis role="comment">//&#32;GetLogicalDrives&#32;returns&#32;0&#32;on&#32;failure,&#32;or&#32;a&#32;bitmask&#32;representing&#32;the&#32;drives&#32;available&#32;on&#32;the&#32;system&#32;(bit&#32;0&#32;=&#32;A:,&#32;bit&#32;1&#32;=&#32;B:,&#32;etc)</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00113"/>00113 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00114"/>00114 &#32;&#32;<emphasis role="keywordflow">while</emphasis>(drivemask&#32;!=&#32;0)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00115"/>00115 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(drivemask&#32;&amp;&#32;1)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;the&#32;&quot;A&quot;&#32;in&#32;path&#32;will&#32;get&#32;incremented&#32;by&#32;the&#32;#&#32;of&#32;bits</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;we&apos;ve&#32;shifted</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;path.<link linkend="_class_x_s_t_r_i_n_g_1a2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;\\\\.\\%c:\\&quot;</emphasis>),&#32;<link linkend="__x_string_8h_1ab483f167129a5d1941ea1d30f3df8d8a">__C</link>(<emphasis role="charliteral">&apos;A&apos;</emphasis>)&#32;+&#32;c);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(CheckDriveType(path,&#32;ID))
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00122"/>00122 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00123"/>00123 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e">XDRIVEIMAGEMANAGER_DRIVE</link>*&#32;drive&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e">XDRIVEIMAGEMANAGER_DRIVE</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(drive)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;label;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00127"/>00127 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00128"/>00128 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;drive-&gt;<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a3d2cc944329db563f3e6e1407136bc75">GetName</link>()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1a2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%c:&quot;</emphasis>),&#32;<link linkend="__x_string_8h_1ab483f167129a5d1941ea1d30f3df8d8a">__C</link>(<emphasis role="charliteral">&apos;A&apos;</emphasis>)&#32;+&#32;c);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;drive-&gt;<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a6a01ba6e00c566f379daa2681b71ec7c">GetPath</link>()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1a4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(path);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;drive-&gt;<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a13643db6caf09bfc086be4eb7eacfff0">SetVolume</link>(c);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;drive-&gt;<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a50a44e27214ca57e229e01e21e7c448c">GetLabel</link>()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1a4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(label);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;drive-&gt;<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a3641d2835ccf2df283d853c7ce717ee6">SetID</link>(ID);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00133"/>00133 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(GetDriveLabel(drive-&gt;<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a3d2cc944329db563f3e6e1407136bc75">GetName</link>()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;label))&#32;&#32;drive-&gt;<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a50a44e27214ca57e229e01e21e7c448c">GetLabel</link>()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1a4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(label);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00135"/>00135 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;drives.<link linkend="_class_x_v_e_c_t_o_r_1a51a790aac8efd4603aee608ddcc83423">Add</link>(drive);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00139"/>00139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00140"/>00140 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00141"/>00141 &#32;&#32;&#32;&#32;&#32;&#32;drivemask&#32;&gt;&gt;=&#32;1;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00142"/>00142 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;++c;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00144"/>00144 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00145"/>00145 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00146"/>00146 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00147"/>00147 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00148"/>00148 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00149"/>00149 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00161"/><link linkend="_class_x_w_i_n_d_o_w_s_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r_1a495cf2f475a78515b4356c988fc23803">00161</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r_1a495cf2f475a78515b4356c988fc23803">XWINDOWSDRIVEIMAGEMANAGER::Open</link>(<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e">XDRIVEIMAGEMANAGER_DRIVE</link>&amp;&#32;drive)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00162"/>00162 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00163"/>00163 &#32;&#32;HANDLE&#32;handlevolume&#32;=&#32;GetHandleFromVolume(drive.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1ad883921e899b2362d1e2461abd13e086">GetVolume</link>(),&#32;GENERIC_READ&#32;|&#32;GENERIC_WRITE);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00164"/>00164 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(handlevolume&#32;==&#32;INVALID_HANDLE_VALUE)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00165"/>00165 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00166"/>00166 &#32;&#32;drive.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a4cefa864328317df7e31d4ced62a3e4c">SetHandle</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)handlevolume);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00167"/>00167 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00168"/>00168 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;deviceID&#32;=&#32;0;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00169"/>00169 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!GetDeviceID(handlevolume,&#32;deviceID))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00170"/>00170 &#32;&#32;drive.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1afce4c7188915abd8e96da0c34ffef7bd">SetDeviceID</link>(deviceID);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00171"/>00171 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00172"/>00172 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!LockVolume(handlevolume,&#32;<emphasis role="keyword">true</emphasis>))&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00173"/>00173 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00174"/>00174 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!UnMountVolume(handlevolume))&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00175"/>00175 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00176"/>00176 &#32;&#32;HANDLE&#32;rawhandle&#32;=&#32;GetHandleFromDevice(deviceID,&#32;GENERIC_READ&#32;|&#32;GENERIC_WRITE);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00177"/>00177 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(rawhandle&#32;==&#32;INVALID_HANDLE_VALUE)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00178"/>00178 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00179"/>00179 &#32;&#32;drive.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a2db176abc26eccd823e3be8254762f96">SetRawHandle</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)rawhandle);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00180"/>00180 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00181"/>00181 &#32;&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;sectorsize&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00182"/>00182 &#32;&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;numbersectors&#32;=&#32;0;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00183"/>00183 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00184"/>00184 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!GetNumberOfSectors(rawhandle,&#32;sectorsize,&#32;numbersectors))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00185"/>00185 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00186"/>00186 &#32;&#32;drive.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a4295a1f82a55b0669575d976545b366b">SetSectorSize</link>(sectorsize);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00187"/>00187 &#32;&#32;drive.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a7b225719ed7e71a324d2ad8274b374d5">SetNumberSectors</link>(numbersectors);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00188"/>00188 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00189"/>00189 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00190"/>00190 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00191"/>00191 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00192"/>00192 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00207"/><link linkend="_class_x_w_i_n_d_o_w_s_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r_1a01be2122f7949dd6660aeaf1bc6efc7e">00207</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r_1a01be2122f7949dd6660aeaf1bc6efc7e">XWINDOWSDRIVEIMAGEMANAGER::Read</link>(<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e">XDRIVEIMAGEMANAGER_DRIVE</link>&amp;&#32;drive,&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;startsector,&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;numbersectors,&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&amp;&#32;buffer)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00208"/>00208 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00209"/>00209 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;_buffer;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00210"/>00210 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;maxbuffer&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)numbersectors&#32;*&#32;(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)drive.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a0a60abeea2f9a2d22a5b34202d2d3ee7">GetSectorSize</link>());
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00211"/>00211 &#32;&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;maxnsectorsblock&#32;&#32;=&#32;(maxbuffer&#32;/&#32;drive.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a0a60abeea2f9a2d22a5b34202d2d3ee7">GetSectorSize</link>());
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00212"/>00212 &#32;&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;readnsectorsblock&#32;=&#32;0;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00213"/>00213 &#32;&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;sizeread&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00214"/>00214 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;status&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00215"/>00215 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00216"/>00216 &#32;&#32;buffer.<link linkend="_class_x_b_u_f_f_e_r_1a0395231705663a2aeeee3b4be9d292bb">Delete</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00217"/>00217 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00218"/>00218 &#32;&#32;_buffer&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>[maxbuffer];
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00219"/>00219 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!_buffer)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00220"/>00220 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00221"/>00221 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(maxnsectorsblock&#32;&gt;&#32;numbersectors)&#32;maxnsectorsblock&#32;=&#32;numbersectors;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00222"/>00222 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00223"/>00223 &#32;&#32;<emphasis role="keywordflow">while</emphasis>(readnsectorsblock&#32;&lt;&#32;numbersectors)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00224"/>00224 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00225"/>00225 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___x_e_v_e_n_t">XDRIVEIMAGEMANAGER_XEVENT</link>&#32;xevent(<emphasis role="keyword">this</emphasis>,&#32;<link linkend="__x_drive_image_manager___x_event_8h_1ad75e3964fa9d3b1f2090fa81fb038a44a8e1ddbacdac50671049b6b48a2c51b65">XDRIVEIMAGEMANAGER_XEVENT_TYPE_READSECTORS</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00226"/>00226 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00227"/>00227 &#32;&#32;&#32;&#32;&#32;&#32;xevent.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___x_e_v_e_n_t_1a47f3706c2f3ae57c930c19f33e6462d0">SetDrive</link>(&amp;drive);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00228"/>00228 &#32;&#32;&#32;&#32;&#32;&#32;xevent.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___x_e_v_e_n_t_1ab1f3e0e84865a57b4406641e623180f5">SetIndexSector</link>(startsector);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00229"/>00229 &#32;&#32;&#32;&#32;&#32;&#32;xevent.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___x_e_v_e_n_t_1a4f8015bb54e2e7925f457114f1a7a4ca">SetNumberSectorsInOperation</link>(maxnsectorsblock);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00230"/>00230 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00231"/>00231 &#32;&#32;&#32;&#32;&#32;&#32;sizeread&#32;=&#32;(maxnsectorsblock&#32;*&#32;drive.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a0a60abeea2f9a2d22a5b34202d2d3ee7">GetSectorSize</link>());
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00232"/>00232 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00233"/>00233 &#32;&#32;&#32;&#32;&#32;&#32;memset(_buffer,&#32;0,&#32;maxbuffer);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00234"/>00234 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00235"/>00235 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;ReadSectorDataFromHandle((HANDLE)drive.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a8f948b4f49aaab02d6fe7ab24cf5e695">GetRawHandle</link>(),&#32;startsector,&#32;drive.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a0a60abeea2f9a2d22a5b34202d2d3ee7">GetSectorSize</link>(),&#32;_buffer,&#32;sizeread);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00236"/>00236 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00237"/>00237 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00238"/>00238 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___x_e_v_e_n_t_1a1bafbb2d08bdaa81e727ccac5ca3ac25">SetError</link>(<link linkend="__x_drive_image_manager_8h_1acfb86788459224f72f0cc16d11a1eebea3e81e5e05e0b1880108daec1e467b543">XDRIVEIMAGEMANAGER_ERROR_NONE</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00239"/>00239 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00240"/>00240 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;buffer.<link linkend="_class_x_b_u_f_f_e_r_1a03212e4f31a9d07995ac4f72db1dd0cf">Add</link>(_buffer,&#32;(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)sizeread);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00241"/>00241 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00242"/>00242 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;readnsectorsblock&#32;+=&#32;maxnsectorsblock;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00243"/>00243 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00244"/>00244 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>((readnsectorsblock&#32;+&#32;maxnsectorsblock)&#32;&gt;&#32;numbersectors)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;maxnsectorsblock&#32;=&#32;(numbersectors&#32;-&#32;readnsectorsblock);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00245"/>00245 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>((readnsectorsblock&#32;+&#32;maxnsectorsblock)&#32;&gt;&#32;drive.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a5359c8dae86792e196d2700088f09b72">GetNumberSectors</link>())&#32;&#32;maxnsectorsblock&#32;=&#32;(drive.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a5359c8dae86792e196d2700088f09b72">GetNumberSectors</link>()&#32;-&#32;readnsectorsblock);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00246"/>00246 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00247"/>00247 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00248"/>00248 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00249"/>00249 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___x_e_v_e_n_t_1a1bafbb2d08bdaa81e727ccac5ca3ac25">SetError</link>(<link linkend="__x_drive_image_manager_8h_1acfb86788459224f72f0cc16d11a1eebeac2c9bf4ebcebeea8ec4eb7a0e9d5dcfa">XDRIVEIMAGEMANAGER_ERROR_READSECTORS</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00250"/>00250 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00251"/>00251 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00252"/>00252 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_u_b_j_e_c_t_1adb65926d5f56410c9243d2f7c69a87a3">PostEvent</link>(&amp;xevent);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00253"/>00253 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00254"/>00254 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00255"/>00255 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00256"/>00256 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00257"/>00257 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00258"/>00258 &#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;[]&#32;_buffer;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00259"/>00259 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00260"/>00260 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00261"/>00261 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00262"/>00262 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00263"/>00263 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00278"/><link linkend="_class_x_w_i_n_d_o_w_s_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r_1a1b1b1adb102a55f870bd8b43616f068c">00278</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r_1a1b1b1adb102a55f870bd8b43616f068c">XWINDOWSDRIVEIMAGEMANAGER::Write</link>(<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e">XDRIVEIMAGEMANAGER_DRIVE</link>&amp;&#32;drive,&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;startsector,&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;numbersectors,&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&amp;&#32;buffer)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00279"/>00279 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00280"/>00280 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;_buffer;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00281"/>00281 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;maxbuffer&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)numbersectors&#32;*&#32;(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)drive.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a0a60abeea2f9a2d22a5b34202d2d3ee7">GetSectorSize</link>());
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00282"/>00282 &#32;&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;maxnsectorsblock&#32;&#32;&#32;=&#32;(maxbuffer&#32;/&#32;drive.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a0a60abeea2f9a2d22a5b34202d2d3ee7">GetSectorSize</link>());
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00283"/>00283 &#32;&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;writensectorsblock&#32;=&#32;0;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00284"/>00284 &#32;&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;sizewrite&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00285"/>00285 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;status&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00286"/>00286 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00287"/>00287 &#32;&#32;_buffer&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>[maxbuffer];
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00288"/>00288 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!_buffer)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00289"/>00289 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00290"/>00290 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(maxnsectorsblock&#32;&gt;&#32;numbersectors)&#32;maxnsectorsblock&#32;=&#32;numbersectors;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00291"/>00291 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00292"/>00292 &#32;&#32;<emphasis role="keywordflow">while</emphasis>(writensectorsblock&#32;&lt;&#32;numbersectors)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00293"/>00293 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00294"/>00294 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___x_e_v_e_n_t">XDRIVEIMAGEMANAGER_XEVENT</link>&#32;xevent(<emphasis role="keyword">this</emphasis>,&#32;<link linkend="__x_drive_image_manager___x_event_8h_1ad75e3964fa9d3b1f2090fa81fb038a44a53c08b6dea95220e436bbc4096ca3768">XDRIVEIMAGEMANAGER_XEVENT_TYPE_WRITESECTORS</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00295"/>00295 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00296"/>00296 &#32;&#32;&#32;&#32;&#32;&#32;xevent.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___x_e_v_e_n_t_1a47f3706c2f3ae57c930c19f33e6462d0">SetDrive</link>(&amp;drive);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00297"/>00297 &#32;&#32;&#32;&#32;&#32;&#32;xevent.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___x_e_v_e_n_t_1ab1f3e0e84865a57b4406641e623180f5">SetIndexSector</link>(startsector);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00298"/>00298 &#32;&#32;&#32;&#32;&#32;&#32;xevent.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___x_e_v_e_n_t_1a4f8015bb54e2e7925f457114f1a7a4ca">SetNumberSectorsInOperation</link>(maxnsectorsblock);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00299"/>00299 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00300"/>00300 &#32;&#32;&#32;&#32;&#32;&#32;sizewrite&#32;=&#32;(maxnsectorsblock&#32;*&#32;drive.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a0a60abeea2f9a2d22a5b34202d2d3ee7">GetSectorSize</link>());
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00301"/>00301 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00302"/>00302 &#32;&#32;&#32;&#32;&#32;&#32;memset(_buffer,&#32;0,&#32;maxbuffer);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00303"/>00303 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00304"/>00304 &#32;&#32;&#32;&#32;&#32;&#32;memcpy(_buffer,&#32;buffer.<link linkend="_class_x_b_u_f_f_e_r_1a59d2c2b8d1c32098920f5d3eba0a5971">Get</link>(),&#32;(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)sizewrite);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00305"/>00305 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00306"/>00306 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;WriteSectorDataToHandle((HANDLE)drive.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a8f948b4f49aaab02d6fe7ab24cf5e695">GetRawHandle</link>(),&#32;startsector,&#32;drive.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a0a60abeea2f9a2d22a5b34202d2d3ee7">GetSectorSize</link>(),&#32;_buffer,&#32;sizewrite);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00307"/>00307 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00308"/>00308 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00309"/>00309 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___x_e_v_e_n_t_1a1bafbb2d08bdaa81e727ccac5ca3ac25">SetError</link>(<link linkend="__x_drive_image_manager_8h_1acfb86788459224f72f0cc16d11a1eebea3e81e5e05e0b1880108daec1e467b543">XDRIVEIMAGEMANAGER_ERROR_NONE</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00310"/>00310 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00311"/>00311 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;writensectorsblock&#32;+=&#32;maxnsectorsblock;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00312"/>00312 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00313"/>00313 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>((writensectorsblock&#32;+&#32;maxnsectorsblock)&#32;&gt;&#32;numbersectors)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;maxnsectorsblock&#32;=&#32;(numbersectors&#32;-&#32;writensectorsblock);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00314"/>00314 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>((writensectorsblock&#32;+&#32;maxnsectorsblock)&#32;&gt;&#32;drive.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a5359c8dae86792e196d2700088f09b72">GetNumberSectors</link>())&#32;&#32;maxnsectorsblock&#32;=&#32;(drive.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a5359c8dae86792e196d2700088f09b72">GetNumberSectors</link>()&#32;-&#32;writensectorsblock);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00315"/>00315 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00316"/>00316 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00317"/>00317 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00318"/>00318 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00319"/>00319 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___x_e_v_e_n_t_1a1bafbb2d08bdaa81e727ccac5ca3ac25">SetError</link>(<link linkend="__x_drive_image_manager_8h_1acfb86788459224f72f0cc16d11a1eebea1f1afce4fdf475076a4f3e83e239f8cc">XDRIVEIMAGEMANAGER_ERROR_WRITESECTORS</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00320"/>00320 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00321"/>00321 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00322"/>00322 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_u_b_j_e_c_t_1adb65926d5f56410c9243d2f7c69a87a3">PostEvent</link>(&amp;xevent);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00323"/>00323 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00324"/>00324 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00325"/>00325 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00326"/>00326 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00327"/>00327 &#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;[]&#32;_buffer;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00328"/>00328 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00329"/>00329 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00330"/>00330 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00331"/>00331 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00332"/>00332 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00344"/><link linkend="_class_x_w_i_n_d_o_w_s_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r_1a5ad720447b1236745756d606d2b4ef18">00344</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_w_i_n_d_o_w_s_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r_1a5ad720447b1236745756d606d2b4ef18">XWINDOWSDRIVEIMAGEMANAGER::Close</link>(<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e">XDRIVEIMAGEMANAGER_DRIVE</link>&amp;&#32;drive)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00345"/>00345 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00346"/>00346 &#32;&#32;HANDLE&#32;vol_handle&#32;=&#32;(HANDLE)drive.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1ab2d7797e0b542711e41b4060c3597725">GetHandle</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00347"/>00347 &#32;&#32;HANDLE&#32;raw_handle&#32;=&#32;(HANDLE)drive.<link linkend="_class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___d_r_i_v_e_1a8f948b4f49aaab02d6fe7ab24cf5e695">GetRawHandle</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00348"/>00348 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00349"/>00349 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(raw_handle&#32;!=&#32;INVALID_HANDLE_VALUE)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00350"/>00350 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00351"/>00351 &#32;&#32;&#32;&#32;&#32;&#32;CloseHandle(raw_handle);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00352"/>00352 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00353"/>00353 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00354"/>00354 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(vol_handle&#32;!=&#32;INVALID_HANDLE_VALUE)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00355"/>00355 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00356"/>00356 &#32;&#32;&#32;&#32;&#32;&#32;LockVolume(vol_handle,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00357"/>00357 &#32;&#32;&#32;&#32;&#32;&#32;CloseHandle(vol_handle);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00358"/>00358 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00359"/>00359 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00360"/>00360 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00361"/>00361 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00362"/>00362 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00363"/>00363 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00376"/>00376 HANDLE&#32;XWINDOWSDRIVEIMAGEMANAGER::GetHandleFromDevice(<emphasis role="keywordtype">int</emphasis>&#32;device,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;access)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00377"/>00377 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00378"/>00378 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;devicename;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00379"/>00379 &#32;&#32;devicename.<link linkend="_class_x_s_t_r_i_n_g_1a2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;\\\\.\\PhysicalDrive%d&quot;</emphasis>),&#32;device);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00380"/>00380 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00381"/>00381 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;CreateFile(devicename.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;access,&#32;FILE_SHARE_READ&#32;|&#32;FILE_SHARE_WRITE,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;OPEN_EXISTING,&#32;0,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00382"/>00382 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00383"/>00383 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00384"/>00384 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00397"/>00397 HANDLE&#32;XWINDOWSDRIVEIMAGEMANAGER::GetHandleFromVolume(<emphasis role="keywordtype">int</emphasis>&#32;volume,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;access)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00398"/>00398 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00399"/>00399 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;volumename;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00400"/>00400 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00401"/>00401 &#32;&#32;volumename.<link linkend="_class_x_s_t_r_i_n_g_1a2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;\\\\.\\%c:&quot;</emphasis>),&#32;<link linkend="__x_string_8h_1ab483f167129a5d1941ea1d30f3df8d8a">__C</link>(<emphasis role="charliteral">&apos;A&apos;</emphasis>)&#32;+&#32;volume);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00402"/>00402 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00403"/>00403 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;CreateFile(volumename.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;access,&#32;FILE_SHARE_READ&#32;|&#32;FILE_SHARE_WRITE,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;OPEN_EXISTING,&#32;0,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00404"/>00404 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00405"/>00405 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00406"/>00406 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00418"/>00418 <emphasis role="keywordtype">bool</emphasis>&#32;XWINDOWSDRIVEIMAGEMANAGER::GetDeviceID(HANDLE&#32;handlevolume,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;&#32;deviceID)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00419"/>00419 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00420"/>00420 &#32;&#32;VOLUME_DISK_EXTENTS&#32;&#32;&#32;vol_ext;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00421"/>00421 &#32;&#32;DWORD&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;bytesreturned;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00422"/>00422 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00423"/>00423 &#32;&#32;deviceID&#32;=&#32;0;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00424"/>00424 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00425"/>00425 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!DeviceIoControl(handlevolume,&#32;IOCTL_VOLUME_GET_VOLUME_DISK_EXTENTS,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;0,&#32;&amp;vol_ext,&#32;<emphasis role="keyword">sizeof</emphasis>(vol_ext),&#32;&amp;bytesreturned,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>))
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00426"/>00426 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00427"/>00427 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00428"/>00428 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00429"/>00429 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00430"/>00430 &#32;&#32;deviceID&#32;&#32;=&#32;vol_ext.Extents[0].DiskNumber;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00431"/>00431 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00432"/>00432 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00433"/>00433 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00434"/>00434 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00435"/>00435 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00448"/>00448 <emphasis role="keywordtype">bool</emphasis>&#32;XWINDOWSDRIVEIMAGEMANAGER::LockVolume(HANDLE&#32;handle,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;islock)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00449"/>00449 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00450"/>00450 &#32;&#32;DWORD&#32;junk;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00451"/>00451 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00452"/>00452 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;DeviceIoControl(handle,&#32;islock?FSCTL_LOCK_VOLUME:&#32;FSCTL_UNLOCK_VOLUME,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;0,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;0,&#32;&amp;junk,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>)?true:false;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00453"/>00453 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00454"/>00454 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00455"/>00455 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00467"/>00467 <emphasis role="keywordtype">bool</emphasis>&#32;XWINDOWSDRIVEIMAGEMANAGER::UnMountVolume(HANDLE&#32;handle)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00468"/>00468 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00469"/>00469 &#32;&#32;DWORD&#32;junk;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00470"/>00470 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00471"/>00471 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;DeviceIoControl(handle,&#32;FSCTL_DISMOUNT_VOLUME,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;0,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;0,&#32;&amp;junk,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00472"/>00472 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00473"/>00473 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00474"/>00474 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00486"/>00486 <emphasis role="keywordtype">bool</emphasis>&#32;XWINDOWSDRIVEIMAGEMANAGER::IsVolumeUnmounted(HANDLE&#32;handle)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00487"/>00487 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00488"/>00488 &#32;&#32;DWORD&#32;junk;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00489"/>00489 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00490"/>00490 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;DeviceIoControl(handle,&#32;FSCTL_IS_VOLUME_MOUNTED,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;0,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;0,&#32;&amp;junk,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>)?<emphasis role="keyword">false</emphasis>:<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00491"/>00491 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00492"/>00492 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00493"/>00493 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00507"/>00507 <emphasis role="keywordtype">bool</emphasis>&#32;XWINDOWSDRIVEIMAGEMANAGER::GetNumberOfSectors(HANDLE&#32;handle,&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&amp;&#32;sectorsize,&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&amp;&#32;numbersectors)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00508"/>00508 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00509"/>00509 &#32;&#32;DWORD&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;junk;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00510"/>00510 &#32;&#32;DISK_GEOMETRY_EX&#32;&#32;diskgeometry;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00511"/>00511 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00512"/>00512 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00513"/>00513 &#32;&#32;sectorsize&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00514"/>00514 &#32;&#32;numbersectors&#32;=&#32;0;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00515"/>00515 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00516"/>00516 &#32;&#32;status&#32;=&#32;DeviceIoControl(handle,&#32;IOCTL_DISK_GET_DRIVE_GEOMETRY_EX,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;0,&#32;&amp;diskgeometry,&#32;<emphasis role="keyword">sizeof</emphasis>(diskgeometry),&#32;&amp;junk,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00517"/>00517 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00518"/>00518 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00519"/>00519 &#32;&#32;&#32;&#32;&#32;&#32;sectorsize&#32;&#32;&#32;&#32;=&#32;(<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>)diskgeometry.Geometry.BytesPerSector;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00520"/>00520 &#32;&#32;&#32;&#32;&#32;&#32;numbersectors&#32;=&#32;((<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>)diskgeometry.DiskSize.QuadPart&#32;/&#32;(<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>)diskgeometry.Geometry.BytesPerSector);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00521"/>00521 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00522"/>00522 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00523"/>00523 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00524"/>00524 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00525"/>00525 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00526"/>00526 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00539"/>00539 <emphasis role="keywordtype">bool</emphasis>&#32;XWINDOWSDRIVEIMAGEMANAGER::GetSpaceAvailable(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;location,&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&amp;&#32;spaveavailable)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00540"/>00540 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00541"/>00541 &#32;&#32;ULARGE_INTEGER&#32;freespace;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00542"/>00542 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00543"/>00543 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00544"/>00544 &#32;&#32;spaveavailable&#32;=&#32;0L;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00545"/>00545 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00546"/>00546 &#32;&#32;status&#32;=&#32;GetDiskFreeSpaceEx(location,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;&amp;freespace)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00547"/>00547 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00548"/>00548 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00549"/>00549 &#32;&#32;spaveavailable&#32;=&#32;freespace.QuadPart;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00550"/>00550 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00551"/>00551 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00552"/>00552 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00553"/>00553 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00554"/>00554 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00567"/>00567 <emphasis role="keywordtype">bool</emphasis>&#32;XWINDOWSDRIVEIMAGEMANAGER::GetDriveLabel(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;location,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;label)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00568"/>00568 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00569"/>00569 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00570"/>00570 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00571"/>00571 &#32;&#32;label.<link linkend="_class_x_s_t_r_i_n_g_1a5daae19734452be6010c65f3d812aa00">AdjustSize</link>(<link linkend="__x_base_8h_1a647026fb22c438e4f73db846255990e9">_MAXSTR</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00572"/>00572 &#32;&#32;status&#32;=&#32;&#32;GetVolumeInformation(location,&#32;label.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;label.<link linkend="_class_x_s_t_r_i_n_g_1a7c3fa0dd7b650399470c76192fbd4916">GetSize</link>(),&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;0);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00573"/>00573 &#32;&#32;label.<link linkend="_class_x_s_t_r_i_n_g_1a5daae19734452be6010c65f3d812aa00">AdjustSize</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00574"/>00574 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00575"/>00575 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00576"/>00576 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00577"/>00577 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00578"/>00578 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00591"/>00591 <emphasis role="keywordtype">bool</emphasis>&#32;XWINDOWSDRIVEIMAGEMANAGER::CheckDriveType(<link linkend="_class_x_p_a_t_h">XPATH</link>&amp;&#32;path,&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&amp;&#32;ID)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00592"/>00592 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00593"/>00593 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00594"/>00594 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00595"/>00595 <emphasis role="preprocessor">&#32;&#32;#ifndef&#32;BUILDER</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00596"/>00596 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00597"/>00597 &#32;&#32;HANDLE&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hdevice;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00598"/>00598 &#32;&#32;PSTORAGE_DEVICE_DESCRIPTOR&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pdevdesc;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00599"/>00599 &#32;&#32;<link linkend="_struct_x_w_i_n_d_o_w_s_d_r_i_v_e_i_m_a_g_e___d_e_v_i_c_e___n_u_m_b_e_r">XWINDOWSDRIVEIMAGE_DEVICE_NUMBER</link>&#32;&#32;deviceinfo;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00600"/>00600 &#32;&#32;<link linkend="_class_x_p_a_t_h">XPATH</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;path_noslash;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00601"/>00601 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;drivetype;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00602"/>00602 &#32;&#32;DWORD&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;nbytesreturned;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00603"/>00603 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00604"/>00604 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00605"/>00605 &#32;&#32;path_noslash&#32;=&#32;path.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00606"/>00606 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00607"/>00607 &#32;&#32;path_noslash.<link linkend="_class_x_p_a_t_h_1ab4492049ce4293834ec2c54957bf22eb">Slash_Delete</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00608"/>00608 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00609"/>00609 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;some&#32;calls&#32;require&#32;no&#32;tailing&#32;slash,&#32;some&#32;require&#32;a&#32;trailing&#32;slash...</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00610"/>00610 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00611"/>00611 &#32;&#32;drivetype&#32;=&#32;GetDriveType(path.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00612"/>00612 &#32;&#32;<emphasis role="keywordflow">switch</emphasis>(drivetype)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00613"/>00613 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00614"/>00614 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;DRIVE_REMOVABLE&#32;&#32;:&#32;<emphasis role="comment">//&#32;The&#32;media&#32;can&#32;be&#32;removed&#32;from&#32;the&#32;drive.</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00615"/>00615 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00616"/>00616 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;DRIVE_FIXED&#32;&#32;&#32;&#32;&#32;&#32;:&#32;{&#32;<emphasis role="comment">//&#32;The&#32;media&#32;cannot&#32;be&#32;removed&#32;from&#32;the&#32;drive.&#32;Some&#32;USB&#32;drives&#32;report&#32;as&#32;this.</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00617"/>00617 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hdevice&#32;=&#32;CreateFile(path_noslash.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;FILE_READ_ATTRIBUTES,&#32;FILE_SHARE_READ&#32;|&#32;FILE_SHARE_WRITE,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;OPEN_EXISTING,&#32;0,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00618"/>00618 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(hdevice&#32;==&#32;INVALID_HANDLE_VALUE)&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00619"/>00619 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00620"/>00620 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;sizearray&#32;&#32;=&#32;<emphasis role="keyword">sizeof</emphasis>(STORAGE_DEVICE_DESCRIPTOR)&#32;+&#32;512&#32;-&#32;1;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00621"/>00621 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pdevdesc&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;(PSTORAGE_DEVICE_DESCRIPTOR)<emphasis role="keyword">new</emphasis>&#32;BYTE[sizearray];
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00622"/>00622 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00623"/>00623 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pdevdesc-&gt;Size&#32;=&#32;sizearray;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00624"/>00624 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00625"/>00625 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;get&#32;the&#32;device&#32;number&#32;if&#32;the&#32;drive&#32;is&#32;removable&#32;or&#32;(fixed&#32;AND&#32;on&#32;the&#32;usb&#32;bus,&#32;SD,&#32;or&#32;MMC&#32;(undefined&#32;in&#32;XP/mingw))</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00626"/>00626 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00627"/>00627 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(GetMediaType(hdevice))
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00628"/>00628 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00629"/>00629 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00630"/>00630 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00631"/>00631 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;STORAGE_PROPERTY_QUERY&#32;&#32;query;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;input&#32;param&#32;for&#32;query</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00632"/>00632 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DWORD&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;noutbytes;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;IOCTL&#32;output&#32;length</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00633"/>00633 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;BOOL&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;result;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;IOCTL&#32;return&#32;val</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00634"/>00634 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DWORD&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;nreturned;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00635"/>00635 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00636"/>00636 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;specify&#32;the&#32;query&#32;type</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00637"/>00637 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;query.PropertyId&#32;=&#32;StorageDeviceProperty;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00638"/>00638 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;query.QueryType&#32;&#32;=&#32;PropertyStandardQuery;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00639"/>00639 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00640"/>00640 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;query&#32;using&#32;IOCTL_STORAGE_QUERY_PROPERTY</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00641"/>00641 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;result&#32;=&#32;::DeviceIoControl(hdevice,&#32;IOCTL_STORAGE_QUERY_PROPERTY,&#32;&amp;query,&#32;<emphasis role="keyword">sizeof</emphasis>(STORAGE_PROPERTY_QUERY),&#32;pdevdesc,&#32;pdevdesc-&gt;Size,&#32;&amp;noutbytes,&#32;(LPOVERLAPPED)<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00642"/>00642 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(result)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00643"/>00643 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00644"/>00644 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;result&#32;=&#32;::DeviceIoControl(hdevice,&#32;IOCTL_STORAGE_GET_DEVICE_NUMBER,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;0,&#32;&amp;deviceinfo,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_x_w_i_n_d_o_w_s_d_r_i_v_e_i_m_a_g_e___d_e_v_i_c_e___n_u_m_b_e_r">XWINDOWSDRIVEIMAGE_DEVICE_NUMBER</link>),&#32;&amp;noutbytes,&#32;(LPOVERLAPPED)<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00645"/>00645 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!result)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00646"/>00646 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00647"/>00647 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00648"/>00648 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00649"/>00649 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00650"/>00650 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00651"/>00651 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00652"/>00652 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00653"/>00653 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(DeviceIoControl(hdevice,&#32;IOCTL_STORAGE_CHECK_VERIFY2,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;0,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;0,&#32;&amp;nreturned,&#32;(LPOVERLAPPED)&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>))
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00654"/>00654 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00655"/>00655 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00656"/>00656 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00657"/>00657 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00658"/>00658 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00659"/>00659 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00660"/>00660 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00661"/>00661 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00662"/>00662 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00663"/>00663 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00664"/>00664 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00665"/>00665 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(((drivetype&#32;==&#32;DRIVE_REMOVABLE)&#32;&amp;&amp;&#32;(pdevdesc-&gt;BusType&#32;!=&#32;BusTypeSata))&#32;&#32;||
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00666"/>00666 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;((drivetype&#32;==&#32;DRIVE_FIXED)&#32;&#32;&#32;&#32;&#32;&amp;&amp;&#32;((pdevdesc-&gt;BusType&#32;==&#32;BusTypeUsb)&#32;&#32;&#32;||&#32;(pdevdesc-&gt;BusType&#32;==&#32;BusTypeSd&#32;)&#32;||&#32;(pdevdesc-&gt;BusType&#32;==&#32;BusTypeMmc&#32;))))
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00667"/>00667 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00668"/>00668 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;ensure&#32;that&#32;the&#32;drive&#32;is&#32;actually&#32;accessible&#32;&#32;multi-card&#32;hubs&#32;were&#32;reporting&#32;&quot;removable&quot;&#32;even&#32;when&#32;empty</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00669"/>00669 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00670"/>00670 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(DeviceIoControl(hdevice,&#32;IOCTL_STORAGE_CHECK_VERIFY2,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;0,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;0,&#32;&amp;nbytesreturned,&#32;(LPOVERLAPPED)&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>))
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00671"/>00671 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00672"/>00672 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ID&#32;=&#32;deviceinfo.<link linkend="_struct_x_w_i_n_d_o_w_s_d_r_i_v_e_i_m_a_g_e___d_e_v_i_c_e___n_u_m_b_e_r_1a171d711e40b0d5d10248a054f80b65f2">devicenumber</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00673"/>00673 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00674"/>00674 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00675"/>00675 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00676"/>00676 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00677"/>00677 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;IOCTL_STORAGE_CHECK_VERIFY2&#32;fails&#32;on&#32;some&#32;devices&#32;under&#32;XP/Vista,&#32;try&#32;the&#32;other&#32;(slower)&#32;method,&#32;just&#32;in&#32;case.</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00678"/>00678 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00679"/>00679 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CloseHandle(hdevice);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00680"/>00680 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hdevice&#32;=&#32;CreateFile(path_noslash.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;FILE_READ_DATA,&#32;FILE_SHARE_READ&#32;|&#32;FILE_SHARE_WRITE,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;OPEN_EXISTING,&#32;0,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00681"/>00681 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(DeviceIoControl(hdevice,&#32;IOCTL_STORAGE_CHECK_VERIFY,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;0,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;0,&#32;&amp;nbytesreturned,&#32;(LPOVERLAPPED)&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>))
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00682"/>00682 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00683"/>00683 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ID&#32;=&#32;deviceinfo.<link linkend="_struct_x_w_i_n_d_o_w_s_d_r_i_v_e_i_m_a_g_e___d_e_v_i_c_e___n_u_m_b_e_r_1a171d711e40b0d5d10248a054f80b65f2">devicenumber</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00684"/>00684 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00685"/>00685 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00686"/>00686 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00687"/>00687 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00688"/>00688 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00689"/>00689 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00690"/>00690 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00691"/>00691 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>[]&#32;pdevdesc;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00692"/>00692 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00693"/>00693 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CloseHandle(hdevice);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00694"/>00694 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00695"/>00695 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00696"/>00696 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00697"/>00697 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00698"/>00698 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;default&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00699"/>00699 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00700"/>00700 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00701"/>00701 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00702"/>00702 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00703"/>00703 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00704"/>00704 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00705"/>00705 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00706"/>00706 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00707"/>00707 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00719"/>00719 <emphasis role="keywordtype">bool</emphasis>&#32;XWINDOWSDRIVEIMAGEMANAGER::GetMediaType(HANDLE&#32;hdevice)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00720"/>00720 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00721"/>00721 &#32;&#32;DISK_GEOMETRY&#32;diskgeometry;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00722"/>00722 &#32;&#32;DWORD&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;nbytesreturned;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00723"/>00723 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00724"/>00724 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(DeviceIoControl(hdevice,&#32;IOCTL_DISK_GET_DRIVE_GEOMETRY,<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;0,&#32;&amp;diskgeometry,&#32;<emphasis role="keyword">sizeof</emphasis>(diskgeometry),&#32;&amp;nbytesreturned,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>))
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00725"/>00725 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00726"/>00726 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>((diskgeometry.MediaType&#32;==&#32;FixedMedia)&#32;||&#32;(diskgeometry.MediaType&#32;==&#32;RemovableMedia))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;&#32;<emphasis role="comment">//&#32;Not&#32;a&#32;floppy</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00727"/>00727 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00728"/>00728 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00729"/>00729 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00730"/>00730 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00731"/>00731 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00732"/>00732 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00748"/>00748 <emphasis role="keywordtype">bool</emphasis>&#32;XWINDOWSDRIVEIMAGEMANAGER::ReadSectorDataFromHandle(HANDLE&#32;handle,&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;startsector,&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;sectorsize,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;buffer,&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&amp;&#32;size)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00749"/>00749 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00750"/>00750 &#32;&#32;LARGE_INTEGER&#32;li;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00751"/>00751 &#32;&#32;DWORD&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;bytesread;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00752"/>00752 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00753"/>00753 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00754"/>00754 &#32;&#32;li.QuadPart&#32;=&#32;startsector&#32;*&#32;sectorsize;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00755"/>00755 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00756"/>00756 &#32;&#32;SetFilePointer(handle,&#32;li.LowPart,&#32;&amp;li.HighPart,&#32;FILE_BEGIN);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00757"/>00757 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00758"/>00758 &#32;&#32;status&#32;=&#32;ReadFile(handle,&#32;buffer,&#32;(DWORD)size,&#32;&amp;bytesread,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00759"/>00759 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00760"/>00760 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00761"/>00761 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;(bytesread&#32;==&#32;size)?<emphasis role="keyword">true</emphasis>:false;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00762"/>00762 &#32;&#32;&#32;&#32;&#32;&#32;size&#32;=&#32;bytesread;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00763"/>00763 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00764"/>00764 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00765"/>00765 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00766"/>00766 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00767"/>00767 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00768"/>00768 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00784"/>00784 <emphasis role="keywordtype">bool</emphasis>&#32;XWINDOWSDRIVEIMAGEMANAGER::WriteSectorDataToHandle(HANDLE&#32;handle,&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;startsector,&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;sectorsize,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;buffer,&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&amp;&#32;size)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00785"/>00785 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00786"/>00786 &#32;&#32;LARGE_INTEGER&#32;li;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00787"/>00787 &#32;&#32;DWORD&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;byteswrite;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00788"/>00788 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00789"/>00789 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00790"/>00790 &#32;&#32;li.QuadPart&#32;=&#32;startsector&#32;*&#32;sectorsize;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00791"/>00791 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00792"/>00792 &#32;&#32;SetFilePointer(handle,&#32;li.LowPart,&#32;&amp;li.HighPart,&#32;FILE_BEGIN);
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00793"/>00793 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00794"/>00794 &#32;&#32;status&#32;=&#32;WriteFile(handle,&#32;buffer,&#32;(DWORD)size,&#32;&amp;byteswrite,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00795"/>00795 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00796"/>00796 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00797"/>00797 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;(byteswrite&#32;==&#32;size)?<emphasis role="keyword">true</emphasis>:false;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00798"/>00798 &#32;&#32;&#32;&#32;&#32;&#32;size&#32;=&#32;byteswrite;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00799"/>00799 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00800"/>00800 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00801"/>00801 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00802"/>00802 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00803"/>00803 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00804"/>00804 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00815"/>00815 <emphasis role="keywordtype">void</emphasis>&#32;XWINDOWSDRIVEIMAGEMANAGER::Clean()
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00816"/>00816 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00817"/>00817 &#32;&#32;handle&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00818"/>00818 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00819"/>00819 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00820"/>00820 
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00821"/>00821 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_drive_image_manager_8cpp_source_1l00822"/>00822 
+</programlisting></section>

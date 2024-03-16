@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source" xml:lang="en-US">
+<title>DIOLINUXGPIOPCParallel.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/Platforms/Linux/DIOLINUXGPIOPCParallel.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00037"/>00037 <emphasis role="preprocessor">#ifdef&#32;HW_PC</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00038"/>00038 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00040"/>00040 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00041"/>00041 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00042"/>00042 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8h">DIOLINUXGPIOPCParallel.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00044"/>00044 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&lt;stdlib.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&lt;stdint.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&lt;fcntl.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00049"/>00049 <emphasis role="preprocessor">#include&#32;&lt;ctype.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00050"/>00050 <emphasis role="preprocessor">#include&#32;&lt;unistd.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#include&#32;&lt;sys/mman.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#include&#32;&lt;sys/types.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00053"/>00053 <emphasis role="preprocessor">#include&#32;&lt;sys/stat.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00054"/>00054 <emphasis role="preprocessor">#include&#32;&lt;sys/ioctl.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00055"/>00055 <emphasis role="preprocessor">#include&#32;&lt;sys/io.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00056"/>00056 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00057"/>00057 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_trace_8h">XTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00058"/>00058 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00059"/>00059 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00061"/>00061 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00062"/>00062 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00063"/>00063 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00064"/>00064 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00065"/>00065 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00066"/>00066 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00067"/>00067 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00068"/>00068 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00069"/>00069 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00070"/>00070 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00071"/>00071 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00072"/>00072 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00073"/>00073 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00083"/>00083 DIOLINUXGPIOPCPARALLEL::DIOLINUXGPIOPCPARALLEL()&#32;:&#32;<link linkend="_class_d_i_o_g_p_i_o">DIOGPIO</link>()
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00084"/>00084 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00085"/>00085 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00086"/>00086 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00087"/>00087 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00088"/>00088 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00099"/>00099 DIOLINUXGPIOPCPARALLEL::~DIOLINUXGPIOPCPARALLEL()
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00100"/>00100 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00101"/>00101 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00102"/>00102 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00103"/>00103 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00104"/>00104 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00114"/>00114 <link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;DIOLINUXGPIOPCPARALLEL::GetParallelPort()
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00115"/>00115 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00116"/>00116 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;port;
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00117"/>00117 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00118"/>00118 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00119"/>00119 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00131"/>00131 <emphasis role="keywordtype">void</emphasis>&#32;DIOLINUXGPIOPCPARALLEL::SetParallelPort(<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;port)
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00132"/>00132 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00133"/>00133 &#32;&#32;this-&gt;port&#32;=&#32;port;
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00134"/>00134 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00135"/>00135 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00136"/>00136 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00146"/>00146 <emphasis role="keywordtype">bool</emphasis>&#32;DIOLINUXGPIOPCPARALLEL::Ini()
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00147"/>00147 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00148"/>00148 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00149"/>00149 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00150"/>00150 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00151"/>00151 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00164"/>00164 <emphasis role="keywordtype">bool</emphasis>&#32;DIOLINUXGPIOPCPARALLEL::SetMode(<link linkend="_class_d_i_o_g_p_i_o___e_n_t_r_y">DIOGPIO_ENTRY</link>*&#32;entry,&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;mode)
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00165"/>00165 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00166"/>00166 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!entry)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00167"/>00167 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00168"/>00168 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00169"/>00169 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00170"/>00170 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00171"/>00171 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00183"/>00183 <emphasis role="keywordtype">bool</emphasis>&#32;DIOLINUXGPIOPCPARALLEL::GetValue(<link linkend="_class_d_i_o_g_p_i_o___e_n_t_r_y">DIOGPIO_ENTRY</link>*&#32;entry)
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00184"/>00184 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00185"/>00185 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!entry)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00186"/>00186 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00187"/>00187 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;data&#32;=&#32;0;
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00188"/>00188 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00189"/>00189 &#32;&#32;PC_Get(port,&#32;data);
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00190"/>00190 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00191"/>00191 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(data&#32;&amp;&#32;~(0x01&#32;&lt;&lt;&#32;entry-&gt;<link linkend="_class_d_i_o_g_p_i_o___e_n_t_r_y_1add16102922ecf6ff81f302e19e4c2d62">GetGPIO</link>()))?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00192"/>00192 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00193"/>00193 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00194"/>00194 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00207"/>00207 <emphasis role="keywordtype">bool</emphasis>&#32;DIOLINUXGPIOPCPARALLEL::SetValue(<link linkend="_class_d_i_o_g_p_i_o___e_n_t_r_y">DIOGPIO_ENTRY</link>*&#32;entry,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;value)
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00208"/>00208 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00209"/>00209 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!entry)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00210"/>00210 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00211"/>00211 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;data&#32;=&#32;0;
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00212"/>00212 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00213"/>00213 &#32;&#32;PC_Get(port,&#32;data);
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00214"/>00214 &#32;&#32;PC_Set(port,&#32;value&#32;?&#32;(data&#32;|&#32;(0x01&#32;&lt;&lt;&#32;entry-&gt;<link linkend="_class_d_i_o_g_p_i_o___e_n_t_r_y_1add16102922ecf6ff81f302e19e4c2d62">GetGPIO</link>()))&#32;:&#32;(data&#32;&amp;&#32;~(0x01&#32;&lt;&lt;&#32;entry-&gt;GetGPIO())));
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00215"/>00215 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00216"/>00216 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00217"/>00217 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00218"/>00218 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00219"/>00219 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00229"/>00229 <emphasis role="keywordtype">bool</emphasis>&#32;DIOLINUXGPIOPCPARALLEL::End()
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00230"/>00230 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00231"/>00231 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00232"/>00232 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00233"/>00233 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00234"/>00234 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00247"/>00247 <emphasis role="keywordtype">bool</emphasis>&#32;DIOLINUXGPIOPCPARALLEL::PC_Get(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;nport,<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&amp;&#32;data)
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00248"/>00248 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00249"/>00249 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;val&#32;=&#32;0;
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00250"/>00250 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00251"/>00251 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(ioperm(nport,1,1))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00252"/>00252 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00253"/>00253 &#32;&#32;val&#32;=&#32;inb(nport);
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00254"/>00254 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00255"/>00255 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(ioperm(nport,1,0))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00256"/>00256 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00257"/>00257 &#32;&#32;data&#32;=&#32;(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>)(val&#32;&amp;&#32;0x0FF);
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00258"/>00258 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00259"/>00259 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00260"/>00260 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00261"/>00261 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00262"/>00262 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00275"/>00275 <emphasis role="keywordtype">bool</emphasis>&#32;DIOLINUXGPIOPCPARALLEL::PC_Set(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;nport,<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;data)
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00276"/>00276 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00277"/>00277 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(ioperm(nport,1,1))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00278"/>00278 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00279"/>00279 &#32;&#32;outb(data,&#32;nport);
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00280"/>00280 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00281"/>00281 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(ioperm(nport,1,0))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00282"/>00282 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00283"/>00283 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00284"/>00284 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00285"/>00285 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00286"/>00286 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00297"/>00297 <emphasis role="keywordtype">void</emphasis>&#32;DIOLINUXGPIOPCPARALLEL::Clean()
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00298"/>00298 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00299"/>00299 &#32;&#32;port&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;DIOLINUXGPIOPCPARALLEL_PORT1;
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00300"/>00300 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00301"/>00301 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00302"/>00302 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00303"/>00303 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00304"/>00304 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00305"/>00305 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00306"/>00306 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00307"/>00307 
+<anchor xml:id="__d_i_o_l_i_n_u_x_g_p_i_o_p_c_parallel_8cpp_source_1l00308"/>00308 
+</programlisting></section>

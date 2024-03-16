@@ -1,0 +1,172 @@
+\doxysection{D\+:/\+Projects/\+GENFrame\+Work/\+GEN/\+Cipher/\+Cipher\+AES.cpp File Reference}
+\hypertarget{_cipher_a_e_s_8cpp}{}\label{_cipher_a_e_s_8cpp}\index{D:/Projects/GENFrameWork/GEN/Cipher/CipherAES.cpp@{D:/Projects/GENFrameWork/GEN/Cipher/CipherAES.cpp}}
+{\ttfamily \#include "{}GEN\+\_\+\+Defines.\+h"{}}\newline
+{\ttfamily \#include "{}Cipher\+AES.\+h"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include "{}XFactory.\+h"{}}\newline
+{\ttfamily \#include "{}XMemory\+\_\+\+Control.\+h"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_cipher_a_e_s_8cpp_aa8312024ea68d3d616163d2de65ae251}{GET\+\_\+\+UINT32\+\_\+\+LE}}(n,  b,  i)
+\item 
+\#define \mbox{\hyperlink{_cipher_a_e_s_8cpp_a71862ad5d56423720862af2f5606588c}{PUT\+\_\+\+UINT32\+\_\+\+LE}}(n,  b,  i)
+\item 
+\#define \mbox{\hyperlink{_cipher_a_e_s_8cpp_a944a93400dc147647b4f7c8089b54eff}{AES\+\_\+\+FROUND}}(X0,  X1,  X2,  X3,  Y0,  Y1,  Y2,  Y3)
+\item 
+\#define \mbox{\hyperlink{_cipher_a_e_s_8cpp_a080004ddc3bc16fcb705a71bdd4f7907}{AES\+\_\+\+RROUND}}(X0,  X1,  X2,  X3,  Y0,  Y1,  Y2,  Y3)
+\item 
+\#define \mbox{\hyperlink{_cipher_a_e_s_8cpp_a4055397e36a18b7d3228d125784aadae}{ROTL8}}(x)~(( x $<$$<$ 8 ) \& 0x\+FFFFFFFF ) \texorpdfstring{$\vert$}{|} ( x $>$$>$ 24 )
+\item 
+\#define \mbox{\hyperlink{_cipher_a_e_s_8cpp_a2d0e2bef2df143a8301a37e9686c13d1}{XTIME}}(x)~(( x $<$$<$ 1 ) \texorpdfstring{$^\wedge$}{\string^} ( ( x \& 0x80 ) ? 0x1B \+: 0x00 ))
+\item 
+\#define \mbox{\hyperlink{_cipher_a_e_s_8cpp_a3181b6978c9b47c96208263c73c8c4a7}{MUL}}(x,  y)~(( x \&\& y ) ? pow\mbox{[}(log\mbox{[}x\mbox{]}+log\mbox{[}y\mbox{]}) \% 255\mbox{]} \+: 0)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\DoxyHorRuler{0}
+ 
+
+Definition in file \mbox{\hyperlink{_cipher_a_e_s_8cpp_source}{Cipher\+AES.\+cpp}}.
+
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{_cipher_a_e_s_8cpp_a944a93400dc147647b4f7c8089b54eff}\label{_cipher_a_e_s_8cpp_a944a93400dc147647b4f7c8089b54eff} 
+\index{CipherAES.cpp@{CipherAES.cpp}!AES\_FROUND@{AES\_FROUND}}
+\index{AES\_FROUND@{AES\_FROUND}!CipherAES.cpp@{CipherAES.cpp}}
+\doxysubsubsection{\texorpdfstring{AES\_FROUND}{AES\_FROUND}}
+{\footnotesize\ttfamily \#define AES\+\_\+\+FROUND(\begin{DoxyParamCaption}\item[{}]{X0,  }\item[{}]{X1,  }\item[{}]{X2,  }\item[{}]{X3,  }\item[{}]{Y0,  }\item[{}]{Y1,  }\item[{}]{Y2,  }\item[{}]{Y3 }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ X0\ =\ *RK++\ \string^\ FT0[\ (\ Y0\ \ \ \ \ \ \ )\ \&\ 0xFF\ ]\ \string^\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FT1[\ (\ Y1\ >>\ \ 8\ )\ \&\ 0xFF\ ]\ \string^\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FT2[\ (\ Y2\ >>\ 16\ )\ \&\ 0xFF\ ]\ \string^\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FT3[\ (\ Y3\ >>\ 24\ )\ \&\ 0xFF\ ];\ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ X1\ =\ *RK++\ \string^\ FT0[\ (\ Y1\ \ \ \ \ \ \ )\ \&\ 0xFF\ ]\ \string^\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FT1[\ (\ Y2\ >>\ \ 8\ )\ \&\ 0xFF\ ]\ \string^\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FT2[\ (\ Y3\ >>\ 16\ )\ \&\ 0xFF\ ]\ \string^\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FT3[\ (\ Y0\ >>\ 24\ )\ \&\ 0xFF\ ];\ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ X2\ =\ *RK++\ \string^\ FT0[\ (\ Y2\ \ \ \ \ \ \ )\ \&\ 0xFF\ ]\ \string^\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FT1[\ (\ Y3\ >>\ \ 8\ )\ \&\ 0xFF\ ]\ \string^\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FT2[\ (\ Y0\ >>\ 16\ )\ \&\ 0xFF\ ]\ \string^\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FT3[\ (\ Y1\ >>\ 24\ )\ \&\ 0xFF\ ];\ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ X3\ =\ *RK++\ \string^\ FT0[\ (\ Y3\ \ \ \ \ \ \ )\ \&\ 0xFF\ ]\ \string^\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FT1[\ (\ Y0\ >>\ \ 8\ )\ \&\ 0xFF\ ]\ \string^\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FT2[\ (\ Y1\ >>\ 16\ )\ \&\ 0xFF\ ]\ \string^\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ FT3[\ (\ Y2\ >>\ 24\ )\ \&\ 0xFF\ ];\ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{_cipher_a_e_s_8cpp_source_l00066}{66}} of file \mbox{\hyperlink{_cipher_a_e_s_8cpp_source}{Cipher\+AES.\+cpp}}.
+
+\Hypertarget{_cipher_a_e_s_8cpp_a080004ddc3bc16fcb705a71bdd4f7907}\label{_cipher_a_e_s_8cpp_a080004ddc3bc16fcb705a71bdd4f7907} 
+\index{CipherAES.cpp@{CipherAES.cpp}!AES\_RROUND@{AES\_RROUND}}
+\index{AES\_RROUND@{AES\_RROUND}!CipherAES.cpp@{CipherAES.cpp}}
+\doxysubsubsection{\texorpdfstring{AES\_RROUND}{AES\_RROUND}}
+{\footnotesize\ttfamily \#define AES\+\_\+\+RROUND(\begin{DoxyParamCaption}\item[{}]{X0,  }\item[{}]{X1,  }\item[{}]{X2,  }\item[{}]{X3,  }\item[{}]{Y0,  }\item[{}]{Y1,  }\item[{}]{Y2,  }\item[{}]{Y3 }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ X0\ =\ *RK++\ \string^\ RT0[\ (\ Y0\ \ \ \ \ \ \ )\ \&\ 0xFF\ ]\ \string^\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RT1[\ (\ Y3\ >>\ \ 8\ )\ \&\ 0xFF\ ]\ \string^\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RT2[\ (\ Y2\ >>\ 16\ )\ \&\ 0xFF\ ]\ \string^\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RT3[\ (\ Y1\ >>\ 24\ )\ \&\ 0xFF\ ];\ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ X1\ =\ *RK++\ \string^\ RT0[\ (\ Y1\ \ \ \ \ \ \ )\ \&\ 0xFF\ ]\ \string^\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RT1[\ (\ Y0\ >>\ \ 8\ )\ \&\ 0xFF\ ]\ \string^\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RT2[\ (\ Y3\ >>\ 16\ )\ \&\ 0xFF\ ]\ \string^\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RT3[\ (\ Y2\ >>\ 24\ )\ \&\ 0xFF\ ];\ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ X2\ =\ *RK++\ \string^\ RT0[\ (\ Y2\ \ \ \ \ \ \ )\ \&\ 0xFF\ ]\ \string^\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RT1[\ (\ Y1\ >>\ \ 8\ )\ \&\ 0xFF\ ]\ \string^\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RT2[\ (\ Y0\ >>\ 16\ )\ \&\ 0xFF\ ]\ \string^\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RT3[\ (\ Y3\ >>\ 24\ )\ \&\ 0xFF\ ];\ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ X3\ =\ *RK++\ \string^\ RT0[\ (\ Y3\ \ \ \ \ \ \ )\ \&\ 0xFF\ ]\ \string^\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RT1[\ (\ Y2\ >>\ \ 8\ )\ \&\ 0xFF\ ]\ \string^\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RT2[\ (\ Y1\ >>\ 16\ )\ \&\ 0xFF\ ]\ \string^\ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RT3[\ (\ Y0\ >>\ 24\ )\ \&\ 0xFF\ ];\ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{_cipher_a_e_s_8cpp_source_l00087}{87}} of file \mbox{\hyperlink{_cipher_a_e_s_8cpp_source}{Cipher\+AES.\+cpp}}.
+
+\Hypertarget{_cipher_a_e_s_8cpp_aa8312024ea68d3d616163d2de65ae251}\label{_cipher_a_e_s_8cpp_aa8312024ea68d3d616163d2de65ae251} 
+\index{CipherAES.cpp@{CipherAES.cpp}!GET\_UINT32\_LE@{GET\_UINT32\_LE}}
+\index{GET\_UINT32\_LE@{GET\_UINT32\_LE}!CipherAES.cpp@{CipherAES.cpp}}
+\doxysubsubsection{\texorpdfstring{GET\_UINT32\_LE}{GET\_UINT32\_LE}}
+{\footnotesize\ttfamily \#define GET\+\_\+\+UINT32\+\_\+\+LE(\begin{DoxyParamCaption}\item[{}]{n,  }\item[{}]{b,  }\item[{}]{i }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ (n)\ =\ \ \ (\ (\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})\ (b)[(i)\ \ \ \ ]\ \ \ \ \ \ \ )\ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ (\ (\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})\ (b)[(i)\ +\ 1]\ <<\ \ 8\ )\ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ (\ (\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})\ (b)[(i)\ +\ 2]\ <<\ 16\ )\ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ (\ (\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}})\ (b)[(i)\ +\ 3]\ <<\ 24\ );\ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\DoxyHorRuler{0}
+ 
+
+Definition at line \mbox{\hyperlink{_cipher_a_e_s_8cpp_source_l00054}{54}} of file \mbox{\hyperlink{_cipher_a_e_s_8cpp_source}{Cipher\+AES.\+cpp}}.
+
+\Hypertarget{_cipher_a_e_s_8cpp_a3181b6978c9b47c96208263c73c8c4a7}\label{_cipher_a_e_s_8cpp_a3181b6978c9b47c96208263c73c8c4a7} 
+\index{CipherAES.cpp@{CipherAES.cpp}!MUL@{MUL}}
+\index{MUL@{MUL}!CipherAES.cpp@{CipherAES.cpp}}
+\doxysubsubsection{\texorpdfstring{MUL}{MUL}}
+{\footnotesize\ttfamily \#define MUL(\begin{DoxyParamCaption}\item[{}]{x,  }\item[{}]{y }\end{DoxyParamCaption})~(( x \&\& y ) ? pow\mbox{[}(log\mbox{[}x\mbox{]}+log\mbox{[}y\mbox{]}) \% 255\mbox{]} \+: 0)}
+
+
+
+Definition at line \mbox{\hyperlink{_cipher_a_e_s_8cpp_source_l00112}{112}} of file \mbox{\hyperlink{_cipher_a_e_s_8cpp_source}{Cipher\+AES.\+cpp}}.
+
+\Hypertarget{_cipher_a_e_s_8cpp_a71862ad5d56423720862af2f5606588c}\label{_cipher_a_e_s_8cpp_a71862ad5d56423720862af2f5606588c} 
+\index{CipherAES.cpp@{CipherAES.cpp}!PUT\_UINT32\_LE@{PUT\_UINT32\_LE}}
+\index{PUT\_UINT32\_LE@{PUT\_UINT32\_LE}!CipherAES.cpp@{CipherAES.cpp}}
+\doxysubsubsection{\texorpdfstring{PUT\_UINT32\_LE}{PUT\_UINT32\_LE}}
+{\footnotesize\ttfamily \#define PUT\+\_\+\+UINT32\+\_\+\+LE(\begin{DoxyParamCaption}\item[{}]{n,  }\item[{}]{b,  }\item[{}]{i }\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \ \ (b)[(i)\ \ \ \ ]\ =\ (\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}})\ (\ (n)\ \ \ \ \ \ \ );\ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (b)[(i)\ +\ 1]\ =\ (\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}})\ (\ (n)\ >>\ \ 8\ );\ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (b)[(i)\ +\ 2]\ =\ (\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}})\ (\ (n)\ >>\ 16\ );\ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (b)[(i)\ +\ 3]\ =\ (\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}})\ (\ (n)\ >>\ 24\ );\ \ \ \ \ \ \ \(\backslash\)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+Definition at line \mbox{\hyperlink{_cipher_a_e_s_8cpp_source_l00060}{60}} of file \mbox{\hyperlink{_cipher_a_e_s_8cpp_source}{Cipher\+AES.\+cpp}}.
+
+\Hypertarget{_cipher_a_e_s_8cpp_a4055397e36a18b7d3228d125784aadae}\label{_cipher_a_e_s_8cpp_a4055397e36a18b7d3228d125784aadae} 
+\index{CipherAES.cpp@{CipherAES.cpp}!ROTL8@{ROTL8}}
+\index{ROTL8@{ROTL8}!CipherAES.cpp@{CipherAES.cpp}}
+\doxysubsubsection{\texorpdfstring{ROTL8}{ROTL8}}
+{\footnotesize\ttfamily \#define ROTL8(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~(( x $<$$<$ 8 ) \& 0x\+FFFFFFFF ) \texorpdfstring{$\vert$}{|} ( x $>$$>$ 24 )}
+
+
+
+Definition at line \mbox{\hyperlink{_cipher_a_e_s_8cpp_source_l00110}{110}} of file \mbox{\hyperlink{_cipher_a_e_s_8cpp_source}{Cipher\+AES.\+cpp}}.
+
+\Hypertarget{_cipher_a_e_s_8cpp_a2d0e2bef2df143a8301a37e9686c13d1}\label{_cipher_a_e_s_8cpp_a2d0e2bef2df143a8301a37e9686c13d1} 
+\index{CipherAES.cpp@{CipherAES.cpp}!XTIME@{XTIME}}
+\index{XTIME@{XTIME}!CipherAES.cpp@{CipherAES.cpp}}
+\doxysubsubsection{\texorpdfstring{XTIME}{XTIME}}
+{\footnotesize\ttfamily \#define XTIME(\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})~(( x $<$$<$ 1 ) \texorpdfstring{$^\wedge$}{\string^} ( ( x \& 0x80 ) ? 0x1B \+: 0x00 ))}
+
+
+
+Definition at line \mbox{\hyperlink{_cipher_a_e_s_8cpp_source_l00111}{111}} of file \mbox{\hyperlink{_cipher_a_e_s_8cpp_source}{Cipher\+AES.\+cpp}}.
+

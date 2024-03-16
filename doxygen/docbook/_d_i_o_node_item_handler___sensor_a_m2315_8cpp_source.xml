@@ -1,0 +1,211 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source" xml:lang="en-US">
+<title>DIONodeItemHandler_SensorAM2315.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/DataIO/Nodes/DIONodeItemHandler_SensorAM2315.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;CONTROL&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00030"/>00030 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00031"/>00031 <emphasis role="preprocessor">#include&#32;&quot;math.h&quot;</emphasis>
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00032"/>00032 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00033"/>00033 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00034"/>00034 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00036"/>00036 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00037"/>00037 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_node___x_event_8h">DIONode_XEvent.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_node_item_handler___sensor_a_m2315_8h">DIONodeItemHandler_SensorAM2315.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00043"/>00043 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00044"/>00044 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00045"/>00045 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00046"/>00046 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00047"/>00047 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00048"/>00048 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00049"/>00049 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00050"/>00050 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00064"/><link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r___s_e_n_s_o_r_a_m2315_1aba01fa5599de0a3b4fd4672df04aa0a5">00064</link> <link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r___s_e_n_s_o_r_a_m2315_1aba01fa5599de0a3b4fd4672df04aa0a5">DIONODEITEMHANDLER_SENSORAM2315::DIONODEITEMHANDLER_SENSORAM2315</link>(<emphasis role="keywordtype">int</emphasis>&#32;port,&#32;<emphasis role="keywordtype">int</emphasis>&#32;remoteitemaddress,&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>)
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00065"/>00065 {
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00066"/>00066 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00067"/>00067 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00068"/>00068 &#32;&#32;am2315&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_i2_c_t_e_m_h_u_m_s_e_n_s_o_r_a_m2315">DIOI2CTEMHUMSENSORAM2315</link>();
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00069"/>00069 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00070"/>00070 &#32;&#32;this-&gt;port&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;port;&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00071"/>00071 &#32;&#32;this-&gt;remoteitemaddress&#32;&#32;&#32;=&#32;remoteitemaddress;&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00072"/>00072 &#32;&#32;this-&gt;timeout&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00073"/>00073 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00074"/>00074 &#32;&#32;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r_1a19bcca16a51c74e7d32d91fabdcc3f2f">type</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__d_i_o_node_item_handler_8h_1a41d8b678e4e9585e8006a6bd2ecdd27ead3bc7a6ff8c0e3526e0a333ef6fc7ee5">DIONODEITEMHANDLER_TYPE_SENSOR_AM2315</link>;&#32;&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00075"/>00075 &#32;&#32;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r_1a4a9e005d5dfee4085cac9594b71eecb4">name</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;AOSONG&#32;AM2315&quot;</emphasis>);
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00076"/>00076 }
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00077"/>00077 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00078"/>00078 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00089"/><link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r___s_e_n_s_o_r_a_m2315_1abb85d36f78b45d5dccdc3b79417ec89e">00089</link> <link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r___s_e_n_s_o_r_a_m2315_1abb85d36f78b45d5dccdc3b79417ec89e">DIONODEITEMHANDLER_SENSORAM2315::~DIONODEITEMHANDLER_SENSORAM2315</link>()
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00090"/>00090 {
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00091"/>00091 &#32;&#32;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r___s_e_n_s_o_r_a_m2315_1a1dce52b9676d9bd1a63f880b456f73c2">Close</link>();
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00092"/>00092 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00093"/>00093 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(am2315)
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00094"/>00094 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;am2315;&#32;&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00096"/>00096 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00097"/>00097 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00098"/>00098 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00099"/>00099 }
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00100"/>00100 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00101"/>00101 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00111"/><link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r___s_e_n_s_o_r_a_m2315_1a331faff2f54e4b434c95da3907d1a431">00111</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r___s_e_n_s_o_r_a_m2315_1a331faff2f54e4b434c95da3907d1a431">DIONODEITEMHANDLER_SENSORAM2315::Open</link>()
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00112"/>00112 {
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00113"/>00113 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!am2315)
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00114"/>00114 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00116"/>00116 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00117"/>00117 &#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00118"/>00118 <emphasis role="preprocessor">&#32;&#32;#ifndef&#32;WINDOWS</emphasis>
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00119"/>00119 &#32;&#32;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r_1af07b3440dcd65c3c86036989fdd36c79">isopen</link>&#32;=&#32;am2315-&gt;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1af147398c24bc58e36045ffc1be189d44">Ini</link>(port,&#32;remoteitemaddress,&#32;timeout);&#32;&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00120"/>00120 <emphasis role="preprocessor">&#32;&#32;#else</emphasis>
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00121"/>00121 &#32;&#32;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r_1af07b3440dcd65c3c86036989fdd36c79">isopen</link>&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00122"/>00122 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00123"/>00123 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r_1af07b3440dcd65c3c86036989fdd36c79">isopen</link>)
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00124"/>00124 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r_1ab72acef9c5ec5a88d33284c18a82fdd6">isworking</link>&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00126"/>00126 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00127"/>00127 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00128"/>00128 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r_1af07b3440dcd65c3c86036989fdd36c79">isopen</link>;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00129"/>00129 }
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00130"/>00130 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00131"/>00131 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00141"/><link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r___s_e_n_s_o_r_a_m2315_1a2f1c2e273a82075c03f74544c344bf7d">00141</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r___s_e_n_s_o_r_a_m2315_1a2f1c2e273a82075c03f74544c344bf7d">DIONODEITEMHANDLER_SENSORAM2315::Update</link>()
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00142"/>00142 {
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00143"/>00143 &#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;value[2]&#32;=&#32;{&#32;0.0f,&#32;0.0f&#32;};
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00144"/>00144 &#32;&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00145"/>00145 &#32;&#32;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r_1ab72acef9c5ec5a88d33284c18a82fdd6">isworking</link>&#32;=&#32;am2315-&gt;<link linkend="_class_d_i_o_i2_c_t_e_m_h_u_m_s_e_n_s_o_r_a_m2315_1adbfaa6062dd4bb2105e13c87e1ac4dc8">Read</link>(value[0],&#32;value[1]);
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00146"/>00146 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00147"/>00147 &#32;&#32;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m">DIONODEITEM</link>*&#32;nodeitem&#32;=&#32;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r_1a10a6fbf7db0eea6ebfa8997140e4cf0b">GetNodeItem</link>();
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00148"/>00148 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!nodeitem)
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00149"/>00149 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00150"/>00150 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00151"/>00151 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00152"/>00152 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00153"/>00153 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(nodeitem-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_1a29e32da571b2f8dc77e63b3c8061ee53">GetValues</link>()-&gt;<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>()&#32;!=&#32;2)&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00154"/>00154 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00155"/>00155 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00156"/>00156 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00157"/>00157 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00158"/>00158 &#32;&#32;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e">DIONODEITEMVALUE</link>*&#32;nodeitemvalue;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00159"/>00159 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00160"/>00160 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;&#32;c&lt;2;&#32;c++)
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00161"/>00161 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;nodeitemvalue&#32;=&#32;nodeitem-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_1a29e32da571b2f8dc77e63b3c8061ee53">GetValues</link>()-&gt;<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(c);
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00163"/>00163 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(nodeitemvalue)
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00165"/>00165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;differencevalue&#32;=&#32;0.0f;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00166"/>00166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_v_a_r_i_a_n_t">XVARIANT</link>*&#32;&#32;nodeitemdifferencevalue&#32;=&#32;nodeitemvalue-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e_1a494a08d7792fac94e37608383ec5f273">GetDifferenceForChange</link>();
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00167"/>00167 &#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00168"/>00168 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(nodeitemdifferencevalue)
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00169"/>00169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00170"/>00170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!nodeitemdifferencevalue-&gt;<link linkend="_class_x_v_a_r_i_a_n_t_1a3665b76bdc25dc4eb46822842dd2de3f">IsNull</link>())
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00171"/>00171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00172"/>00172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;differencevalue&#32;=&#32;(float)(*nodeitemdifferencevalue);&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00173"/>00173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;differencevalue&#32;=&#32;(float)fabs(differencevalue);
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00174"/>00174 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00175"/>00175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00176"/>00176 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00177"/>00177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;difference&#32;=&#32;(value[c]&#32;-&#32;(float)(*nodeitemvalue-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e_1aa6745d76f0f70b856df0428f0c3399b2">GetValue</link>()));
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00178"/>00178 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00179"/>00179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(fabs(difference)&#32;&gt;&#32;differencevalue)
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00180"/>00180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00181"/>00181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;description;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00182"/>00182 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00183"/>00183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;nodeitemvalue-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e_1aa0306f8c46175bebda106aec860001f2">GetDescription</link>(description);
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00184"/>00184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(*nodeitemvalue-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e_1aa6745d76f0f70b856df0428f0c3399b2">GetValue</link>())&#32;=&#32;value[c];
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00185"/>00185 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00186"/>00186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;nodeitemvalue-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e_1a08831b4e9fcf290fa1272625c46cc15c">ReadUpdateDateTime</link>();
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00187"/>00187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;nodeitemvalue-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e_1aff4125e5a67a3c691f62c6c9ed809d61">SetValueHasChanged</link>(<emphasis role="keyword">true</emphasis>);&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00188"/>00188 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00189"/>00189 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00190"/>00190 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_n_o_d_e___x_e_v_e_n_t">DIONODE_XEVENT</link>&#32;xevent(<emphasis role="keyword">this</emphasis>,&#32;<link linkend="__d_i_o_node___x_event_8h_1a64642f61f69d41859bb1dccd31b7fff3a9e6359a29d2617ac1b3935069fed33ce">DIONODE_XEVENT_TYPE_UPDATEVALUE</link>);&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00191"/>00191 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00192"/>00192 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.<link linkend="_class_d_i_o_n_o_d_e___x_e_v_e_n_t_1af6b45fae6740d9dabb0f656a32a41d4d">SetNodeItem</link>(nodeitem);
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00193"/>00193 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.<link linkend="_class_d_i_o_n_o_d_e___x_e_v_e_n_t_1ab1106e94b14af947d0b989e4555d9569">SetIndexValue</link>(c);
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00194"/>00194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00195"/>00195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_u_b_j_e_c_t_1adb65926d5f56410c9243d2f7c69a87a3">PostEvent</link>(&amp;xevent);
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00196"/>00196 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00197"/>00197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00198"/>00198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_trace_8h_1ad3489a73cc8c0aa8e64f91a03735e525">XTRACE_PRINTCOLOR</link>(<link linkend="__x_trace_8h_1ade81e1905d604ef7eb03d194ba1332d4">XTRACE_COLOR_BLUE</link>,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;[DIONODE&#32;item&#32;handler&#32;%s]&#32;%s&#32;%s&#32;[value&#32;%f]&quot;</emphasis>),&#32;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r_1a03d9a6887bf6ef8536c5c09f49d769d4">GetName</link>()-&gt;Get(),&#32;nodeitem-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_1a1b9195e65bf456de882dc759cf17c895">GetDescription</link>()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;description.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;value[c]);&#32;&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00199"/>00199 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00200"/>00200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00201"/>00201 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00202"/>00202 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00203"/>00203 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00204"/>00204 }
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00205"/>00205 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00206"/>00206 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00216"/><link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r___s_e_n_s_o_r_a_m2315_1a1dce52b9676d9bd1a63f880b456f73c2">00216</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r___s_e_n_s_o_r_a_m2315_1a1dce52b9676d9bd1a63f880b456f73c2">DIONODEITEMHANDLER_SENSORAM2315::Close</link>()
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00217"/>00217 {
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00218"/>00218 &#32;&#32;am2315-&gt;<link linkend="_class_d_i_o_i2_c_t_e_m_h_u_m_s_e_n_s_o_r_a_m2315_1a432d86d85202ede11481c50032c66494">End</link>();
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00219"/>00219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00220"/>00220 &#32;&#32;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r_1af07b3440dcd65c3c86036989fdd36c79">isopen</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00221"/>00221 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00222"/>00222 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00223"/>00223 }
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00224"/>00224 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00225"/>00225 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00237"/><link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r___s_e_n_s_o_r_a_m2315_1a2ae813f8749738ee7fd9ae42fcccc691">00237</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r___s_e_n_s_o_r_a_m2315_1a2ae813f8749738ee7fd9ae42fcccc691">DIONODEITEMHANDLER_SENSORAM2315::SetNodeItem</link>(<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m">DIONODEITEM</link>*&#32;nodeitem)
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00238"/>00238 {
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00239"/>00239 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!nodeitem)&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00240"/>00240 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00241"/>00241 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00242"/>00242 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00243"/>00243 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00244"/>00244 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r_1a2b36629524cff3f91b33e43c98789b02">DIONODEITEMHANDLER::SetNodeItem</link>(nodeitem))&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00245"/>00245 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00246"/>00246 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00247"/>00247 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00248"/>00248 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00249"/>00249 &#32;&#32;nodeitem-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_1a07727abb332e25c2abd5855498f9eff6">SetCategory</link>(<link linkend="__d_i_o_node_item_8h_1ad3ec3d4ca7bf163ec199700f125e20a3a45e2e5ab3f1abc5c0cf5c83836fca9e8">DIONODEITEM_CATEGORY_SENSORHUMIDITYTEMPERATURE</link>);&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00250"/>00250 &#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00251"/>00251 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;&#32;c&lt;2;&#32;c++)
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00252"/>00252 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00253"/>00253 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e">DIONODEITEMVALUE</link>*&#32;value&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e">DIONODEITEMVALUE</link>();
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00254"/>00254 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(value)&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00255"/>00255 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00256"/>00256 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">switch</emphasis>(c)
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00257"/>00257 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00258"/>00258 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;&#32;0&#32;:&#32;value-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e_1a76e99030a8a4663ef560429acf3793a2">SetType</link>(<link linkend="__d_i_o_node_item_value_8h_1a1271a905a99603ecc1d8cd90b909add0aeb016f6976f1b627abbe97d2a6dca39b">DIONODEITEMVALUE_TYPE_TEMPERATURE</link>);&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00259"/>00259 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;value-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e_1ae0c27a8b9d0a166b57323885f3061c2d">SetMode</link>(<link linkend="__d_i_o_node_item_value_8h_1a770eab52f2185f1feae84983b8f66790af177bb2b399ff8ec9dfb771ccaa7f0d2">DIONODEITEMVALUE_MODE_READ</link>);&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00260"/>00260 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00261"/>00261 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(*value-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e_1aa6745d76f0f70b856df0428f0c3399b2">GetValue</link>())&#32;&#32;&#32;&#32;=&#32;&#32;&#32;&#32;0.00f;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00262"/>00262 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(*value-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e_1a01e48a8405fded4ca588700adcd6aa07">GetMinValue</link>())&#32;=&#32;&#32;-50.00f;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00263"/>00263 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(*value-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e_1aa7746787cec60f76ac1442acad2c3846">GetMaxValue</link>())&#32;=&#32;&#32;&#32;50.00f;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00264"/>00264 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00265"/>00265 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;value-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e_1aa60aadd7e5a9fac2bdaca6ce3ed2e28e">GetUnitFormat</link>()-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e_u_n_i_t_f_o_r_m_a_t_1a49a1c1086d10376495cb8dd163d95bcf">SetType</link>(<link linkend="__d_i_o_node_item_value_unit_format_8h_1aaa91ca7ada62b0ae061004bb59946457ad1fe977bdbad50af0dbd5e718bd8efc7">DIONODEITEMVALUE_UNITSFORMAT_TYPE_CELSIUSDEGREE</link>);
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00266"/>00266 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00267"/>00267 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00268"/>00268 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;&#32;1&#32;:&#32;value-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e_1a76e99030a8a4663ef560429acf3793a2">SetType</link>(<link linkend="__d_i_o_node_item_value_8h_1a1271a905a99603ecc1d8cd90b909add0a65d8fe66b0e2bfa76d410d8f0e258fcf">DIONODEITEMVALUE_TYPE_HUMIDITY</link>);&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00269"/>00269 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;value-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e_1ae0c27a8b9d0a166b57323885f3061c2d">SetMode</link>(<link linkend="__d_i_o_node_item_value_8h_1a770eab52f2185f1feae84983b8f66790af177bb2b399ff8ec9dfb771ccaa7f0d2">DIONODEITEMVALUE_MODE_READ</link>);&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00270"/>00270 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00271"/>00271 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(*value-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e_1aa6745d76f0f70b856df0428f0c3399b2">GetValue</link>())&#32;&#32;&#32;&#32;=&#32;&#32;&#32;0.00f;&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00272"/>00272 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(*value-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e_1a01e48a8405fded4ca588700adcd6aa07">GetMinValue</link>())&#32;=&#32;&#32;&#32;0.00f;&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00273"/>00273 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(*value-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e_1aa7746787cec60f76ac1442acad2c3846">GetMaxValue</link>())&#32;=&#32;100.00f;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00274"/>00274 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00275"/>00275 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;value-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e_1aa60aadd7e5a9fac2bdaca6ce3ed2e28e">GetUnitFormat</link>()-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e_u_n_i_t_f_o_r_m_a_t_1a49a1c1086d10376495cb8dd163d95bcf">SetType</link>(<link linkend="__d_i_o_node_item_value_unit_format_8h_1aaa91ca7ada62b0ae061004bb59946457a54183f097141b85ccd963718da37c078">DIONODEITEMVALUE_UNITSFORMAT_TYPE_RELATIVEHUMIDITY</link>);
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00276"/>00276 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00277"/>00277 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00278"/>00278 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00279"/>00279 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;nodeitem-&gt;<link linkend="_class_d_i_o_n_o_d_e_i_t_e_m_1a29e32da571b2f8dc77e63b3c8061ee53">GetValues</link>()-&gt;<link linkend="_class_x_v_e_c_t_o_r_1a51a790aac8efd4603aee608ddcc83423">Add</link>(value);
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00280"/>00280 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00281"/>00281 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00282"/>00282 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00283"/>00283 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00284"/>00284 }
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00285"/>00285 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00286"/>00286 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00297"/>00297 <emphasis role="keywordtype">void</emphasis>&#32;DIONODEITEMHANDLER_SENSORAM2315::Clean()
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00298"/>00298 {
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00299"/>00299 &#32;&#32;am2315&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00300"/>00300 
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00301"/>00301 &#32;&#32;port&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00302"/>00302 &#32;&#32;remoteitemaddress&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00303"/>00303 &#32;&#32;timeout&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_node_item_handler___sensor_a_m2315_8cpp_source_1l00304"/>00304 }
+</programlisting></section>

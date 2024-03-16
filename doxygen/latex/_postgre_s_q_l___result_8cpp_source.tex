@@ -1,0 +1,478 @@
+\doxysection{Postgre\+SQL\+\_\+\+Result.\+cpp}
+\hypertarget{_postgre_s_q_l___result_8cpp_source}{}\label{_postgre_s_q_l___result_8cpp_source}\index{D:/Projects/GENFrameWork/GEN/Databases/SQL/PostgreSQL/PostgreSQL\_Result.cpp@{D:/Projects/GENFrameWork/GEN/Databases/SQL/PostgreSQL/PostgreSQL\_Result.cpp}}
+\mbox{\hyperlink{_postgre_s_q_l___result_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00029}00029\ \textcolor{comment}{/*-\/-\/-\/-\/\ PRECOMPILATION\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#pragma\ region\ PRECOMPILATION\_INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_e_n___defines_8h}{GEN\_Defines.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00037}00037\ \textcolor{preprocessor}{\#if\ defined(DB\_SQL\_ACTIVE)\ \&\&\ defined(DB\_POSTGRESQL\_ACTIVE)}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00040}00040\ \textcolor{comment}{/*-\/-\/-\/-\/\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00041}00041\ \textcolor{preprocessor}{\#pragma\ region\ INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_postgre_s_q_l___result_8h}{PostgreSQL\_Result.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00046}00046\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00048}00048\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_trace_8h}{XTrace.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00049}00049\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_system_8h}{XSystem.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00051}00051\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_memory___control_8h}{XMemory\_Control.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00053}00053\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00056}00056\ \textcolor{comment}{/*-\/-\/-\/-\/\ GENERAL\ VARIABLE\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00057}00057\ \textcolor{preprocessor}{\#pragma\ region\ GENERAL\_VARIABLE}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00059}00059\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00062}00062\ \textcolor{comment}{/*-\/-\/-\/-\/\ CLASS\ MEMBERS\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00063}00063\ \textcolor{preprocessor}{\#pragma\ region\ CLASS\_MEMBERS}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00074}00074\ POSTGRESQL\_RESULT::\string~POSTGRESQL\_RESULT()}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00075}00075\ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00076}00076\ \ \ row.Clear();}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00078}00078\ \ \ header.DeleteContents();}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00079}00079\ \ \ header.DeleteAll();}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00081}00081\ \ \ PQclear(this-\/>resultset);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00082}00082\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00083}00083\ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00095}00095\ \mbox{\hyperlink{_x_base_8h_a86128ef639d896f7b12288868ddb7ad5}{XQWORD}}\ POSTGRESQL\_RESULT::GetNumRows()}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00096}00096\ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00097}00097\ \ \ \textcolor{keywordtype}{int}\ res=PQntuples(this-\/>resultset);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00098}00098\ \ \ \textcolor{keywordflow}{return}\ res;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00099}00099\ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00111}00111\ \mbox{\hyperlink{_x_base_8h_a86128ef639d896f7b12288868ddb7ad5}{XQWORD}}\ POSTGRESQL\_RESULT::GetNumColumns()}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00112}00112\ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00113}00113\ \ \ \textcolor{keywordflow}{return}\ PQnfields(resultset);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00114}00114\ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00128}00128\ \textcolor{keywordtype}{bool}\ POSTGRESQL\_RESULT::Seek(\textcolor{keywordtype}{int}\ index)}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00129}00129\ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00130}00130\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00131}00131\ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00143}00143\ \textcolor{keywordtype}{bool}\ POSTGRESQL\_RESULT::First()}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00144}00144\ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00145}00145\ \ \ \textcolor{keywordflow}{if}(!initialized)}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00146}00146\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00147}00147\ \ \ \ \ \ \ Next();}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00148}00148\ \ \ \ \ \ \ GetRow();}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00150}00150\ \ \ \ \ \ \ initialized\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00151}00151\ \ \ \ \ \ \ currentrow\ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00153}00153\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00154}00154\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00156}00156\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00157}00157\ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00169}00169\ \textcolor{keywordtype}{bool}\ POSTGRESQL\_RESULT::Last()}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00170}00170\ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00171}00171\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00172}00172\ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00184}00184\ \textcolor{keywordtype}{bool}\ POSTGRESQL\_RESULT::Next()}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00185}00185\ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00186}00186\ \ \ currentrow++;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00187}00187\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00188}00188\ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00200}00200\ \textcolor{keywordtype}{bool}\ POSTGRESQL\_RESULT::ProcessRow()}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00201}00201\ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00202}00202\ \ \ row.Clear();}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00203}00203\ \ \ header.DeleteContents();}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00204}00204\ \ \ header.DeleteAll();}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00206}00206\ \ \ \textcolor{comment}{//\ Headers}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00207}00207\ \ \ \textcolor{keywordtype}{int}\ ncol\ =\ (int)GetNumColumns();}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00209}00209\ \ \ \textcolor{keywordtype}{char}\ *\ testcmdstatus=PQcmdStatus(resultset);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00210}00210\ \ \ \textcolor{keywordflow}{if}\ (GetNumRows()==0)}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00211}00211\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00213}00213\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ e=0;\ e<ncol;\ e++)}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00214}00214\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00215}00215\ \ \ \ \ \ \ DB\_SQL\_STRING*\ head=\textcolor{keyword}{new}\ DB\_SQL\_STRING();}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00216}00216\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!head)}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00217}00217\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_d_b___s_q_l___e_r_r_o_r}{DB\_SQL\_ERROR}}*\ error=\textcolor{keyword}{new}\ \mbox{\hyperlink{class_d_b___s_q_l___e_r_r_o_r}{DB\_SQL\_ERROR}}(DB\_SQL\_ERROR\_TYPE\_MEMORY\_ERROR);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!error)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00220}00220\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ error-\/>description.Set(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}not\ enought\ memory\ for\ result"{}}));}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ query-\/>database-\/>GetErrorList()-\/>Add(error);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00225}00225\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00227}00227\ \ \ \ \ \ \ \textcolor{keywordtype}{char}*\ name\ =\ PQfname(resultset,\ e);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00228}00228\ \ \ \ \ \ \ head-\/>Set(name);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00229}00229\ \ \ \ \ \ \ header.Add(head);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00230}00230\ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00231}00231\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00232}00232\ \ \ \textcolor{comment}{//\ Row}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00233}00233\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ e=0;\ e<ncol;\ e++)}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00234}00234\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00235}00235\ \ \ \ \ \ \ \mbox{\hyperlink{class_d_b___s_q_l___v_a_r_i_a_n_t}{DB\_SQL\_VARIANT}}*\ variant=\textcolor{keyword}{new}\ \mbox{\hyperlink{class_d_b___s_q_l___v_a_r_i_a_n_t}{DB\_SQL\_VARIANT}}();}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00236}00236\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!variant)}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00237}00237\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_d_b___s_q_l___e_r_r_o_r}{DB\_SQL\_ERROR}}*\ error\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_d_b___s_q_l___e_r_r_o_r}{DB\_SQL\_ERROR}}(DB\_SQL\_ERROR\_TYPE\_MEMORY\_ERROR);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!error)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00240}00240\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ error-\/>description.Set(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}not\ enought\ memory\ for\ result"{}}));}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ query-\/>database-\/>GetErrorList()-\/>Add(error);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00245}00245\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00246}00246\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00247}00247\ \ \ \ \ \ \ Oid\ type\ \ \ \ \ =\ PQftype\ \ \ \ (this-\/>resultset,\ e);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00248}00248\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ isBinary\ =\ PQfformat\ \ (this-\/>resultset,\ e);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00249}00249\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ isNull\ \ \ =\ PQgetisnull(this-\/>resultset,\ (\textcolor{keywordtype}{int})currentrow,e);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00251}00251\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(isNull\ !=\ 1)}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00252}00252\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(type)}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ BOOLOID\ \ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ BYTEAOID\ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ CHAROID\ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00258}00258\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NAMEOID\ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \{\ \textcolor{keywordtype}{char}*\ data\ =\ PQgetvalue(resultset,\ (\textcolor{keywordtype}{int})currentrow,e);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*variant)\ =\ data;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_string_8h_a03209152a681f02e4ba73b6681dd4968}{XCHAR}}*\ value=\ ((\mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}*)(variant-\/>GetData()))-\/>Get();}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*variant)\ =\ data;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00265}00265\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ INT8OID\ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a86128ef639d896f7b12288868ddb7ad5}{XQWORD}}\ number\ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00268}00268\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isNull)}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ data\ \ \ \ =\ (\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*)PQgetvalue(resultset,\ (\textcolor{keywordtype}{int})currentrow,e);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memcpy(\&number,\ (\textcolor{keywordtype}{void}*)data,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{_x_base_8h_a86128ef639d896f7b12288868ddb7ad5}{XQWORD}}));}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00273}00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(is\_le)\ \mbox{\hyperlink{_x_base_8h_a0a01412990f8f070e16468914d231b68}{SWAPQWORD}}(number);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00274}00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*variant)\ =\ number;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00279}00279\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ INT2VECTOROID\ \ \ \ \ \ \ \ :\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00281}00281\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ INT2OID\ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{short}\ integer\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00284}00284\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isNull)}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ data\ \ \ =\ (\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*)PQgetvalue(resultset,\ (\textcolor{keywordtype}{int})currentrow,\ e);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memcpy(\&integer,(\textcolor{keywordtype}{void}*)data,\textcolor{keyword}{sizeof}(integer));}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(is\_le)\ \mbox{\hyperlink{_x_base_8h_afacb625223a89d4cdf212ac4482a7e5c}{SWAPWORD}}(integer);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00291}00291\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*variant)\ =\ (int)integer;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00294}00294\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ INT4OID\ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ integer\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00297}00297\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isNull)}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ data\ \ \ =\ (\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*)PQgetvalue(resultset,\ (\textcolor{keywordtype}{int})currentrow,\ e);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memcpy(\&integer,(\textcolor{keywordtype}{void}*)data,\textcolor{keyword}{sizeof}(integer));}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(is\_le)\ \mbox{\hyperlink{_x_base_8h_a3a8bb12790711eb5164bf14eecd1cc4b}{SWAPDWORD}}(integer);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00304}00304\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*variant)=integer;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00308}00308\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ REGPROCOID\ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00310}00310\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TEXTOID\ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isNull)}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}*\ data\ =\ PQgetvalue(resultset,\ (\textcolor{keywordtype}{int})currentrow,\ e);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*variant)\ \ =\ data;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*variant)\ \ =\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00320}00320\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00321}00321\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ OIDOID\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TIDOID\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ XIDOID\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ CIDOID\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ OIDVECTOROID\ \ \ \ \ \ \ \ \ :\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00327}00327\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ JSONOID\ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isNull)}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}*\ data\ =\ PQgetvalue(resultset,\ (\textcolor{keywordtype}{int})currentrow,\ e);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*variant)\ \ =\ data;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00334}00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00335}00335\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*variant)\ \ =\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00336}00336\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00337}00337\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00338}00338\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ XMLOID\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00340}00340\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ PGNODETREEOID\ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ PGDDLCOMMANDOID\ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ POINTOID\ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ LSEGOID\ \ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00344}00344\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ PATHOID\ \ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00345}00345\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ BOXOID\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ POLYGONOID\ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00347}00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ LINEOID\ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00348}00348\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ FLOAT4OID\ \ \ \ \ \ \ \ \ \ \ \ :\ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ \ dat=0.0;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00351}00351\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isNull)}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00352}00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}*\ \ \ data\ =\ PQgetvalue(resultset,\ (\textcolor{keywordtype}{int})currentrow,\ e);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00354}00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(data)\ memcpy(\&dat,(\textcolor{keywordtype}{void}*)data,\textcolor{keyword}{sizeof}(dat));}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00355}00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ dword;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00356}00356\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(data)\ memcpy(\&dword,(\textcolor{keywordtype}{void}*)data,\textcolor{keyword}{sizeof}(dword));}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00357}00357\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(is\_le)\ \mbox{\hyperlink{_x_base_8h_a3a8bb12790711eb5164bf14eecd1cc4b}{SWAPDWORD}}(dword);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00358}00358\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memcpy(\&dat,(\textcolor{keywordtype}{void}*)\&dword,\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}));}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00359}00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00360}00360\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00361}00361\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*variant)\ =\ (float)dat;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00362}00362\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00363}00363\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00364}00364\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00365}00365\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ FLOAT8OID\ \ \ \ \ \ \ \ \ \ \ \ :\ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ dat\ =\ 0.0;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00367}00367\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isNull)}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00368}00368\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00369}00369\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}*\ data\ =\ PQgetvalue(resultset,\ (\textcolor{keywordtype}{int})currentrow,e);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00370}00370\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memcpy(\&dat,\ (\textcolor{keywordtype}{void}*)data,\ \textcolor{keyword}{sizeof}(dat));}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00371}00371\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a86128ef639d896f7b12288868ddb7ad5}{XQWORD}}\ dword;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00372}00372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memcpy(\&dword,\ (\textcolor{keywordtype}{void}*)data,\ \textcolor{keyword}{sizeof}(dword));}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00373}00373\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(is\_le)\ \mbox{\hyperlink{_x_base_8h_a0a01412990f8f070e16468914d231b68}{SWAPQWORD}}(dword);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00374}00374\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memcpy(\&dat,(\textcolor{keywordtype}{void}*)\&dword,\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{double}));}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00375}00375\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00376}00376\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00377}00377\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*variant)\ =\ (float)dat;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00378}00378\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00379}00379\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00380}00380\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ABSTIMEOID\ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00382}00382\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ RELTIMEOID\ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00383}00383\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TINTERVALOID\ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00384}00384\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ UNKNOWNOID\ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00385}00385\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ CIRCLEOID\ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00386}00386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ CASHOID\ \ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00387}00387\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ MACADDROID\ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00388}00388\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ INETOID\ \ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00389}00389\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ CIDROID\ \ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00390}00390\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ INT2ARRAYOID\ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00391}00391\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ INT4ARRAYOID\ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00392}00392\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TEXTARRAYOID\ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00393}00393\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ OIDARRAYOID\ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00394}00394\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ FLOAT4ARRAYOID\ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00395}00395\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ACLITEMOID\ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00396}00396\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00397}00397\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ CSTRINGARRAYOID\ \ \ \ \ \ :\ \{\ \textcolor{keywordtype}{char}*\ data\ =\ PQgetvalue(resultset,\ (\textcolor{keywordtype}{int})currentrow,\ e);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00398}00398\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*variant)\ =\ data;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00399}00399\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00400}00400\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00401}00401\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00402}00402\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ BPCHAROID\ \ \ \ \ \ \ \ \ \ \ \ :\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00403}00403\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00404}00404\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ VARCHAROID\ \ \ \ \ \ \ \ \ \ \ :\ \{\ \textcolor{keywordtype}{char}*\ data\ \ \ \ \ \ \ \ =\ PQgetvalue\ \ (this-\/>resultset,\ (\textcolor{keywordtype}{int})this-\/>currentrow,\ e);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00405}00405\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ \ length\ \ \ \ \ \ =\ PQgetlength(this-\/>resultset,(\textcolor{keywordtype}{int})this-\/>currentrow,\ e);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00406}00406\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00407}00407\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ received;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00408}00408\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ received.\mbox{\hyperlink{group___x_u_t_i_l_s_ga2bb2ecb6c6c1165217855dfd22a8888d}{ConvertFromUTF8}}((\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*)data,length);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00409}00409\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*variant)\ =\ received;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00410}00410\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00411}00411\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00412}00412\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00413}00413\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TIMEOID\ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00414}00414\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ data\ =\ (\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*)PQgetvalue(resultset,\ (\textcolor{keywordtype}{int})currentrow,\ e);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00415}00415\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00416}00416\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DB\_SQL\_DATETIME\ datetime;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00417}00417\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00418}00418\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isNull)}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00419}00419\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00420}00420\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a86128ef639d896f7b12288868ddb7ad5}{XQWORD}}\ qword;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00421}00421\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00422}00422\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memcpy(\&qword,(\textcolor{keywordtype}{void}*)data,\textcolor{keyword}{sizeof}(qword));}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00423}00423\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(is\_le)}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00424}00424\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a0a01412990f8f070e16468914d231b68}{SWAPQWORD}}(qword);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00425}00425\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00426}00426\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qword/=1000000;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00427}00427\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00428}00428\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ datetime.SetDay\ \ \ (1);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00429}00429\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ datetime.SetMonth\ (1);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00430}00430\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ datetime.SetYear\ \ \ \ (2000);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00431}00431\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00432}00432\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ datetime.AddSeconds(qword);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00433}00433\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00434}00434\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ datetime.SetDay\ \ \ (0);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00435}00435\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ datetime.SetMonth\ (0);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00436}00436\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ datetime.SetYear\ \ \ \ (0);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00437}00437\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00438}00438\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*variant)\ =\ datetime;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00439}00439\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ variant-\/>SetType(\mbox{\hyperlink{_x_variant_8h_ae6ba470d0708534cb56c359929a9eb30a75b298fa666f6379ee8a3338848e972f}{XVARIANT\_TYPE\_TIME}});}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00440}00440\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00441}00441\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00442}00442\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00443}00443\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ DATEOID\ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00444}00444\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ data\ =\ (\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*)PQgetvalue(resultset,\ (\textcolor{keywordtype}{int})currentrow,\ e);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00445}00445\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00446}00446\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DB\_SQL\_DATETIME\ datetime;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00447}00447\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00448}00448\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isNull)}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00449}00449\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00450}00450\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ dword;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00451}00451\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00452}00452\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memcpy(\&dword,(\textcolor{keywordtype}{void}*)data,\textcolor{keyword}{sizeof}(dword));}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00453}00453\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(is\_le)}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00454}00454\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a3a8bb12790711eb5164bf14eecd1cc4b}{SWAPDWORD}}(dword);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00455}00455\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00456}00456\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ datetime.SetDay\ \ \ (1);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00457}00457\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ datetime.SetMonth\ (1);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00458}00458\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ datetime.SetYear\ \ \ \ (2000);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00459}00459\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ datetime.AddDays\ \ \ \ (dword);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00460}00460\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00461}00461\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*variant)\ =\ datetime;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00462}00462\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ variant-\/>SetType(\mbox{\hyperlink{_x_variant_8h_ae6ba470d0708534cb56c359929a9eb30adff6bc2c85057592481304e28ea64c6a}{XVARIANT\_TYPE\_DATE}});}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00463}00463\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00464}00464\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00465}00465\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00466}00466\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ DATETIME\ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00467}00467\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TIMESTAMPOID\ \ \ \ \ \ \ \ \ :\ \{\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ data\ =\ (\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*)PQgetvalue(resultset,\ (\textcolor{keywordtype}{int})currentrow,\ e);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00468}00468\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00469}00469\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DB\_SQL\_DATETIME\ datetime;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00470}00470\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00471}00471\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!isNull)}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00472}00472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00473}00473\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a86128ef639d896f7b12288868ddb7ad5}{XQWORD}}\ qword;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00474}00474\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ memcpy(\&qword,(\textcolor{keywordtype}{void}*)data,\textcolor{keyword}{sizeof}(qword));}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00475}00475\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(is\_le)\ \mbox{\hyperlink{_x_base_8h_a0a01412990f8f070e16468914d231b68}{SWAPQWORD}}(qword);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00476}00476\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00477}00477\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qword/=1000000;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00478}00478\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00479}00479\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_x_d_a_t_e_t_i_m_e}{XDATETIME}}\ start;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00480}00480\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ start.\mbox{\hyperlink{group___x_u_t_i_l_s_gad0bec954a744ea5e976275973cd6eea7}{SetDay}}\ \ \ \ (1);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00481}00481\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ start.\mbox{\hyperlink{group___x_u_t_i_l_s_ga001f98667032c95241a60a29bae990bf}{SetMonth}}\ \ (1);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00482}00482\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ start.\mbox{\hyperlink{group___x_u_t_i_l_s_ga794f5f740556e7309c1db19815f8b3b2}{SetYear}}\ \ \ (2000);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00483}00483\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00484}00484\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_base_8h_a86128ef639d896f7b12288868ddb7ad5}{XQWORD}}\ secstoposix=start.\mbox{\hyperlink{group___x_u_t_i_l_s_ga8005b8d3f065b4cb2dd1a208165ad5b6}{GetSeconsFromDate}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00485}00485\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ datetime.SetDateFromSeconds(secstoposix+qword,\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00486}00486\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00487}00487\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*variant)\ =\ datetime;}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00488}00488\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00489}00489\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00490}00490\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00491}00491\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ INTERVALOID\ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00492}00492\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TIMETZOID\ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00493}00493\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ BITOID\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00494}00494\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ VARBITOID\ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00495}00495\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ NUMERICOID\ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00496}00496\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ REFCURSOROID\ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00497}00497\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ REGPROCEDUREOID\ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00498}00498\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ REGOPEROID\ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00499}00499\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ REGOPERATOROID\ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00500}00500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ REGCLASSOID\ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00501}00501\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ REGTYPEOID\ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00502}00502\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ REGROLEOID\ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00503}00503\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ REGNAMESPACEOID\ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00504}00504\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ REGTYPEARRAYOID\ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00505}00505\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ UUIDOID\ \ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00506}00506\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ LSNOID\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00507}00507\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TSVECTOROID\ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00508}00508\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ GTSVECTOROID\ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00509}00509\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TSQUERYOID\ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00510}00510\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ REGCONFIGOID\ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00511}00511\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ REGDICTIONARYOID\ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00512}00512\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ JSONBOID\ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00513}00513\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ INT4RANGEOID\ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00514}00514\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ RECORDOID\ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00515}00515\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ RECORDARRAYOID\ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00516}00516\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ CSTRINGOID\ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00517}00517\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ANYOID\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00518}00518\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ANYARRAYOID\ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00519}00519\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ VOIDOID\ \ \ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00520}00520\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TRIGGEROID\ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00521}00521\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ EVTTRIGGEROID\ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00522}00522\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ LANGUAGE\_HANDLEROID\ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00523}00523\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ INTERNALOID\ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00524}00524\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ OPAQUEOID\ \ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00525}00525\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ANYELEMENTOID\ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00526}00526\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ANYNONARRAYOID\ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00527}00527\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ANYENUMOID\ \ \ \ \ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00528}00528\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ FDW\_HANDLEROID\ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00529}00529\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ TSM\_HANDLEROID\ \ \ \ \ \ \ :}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00530}00530\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ ANYRANGEOID\ \ \ \ \ \ \ \ \ \ :\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00531}00531\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00532}00532\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00533}00533\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00534}00534\ \ \ \ \ \ \ row.Add(variant);}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00535}00535\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00536}00536\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00537}00537\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00538}00538\ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00539}00539\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00540}00540\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00550}00550\ \textcolor{keywordtype}{bool}\ POSTGRESQL\_RESULT::Abort()}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00551}00551\ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00552}00552\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00553}00553\ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00554}00554\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00555}00555\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00565}00565\ \textcolor{keywordtype}{bool}\ POSTGRESQL\_RESULT::HasNext()}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00566}00566\ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00567}00567\ \ \ \textcolor{keywordflow}{return}\ (((\textcolor{keywordtype}{int})this-\/>currentrow)<PQntuples(this-\/>resultset));}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00568}00568\ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00569}00569\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00570}00570\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00580}00580\ POSTGRESQL\_RESULT::POSTGRESQL\_RESULT()\ :\ \mbox{\hyperlink{class_d_b___s_q_l___r_e_s_u_l_t}{DB\_SQL\_RESULT}}()}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00581}00581\ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00582}00582\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00583}00583\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00584}00584\ \ \ is\_le\ \ =\ GEN\_XSYSTEM.HardwareUseLittleEndian();}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00585}00585\ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00586}00586\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00587}00587\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00596}00596\ \textcolor{keywordtype}{void}\ POSTGRESQL\_RESULT::Clean()}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00597}00597\ \{}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00598}00598\ \ \ query\ \ \ \ \ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00599}00599\ \ \ resultset\ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00600}00600\ \}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00601}00601\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00602}00602\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00603}00603\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00604}00604\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00605}00605\ }
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00606}00606\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_postgre_s_q_l___result_8cpp_source_l00607}00607\ }
+
+\end{DoxyCode}

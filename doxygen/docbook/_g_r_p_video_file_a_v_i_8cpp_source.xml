@@ -1,0 +1,458 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__g_r_p_video_file_a_v_i_8cpp_source" xml:lang="en-US">
+<title>GRPVideoFileAVI.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/Graphic/Files/Video/GRPVideoFileAVI.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_r_p_video_file_a_v_i_8h">GRPVideoFileAVI.h</link>&quot;</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&lt;string.h&gt;</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00043"/>00043 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_factory_8h">XFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00045"/>00045 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_r_p_properties_8h">GRPProperties.h</link>&quot;</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_r_p_bitmap_8h">GRPBitmap.h</link>&quot;</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_r_p_bitmap_sequence_8h">GRPBitmapSequence.h</link>&quot;</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00049"/>00049 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00050"/>00050 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00051"/>00051 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00053"/>00053 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00054"/>00054 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00055"/>00055 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00056"/>00056 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00057"/>00057 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00058"/>00058 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00059"/>00059 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00061"/>00061 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00062"/>00062 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00063"/>00063 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00064"/>00064 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00074"/><link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i_1a057cb26c6aef12d58222aba138434fd5">00074</link> <link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i_1a057cb26c6aef12d58222aba138434fd5">GRPVIDEOFILEAVI::GRPVIDEOFILEAVI</link>()
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00075"/>00075 {
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00076"/>00076 &#32;&#32;Clean();
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00077"/>00077 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00078"/>00078 &#32;&#32;fileRIFF&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_f_i_l_e_r_i_f_f">XFILERIFF</link>();
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00079"/>00079 }
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00080"/>00080 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00081"/>00081 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00092"/><link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i_1a8693d94e505cb4803b5c2787e17ff090">00092</link> <link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i_1a8693d94e505cb4803b5c2787e17ff090">GRPVIDEOFILEAVI::~GRPVIDEOFILEAVI</link>()
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00093"/>00093 {
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00094"/>00094 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(fileRIFF)
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00095"/>00095 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00096"/>00096 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//fileRIFF-&gt;Close();</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00097"/>00097 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;fileRIFF;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;fileRIFF&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00100"/>00100 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00101"/>00101 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00102"/>00102 &#32;&#32;Clean();
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00103"/>00103 }
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00104"/>00104 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00105"/>00105 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00117"/><link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i_1aec194c9f446285c468dd7e95c3daa903">00117</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i_1aec194c9f446285c468dd7e95c3daa903">GRPVIDEOFILEAVI::Open</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;path)
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00118"/>00118 {
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00119"/>00119 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a972556211baac97636935928c97bfecc">Open</link>(path))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00120"/>00120 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00121"/>00121 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a134eed91dd249b030b03426df58a285c">ReadAllLists</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00122"/>00122 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00123"/>00123 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;sizedata&#32;=&#32;0;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00124"/>00124 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00125"/>00125 &#32;&#32;memset((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;mainheader&#32;&#32;&#32;&#32;,&#32;0,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___m_a_i_n_h_e_a_d_e_r">GRPVIDEOFILEAVI_MAINHEADER</link>));
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00126"/>00126 &#32;&#32;memset((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;streamheader&#32;&#32;,&#32;0,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___s_t_r_e_a_m_h_e_a_d_e_r">GRPVIDEOFILEAVI_STREAMHEADER</link>));
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00127"/>00127 &#32;&#32;memset((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;bitmapheader&#32;&#32;,&#32;0,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___b_i_t_m_a_p_h_e_a_d_e_r">GRPVIDEOFILEAVI_BITMAPHEADER</link>));
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00128"/>00128 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00129"/>00129 &#32;&#32;<link linkend="_class_x_f_i_l_e_r_i_f_f___l_i_s_t">XFILERIFF_LIST</link>*&#32;chunk_mainheader&#32;=&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a34015d24b1baa3f816030ee01199a950">GetChunk</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;avih&quot;</emphasis>),&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;hdrl&quot;</emphasis>));
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00130"/>00130 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!chunk_mainheader)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00131"/>00131 &#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00132"/>00132 &#32;&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a704f00f9bd4c0a34017f46209e4efc92">GetChunkData</link>(chunk_mainheader,&#32;(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;mainheader,&#32;sizedata);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00133"/>00133 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00134"/>00134 &#32;&#32;<link linkend="_class_x_f_i_l_e_r_i_f_f___l_i_s_t">XFILERIFF_LIST</link>*&#32;strl_list&#32;=&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a0b9769d519b09a9c4602492a2b3dccf5">GetList</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;strl&quot;</emphasis>),&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;hdrl&quot;</emphasis>));
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00135"/>00135 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!strl_list)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00136"/>00136 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00137"/>00137 &#32;&#32;<link linkend="_class_x_f_i_l_e_r_i_f_f___l_i_s_t">XFILERIFF_LIST</link>*&#32;strh_chunk&#32;=&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a34015d24b1baa3f816030ee01199a950">GetChunk</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;strh&quot;</emphasis>),&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;strl&quot;</emphasis>));
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00138"/>00138 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!strh_chunk)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00139"/>00139 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00140"/>00140 &#32;&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a704f00f9bd4c0a34017f46209e4efc92">GetChunkData</link>(strh_chunk,&#32;(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;streamheader,&#32;sizedata);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00141"/>00141 &#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00142"/>00142 &#32;&#32;<link linkend="_class_x_f_i_l_e_r_i_f_f___l_i_s_t">XFILERIFF_LIST</link>*&#32;strf_chunk&#32;=&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a34015d24b1baa3f816030ee01199a950">GetChunk</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;strf&quot;</emphasis>),&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;strl&quot;</emphasis>));
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00143"/>00143 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!strf_chunk)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00144"/>00144 &#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00145"/>00145 &#32;&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a704f00f9bd4c0a34017f46209e4efc92">GetChunkData</link>(strf_chunk,&#32;(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;bitmapheader,&#32;sizedata);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00146"/>00146 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00147"/>00147 &#32;&#32;<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_1a904a15483da829a93373afe7ec95a92a">propertys</link>.<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e___p_r_o_p_e_r_t_y_s_1a07a4ceb4f73d905fdc7992bf712ed8b3">width</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;mainheader.width;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00148"/>00148 &#32;&#32;<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_1a904a15483da829a93373afe7ec95a92a">propertys</link>.<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e___p_r_o_p_e_r_t_y_s_1aa1c81933e578da43cdc46ff373597b50">height</link>&#32;&#32;&#32;&#32;&#32;&#32;=&#32;mainheader.height;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00149"/>00149 &#32;&#32;<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_1a904a15483da829a93373afe7ec95a92a">propertys</link>.<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e___p_r_o_p_e_r_t_y_s_1a63994e9e3224551723a2ee8f4c7a76f6">nframes</link>&#32;&#32;&#32;&#32;&#32;=&#32;mainheader.totalframes;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00150"/>00150 &#32;&#32;<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_1a904a15483da829a93373afe7ec95a92a">propertys</link>.<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e___p_r_o_p_e_r_t_y_s_1a338d673974583b961ca195b8626c0d61">framerate</link>&#32;&#32;&#32;=&#32;streamheader.rate;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00151"/>00151 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00152"/>00152 &#32;&#32;frames_node&#32;=&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a28c468b5889e5d503529639d25394647">GetListNode</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;movi&quot;</emphasis>));
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00153"/>00153 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!frames_node)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00154"/>00154 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00155"/>00155 &#32;&#32;<link linkend="_class_x_f_i_l_e_r_i_f_f___l_i_s_t">XFILERIFF_LIST</link>*&#32;index_list&#32;=&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a34015d24b1baa3f816030ee01199a950">GetChunk</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;idx1&quot;</emphasis>),&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;AVI&#32;&quot;</emphasis>));
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00156"/>00156 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!index_list)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00157"/>00157 &#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00158"/>00158 &#32;&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a2befebc0cbc28f92af3237a445436c74">GetFileBase</link>()-&gt;<link linkend="_class_x_f_i_l_e_1aa1eb97dcf7209887546fc32d69db5dcd">SetPosition</link>(index_list-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f___l_i_s_t_1aa15dfa6c0b0d1f8e7a44782ee3d93259">GetPositionFileData</link>());
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00159"/>00159 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00160"/>00160 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;index=0;&#32;index&#32;&lt;&#32;<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_1a904a15483da829a93373afe7ec95a92a">propertys</link>.<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e___p_r_o_p_e_r_t_y_s_1a63994e9e3224551723a2ee8f4c7a76f6">nframes</link>;&#32;index++)
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00161"/>00161 &#32;&#32;&#32;&#32;{&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___i_n_d_e_x_e_n_t_r_y">GRPVIDEOFILEAVI_INDEXENTRY</link>*&#32;indexentry&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___i_n_d_e_x_e_n_t_r_y">GRPVIDEOFILEAVI_INDEXENTRY</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00163"/>00163 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!indexentry)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00164"/>00164 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00165"/>00165 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a2befebc0cbc28f92af3237a445436c74">GetFileBase</link>()-&gt;<link linkend="_class_x_f_i_l_e_1ae316e4ea22c9f1fb9a2965f21d0dac4a">Read</link>((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)indexentry,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___i_n_d_e_x_e_n_t_r_y">GRPVIDEOFILEAVI_INDEXENTRY</link>)))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00166"/>00166 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00167"/>00167 &#32;&#32;&#32;&#32;&#32;&#32;indexentrys.<link linkend="_class_x_v_e_c_t_o_r_1a51a790aac8efd4603aee608ddcc83423">Add</link>(indexentry);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00168"/>00168 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00169"/>00169 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00170"/>00170 &#32;&#32;iscreate&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00171"/>00171 &#32;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00172"/>00172 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00173"/>00173 }
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00174"/>00174 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00175"/>00175 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00188"/><link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i_1a77c6d3793d4c96f58a88407bc1d315cc">00188</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i_1a77c6d3793d4c96f58a88407bc1d315cc">GRPVIDEOFILEAVI::Create</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;path,&#32;<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e___p_r_o_p_e_r_t_y_s">GRPVIDEOFILE_PROPERTYS</link>&amp;&#32;propertys)
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00189"/>00189 {
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00190"/>00190 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a994994787fecd7013d953f4bc86ab3ca">Create</link>(path))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00191"/>00191 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00192"/>00192 &#32;&#32;<emphasis role="comment">//--------------------------------------------------------------------</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00193"/>00193 &#32;&#32;<emphasis role="comment">//&#32;AVI&#32;(Root)</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00194"/>00194 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00195"/>00195 &#32;&#32;avi_node&#32;=&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a55890787538188e167f22bf818fddf87">CreateListNode</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;RIFF&quot;</emphasis>),&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;AVI&#32;&quot;</emphasis>));
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00196"/>00196 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!avi_node)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00197"/>00197 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00198"/>00198 &#32;&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a87f8c1d0f837d8fc50a60877adc96505">UpdateFilePosition</link>(avi_node);&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00199"/>00199 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a3efd6f99332785118cf6770a29548c53">WriteListToFile</link>(avi_node-&gt;<link linkend="_class_x_t_r_e_e___n_o_d_e_1a7ed87b400897c25f053e4a09a9270ce3">GetData</link>()))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00200"/>00200 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00201"/>00201 &#32;&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a4bbef62513ef0bdb09b69fe22d365cd4">GetXTreeList</link>()-&gt;<link linkend="_class_x_t_r_e_e_1ada081cda5cfee5608cca64b2c4c7a433">SetRoot</link>(avi_node);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00202"/>00202 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00203"/>00203 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00204"/>00204 &#32;&#32;<emphasis role="comment">//--------------------------------------------------------------------</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00205"/>00205 &#32;&#32;<emphasis role="comment">//&#32;AVI-&gt;hdrl</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00206"/>00206 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00207"/>00207 &#32;&#32;hdrl_node&#32;=&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a55890787538188e167f22bf818fddf87">CreateListNode</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;LIST&quot;</emphasis>),&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;hdrl&quot;</emphasis>));
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00208"/>00208 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!hdrl_node)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00209"/>00209 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00210"/>00210 &#32;&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a87f8c1d0f837d8fc50a60877adc96505">UpdateFilePosition</link>(hdrl_node);&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00211"/>00211 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a3efd6f99332785118cf6770a29548c53">WriteListToFile</link>(hdrl_node-&gt;<link linkend="_class_x_t_r_e_e___n_o_d_e_1a7ed87b400897c25f053e4a09a9270ce3">GetData</link>()))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00212"/>00212 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00213"/>00213 &#32;&#32;avi_node-&gt;<link linkend="_class_x_t_r_e_e___n_o_d_e_1a2f2b4a1601c605aad86346e46deab36f">AddChild</link>(hdrl_node);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00214"/>00214 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00215"/>00215 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00216"/>00216 &#32;&#32;<emphasis role="comment">//--------------------------------------------------------------------</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00217"/>00217 &#32;&#32;<emphasis role="comment">//&#32;AVI-&gt;hdrl-&gt;avih</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00218"/>00218 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00219"/>00219 &#32;&#32;avih_node&#32;=&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a4642fb9763b5aba213fecfce858708c0">CreateChunkNode</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;avih&quot;</emphasis>),&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___m_a_i_n_h_e_a_d_e_r">GRPVIDEOFILEAVI_MAINHEADER</link>));
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00220"/>00220 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!avih_node)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00221"/>00221 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00222"/>00222 &#32;&#32;memset((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;mainheader,&#32;0,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___m_a_i_n_h_e_a_d_e_r">GRPVIDEOFILEAVI_MAINHEADER</link>));
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00223"/>00223 &#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00224"/>00224 &#32;&#32;mainheader.microsecperframe&#32;&#32;&#32;&#32;&#32;=&#32;40000;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00225"/>00225 &#32;&#32;mainheader.maxbytespersec&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;40000;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00226"/>00226 &#32;&#32;mainheader.paddinggranularity&#32;&#32;&#32;=&#32;0;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00227"/>00227 &#32;&#32;mainheader.flags&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;2320;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00228"/>00228 &#32;&#32;mainheader.totalframes&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00229"/>00229 &#32;&#32;mainheader.initialframes&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00230"/>00230 &#32;&#32;mainheader.streams&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;1;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00231"/>00231 &#32;&#32;mainheader.suggestedbuffersize&#32;&#32;=&#32;1048576;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00232"/>00232 &#32;&#32;mainheader.width&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_1a904a15483da829a93373afe7ec95a92a">propertys</link>.<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e___p_r_o_p_e_r_t_y_s_1a07a4ceb4f73d905fdc7992bf712ed8b3">width</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00233"/>00233 &#32;&#32;mainheader.height&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_1a904a15483da829a93373afe7ec95a92a">propertys</link>.<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e___p_r_o_p_e_r_t_y_s_1aa1c81933e578da43cdc46ff373597b50">height</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00234"/>00234 &#32;&#32;mainheader.reserved[0]&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00235"/>00235 &#32;&#32;mainheader.reserved[1]&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00236"/>00236 &#32;&#32;mainheader.reserved[2]&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00237"/>00237 &#32;&#32;mainheader.reserved[3]&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00238"/>00238 &#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00239"/>00239 &#32;&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a87f8c1d0f837d8fc50a60877adc96505">UpdateFilePosition</link>(avih_node);&#32;&#32;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00240"/>00240 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a3efd6f99332785118cf6770a29548c53">WriteListToFile</link>(avih_node-&gt;<link linkend="_class_x_t_r_e_e___n_o_d_e_1a7ed87b400897c25f053e4a09a9270ce3">GetData</link>(),&#32;(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;mainheader,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___m_a_i_n_h_e_a_d_e_r">GRPVIDEOFILEAVI_MAINHEADER</link>)))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00241"/>00241 &#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00242"/>00242 &#32;&#32;hdrl_node-&gt;<link linkend="_class_x_t_r_e_e___n_o_d_e_1a2f2b4a1601c605aad86346e46deab36f">AddChild</link>(avih_node);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00243"/>00243 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00244"/>00244 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00245"/>00245 &#32;&#32;<emphasis role="comment">//--------------------------------------------------------------------</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00246"/>00246 &#32;&#32;<emphasis role="comment">//&#32;AVI-&gt;hdrl-&gt;srtl</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00247"/>00247 &#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00248"/>00248 &#32;&#32;strl_node&#32;=&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a55890787538188e167f22bf818fddf87">CreateListNode</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;LIST&quot;</emphasis>),&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;strl&quot;</emphasis>));
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00249"/>00249 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!strl_node)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00250"/>00250 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00251"/>00251 &#32;&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a87f8c1d0f837d8fc50a60877adc96505">UpdateFilePosition</link>(strl_node);&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00252"/>00252 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a3efd6f99332785118cf6770a29548c53">WriteListToFile</link>(strl_node-&gt;<link linkend="_class_x_t_r_e_e___n_o_d_e_1a7ed87b400897c25f053e4a09a9270ce3">GetData</link>()))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00253"/>00253 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00254"/>00254 &#32;&#32;hdrl_node-&gt;<link linkend="_class_x_t_r_e_e___n_o_d_e_1a2f2b4a1601c605aad86346e46deab36f">AddChild</link>(strl_node);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00255"/>00255 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00256"/>00256 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00257"/>00257 &#32;&#32;<emphasis role="comment">//--------------------------------------------------------------------</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00258"/>00258 &#32;&#32;<emphasis role="comment">//&#32;AVI-&gt;hdrl-&gt;srtl-&gt;strh</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00259"/>00259 &#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00260"/>00260 &#32;&#32;strh_node&#32;=&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a4642fb9763b5aba213fecfce858708c0">CreateChunkNode</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;strh&quot;</emphasis>),&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___s_t_r_e_a_m_h_e_a_d_e_r">GRPVIDEOFILEAVI_STREAMHEADER</link>));
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00261"/>00261 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!strh_node)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00262"/>00262 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00263"/>00263 &#32;&#32;memset((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;streamheader,&#32;0,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___s_t_r_e_a_m_h_e_a_d_e_r">GRPVIDEOFILEAVI_STREAMHEADER</link>));
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00264"/>00264 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00265"/>00265 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_1a904a15483da829a93373afe7ec95a92a">propertys</link>.<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e___p_r_o_p_e_r_t_y_s_1a338d673974583b961ca195b8626c0d61">framerate</link>)&#32;<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_1a904a15483da829a93373afe7ec95a92a">propertys</link>.<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e___p_r_o_p_e_r_t_y_s_1a338d673974583b961ca195b8626c0d61">framerate</link>&#32;=&#32;<link linkend="__g_r_p_video_file_8h_1ad3c3d9cbee454c1aa0fb88e7c93e4e7c">GRPVIDEOFILE_DEFAULTFRAMERATE</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00266"/>00266 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00267"/>00267 &#32;&#32;streamheader.fcctype&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a3402be458202fba945709619a8084778">GetTypeFromString</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;vids&quot;</emphasis>));
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00268"/>00268 &#32;&#32;streamheader.fcchandler&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a3402be458202fba945709619a8084778">GetTypeFromString</link>(<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_1a904a15483da829a93373afe7ec95a92a">propertys</link>.<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e___p_r_o_p_e_r_t_y_s_1a0552e6ffc610a410b4481ab1f74954ae">codecstr</link>.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00269"/>00269 &#32;&#32;streamheader.flags&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00270"/>00270 &#32;&#32;streamheader.priority&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00271"/>00271 &#32;&#32;streamheader.language&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00272"/>00272 &#32;&#32;streamheader.initialframes&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00273"/>00273 &#32;&#32;streamheader.scale&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;1;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00274"/>00274 &#32;&#32;streamheader.rate&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_1a904a15483da829a93373afe7ec95a92a">propertys</link>.<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e___p_r_o_p_e_r_t_y_s_1a338d673974583b961ca195b8626c0d61">framerate</link>;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;dwRate&#32;/&#32;dwScale&#32;==&#32;samples/second&#32;</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00275"/>00275 &#32;&#32;streamheader.start&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00276"/>00276 &#32;&#32;streamheader.length&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;497;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;In&#32;units&#32;above...&#32;</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00277"/>00277 &#32;&#32;streamheader.suggestedbuffersize&#32;&#32;=&#32;1048576295;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00278"/>00278 &#32;&#32;streamheader.quality&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0xFFFFFFFF;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00279"/>00279 &#32;&#32;streamheader.samplesize&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00280"/>00280 &#32;&#32;streamheader.rect[0]&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00281"/>00281 &#32;&#32;streamheader.rect[1]&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00282"/>00282 &#32;&#32;streamheader.rect[2]&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_1a904a15483da829a93373afe7ec95a92a">propertys</link>.<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e___p_r_o_p_e_r_t_y_s_1a07a4ceb4f73d905fdc7992bf712ed8b3">width</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00283"/>00283 &#32;&#32;streamheader.rect[3]&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_1a904a15483da829a93373afe7ec95a92a">propertys</link>.<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e___p_r_o_p_e_r_t_y_s_1aa1c81933e578da43cdc46ff373597b50">height</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00284"/>00284 &#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00285"/>00285 &#32;&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a87f8c1d0f837d8fc50a60877adc96505">UpdateFilePosition</link>(strh_node);&#32;&#32;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00286"/>00286 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a3efd6f99332785118cf6770a29548c53">WriteListToFile</link>(strh_node-&gt;<link linkend="_class_x_t_r_e_e___n_o_d_e_1a7ed87b400897c25f053e4a09a9270ce3">GetData</link>(),&#32;(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;streamheader,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___s_t_r_e_a_m_h_e_a_d_e_r">GRPVIDEOFILEAVI_STREAMHEADER</link>)))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00287"/>00287 &#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00288"/>00288 &#32;&#32;strl_node-&gt;<link linkend="_class_x_t_r_e_e___n_o_d_e_1a2f2b4a1601c605aad86346e46deab36f">AddChild</link>(strh_node);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00289"/>00289 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00290"/>00290 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00291"/>00291 &#32;&#32;<emphasis role="comment">//--------------------------------------------------------------------</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00292"/>00292 &#32;&#32;<emphasis role="comment">//&#32;AVI-&gt;hdrl-&gt;srtl-&gt;strf</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00293"/>00293 &#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00294"/>00294 &#32;&#32;strf_node&#32;=&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a4642fb9763b5aba213fecfce858708c0">CreateChunkNode</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;strf&quot;</emphasis>),&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___b_i_t_m_a_p_h_e_a_d_e_r">GRPVIDEOFILEAVI_BITMAPHEADER</link>));
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00295"/>00295 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!strf_node)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00296"/>00296 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00297"/>00297 &#32;&#32;memset((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;bitmapheader,&#32;0,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___b_i_t_m_a_p_h_e_a_d_e_r">GRPVIDEOFILEAVI_BITMAPHEADER</link>));
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00298"/>00298 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00299"/>00299 &#32;&#32;bitmapheader.size&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___b_i_t_m_a_p_h_e_a_d_e_r">GRPVIDEOFILEAVI_BITMAPHEADER</link>);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00300"/>00300 &#32;&#32;bitmapheader.width&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_1a904a15483da829a93373afe7ec95a92a">propertys</link>.<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e___p_r_o_p_e_r_t_y_s_1a07a4ceb4f73d905fdc7992bf712ed8b3">width</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00301"/>00301 &#32;&#32;bitmapheader.height&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_1a904a15483da829a93373afe7ec95a92a">propertys</link>.<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e___p_r_o_p_e_r_t_y_s_1aa1c81933e578da43cdc46ff373597b50">height</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00302"/>00302 &#32;&#32;bitmapheader.planes&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;1;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00303"/>00303 &#32;&#32;bitmapheader.bitcount&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;24;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00304"/>00304 &#32;&#32;bitmapheader.compression&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a3402be458202fba945709619a8084778">GetTypeFromString</link>(<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_1a904a15483da829a93373afe7ec95a92a">propertys</link>.<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e___p_r_o_p_e_r_t_y_s_1a0552e6ffc610a410b4481ab1f74954ae">codecstr</link>.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00305"/>00305 &#32;&#32;bitmapheader.sizeimage&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;(<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_1a904a15483da829a93373afe7ec95a92a">propertys</link>.<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e___p_r_o_p_e_r_t_y_s_1a07a4ceb4f73d905fdc7992bf712ed8b3">width</link>&#32;*&#32;<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_1a904a15483da829a93373afe7ec95a92a">propertys</link>.<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e___p_r_o_p_e_r_t_y_s_1aa1c81933e578da43cdc46ff373597b50">height</link>)&#32;*&#32;(bitmapheader.bitcount/3);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00306"/>00306 &#32;&#32;bitmapheader.xpelspermeter&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00307"/>00307 &#32;&#32;bitmapheader.ypelspermeter&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00308"/>00308 &#32;&#32;bitmapheader.clrused&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00309"/>00309 &#32;&#32;bitmapheader.clrimportant&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00310"/>00310 &#32;&#32;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00311"/>00311 &#32;&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a87f8c1d0f837d8fc50a60877adc96505">UpdateFilePosition</link>(strf_node);&#32;&#32;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00312"/>00312 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a3efd6f99332785118cf6770a29548c53">WriteListToFile</link>(strf_node-&gt;<link linkend="_class_x_t_r_e_e___n_o_d_e_1a7ed87b400897c25f053e4a09a9270ce3">GetData</link>(),&#32;(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;bitmapheader,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___b_i_t_m_a_p_h_e_a_d_e_r">GRPVIDEOFILEAVI_BITMAPHEADER</link>)))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00313"/>00313 &#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00314"/>00314 &#32;&#32;strl_node-&gt;<link linkend="_class_x_t_r_e_e___n_o_d_e_1a2f2b4a1601c605aad86346e46deab36f">AddChild</link>(strf_node);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00315"/>00315 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00316"/>00316 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00317"/>00317 &#32;&#32;<emphasis role="comment">//--------------------------------------------------------------------</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00318"/>00318 &#32;&#32;<emphasis role="comment">//&#32;AVI-&gt;MOVI</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00319"/>00319 &#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00320"/>00320 &#32;&#32;movi_node&#32;=&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a55890787538188e167f22bf818fddf87">CreateListNode</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;LIST&quot;</emphasis>),&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;movi&quot;</emphasis>));
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00321"/>00321 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!movi_node)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00322"/>00322 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00323"/>00323 &#32;&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a87f8c1d0f837d8fc50a60877adc96505">UpdateFilePosition</link>(movi_node);&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00324"/>00324 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a3efd6f99332785118cf6770a29548c53">WriteListToFile</link>(movi_node-&gt;<link linkend="_class_x_t_r_e_e___n_o_d_e_1a7ed87b400897c25f053e4a09a9270ce3">GetData</link>()))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00325"/>00325 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00326"/>00326 &#32;&#32;avi_node-&gt;<link linkend="_class_x_t_r_e_e___n_o_d_e_1a2f2b4a1601c605aad86346e46deab36f">AddChild</link>(movi_node);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00327"/>00327 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00328"/>00328 &#32;&#32;<emphasis role="comment">//--------------------------------------------------------------------</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00329"/>00329 &#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00330"/>00330 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00331"/>00331 &#32;&#32;offsetforentrys&#32;=&#32;4;&#32;&#32;<emphasis role="comment">//&#32;initial&#32;offset</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00332"/>00332 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00333"/>00333 &#32;&#32;iscreate&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00334"/>00334 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00335"/>00335 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00336"/>00336 }
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00337"/>00337 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00338"/>00338 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00351"/><link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i_1aa8e51dc8475fa3338f652af22a78ca01">00351</link> <link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i_1aa8e51dc8475fa3338f652af22a78ca01">GRPVIDEOFILEAVI::GetDataFrame</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;index_frame,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;&#32;sizeframe)
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00352"/>00352 {
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00353"/>00353 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!frames_node)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00354"/>00354 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(index_frame&#32;&gt;=&#32;<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_1a904a15483da829a93373afe7ec95a92a">propertys</link>.<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e___p_r_o_p_e_r_t_y_s_1a63994e9e3224551723a2ee8f4c7a76f6">nframes</link>)&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00355"/>00355 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00356"/>00356 &#32;&#32;<link linkend="_class_x_t_r_e_e___n_o_d_e">XFILERIFF_LIST_NODE</link>*&#32;frame_node&#32;=&#32;frames_node-&gt;<link linkend="_class_x_t_r_e_e___n_o_d_e_1a078986820d0ad8a10dd7a4eaf8f814f3">GetChild</link>(index_frame);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00357"/>00357 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!frame_node)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00358"/>00358 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00359"/>00359 &#32;&#32;<link linkend="_class_x_f_i_l_e_r_i_f_f___l_i_s_t">XFILERIFF_LIST</link>*&#32;frame_list&#32;=&#32;frame_node-&gt;<link linkend="_class_x_t_r_e_e___n_o_d_e_1a7ed87b400897c25f053e4a09a9270ce3">GetData</link>();
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00360"/>00360 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!frame_list)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00361"/>00361 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00362"/>00362 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;datasize&#32;=&#32;frame_list-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f___l_i_s_t_1a6fb5cfccf0dd812b95f52f489e5858f1">GetSize</link>();
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00363"/>00363 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00364"/>00364 &#32;&#32;<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___i_n_d_e_x_e_n_t_r_y">GRPVIDEOFILEAVI_INDEXENTRY</link>*&#32;indexentry&#32;=&#32;indexentrys.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(index_frame);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00365"/>00365 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!indexentry)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00366"/>00366 &#32;&#32;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00367"/>00367 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(datasize&#32;!=&#32;indexentry-&gt;<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___i_n_d_e_x_e_n_t_r_y_1a88635b657350a207633c5f5b5c81a351">chunklength</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00368"/>00368 &#32;&#32;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00369"/>00369 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;data&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>[datasize];
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00370"/>00370 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!data)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00371"/>00371 &#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00372"/>00372 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a2befebc0cbc28f92af3237a445436c74">GetFileBase</link>()-&gt;<link linkend="_class_x_f_i_l_e_1aa1eb97dcf7209887546fc32d69db5dcd">SetPosition</link>(frame_list-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f___l_i_s_t_1aa15dfa6c0b0d1f8e7a44782ee3d93259">GetPositionFileData</link>()))
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00373"/>00373 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00374"/>00374 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;[]&#32;data;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00375"/>00375 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00376"/>00376 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00377"/>00377 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00378"/>00378 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a2befebc0cbc28f92af3237a445436c74">GetFileBase</link>()-&gt;<link linkend="_class_x_f_i_l_e_1ae316e4ea22c9f1fb9a2965f21d0dac4a">Read</link>(data,&#32;datasize))
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00379"/>00379 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00380"/>00380 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;[]&#32;data;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00381"/>00381 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00382"/>00382 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00383"/>00383 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00384"/>00384 &#32;&#32;sizeframe&#32;=&#32;datasize;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00385"/>00385 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00386"/>00386 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;data;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00387"/>00387 }
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00388"/>00388 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00389"/>00389 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00402"/><link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i_1a2534a8c5b5b9df5f22bc1c521e8e6a75">00402</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i_1a2534a8c5b5b9df5f22bc1c521e8e6a75">GRPVIDEOFILEAVI::AddFrame</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;dataframe,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;dataframesize)
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00403"/>00403 {
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00404"/>00404 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!dataframe)&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00405"/>00405 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!dataframesize)&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00406"/>00406 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00407"/>00407 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!movi_node)&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00408"/>00408 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00409"/>00409 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00410"/>00410 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;framesize&#32;=&#32;dataframesize;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00411"/>00411 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00412"/>00412 &#32;&#32;<emphasis role="comment">//framesize&#32;+=&#32;((framesize&#32;%&#32;2)?1:0);</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00413"/>00413 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00414"/>00414 &#32;&#32;<emphasis role="comment">//--------------------------------------------------------------------</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00415"/>00415 &#32;&#32;<emphasis role="comment">//&#32;AVI-&gt;movi-&gt;00dc</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00416"/>00416 &#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00417"/>00417 &#32;&#32;<link linkend="_class_x_t_r_e_e___n_o_d_e">XFILERIFF_LIST_NODE</link>*&#32;frame_node&#32;=&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a4642fb9763b5aba213fecfce858708c0">CreateChunkNode</link>(<link linkend="__g_r_p_video_file_a_v_i_8h_1a9800d0d38b073f87acd9483b307099bd">GRPVIDEOFILEAVI_TYPECHUNKFRAME</link>,&#32;framesize);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00418"/>00418 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!frame_node)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00419"/>00419 &#32;&#32;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00420"/>00420 &#32;&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a87f8c1d0f837d8fc50a60877adc96505">UpdateFilePosition</link>(frame_node);&#32;&#32;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00421"/>00421 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a3efd6f99332785118cf6770a29548c53">WriteListToFile</link>(frame_node-&gt;<link linkend="_class_x_t_r_e_e___n_o_d_e_1a7ed87b400897c25f053e4a09a9270ce3">GetData</link>(),&#32;dataframe,&#32;framesize))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00422"/>00422 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00423"/>00423 &#32;&#32;mainheader.<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___m_a_i_n_h_e_a_d_e_r_1afdd552a665c5b6070e74917a6e37365c">totalframes</link>++;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00424"/>00424 &#32;&#32;movi_node-&gt;<link linkend="_class_x_t_r_e_e___n_o_d_e_1a2f2b4a1601c605aad86346e46deab36f">AddChild</link>(frame_node);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00425"/>00425 &#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00426"/>00426 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00427"/>00427 &#32;&#32;<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___i_n_d_e_x_e_n_t_r_y">GRPVIDEOFILEAVI_INDEXENTRY</link>*&#32;indexentry&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___i_n_d_e_x_e_n_t_r_y">GRPVIDEOFILEAVI_INDEXENTRY</link>();
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00428"/>00428 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(indexentry)&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00429"/>00429 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00430"/>00430 &#32;&#32;&#32;&#32;&#32;&#32;indexentry-&gt;<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___i_n_d_e_x_e_n_t_r_y_1a462a1b9f8cce46e59aafbe7df3b22f7b">chunkID</link>&#32;&#32;&#32;&#32;&#32;=&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a3402be458202fba945709619a8084778">GetTypeFromString</link>(<link linkend="__g_r_p_video_file_a_v_i_8h_1a9800d0d38b073f87acd9483b307099bd">GRPVIDEOFILEAVI_TYPECHUNKFRAME</link>);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00431"/>00431 &#32;&#32;&#32;&#32;&#32;&#32;indexentry-&gt;<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___i_n_d_e_x_e_n_t_r_y_1a788120380c52f2bb80ef13b9d9cb7268">flags</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;16;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00432"/>00432 &#32;&#32;&#32;&#32;&#32;&#32;indexentry-&gt;<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___i_n_d_e_x_e_n_t_r_y_1a88635b657350a207633c5f5b5c81a351">chunklength</link>&#32;=&#32;framesize;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00433"/>00433 &#32;&#32;&#32;&#32;&#32;&#32;indexentry-&gt;<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___i_n_d_e_x_e_n_t_r_y_1a082c0a6a21af4ee70849462ef9dd4d6d">chunkoffset</link>&#32;=&#32;offsetforentrys;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00434"/>00434 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00435"/>00435 &#32;&#32;&#32;&#32;&#32;&#32;indexentrys.<link linkend="_class_x_v_e_c_t_o_r_1a51a790aac8efd4603aee608ddcc83423">Add</link>(indexentry);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00436"/>00436 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00437"/>00437 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//offsetforentrys&#32;+=&#32;(framesize&#32;+&#32;sizeof(GRPVIDEOFILEAVI_INDEXENTRY));</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00438"/>00438 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00439"/>00439 &#32;&#32;&#32;&#32;&#32;&#32;offsetforentrys&#32;+=&#32;(framesize&#32;+&#32;8);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00440"/>00440 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00441"/>00441 &#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00442"/>00442 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00443"/>00443 }
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00444"/>00444 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00445"/>00445 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00455"/><link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i_1aa72519748e537eb736417b49acc58b53">00455</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i_1aa72519748e537eb736417b49acc58b53">GRPVIDEOFILEAVI::Close</link>()
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00456"/>00456 {
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00457"/>00457 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(iscreate)
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00458"/>00458 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00459"/>00459 &#32;&#32;&#32;&#32;&#32;&#32;CreateIndexofFrames();
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00460"/>00460 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00461"/>00461 &#32;&#32;&#32;&#32;&#32;&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1ad2f408b3fa04304b3b7c039facfb9db1">AdjustSizeOfLists</link>(fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a4bbef62513ef0bdb09b69fe22d365cd4">GetXTreeList</link>()-&gt;<link linkend="_class_x_t_r_e_e_1a53a9d30c9bcf92d558f80c9b7fa9a453">GetRoot</link>());
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00462"/>00462 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00463"/>00463 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a3efd6f99332785118cf6770a29548c53">WriteListToFile</link>(avih_node-&gt;<link linkend="_class_x_t_r_e_e___n_o_d_e_1a7ed87b400897c25f053e4a09a9270ce3">GetData</link>(),&#32;(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;mainheader,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___m_a_i_n_h_e_a_d_e_r">GRPVIDEOFILEAVI_MAINHEADER</link>)))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00464"/>00464 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00465"/>00465 &#32;&#32;&#32;&#32;&#32;&#32;avi_node&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00466"/>00466 &#32;&#32;&#32;&#32;&#32;&#32;hdrl_node&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00467"/>00467 &#32;&#32;&#32;&#32;&#32;&#32;avih_node&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00468"/>00468 &#32;&#32;&#32;&#32;&#32;&#32;strl_node&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00469"/>00469 &#32;&#32;&#32;&#32;&#32;&#32;strh_node&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00470"/>00470 &#32;&#32;&#32;&#32;&#32;&#32;strf_node&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00471"/>00471 &#32;&#32;&#32;&#32;&#32;&#32;movi_node&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00472"/>00472 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00473"/>00473 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00474"/>00474 &#32;&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1ac3e7fe2e7695895fa0b852aa28797603">Close</link>();
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00475"/>00475 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00476"/>00476 &#32;&#32;indexentrys.<link linkend="_class_x_v_e_c_t_o_r_1abae5097402824f18f274e21e18b23bea">DeleteContents</link>();
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00477"/>00477 &#32;&#32;indexentrys.<link linkend="_class_x_v_e_c_t_o_r_1a57c72ab04fd14c60d1026e0a7b4a1887">DeleteAll</link>();
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00478"/>00478 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00479"/>00479 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00480"/>00480 }
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00481"/>00481 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00482"/>00482 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00495"/>00495 <emphasis role="keywordtype">bool</emphasis>&#32;GRPVIDEOFILEAVI::CreateAndWriteJUNK(<link linkend="_class_x_t_r_e_e___n_o_d_e">XFILERIFF_LIST_NODE</link>*&#32;father_node,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;datasize)
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00496"/>00496 {
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00497"/>00497 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!father_node)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00498"/>00498 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00499"/>00499 &#32;&#32;<link linkend="_class_x_t_r_e_e___n_o_d_e">XFILERIFF_LIST_NODE</link>*&#32;junk_node&#32;=&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a4642fb9763b5aba213fecfce858708c0">CreateChunkNode</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;JUNK&quot;</emphasis>),&#32;datasize);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00500"/>00500 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!junk_node)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00501"/>00501 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00502"/>00502 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;data&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>[datasize];
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00503"/>00503 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!data)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00504"/>00504 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00505"/>00505 &#32;&#32;memset(data,&#32;0,&#32;datasize);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00506"/>00506 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00507"/>00507 &#32;&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a87f8c1d0f837d8fc50a60877adc96505">UpdateFilePosition</link>(junk_node);&#32;&#32;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00508"/>00508 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a3efd6f99332785118cf6770a29548c53">WriteListToFile</link>(junk_node-&gt;<link linkend="_class_x_t_r_e_e___n_o_d_e_1a7ed87b400897c25f053e4a09a9270ce3">GetData</link>(),&#32;data,&#32;datasize))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00509"/>00509 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00510"/>00510 &#32;&#32;father_node-&gt;<link linkend="_class_x_t_r_e_e___n_o_d_e_1a2f2b4a1601c605aad86346e46deab36f">AddChild</link>(junk_node);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00511"/>00511 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00512"/>00512 &#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;[]&#32;data;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00513"/>00513 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00514"/>00514 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00515"/>00515 }
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00516"/>00516 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00517"/>00517 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00527"/>00527 <emphasis role="keywordtype">bool</emphasis>&#32;GRPVIDEOFILEAVI::CreateIndexofFrames()
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00528"/>00528 {
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00529"/>00529 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!avi_node)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00530"/>00530 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00531"/>00531 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;sizeindex&#32;=&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___i_n_d_e_x_e_n_t_r_y">GRPVIDEOFILEAVI_INDEXENTRY</link>)&#32;*&#32;mainheader.<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___m_a_i_n_h_e_a_d_e_r_1afdd552a665c5b6070e74917a6e37365c">totalframes</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00532"/>00532 &#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00533"/>00533 &#32;&#32;<link linkend="_class_x_t_r_e_e___n_o_d_e">XFILERIFF_LIST_NODE</link>*&#32;index_node&#32;=&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a4642fb9763b5aba213fecfce858708c0">CreateChunkNode</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;idx1&quot;</emphasis>),&#32;sizeindex);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00534"/>00534 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!index_node)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00535"/>00535 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00536"/>00536 &#32;&#32;fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a87f8c1d0f837d8fc50a60877adc96505">UpdateFilePosition</link>(index_node);&#32;&#32;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00537"/>00537 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a3efd6f99332785118cf6770a29548c53">WriteListToFile</link>(index_node-&gt;<link linkend="_class_x_t_r_e_e___n_o_d_e_1a7ed87b400897c25f053e4a09a9270ce3">GetData</link>(),&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;sizeindex))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00538"/>00538 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00539"/>00539 &#32;&#32;avi_node-&gt;<link linkend="_class_x_t_r_e_e___n_o_d_e_1a2f2b4a1601c605aad86346e46deab36f">AddChild</link>(index_node);
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00540"/>00540 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00541"/>00541 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;&#32;c&lt;indexentrys.<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>();&#32;c++)
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00542"/>00542 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00543"/>00543 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___i_n_d_e_x_e_n_t_r_y">GRPVIDEOFILEAVI_INDEXENTRY</link>*&#32;indexentry&#32;=&#32;indexentrys.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(c);&#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00544"/>00544 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(indexentry)
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00545"/>00545 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00546"/>00546 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!fileRIFF-&gt;<link linkend="_class_x_f_i_l_e_r_i_f_f_1a2befebc0cbc28f92af3237a445436c74">GetFileBase</link>()-&gt;<link linkend="_class_x_f_i_l_e_1a11b53fb5e02808927df9d01236e84eb9">Write</link>((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)indexentry,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___i_n_d_e_x_e_n_t_r_y">GRPVIDEOFILEAVI_INDEXENTRY</link>)))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00547"/>00547 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00548"/>00548 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00549"/>00549 &#32;&#32;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00550"/>00550 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00551"/>00551 }
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00552"/>00552 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00553"/>00553 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00564"/>00564 <emphasis role="keywordtype">void</emphasis>&#32;GRPVIDEOFILEAVI::Clean()
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00565"/>00565 {
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00566"/>00566 &#32;&#32;iscreate&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00567"/>00567 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00568"/>00568 &#32;&#32;memset((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;mainheader&#32;&#32;&#32;&#32;,&#32;0,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___m_a_i_n_h_e_a_d_e_r">GRPVIDEOFILEAVI_MAINHEADER</link>));
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00569"/>00569 &#32;&#32;memset((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;streamheader&#32;&#32;,&#32;0,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___s_t_r_e_a_m_h_e_a_d_e_r">GRPVIDEOFILEAVI_STREAMHEADER</link>));
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00570"/>00570 &#32;&#32;memset((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;bitmapheader&#32;&#32;,&#32;0,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i___b_i_t_m_a_p_h_e_a_d_e_r">GRPVIDEOFILEAVI_BITMAPHEADER</link>));
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00571"/>00571 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00572"/>00572 &#32;&#32;avi_node&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00573"/>00573 &#32;&#32;hdrl_node&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00574"/>00574 &#32;&#32;avih_node&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00575"/>00575 &#32;&#32;strl_node&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00576"/>00576 &#32;&#32;strh_node&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00577"/>00577 &#32;&#32;strf_node&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00578"/>00578 &#32;&#32;movi_node&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00579"/>00579 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00580"/>00580 &#32;&#32;frames_node&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00581"/>00581 &#32;&#32;offsetforentrys&#32;=&#32;0;
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00582"/>00582 }
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00583"/>00583 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00584"/>00584 
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00585"/>00585 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__g_r_p_video_file_a_v_i_8cpp_source_1l00586"/>00586 
+</programlisting></section>

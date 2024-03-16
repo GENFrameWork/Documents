@@ -1,0 +1,402 @@
+\doxysection{DIOStream\+Device\+Bluetooth.\+cpp}
+\hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source}{}\label{_d_i_o_stream_device_bluetooth_8cpp_source}\index{D:/Projects/GENFrameWork/GEN/DataIO/Streams/DIOStreamDeviceBluetooth.cpp@{D:/Projects/GENFrameWork/GEN/DataIO/Streams/DIOStreamDeviceBluetooth.cpp}}
+\mbox{\hyperlink{_d_i_o_stream_device_bluetooth_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00029}00029\ \textcolor{comment}{/*-\/-\/-\/-\/\ PRECOMPILATION\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#pragma\ region\ PRECOMPILATION\_INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_e_n___defines_8h}{GEN\_Defines.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00037}00037\ \textcolor{comment}{/*-\/-\/-\/-\/\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#pragma\ region\ INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_i_o_stream_device_bluetooth_8h}{DIOStreamDeviceBluetooth.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00044}00044\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_factory_8h}{XFactory.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_string_8h}{XString.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00046}00046\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_timer_8h}{XTimer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00048}00048\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_memory___control_8h}{XMemory\_Control.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00050}00050\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00053}00053\ \textcolor{comment}{/*-\/-\/-\/-\/\ GENERAL\ VARIABLE\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00054}00054\ \textcolor{preprocessor}{\#pragma\ region\ GENERAL\_VARIABLE}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00056}00056\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00059}00059\ \textcolor{comment}{/*-\/-\/-\/-\/\ CLASS\ MEMBERS\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00060}00060\ \textcolor{preprocessor}{\#pragma\ region\ CLASS\_MEMBERS}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00063}00063\ \textcolor{preprocessor}{\#pragma\ region\ CLASS\_DIOSTREAMDEVICEBLUETOOTHSDPSERVICEPROTOCOL}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00073}\mbox{\hyperlink{group___d_a_t_a_i_o_ga118699a51303174e6f58904cb5d55a13}{00073}}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga118699a51303174e6f58904cb5d55a13}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICEPROTOCOL::DIOSTREAMDEVICEBLUETOOTHSDPSERVICEPROTOCOL}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00074}00074\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00075}00075\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00076}00076\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00087}\mbox{\hyperlink{group___d_a_t_a_i_o_ga94f5128fb71d45e6bcc9581bc112c1b2}{00087}}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga94f5128fb71d45e6bcc9581bc112c1b2}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICEPROTOCOL::\string~DIOSTREAMDEVICEBLUETOOTHSDPSERVICEPROTOCOL}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00088}00088\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00089}00089\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00090}00090\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00102}\mbox{\hyperlink{group___d_a_t_a_i_o_ga190f0f3211a4e6a28d86751bc7a35cd0}{00102}}\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga190f0f3211a4e6a28d86751bc7a35cd0}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICEPROTOCOL::GetType}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00103}00103\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00104}00104\ \ \ \textcolor{keywordflow}{return}\ type;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00105}00105\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00117}\mbox{\hyperlink{group___d_a_t_a_i_o_gaea5f929558cd080dbf60ebd6b6786566}{00117}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gaea5f929558cd080dbf60ebd6b6786566}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICEPROTOCOL::SetType}}(\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ type)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00118}00118\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00119}00119\ \ \ this-\/>type\ =\ type;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00120}00120\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00132}\mbox{\hyperlink{group___d_a_t_a_i_o_ga5c21f13ea6055db175ee6b527fdbc0a9}{00132}}\ \mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga5c21f13ea6055db175ee6b527fdbc0a9}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICEPROTOCOL::GetChannel}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00133}00133\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00134}00134\ \ \ \textcolor{keywordflow}{return}\ channel;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00135}00135\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00147}\mbox{\hyperlink{group___d_a_t_a_i_o_gaca7c69c87582ba84cc85b3e9bf68297b}{00147}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gaca7c69c87582ba84cc85b3e9bf68297b}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICEPROTOCOL::SetChannel}}(\mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}}\ channel)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00148}00148\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00149}00149\ \ \ this-\/>channel\ =\ channel;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00150}00150\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00161}00161\ \textcolor{keywordtype}{void}\ DIOSTREAMDEVICEBLUETOOTHSDPSERVICEPROTOCOL::Clean()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00162}00162\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00163}00163\ \ \ type\ \ \ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00164}00164\ \ \ channel\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00165}00165\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00167}00167\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00168}00168\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00171}00171\ \textcolor{preprocessor}{\#pragma\ region\ CLASS\_DIOSTREAMDEVICEBLUETOOTHSDPSERVICE}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00181}\mbox{\hyperlink{group___d_a_t_a_i_o_ga460222494a02ecd3a77c380dbe6788dd}{00181}}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga460222494a02ecd3a77c380dbe6788dd}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICE::DIOSTREAMDEVICEBLUETOOTHSDPSERVICE}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00182}00182\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00183}00183\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00184}00184\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00186}00186\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00195}\mbox{\hyperlink{group___d_a_t_a_i_o_ga3ded7d0bcdb7fe29d8994705815cf46f}{00195}}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga3ded7d0bcdb7fe29d8994705815cf46f}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICE::\string~DIOSTREAMDEVICEBLUETOOTHSDPSERVICE}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00196}00196\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00197}00197\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00198}00198\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00210}\mbox{\hyperlink{group___d_a_t_a_i_o_ga068136fad6d81e5b39cac423279da7b1}{00210}}\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga068136fad6d81e5b39cac423279da7b1}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICE::GetID}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00211}00211\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00212}00212\ \ \ \textcolor{keywordflow}{return}\ ID;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00213}00213\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00225}\mbox{\hyperlink{group___d_a_t_a_i_o_ga62d4233ba34a056c4af2344bc296e4a0}{00225}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga62d4233ba34a056c4af2344bc296e4a0}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICE::SetID}}(\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ ID)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00226}00226\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00227}00227\ \ \ this-\/>ID\ =\ ID;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00228}00228\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00229}00229\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00240}\mbox{\hyperlink{group___d_a_t_a_i_o_ga0ce6fdcc789c189f0c7d19b65d5d9c40}{00240}}\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga0ce6fdcc789c189f0c7d19b65d5d9c40}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICE::GetRecHandle}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00241}00241\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00242}00242\ \ \ \textcolor{keywordflow}{return}\ rechandle;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00243}00243\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00244}00244\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00245}00245\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00255}\mbox{\hyperlink{group___d_a_t_a_i_o_gad719266c1b3d7c000c34d3108a934a91}{00255}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gad719266c1b3d7c000c34d3108a934a91}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICE::SetRecHandle}}(\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ rechandle)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00256}00256\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00257}00257\ \ \ this-\/>rechandle\ =\ rechandle;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00258}00258\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00259}00259\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00270}\mbox{\hyperlink{group___d_a_t_a_i_o_gaa25e9bab2dc703bef597cd3608c3559b}{00270}}\ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}*\ \mbox{\hyperlink{group___d_a_t_a_i_o_gaa25e9bab2dc703bef597cd3608c3559b}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICE::GetName}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00271}00271\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00272}00272\ \ \ \textcolor{keywordflow}{return}\ \&name;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00273}00273\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00274}00274\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00285}\mbox{\hyperlink{group___d_a_t_a_i_o_ga6dd0db24fb049a16daeacb8c76748f06}{00285}}\ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}*\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga6dd0db24fb049a16daeacb8c76748f06}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICE::GetDescription}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00286}00286\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00287}00287\ \ \ \textcolor{keywordflow}{return}\ \&description;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00288}00288\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00290}00290\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00300}\mbox{\hyperlink{group___d_a_t_a_i_o_ga86d8c6ddac07c5c3632df83c88a0994f}{00300}}\ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}*\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga86d8c6ddac07c5c3632df83c88a0994f}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICE::GetProvider}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00301}00301\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00302}00302\ \ \ \textcolor{keywordflow}{return}\ \&provider;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00303}00303\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00304}00304\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00305}00305\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00315}\mbox{\hyperlink{group___d_a_t_a_i_o_ga0e81623c383f7dd60b67087e13d1572b}{00315}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga0e81623c383f7dd60b67087e13d1572b}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICE::GetNProtocols}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00316}00316\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00317}00317\ \ \ \textcolor{keywordflow}{return}\ nprotocols;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00318}00318\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00319}00319\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00320}00320\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00330}\mbox{\hyperlink{group___d_a_t_a_i_o_ga5b1ca0ddced0d8d4e1cf4385b5bb3e94}{00330}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga5b1ca0ddced0d8d4e1cf4385b5bb3e94}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICE::SetNProtocols}}(\textcolor{keywordtype}{int}\ nprotocols)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00331}00331\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00332}00332\ \ \ this-\/>nprotocols\ =\ nprotocols;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00333}00333\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00334}00334\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00335}00335\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00347}\mbox{\hyperlink{group___d_a_t_a_i_o_ga3ed8fb9267ca38bef1e34ad0d05898cc}{00347}}\ \mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_b_l_u_e_t_o_o_t_h_s_d_p_s_e_r_v_i_c_e_p_r_o_t_o_c_o_l}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICEPROTOCOL}}*\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga3ed8fb9267ca38bef1e34ad0d05898cc}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICE::GetProtocol}}(\textcolor{keywordtype}{int}\ index)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00348}00348\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00349}00349\ \ \ \textcolor{keywordflow}{if}(index>=\mbox{\hyperlink{_d_i_o_stream_device_bluetooth_8h_a73b1118cab84ca4eaf843da2cf9ffa7b}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICE\_MAXPROTOCOLS}})\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00350}00350\ \ \ \textcolor{keywordflow}{if}(index<0)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00351}00351\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00352}00352\ \ \ \textcolor{keywordflow}{return}\ \&protocols[index];}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00353}00353\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00354}00354\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00355}00355\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00368}\mbox{\hyperlink{group___d_a_t_a_i_o_gaaff5d6d64a8bb347621ff5f788a8b476}{00368}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gaaff5d6d64a8bb347621ff5f788a8b476}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICE::SetProtocol}}(\textcolor{keywordtype}{int}\ index,\ \mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_b_l_u_e_t_o_o_t_h_s_d_p_s_e_r_v_i_c_e_p_r_o_t_o_c_o_l}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICEPROTOCOL}}*\ protocol)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00369}00369\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00370}00370\ \ \ \textcolor{keywordflow}{if}(!protocol)\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00371}00371\ \ \ \textcolor{keywordflow}{if}(nprotocols\ >=\ \mbox{\hyperlink{_d_i_o_stream_device_bluetooth_8h_a73b1118cab84ca4eaf843da2cf9ffa7b}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICE\_MAXPROTOCOLS}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00372}00372\ \ \ \textcolor{keywordflow}{if}(nprotocols\ <=\ 0)\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00373}00373\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00374}00374\ \ \ protocols[index].\mbox{\hyperlink{group___d_a_t_a_i_o_gaea5f929558cd080dbf60ebd6b6786566}{SetType}}(protocol-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga190f0f3211a4e6a28d86751bc7a35cd0}{GetType}}());}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00375}00375\ \ \ protocols[index].\mbox{\hyperlink{group___d_a_t_a_i_o_gaca7c69c87582ba84cc85b3e9bf68297b}{SetChannel}}(protocol-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga5c21f13ea6055db175ee6b527fdbc0a9}{GetChannel}}());}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00376}00376\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00377}00377\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00378}00378\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00379}00379\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00380}00380\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00389}00389\ \textcolor{keywordtype}{void}\ DIOSTREAMDEVICEBLUETOOTHSDPSERVICE::Clean()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00390}00390\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00391}00391\ \ \ ID\ \ \ \ \ \ \ \ \ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00392}00392\ \ \ rechandle\ \ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00393}00393\ \ \ nprotocols\ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00394}00394\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00395}00395\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00396}00396\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00397}00397\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00398}00398\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00399}00399\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00400}00400\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00401}00401\ \textcolor{preprocessor}{\#pragma\ region\ CLASS\_DIOSTREAMDEVICEBLUETOOTH\ }}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00402}00402\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00403}00403\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00411}\mbox{\hyperlink{group___d_a_t_a_i_o_ga7ca95c41412e5f08d9d550f0c91f0a99}{00411}}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga7ca95c41412e5f08d9d550f0c91f0a99}{DIOSTREAMDEVICEBLUETOOTH::DIOSTREAMDEVICEBLUETOOTH}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00412}00412\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00413}00413\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00414}00414\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00415}00415\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00416}00416\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00425}\mbox{\hyperlink{group___d_a_t_a_i_o_gafad4d0a570c1ba9d0d43ada4ace44cca}{00425}}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gafad4d0a570c1ba9d0d43ada4ace44cca}{DIOSTREAMDEVICEBLUETOOTH::\string~DIOSTREAMDEVICEBLUETOOTH}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00426}00426\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00427}00427\ \ \ \mbox{\hyperlink{group___d_a_t_a_i_o_ga1d5181ff59918494f78bc6f91d4264bc}{Service\_DeleteAll}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00428}00428\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00429}00429\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00430}00430\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00431}00431\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00432}00432\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00442}\mbox{\hyperlink{group___d_a_t_a_i_o_ga71c32bb5574d5dd224cdba16a72a0e37}{00442}}\ \mbox{\hyperlink{class_d_i_o_m_a_c}{DIOMAC}}*\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga71c32bb5574d5dd224cdba16a72a0e37}{DIOSTREAMDEVICEBLUETOOTH::GetMAC}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00443}00443\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00444}00444\ \ \ \textcolor{keywordflow}{return}\ \&\mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_b_l_u_e_t_o_o_t_h_a3f0db9e423ff5da84770fa4920c648d8}{MAC}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00445}00445\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00446}00446\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00447}00447\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00457}\mbox{\hyperlink{group___d_a_t_a_i_o_ga3226e685066dbedd8d308e500c3fa048}{00457}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga3226e685066dbedd8d308e500c3fa048}{DIOSTREAMDEVICEBLUETOOTH::GetRSSI}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00458}00458\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00459}00459\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_b_l_u_e_t_o_o_t_h_a88d8c340f7f8c23d0fce079460b66128}{rssi}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00460}00460\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00461}00461\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00462}00462\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00472}\mbox{\hyperlink{group___d_a_t_a_i_o_ga940828985c20e1075afbf91a67be9188}{00472}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga940828985c20e1075afbf91a67be9188}{DIOSTREAMDEVICEBLUETOOTH::SetRSSI}}(\textcolor{keywordtype}{int}\ rssi)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00473}00473\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00474}00474\ \ \ this-\/>rssi\ =\ \mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_b_l_u_e_t_o_o_t_h_a88d8c340f7f8c23d0fce079460b66128}{rssi}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00475}00475\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00476}00476\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00477}00477\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00487}\mbox{\hyperlink{group___d_a_t_a_i_o_ga999b704a35df63ade1f0415d4579340a}{00487}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga999b704a35df63ade1f0415d4579340a}{DIOSTREAMDEVICEBLUETOOTH::IsVisible}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00488}00488\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00489}00489\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_b_l_u_e_t_o_o_t_h_ad374429d46a1e51fc08fc268365ea951}{isvisible}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00490}00490\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00491}00491\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00492}00492\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00504}\mbox{\hyperlink{group___d_a_t_a_i_o_gae40dcc89bd77a5dc98b7b19488578bf2}{00504}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gae40dcc89bd77a5dc98b7b19488578bf2}{DIOSTREAMDEVICEBLUETOOTH::SetIsVisible}}(\textcolor{keywordtype}{bool}\ isvisible)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00505}00505\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00506}00506\ \ \ this-\/>isvisible\ =\ \mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_b_l_u_e_t_o_o_t_h_ad374429d46a1e51fc08fc268365ea951}{isvisible}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00507}00507\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00508}00508\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00509}00509\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00510}00510\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00511}00511\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00521}\mbox{\hyperlink{group___d_a_t_a_i_o_ga0faaf3f574064b5e3fdd21dabac1ae59}{00521}}\ \mbox{\hyperlink{_d_i_o_stream_device_8h_a4590b2c8684c9509c255593ee53a354d}{DIOGUID}}*\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga0faaf3f574064b5e3fdd21dabac1ae59}{DIOSTREAMDEVICEBLUETOOTH::GetServiceClass}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00522}00522\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00523}00523\ \ \ \textcolor{keywordflow}{return}\ \&\mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_b_l_u_e_t_o_o_t_h_ac335fbba7c98f23624dd1098470a1393}{serviceclass}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00524}00524\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00525}00525\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00526}00526\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00538}\mbox{\hyperlink{group___d_a_t_a_i_o_ga0e85ae52ffaab52cecf73a9900bf5dc5}{00538}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga0e85ae52ffaab52cecf73a9900bf5dc5}{DIOSTREAMDEVICEBLUETOOTH::Service\_Add}}(\mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_b_l_u_e_t_o_o_t_h_s_d_p_s_e_r_v_i_c_e}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICE}}*\ service)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00539}00539\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00540}00540\ \ \ \textcolor{keywordflow}{if}(!service)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00541}00541\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00542}00542\ \ \ services.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a51a790aac8efd4603aee608ddcc83423}{Add}}(service);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00543}00543\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00544}00544\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00545}00545\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00546}00546\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00547}00547\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00557}\mbox{\hyperlink{group___d_a_t_a_i_o_ga6671c78b8c8515aa6bf2f715beb17cb1}{00557}}\ \mbox{\hyperlink{class_x_v_e_c_t_o_r}{XVECTOR<DIOSTREAMDEVICEBLUETOOTHSDPSERVICE*>}}*\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga6671c78b8c8515aa6bf2f715beb17cb1}{DIOSTREAMDEVICEBLUETOOTH::Service\_GetAll}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00558}00558\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00559}00559\ \ \ \textcolor{keywordflow}{return}\ \&services;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00560}00560\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00561}00561\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00562}00562\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00572}\mbox{\hyperlink{group___d_a_t_a_i_o_ga1d5181ff59918494f78bc6f91d4264bc}{00572}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga1d5181ff59918494f78bc6f91d4264bc}{DIOSTREAMDEVICEBLUETOOTH::Service\_DeleteAll}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00573}00573\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00574}00574\ \ \ \textcolor{keywordflow}{if}(services.\mbox{\hyperlink{class_x_v_e_c_t_o_r_acfb28e72022a067c3a4635f0c14734fb}{IsEmpty}}())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00575}00575\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00576}00576\ \ \ services.\mbox{\hyperlink{class_x_v_e_c_t_o_r_abae5097402824f18f274e21e18b23bea}{DeleteContents}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00577}00577\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00578}00578\ \ \ services.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a57c72ab04fd14c60d1026e0a7b4a1887}{DeleteAll}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00579}00579\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00580}00580\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00581}00581\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00582}00582\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00583}00583\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00595}\mbox{\hyperlink{group___d_a_t_a_i_o_gaa7fe6e3f5821706ca15070a28974abeb}{00595}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gaa7fe6e3f5821706ca15070a28974abeb}{DIOSTREAMDEVICEBLUETOOTH::GetChannel}}(\mbox{\hyperlink{_x_base_8h_a3f1fe1487089bc987e3d549a9064e653}{XWORD}}\ servicetype)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00596}00596\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00597}00597\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ c=0;\ c<(int)services.\mbox{\hyperlink{class_x_v_e_c_t_o_r_ab9cec1d9ae7a1f5699f9dde55ccde2bf}{GetSize}}();\ c++)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00598}00598\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00599}00599\ \ \ \ \ \ \ \ \mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_b_l_u_e_t_o_o_t_h_s_d_p_s_e_r_v_i_c_e}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICE}}*\ service\ =\ \ (\mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_b_l_u_e_t_o_o_t_h_s_d_p_s_e_r_v_i_c_e}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICE}}*)services.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00600}00600\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(service)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00601}00601\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00602}00602\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(servicetype\ ==\ service-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga068136fad6d81e5b39cac423279da7b1}{GetID}}())}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00603}00603\ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00604}00604\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ d=0;\ d<(int)service-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga0e81623c383f7dd60b67087e13d1572b}{GetNProtocols}}();\ d++)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00605}00605\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00606}00606\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_b_l_u_e_t_o_o_t_h_s_d_p_s_e_r_v_i_c_e_p_r_o_t_o_c_o_l}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICEPROTOCOL}}*\ protocol\ =\ (\mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_b_l_u_e_t_o_o_t_h_s_d_p_s_e_r_v_i_c_e_p_r_o_t_o_c_o_l}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICEPROTOCOL}}*)service-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga3ed8fb9267ca38bef1e34ad0d05898cc}{GetProtocol}}(d);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00607}00607\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(protocol)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00608}00608\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00609}00609\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ channel\ =\ protocol-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga5c21f13ea6055db175ee6b527fdbc0a9}{GetChannel}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00610}00610\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(channel)\ \textcolor{keywordflow}{return}\ channel;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00611}00611\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00612}00612\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00613}00613\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00614}00614\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00615}00615\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00616}00616\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00617}00617\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_d_i_o_stream_device_bluetooth_8h_a76f0aeffc958fff3d3aee8eaa0cf77e7}{DIOSTREAMDEVICEBLUETOOTH\_NOCHANNEL}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00618}00618\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00619}00619\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00620}00620\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00630}\mbox{\hyperlink{group___d_a_t_a_i_o_ga974d5196e53e77a3303490e6254ce34c}{00630}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga974d5196e53e77a3303490e6254ce34c}{DIOSTREAMDEVICEBLUETOOTH::GetChannelSerialPort}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00631}00631\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00632}00632\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gaa7fe6e3f5821706ca15070a28974abeb}{GetChannel}}(\mbox{\hyperlink{_d_i_o_stream_device_bluetooth_8h_aaef3c7f5ba15823073e3dad5a1fd1101}{DIOSTREAMDEVICEBLUETOOTHSERVICETYPE\_SERIALPORT}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00633}00633\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00634}00634\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00635}00635\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00645}\mbox{\hyperlink{group___d_a_t_a_i_o_ga6b0d3d7fb077dd797d686580aead8759}{00645}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga6b0d3d7fb077dd797d686580aead8759}{DIOSTREAMDEVICEBLUETOOTH::GetChannelObexPush}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00646}00646\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00647}00647\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gaa7fe6e3f5821706ca15070a28974abeb}{GetChannel}}(\mbox{\hyperlink{_d_i_o_stream_device_bluetooth_8h_a5840dbb79cbc457f9fd663fd21c1cf5a}{DIOSTREAMDEVICEBLUETOOTHSERVICETYPE\_OBEXOBJECTPUSH}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00648}00648\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00649}00649\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00650}00650\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00660}\mbox{\hyperlink{group___d_a_t_a_i_o_ga25aea60575a00579be54b8914a9096f5}{00660}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga25aea60575a00579be54b8914a9096f5}{DIOSTREAMDEVICEBLUETOOTH::GetChannelDialUpNetworking}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00661}00661\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00662}00662\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gaa7fe6e3f5821706ca15070a28974abeb}{GetChannel}}(\mbox{\hyperlink{_d_i_o_stream_device_bluetooth_8h_ae5d60a5328815dea99970dee9dbcddf1}{DIOSTREAMDEVICEBLUETOOTHSERVICETYPE\_DIALUPNETWORKING}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00663}00663\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00664}00664\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00665}00665\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00675}\mbox{\hyperlink{group___d_a_t_a_i_o_ga500db1f23183806b4d83dd959fe7c472}{00675}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga500db1f23183806b4d83dd959fe7c472}{DIOSTREAMDEVICEBLUETOOTH::GetChannelHID}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00676}00676\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00677}00677\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gaa7fe6e3f5821706ca15070a28974abeb}{GetChannel}}(\mbox{\hyperlink{_d_i_o_stream_device_bluetooth_8h_ae7c6e1bdfe138b4cb6400d020c44ce0d}{DIOSTREAMDEVICEBLUETOOTHSERVICETYPE\_HUMANINTERFACEDEVICESERVICE}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00678}00678\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00679}00679\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00680}00680\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00690}\mbox{\hyperlink{group___d_a_t_a_i_o_gaa855d7c397b740e2fa57f1700c6bf115}{00690}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___d_a_t_a_i_o_gaa855d7c397b740e2fa57f1700c6bf115}{DIOSTREAMDEVICEBLUETOOTH::DebugPrintInfo}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00691}00691\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00692}00692\ \ \ \mbox{\hyperlink{group___d_a_t_a_i_o_ga00892c3d58903c4fb65d7f9bf2437425}{DIOSTREAMDEVICE::DebugPrintInfo}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00693}00693\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00694}00694\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ line;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00695}00695\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ data;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00696}00696\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00697}00697\ \ \ \mbox{\hyperlink{group___d_a_t_a_i_o_ga71c32bb5574d5dd224cdba16a72a0e37}{GetMAC}}()-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga7ab809da57ae6352a193696f5bb38fba}{GetXString}}(data);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00698}00698\ \ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00699}00699\ \ \ line.\mbox{\hyperlink{group___x_u_t_i_l_s_ga2177bf8a150174dfd155c7fe1b7b2af9}{Format}}(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}MAC\ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \%s"{}})\ ,\ data.\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}());\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_x_trace_8h_ad3489a73cc8c0aa8e64f91a03735e525}{XTRACE\_PRINTCOLOR}}(\mbox{\hyperlink{_x_trace_8h_ade81e1905d604ef7eb03d194ba1332d4}{XTRACE\_COLOR\_BLUE}},\ line.\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}());}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00700}00700\ \ \ line.\mbox{\hyperlink{group___x_u_t_i_l_s_ga2177bf8a150174dfd155c7fe1b7b2af9}{Format}}(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}Service\ Class\ \ \ \ :\ \%08X"{}}),\ \mbox{\hyperlink{group___d_a_t_a_i_o_ga0faaf3f574064b5e3fdd21dabac1ae59}{GetServiceClass}}()-\/>GetData1());\ \ \ \ \ \ \mbox{\hyperlink{_x_trace_8h_ad3489a73cc8c0aa8e64f91a03735e525}{XTRACE\_PRINTCOLOR}}(\mbox{\hyperlink{_x_trace_8h_ade81e1905d604ef7eb03d194ba1332d4}{XTRACE\_COLOR\_BLUE}},\ line.\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}());}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00701}00701\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00702}00702\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ ID;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00703}00703\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ channel;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00704}00704\ \ \ \textcolor{keywordtype}{int}\ \ \ \ \ nservices\ =\ services.\mbox{\hyperlink{class_x_v_e_c_t_o_r_ab9cec1d9ae7a1f5699f9dde55ccde2bf}{GetSize}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00705}00705\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00706}00706\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ c=0;c<nservices;c++)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00707}00707\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00708}00708\ \ \ \ \ \ \ \mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_b_l_u_e_t_o_o_t_h_s_d_p_s_e_r_v_i_c_e}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICE}}*\ service\ =\ (\mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_b_l_u_e_t_o_o_t_h_s_d_p_s_e_r_v_i_c_e}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICE}}*)services.\mbox{\hyperlink{class_x_v_e_c_t_o_r_a2af4855d7fe0bc28201f6967110d064e}{Get}}(c);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00709}00709\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!service)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00710}00710\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00711}00711\ \ \ \ \ \ \ ID.\mbox{\hyperlink{group___x_u_t_i_l_s_ga2177bf8a150174dfd155c7fe1b7b2af9}{Format}}(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}\%08X"{}}),service-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga068136fad6d81e5b39cac423279da7b1}{GetID}}());}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00712}00712\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00713}00713\ \ \ \ \ \ \ line\ \ =\ ID;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00714}00714\ \ \ \ \ \ \ line\ +=\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}\ -\/\ "{}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00715}00715\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00716}00716\ \ \ \ \ \ \ line\ +=\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}\ \(\backslash\)"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00717}00717\ \ \ \ \ \ \ line\ +=\ service-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_gaa25e9bab2dc703bef597cd3608c3559b}{GetName}}()-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00718}00718\ \ \ \ \ \ \ line\ +=\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}\(\backslash\)"{}\ "{}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00719}00719\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00720}00720\ \ \ \ \ \ \ line\ +=\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}\ \(\backslash\)"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00721}00721\ \ \ \ \ \ \ line\ +=\ service-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga6dd0db24fb049a16daeacb8c76748f06}{GetDescription}}()-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00722}00722\ \ \ \ \ \ \ line\ +=\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}\(\backslash\)"{}\ "{}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00723}00723\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00724}00724\ \ \ \ \ \ \ line\ +=\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}\ \(\backslash\)"{}"{}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00725}00725\ \ \ \ \ \ \ line\ +=\ service-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga86d8c6ddac07c5c3632df83c88a0994f}{GetProvider}}()-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00726}00726\ \ \ \ \ \ \ line\ +=\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}\(\backslash\)"{}\ "{}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00727}00727\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00728}00728\ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ d=0;d<service-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga0e81623c383f7dd60b67087e13d1572b}{GetNProtocols}}();d++)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00729}00729\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00730}00730\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_b_l_u_e_t_o_o_t_h_s_d_p_s_e_r_v_i_c_e_p_r_o_t_o_c_o_l}{DIOSTREAMDEVICEBLUETOOTHSDPSERVICEPROTOCOL}}*\ protocol\ =\ service-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga3ed8fb9267ca38bef1e34ad0d05898cc}{GetProtocol}}(d);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00731}00731\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(protocol)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00732}00732\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00733}00733\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ID.\mbox{\hyperlink{group___x_u_t_i_l_s_ga2177bf8a150174dfd155c7fe1b7b2af9}{Format}}(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}\%08X"{}}),protocol-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga190f0f3211a4e6a28d86751bc7a35cd0}{GetType}}());}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00734}00734\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00735}00735\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ line\ +=\ ID;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00736}00736\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ line\ +=\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00737}00737\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00738}00738\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ channel.\mbox{\hyperlink{group___x_u_t_i_l_s_ga2177bf8a150174dfd155c7fe1b7b2af9}{Format}}(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}[\%d]"{}}),protocol-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga5c21f13ea6055db175ee6b527fdbc0a9}{GetChannel}}());}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00739}00739\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00740}00740\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ line\ +=\ channel;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00741}00741\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ line\ +=\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00742}00742\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00743}00743\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00744}00744\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00745}00745\ \ \ \ \ \ \ \mbox{\hyperlink{_x_trace_8h_ad3489a73cc8c0aa8e64f91a03735e525}{XTRACE\_PRINTCOLOR}}(2,\ line.\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}());}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00746}00746\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00747}00747\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00748}00748\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00749}00749\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00750}00750\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00751}00751\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00760}00760\ \textcolor{keywordtype}{void}\ DIOSTREAMDEVICEBLUETOOTH::Clean()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00761}00761\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00762}00762\ \ \ \mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_a17519bcaee64873e26fa775f02b4d784}{type}}\ \ \ \ \ \ \ \ \ \ \ \ =\ \mbox{\hyperlink{_d_i_o_stream_device_8h_a80099bfd286d536dcde19713a1568a8ea6f823e7f686a64b21ceba15ae81a78e7}{DIOSTREAMDEVICE\_TYPE\_BLUETOOTH}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00763}00763\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00764}00764\ \ \ \mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_b_l_u_e_t_o_o_t_h_a88d8c340f7f8c23d0fce079460b66128}{rssi}}\ \ \ \ \ \ \ \ \ \ \ \ =\ 0;\ \ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00765}00765\ \ \ \mbox{\hyperlink{class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_b_l_u_e_t_o_o_t_h_ad374429d46a1e51fc08fc268365ea951}{isvisible}}\ \ \ \ \ \ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00766}00766\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00767}00767\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00768}00768\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00769}00769\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00770}00770\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00771}00771\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00772}00772\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_stream_device_bluetooth_8cpp_source_l00773}00773\ }
+
+\end{DoxyCode}

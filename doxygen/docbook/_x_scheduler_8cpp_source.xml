@@ -1,0 +1,629 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_scheduler_8cpp_source" xml:lang="en-US">
+<title>XScheduler.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/XUtils/XScheduler.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__x_scheduler_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_scheduler_8h">XScheduler.h</link>&quot;</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_factory_8h">XFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_sleep_8h">XSleep.h</link>&quot;</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_thread_8h">XThread.h</link>&quot;</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_date_time_8h">XDateTime.h</link>&quot;</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_timer_8h">XTimer.h</link>&quot;</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_trace_8h">XTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l00048"/>00048 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00049"/>00049 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_scheduler___x_event_8h">XScheduler_XEvent.h</link>&quot;</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l00050"/>00050 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l00052"/>00052 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00053"/>00053 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l00054"/>00054 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00055"/>00055 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00056"/>00056 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l00057"/>00057 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l00058"/>00058 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00059"/>00059 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00061"/>00061 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00062"/>00062 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l00063"/>00063 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l00064"/>00064 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00065"/>00065 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00066"/>00066 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_XSCHEDULERTASK&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l00067"/>00067 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00068"/>00068 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00080"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a3c83e14b14fae636b1af1588bad031e2">00080</link> <link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a3c83e14b14fae636b1af1588bad031e2">XSCHEDULERTASK::XSCHEDULERTASK</link>(<link linkend="_class_x_s_c_h_e_d_u_l_e_r">XSCHEDULER</link>*&#32;xscheduler)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00081"/>00081 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00082"/>00082 &#32;&#32;Clean();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00083"/>00083 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00084"/>00084 &#32;&#32;this-&gt;xscheduler&#32;&#32;=&#32;xscheduler;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00085"/>00085 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00086"/>00086 &#32;&#32;GEN_XFACTORY_CREATE(xtimer,&#32;CreateTimer())
+<anchor xml:id="__x_scheduler_8cpp_source_1l00087"/>00087 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00088"/>00088 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00089"/>00089 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00100"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1af67177c43f61dc34bb4b0282623b68e4">00100</link> <link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1af67177c43f61dc34bb4b0282623b68e4">XSCHEDULERTASK::~XSCHEDULERTASK</link>()
+<anchor xml:id="__x_scheduler_8cpp_source_1l00101"/>00101 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00102"/>00102 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xtimer)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00103"/>00103 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY.DeleteTimer(xtimer);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;xtimer&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00106"/>00106 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00107"/>00107 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00108"/>00108 &#32;&#32;Clean();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00109"/>00109 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00110"/>00110 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00111"/>00111 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00121"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a0c0ca6b68b1f02d867815a50a39646f3">00121</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a0c0ca6b68b1f02d867815a50a39646f3">XSCHEDULERTASK::IsActive</link>()
+<anchor xml:id="__x_scheduler_8cpp_source_1l00122"/>00122 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00123"/>00123 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;active;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00124"/>00124 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00125"/>00125 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00126"/>00126 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00138"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a5e59c92a4529f014a9e9db4b9761586d">00138</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a5e59c92a4529f014a9e9db4b9761586d">XSCHEDULERTASK::SetIsActive</link>(<emphasis role="keywordtype">bool</emphasis>&#32;active)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00139"/>00139 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00140"/>00140 &#32;&#32;this-&gt;active&#32;&#32;=&#32;active;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00141"/>00141 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xtimer)&#32;xtimer-&gt;<link linkend="_class_x_t_i_m_e_r_1a461fee3826d400d29bc47f58f2c5d898">Reset</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00142"/>00142 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00143"/>00143 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00144"/>00144 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00145"/>00145 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00146"/>00146 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00156"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a498bc0307b75f7e5d8ac1fbba9cfe3a0">00156</link> <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a498bc0307b75f7e5d8ac1fbba9cfe3a0">XSCHEDULERTASK::GetID</link>()
+<anchor xml:id="__x_scheduler_8cpp_source_1l00157"/>00157 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00158"/>00158 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ID;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00159"/>00159 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00160"/>00160 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00161"/>00161 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00173"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a59e7fe9c868a162daf2d37d7e637b7da">00173</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a59e7fe9c868a162daf2d37d7e637b7da">XSCHEDULERTASK::SetID</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;ID)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00174"/>00174 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00175"/>00175 &#32;&#32;this-&gt;ID&#32;=&#32;ID;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00176"/>00176 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00177"/>00177 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00178"/>00178 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00188"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1acb32be07ce22adbf4202fc2a5b24bd2b">00188</link> <link linkend="_class_x_t_i_m_e_r">XTIMER</link>*&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1acb32be07ce22adbf4202fc2a5b24bd2b">XSCHEDULERTASK::GetXTimer</link>()
+<anchor xml:id="__x_scheduler_8cpp_source_1l00189"/>00189 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00190"/>00190 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;xtimer;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00191"/>00191 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00192"/>00192 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00193"/>00193 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00203"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1ae6e303ed6f4b28c29ee3cd460cefb579">00203</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1ae6e303ed6f4b28c29ee3cd460cefb579">XSCHEDULERTASK::IsInValidTimeLimit</link>()
+<anchor xml:id="__x_scheduler_8cpp_source_1l00204"/>00204 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00205"/>00205 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;isinvalidtimelimit;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00206"/>00206 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00207"/>00207 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00208"/>00208 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00218"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a813d4d77716e4f29dd43dc2fb80e2bc8">00218</link> <link linkend="_class_x_d_a_t_e_t_i_m_e">XDATETIME</link>*&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a813d4d77716e4f29dd43dc2fb80e2bc8">XSCHEDULERTASK::GetTimeLimitStart</link>()
+<anchor xml:id="__x_scheduler_8cpp_source_1l00219"/>00219 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00220"/>00220 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;xdatetimelimitstart;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00221"/>00221 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00222"/>00222 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00223"/>00223 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00233"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a0d4263262236612d90295fc2b82e87ff">00233</link> <link linkend="_class_x_d_a_t_e_t_i_m_e">XDATETIME</link>*&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a0d4263262236612d90295fc2b82e87ff">XSCHEDULERTASK::GetTimeLimitEnd</link>()
+<anchor xml:id="__x_scheduler_8cpp_source_1l00234"/>00234 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00235"/>00235 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;xdatetimelimitend;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00236"/>00236 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00237"/>00237 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00238"/>00238 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00248"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1af16de4822e4c13f0daa0b742054c7cf8">00248</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1af16de4822e4c13f0daa0b742054c7cf8">XSCHEDULERTASK::IsCyclic</link>()
+<anchor xml:id="__x_scheduler_8cpp_source_1l00249"/>00249 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00250"/>00250 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(!ncyclestodo)?<emphasis role="keyword">false</emphasis>:<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00251"/>00251 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00252"/>00252 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00253"/>00253 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00263"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a62d17b0a69f9328316498039b95112ff">00263</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a62d17b0a69f9328316498039b95112ff">XSCHEDULERTASK::GetNCyclesTodo</link>()
+<anchor xml:id="__x_scheduler_8cpp_source_1l00264"/>00264 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00265"/>00265 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ncyclestodo;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00266"/>00266 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00267"/>00267 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00268"/>00268 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00281"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a01a9c9cad767a1ecada80832ee64790b">00281</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a01a9c9cad767a1ecada80832ee64790b">XSCHEDULERTASK::SetNCycles</link>(<emphasis role="keywordtype">int</emphasis>&#32;ncyclestodo,&#32;<link linkend="_class_x_d_a_t_e_t_i_m_e">XDATETIME</link>*&#32;xdatetimecadence)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00282"/>00282 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00283"/>00283 &#32;&#32;this-&gt;ncyclestodo&#32;=&#32;ncyclestodo;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00284"/>00284 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(this-&gt;ncyclestodo&lt;0)&#32;this-&gt;ncyclestodo&#32;=&#32;<link linkend="__x_scheduler_8h_1a0a0f7373bbd46e610b0529ce34f0bf46">XSCHEDULER_CYCLEFOREVER</link>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00285"/>00285 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00286"/>00286 &#32;&#32;this-&gt;ncyclesactual&#32;=&#32;this-&gt;ncyclestodo;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00287"/>00287 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00288"/>00288 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xdatetimecadence)&#32;this-&gt;xdatetimecadence.<link linkend="_class_x_d_a_t_e_t_i_m_e_1a580f6018996774252bbae5660c4d1b91">CopyFrom</link>(xdatetimecadence);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00289"/>00289 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00290"/>00290 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00291"/>00291 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00292"/>00292 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00293"/>00293 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00306"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a858f89d763ac109d6379102443222f4a">00306</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a01a9c9cad767a1ecada80832ee64790b">XSCHEDULERTASK::SetNCycles</link>(<emphasis role="keywordtype">int</emphasis>&#32;ncyclestodo,&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;cadenceinseconds)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00307"/>00307 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00308"/>00308 &#32;&#32;<link linkend="_class_x_d_a_t_e_t_i_m_e">XDATETIME</link>&#32;xdatetimecadence;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00309"/>00309 &#32;&#32;<link linkend="_class_x_t_i_m_e_r">XTIMER</link>&#32;&#32;&#32;&#32;xtimercadence;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00310"/>00310 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00311"/>00311 &#32;&#32;xdatetimecadence.<link linkend="_class_x_d_a_t_e_t_i_m_e_1a5f69e1fb5fa02a3d1346dbf8b00a114d">SetToZero</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00312"/>00312 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00313"/>00313 &#32;&#32;xtimercadence.<link linkend="_class_x_t_i_m_e_r_1a461fee3826d400d29bc47f58f2c5d898">Reset</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00314"/>00314 &#32;&#32;xtimercadence.<link linkend="_class_x_t_i_m_e_r_1a455248fbec8f5d7bd7ea56edc268cedc">AddSeconds</link>(cadenceinseconds);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00315"/>00315 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00316"/>00316 &#32;&#32;xtimercadence.<link linkend="_class_x_t_i_m_e_r_1a04762e3b21e23e2e228d8d030ceefd8a">GetMeasureToDate</link>(&amp;xdatetimecadence);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00317"/>00317 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00318"/>00318 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a01a9c9cad767a1ecada80832ee64790b">SetNCycles</link>(ncyclestodo,&#32;&amp;xdatetimecadence);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00319"/>00319 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00320"/>00320 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00321"/>00321 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00334"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1ab21b56096efe3d19ed655635d91959dd">00334</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a01a9c9cad767a1ecada80832ee64790b">XSCHEDULERTASK::SetNCycles</link>(<emphasis role="keywordtype">int</emphasis>&#32;ncyclestodo,&#32;<emphasis role="keywordtype">int</emphasis>&#32;cadenceinseconds)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00335"/>00335 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00336"/>00336 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a01a9c9cad767a1ecada80832ee64790b">SetNCycles</link>(ncyclestodo,&#32;(<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>)cadenceinseconds);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00337"/>00337 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00338"/>00338 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00339"/>00339 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00349"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a70b276116de2f5dff2461265b8560fcf">00349</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a70b276116de2f5dff2461265b8560fcf">XSCHEDULERTASK::IsStartImmediatelyCycles</link>()
+<anchor xml:id="__x_scheduler_8cpp_source_1l00350"/>00350 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00351"/>00351 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;isstartimmediatelycycles;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00352"/>00352 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00353"/>00353 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00354"/>00354 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00366"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a55b32a8806e2a7459367f1e38325ae97">00366</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a55b32a8806e2a7459367f1e38325ae97">XSCHEDULERTASK::SetIsStartImmediatelyCycles</link>(<emphasis role="keywordtype">bool</emphasis>&#32;isstartimmediatelycycles)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00367"/>00367 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00368"/>00368 &#32;&#32;this-&gt;isstartimmediatelycycles&#32;=&#32;isstartimmediatelycycles;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00369"/>00369 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00370"/>00370 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00371"/>00371 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00384"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a71c60cbe5bb615e1ad36661161af7ff2">00384</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a71c60cbe5bb615e1ad36661161af7ff2">XSCHEDULERTASK::SetTimeLimits</link>(<link linkend="_class_x_d_a_t_e_t_i_m_e">XDATETIME</link>*&#32;xdatetimelimitstart,&#32;<link linkend="_class_x_d_a_t_e_t_i_m_e">XDATETIME</link>*&#32;xdatetimelimitend)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00385"/>00385 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00386"/>00386 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xdatetimelimitstart)&#32;this-&gt;xdatetimelimitstart.<link linkend="_class_x_d_a_t_e_t_i_m_e_1a580f6018996774252bbae5660c4d1b91">CopyFrom</link>(xdatetimelimitstart);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00387"/>00387 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xdatetimelimitend)&#32;&#32;&#32;this-&gt;xdatetimelimitend.<link linkend="_class_x_d_a_t_e_t_i_m_e_1a580f6018996774252bbae5660c4d1b91">CopyFrom</link>(xdatetimelimitend);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00388"/>00388 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00389"/>00389 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00390"/>00390 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00391"/>00391 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00392"/>00392 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00404"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1ae55c64c4770d04dc67608c269ab52a21">00404</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1ae55c64c4770d04dc67608c269ab52a21">XSCHEDULERTASK::SetConditionDayWeek</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;mask)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00405"/>00405 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00406"/>00406 &#32;&#32;conditiondayweekmask&#32;=&#32;&#32;mask;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00407"/>00407 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00408"/>00408 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00409"/>00409 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00419"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a1d591be0140cc14363ed003836bc0e79">00419</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a1d591be0140cc14363ed003836bc0e79">XSCHEDULERTASK::ResetCondition</link>()
+<anchor xml:id="__x_scheduler_8cpp_source_1l00420"/>00420 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00421"/>00421 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xtimer)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00422"/>00422 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00423"/>00423 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00424"/>00424 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00425"/>00425 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00426"/>00426 &#32;&#32;xtimer-&gt;<link linkend="_class_x_t_i_m_e_r_1a461fee3826d400d29bc47f58f2c5d898">Reset</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00427"/>00427 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00428"/>00428 &#32;&#32;ncyclesmade&#32;=&#32;0;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00429"/>00429 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00430"/>00430 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00431"/>00431 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00432"/>00432 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00433"/>00433 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00443"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a242b4bc47051e949e6a8624b5ee8d911">00443</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a242b4bc47051e949e6a8624b5ee8d911">XSCHEDULERTASK::StartConditionImmediately</link>()
+<anchor xml:id="__x_scheduler_8cpp_source_1l00444"/>00444 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00445"/>00445 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xtimer)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00446"/>00446 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00447"/>00447 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00448"/>00448 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00449"/>00449 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00450"/>00450 &#32;&#32;xtimer-&gt;<link linkend="_class_x_t_i_m_e_r_1a455248fbec8f5d7bd7ea56edc268cedc">AddSeconds</link>(xdatetimecadence.<link linkend="_class_x_d_a_t_e_t_i_m_e_1a8005b8d3f065b4cb2dd1a208165ad5b6">GetSeconsFromDate</link>()&#32;+&#32;1);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00451"/>00451 &#32;&#32;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00452"/>00452 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00453"/>00453 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00454"/>00454 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00455"/>00455 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00468"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a346ca77ef8158f1b6ae78e57a9014144">00468</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a346ca77ef8158f1b6ae78e57a9014144">XSCHEDULERTASK::CheckCondition</link>(<link linkend="_class_x_d_a_t_e_t_i_m_e">XDATETIME</link>*&#32;xdatetimeactual,&#32;<link linkend="_class_x_t_i_m_e_r">XTIMER</link>*&#32;xtimeractual)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00469"/>00469 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00470"/>00470 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xdatetimeactual)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00471"/>00471 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00472"/>00472 &#32;&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;timeactualsec&#32;&#32;&#32;=&#32;xdatetimeactual-&gt;<link linkend="_class_x_d_a_t_e_t_i_m_e_1a8005b8d3f065b4cb2dd1a208165ad5b6">GetSeconsFromDate</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00473"/>00473 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00474"/>00474 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xdatetimelimitstart.<link linkend="_class_x_d_a_t_e_t_i_m_e_1af8e81a81c48e8738383c1493849574cf">IsValidDate</link>())
+<anchor xml:id="__x_scheduler_8cpp_source_1l00475"/>00475 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00476"/>00476 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(timeactualsec&#32;&lt;&#32;&#32;xdatetimelimitstart.<link linkend="_class_x_d_a_t_e_t_i_m_e_1a8005b8d3f065b4cb2dd1a208165ad5b6">GetSeconsFromDate</link>())
+<anchor xml:id="__x_scheduler_8cpp_source_1l00477"/>00477 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00478"/>00478 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;isinvalidtimelimit&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00479"/>00479 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00480"/>00480 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xtimeractual-&gt;<link linkend="_class_x_t_i_m_e_r_1a461fee3826d400d29bc47f58f2c5d898">Reset</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00481"/>00481 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00482"/>00482 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00483"/>00483 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;isinvalidtimelimit&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00484"/>00484 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00485"/>00485 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00486"/>00486 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xdatetimelimitend.<link linkend="_class_x_d_a_t_e_t_i_m_e_1af8e81a81c48e8738383c1493849574cf">IsValidDate</link>())
+<anchor xml:id="__x_scheduler_8cpp_source_1l00487"/>00487 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00488"/>00488 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(timeactualsec&#32;&gt;&#32;&#32;xdatetimelimitend.<link linkend="_class_x_d_a_t_e_t_i_m_e_1a8005b8d3f065b4cb2dd1a208165ad5b6">GetSeconsFromDate</link>())
+<anchor xml:id="__x_scheduler_8cpp_source_1l00489"/>00489 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00490"/>00490 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;isinvalidtimelimit&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00491"/>00491 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00492"/>00492 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00493"/>00493 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;isinvalidtimelimit&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00494"/>00494 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00495"/>00495 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00496"/>00496 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(conditiondayweekmask&#32;!=&#32;<link linkend="__x_scheduler_8h_1a986bcffd95ffb6ee58d30002f6ba05b0">XSCHEDULER_DAYWEEK_NONE</link>)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00497"/>00497 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00498"/>00498 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!(GetDayOfWeekMask(xdatetimeactual)&#32;&amp;&#32;conditiondayweekmask))
+<anchor xml:id="__x_scheduler_8cpp_source_1l00499"/>00499 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00500"/>00500 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xtimeractual-&gt;<link linkend="_class_x_t_i_m_e_r_1a461fee3826d400d29bc47f58f2c5d898">Reset</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00501"/>00501 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00502"/>00502 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00503"/>00503 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00504"/>00504 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00505"/>00505 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!ncyclesactual)&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00506"/>00506 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00507"/>00507 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;checkcadence&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00508"/>00508 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(isstartimmediatelycycles)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00509"/>00509 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00510"/>00510 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!ncyclesmade)&#32;&#32;checkcadence&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00511"/>00511 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00512"/>00512 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00513"/>00513 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(checkcadence)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00514"/>00514 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00515"/>00515 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xdatetimecadence.<link linkend="_class_x_d_a_t_e_t_i_m_e_1af8e81a81c48e8738383c1493849574cf">IsValidDate</link>())
+<anchor xml:id="__x_scheduler_8cpp_source_1l00516"/>00516 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00517"/>00517 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xtimeractual-&gt;<link linkend="_class_x_t_i_m_e_r_1a02ae3c82df51ec1ed16288fe102d9d8b">GetMeasureSeconds</link>()&#32;&lt;&#32;xdatetimecadence.<link linkend="_class_x_d_a_t_e_t_i_m_e_1a8005b8d3f065b4cb2dd1a208165ad5b6">GetSeconsFromDate</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00518"/>00518 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00519"/>00519 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00520"/>00520 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00521"/>00521 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(ncyclesactual&gt;0)&#32;&#32;ncyclesactual--;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00522"/>00522 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00523"/>00523 &#32;&#32;xtimeractual-&gt;<link linkend="_class_x_t_i_m_e_r_1a461fee3826d400d29bc47f58f2c5d898">Reset</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00524"/>00524 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00525"/>00525 &#32;&#32;ncyclesmade++;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00526"/>00526 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00527"/>00527 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00528"/>00528 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00529"/>00529 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00530"/>00530 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00542"/>00542 <link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;XSCHEDULERTASK::GetDayOfWeekMask(<link linkend="_class_x_d_a_t_e_t_i_m_e">XDATETIME</link>*&#32;xtimeactual)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00543"/>00543 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00544"/>00544 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xtimeactual)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_scheduler_8h_1a986bcffd95ffb6ee58d30002f6ba05b0">XSCHEDULER_DAYWEEK_NONE</link>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00545"/>00545 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00546"/>00546 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;mask&#32;=&#32;<link linkend="__x_scheduler_8h_1a986bcffd95ffb6ee58d30002f6ba05b0">XSCHEDULER_DAYWEEK_NONE</link>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00547"/>00547 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00548"/>00548 &#32;&#32;<emphasis role="keywordflow">switch</emphasis>(xtimeactual-&gt;<link linkend="_class_x_d_a_t_e_t_i_m_e_1a86a5d7b455930dfda4c0721c7db2996b">GetDayOfWeek</link>())
+<anchor xml:id="__x_scheduler_8cpp_source_1l00549"/>00549 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00550"/>00550 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_date_time_8h_1a8d3d68fee5e4cc1857488d1a8183930fa04370da3bf916e054611b6866e42363e">XDATETIME_DAYWEEK_SUNDAY</link>&#32;&#32;&#32;&#32;&#32;:&#32;mask&#32;=&#32;<link linkend="__x_scheduler_8h_1ae664bb4a404c6016c320fca7ddf7f153">XSCHEDULER_DAYWEEK_ISSUNDAY</link>;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00551"/>00551 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_date_time_8h_1a8d3d68fee5e4cc1857488d1a8183930fae303f405c531ed2c2723d0839c437636">XDATETIME_DAYWEEK_MONDAY</link>&#32;&#32;&#32;&#32;&#32;:&#32;mask&#32;=&#32;<link linkend="__x_scheduler_8h_1a141fa5ae80b277c70c868c2c349b0ef9">XSCHEDULER_DAYWEEK_ISMONDAY</link>;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00552"/>00552 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_date_time_8h_1a8d3d68fee5e4cc1857488d1a8183930fa6c0bdec9e24b0ee0103baa74993c3a39">XDATETIME_DAYWEEK_TUESDAY</link>&#32;&#32;&#32;&#32;:&#32;mask&#32;=&#32;<link linkend="__x_scheduler_8h_1ae64e669aec482387dbd9dd76ed27d556">XSCHEDULER_DAYWEEK_ISTUESDAY</link>;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00553"/>00553 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_date_time_8h_1a8d3d68fee5e4cc1857488d1a8183930fa2319bad190a4b29bec300b3da2e87b81">XDATETIME_DAYWEEK_WEDNESDAY</link>&#32;&#32;:&#32;mask&#32;=&#32;<link linkend="__x_scheduler_8h_1af82eda9e5829aa3054689e63c9aca4e2">XSCHEDULER_DAYWEEK_ISWEDNESDAY</link>;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00554"/>00554 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_date_time_8h_1a8d3d68fee5e4cc1857488d1a8183930fac6ff1a436d6ebb6dc769d362dce711a0">XDATETIME_DAYWEEK_THURSDAY</link>&#32;&#32;&#32;:&#32;mask&#32;=&#32;<link linkend="__x_scheduler_8h_1a4d0642588ecbef687c6213d90baf01f1">XSCHEDULER_DAYWEEK_ISTHURSDAY</link>;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00555"/>00555 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_date_time_8h_1a8d3d68fee5e4cc1857488d1a8183930fa7ebf21b05ddd8655dd02a7c56460fc07">XDATETIME_DAYWEEK_FRIDAY</link>&#32;&#32;&#32;&#32;&#32;:&#32;mask&#32;=&#32;<link linkend="__x_scheduler_8h_1ac798e0beaf4f223985846631f21eac57">XSCHEDULER_DAYWEEK_ISFRIDAY</link>;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00556"/>00556 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_date_time_8h_1a8d3d68fee5e4cc1857488d1a8183930fad97389061e5613922e480fbde30de1f8">XDATETIME_DAYWEEK_SATURDAY</link>&#32;&#32;&#32;:&#32;mask&#32;=&#32;<link linkend="__x_scheduler_8h_1a8c147cfd2641d0e7794bc6b756702b17">XSCHEDULER_DAYWEEK_ISSATURDAY</link>;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00557"/>00557 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00558"/>00558 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00559"/>00559 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;mask;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00560"/>00560 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00561"/>00561 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00562"/>00562 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00573"/>00573 <emphasis role="keywordtype">void</emphasis>&#32;XSCHEDULERTASK::Clean()
+<anchor xml:id="__x_scheduler_8cpp_source_1l00574"/>00574 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00575"/>00575 &#32;&#32;xscheduler&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00576"/>00576 &#32;&#32;xtimer&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00577"/>00577 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00578"/>00578 &#32;&#32;ID&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00579"/>00579 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00580"/>00580 &#32;&#32;active&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00581"/>00581 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00582"/>00582 &#32;&#32;isstartimmediatelycycles&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00583"/>00583 &#32;&#32;ncyclesmade&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00584"/>00584 &#32;&#32;ncyclestodo&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00585"/>00585 &#32;&#32;ncyclesactual&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00586"/>00586 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00587"/>00587 &#32;&#32;isinvalidtimelimit&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00588"/>00588 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00589"/>00589 &#32;&#32;conditiondayweekmask&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_scheduler_8h_1a986bcffd95ffb6ee58d30002f6ba05b0">XSCHEDULER_DAYWEEK_NONE</link>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00590"/>00590 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00591"/>00591 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00592"/>00592 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00593"/>00593 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l00594"/>00594 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00595"/>00595 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00596"/>00596 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_XSCHEDULER</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l00597"/>00597 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00598"/>00598 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00608"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_1af87c6298ee92e36179801e4f82a68d07">00608</link> <link linkend="_class_x_s_c_h_e_d_u_l_e_r_1af87c6298ee92e36179801e4f82a68d07">XSCHEDULER::XSCHEDULER</link>()
+<anchor xml:id="__x_scheduler_8cpp_source_1l00609"/>00609 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00610"/>00610 &#32;&#32;Clean();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00611"/>00611 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00612"/>00612 &#32;&#32;<link linkend="_class_x_s_u_b_j_e_c_t_1ac83006698567c749aecf727dddef5d9c">RegisterEvent</link>(<link linkend="__x_event_8h_1aabf5f0b55ced84b808fb2c2e45dbb1e8a15553b6b979ac77333c3538da7c70d4b">XEVENT_TYPE_SCHEDULER</link>);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00613"/>00613 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00614"/>00614 &#32;&#32;GEN_XFACTORY_CREATE(xtimerwait,&#32;CreateTimer())
+<anchor xml:id="__x_scheduler_8cpp_source_1l00615"/>00615 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00616"/>00616 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00617"/>00617 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00628"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_1a85ff57ab52d9b0b90d39387d2c721554">00628</link> <link linkend="_class_x_s_c_h_e_d_u_l_e_r_1a85ff57ab52d9b0b90d39387d2c721554">XSCHEDULER::~XSCHEDULER</link>()
+<anchor xml:id="__x_scheduler_8cpp_source_1l00629"/>00629 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00630"/>00630 &#32;&#32;<link linkend="_class_x_s_u_b_j_e_c_t_1ab78992063b09d37612e7719e37d415bc">DeRegisterEvent</link>(<link linkend="__x_event_8h_1aabf5f0b55ced84b808fb2c2e45dbb1e8a15553b6b979ac77333c3538da7c70d4b">XEVENT_TYPE_SCHEDULER</link>);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00631"/>00631 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00632"/>00632 &#32;&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_1acd1cd5f35200130137116ec8ffa2ecfc">End</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00633"/>00633 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00634"/>00634 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xtimerwait)&#32;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00635"/>00635 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00636"/>00636 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY.DeleteTimer(xtimerwait);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00637"/>00637 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00638"/>00638 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00639"/>00639 &#32;&#32;Clean();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00640"/>00640 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00641"/>00641 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00642"/>00642 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00652"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_1a324cf5ad7c09fdaeb78fd46c12e13b12">00652</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_1a324cf5ad7c09fdaeb78fd46c12e13b12">XSCHEDULER::Ini</link>()
+<anchor xml:id="__x_scheduler_8cpp_source_1l00653"/>00653 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00654"/>00654 &#32;&#32;GEN_XFACTORY_CREATE(xmutexscheduler,&#32;Create_Mutex())
+<anchor xml:id="__x_scheduler_8cpp_source_1l00655"/>00655 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xmutexscheduler)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00656"/>00656 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00657"/>00657 &#32;&#32;GEN_XFACTORY_CREATE(xdatetimeactual,&#32;CreateDateTime())
+<anchor xml:id="__x_scheduler_8cpp_source_1l00658"/>00658 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xdatetimeactual)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00659"/>00659 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00660"/>00660 &#32;&#32;xthreadscheduler&#32;=&#32;<link linkend="__x_thread_collected_8h_1aad503e3655b9ff78d3ac660d1f1f5534">CREATEXTHREAD</link>(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6a60757c697f84ba3ee59e54ad99c3b6fe">XTHREADGROUPID_SCHEDULER</link>,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;XSCHEDULER::Ini&quot;</emphasis>),ThreadScheduler,(<emphasis role="keywordtype">void</emphasis>*)<emphasis role="keyword">this</emphasis>);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00661"/>00661 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xthreadscheduler)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00662"/>00662 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00663"/>00663 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xthreadscheduler-&gt;Ini())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00664"/>00664 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00665"/>00665 &#32;&#32;isactive&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00666"/>00666 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00667"/>00667 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00668"/>00668 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00669"/>00669 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00670"/>00670 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00680"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_1aac04c2c17f0f4b28bbe579152a4ef0df">00680</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_1aac04c2c17f0f4b28bbe579152a4ef0df">XSCHEDULER::IsActive</link>()
+<anchor xml:id="__x_scheduler_8cpp_source_1l00681"/>00681 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00682"/>00682 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;isactive;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00683"/>00683 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00684"/>00684 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00685"/>00685 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00697"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_1ad458e1aa85e652150fb08f9431e1438b">00697</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_1ad458e1aa85e652150fb08f9431e1438b">XSCHEDULER::Activate</link>(<emphasis role="keywordtype">bool</emphasis>&#32;on)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00698"/>00698 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00699"/>00699 &#32;&#32;this-&gt;isactive&#32;=&#32;on;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00700"/>00700 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00701"/>00701 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00702"/>00702 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00712"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_1ae1f404b133cd5a64c88128cc293798d4">00712</link> <link linkend="_class_x_m_u_t_e_x">XMUTEX</link>*&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_1ae1f404b133cd5a64c88128cc293798d4">XSCHEDULER::GetMutexScheduler</link>()
+<anchor xml:id="__x_scheduler_8cpp_source_1l00713"/>00713 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00714"/>00714 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;xmutexscheduler;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00715"/>00715 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00716"/>00716 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00717"/>00717 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00727"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_1ad1a0615e8c0cd9c14661a080b3ece399">00727</link> <link linkend="_class_x_d_a_t_e_t_i_m_e">XDATETIME</link>*&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_1ad1a0615e8c0cd9c14661a080b3ece399">XSCHEDULER::GetDateTimeActual</link>()
+<anchor xml:id="__x_scheduler_8cpp_source_1l00728"/>00728 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00729"/>00729 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;xdatetimeactual;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00730"/>00730 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00731"/>00731 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00732"/>00732 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00744"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_1aa87c3401008063bc3037f593dcaa7bbc">00744</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_1aa87c3401008063bc3037f593dcaa7bbc">XSCHEDULER::Task_Add</link>(<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k">XSCHEDULERTASK</link>*&#32;task)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00745"/>00745 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00746"/>00746 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!task)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00747"/>00747 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00748"/>00748 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexscheduler)&#32;xmutexscheduler-&gt;<link linkend="_class_x_m_u_t_e_x_1ae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00749"/>00749 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00750"/>00750 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(task-&gt;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1acb32be07ce22adbf4202fc2a5b24bd2b">GetXTimer</link>())&#32;task-&gt;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1acb32be07ce22adbf4202fc2a5b24bd2b">GetXTimer</link>()-&gt;<link linkend="_class_x_t_i_m_e_r_1a461fee3826d400d29bc47f58f2c5d898">Reset</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00751"/>00751 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00752"/>00752 &#32;&#32;tasks.<link linkend="_class_x_v_e_c_t_o_r_1a51a790aac8efd4603aee608ddcc83423">Add</link>(task);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00753"/>00753 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00754"/>00754 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexscheduler)&#32;xmutexscheduler-&gt;<link linkend="_class_x_m_u_t_e_x_1afed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00755"/>00755 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00756"/>00756 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00757"/>00757 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00758"/>00758 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00759"/>00759 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00771"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_1a44b17c728a4acee8123d08004f9a1a69">00771</link> <link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k">XSCHEDULERTASK</link>*&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_1a44b17c728a4acee8123d08004f9a1a69">XSCHEDULER::Task_Get</link>(<emphasis role="keywordtype">int</emphasis>&#32;index)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00772"/>00772 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00773"/>00773 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(tasks.<link linkend="_class_x_v_e_c_t_o_r_1acfb28e72022a067c3a4635f0c14734fb">IsEmpty</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00774"/>00774 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00775"/>00775 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k">XSCHEDULERTASK</link>*)tasks.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(index);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00776"/>00776 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00777"/>00777 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00778"/>00778 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00790"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_1ad1927167ea8af8f14692a9cc9a4f025a">00790</link> <link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k">XSCHEDULERTASK</link>*&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_1ad1927167ea8af8f14692a9cc9a4f025a">XSCHEDULER::Task_GetForID</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;ID)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00791"/>00791 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00792"/>00792 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xmutexscheduler)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00793"/>00793 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(tasks.<link linkend="_class_x_v_e_c_t_o_r_1acfb28e72022a067c3a4635f0c14734fb">IsEmpty</link>())&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00794"/>00794 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00795"/>00795 &#32;&#32;xmutexscheduler-&gt;<link linkend="_class_x_m_u_t_e_x_1ae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00796"/>00796 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00797"/>00797 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;c&lt;tasks.<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>();c++)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00798"/>00798 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00799"/>00799 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k">XSCHEDULERTASK</link>*&#32;task&#32;=&#32;tasks.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(c);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00800"/>00800 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(task)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00801"/>00801 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00802"/>00802 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(task-&gt;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a498bc0307b75f7e5d8ac1fbba9cfe3a0">GetID</link>()==ID)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00803"/>00803 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00804"/>00804 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xmutexscheduler-&gt;<link linkend="_class_x_m_u_t_e_x_1afed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00805"/>00805 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;task;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00806"/>00806 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00807"/>00807 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00808"/>00808 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00809"/>00809 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00810"/>00810 &#32;&#32;xmutexscheduler-&gt;<link linkend="_class_x_m_u_t_e_x_1afed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00811"/>00811 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00812"/>00812 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00813"/>00813 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00814"/>00814 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00815"/>00815 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00827"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_1a3e2939c8c15407c0faf7c4bc5275f43c">00827</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_1a3e2939c8c15407c0faf7c4bc5275f43c">XSCHEDULER::Task_Del</link>(<emphasis role="keywordtype">int</emphasis>&#32;index)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00828"/>00828 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00829"/>00829 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xmutexscheduler)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00830"/>00830 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(tasks.<link linkend="_class_x_v_e_c_t_o_r_1acfb28e72022a067c3a4635f0c14734fb">IsEmpty</link>())&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00831"/>00831 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00832"/>00832 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00833"/>00833 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00834"/>00834 &#32;&#32;xmutexscheduler-&gt;<link linkend="_class_x_m_u_t_e_x_1ae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00835"/>00835 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00836"/>00836 &#32;&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k">XSCHEDULERTASK</link>*&#32;task&#32;=&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_1a44b17c728a4acee8123d08004f9a1a69">Task_Get</link>(index);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00837"/>00837 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(task)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00838"/>00838 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00839"/>00839 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;tasks.<link linkend="_class_x_v_e_c_t_o_r_1a1b2817263806966a47e30481e1561c27">Delete</link>(task);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00840"/>00840 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;task;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00841"/>00841 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00842"/>00842 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00843"/>00843 &#32;&#32;xmutexscheduler-&gt;<link linkend="_class_x_m_u_t_e_x_1afed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00844"/>00844 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00845"/>00845 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00846"/>00846 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00847"/>00847 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00848"/>00848 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00860"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_1a8c525ff71b2655536cc616032864b59f">00860</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_1a8c525ff71b2655536cc616032864b59f">XSCHEDULER::Task_DelForID</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;ID)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00861"/>00861 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00862"/>00862 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xmutexscheduler)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00863"/>00863 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(tasks.<link linkend="_class_x_v_e_c_t_o_r_1acfb28e72022a067c3a4635f0c14734fb">IsEmpty</link>())&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00864"/>00864 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00865"/>00865 &#32;&#32;xmutexscheduler-&gt;<link linkend="_class_x_m_u_t_e_x_1ae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00866"/>00866 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00867"/>00867 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00868"/>00868 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00869"/>00869 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;c&lt;tasks.<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>();c++)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00870"/>00870 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00871"/>00871 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k">XSCHEDULERTASK</link>*&#32;task&#32;=&#32;tasks.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(c);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00872"/>00872 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(task)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00873"/>00873 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00874"/>00874 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(task-&gt;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a498bc0307b75f7e5d8ac1fbba9cfe3a0">GetID</link>()==ID)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00875"/>00875 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00876"/>00876 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;tasks.<link linkend="_class_x_v_e_c_t_o_r_1a1b2817263806966a47e30481e1561c27">Delete</link>(task);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00877"/>00877 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;task;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00878"/>00878 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00879"/>00879 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00880"/>00880 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00881"/>00881 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00882"/>00882 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00883"/>00883 &#32;&#32;xmutexscheduler-&gt;<link linkend="_class_x_m_u_t_e_x_1afed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00884"/>00884 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00885"/>00885 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00886"/>00886 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00887"/>00887 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00888"/>00888 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00898"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_1a4ed9b69e1c0f27153f3fbf8c47ed5a74">00898</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_1a4ed9b69e1c0f27153f3fbf8c47ed5a74">XSCHEDULER::Task_DelAll</link>()
+<anchor xml:id="__x_scheduler_8cpp_source_1l00899"/>00899 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00900"/>00900 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(tasks.<link linkend="_class_x_v_e_c_t_o_r_1acfb28e72022a067c3a4635f0c14734fb">IsEmpty</link>())&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00901"/>00901 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00902"/>00902 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexscheduler)&#32;xmutexscheduler-&gt;<link linkend="_class_x_m_u_t_e_x_1ae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00903"/>00903 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00904"/>00904 &#32;&#32;tasks.<link linkend="_class_x_v_e_c_t_o_r_1abae5097402824f18f274e21e18b23bea">DeleteContents</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00905"/>00905 &#32;&#32;tasks.<link linkend="_class_x_v_e_c_t_o_r_1a57c72ab04fd14c60d1026e0a7b4a1887">DeleteAll</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00906"/>00906 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00907"/>00907 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexscheduler)&#32;xmutexscheduler-&gt;<link linkend="_class_x_m_u_t_e_x_1afed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00908"/>00908 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00909"/>00909 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00910"/>00910 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00911"/>00911 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00912"/>00912 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00922"/><link linkend="_class_x_s_c_h_e_d_u_l_e_r_1acd1cd5f35200130137116ec8ffa2ecfc">00922</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_1acd1cd5f35200130137116ec8ffa2ecfc">XSCHEDULER::End</link>()
+<anchor xml:id="__x_scheduler_8cpp_source_1l00923"/>00923 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00924"/>00924 &#32;&#32;isactive&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00925"/>00925 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00926"/>00926 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xthreadscheduler)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00927"/>00927 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00928"/>00928 &#32;&#32;&#32;&#32;&#32;&#32;xthreadscheduler-&gt;End();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00929"/>00929 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_thread_collected_8h_1a18fb843f5fbad51464b68d705ed29b8a">DELETEXTHREAD</link>(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6a60757c697f84ba3ee59e54ad99c3b6fe">XTHREADGROUPID_SCHEDULER</link>,&#32;xthreadscheduler);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00930"/>00930 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00931"/>00931 &#32;&#32;&#32;&#32;&#32;&#32;xthreadscheduler&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00932"/>00932 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00933"/>00933 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00934"/>00934 &#32;&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_1a4ed9b69e1c0f27153f3fbf8c47ed5a74">Task_DelAll</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00935"/>00935 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00936"/>00936 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexscheduler)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00937"/>00937 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00938"/>00938 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY.Delete_Mutex(xmutexscheduler);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00939"/>00939 &#32;&#32;&#32;&#32;&#32;&#32;xmutexscheduler&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00940"/>00940 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00941"/>00941 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00942"/>00942 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xdatetimeactual)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00943"/>00943 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00944"/>00944 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY.DeleteDateTime(xdatetimeactual);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00945"/>00945 &#32;&#32;&#32;&#32;&#32;&#32;xdatetimeactual&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00946"/>00946 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00947"/>00947 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00948"/>00948 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00949"/>00949 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l00950"/>00950 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00951"/>00951 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00963"/>00963 <emphasis role="keywordtype">void</emphasis>&#32;XSCHEDULER::ThreadScheduler(<emphasis role="keywordtype">void</emphasis>*&#32;data)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00964"/>00964 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l00965"/>00965 &#32;&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r">XSCHEDULER</link>*&#32;xscheduler&#32;=&#32;(<link linkend="_class_x_s_c_h_e_d_u_l_e_r">XSCHEDULER</link>*)data;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00966"/>00966 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xscheduler)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00967"/>00967 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00968"/>00968 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00969"/>00969 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00970"/>00970 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00971"/>00971 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xscheduler-&gt;xmutexscheduler)&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00972"/>00972 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00973"/>00973 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00974"/>00974 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00975"/>00975 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00976"/>00976 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xscheduler-&gt;xdatetimeactual)&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00977"/>00977 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00978"/>00978 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00979"/>00979 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00980"/>00980 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00981"/>00981 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xscheduler-&gt;isactive)&#32;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00982"/>00982 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00983"/>00983 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00984"/>00984 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00985"/>00985 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00986"/>00986 &#32;&#32;GEN_XSLEEP.MilliSeconds(10);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00987"/>00987 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00988"/>00988 &#32;&#32;xscheduler-&gt;xmutexscheduler-&gt;<link linkend="_class_x_m_u_t_e_x_1ae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00989"/>00989 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00990"/>00990 &#32;&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k">XSCHEDULERTASK</link>*&#32;task;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00991"/>00991 
+<anchor xml:id="__x_scheduler_8cpp_source_1l00992"/>00992 &#32;&#32;task&#32;=&#32;xscheduler-&gt;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_1a44b17c728a4acee8123d08004f9a1a69">Task_Get</link>(xscheduler-&gt;indextask);
+<anchor xml:id="__x_scheduler_8cpp_source_1l00993"/>00993 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!task)
+<anchor xml:id="__x_scheduler_8cpp_source_1l00994"/>00994 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l00995"/>00995 &#32;&#32;&#32;&#32;&#32;&#32;xscheduler-&gt;xmutexscheduler-&gt;<link linkend="_class_x_m_u_t_e_x_1afed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l00996"/>00996 &#32;&#32;&#32;&#32;&#32;&#32;xscheduler-&gt;indextask&#32;=&#32;0;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00997"/>00997 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l00998"/>00998 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l00999"/>00999 
+<anchor xml:id="__x_scheduler_8cpp_source_1l01000"/>01000 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xscheduler-&gt;xdatetimeactual)&#32;
+<anchor xml:id="__x_scheduler_8cpp_source_1l01001"/>01001 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l01002"/>01002 &#32;&#32;&#32;&#32;&#32;&#32;xscheduler-&gt;xdatetimeactual-&gt;<link linkend="_class_x_d_a_t_e_t_i_m_e_1a0e2f3589654fc19d26c588506994fb20">Read</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l01003"/>01003 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l01004"/>01004 
+<anchor xml:id="__x_scheduler_8cpp_source_1l01005"/>01005 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(task-&gt;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a0c0ca6b68b1f02d867815a50a39646f3">IsActive</link>())
+<anchor xml:id="__x_scheduler_8cpp_source_1l01006"/>01006 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l01007"/>01007 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(task-&gt;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1a346ca77ef8158f1b6ae78e57a9014144">CheckCondition</link>(xscheduler-&gt;xdatetimeactual,&#32;task-&gt;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k_1acb32be07ce22adbf4202fc2a5b24bd2b">GetXTimer</link>()))
+<anchor xml:id="__x_scheduler_8cpp_source_1l01008"/>01008 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_scheduler_8cpp_source_1l01009"/>01009 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xscheduler-&gt;indextask++;
+<anchor xml:id="__x_scheduler_8cpp_source_1l01010"/>01010 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xscheduler-&gt;xmutexscheduler-&gt;<link linkend="_class_x_m_u_t_e_x_1afed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l01011"/>01011 
+<anchor xml:id="__x_scheduler_8cpp_source_1l01012"/>01012 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r___x_e_v_e_n_t">XSCHEDULER_XEVENT</link>&#32;xevent(xscheduler,&#32;<link linkend="__x_event_8h_1aabf5f0b55ced84b808fb2c2e45dbb1e8a15553b6b979ac77333c3538da7c70d4b">XEVENT_TYPE_SCHEDULER</link>);
+<anchor xml:id="__x_scheduler_8cpp_source_1l01013"/>01013 
+<anchor xml:id="__x_scheduler_8cpp_source_1l01014"/>01014 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.SetScheduler(xscheduler);
+<anchor xml:id="__x_scheduler_8cpp_source_1l01015"/>01015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.SetTask(task);
+<anchor xml:id="__x_scheduler_8cpp_source_1l01016"/>01016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.SetDateTime(xscheduler-&gt;xdatetimeactual);
+<anchor xml:id="__x_scheduler_8cpp_source_1l01017"/>01017 
+<anchor xml:id="__x_scheduler_8cpp_source_1l01018"/>01018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xscheduler-&gt;<link linkend="_class_x_s_u_b_j_e_c_t_1adb65926d5f56410c9243d2f7c69a87a3">PostEvent</link>(&amp;xevent);
+<anchor xml:id="__x_scheduler_8cpp_source_1l01019"/>01019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_scheduler_8cpp_source_1l01020"/>01020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l01021"/>01021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l01022"/>01022 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_scheduler_8cpp_source_1l01023"/>01023 &#32;&#32;&#32;
+<anchor xml:id="__x_scheduler_8cpp_source_1l01024"/>01024 &#32;&#32;xscheduler-&gt;indextask++;
+<anchor xml:id="__x_scheduler_8cpp_source_1l01025"/>01025 &#32;&#32;xscheduler-&gt;xmutexscheduler-&gt;<link linkend="_class_x_m_u_t_e_x_1afed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__x_scheduler_8cpp_source_1l01026"/>01026 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l01027"/>01027 
+<anchor xml:id="__x_scheduler_8cpp_source_1l01028"/>01028 
+<anchor xml:id="__x_scheduler_8cpp_source_1l01039"/>01039 <emphasis role="keywordtype">void</emphasis>&#32;XSCHEDULER::Clean&#32;()
+<anchor xml:id="__x_scheduler_8cpp_source_1l01040"/>01040 {
+<anchor xml:id="__x_scheduler_8cpp_source_1l01041"/>01041 &#32;&#32;xmutexscheduler&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l01042"/>01042 &#32;&#32;xthreadscheduler&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l01043"/>01043 &#32;&#32;xtimerwait&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l01044"/>01044 
+<anchor xml:id="__x_scheduler_8cpp_source_1l01045"/>01045 &#32;&#32;isactive&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l01046"/>01046 
+<anchor xml:id="__x_scheduler_8cpp_source_1l01047"/>01047 &#32;&#32;xdatetimeactual&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_scheduler_8cpp_source_1l01048"/>01048 &#32;&#32;indextask&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_scheduler_8cpp_source_1l01049"/>01049 }
+<anchor xml:id="__x_scheduler_8cpp_source_1l01050"/>01050 
+<anchor xml:id="__x_scheduler_8cpp_source_1l01051"/>01051 
+<anchor xml:id="__x_scheduler_8cpp_source_1l01052"/>01052 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l01053"/>01053 
+<anchor xml:id="__x_scheduler_8cpp_source_1l01054"/>01054 
+<anchor xml:id="__x_scheduler_8cpp_source_1l01055"/>01055 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_scheduler_8cpp_source_1l01056"/>01056 
+</programlisting></section>

@@ -1,0 +1,331 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source" xml:lang="en-US">
+<title>DIOSPITouchScreenSTMPE610.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/DataIO/Drivers/SPI/DIOSPITouchScreenSTMPE610.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h">DIOSPITouchScreenSTMPE610.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_factory_8h">XFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_sleep_8h">XSleep.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_buffer_8h">XBuffer.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_trace_8h">XTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00046"/>00046 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_factory_8h">DIOFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_s_p_i_config_8h">DIOStreamSPIConfig.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00049"/>00049 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_s_p_i_8h">DIOStreamSPI.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00050"/>00050 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00052"/>00052 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00053"/>00053 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00054"/>00054 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00055"/>00055 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00056"/>00056 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00057"/>00057 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00058"/>00058 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00059"/>00059 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00061"/>00061 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00062"/>00062 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00063"/>00063 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00064"/>00064 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00065"/>00065 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00075"/><link linkend="_class_d_i_o_s_p_i_t_o_u_c_h_s_c_r_e_e_n_s_t_m_p_e610_1a5d5ad224cb0825646e7699735522fcf0">00075</link> <link linkend="_class_d_i_o_s_p_i_t_o_u_c_h_s_c_r_e_e_n_s_t_m_p_e610_1a5d5ad224cb0825646e7699735522fcf0">DIOSPITOUCHSCREENSTMPE610::DIOSPITOUCHSCREENSTMPE610</link>():&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e">DIODEVICE</link>()
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00076"/>00076 {
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00077"/>00077 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00078"/>00078 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00079"/>00079 &#32;&#32;GEN_XFACTORY_CREATE(xtimer,&#32;CreateTimer())
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00080"/>00080 &#32;&#32;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00081"/>00081 &#32;&#32;databuffer&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>();
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00082"/>00082 }
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00083"/>00083 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00084"/>00084 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00095"/><link linkend="_class_d_i_o_s_p_i_t_o_u_c_h_s_c_r_e_e_n_s_t_m_p_e610_1afbea21e96a8c9d49b78b2f9dde41a67b">00095</link> <link linkend="_class_d_i_o_s_p_i_t_o_u_c_h_s_c_r_e_e_n_s_t_m_p_e610_1afbea21e96a8c9d49b78b2f9dde41a67b">DIOSPITOUCHSCREENSTMPE610::~DIOSPITOUCHSCREENSTMPE610</link>()
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00096"/>00096 {
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00097"/>00097 &#32;&#32;<link linkend="_class_d_i_o_s_p_i_t_o_u_c_h_s_c_r_e_e_n_s_t_m_p_e610_1a18980940e5c0c032799538fe76c07249">End</link>();
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00098"/>00098 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00099"/>00099 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xtimer)
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00100"/>00100 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY.DeleteTimer(xtimer);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;xtimer&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00103"/>00103 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00104"/>00104 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00105"/>00105 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(databuffer)
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00106"/>00106 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;databuffer;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;databuffer&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00109"/>00109 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00110"/>00110 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00111"/>00111 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00112"/>00112 }
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00113"/>00113 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00114"/>00114 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00127"/><link linkend="_class_d_i_o_s_p_i_t_o_u_c_h_s_c_r_e_e_n_s_t_m_p_e610_1a62006cea52b237950462615a2b64a618">00127</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_s_p_i_t_o_u_c_h_s_c_r_e_e_n_s_t_m_p_e610_1a62006cea52b237950462615a2b64a618">DIOSPITOUCHSCREENSTMPE610::IniDevice</link>(<emphasis role="keywordtype">int</emphasis>&#32;chipselect,&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>)
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00128"/>00128 {
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00129"/>00129 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!isdiostreamSPIexternal)
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00130"/>00130 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;diostreamSPIcfg&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_s_p_i_c_o_n_f_i_g">DIOSTREAMSPICONFIG</link>();
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!diostreamSPIcfg)&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00133"/>00133 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;diostreamSPIcfg-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_s_p_i_c_o_n_f_i_g_1a39dd4b1eabf187f231431072dfc3e8c7">SetSPIMode</link>(<link linkend="__d_i_o_stream_s_p_i_config_8h_1abb2d3909f7d4a40ee0fb5f20e4c3f189">DIOSTREAMSPI_MODE_0</link>);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00135"/>00135 &#32;&#32;&#32;&#32;&#32;&#32;diostreamSPIcfg-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_s_p_i_c_o_n_f_i_g_1ab265179c34b916fcb8bddad71d334083">SetNBitsWord</link>(8);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;diostreamSPIcfg-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_s_p_i_c_o_n_f_i_g_1affe443c31f2a2894cdd645c2007aac21">SetSpeed</link>(1*1000*1000);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;diostreamSPIcfg-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_s_p_i_c_o_n_f_i_g_1ac0a0f97f429076d3c43d56b76c6c3258">SetDelay</link>(0);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00138"/>00138 &#32;&#32;&#32;&#32;&#32;&#32;diostreamSPIcfg-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_s_p_i_c_o_n_f_i_g_1a5afdd6101599f9638a164b7b88fbe95d">SetIsOnlyWrite</link>(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00139"/>00139 &#32;&#32;&#32;&#32;&#32;&#32;diostreamSPIcfg-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_s_p_i_c_o_n_f_i_g_1a31e115f358c3e26c9d7189c19d8d860e">GetLocalDeviceName</link>()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1a2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;/dev/spidev0.%d&quot;</emphasis>),&#32;chipselect);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00140"/>00140 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00141"/>00141 &#32;&#32;&#32;&#32;&#32;&#32;diostreamSPI&#32;=&#32;(<link linkend="_class_d_i_o_s_t_r_e_a_m_s_p_i">DIOSTREAMSPI</link>*)GEN_DIOFACTORY.CreateStreamIO(diostreamSPIcfg);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!diostreamSPI)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00143"/>00143 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00144"/>00144 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00145"/>00145 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00146"/>00146 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!diostreamSPI)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00147"/>00147 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00148"/>00148 &#32;&#32;&#32;&#32;&#32;&#32;diostreamSPIcfg&#32;=&#32;(<link linkend="_class_d_i_o_s_t_r_e_a_m_s_p_i_c_o_n_f_i_g">DIOSTREAMSPICONFIG</link>&#32;*)diostreamSPI-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_s_p_i_1a1bc0f15764060e62608b1918dcecd9c7">GetConfig</link>();
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00149"/>00149 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!diostreamSPIcfg)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00150"/>00150 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00151"/>00151 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00152"/>00152 &#32;&#32;this-&gt;timeout&#32;=&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00153"/>00153 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00154"/>00154 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!diostreamSPI-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_s_p_i_1a2f0f851406dce28fc0e4bd8da4b43f2b">Open</link>())&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00155"/>00155 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00156"/>00156 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!diostreamSPI-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_1acff76db4bc54a48fe2d2ceb165835c2f">WaitToConnected</link>(<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00157"/>00157 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00158"/>00158 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!TouchScreen_Ini())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00159"/>00159 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00160"/>00160 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_1a2ce40a31520cdee813143e1f028ee629">DIODEVICE::Ini</link>();
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00161"/>00161 }
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00162"/>00162 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00163"/>00163 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00173"/><link linkend="_class_d_i_o_s_p_i_t_o_u_c_h_s_c_r_e_e_n_s_t_m_p_e610_1a699003a5817da95bb344b0bfbf7d2ba5">00173</link> <link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;<link linkend="_class_d_i_o_s_p_i_t_o_u_c_h_s_c_r_e_e_n_s_t_m_p_e610_1a699003a5817da95bb344b0bfbf7d2ba5">DIOSPITOUCHSCREENSTMPE610::GetVersion</link>()
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00174"/>00174 {
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00175"/>00175 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_1affa2a228690e583d4c7c2a5f4adf9821">IsInitialized</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00176"/>00176 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00177"/>00177 &#32;&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;version&#32;=&#32;0;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00178"/>00178 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;data[2]&#32;=&#32;{&#32;0,&#32;0&#32;};
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00179"/>00179 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00180"/>00180 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!ReadRegister(<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1ab00e99e5712b293708437ce24f727671">DIOSPITOUCHSCREENSTMPE610_REG_CHIP_ID1</link>,&#32;data[0]))&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00181"/>00181 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!ReadRegister(<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1a9198faeb58a90890a4609f525bde3b5c">DIOSPITOUCHSCREENSTMPE610_REG_CHIP_ID2</link>,&#32;data[1]))&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00182"/>00182 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00183"/>00183 &#32;&#32;version&#32;=&#32;data[0];
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00184"/>00184 &#32;&#32;version&#32;&lt;&lt;=&#32;8;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00185"/>00185 &#32;&#32;version&#32;|=&#32;data[1];
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00186"/>00186 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00187"/>00187 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;version;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00188"/>00188 }
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00189"/>00189 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00190"/>00190 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00200"/><link linkend="_class_d_i_o_s_p_i_t_o_u_c_h_s_c_r_e_e_n_s_t_m_p_e610_1a2ab7fed0a05449c4e1cae7e35cde450d">00200</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_s_p_i_t_o_u_c_h_s_c_r_e_e_n_s_t_m_p_e610_1a2ab7fed0a05449c4e1cae7e35cde450d">DIOSPITOUCHSCREENSTMPE610::IsTouched</link>()
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00201"/>00201 {
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00202"/>00202 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_1affa2a228690e583d4c7c2a5f4adf9821">IsInitialized</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00203"/>00203 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00204"/>00204 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;data&#32;=&#32;0;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00205"/>00205 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00206"/>00206 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;status&#32;=&#32;ReadRegister(<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1a25ecbbc8818c4e1bb1ac09ee737f8d61">DIOSPITOUCHSCREENSTMPE610_REG_TSC_CTRL</link>,&#32;data);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00207"/>00207 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00208"/>00208 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00209"/>00209 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(data&#32;&amp;&#32;0x80)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00210"/>00210 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00211"/>00211 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00212"/>00212 }
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00213"/>00213 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00214"/>00214 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00224"/><link linkend="_class_d_i_o_s_p_i_t_o_u_c_h_s_c_r_e_e_n_s_t_m_p_e610_1a5aa21c39bc299338513079fce8cfa266">00224</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_s_p_i_t_o_u_c_h_s_c_r_e_e_n_s_t_m_p_e610_1a5aa21c39bc299338513079fce8cfa266">DIOSPITOUCHSCREENSTMPE610::IsBufferEmpty</link>()
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00225"/>00225 {
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00226"/>00226 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_1affa2a228690e583d4c7c2a5f4adf9821">IsInitialized</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00227"/>00227 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00228"/>00228 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;data&#32;=&#32;0;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00229"/>00229 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00230"/>00230 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;status&#32;=&#32;ReadRegister(<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1adcf4840c50c3e26bca4466aa1de52789">DIOSPITOUCHSCREENSTMPE610_REG_FIFO_STA</link>,&#32;data);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00231"/>00231 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00232"/>00232 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00233"/>00233 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(data&#32;&amp;&#32;<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1a6b5d10c0816cf571d8643dfbfd106fda">DIOSPITOUCHSCREENSTMPE610_FIFO_STA_EMPTY</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00234"/>00234 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00235"/>00235 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00236"/>00236 }
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00237"/>00237 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00238"/>00238 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00248"/><link linkend="_class_d_i_o_s_p_i_t_o_u_c_h_s_c_r_e_e_n_s_t_m_p_e610_1ad9800d6d49612fa1fe8a815849c524bf">00248</link> <link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;<link linkend="_class_d_i_o_s_p_i_t_o_u_c_h_s_c_r_e_e_n_s_t_m_p_e610_1ad9800d6d49612fa1fe8a815849c524bf">DIOSPITOUCHSCREENSTMPE610::GetBufferSize</link>()
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00249"/>00249 {
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00250"/>00250 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_1affa2a228690e583d4c7c2a5f4adf9821">IsInitialized</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00251"/>00251 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00252"/>00252 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;data;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00253"/>00253 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;status&#32;=&#32;ReadRegister(<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1a320a6e848c785792e248bee9d280ff8a">DIOSPITOUCHSCREENSTMPE610_REG_FIFO_SIZE</link>,&#32;data);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00254"/>00254 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00255"/>00255 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00256"/>00256 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;data;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00257"/>00257 }
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00258"/>00258 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00259"/>00259 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00273"/><link linkend="_class_d_i_o_s_p_i_t_o_u_c_h_s_c_r_e_e_n_s_t_m_p_e610_1a66c41a90b7e31c5ad1f755cfc9c2587d">00273</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_s_p_i_t_o_u_c_h_s_c_r_e_e_n_s_t_m_p_e610_1a66c41a90b7e31c5ad1f755cfc9c2587d">DIOSPITOUCHSCREENSTMPE610::ReadPosition</link>(<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&amp;&#32;x,&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&amp;&#32;y,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&amp;&#32;z)
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00274"/>00274 {
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00275"/>00275 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_1affa2a228690e583d4c7c2a5f4adf9821">IsInitialized</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00276"/>00276 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00277"/>00277 &#32;&#32;<emphasis role="comment">/*</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00278"/>00278 <emphasis role="comment">&#32;&#32;XBYTE&#32;data[4];</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00279"/>00279 <emphasis role="comment"></emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00280"/>00280 <emphasis role="comment">&#32;&#32;for(XBYTE&#32;c=0;&#32;c&lt;4;&#32;c++)</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00281"/>00281 <emphasis role="comment">&#32;&#32;&#32;&#32;{</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00282"/>00282 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;if(!ReadRegister(0xD7,&#32;data[c]))&#32;&#32;return&#32;false;</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00283"/>00283 <emphasis role="comment">&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00284"/>00284 <emphasis role="comment"></emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00285"/>00285 <emphasis role="comment">&#32;&#32;XDWORD&#32;xyz&#32;=&#32;(XDWORD)&#32;((data[0]&#32;&lt;&lt;&#32;24)&#32;|&#32;(data[1]&#32;&lt;&lt;&#32;16)&#32;|&#32;(data[2]&#32;&lt;&lt;&#32;8)&#32;|&#32;(data[3]&#32;&lt;&lt;&#32;0));</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00286"/>00286 <emphasis role="comment"></emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00287"/>00287 <emphasis role="comment">&#32;&#32;x&#32;=&#32;(XWORD)((xyz&#32;&gt;&gt;&#32;20)&#32;&amp;&#32;0x00000FFF);</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00288"/>00288 <emphasis role="comment">&#32;&#32;y&#32;=&#32;(XWORD)((xyz&#32;&gt;&gt;&#32;8)&#32;&#32;&amp;&#32;0x00000FFF);</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00289"/>00289 <emphasis role="comment">&#32;&#32;z&#32;=&#32;(XBYTE)((xyz&#32;&gt;&gt;&#32;0)&#32;&#32;&amp;&#32;0x0000000F);</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00290"/>00290 <emphasis role="comment"></emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00291"/>00291 <emphasis role="comment">&#32;&#32;if(IsBufferEmpty())&#32;WriteRegister(DIOSPITOUCHSCREENSTMPE610_REG_INT_STA,&#32;0xFF);</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00292"/>00292 <emphasis role="comment">&#32;&#32;*/</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00293"/>00293 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00294"/>00294 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;data[4];
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00295"/>00295 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00296"/>00296 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;c=0;&#32;c&lt;4;&#32;c++)
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00297"/>00297 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00298"/>00298 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!ReadRegister(0xD7,&#32;data[c]))&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00299"/>00299 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00300"/>00300 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00301"/>00301 &#32;&#32;x&#32;&#32;&#32;=&#32;data[0];
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00302"/>00302 &#32;&#32;x&#32;&lt;&lt;=&#32;4;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00303"/>00303 &#32;&#32;x&#32;&#32;|=&#32;(data[1]&#32;&gt;&gt;&#32;4);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00304"/>00304 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00305"/>00305 &#32;&#32;y&#32;&#32;&#32;=&#32;data[1]&#32;&amp;&#32;0x0F;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00306"/>00306 &#32;&#32;y&#32;&lt;&lt;=&#32;8;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00307"/>00307 &#32;&#32;y&#32;&#32;|=&#32;data[2];
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00308"/>00308 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00309"/>00309 &#32;&#32;z&#32;&#32;&#32;=&#32;data[3];
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00310"/>00310 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00311"/>00311 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_d_i_o_s_p_i_t_o_u_c_h_s_c_r_e_e_n_s_t_m_p_e610_1a5aa21c39bc299338513079fce8cfa266">IsBufferEmpty</link>())&#32;WriteRegister(<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1a957621526c42bd7cb19f9a45ebe6e525">DIOSPITOUCHSCREENSTMPE610_REG_INT_STA</link>,&#32;0xFF);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00312"/>00312 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00313"/>00313 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00314"/>00314 }
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00315"/>00315 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00316"/>00316 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00326"/><link linkend="_class_d_i_o_s_p_i_t_o_u_c_h_s_c_r_e_e_n_s_t_m_p_e610_1a18980940e5c0c032799538fe76c07249">00326</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_s_p_i_t_o_u_c_h_s_c_r_e_e_n_s_t_m_p_e610_1a18980940e5c0c032799538fe76c07249">DIOSPITOUCHSCREENSTMPE610::End</link>()
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00327"/>00327 {
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00328"/>00328 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_1ac96c34c9d5f91768940985b082c0dad2">DIODEVICE::End</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00329"/>00329 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00330"/>00330 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(diostreamSPI)&#32;diostreamSPI-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_s_p_i_1a02de4aa3e65df850f7e881dbd78085ba">Close</link>();
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00331"/>00331 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00332"/>00332 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!isdiostreamSPIexternal)
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00333"/>00333 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00334"/>00334 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(diostreamSPI)
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00335"/>00335 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00336"/>00336 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GEN_DIOFACTORY.DeleteStreamIO(diostreamSPI);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00337"/>00337 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;diostreamSPI&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00338"/>00338 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00339"/>00339 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00340"/>00340 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(diostreamSPIcfg)
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00341"/>00341 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00342"/>00342 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;diostreamSPIcfg;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00343"/>00343 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;diostreamSPIcfg&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00344"/>00344 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00345"/>00345 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00346"/>00346 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00347"/>00347 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00348"/>00348 }
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00349"/>00349 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00350"/>00350 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00360"/><link linkend="_class_d_i_o_s_p_i_t_o_u_c_h_s_c_r_e_e_n_s_t_m_p_e610_1ac7736da7ea89d1961f2687075a93e872">00360</link> <link linkend="_class_d_i_o_s_t_r_e_a_m_s_p_i">DIOSTREAMSPI</link>*&#32;<link linkend="_class_d_i_o_s_p_i_t_o_u_c_h_s_c_r_e_e_n_s_t_m_p_e610_1ac7736da7ea89d1961f2687075a93e872">DIOSPITOUCHSCREENSTMPE610::GetDIOStreamSPI</link>()
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00361"/>00361 {
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00362"/>00362 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;diostreamSPI;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00363"/>00363 }
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00364"/>00364 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00365"/>00365 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00377"/><link linkend="_class_d_i_o_s_p_i_t_o_u_c_h_s_c_r_e_e_n_s_t_m_p_e610_1ac0edc2cd5cb779927354ba3feefbd7f0">00377</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_d_i_o_s_p_i_t_o_u_c_h_s_c_r_e_e_n_s_t_m_p_e610_1ac0edc2cd5cb779927354ba3feefbd7f0">DIOSPITOUCHSCREENSTMPE610::SetDIOStreamSPI</link>(<link linkend="_class_d_i_o_s_t_r_e_a_m_s_p_i">DIOSTREAMSPI</link>*&#32;diostreamSPI)
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00378"/>00378 {
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00379"/>00379 &#32;&#32;this-&gt;diostreamSPI&#32;&#32;&#32;&#32;&#32;=&#32;diostreamSPI;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00380"/>00380 &#32;&#32;isdiostreamSPIexternal&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00381"/>00381 }
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00382"/>00382 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00383"/>00383 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00393"/>00393 <emphasis role="keywordtype">bool</emphasis>&#32;DIOSPITOUCHSCREENSTMPE610::TouchScreen_Ini()
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00394"/>00394 {
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00395"/>00395 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!WriteRegister(<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1a4531be874008b2119b1c85b35e092e72">DIOSPITOUCHSCREENSTMPE610_REG_SYS_CTRL1</link>,&#32;<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1a9c1532d0c235fb894a16b66ff8136ed7">DIOSPITOUCHSCREENSTMPE610_SYS_CTRL1_RESET</link>))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00396"/>00396 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00397"/>00397 &#32;&#32;GEN_XSLEEP.MilliSeconds(250);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00398"/>00398 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00399"/>00399 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;c=0;&#32;c&lt;65;&#32;c++)
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00400"/>00400 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00401"/>00401 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;data;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00402"/>00402 &#32;&#32;&#32;&#32;&#32;&#32;ReadRegister(c,&#32;data);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00403"/>00403 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00404"/>00404 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00405"/>00405 &#32;&#32;WriteRegister(<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1a7b05514e2f87158b1b657a9411895ecf">DIOSPITOUCHSCREENSTMPE610_REG_SYS_CTRL2</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;0x0);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;turn&#32;on&#32;clocks!</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00406"/>00406 &#32;&#32;WriteRegister(<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1a25ecbbc8818c4e1bb1ac09ee737f8d61">DIOSPITOUCHSCREENSTMPE610_REG_TSC_CTRL</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1a5ea82b2262d3cde400fbc04a4509f896">DIOSPITOUCHSCREENSTMPE610_TSC_CTRL_XYZ</link>&#32;|&#32;<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1ab0f5b95ff7fe25d64432c77f6020d511">DIOSPITOUCHSCREENSTMPE610_TSC_CTRL_EN</link>);&#32;&#32;<emphasis role="comment">//&#32;XYZ&#32;and&#32;enable!</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00407"/>00407 &#32;&#32;WriteRegister(<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1a13add6b856e0aef350286553f8fb362d">DIOSPITOUCHSCREENSTMPE610_REG_INT_EN</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1a788b0cd41158d656ba234109fb0097cb">DIOSPITOUCHSCREENSTMPE610_INT_EN_TOUCHDET</link>);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00408"/>00408 &#32;&#32;WriteRegister(<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1a0243eee09569c44fa670b7e8e7512968">DIOSPITOUCHSCREENSTMPE610_REG_ADC_CTRL1</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1a4d35506537778ac3b6b18d35754e5eb1">DIOSPITOUCHSCREENSTMPE610_ADC_CTRL1_10BIT</link>&#32;|&#32;(0x6&#32;&lt;&lt;&#32;4));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;96&#32;clocks&#32;per&#32;conversion</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00409"/>00409 &#32;&#32;WriteRegister(<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1ab8fd8e73fabb3d6f98017289595e4de3">DIOSPITOUCHSCREENSTMPE610_REG_ADC_CTRL2</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1ab8e70462de73746a3a54bdc3707f16ef">DIOSPITOUCHSCREENSTMPE610_ADC_CTRL2_6_5MHZ</link>);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00410"/>00410 &#32;&#32;WriteRegister(<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1ad01305f7cdc7ab29195de1ee3f5b25ef">DIOSPITOUCHSCREENSTMPE610_REG_TSC_CFG</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1ad00362b54118eaa3a42de353ce6ea6ee">DIOSPITOUCHSCREENSTMPE610_TSC_CFG_4SAMPLE</link>&#32;|&#32;<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1a72f4b606ad5bc843b0fa8ec6705f3cc0">DIOSPITOUCHSCREENSTMPE610_TSC_CFG_DELAY_1MS</link>&#32;|&#32;<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1a99d661f11eacbba411b87ab35bf7ed8e">DIOSPITOUCHSCREENSTMPE610_TSC_CFG_SETTLE_5MS</link>);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00411"/>00411 &#32;&#32;WriteRegister(<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1aa032ea4b73b50ce9fb89da562ff4ae93">DIOSPITOUCHSCREENSTMPE610_REG_TSC_FRACT_XYZ</link>&#32;&#32;&#32;,&#32;0x6);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00412"/>00412 &#32;&#32;WriteRegister(<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1a3c950b76b75121f55fb2bfbcc8ba72d3">DIOSPITOUCHSCREENSTMPE610_REG_FIFO_TH</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;1);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00413"/>00413 &#32;&#32;WriteRegister(<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1adcf4840c50c3e26bca4466aa1de52789">DIOSPITOUCHSCREENSTMPE610_REG_FIFO_STA</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1af06d75438fafbaf566362535981728e7">DIOSPITOUCHSCREENSTMPE610_FIFO_STA_RESET</link>);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00414"/>00414 &#32;&#32;WriteRegister(<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1adcf4840c50c3e26bca4466aa1de52789">DIOSPITOUCHSCREENSTMPE610_REG_FIFO_STA</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;0);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;unreset</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00415"/>00415 &#32;&#32;WriteRegister(<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1a0d2d2db2964202b777bcc48abb3f6ca5">DIOSPITOUCHSCREENSTMPE610_REG_TSC_I_DRIVE</link>&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1a6e3d946b80e445a3b1405df2cff7eb1d">DIOSPITOUCHSCREENSTMPE610_TSC_I_DRIVE_50MA</link>);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00416"/>00416 &#32;&#32;WriteRegister(<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1a957621526c42bd7cb19f9a45ebe6e525">DIOSPITOUCHSCREENSTMPE610_REG_INT_STA</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;0xFF);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;reset&#32;all&#32;ints</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00417"/>00417 &#32;&#32;WriteRegister(<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1aa7c0babb36b38089f4b85ce68f007103">DIOSPITOUCHSCREENSTMPE610_REG_INT_CTRL</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1ab192347e4dc839439e2bf578053cb3cb">DIOSPITOUCHSCREENSTMPE610_INT_CTRL_POL_HIGH</link>&#32;|&#32;<link linkend="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8h_1a0987001fec601b88201cd3ff42690679">DIOSPITOUCHSCREENSTMPE610_INT_CTRL_ENABLE</link>);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00418"/>00418 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00419"/>00419 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00420"/>00420 }
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00421"/>00421 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00422"/>00422 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00435"/>00435 <emphasis role="keywordtype">bool</emphasis>&#32;DIOSPITOUCHSCREENSTMPE610::ReadRegister(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;reg,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&amp;&#32;data)
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00436"/>00436 {
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00437"/>00437 &#32;&#32;<emphasis role="comment">//diostreamSPI-&gt;GetInXBuffer()-&gt;Delete();</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00438"/>00438 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00439"/>00439 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;regdata[2]&#32;=&#32;{&#32;(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>)(reg&#32;|&#32;0x80),&#32;0&#32;};
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00440"/>00440 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;_data[2]&#32;&#32;&#32;=&#32;{&#32;0,&#32;0&#32;};
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00441"/>00441 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00442"/>00442 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;diostreamSPI-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_1ac04f4ad8ff28b97128a876063103dd50">Write</link>(regdata,&#32;2)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00443"/>00443 &#32;&#32;<emphasis role="comment">//if(status)&#32;status&#32;=&#32;diostreamSPI-&gt;WaitToFlushOutXBuffer(timeout);</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00444"/>00444 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00445"/>00445 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;status&#32;=&#32;diostreamSPI-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_1a6e20f03ff391343123fda221a5c2ed85">WaitToFilledReadingBuffer</link>(2,&#32;timeout);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00446"/>00446 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;status&#32;=&#32;diostreamSPI-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_1a20cd6c3635818f96468dee8bc601aec1">Read</link>(_data,&#32;2)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00447"/>00447 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00448"/>00448 &#32;&#32;data&#32;=&#32;_data[1];
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00449"/>00449 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00450"/>00450 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00451"/>00451 }
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00452"/>00452 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00453"/>00453 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00466"/>00466 <emphasis role="keywordtype">bool</emphasis>&#32;DIOSPITOUCHSCREENSTMPE610::WriteRegister(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;reg,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;data)
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00467"/>00467 {
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00468"/>00468 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!databuffer)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00469"/>00469 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00470"/>00470 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;diostreamSPI-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_1ac04f4ad8ff28b97128a876063103dd50">Write</link>(&amp;reg,&#32;1)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00471"/>00471 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;status&#32;=&#32;diostreamSPI-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_1ac04f4ad8ff28b97128a876063103dd50">Write</link>(&amp;data,&#32;1)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00472"/>00472 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;status&#32;=&#32;diostreamSPI-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_1a59dc380e213dd083940c80663667dae7">WaitToFlushOutXBuffer</link>(timeout);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00473"/>00473 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;status&#32;=&#32;diostreamSPI-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_1a6e20f03ff391343123fda221a5c2ed85">WaitToFilledReadingBuffer</link>(2,&#32;timeout);
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00474"/>00474 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00475"/>00475 &#32;&#32;diostreamSPI-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_1aa48e892d5c3e70987015f1858d4df326">GetInXBuffer</link>()-&gt;<link linkend="_class_x_b_u_f_f_e_r_1a0395231705663a2aeeee3b4be9d292bb">Delete</link>();
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00476"/>00476 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00477"/>00477 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00478"/>00478 }
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00479"/>00479 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00480"/>00480 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00491"/>00491 <emphasis role="keywordtype">void</emphasis>&#32;DIOSPITOUCHSCREENSTMPE610::Clean()
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00492"/>00492 {
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00493"/>00493 &#32;&#32;timeout&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00494"/>00494 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00495"/>00495 &#32;&#32;xtimer&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00496"/>00496 &#32;&#32;databuffer&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00497"/>00497 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00498"/>00498 &#32;&#32;diostreamSPIcfg&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00499"/>00499 &#32;&#32;diostreamSPI&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00500"/>00500 &#32;&#32;isdiostreamSPIexternal&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00501"/>00501 }
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00502"/>00502 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00503"/>00503 
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00504"/>00504 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_touch_screen_s_t_m_p_e610_8cpp_source_1l00505"/>00505 
+</programlisting></section>

@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_l_i_n_u_x_sleep_8cpp_source" xml:lang="en-US">
+<title>XLINUXSleep.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/Platforms/Linux/XLINUXSleep.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_l_i_n_u_x_sleep_8h">XLINUXSleep.h</link>&quot;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&lt;stdlib.h&gt;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&lt;time.h&gt;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&lt;unistd.h&gt;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&lt;math.h&gt;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&lt;fcntl.h&gt;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&lt;sys/time.h&gt;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00049"/>00049 <emphasis role="preprocessor">#include&#32;&lt;sys/times.h&gt;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00050"/>00050 <emphasis role="preprocessor">#include&#32;&lt;sys/types.h&gt;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#include&#32;&lt;sys/stat.h&gt;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#include&#32;&lt;sys/ioctl.h&gt;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00053"/>00053 <emphasis role="preprocessor">#include&#32;&lt;linux/rtc.h&gt;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00054"/>00054 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00055"/>00055 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_trace_8h">XTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00056"/>00056 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_l_i_n_u_x_file_8h">XLINUXFile.h</link>&quot;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00057"/>00057 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00058"/>00058 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00059"/>00059 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00060"/>00060 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00061"/>00061 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00062"/>00062 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00063"/>00063 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00064"/>00064 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00065"/>00065 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00066"/>00066 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00067"/>00067 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00068"/>00068 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00069"/>00069 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00070"/>00070 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00071"/>00071 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00072"/>00072 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00082"/><link linkend="_class_x_l_i_n_u_x_s_l_e_e_p_1adce172d910cbf0f6169dbe14525f2310">00082</link> <link linkend="_class_x_l_i_n_u_x_s_l_e_e_p_1adce172d910cbf0f6169dbe14525f2310">XLINUXSLEEP::XLINUXSLEEP</link>()
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00083"/>00083 {
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00084"/>00084 &#32;&#32;Clean();
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00085"/>00085 }
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00086"/>00086 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00087"/>00087 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00098"/><link linkend="_class_x_l_i_n_u_x_s_l_e_e_p_1ac40900be5b6060b8d0b554039b3da597">00098</link> <link linkend="_class_x_l_i_n_u_x_s_l_e_e_p_1ac40900be5b6060b8d0b554039b3da597">XLINUXSLEEP::~XLINUXSLEEP</link>()
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00099"/>00099 {
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00100"/>00100 &#32;&#32;Clean();
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00101"/>00101 }
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00102"/>00102 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00103"/>00103 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00115"/><link linkend="_class_x_l_i_n_u_x_s_l_e_e_p_1ab0179354356cc231a17696034e9b2244">00115</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_x_l_i_n_u_x_s_l_e_e_p_1ab0179354356cc231a17696034e9b2244">XLINUXSLEEP::Seconds</link>(<emphasis role="keywordtype">int</emphasis>&#32;seconds)
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00116"/>00116 {
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00117"/>00117 &#32;&#32;sleep(seconds);
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00118"/>00118 }
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00119"/>00119 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00120"/>00120 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00132"/><link linkend="_class_x_l_i_n_u_x_s_l_e_e_p_1a4648575b4001d89af0fde9542ad20128">00132</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_x_l_i_n_u_x_s_l_e_e_p_1a4648575b4001d89af0fde9542ad20128">XLINUXSLEEP::MilliSeconds</link>(<emphasis role="keywordtype">int</emphasis>&#32;milliseconds)
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00133"/>00133 {
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00134"/>00134 &#32;&#32;usleep(milliseconds*1000);
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00135"/>00135 }
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00136"/>00136 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00137"/>00137 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00149"/><link linkend="_class_x_l_i_n_u_x_s_l_e_e_p_1a1ea0fc7728c669688d570c00e1f70717">00149</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_x_l_i_n_u_x_s_l_e_e_p_1a1ea0fc7728c669688d570c00e1f70717">XLINUXSLEEP::MicroSeconds</link>(<emphasis role="keywordtype">int</emphasis>&#32;microseconds)
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00150"/>00150 {
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00151"/>00151 &#32;&#32;usleep(microseconds);
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00152"/>00152 }
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00153"/>00153 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00154"/>00154 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00166"/><link linkend="_class_x_l_i_n_u_x_s_l_e_e_p_1a7820695b92a682b77387d7b3d5d595d4">00166</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_x_l_i_n_u_x_s_l_e_e_p_1a7820695b92a682b77387d7b3d5d595d4">XLINUXSLEEP::NanoSeconds</link>(<emphasis role="keywordtype">int</emphasis>&#32;nanoseconds)
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00167"/>00167 {
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00168"/>00168 &#32;&#32;<emphasis role="keyword">struct&#32;</emphasis>timespec&#32;time&#32;&#32;=&#32;{&#32;0,&#32;nanoseconds&#32;};
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00169"/>00169 &#32;&#32;<emphasis role="keyword">struct&#32;</emphasis>timespec&#32;time2&#32;=&#32;{&#32;0,&#32;0&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00170"/>00170 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00171"/>00171 &#32;&#32;nanosleep(&amp;time&#32;,&#32;&amp;time2);
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00172"/>00172 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00173"/>00173 &#32;&#32;<emphasis role="comment">/*</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00174"/>00174 <emphasis role="comment">&#32;&#32;struct&#32;timespec&#32;delay&#32;=&#32;{&#32;nanoseconds&#32;/&#32;1000000000,&#32;nanoseconds&#32;%&#32;1000000000&#32;};</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00175"/>00175 <emphasis role="comment"></emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00176"/>00176 <emphasis role="comment">&#32;&#32;pselect(0,&#32;NULL,&#32;NULL,&#32;NULL,&#32;&amp;delay,&#32;NULL);</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00177"/>00177 <emphasis role="comment">&#32;&#32;*/</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00178"/>00178 }
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00179"/>00179 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00180"/>00180 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00191"/>00191 <emphasis role="keywordtype">void</emphasis>&#32;XLINUXSLEEP::Clean()
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00192"/>00192 {
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00193"/>00193 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00194"/>00194 }
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00195"/>00195 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00196"/>00196 
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00197"/>00197 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_sleep_8cpp_source_1l00198"/>00198 
+</programlisting></section>

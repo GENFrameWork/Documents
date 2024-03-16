@@ -1,0 +1,559 @@
+\doxysection{Cipher\+DES.\+cpp}
+\hypertarget{_cipher_d_e_s_8cpp_source}{}\label{_cipher_d_e_s_8cpp_source}\index{D:/Projects/GENFrameWork/GEN/Cipher/CipherDES.cpp@{D:/Projects/GENFrameWork/GEN/Cipher/CipherDES.cpp}}
+\mbox{\hyperlink{_cipher_d_e_s_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00029}00029\ \textcolor{comment}{/*-\/-\/-\/-\/\ PRECOMPILATION\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#pragma\ region\ PRECOMPILATION\_INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_e_n___defines_8h}{GEN\_Defines.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00037}00037\ \textcolor{comment}{/*-\/-\/-\/-\/\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#pragma\ region\ INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_cipher_d_e_s_8h}{CipherDES.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00044}00044\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_factory_8h}{XFactory.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00046}00046\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_memory___control_8h}{XMemory\_Control.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00048}00048\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00051}00051\ \textcolor{comment}{/*-\/-\/-\/-\/\ GENERAL\ VARIABLE\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00052}00052\ \textcolor{preprocessor}{\#pragma\ region\ GENERAL\_VARIABLE}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00054}00054\ \textcolor{comment}{//\ Expanded\ DES\ S-\/boxes}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00056}00056\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ \mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_ac66cd8993d2662c6d49b49b5db32db8f}{CIPHERDES::SB1}}[64]\ =\ \ \ \ \ \{\ 0x01010400,\ 0x00000000,\ 0x00010000,\ 0x01010404,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x01010004,\ 0x00010404,\ 0x00000004,\ 0x00010000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000400,\ 0x01010400,\ 0x01010404,\ 0x00000400,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x01000404,\ 0x01010004,\ 0x01000000,\ 0x00000004,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000404,\ 0x01000400,\ 0x01000400,\ 0x00010400,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00010400,\ 0x01010000,\ 0x01010000,\ 0x01000404,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00010004,\ 0x01000004,\ 0x01000004,\ 0x00010004,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000000,\ 0x00000404,\ 0x00010404,\ 0x01000000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00010000,\ 0x01010404,\ 0x00000004,\ 0x01010000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x01010400,\ 0x01000000,\ 0x01000000,\ 0x00000400,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x01010004,\ 0x00010000,\ 0x00010400,\ 0x01000004,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000400,\ 0x00000004,\ 0x01000404,\ 0x00010404,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x01010404,\ 0x00010004,\ 0x01010000,\ 0x01000404,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x01000004,\ 0x00000404,\ 0x00010404,\ 0x01010400,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000404,\ 0x01000400,\ 0x01000400,\ 0x00000000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00010004,\ 0x00010400,\ 0x00000000,\ 0x01010004}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00074}00074\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ \mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_adc1739cf6c7a9c38b88a0938ea8fb3ba}{CIPHERDES::SB2}}[64]\ =\ \ \ \ \ \{\ 0x80108020,\ 0x80008000,\ 0x00008000,\ 0x00108020,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00100000,\ 0x00000020,\ 0x80100020,\ 0x80008020,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x80000020,\ 0x80108020,\ 0x80108000,\ 0x80000000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x80008000,\ 0x00100000,\ 0x00000020,\ 0x80100020,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00108000,\ 0x00100020,\ 0x80008020,\ 0x00000000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x80000000,\ 0x00008000,\ 0x00108020,\ 0x80100000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00100020,\ 0x80000020,\ 0x00000000,\ 0x00108000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00008020,\ 0x80108000,\ 0x80100000,\ 0x00008020,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000000,\ 0x00108020,\ 0x80100020,\ 0x00100000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x80008020,\ 0x80100000,\ 0x80108000,\ 0x00008000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x80100000,\ 0x80008000,\ 0x00000020,\ 0x80108020,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00108020,\ 0x00000020,\ 0x00008000,\ 0x80000000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00008020,\ 0x80108000,\ 0x00100000,\ 0x80000020,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00100020,\ 0x80008020,\ 0x80000020,\ 0x00100020,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00108000,\ 0x00000000,\ 0x80008000,\ 0x00008020,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x80000000,\ 0x80100020,\ 0x80108020,\ 0x00108000}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00092}00092\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ \mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_ad6fdb5482f06efb9039388378a6f4f74}{CIPHERDES::SB3}}[64]\ =\ \ \ \ \ \{\ 0x00000208,\ 0x08020200,\ 0x00000000,\ 0x08020008,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x08000200,\ 0x00000000,\ 0x00020208,\ 0x08000200,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00020008,\ 0x08000008,\ 0x08000008,\ 0x00020000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x08020208,\ 0x00020008,\ 0x08020000,\ 0x00000208,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x08000000,\ 0x00000008,\ 0x08020200,\ 0x00000200,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00020200,\ 0x08020000,\ 0x08020008,\ 0x00020208,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x08000208,\ 0x00020200,\ 0x00020000,\ 0x08000208,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000008,\ 0x08020208,\ 0x00000200,\ 0x08000000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x08020200,\ 0x08000000,\ 0x00020008,\ 0x00000208,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00020000,\ 0x08020200,\ 0x08000200,\ 0x00000000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000200,\ 0x00020008,\ 0x08020208,\ 0x08000200,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x08000008,\ 0x00000200,\ 0x00000000,\ 0x08020008,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x08000208,\ 0x00020000,\ 0x08000000,\ 0x08020208,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000008,\ 0x00020208,\ 0x00020200,\ 0x08000008,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x08020000,\ 0x08000208,\ 0x00000208,\ 0x08020000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00020208,\ 0x00000008,\ 0x08020008,\ 0x00020200}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00110}00110\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ \mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_a6463ec9385d11e93d9c8dc949087c5d1}{CIPHERDES::SB4}}[64]\ =\ \ \ \ \ \{\ 0x00802001,\ 0x00002081,\ 0x00002081,\ 0x00000080,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00802080,\ 0x00800081,\ 0x00800001,\ 0x00002001,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000000,\ 0x00802000,\ 0x00802000,\ 0x00802081,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000081,\ 0x00000000,\ 0x00800080,\ 0x00800001,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000001,\ 0x00002000,\ 0x00800000,\ 0x00802001,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000080,\ 0x00800000,\ 0x00002001,\ 0x00002080,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00800081,\ 0x00000001,\ 0x00002080,\ 0x00800080,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00002000,\ 0x00802080,\ 0x00802081,\ 0x00000081,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00800080,\ 0x00800001,\ 0x00802000,\ 0x00802081,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000081,\ 0x00000000,\ 0x00000000,\ 0x00802000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00002080,\ 0x00800080,\ 0x00800081,\ 0x00000001,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00802001,\ 0x00002081,\ 0x00002081,\ 0x00000080,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00802081,\ 0x00000081,\ 0x00000001,\ 0x00002000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00800001,\ 0x00002001,\ 0x00802080,\ 0x00800081,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00002001,\ 0x00002080,\ 0x00800000,\ 0x00802001,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000080,\ 0x00800000,\ 0x00002000,\ 0x00802080}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00128}00128\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ \mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_a38e81cd1a309ae0edd5bee0207f94e68}{CIPHERDES::SB5}}[64]\ =\ \ \ \ \ \{\ 0x00000100,\ 0x02080100,\ 0x02080000,\ 0x42000100,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00080000,\ 0x00000100,\ 0x40000000,\ 0x02080000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x40080100,\ 0x00080000,\ 0x02000100,\ 0x40080100,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x42000100,\ 0x42080000,\ 0x00080100,\ 0x40000000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x02000000,\ 0x40080000,\ 0x40080000,\ 0x00000000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x40000100,\ 0x42080100,\ 0x42080100,\ 0x02000100,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x42080000,\ 0x40000100,\ 0x00000000,\ 0x42000000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x02080100,\ 0x02000000,\ 0x42000000,\ 0x00080100,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00080000,\ 0x42000100,\ 0x00000100,\ 0x02000000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x40000000,\ 0x02080000,\ 0x42000100,\ 0x40080100,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x02000100,\ 0x40000000,\ 0x42080000,\ 0x02080100,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x40080100,\ 0x00000100,\ 0x02000000,\ 0x42080000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x42080100,\ 0x00080100,\ 0x42000000,\ 0x42080100,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x02080000,\ 0x00000000,\ 0x40080000,\ 0x42000000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00080100,\ 0x02000100,\ 0x40000100,\ 0x00080000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000000,\ 0x40080000,\ 0x02080100,\ 0x40000100}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00146}00146\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ \mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_a05a338e53cd315a3eac8c78bbb0de924}{CIPHERDES::SB6}}[64]\ =\ \ \ \ \ \{\ 0x20000010,\ 0x20400000,\ 0x00004000,\ 0x20404010,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x20400000,\ 0x00000010,\ 0x20404010,\ 0x00400000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x20004000,\ 0x00404010,\ 0x00400000,\ 0x20000010,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00400010,\ 0x20004000,\ 0x20000000,\ 0x00004010,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000000,\ 0x00400010,\ 0x20004010,\ 0x00004000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00404000,\ 0x20004010,\ 0x00000010,\ 0x20400010,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x20400010,\ 0x00000000,\ 0x00404010,\ 0x20404000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00004010,\ 0x00404000,\ 0x20404000,\ 0x20000000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x20004000,\ 0x00000010,\ 0x20400010,\ 0x00404000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x20404010,\ 0x00400000,\ 0x00004010,\ 0x20000010,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00400000,\ 0x20004000,\ 0x20000000,\ 0x00004010,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x20000010,\ 0x20404010,\ 0x00404000,\ 0x20400000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00404010,\ 0x20404000,\ 0x00000000,\ 0x20400010,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000010,\ 0x00004000,\ 0x20400000,\ 0x00404010,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00004000,\ 0x00400010,\ 0x20004010,\ 0x00000000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x20404000,\ 0x20000000,\ 0x00400010,\ 0x20004010}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00164}00164\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ \mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_a052b2571a5d40bbeeca76af42b2b7185}{CIPHERDES::SB7}}[64]\ =\ \ \ \ \ \{\ 0x00200000,\ 0x04200002,\ 0x04000802,\ 0x00000000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000800,\ 0x04000802,\ 0x00200802,\ 0x04200800,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x04200802,\ 0x00200000,\ 0x00000000,\ 0x04000002,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000002,\ 0x04000000,\ 0x04200002,\ 0x00000802,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x04000800,\ 0x00200802,\ 0x00200002,\ 0x04000800,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x04000002,\ 0x04200000,\ 0x04200800,\ 0x00200002,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x04200000,\ 0x00000800,\ 0x00000802,\ 0x04200802,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00200800,\ 0x00000002,\ 0x04000000,\ 0x00200800,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x04000000,\ 0x00200800,\ 0x00200000,\ 0x04000802,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x04000802,\ 0x04200002,\ 0x04200002,\ 0x00000002,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00200002,\ 0x04000000,\ 0x04000800,\ 0x00200000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x04200800,\ 0x00000802,\ 0x00200802,\ 0x04200800,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000802,\ 0x04000002,\ 0x04200802,\ 0x04200000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00200800,\ 0x00000000,\ 0x00000002,\ 0x04200802,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000000,\ 0x00200802,\ 0x04200000,\ 0x00000800,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x04000002,\ 0x04000800,\ 0x00000800,\ 0x00200002}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00182}00182\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ \mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_ac38522001c57361aa4ecb74980fb1a51}{CIPHERDES::SB8}}[64]\ =\ \ \ \ \ \{\ 0x10001040,\ 0x00001000,\ 0x00040000,\ 0x10041040,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x10000000,\ 0x10001040,\ 0x00000040,\ 0x10000000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00040040,\ 0x10040000,\ 0x10041040,\ 0x00041000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x10041000,\ 0x00041040,\ 0x00001000,\ 0x00000040,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x10040000,\ 0x10000040,\ 0x10001000,\ 0x00001040,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00041000,\ 0x00040040,\ 0x10040040,\ 0x10041000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00001040,\ 0x00000000,\ 0x00000000,\ 0x10040040,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x10000040,\ 0x10001000,\ 0x00041040,\ 0x00040000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00041040,\ 0x00040000,\ 0x10041000,\ 0x00001000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000040,\ 0x10040040,\ 0x00001000,\ 0x00041040,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x10001000,\ 0x00000040,\ 0x10000040,\ 0x10040000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x10040040,\ 0x10000000,\ 0x00040000,\ 0x10001040,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000000,\ 0x10041040,\ 0x00040040,\ 0x10000040,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x10040000,\ 0x10001000,\ 0x10001040,\ 0x00000000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x10041040,\ 0x00041000,\ 0x00041000,\ 0x00001040,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00001040,\ 0x00040040,\ 0x10000000,\ 0x10041000}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00201}00201\ \textcolor{comment}{//\ PC1:\ left\ and\ right\ halves\ bit-\/swap}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00203}00203\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ \mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_a34c97d8599985ba1c1f83fb0b1d2095d}{CIPHERDES::LHs}}[16]\ =\ \ \ \ \ \{\ 0x00000000,\ 0x00000001,\ 0x00000100,\ 0x00000101,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00010000,\ 0x00010001,\ 0x00010100,\ 0x00010101,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x01000000,\ 0x01000001,\ 0x01000100,\ 0x01000101,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x01010000,\ 0x01010001,\ 0x01010100,\ 0x01010101}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00209}00209\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ \mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_a0712647039770d644bc8908f976578ec}{CIPHERDES::RHs}}[16]\ =\ \ \ \ \ \{\ 0x00000000,\ 0x01000000,\ 0x00010000,\ 0x01010000,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000100,\ 0x01000100,\ 0x00010100,\ 0x01010100,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000001,\ 0x01000001,\ 0x00010001,\ 0x01010001,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x00000101,\ 0x01000101,\ 0x00010101,\ 0x01010101,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00216}00216\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ \mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_aac3fbeb476c6f23b40c27055089d2949}{CIPHERDES::oddparitytable}}[128]\ =\ \ \ \ \ \ \{\ \ \ 1,\ \ \ 2,\ \ \ 4,\ \ \ 7,\ \ \ 8,\ \ 11,\ \ 13,\ \ 14,\ \ 16,\ \ 19,\ \ 21,\ \ 22,\ \ 25,\ \ 26,\ \ 28,\ \ 31,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 32,\ \ 35,\ \ 37,\ \ 38,\ \ 41,\ \ 42,\ \ 44,\ \ 47,\ \ 49,\ \ 50,\ \ 52,\ \ 55,\ \ 56,\ \ 59,\ \ 61,\ \ 62,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 64,\ \ 67,\ \ 69,\ \ 70,\ \ 73,\ \ 74,\ \ 76,\ \ 79,\ \ 81,\ \ 82,\ \ 84,\ \ 87,\ \ 88,\ \ 91,\ \ 93,\ \ 94,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 97,\ \ 98,\ 100,\ 103,\ 104,\ 107,\ 109,\ 110,\ 112,\ 115,\ 117,\ 118,\ 121,\ 122,\ 124,\ 127,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 128,\ 131,\ 133,\ 134,\ 137,\ 138,\ 140,\ 143,\ 145,\ 146,\ 148,\ 151,\ 152,\ 155,\ 157,\ 158,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 161,\ 162,\ 164,\ 167,\ 168,\ 171,\ 173,\ 174,\ 176,\ 179,\ 181,\ 182,\ 185,\ 186,\ 188,\ 191,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 193,\ 194,\ 196,\ 199,\ 200,\ 203,\ 205,\ 206,\ 208,\ 211,\ 213,\ 214,\ 217,\ 218,\ 220,\ 223,}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 224,\ 227,\ 229,\ 230,\ 233,\ 234,\ 236,\ 239,\ 241,\ 242,\ 244,\ 247,\ 248,\ 251,\ 253,\ 254}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00226}00226\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00228}00228\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ \mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_ad38437a82d06a767d5435344109f400f}{CIPHERDES::weakkeytable}}[\mbox{\hyperlink{_cipher_d_e_s_8h_af20c6fad09d24f5f4cac79d398c103e7}{CIPHERDES\_WEAKKEYCOUNT}}][\mbox{\hyperlink{_cipher_d_e_s_8h_a192c50a49cffb1d8682754b3ebb29db2}{CIPHERDES\_KEYSIZE}}]\ =\ \ \ \ \{\ \{\ 0x01,\ 0x01,\ 0x01,\ 0x01,\ 0x01,\ 0x01,\ 0x01,\ 0x01\ \},}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ 0xFE,\ 0xFE,\ 0xFE,\ 0xFE,\ 0xFE,\ 0xFE,\ 0xFE,\ 0xFE\ \},}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ 0x1F,\ 0x1F,\ 0x1F,\ 0x1F,\ 0x0E,\ 0x0E,\ 0x0E,\ 0x0E\ \},}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ 0xE0,\ 0xE0,\ 0xE0,\ 0xE0,\ 0xF1,\ 0xF1,\ 0xF1,\ 0xF1\ \},}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ 0x01,\ 0x1F,\ 0x01,\ 0x1F,\ 0x01,\ 0x0E,\ 0x01,\ 0x0E\ \},}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ 0x1F,\ 0x01,\ 0x1F,\ 0x01,\ 0x0E,\ 0x01,\ 0x0E,\ 0x01\ \},}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ 0x01,\ 0xE0,\ 0x01,\ 0xE0,\ 0x01,\ 0xF1,\ 0x01,\ 0xF1\ \},}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ 0xE0,\ 0x01,\ 0xE0,\ 0x01,\ 0xF1,\ 0x01,\ 0xF1,\ 0x01\ \},}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ 0x01,\ 0xFE,\ 0x01,\ 0xFE,\ 0x01,\ 0xFE,\ 0x01,\ 0xFE\ \},}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ 0xFE,\ 0x01,\ 0xFE,\ 0x01,\ 0xFE,\ 0x01,\ 0xFE,\ 0x01\ \},}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ 0x1F,\ 0xE0,\ 0x1F,\ 0xE0,\ 0x0E,\ 0xF1,\ 0x0E,\ 0xF1\ \},}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ 0xE0,\ 0x1F,\ 0xE0,\ 0x1F,\ 0xF1,\ 0x0E,\ 0xF1,\ 0x0E\ \},}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ 0x1F,\ 0xFE,\ 0x1F,\ 0xFE,\ 0x0E,\ 0xFE,\ 0x0E,\ 0xFE\ \},}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ 0xFE,\ 0x1F,\ 0xFE,\ 0x1F,\ 0xFE,\ 0x0E,\ 0xFE,\ 0x0E\ \},}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ 0xE0,\ 0xFE,\ 0xE0,\ 0xFE,\ 0xF1,\ 0xFE,\ 0xF1,\ 0xFE\ \},}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ 0xFE,\ 0xE0,\ 0xFE,\ 0xE0,\ 0xFE,\ 0xF1,\ 0xFE,\ 0xF1\ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00246}00246\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00248}00248\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00249}00249\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00251}00251\ \textcolor{comment}{/*-\/-\/-\/-\/\ CLASS\ MEMBERS\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00252}00252\ \textcolor{preprocessor}{\#pragma\ region\ CLASS\_MEMBERS}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00253}00253\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00254}00254\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00262}\mbox{\hyperlink{group___c_i_p_h_e_r_ga85a447748c0a3f73ba1b587e1be25f1a}{00262}}\ \mbox{\hyperlink{group___c_i_p_h_e_r_ga85a447748c0a3f73ba1b587e1be25f1a}{CIPHERDES::CIPHERDES}}()}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00263}00263\ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00264}00264\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00265}00265\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00266}00266\ \ \ \mbox{\hyperlink{class_c_i_p_h_e_r_a416572c28446389769158d381de9d24f}{type}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \mbox{\hyperlink{_cipher_8h_a52cc908e38756716669a3bcb38a61cf7a54d1f4b147f1204984de5d22b67d940f}{CIPHERTYPE\_DES}};}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00267}00267\ \ \ \mbox{\hyperlink{class_c_i_p_h_e_r_a80d51b9bdea87754bd8144999eeb5f2e}{paddingadjustsize}}\ =\ 8;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00268}00268\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00269}00269\ \ \ \mbox{\hyperlink{group___c_i_p_h_e_r_gadb6eeabf5dbd8ce6ac81f1044da2e9ac}{SetChainingMode}}(\mbox{\hyperlink{_cipher_8h_ae802f26095cf19cb1a0d793a5156812fa267f1454bea32b8e1d4300e5f6cede10}{CIPHERCHAININGMODE\_ECB}});}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00270}00270\ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00271}00271\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00272}00272\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00281}\mbox{\hyperlink{group___c_i_p_h_e_r_gad85663a66fe41c298e0a56e06349b3d9}{00281}}\ \mbox{\hyperlink{group___c_i_p_h_e_r_gad85663a66fe41c298e0a56e06349b3d9}{CIPHERDES::\string~CIPHERDES}}()}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00282}00282\ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00283}00283\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00284}00284\ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00285}00285\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00286}00286\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00299}\mbox{\hyperlink{group___c_i_p_h_e_r_gaa153c823b55134adf0fc98ed97cd4f8b}{00299}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___c_i_p_h_e_r_gaa153c823b55134adf0fc98ed97cd4f8b}{CIPHERDES::Cipher}}(\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ input,\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ size)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00300}00300\ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00301}00301\ \ \ \textcolor{keywordflow}{if}(!size)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00302}00302\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00303}00303\ \ \ \mbox{\hyperlink{class_x_b_u_f_f_e_r}{XBUFFER}}\ \ \ \ \ \ \ \ \ \ \ \ inputpadding;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00304}00304\ \ \ \mbox{\hyperlink{struct_c_i_p_h_e_r_d_e_s___c_o_n_t_e_x_t}{CIPHERDES\_CONTEXT}}\ \ ctx;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00305}00305\ \ \ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ iv[8];}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00306}00306\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00307}00307\ \ \ memset(iv,0,8);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00308}00308\ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_c_i_p_h_e_r_aaf021d9a81c4cf827bcc1fac1008d15b}{inivector}}\ \&\&\ \mbox{\hyperlink{class_c_i_p_h_e_r_aaf021d9a81c4cf827bcc1fac1008d15b}{inivector}}-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga726a6143d8a9293a199f8033c8198a0a}{GetSize}}()>=8)\ memcpy(iv,\ \mbox{\hyperlink{class_c_i_p_h_e_r_aaf021d9a81c4cf827bcc1fac1008d15b}{inivector}}-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga59d2c2b8d1c32098920f5d3eba0a5971}{Get}}()\ ,8);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00309}00309\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00310}00310\ \ \ inputpadding.\mbox{\hyperlink{group___x_u_t_i_l_s_ga03212e4f31a9d07995ac4f72db1dd0cf}{Add}}(input,size);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00311}00311\ \ \ inputpadding.\mbox{\hyperlink{group___x_u_t_i_l_s_ga5db6b2fa07edc08e214e0543439de409}{Padding\_Add}}(\mbox{\hyperlink{class_c_i_p_h_e_r_a80d51b9bdea87754bd8144999eeb5f2e}{paddingadjustsize}},\ \mbox{\hyperlink{class_c_i_p_h_e_r_a07eb94b4c2c26e21bfa3ec3942777e0c}{paddingtype}});}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00312}00312\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00313}00313\ \ \ \mbox{\hyperlink{class_c_i_p_h_e_r_a81d924a4beba9c1acb6bb56f3fdf181a}{result}}-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga0395231705663a2aeeee3b4be9d292bb}{Delete}}();}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00314}00314\ \ \ \mbox{\hyperlink{class_c_i_p_h_e_r_a81d924a4beba9c1acb6bb56f3fdf181a}{result}}-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga03212e4f31a9d07995ac4f72db1dd0cf}{Add}}(input,size);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00315}00315\ \ \ \mbox{\hyperlink{class_c_i_p_h_e_r_a81d924a4beba9c1acb6bb56f3fdf181a}{result}}-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga5db6b2fa07edc08e214e0543439de409}{Padding\_Add}}(\mbox{\hyperlink{class_c_i_p_h_e_r_a80d51b9bdea87754bd8144999eeb5f2e}{paddingadjustsize}},\ \mbox{\hyperlink{class_c_i_p_h_e_r_a07eb94b4c2c26e21bfa3ec3942777e0c}{paddingtype}});}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00316}00316\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00317}00317\ \ \ \mbox{\hyperlink{class_c_i_p_h_e_r_k_e_y_s_y_m_m_e_t_r_i_c_a_l}{CIPHERKEYSYMMETRICAL}}*\ key\ =\ (\mbox{\hyperlink{class_c_i_p_h_e_r_k_e_y_s_y_m_m_e_t_r_i_c_a_l}{CIPHERKEYSYMMETRICAL}}*)\mbox{\hyperlink{group___c_i_p_h_e_r_ga617de7ca065e58b8b29d54c246ab7e05}{GetKey}}();}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00318}00318\ \ \ \textcolor{keywordflow}{if}(!key)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00319}00319\ \ \ \textcolor{keywordflow}{if}(!key-\/>\mbox{\hyperlink{group___c_i_p_h_e_r_ga491605bfd782fc1524b9f94d0d982dd2}{Get}}()-\/>Get())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00320}00320\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00321}00321\ \ \ \mbox{\hyperlink{group___c_i_p_h_e_r_ga6b5e36ed0a6a5082d2ce1eaf31b064f9}{DESSetKeyCipher}}(\&ctx,\ (\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ *)key-\/>\mbox{\hyperlink{group___c_i_p_h_e_r_ga491605bfd782fc1524b9f94d0d982dd2}{Get}}()-\/>Get());}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00322}00322\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00323}00323\ \ \ \textcolor{keywordtype}{bool}\ status;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00324}00324\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00325}00325\ \ \ \textcolor{keywordflow}{if}(this-\/>\mbox{\hyperlink{group___c_i_p_h_e_r_gac4534db114136a559c8fb09f7c8b42ab}{GetChainingMode}}()\ ==\ \mbox{\hyperlink{_cipher_8h_ae802f26095cf19cb1a0d793a5156812fa267f1454bea32b8e1d4300e5f6cede10}{CIPHERCHAININGMODE\_ECB}})}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \ status\ =\ \mbox{\hyperlink{group___c_i_p_h_e_r_gaf9e900ff47e557303d1306c80a6d86bf}{DESCipher\_ECB}}(\&ctx,\ \mbox{\hyperlink{_cipher_d_e_s_8h_ae0a57b6649c89014dd793c19eb310d09}{CIPHERDES\_ENCRYPT}},\ \mbox{\hyperlink{class_c_i_p_h_e_r_a81d924a4beba9c1acb6bb56f3fdf181a}{result}}-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga726a6143d8a9293a199f8033c8198a0a}{GetSize}}(),\ iv,\ inputpadding.\mbox{\hyperlink{group___x_u_t_i_l_s_ga59d2c2b8d1c32098920f5d3eba0a5971}{Get}}(),\ \ \mbox{\hyperlink{class_c_i_p_h_e_r_a81d924a4beba9c1acb6bb56f3fdf181a}{result}}-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga59d2c2b8d1c32098920f5d3eba0a5971}{Get}}());}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00327}00327\ \ \ \ \ \textcolor{keywordflow}{else}\ status\ =\ \mbox{\hyperlink{group___c_i_p_h_e_r_ga0977322f447465f968160dd8a0bad5f6}{DESCipher\_CBC}}(\&ctx,\ \mbox{\hyperlink{_cipher_d_e_s_8h_ae0a57b6649c89014dd793c19eb310d09}{CIPHERDES\_ENCRYPT}},\ \mbox{\hyperlink{class_c_i_p_h_e_r_a81d924a4beba9c1acb6bb56f3fdf181a}{result}}-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga726a6143d8a9293a199f8033c8198a0a}{GetSize}}(),\ iv,\ inputpadding.\mbox{\hyperlink{group___x_u_t_i_l_s_ga59d2c2b8d1c32098920f5d3eba0a5971}{Get}}(),\ \ \mbox{\hyperlink{class_c_i_p_h_e_r_a81d924a4beba9c1acb6bb56f3fdf181a}{result}}-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga59d2c2b8d1c32098920f5d3eba0a5971}{Get}}());}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00328}00328\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00329}00329\ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00330}00330\ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00331}00331\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00332}00332\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00345}\mbox{\hyperlink{group___c_i_p_h_e_r_ga4779c1963a717b72b2bedad6395e7398}{00345}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___c_i_p_h_e_r_ga4779c1963a717b72b2bedad6395e7398}{CIPHERDES::Uncipher}}(\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ input,\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ size)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00346}00346\ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00347}00347\ \ \ \textcolor{keywordflow}{if}(!size)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00348}00348\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00349}00349\ \ \ \mbox{\hyperlink{struct_c_i_p_h_e_r_d_e_s___c_o_n_t_e_x_t}{CIPHERDES\_CONTEXT}}\ \ ctx;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00350}00350\ \ \ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ iv[8];}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00351}00351\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00352}00352\ \ \ memset(iv,\ 0\ ,\ 8);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00353}00353\ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_c_i_p_h_e_r_aaf021d9a81c4cf827bcc1fac1008d15b}{inivector}}\ \&\&\ \mbox{\hyperlink{class_c_i_p_h_e_r_aaf021d9a81c4cf827bcc1fac1008d15b}{inivector}}-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga726a6143d8a9293a199f8033c8198a0a}{GetSize}}()>=8)\ memcpy(iv,\ \mbox{\hyperlink{class_c_i_p_h_e_r_aaf021d9a81c4cf827bcc1fac1008d15b}{inivector}}-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga59d2c2b8d1c32098920f5d3eba0a5971}{Get}}()\ ,8);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00354}00354\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00355}00355\ \ \ \mbox{\hyperlink{class_c_i_p_h_e_r_a81d924a4beba9c1acb6bb56f3fdf181a}{result}}-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga0395231705663a2aeeee3b4be9d292bb}{Delete}}();}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00356}00356\ \ \ \mbox{\hyperlink{class_c_i_p_h_e_r_a81d924a4beba9c1acb6bb56f3fdf181a}{result}}-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga03212e4f31a9d07995ac4f72db1dd0cf}{Add}}(input,size);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00357}00357\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00358}00358\ \ \ \mbox{\hyperlink{class_c_i_p_h_e_r_k_e_y_s_y_m_m_e_t_r_i_c_a_l}{CIPHERKEYSYMMETRICAL}}*\ key\ =\ (\mbox{\hyperlink{class_c_i_p_h_e_r_k_e_y_s_y_m_m_e_t_r_i_c_a_l}{CIPHERKEYSYMMETRICAL}}*)\mbox{\hyperlink{group___c_i_p_h_e_r_ga617de7ca065e58b8b29d54c246ab7e05}{GetKey}}();}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00359}00359\ \ \ \textcolor{keywordflow}{if}(!key)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00360}00360\ \ \ \textcolor{keywordflow}{if}(!key-\/>\mbox{\hyperlink{group___c_i_p_h_e_r_ga491605bfd782fc1524b9f94d0d982dd2}{Get}}()-\/>Get())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00361}00361\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00362}00362\ \ \ \mbox{\hyperlink{group___c_i_p_h_e_r_gac900d1855dbf39bcf4f0bc0fc30c32cf}{DESSetKeyUncipher}}(\&ctx,\ (\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ *)key-\/>\mbox{\hyperlink{group___c_i_p_h_e_r_ga491605bfd782fc1524b9f94d0d982dd2}{Get}}()-\/>Get());}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00363}00363\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00364}00364\ \ \ \textcolor{keywordtype}{bool}\ status;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00365}00365\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00366}00366\ \ \ \textcolor{keywordflow}{if}(this-\/>\mbox{\hyperlink{group___c_i_p_h_e_r_gac4534db114136a559c8fb09f7c8b42ab}{GetChainingMode}}()\ ==\ \mbox{\hyperlink{_cipher_8h_ae802f26095cf19cb1a0d793a5156812fa267f1454bea32b8e1d4300e5f6cede10}{CIPHERCHAININGMODE\_ECB}})}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00367}00367\ \ \ \ \ \ \ \ \ \ status\ =\ \mbox{\hyperlink{group___c_i_p_h_e_r_gaf9e900ff47e557303d1306c80a6d86bf}{DESCipher\_ECB}}(\&ctx,\ \ \mbox{\hyperlink{_cipher_d_e_s_8h_af2c09712676c93950eb7c20809fc32f2}{CIPHERDES\_DECRYPT}},\ size,\ iv,\ input,\ \ \mbox{\hyperlink{class_c_i_p_h_e_r_a81d924a4beba9c1acb6bb56f3fdf181a}{result}}-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga59d2c2b8d1c32098920f5d3eba0a5971}{Get}}());}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00368}00368\ \ \ \ \ \textcolor{keywordflow}{else}\ status\ =\ \mbox{\hyperlink{group___c_i_p_h_e_r_ga0977322f447465f968160dd8a0bad5f6}{DESCipher\_CBC}}(\&ctx,\ \ \mbox{\hyperlink{_cipher_d_e_s_8h_af2c09712676c93950eb7c20809fc32f2}{CIPHERDES\_DECRYPT}},\ size,\ iv,\ input,\ \ \mbox{\hyperlink{class_c_i_p_h_e_r_a81d924a4beba9c1acb6bb56f3fdf181a}{result}}-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga59d2c2b8d1c32098920f5d3eba0a5971}{Get}}());}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00369}00369\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00370}00370\ \ \ \mbox{\hyperlink{class_c_i_p_h_e_r_a81d924a4beba9c1acb6bb56f3fdf181a}{result}}-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_ga4c0dba30c747eea8e17417333d4972f7}{Padding\_Delete}}();}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00371}00371\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00372}00372\ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00373}00373\ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00374}00374\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00375}00375\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00385}\mbox{\hyperlink{group___c_i_p_h_e_r_ga865337dbe3a5db42429326af1dc01bbe}{00385}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___c_i_p_h_e_r_ga865337dbe3a5db42429326af1dc01bbe}{CIPHERDES::DESKeySetParity}}(\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ key[\mbox{\hyperlink{_cipher_d_e_s_8h_a192c50a49cffb1d8682754b3ebb29db2}{CIPHERDES\_KEYSIZE}}])}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00386}00386\ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00387}00387\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ c\ =\ 0;\ c<\mbox{\hyperlink{_cipher_d_e_s_8h_a192c50a49cffb1d8682754b3ebb29db2}{CIPHERDES\_KEYSIZE}};\ c++)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00388}00388\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00389}00389\ \ \ \ \ \ \ key[c]\ =\ \mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_aac3fbeb476c6f23b40c27055089d2949}{oddparitytable}}[key[c]\ /\ 2];}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00390}00390\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00391}00391\ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00392}00392\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00393}00393\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00405}\mbox{\hyperlink{group___c_i_p_h_e_r_gadd1def5ef7ae0aec9b9547820b2c5fd9}{00405}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group___c_i_p_h_e_r_gadd1def5ef7ae0aec9b9547820b2c5fd9}{CIPHERDES::DESKeyCheckKeyParity}}(\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ key[\mbox{\hyperlink{_cipher_d_e_s_8h_a192c50a49cffb1d8682754b3ebb29db2}{CIPHERDES\_KEYSIZE}}])}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00406}00406\ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00407}00407\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ c=0;\ c<\mbox{\hyperlink{_cipher_d_e_s_8h_a192c50a49cffb1d8682754b3ebb29db2}{CIPHERDES\_KEYSIZE}};\ c++)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00408}00408\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00409}00409\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(key[c]\ !=\ \mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_aac3fbeb476c6f23b40c27055089d2949}{oddparitytable}}[key[c]\ /\ 2])\ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00410}00410\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00411}00411\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00412}00412\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00413}00413\ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00414}00414\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00415}00415\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00427}\mbox{\hyperlink{group___c_i_p_h_e_r_ga6157217b5f3ec8f53afe89f672f109e3}{00427}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group___c_i_p_h_e_r_ga6157217b5f3ec8f53afe89f672f109e3}{CIPHERDES::DESKeyCheckWeak}}(\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ key[\mbox{\hyperlink{_cipher_d_e_s_8h_a192c50a49cffb1d8682754b3ebb29db2}{CIPHERDES\_KEYSIZE}}])}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00428}00428\ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00429}00429\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ c=0;\ c<\mbox{\hyperlink{_cipher_d_e_s_8h_af20c6fad09d24f5f4cac79d398c103e7}{CIPHERDES\_WEAKKEYCOUNT}};\ c++)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00430}00430\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00431}00431\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(memcmp(\mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_ad38437a82d06a767d5435344109f400f}{weakkeytable}}[c],\ key,\ \mbox{\hyperlink{_cipher_d_e_s_8h_a192c50a49cffb1d8682754b3ebb29db2}{CIPHERDES\_KEYSIZE}})\ ==\ 0)\ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00432}00432\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00433}00433\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00434}00434\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00435}00435\ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00436}00436\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00437}00437\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00448}\mbox{\hyperlink{group___c_i_p_h_e_r_gab5e2f42faca2228f5f52d18b4a825161}{00448}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___c_i_p_h_e_r_gab5e2f42faca2228f5f52d18b4a825161}{CIPHERDES::DESSetKey}}(\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ SK[32],\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ key[\mbox{\hyperlink{_cipher_d_e_s_8h_a192c50a49cffb1d8682754b3ebb29db2}{CIPHERDES\_KEYSIZE}}])}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00449}00449\ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00450}00450\ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ X;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00451}00451\ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ Y;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00452}00452\ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ T;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00453}00453\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00454}00454\ \ \ \mbox{\hyperlink{_cipher_d_e_s_8h_a4f8fbdb596ed2ef9360f2bbc63f6bacd}{GET\_XDWORD\_BE}}(X,\ key,\ 0);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00455}00455\ \ \ \mbox{\hyperlink{_cipher_d_e_s_8h_a4f8fbdb596ed2ef9360f2bbc63f6bacd}{GET\_XDWORD\_BE}}(Y,\ key,\ 4);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00456}00456\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00457}00457\ \ \ T\ =\ ((Y\ >>\ \ 4)\ \string^\ X)\ \&\ 0x0F0F0F0F;\ \ X\ \string^=\ T;\ Y\ \string^=\ (T\ <<\ \ 4);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00458}00458\ \ \ T\ =\ ((Y\ \ \ \ \ \ )\ \string^\ X)\ \&\ 0x10101010;\ \ X\ \string^=\ T;\ Y\ \string^=\ (T\ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00459}00459\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00460}00460\ \ \ X\ =\ (\mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_a34c97d8599985ba1c1f83fb0b1d2095d}{LHs}}[\ (X\ \ \ \ \ \ )\ \&\ 0xF]\ <<\ 3)\ |\ (\mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_a34c97d8599985ba1c1f83fb0b1d2095d}{LHs}}[\ (X\ >>\ \ 8)\ \&\ 0xF\ ]\ <<\ 2)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00461}00461\ \ \ \ \ \ \ \ \ |\ (\mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_a34c97d8599985ba1c1f83fb0b1d2095d}{LHs}}[\ (X\ >>\ 16)\ \&\ 0xF]\ <<\ 1)\ |\ (\mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_a34c97d8599985ba1c1f83fb0b1d2095d}{LHs}}[\ (X\ >>\ 24)\ \&\ 0xF\ ]\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00462}00462\ \ \ \ \ \ \ \ \ |\ (\mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_a34c97d8599985ba1c1f83fb0b1d2095d}{LHs}}[\ (X\ >>\ \ 5)\ \&\ 0xF]\ <<\ 7)\ |\ (\mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_a34c97d8599985ba1c1f83fb0b1d2095d}{LHs}}[\ (X\ >>\ 13)\ \&\ 0xF\ ]\ <<\ 6)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00463}00463\ \ \ \ \ \ \ \ \ |\ (\mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_a34c97d8599985ba1c1f83fb0b1d2095d}{LHs}}[\ (X\ >>\ 21)\ \&\ 0xF]\ <<\ 5)\ |\ (\mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_a34c97d8599985ba1c1f83fb0b1d2095d}{LHs}}[\ (X\ >>\ 29)\ \&\ 0xF\ ]\ <<\ 4);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00464}00464\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00465}00465\ \ \ Y\ =\ (\mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_a0712647039770d644bc8908f976578ec}{RHs}}[\ (Y\ >>\ \ 1)\ \&\ 0xF]\ <<\ 3)\ |\ (\mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_a0712647039770d644bc8908f976578ec}{RHs}}[\ (Y\ >>\ \ 9)\ \&\ 0xF\ ]\ <<\ 2)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00466}00466\ \ \ \ \ \ \ \ \ |\ (\mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_a0712647039770d644bc8908f976578ec}{RHs}}[\ (Y\ >>\ 17)\ \&\ 0xF]\ <<\ 1)\ |\ (\mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_a0712647039770d644bc8908f976578ec}{RHs}}[\ (Y\ >>\ 25)\ \&\ 0xF\ ]\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00467}00467\ \ \ \ \ \ \ \ \ |\ (\mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_a0712647039770d644bc8908f976578ec}{RHs}}[\ (Y\ >>\ \ 4)\ \&\ 0xF]\ <<\ 7)\ |\ (\mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_a0712647039770d644bc8908f976578ec}{RHs}}[\ (Y\ >>\ 12)\ \&\ 0xF\ ]\ <<\ 6)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00468}00468\ \ \ \ \ \ \ \ \ |\ (\mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_a0712647039770d644bc8908f976578ec}{RHs}}[\ (Y\ >>\ 20)\ \&\ 0xF]\ <<\ 5)\ |\ (\mbox{\hyperlink{class_c_i_p_h_e_r_d_e_s_a0712647039770d644bc8908f976578ec}{RHs}}[\ (Y\ >>\ 28)\ \&\ 0xF\ ]\ <<\ 4);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00469}00469\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00470}00470\ \ \ X\ \&=\ 0x0FFFFFFF;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00471}00471\ \ \ Y\ \&=\ 0x0FFFFFFF;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00472}00472\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00473}00473\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ c=0;\ c<16;\ c++\ )}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00474}00474\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00475}00475\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(c<2\ ||\ c==8\ ||\ c==15)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00476}00476\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00477}00477\ \ \ \ \ \ \ \ \ \ \ \ X\ =\ ((X\ <<\ \ 1)\ |\ (X\ >>\ 27))\ \&\ 0x0FFFFFFF;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00478}00478\ \ \ \ \ \ \ \ \ \ \ \ Y\ =\ ((Y\ <<\ \ 1)\ |\ (Y\ >>\ 27))\ \&\ 0x0FFFFFFF;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00479}00479\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00480}00480\ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00481}00481\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00482}00482\ \ \ \ \ \ \ \ \ \ \ \ X\ =\ ((X\ <<\ \ 2)\ |\ (X\ >>\ 26))\ \&\ 0x0FFFFFFF;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00483}00483\ \ \ \ \ \ \ \ \ \ \ \ Y\ =\ ((Y\ <<\ \ 2)\ |\ (Y\ >>\ 26))\ \&\ 0x0FFFFFFF;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00484}00484\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00485}00485\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00486}00486\ \ \ \ \ \ \ *SK++\ =\ \ \ ((X\ <<\ \ 4)\ \&\ 0x24000000)\ |\ ((X\ <<\ 28)\ \&\ 0x10000000)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00487}00487\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ ((X\ <<\ 14)\ \&\ 0x08000000)\ |\ ((X\ <<\ 18)\ \&\ 0x02080000)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00488}00488\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ ((X\ <<\ \ 6)\ \&\ 0x01000000)\ |\ ((X\ <<\ \ 9)\ \&\ 0x00200000)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00489}00489\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ ((X\ >>\ \ 1)\ \&\ 0x00100000)\ |\ ((X\ <<\ 10)\ \&\ 0x00040000)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00490}00490\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ ((X\ <<\ \ 2)\ \&\ 0x00020000)\ |\ ((X\ >>\ 10)\ \&\ 0x00010000)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00491}00491\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ ((Y\ >>\ 13)\ \&\ 0x00002000)\ |\ ((Y\ >>\ \ 4)\ \&\ 0x00001000)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00492}00492\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ ((Y\ <<\ \ 6)\ \&\ 0x00000800)\ |\ ((Y\ >>\ \ 1)\ \&\ 0x00000400)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00493}00493\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ ((Y\ >>\ 14)\ \&\ 0x00000200)\ |\ ((Y\ \ \ \ \ \ )\ \&\ 0x00000100)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00494}00494\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ ((Y\ >>\ \ 5)\ \&\ 0x00000020)\ |\ ((Y\ >>\ 10)\ \&\ 0x00000010)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00495}00495\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ ((Y\ >>\ \ 3)\ \&\ 0x00000008)\ |\ ((Y\ >>\ 18)\ \&\ 0x00000004)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00496}00496\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ ((Y\ >>\ 26)\ \&\ 0x00000002)\ |\ ((Y\ >>\ 24)\ \&\ 0x00000001);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00497}00497\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00498}00498\ \ \ \ \ \ \ *SK++\ =\ \ \ ((X\ <<\ 15)\ \&\ 0x20000000)\ |\ ((X\ <<\ 17)\ \&\ 0x10000000)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00499}00499\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ ((X\ <<\ 10)\ \&\ 0x08000000)\ |\ ((X\ <<\ 22)\ \&\ 0x04000000)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00500}00500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ ((X\ >>\ \ 2)\ \&\ 0x02000000)\ |\ ((X\ <<\ \ 1)\ \&\ 0x01000000)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00501}00501\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ ((X\ <<\ 16)\ \&\ 0x00200000)\ |\ ((X\ <<\ 11)\ \&\ 0x00100000)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00502}00502\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ ((X\ <<\ \ 3)\ \&\ 0x00080000)\ |\ ((X\ >>\ \ 6)\ \&\ 0x00040000)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00503}00503\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ ((X\ <<\ 15)\ \&\ 0x00020000)\ |\ ((X\ >>\ \ 4)\ \&\ 0x00010000)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00504}00504\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ ((Y\ >>\ \ 2)\ \&\ 0x00002000)\ |\ ((Y\ <<\ \ 8)\ \&\ 0x00001000)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00505}00505\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ ((Y\ >>\ 14)\ \&\ 0x00000808)\ |\ ((Y\ >>\ \ 9)\ \&\ 0x00000400)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00506}00506\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ ((Y\ \ \ \ \ \ )\ \&\ 0x00000200)\ |\ ((Y\ <<\ \ 7)\ \&\ 0x00000100)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00507}00507\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ ((Y\ >>\ \ 7)\ \&\ 0x00000020)\ |\ ((Y\ >>\ \ 3)\ \&\ 0x00000011)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00508}00508\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ ((Y\ <<\ \ 2)\ \&\ 0x00000004)\ |\ ((Y\ >>\ 21)\ \&\ 0x00000002);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00509}00509\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00510}00510\ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00511}00511\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00512}00512\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00525}\mbox{\hyperlink{group___c_i_p_h_e_r_ga6b5e36ed0a6a5082d2ce1eaf31b064f9}{00525}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group___c_i_p_h_e_r_ga6b5e36ed0a6a5082d2ce1eaf31b064f9}{CIPHERDES::DESSetKeyCipher}}(\mbox{\hyperlink{struct_c_i_p_h_e_r_d_e_s___c_o_n_t_e_x_t}{CIPHERDES\_CONTEXT}}*\ ctx,\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ key[\mbox{\hyperlink{_cipher_d_e_s_8h_a192c50a49cffb1d8682754b3ebb29db2}{CIPHERDES\_KEYSIZE}}])}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00526}00526\ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00527}00527\ \ \ \mbox{\hyperlink{group___c_i_p_h_e_r_gab5e2f42faca2228f5f52d18b4a825161}{DESSetKey}}(ctx-\/>\mbox{\hyperlink{struct_c_i_p_h_e_r_d_e_s___c_o_n_t_e_x_t_a05173a0dd30a8c3287ff5358624b7159}{sk}},\ key);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00528}00528\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00529}00529\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00530}00530\ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00531}00531\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00532}00532\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00545}\mbox{\hyperlink{group___c_i_p_h_e_r_gac900d1855dbf39bcf4f0bc0fc30c32cf}{00545}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group___c_i_p_h_e_r_gac900d1855dbf39bcf4f0bc0fc30c32cf}{CIPHERDES::DESSetKeyUncipher}}(\mbox{\hyperlink{struct_c_i_p_h_e_r_d_e_s___c_o_n_t_e_x_t}{CIPHERDES\_CONTEXT}}*\ ctx,\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ key[\mbox{\hyperlink{_cipher_d_e_s_8h_a192c50a49cffb1d8682754b3ebb29db2}{CIPHERDES\_KEYSIZE}}])}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00546}00546\ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00547}00547\ \ \ \mbox{\hyperlink{group___c_i_p_h_e_r_gab5e2f42faca2228f5f52d18b4a825161}{DESSetKey}}(ctx-\/>\mbox{\hyperlink{struct_c_i_p_h_e_r_d_e_s___c_o_n_t_e_x_t_a05173a0dd30a8c3287ff5358624b7159}{sk}},\ key);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00548}00548\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00549}00549\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ c=0;\ c<16;\ c+=2)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00550}00550\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00551}00551\ \ \ \ \ \ \ \mbox{\hyperlink{_cipher_d_e_s_8h_aac9153aee4bdb92701df902e06a74eb3}{SWAP}}(ctx-\/>\mbox{\hyperlink{struct_c_i_p_h_e_r_d_e_s___c_o_n_t_e_x_t_a05173a0dd30a8c3287ff5358624b7159}{sk}}[c\ \ \ \ ],\ ctx-\/>\mbox{\hyperlink{struct_c_i_p_h_e_r_d_e_s___c_o_n_t_e_x_t_a05173a0dd30a8c3287ff5358624b7159}{sk}}[30\ -\/\ c]);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00552}00552\ \ \ \ \ \ \ \mbox{\hyperlink{_cipher_d_e_s_8h_aac9153aee4bdb92701df902e06a74eb3}{SWAP}}(ctx-\/>\mbox{\hyperlink{struct_c_i_p_h_e_r_d_e_s___c_o_n_t_e_x_t_a05173a0dd30a8c3287ff5358624b7159}{sk}}[c\ +\ 1],\ ctx-\/>\mbox{\hyperlink{struct_c_i_p_h_e_r_d_e_s___c_o_n_t_e_x_t_a05173a0dd30a8c3287ff5358624b7159}{sk}}[31\ -\/\ c]);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00553}00553\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00554}00554\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00555}00555\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00556}00556\ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00557}00557\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00558}00558\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00572}\mbox{\hyperlink{group___c_i_p_h_e_r_gafeae970ec16dca368a39d0756636eaaa}{00572}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{group___c_i_p_h_e_r_gafeae970ec16dca368a39d0756636eaaa}{CIPHERDES::DESCipher}}(\mbox{\hyperlink{struct_c_i_p_h_e_r_d_e_s___c_o_n_t_e_x_t}{CIPHERDES\_CONTEXT}}*\ ctx,\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ input[8],\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ output[8])}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00573}00573\ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00574}00574\ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ \ X;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00575}00575\ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ \ Y;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00576}00576\ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ \ T;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00577}00577\ \ \ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}*\ SK;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00578}00578\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00579}00579\ \ \ SK\ =\ ctx-\/>\mbox{\hyperlink{struct_c_i_p_h_e_r_d_e_s___c_o_n_t_e_x_t_a05173a0dd30a8c3287ff5358624b7159}{sk}};}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00580}00580\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00581}00581\ \ \ \mbox{\hyperlink{_cipher_d_e_s_8h_a4f8fbdb596ed2ef9360f2bbc63f6bacd}{GET\_XDWORD\_BE}}(X,\ input,\ 0);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00582}00582\ \ \ \mbox{\hyperlink{_cipher_d_e_s_8h_a4f8fbdb596ed2ef9360f2bbc63f6bacd}{GET\_XDWORD\_BE}}(Y,\ input,\ 4);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00583}00583\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00584}00584\ \ \ \mbox{\hyperlink{_cipher_d_e_s_8h_a439a633ac9c78a00091a0f75fd7794f3}{DES\_IP}}(X,\ Y);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00585}00585\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00586}00586\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ c=0;\ c<8;\ c++\ )}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00587}00587\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00588}00588\ \ \ \ \ \ \ \mbox{\hyperlink{_cipher_d_e_s_8h_a649e2807991d002a017ac59bac0ab738}{DES\_ROUND}}(Y,\ X);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00589}00589\ \ \ \ \ \ \ \mbox{\hyperlink{_cipher_d_e_s_8h_a649e2807991d002a017ac59bac0ab738}{DES\_ROUND}}(X,\ Y);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00590}00590\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00591}00591\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00592}00592\ \ \ \mbox{\hyperlink{_cipher_d_e_s_8h_a46361669a0466984d37e9de21f2dc5d5}{DES\_FP}}(Y,\ X);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00593}00593\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00594}00594\ \ \ \mbox{\hyperlink{_cipher_d_e_s_8h_acc2c87a85177e119cd33b4c55040ef6a}{PUT\_XDWORD\_BE}}(Y,\ output,\ 0);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00595}00595\ \ \ \mbox{\hyperlink{_cipher_d_e_s_8h_acc2c87a85177e119cd33b4c55040ef6a}{PUT\_XDWORD\_BE}}(X,\ output,\ 4);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00596}00596\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00597}00597\ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00598}00598\ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00599}00599\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00600}00600\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00617}\mbox{\hyperlink{group___c_i_p_h_e_r_gaf9e900ff47e557303d1306c80a6d86bf}{00617}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___c_i_p_h_e_r_gaf9e900ff47e557303d1306c80a6d86bf}{CIPHERDES::DESCipher\_ECB}}(\mbox{\hyperlink{struct_c_i_p_h_e_r_d_e_s___c_o_n_t_e_x_t}{CIPHERDES\_CONTEXT}}*\ ctx,\ \textcolor{keywordtype}{int}\ mode,\ \textcolor{keywordtype}{size\_t}\ length,\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ iv[8],\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ input,\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ output)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00618}00618\ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00619}00619\ \ \ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ temp[8];}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00620}00620\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00621}00621\ \ \ \textcolor{keywordflow}{if}(length\ \%\ 8)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00622}00622\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00623}00623\ \ \ \textcolor{keywordflow}{if}(mode==\mbox{\hyperlink{_cipher_d_e_s_8h_ae0a57b6649c89014dd793c19eb310d09}{CIPHERDES\_ENCRYPT}})}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00624}00624\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00625}00625\ \ \ \ \ \ \ \textcolor{keywordflow}{while}(length\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00626}00626\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00627}00627\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___c_i_p_h_e_r_gafeae970ec16dca368a39d0756636eaaa}{DESCipher}}(ctx,\ output,\ output);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00628}00628\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00629}00629\ \ \ \ \ \ \ \ \ \ \ memcpy(iv,\ output,\ 8);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00630}00630\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00631}00631\ \ \ \ \ \ \ \ \ \ \ input\ \ +=\ 8;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00632}00632\ \ \ \ \ \ \ \ \ \ \ output\ +=\ 8;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00633}00633\ \ \ \ \ \ \ \ \ \ \ length\ -\/=\ 8;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00634}00634\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00635}00635\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00636}00636\ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{comment}{//\ CIPHERDES\_DECRYPT\ }}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00637}00637\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00638}00638\ \ \ \ \ \ \ \textcolor{keywordflow}{while}(length\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00639}00639\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00640}00640\ \ \ \ \ \ \ \ \ \ \ memcpy(temp,\ input,\ 8);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00641}00641\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00642}00642\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___c_i_p_h_e_r_gafeae970ec16dca368a39d0756636eaaa}{DESCipher}}(\ ctx,\ input,\ output);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00643}00643\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00644}00644\ \ \ \ \ \ \ \ \ \ \ memcpy(iv,\ temp,\ 8);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00645}00645\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00646}00646\ \ \ \ \ \ \ \ \ \ \ input\ \ +=\ 8;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00647}00647\ \ \ \ \ \ \ \ \ \ \ output\ +=\ 8;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00648}00648\ \ \ \ \ \ \ \ \ \ \ length\ -\/=\ 8;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00649}00649\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00650}00650\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00651}00651\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00652}00652\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00653}00653\ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00654}00654\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00655}00655\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00672}\mbox{\hyperlink{group___c_i_p_h_e_r_ga0977322f447465f968160dd8a0bad5f6}{00672}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___c_i_p_h_e_r_ga0977322f447465f968160dd8a0bad5f6}{CIPHERDES::DESCipher\_CBC}}(\mbox{\hyperlink{struct_c_i_p_h_e_r_d_e_s___c_o_n_t_e_x_t}{CIPHERDES\_CONTEXT}}*\ ctx,\ \textcolor{keywordtype}{int}\ mode,\ \textcolor{keywordtype}{size\_t}\ length,\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ iv[8],\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ input,\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ output)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00673}00673\ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00674}00674\ \ \ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}\ temp[8];}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00675}00675\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00676}00676\ \ \ \textcolor{keywordflow}{if}(length\ \%\ 8)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00677}00677\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00678}00678\ \ \ \textcolor{keywordflow}{if}(mode==\mbox{\hyperlink{_cipher_d_e_s_8h_ae0a57b6649c89014dd793c19eb310d09}{CIPHERDES\_ENCRYPT}})}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00679}00679\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00680}00680\ \ \ \ \ \ \ \textcolor{keywordflow}{while}(length\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00681}00681\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00682}00682\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00683}00683\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ c=0;\ c<8;\ c++\ )}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00684}00684\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00685}00685\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output[c]\ =\ (\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}})(\ input[c]\ \string^\ iv[c]);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00686}00686\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00687}00687\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00688}00688\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___c_i_p_h_e_r_gafeae970ec16dca368a39d0756636eaaa}{DESCipher}}(ctx,\ output,\ output);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00689}00689\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00690}00690\ \ \ \ \ \ \ \ \ \ \ memcpy(iv,\ output,\ 8);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00691}00691\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00692}00692\ \ \ \ \ \ \ \ \ \ \ input\ \ +=\ 8;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00693}00693\ \ \ \ \ \ \ \ \ \ \ output\ +=\ 8;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00694}00694\ \ \ \ \ \ \ \ \ \ \ length\ -\/=\ 8;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00695}00695\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00696}00696\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00697}00697\ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{comment}{//\ CIPHERDES\_DECRYPT\ }}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00698}00698\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00699}00699\ \ \ \ \ \ \ \textcolor{keywordflow}{while}(length\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00700}00700\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00701}00701\ \ \ \ \ \ \ \ \ \ \ memcpy(temp,\ input,\ 8);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00702}00702\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00703}00703\ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{group___c_i_p_h_e_r_gafeae970ec16dca368a39d0756636eaaa}{DESCipher}}(\ ctx,\ input,\ output);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00704}00704\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00705}00705\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ c=0;\ c<8;\ c++)}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00706}00706\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00707}00707\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output[c]\ =\ (\mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}})(\ output[c]\ \string^\ iv[c]);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00708}00708\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00709}00709\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00710}00710\ \ \ \ \ \ \ \ \ \ \ memcpy(iv,\ temp,\ 8);}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00711}00711\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00712}00712\ \ \ \ \ \ \ \ \ \ \ input\ \ +=\ 8;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00713}00713\ \ \ \ \ \ \ \ \ \ \ output\ +=\ 8;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00714}00714\ \ \ \ \ \ \ \ \ \ \ length\ -\/=\ 8;}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00715}00715\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00716}00716\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00717}00717\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00718}00718\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00719}00719\ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00720}00720\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00721}00721\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00730}00730\ \textcolor{keywordtype}{void}\ CIPHERDES::Clean()}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00731}00731\ \{}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00732}00732\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00733}00733\ \}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00734}00734\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00735}00735\ }
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00736}00736\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_cipher_d_e_s_8cpp_source_l00737}00737\ }
+
+\end{DoxyCode}

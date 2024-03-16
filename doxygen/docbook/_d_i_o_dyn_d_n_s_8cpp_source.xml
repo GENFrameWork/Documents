@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_i_o_dyn_d_n_s_8cpp_source" xml:lang="en-US">
+<title>DIODynDNS.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/DataIO/Protocols/DIODynDNS.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_dyn_d_n_s_8h">DIODynDNS.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_factory_8h">DIOFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_scraper_web_public_i_p_8h">DIOScraperWebPublicIP.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_web_client_8h">DIOWebClient.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00045"/>00045 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00047"/>00047 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00049"/>00049 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00050"/>00050 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00051"/>00051 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00053"/>00053 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00054"/>00054 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00055"/>00055 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00056"/>00056 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00057"/>00057 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00058"/>00058 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00059"/>00059 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00070"/><link linkend="_class_d_i_o_d_y_n_d_n_s_1a48e36167334bdbbdafef4d26eb7d623a">00070</link> <link linkend="_class_d_i_o_d_y_n_d_n_s_1a48e36167334bdbbdafef4d26eb7d623a">DIODYNDNS::DIODYNDNS</link>()
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00071"/>00071 {
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00072"/>00072 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00073"/>00073 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00074"/>00074 &#32;&#32;webclient&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_w_e_b_c_l_i_e_n_t">DIOWEBCLIENT</link>;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00075"/>00075 }
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00076"/>00076 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00077"/>00077 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00088"/><link linkend="_class_d_i_o_d_y_n_d_n_s_1a761a7fb5f4c9e33fa06043b1239f4829">00088</link> <link linkend="_class_d_i_o_d_y_n_d_n_s_1a761a7fb5f4c9e33fa06043b1239f4829">DIODYNDNS::~DIODYNDNS</link>()
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00089"/>00089 {
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00090"/>00090 &#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;webclient;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00091"/>00091 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00092"/>00092 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00093"/>00093 }
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00094"/>00094 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00095"/>00095 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00105"/><link linkend="_class_d_i_o_d_y_n_d_n_s_1a5a43c7d866c8ab5ade3b686793284e25">00105</link> <link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;<link linkend="_class_d_i_o_d_y_n_d_n_s_1a5a43c7d866c8ab5ade3b686793284e25">DIODYNDNS::GetLogin</link>()
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00106"/>00106 {
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00107"/>00107 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;login;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00108"/>00108 }
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00109"/>00109 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00110"/>00110 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00120"/><link linkend="_class_d_i_o_d_y_n_d_n_s_1a1159ebbd6d5baef8e973aaa8a4f8bb8d">00120</link> <link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;<link linkend="_class_d_i_o_d_y_n_d_n_s_1a1159ebbd6d5baef8e973aaa8a4f8bb8d">DIODYNDNS::GetPassword</link>()
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00121"/>00121 {
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00122"/>00122 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;password;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00123"/>00123 }
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00124"/>00124 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00125"/>00125 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00139"/><link linkend="_class_d_i_o_d_y_n_d_n_s_1a01b9e2aabc63af022f8c8ea40a88efde">00139</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_d_y_n_d_n_s_1a01b9e2aabc63af022f8c8ea40a88efde">DIODYNDNS::GetPublicIP</link>(<link linkend="_class_d_i_o_i_p">DIOIP</link>&amp;&#32;publicIP,&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;IPlocal)
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00140"/>00140 {
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00141"/>00141 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;&#32;&#32;xbuffer;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00142"/>00142 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;status;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00143"/>00143 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00144"/>00144 &#32;&#32;status&#32;=&#32;webclient-&gt;<link linkend="_class_d_i_o_w_e_b_c_l_i_e_n_t_1a7f8df7195e3162e7eade548357171d5d">Get</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;checkip.dyndns.com&quot;</emphasis>),&#32;xbuffer,&#32;<link linkend="__d_i_o_web_client_8h_1a99c6a82f59b03644b22ea16bacf1a2b2">DIOWEBCLIENT_DEFAULTUSERAGENT</link>,&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>,&#32;IPlocal);
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00145"/>00145 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00146"/>00146 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00147"/>00147 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;startstring;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00148"/>00148 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;result;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00149"/>00149 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00150"/>00150 &#32;&#32;&#32;&#32;&#32;&#32;result.<link linkend="_class_x_s_t_r_i_n_g_1a4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a59d2c2b8d1c32098920f5d3eba0a5971">Get</link>(),&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a726a6143d8a9293a199f8033c8198a0a">GetSize</link>());
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00151"/>00151 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00152"/>00152 &#32;&#32;&#32;&#32;&#32;&#32;startstring&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;Current&#32;IP&#32;Address:&#32;&quot;</emphasis>);
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00153"/>00153 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00154"/>00154 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;start&#32;=&#32;result.<link linkend="_class_x_s_t_r_i_n_g_1aa5d59b7b88102beb4def8fe054449653">Find</link>(startstring,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00155"/>00155 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(start&#32;!=&#32;<link linkend="__x_string_8h_1aee1ccda748b3ca0a483afb84276e3fc6">XSTRING_NOTFOUND</link>)
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00156"/>00156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00157"/>00157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;start&#32;+=&#32;startstring.<link linkend="_class_x_s_t_r_i_n_g_1a7c3fa0dd7b650399470c76192fbd4916">GetSize</link>();
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00158"/>00158 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00159"/>00159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;end&#32;&#32;=&#32;result.<link linkend="_class_x_s_t_r_i_n_g_1aa5d59b7b88102beb4def8fe054449653">Find</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;&lt;/body&gt;&quot;</emphasis>),&#32;<emphasis role="keyword">true</emphasis>,&#32;start);
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00160"/>00160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(end&#32;!=&#32;<link linkend="__x_string_8h_1aee1ccda748b3ca0a483afb84276e3fc6">XSTRING_NOTFOUND</link>)
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00161"/>00161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00162"/>00162 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;IPstring;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00163"/>00163 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;result.<link linkend="_class_x_s_t_r_i_n_g_1a4fb725176450b2fed84aaa0dfbcdbe13">Copy</link>(start,&#32;end,&#32;IPstring);
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00165"/>00165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!IPstring.<link linkend="_class_x_s_t_r_i_n_g_1ad26690161f8c1e2722771322b7370005">IsEmpty</link>())
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00166"/>00166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00167"/>00167 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;publicIP.<link linkend="_class_d_i_o_i_p_a_d_d_r_e_s_s_1a1955ea08de61edcd19d7806e64ed9aaa">Set</link>(IPstring);
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00168"/>00168 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00169"/>00169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00170"/>00170 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00171"/>00171 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00172"/>00172 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00173"/>00173 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00174"/>00174 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_s_c_r_a_p_e_r_w_e_b_p_u_b_l_i_c_i_p">DIOSCRAPERWEBPUBLICIP</link>*&#32;scraperwebpublicip&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_s_c_r_a_p_e_r_w_e_b_p_u_b_l_i_c_i_p">DIOSCRAPERWEBPUBLICIP</link>();
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00175"/>00175 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(scraperwebpublicip)
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00176"/>00176 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00177"/>00177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;scraperwebpublicip-&gt;<link linkend="_class_d_i_o_s_c_r_a_p_e_r_w_e_b_p_u_b_l_i_c_i_p_1af58d6ded3a3e198a9cdf0c8cfe06250c">Get</link>(publicIP,&#32;5,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00178"/>00178 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;scraperwebpublicip;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00179"/>00179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00180"/>00180 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00181"/>00181 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00182"/>00182 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00183"/>00183 }
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00184"/>00184 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00185"/>00185 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00201"/><link linkend="_class_d_i_o_d_y_n_d_n_s_1abfc00f7db3078ddb6c9f63f50d06b601">00201</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_d_y_n_d_n_s_1abfc00f7db3078ddb6c9f63f50d06b601">DIODYNDNS::IsChangedPublicIP</link>(<link linkend="_class_d_i_o_u_r_l">DIOURL</link>&amp;&#32;url,&#32;<emphasis role="keywordtype">bool</emphasis>&amp;&#32;ischanged,&#32;<link linkend="_class_d_i_o_i_p">DIOIP</link>*&#32;newpublicip,&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;IPlocal)
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00202"/>00202 {
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00203"/>00203 &#32;&#32;ischanged&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00204"/>00204 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00205"/>00205 &#32;&#32;<link linkend="_class_d_i_o_i_p">DIOIP</link>&#32;&#32;&#32;publicIP[2];
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00206"/>00206 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;status&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00207"/>00207 &#32;&#32;<link linkend="_class_d_i_o_u_r_l">DIOURL</link>*&#32;_url&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_u_r_l">DIOURL</link>();
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00208"/>00208 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!_url)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00209"/>00209 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00210"/>00210 &#32;&#32;(*_url)&#32;=&#32;url;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00211"/>00211 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00212"/>00212 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(_url-&gt;<link linkend="_class_d_i_o_u_r_l_1aead21c974345fd5c3367a6a4aa093596">ResolveURL</link>(publicIP[0]))
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00213"/>00213 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00214"/>00214 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_d_i_o_d_y_n_d_n_s_1a01b9e2aabc63af022f8c8ea40a88efde">GetPublicIP</link>(publicIP[1],&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>,&#32;IPlocal))
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00215"/>00215 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00216"/>00216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ischanged&#32;=&#32;!publicIP[0].<link linkend="_class_d_i_o_i_p_a_d_d_r_e_s_s_1a40f4823a5c9df6bac7cc72981f5a7e03">Compare</link>(publicIP[1]);
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00217"/>00217 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00218"/>00218 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(ischanged)
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00219"/>00219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00220"/>00220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(newpublicip)&#32;newpublicip-&gt;<link linkend="_class_d_i_o_i_p_a_d_d_r_e_s_s_1a1955ea08de61edcd19d7806e64ed9aaa">Set</link>(publicIP[1].Get());
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00221"/>00221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00222"/>00222 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00223"/>00223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00224"/>00224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00225"/>00225 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00226"/>00226 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00227"/>00227 &#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;_url;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00228"/>00228 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00229"/>00229 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00230"/>00230 }
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00231"/>00231 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00232"/>00232 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00247"/><link linkend="_class_d_i_o_d_y_n_d_n_s_1aa53f5bf550331e7df68dca86a80650ea">00247</link> <link linkend="__d_i_o_dyn_d_n_s_8h_1a7f1d637baae16e2d33509960ff51b819">DIODYNDNS_STATUSCODE</link>&#32;<link linkend="_class_d_i_o_d_y_n_d_n_s_1aa53f5bf550331e7df68dca86a80650ea">DIODYNDNS::Update</link>(<link linkend="_class_d_i_o_u_r_l">DIOURL</link>&amp;&#32;url,&#32;<link linkend="_class_d_i_o_i_p">DIOIP</link>&amp;&#32;newpublicip,&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;IPlocal)
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00248"/>00248 {
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00249"/>00249 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!webclient)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__d_i_o_dyn_d_n_s_8h_1a7f1d637baae16e2d33509960ff51b819ae89886a67ea05033d828dfbe430adc8f">DIODYNDNS_STATUSCODE_UNKNOWN</link>;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00250"/>00250 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00251"/>00251 &#32;&#32;<link linkend="_class_d_i_o_u_r_l">DIOURL</link>&#32;&#32;&#32;&#32;askurl;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00252"/>00252 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;IPstring;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00253"/>00253 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;&#32;&#32;xbuffer;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00254"/>00254 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;result;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00255"/>00255 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;status;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00256"/>00256 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00257"/>00257 &#32;&#32;newpublicip.<link linkend="_class_d_i_o_i_p_a_d_d_r_e_s_s_1a6a266ef4ef9e43473e91acc37a816725">GetXString</link>(IPstring);
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00258"/>00258 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00259"/>00259 &#32;&#32;askurl.<link linkend="_class_x_s_t_r_i_n_g_1a2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%s:%s@members.dyndns.org/nic/update?hostname=%s&amp;myip=%s&amp;wildcard=NOCHG&amp;mx=NOCHG&amp;backmx=NOCHG&quot;</emphasis>),&#32;login.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;password.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;url.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;IPstring.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00260"/>00260 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00261"/>00261 &#32;&#32;status&#32;=&#32;webclient-&gt;<link linkend="_class_d_i_o_w_e_b_c_l_i_e_n_t_1a7f8df7195e3162e7eade548357171d5d">Get</link>(askurl.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;xbuffer,&#32;<link linkend="__d_i_o_web_client_8h_1a99c6a82f59b03644b22ea16bacf1a2b2">DIOWEBCLIENT_DEFAULTUSERAGENT</link>,&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>,&#32;IPlocal);
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00262"/>00262 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__d_i_o_dyn_d_n_s_8h_1a7f1d637baae16e2d33509960ff51b819a83c5e943c15be88d303ba8dfac74f2da">DIODYNDNS_STATUSCODE_NOTCONNECT</link>;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00263"/>00263 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00264"/>00264 &#32;&#32;result.<link linkend="_class_x_s_t_r_i_n_g_1a4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a59d2c2b8d1c32098920f5d3eba0a5971">Get</link>(),&#32;xbuffer.<link linkend="_class_x_b_u_f_f_e_r_1a726a6143d8a9293a199f8033c8198a0a">GetSize</link>());
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00265"/>00265 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00266"/>00266 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;GetError(result);
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00267"/>00267 }
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00268"/>00268 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00269"/>00269 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00281"/>00281 <link linkend="__d_i_o_dyn_d_n_s_8h_1a7f1d637baae16e2d33509960ff51b819">DIODYNDNS_STATUSCODE</link>&#32;DIODYNDNS::GetError(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;result)
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00282"/>00282 {
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00283"/>00283 &#32;&#32;<emphasis role="comment">//&#32;Other&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;Unknown&#32;result&#32;from&#32;dyndns&#32;service.</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00284"/>00284 &#32;&#32;<emphasis role="comment">//&#32;&quot;good&quot;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;The&#32;update&#32;was&#32;successful,&#32;and&#32;the&#32;hostname&#32;is&#32;now&#32;updated.</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00285"/>00285 &#32;&#32;<emphasis role="comment">//&#32;&quot;nochg&quot;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;The&#32;update&#32;changed&#32;no&#32;settings,&#32;and&#32;is&#32;considered&#32;abusive.&#32;(Additional&#32;nochg&#32;updates&#32;will&#32;cause&#32;the&#32;hostname&#32;to&#32;become&#32;blocked).</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00286"/>00286 &#32;&#32;<emphasis role="comment">//&#32;&quot;badsys&quot;&#32;&#32;&#32;&#32;&#32;&#32;&#32;The&#32;system&#32;parameter&#32;given&#32;is&#32;not&#32;valid.&#32;Valid&#32;system&#32;parameters&#32;are&#32;dyndns,&#32;statdns&#32;and&#32;custom.</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00287"/>00287 &#32;&#32;<emphasis role="comment">//&#32;&quot;badagent&quot;&#32;&#32;&#32;&#32;&#32;The&#32;user&#32;agent&#32;that&#32;was&#32;sent&#32;has&#32;been&#32;blocked&#32;for&#32;not&#32;following&#32;these&#32;specifications&#32;or&#32;no&#32;user&#32;agent&#32;was&#32;specified.</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00288"/>00288 &#32;&#32;<emphasis role="comment">//&#32;&quot;badauth&quot;&#32;&#32;&#32;&#32;&#32;&#32;The&#32;username&#32;or&#32;password&#32;specified&#32;are&#32;incorrect.</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00289"/>00289 &#32;&#32;<emphasis role="comment">//&#32;&quot;!donator&quot;&#32;&#32;&#32;&#32;&#32;An&#32;option&#32;available&#32;only&#32;to&#32;credited&#32;users&#32;(suchas&#32;offline&#32;URL)&#32;was&#32;specified,&#32;but&#32;the&#32;user&#32;is&#32;not&#32;a&#32;credited&#32;user.</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00290"/>00290 &#32;&#32;<emphasis role="comment">//&#32;&quot;notfqdn&quot;&#32;&#32;&#32;&#32;&#32;&#32;The&#32;hostname&#32;specified&#32;is&#32;not&#32;a&#32;fully-qualified&#32;domain&#32;name&#32;(not&#32;in&#32;the&#32;form&#32;hostname.dyndns.org&#32;or&#32;domain.com).</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00291"/>00291 &#32;&#32;<emphasis role="comment">//&#32;&quot;nohost&quot;&#32;&#32;&#32;&#32;&#32;&#32;&#32;The&#32;hostname&#32;specified&#32;does&#32;not&#32;exist&#32;(or&#32;is&#32;not&#32;in&#32;the&#32;service&#32;specified&#32;in&#32;the&#32;system&#32;parameter).</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00292"/>00292 &#32;&#32;<emphasis role="comment">//&#32;&quot;!yours&quot;&#32;&#32;&#32;&#32;&#32;&#32;&#32;The&#32;hostname&#32;specified&#32;exists,&#32;but&#32;not&#32;under&#32;the&#32;username&#32;specified.</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00293"/>00293 &#32;&#32;<emphasis role="comment">//&#32;&quot;abuse&quot;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;The&#32;hostname&#32;specified&#32;is&#32;blocked&#32;for&#32;update&#32;abuse.</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00294"/>00294 &#32;&#32;<emphasis role="comment">//&#32;&quot;numhost&quot;&#32;&#32;&#32;&#32;&#32;&#32;Too&#32;many&#32;or&#32;too&#32;few&#32;hosts&#32;found.</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00295"/>00295 &#32;&#32;<emphasis role="comment">//&#32;&quot;dnserr&quot;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DNS&#32;error&#32;encountered.</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00296"/>00296 &#32;&#32;<emphasis role="comment">//&#32;&quot;911&quot;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;There&#32;is&#32;a&#32;serious&#32;problem&#32;on&#32;our&#32;side,&#32;such&#32;as&#32;a&#32;database&#32;or&#32;DNS&#32;server&#32;failure.&#32;The&#32;client&#32;should&#32;stop&#32;updating&#32;until&#32;notified&#32;via&#32;the&#32;status&#32;page&#32;that&#32;the&#32;service&#32;is&#32;back&#32;up.</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00297"/>00297 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00298"/>00298 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00299"/>00299 &#32;&#32;<link linkend="__d_i_o_dyn_d_n_s_8h_1a7f1d637baae16e2d33509960ff51b819">DIODYNDNS_STATUSCODE</link>&#32;code&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;&#32;<link linkend="__d_i_o_dyn_d_n_s_8h_1a7f1d637baae16e2d33509960ff51b819ae89886a67ea05033d828dfbe430adc8f">DIODYNDNS_STATUSCODE_UNKNOWN</link>;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00300"/>00300 &#32;&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringcodes[]&#32;&#32;&#32;&#32;&#32;=&#32;&#32;{&#32;&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;good&quot;</emphasis>)&#32;&#32;&#32;&#32;&#32;&#32;,
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00301"/>00301 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;nochg&quot;</emphasis>)&#32;&#32;&#32;&#32;&#32;,
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00302"/>00302 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;badsys&quot;</emphasis>)&#32;&#32;&#32;&#32;,
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00303"/>00303 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;badagent&quot;</emphasis>)&#32;&#32;,
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00304"/>00304 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;badauth&quot;</emphasis>)&#32;&#32;&#32;,
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00305"/>00305 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;!donator&quot;</emphasis>)&#32;&#32;,
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00306"/>00306 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;notfqdn&quot;</emphasis>)&#32;&#32;&#32;,
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00307"/>00307 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;nohost&quot;</emphasis>)&#32;&#32;&#32;&#32;,
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00308"/>00308 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;!yours&quot;</emphasis>)&#32;&#32;&#32;&#32;,
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00309"/>00309 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;abuse&quot;</emphasis>)&#32;&#32;&#32;&#32;&#32;,
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00310"/>00310 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;numhost&quot;</emphasis>)&#32;&#32;&#32;,
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00311"/>00311 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;dnserr&quot;</emphasis>)&#32;&#32;&#32;&#32;,
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00312"/>00312 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;911&quot;</emphasis>)
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00313"/>00313 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;};
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00314"/>00314 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00315"/>00315 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00316"/>00316 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;c=0;&#32;c&lt;(<emphasis role="keyword">sizeof</emphasis>(stringcodes)/<emphasis role="keyword">sizeof</emphasis>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*));&#32;c++)
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00317"/>00317 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00318"/>00318 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(result.<link linkend="_class_x_s_t_r_i_n_g_1aa5d59b7b88102beb4def8fe054449653">Find</link>(stringcodes[c],<emphasis role="keyword">true</emphasis>)&#32;!=&#32;<link linkend="__x_string_8h_1aee1ccda748b3ca0a483afb84276e3fc6">XSTRING_NOTFOUND</link>)
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00319"/>00319 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00320"/>00320 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;code&#32;=&#32;(<link linkend="__d_i_o_dyn_d_n_s_8h_1a7f1d637baae16e2d33509960ff51b819">DIODYNDNS_STATUSCODE</link>)(c);
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00321"/>00321 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00322"/>00322 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00323"/>00323 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00324"/>00324 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00325"/>00325 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;code;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00326"/>00326 }
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00327"/>00327 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00328"/>00328 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00339"/>00339 <emphasis role="keywordtype">void</emphasis>&#32;DIODYNDNS::Clean()
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00340"/>00340 {
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00341"/>00341 &#32;&#32;webclient&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00342"/>00342 }
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00343"/>00343 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00344"/>00344 
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00345"/>00345 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_dyn_d_n_s_8cpp_source_1l00346"/>00346 
+</programlisting></section>

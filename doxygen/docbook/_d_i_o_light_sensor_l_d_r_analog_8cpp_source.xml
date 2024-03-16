@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source" xml:lang="en-US">
+<title>DIOLightSensorLDRAnalog.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/DataIO/Drivers/DIOLightSensorLDRAnalog.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00030"/>00030 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00031"/>00031 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00032"/>00032 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00033"/>00033 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00034"/>00034 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00035"/>00035 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00037"/>00037 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00038"/>00038 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00039"/>00039 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00040"/>00040 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00041"/>00041 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_light_sensor_l_d_r_analog_8h">DIOLightSensorLDRAnalog.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00042"/>00042 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_factory_8h">XFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_sleep_8h">XSleep.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_thread_collected_8h">XThreadCollected.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_timer_8h">XTimer.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00047"/>00047 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00049"/>00049 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00050"/>00050 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00051"/>00051 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00052"/>00052 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00053"/>00053 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00054"/>00054 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00055"/>00055 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00056"/>00056 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00057"/>00057 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00058"/>00058 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00059"/>00059 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00060"/>00060 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00061"/>00061 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00062"/>00062 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00076"/><link linkend="_class_d_i_o_l_i_g_h_t_s_e_n_s_o_r_l_d_r_a_n_a_l_o_g_1ab54e7c5e9bf40b131c082afdac7a135c">00076</link> <link linkend="_class_d_i_o_l_i_g_h_t_s_e_n_s_o_r_l_d_r_a_n_a_l_o_g_1ab54e7c5e9bf40b131c082afdac7a135c">DIOLIGHTSENSORLDRANALOG::DIOLIGHTSENSORLDRANALOG</link>(&#32;<link linkend="_class_d_i_o_g_p_i_o">DIOGPIO</link>*&#32;diogpio,&#32;<emphasis role="keywordtype">int</emphasis>&#32;pindata,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;activatecache)&#32;:&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e">DIODEVICE</link>()
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00077"/>00077 {
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00078"/>00078 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00079"/>00079 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00080"/>00080 &#32;&#32;this-&gt;diogpio&#32;=&#32;diogpio;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00081"/>00081 &#32;&#32;this-&gt;pindata&#32;&#32;&#32;&#32;&#32;=&#32;pindata;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00082"/>00082 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00083"/>00083 &#32;&#32;GEN_XFACTORY_CREATE(xtimer,&#32;CreateTimer())
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00084"/>00084 &#32;&#32;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00085"/>00085 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(activatecache)
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00086"/>00086 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00087"/>00087 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY_CREATE(xmutexread,&#32;Create_Mutex())
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexread)
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00089"/>00089 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;threadcache&#32;&#32;=&#32;<link linkend="__x_thread_collected_8h_1aad503e3655b9ff78d3ac660d1f1f5534">CREATEXTHREAD</link>(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6ada7b3bfa71269bbca6f7b6680fa5c20c">XTHREADGROUPID_DIOSTREAM</link>,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;DIOLIGHTSENSORLDRANALOG::DIOLIGHTSENSORLDRANALOG&quot;</emphasis>),&#32;ThreadRunFunction,&#32;(<emphasis role="keywordtype">void</emphasis>*)<emphasis role="keyword">this</emphasis>);
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!threadcache)&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00092"/>00092 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//threadcache-&gt;SetPriority(THREADPRIORITY_REALTIME);</emphasis>
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00094"/>00094 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00095"/>00095 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00096"/>00096 }
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00097"/>00097 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00098"/>00098 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00109"/><link linkend="_class_d_i_o_l_i_g_h_t_s_e_n_s_o_r_l_d_r_a_n_a_l_o_g_1a844962fcf3c9e95f59688fa1f59d2b69">00109</link> <link linkend="_class_d_i_o_l_i_g_h_t_s_e_n_s_o_r_l_d_r_a_n_a_l_o_g_1a844962fcf3c9e95f59688fa1f59d2b69">DIOLIGHTSENSORLDRANALOG::~DIOLIGHTSENSORLDRANALOG</link>()
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00110"/>00110 {
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00111"/>00111 &#32;&#32;<link linkend="_class_d_i_o_l_i_g_h_t_s_e_n_s_o_r_l_d_r_a_n_a_l_o_g_1aeacf12144705379354a20c6229757f82">End</link>();
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00112"/>00112 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00113"/>00113 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(threadcache)
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00114"/>00114 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;threadcache-&gt;End();
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_thread_collected_8h_1a18fb843f5fbad51464b68d705ed29b8a">DELETEXTHREAD</link>(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6ada7b3bfa71269bbca6f7b6680fa5c20c">XTHREADGROUPID_DIOSTREAM</link>,&#32;threadcache);
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00117"/>00117 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00118"/>00118 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00119"/>00119 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexread)&#32;&#32;GEN_XFACTORY.Delete_Mutex(xmutexread);
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00120"/>00120 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00121"/>00121 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xtimer)&#32;GEN_XFACTORY.DeleteTimer(xtimer);
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00122"/>00122 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00123"/>00123 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00124"/>00124 }
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00125"/>00125 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00126"/>00126 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00136"/><link linkend="_class_d_i_o_l_i_g_h_t_s_e_n_s_o_r_l_d_r_a_n_a_l_o_g_1aba785eb566ec9556c44dfcb2e52c9857">00136</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_l_i_g_h_t_s_e_n_s_o_r_l_d_r_a_n_a_l_o_g_1aba785eb566ec9556c44dfcb2e52c9857">DIOLIGHTSENSORLDRANALOG::Ini</link>()
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00137"/>00137 {
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00138"/>00138 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!threadcache)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00139"/>00139 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00140"/>00140 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!threadcache-&gt;Ini())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00141"/>00141 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00142"/>00142 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_1a2ce40a31520cdee813143e1f028ee629">DIODEVICE::Ini</link>();
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00143"/>00143 }
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00144"/>00144 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00145"/>00145 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00155"/><link linkend="_class_d_i_o_l_i_g_h_t_s_e_n_s_o_r_l_d_r_a_n_a_l_o_g_1afef7644777e1efdce6ac56f3e503d44c">00155</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_d_i_o_l_i_g_h_t_s_e_n_s_o_r_l_d_r_a_n_a_l_o_g_1afef7644777e1efdce6ac56f3e503d44c">DIOLIGHTSENSORLDRANALOG::GetPinData</link>()
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00156"/>00156 {&#32;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00157"/>00157 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;pindata;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00158"/>00158 }
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00159"/>00159 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00160"/>00160 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00172"/><link linkend="_class_d_i_o_l_i_g_h_t_s_e_n_s_o_r_l_d_r_a_n_a_l_o_g_1a4f70157cdd0a9f95e73e7a32ab4d0423">00172</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_l_i_g_h_t_s_e_n_s_o_r_l_d_r_a_n_a_l_o_g_1a4f70157cdd0a9f95e73e7a32ab4d0423">DIOLIGHTSENSORLDRANALOG::ReadFromCache</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;&#32;level)
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00173"/>00173 {
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00174"/>00174 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xmutexread)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00175"/>00175 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00176"/>00176 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_1affa2a228690e583d4c7c2a5f4adf9821">IsInitialized</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00177"/>00177 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00178"/>00178 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!nreads)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00179"/>00179 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00180"/>00180 &#32;&#32;xmutexread-&gt;<link linkend="_class_x_m_u_t_e_x_1ae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00181"/>00181 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00182"/>00182 &#32;&#32;level&#32;=&#32;levelcache;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00183"/>00183 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00184"/>00184 &#32;&#32;xmutexread-&gt;<link linkend="_class_x_m_u_t_e_x_1afed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00185"/>00185 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00186"/>00186 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00187"/>00187 }
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00188"/>00188 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00189"/>00189 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00201"/><link linkend="_class_d_i_o_l_i_g_h_t_s_e_n_s_o_r_l_d_r_a_n_a_l_o_g_1adcacf6dc0a53069eb70a3f01e8feaa95">00201</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_l_i_g_h_t_s_e_n_s_o_r_l_d_r_a_n_a_l_o_g_1adcacf6dc0a53069eb70a3f01e8feaa95">DIOLIGHTSENSORLDRANALOG::ReadDirect</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;&#32;level)
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00202"/>00202 {
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00203"/>00203 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!diogpio)&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00204"/>00204 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xtimer)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00205"/>00205 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_1affa2a228690e583d4c7c2a5f4adf9821">IsInitialized</link>())&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00206"/>00206 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00207"/>00207 &#32;&#32;level&#32;=&#32;0;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00208"/>00208 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00209"/>00209 &#32;&#32;xtimer-&gt;<link linkend="_class_x_t_i_m_e_r_1a461fee3826d400d29bc47f58f2c5d898">Reset</link>();
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00210"/>00210 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00211"/>00211 &#32;&#32;<emphasis role="comment">//&#32;Discharge&#32;capacitor</emphasis>
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00212"/>00212 &#32;&#32;diogpio-&gt;<link linkend="_class_d_i_o_g_p_i_o_1a974e83c8a7a590f1672fd91e0e954d43">SetMode</link>(pindata,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00213"/>00213 &#32;&#32;diogpio-&gt;Set(pindata&#32;&#32;&#32;&#32;,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00214"/>00214 &#32;&#32;GEN_XSLEEP.MilliSeconds(100);
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00215"/>00215 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00216"/>00216 &#32;&#32;diogpio-&gt;<link linkend="_class_d_i_o_g_p_i_o_1a974e83c8a7a590f1672fd91e0e954d43">SetMode</link>(pindata,&#32;&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00217"/>00217 &#32;&#32;<emphasis role="keywordflow">while</emphasis>(!diogpio-&gt;Get(pindata))
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00218"/>00218 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00219"/>00219 &#32;&#32;&#32;&#32;&#32;&#32;level++;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00220"/>00220 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!(level%100))
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00221"/>00221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00222"/>00222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xtimer-&gt;<link linkend="_class_x_t_i_m_e_r_1a02ae3c82df51ec1ed16288fe102d9d8b">GetMeasureSeconds</link>()&gt;=1)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00223"/>00223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00224"/>00224 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00225"/>00225 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00226"/>00226 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!level)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00227"/>00227 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00228"/>00228 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00229"/>00229 }
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00230"/>00230 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00231"/>00231 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00241"/><link linkend="_class_d_i_o_l_i_g_h_t_s_e_n_s_o_r_l_d_r_a_n_a_l_o_g_1aeacf12144705379354a20c6229757f82">00241</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_l_i_g_h_t_s_e_n_s_o_r_l_d_r_a_n_a_l_o_g_1aeacf12144705379354a20c6229757f82">DIOLIGHTSENSORLDRANALOG::End</link>()
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00242"/>00242 {
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00243"/>00243 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_1ac96c34c9d5f91768940985b082c0dad2">DIODEVICE::End</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00244"/>00244 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00245"/>00245 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(threadcache)&#32;threadcache-&gt;End();
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00246"/>00246 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00247"/>00247 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00248"/>00248 }
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00249"/>00249 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00250"/>00250 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00262"/>00262 <emphasis role="keywordtype">void</emphasis>&#32;DIOLIGHTSENSORLDRANALOG::ThreadRunFunction(<emphasis role="keywordtype">void</emphasis>*&#32;param)
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00263"/>00263 {
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00264"/>00264 &#32;&#32;<link linkend="_class_d_i_o_l_i_g_h_t_s_e_n_s_o_r_l_d_r_a_n_a_l_o_g">DIOLIGHTSENSORLDRANALOG</link>*&#32;sensor&#32;=&#32;(<link linkend="_class_d_i_o_l_i_g_h_t_s_e_n_s_o_r_l_d_r_a_n_a_l_o_g">DIOLIGHTSENSORLDRANALOG</link>*)param;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00265"/>00265 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!sensor)&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00266"/>00266 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00267"/>00267 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!sensor-&gt;<link linkend="_class_d_i_o_d_e_v_i_c_e_1affa2a228690e583d4c7c2a5f4adf9821">IsInitialized</link>())&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00268"/>00268 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00269"/>00269 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;level;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00270"/>00270 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00271"/>00271 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;sensor-&gt;<link linkend="_class_d_i_o_l_i_g_h_t_s_e_n_s_o_r_l_d_r_a_n_a_l_o_g_1adcacf6dc0a53069eb70a3f01e8feaa95">ReadDirect</link>(level);
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00272"/>00272 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00273"/>00273 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00274"/>00274 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(sensor-&gt;xmutexread)&#32;sensor-&gt;xmutexread-&gt;<link linkend="_class_x_m_u_t_e_x_1ae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00275"/>00275 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00276"/>00276 &#32;&#32;&#32;&#32;&#32;&#32;sensor-&gt;levelcache&#32;&#32;=&#32;level;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00277"/>00277 &#32;&#32;&#32;&#32;&#32;&#32;sensor-&gt;nreads++;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00278"/>00278 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00279"/>00279 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(sensor-&gt;xmutexread)&#32;sensor-&gt;xmutexread-&gt;<link linkend="_class_x_m_u_t_e_x_1afed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00280"/>00280 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00281"/>00281 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00282"/>00282 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(sensor-&gt;xtimer)
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00283"/>00283 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00284"/>00284 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(sensor-&gt;threadcache-&gt;IsRunning())&#32;GEN_XSLEEP.Seconds(1);
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00285"/>00285 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00286"/>00286 }
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00287"/>00287 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00288"/>00288 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00299"/>00299 <emphasis role="keywordtype">void</emphasis>&#32;DIOLIGHTSENSORLDRANALOG::Clean()
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00300"/>00300 {
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00301"/>00301 &#32;&#32;diogpio&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00302"/>00302 &#32;&#32;pindata&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__d_i_o_g_p_i_o_8h_1a57c705aea279052187a57e3dd28b4857">DIOGPIO_PINNOTUSE</link>;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00303"/>00303 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00304"/>00304 &#32;&#32;xtimer&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00305"/>00305 &#32;&#32;threadcache&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00306"/>00306 &#32;&#32;xmutexread&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00307"/>00307 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00308"/>00308 &#32;&#32;nreads&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00309"/>00309 &#32;&#32;levelcache&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00310"/>00310 }
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00311"/>00311 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00312"/>00312 
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00313"/>00313 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_light_sensor_l_d_r_analog_8cpp_source_1l00314"/>00314 
+</programlisting></section>

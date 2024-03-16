@@ -1,0 +1,437 @@
+\doxysection{DB\+\_\+\+SQL\+\_\+\+Database.\+cpp}
+\hypertarget{_d_b___s_q_l___database_8cpp_source}{}\label{_d_b___s_q_l___database_8cpp_source}\index{D:/Projects/GENFrameWork/GEN/Databases/SQL/DB\_SQL\_Database.cpp@{D:/Projects/GENFrameWork/GEN/Databases/SQL/DB\_SQL\_Database.cpp}}
+\mbox{\hyperlink{_d_b___s_q_l___database_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00029}00029\ \textcolor{comment}{/*-\/-\/-\/-\/\ PRECOMPILATION\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#pragma\ region\ PRECOMPILATION\_INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_e_n___defines_8h}{GEN\_Defines.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00037}00037\ \textcolor{preprocessor}{\#ifdef\ DB\_SQL\_ACTIVE}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00040}00040\ \textcolor{comment}{/*-\/-\/-\/-\/\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00041}00041\ \textcolor{preprocessor}{\#pragma\ region\ INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00043}00043\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_b___s_q_l___database_8h}{DB\_SQL\_Database.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00045}00045\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_factory_8h}{XFactory.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00047}00047\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_b___s_q_l___query_8h}{DB\_SQL\_Query.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00048}00048\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_b___s_q_l___result_8h}{DB\_SQL\_Result.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00050}00050\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_b___s_q_l___database_8h}{DB\_SQL\_Database.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00052}00052\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_memory___control_8h}{XMemory\_Control.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00054}00054\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00057}00057\ \textcolor{comment}{/*-\/-\/-\/-\/\ GENERAL\ VARIABLE\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00058}00058\ \textcolor{preprocessor}{\#pragma\ region\ GENERAL\_VARIABLE}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00060}00060\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00063}00063\ \textcolor{comment}{/*-\/-\/-\/-\/\ CLASS\ MEMBERS\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00064}00064\ \textcolor{preprocessor}{\#pragma\ region\ CLASS\_MEMBERS}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00074}00074\ DB\_SQL\_DATABASE::DB\_SQL\_DATABASE()}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00075}00075\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00076}00076\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00078}00078\ \ \ GEN\_XFACTORY\_CREATE(mutex,\ Create\_Mutex())}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00079}00079\ \ \ if(mutex)\ isthreadsafe\ =\ true;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00080}00080\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00091}00091\ \mbox{\hyperlink{class_d_b___s_q_l___d_a_t_a_b_a_s_e}{DB\_SQL\_DATABASE}}::\string~\mbox{\hyperlink{class_d_b___s_q_l___d_a_t_a_b_a_s_e}{DB\_SQL\_DATABASE}}()}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00092}00092\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00093}00093\ \ \ \textcolor{keywordflow}{if}(mutex)\ GEN\_XFACTORY.Delete\_Mutex(mutex);}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00095}00095\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00097}00097\ \ \ tables.DeleteContents();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00098}00098\ \ \ tables.DeleteAll();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00100}00100\ \ \ errorstack.DeleteContents();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00101}00101\ \ \ errorstack.DeleteAll();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00102}00102\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00114}00114\ DB\_SQL\_DATABASE\_ENCODING\ DB\_SQL\_DATABASE::GetCurrentEncoding()}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00115}00115\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00116}00116\ \ \ \textcolor{keywordflow}{return}\ this-\/>encodingtype;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00117}00117\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00129}00129\ DB\_SQL\_DATABASE\_TYPE\ DB\_SQL\_DATABASE::GetType()}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00130}00130\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00131}00131\ \ \ \textcolor{keywordflow}{return}\ DB\_SQL\_DATABASE\_TYPE\_UNKNOWN;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00132}00132\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00144}00144\ \mbox{\hyperlink{_x_string_8h_a03209152a681f02e4ba73b6681dd4968}{XCHAR}}*\ DB\_SQL\_DATABASE::GetTypeName()}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00145}00145\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00146}00146\ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}unknown"{}});}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00147}00147\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00149}00149\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00159}00159\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ DB\_SQL\_DATABASE::GetDefaultPort()}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00160}00160\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00161}00161\ \ \ \textcolor{keywordflow}{return}\ defaultport;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00162}00162\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00164}00164\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00174}00174\ \mbox{\hyperlink{class_x_p_a_t_h}{XPATH}}*\ DB\_SQL\_DATABASE::GetDefaultPath()}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00175}00175\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00176}00176\ \ \ defaultpath.\mbox{\hyperlink{group___x_u_t_i_l_s_ga9275997c1605fa79646c301e63a77d06}{Empty}}();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00178}00178\ \ \ GEN\_XPATHSMANAGER.GetPathOfSection(\mbox{\hyperlink{_x_paths_manager_8h_a574bf1ebb371f804090c20183c9ff7dda6bf4f4ca4889fd5f571f4eaa43057384}{XPATHSMANAGERSECTIONTYPE\_DATABASES}},\ defaultpath);}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00180}00180\ \ \ \textcolor{keywordflow}{return}\ \&defaultpath;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00181}00181\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00193}00193\ \textcolor{keywordtype}{bool}\ DB\_SQL\_DATABASE::IsOpen()}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00194}00194\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00195}00195\ \ \ \textcolor{keywordflow}{return}\ (status\ ==\ DB\_SQL\_DATABASE\_FLAGS\_CONNECTED);}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00196}00196\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00210}00210\ \textcolor{keywordtype}{bool}\ DB\_SQL\_DATABASE::SetConnection(\mbox{\hyperlink{class_d_b___s_q_l___c_o_n_n_e_c_t_i_o_n}{DB\_SQL\_CONNECTION}}*\ connection)}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00211}00211\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00212}00212\ \ \ this-\/>connection\ =\ connection;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00213}00213\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00214}00214\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00226}00226\ \textcolor{keywordtype}{bool}\ DB\_SQL\_DATABASE::IsTransactionStarted()}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00227}00227\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00228}00228\ \ \ \textcolor{keywordflow}{return}\ transactionstarted;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00229}00229\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00231}00231\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00241}00241\ DB\_SQL\_VECTOR<DB\_SQL\_STRING*>*\ DB\_SQL\_DATABASE::GetTableList()}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00242}00242\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00243}00243\ \ \ \textcolor{keywordflow}{return}\ \&tables;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00244}00244\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00245}00245\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00246}00246\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00256}00256\ DB\_SQL\_VECTOR<DB\_SQL\_ERROR*>*\ DB\_SQL\_DATABASE::GetErrorList()}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00257}00257\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00258}00258\ \ \ \textcolor{keywordflow}{return}\ \&errorstack;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00259}00259\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00261}00261\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00271}00271\ \mbox{\hyperlink{class_d_b___s_q_l___v_a_r_i_a_n_t}{DB\_SQL\_VARIANT}}*\ DB\_SQL\_DATABASE::CreateVariant()}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00272}00272\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00273}00273\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_d_b___s_q_l___v_a_r_i_a_n_t}{DB\_SQL\_VARIANT}}();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00274}00274\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00276}00276\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00286}00286\ \textcolor{keywordtype}{bool}\ DB\_SQL\_DATABASE::OnConnection()}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00287}00287\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00288}00288\ \ \ SetDatabaseEncoding(DB\_SQL\_DATABASE\_ENCODING\_UTF8);}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00289}00289\ \ \ GetDatabaseEncoding();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00290}00290\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00291}00291\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00292}00292\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00293}00293\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00294}00294\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00304}00304\ \textcolor{keywordtype}{bool}\ DB\_SQL\_DATABASE::OnDisconnection()}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00305}00305\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00306}00306\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00307}00307\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00308}00308\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00309}00309\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00319}00319\ \textcolor{keywordtype}{bool}\ DB\_SQL\_DATABASE::Open()}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00320}00320\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00321}00321\ \ \ \textcolor{keywordflow}{if}(connection)}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00322}00322\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00323}00323\ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ status\ =\ connection-\/>Connect();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00324}00324\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00325}00325\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(status)\ OnConnection();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00326}00326\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00327}00327\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00328}00328\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00329}00329\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00330}00330\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00331}00331\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00332}00332\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00333}00333\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00343}00343\ \textcolor{keywordtype}{bool}\ DB\_SQL\_DATABASE::Close()}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00344}00344\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00345}00345\ \ \ \textcolor{keywordflow}{if}(connection)}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00346}00346\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00347}00347\ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ status\ =\ connection-\/>Disconnect();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00348}00348\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(status)\ OnDisconnection();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00349}00349\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00350}00350\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00351}00351\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00352}00352\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00353}00353\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00354}00354\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00355}00355\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00356}00356\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00366}00366\ \mbox{\hyperlink{_x_string_8h_a03209152a681f02e4ba73b6681dd4968}{XCHAR}}*\ DB\_SQL\_DATABASE::GetLastError()}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00367}00367\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00368}00368\ \ \ \textcolor{keywordflow}{return}\ (this-\/>errorstack.GetSize()>0\ ?\ this-\/>errorstack.GetLast()-\/>description.Get()\ :\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}"{}}));}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00369}00369\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00370}00370\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00371}00371\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00383}00383\ \textcolor{keywordtype}{bool}\ DB\_SQL\_DATABASE::Execute(\mbox{\hyperlink{class_d_b___s_q_l___q_u_e_r_y}{DB\_SQL\_QUERY}}*\ constructedquery)}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00384}00384\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00385}00385\ \ \ \textcolor{keywordflow}{if}(!constructedquery-\/>IsWellConstructedQuery())}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00386}00386\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00387}00387\ \ \ \ \ \ \ Error(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}Query\ is\ NOT\ well\ constructed"{}}));}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00388}00388\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00389}00389\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00390}00390\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00391}00391\ \ \ \textcolor{keywordflow}{return}\ ExecuteQuery(constructedquery);}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00392}00392\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00393}00393\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00394}00394\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00404}00404\ \textcolor{keywordtype}{void}\ DB\_SQL\_DATABASE::Error(\mbox{\hyperlink{_x_string_8h_a03209152a681f02e4ba73b6681dd4968}{XCHAR}}*\ errorstring)}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00405}00405\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00406}00406\ \ \ \mbox{\hyperlink{class_d_b___s_q_l___e_r_r_o_r}{DB\_SQL\_ERROR}}*\ error=\textcolor{keyword}{new}\ \mbox{\hyperlink{class_d_b___s_q_l___e_r_r_o_r}{DB\_SQL\_ERROR}}(DB\_SQL\_ERROR\_TYPE\_STATEMENT\_ERROR);}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00407}00407\ \ \ \textcolor{keywordflow}{if}(!error)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00408}00408\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00409}00409\ \ \ error-\/>description.Set(errorstring);}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00410}00410\ \ \ GetErrorList()-\/>Add(error);}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00411}00411\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00412}00412\ \ \ \textcolor{keywordflow}{if}(IsTransactionStarted())\ \ Rollback();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00413}00413\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00414}00414\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00415}00415\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00425}00425\ \textcolor{keywordtype}{void}\ DB\_SQL\_DATABASE::Error(\textcolor{keywordtype}{char}*\ errorstring)}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00426}00426\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00427}00427\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ string;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00428}00428\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00429}00429\ \ \ \textcolor{keywordtype}{string}.\mbox{\hyperlink{group___x_u_t_i_l_s_ga4e97e075650e9bc8cfb7deb28e4c9ce4}{Set}}(errorstring);}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00430}00430\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00431}00431\ \ \ Error(\textcolor{keywordtype}{string}.Get());}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00432}00432\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00433}00433\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00434}00434\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00442}00442\ \textcolor{keywordtype}{void}\ DB\_SQL\_DATABASE::ClearPreviousErrors()}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00443}00443\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00444}00444\ \ \ this-\/>errorstack.DeleteContents();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00445}00445\ \ \ this-\/>errorstack.DeleteAll();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00446}00446\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00447}00447\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00448}00448\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00462}00462\ \textcolor{keywordtype}{bool}\ DB\_SQL\_DATABASE::Table\_IsThere(\mbox{\hyperlink{_x_string_8h_a03209152a681f02e4ba73b6681dd4968}{XCHAR}}*\ nametable,\ \mbox{\hyperlink{_x_string_8h_a03209152a681f02e4ba73b6681dd4968}{XCHAR}}*\ constfield,\ \textcolor{keywordtype}{bool}\&\ isexist)}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00463}00463\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00464}00464\ \ \ isexist\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00465}00465\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00466}00466\ \ \ \textcolor{keywordflow}{if}(!nametable)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00467}00467\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00468}00468\ \ \ \textcolor{keywordtype}{bool}\ status\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00469}00469\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00470}00470\ \ \ \mbox{\hyperlink{class_d_b___s_q_l___q_u_e_r_y}{DB\_SQL\_QUERY}}*\ query\ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00471}00471\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ \ \ \ \ querystring;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00472}00472\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00473}00473\ \ \ query\ =\ CreateQuery();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00474}00474\ \ \ \textcolor{keywordflow}{if}(!query)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00475}00475\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00476}00476\ \ \ querystring.\mbox{\hyperlink{group___x_u_t_i_l_s_ga2177bf8a150174dfd155c7fe1b7b2af9}{Format}}(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}SELECT\ \%s\ FROM\ \%s;"{}}),\ constfield,\ nametable);}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00477}00477\ \ \ query-\/>Set(querystring.\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}());}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00478}00478\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00479}00479\ \ \ status\ =\ Execute(query);}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00480}00480\ \ \ \textcolor{keywordflow}{if}(status)}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00481}00481\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00482}00482\ \ \ \ \ \ \ isexist\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00483}00483\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00484}00484\ \ \ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00485}00485\ \textcolor{comment}{\ \ \ \ \ \ DB\_SQL\_RESULT*\ result\ =\ \ query-\/>GetResult();}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00486}00486\ \textcolor{comment}{\ \ \ \ \ \ if(!result)\ return\ false;}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00487}00487\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00488}00488\ \textcolor{comment}{\ \ \ \ \ \ result-\/>First();}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00489}00489\ \textcolor{comment}{\ \ \ \ \ \ result-\/>ProcessRow();}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00490}00490\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00491}00491\ \textcolor{comment}{\ \ \ \ \ \ DB\_SQL\_ROW*\ row\ =\ result-\/>GetRow();}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00492}00492\ \textcolor{comment}{\ \ \ \ \ \ if(row)}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00493}00493\ \textcolor{comment}{\ \ \ \ \ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00494}00494\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ int\ found\ =\ (row-\/>Get(0));}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00495}00495\ \textcolor{comment}{\ \ \ \ \ \ \ \ \ \ isexist\ =\ (found!=0)?true:false;}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00496}00496\ \textcolor{comment}{\ \ \ \ \ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00497}00497\ \textcolor{comment}{\ \ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00498}00498\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00499}00499\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00500}00500\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00501}00501\ \ \ \textcolor{keyword}{delete}\ query;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00502}00502\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00503}00503\ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00504}00504\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00505}00505\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00506}00506\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00520}00520\ \textcolor{keywordtype}{bool}\ DB\_SQL\_DATABASE::Table\_IsThere(\mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\&\ nametable,\ \mbox{\hyperlink{_x_string_8h_a03209152a681f02e4ba73b6681dd4968}{XCHAR}}*\ constfield,\ \textcolor{keywordtype}{bool}\&\ isexist)}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00521}00521\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00522}00522\ \ \ \textcolor{keywordflow}{return}\ Table\_IsThere(nametable.\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}(),\ constfield,\ isexist);}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00523}00523\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00524}00524\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00525}00525\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00539}00539\ \textcolor{keywordtype}{bool}\ DB\_SQL\_DATABASE::Table\_Create(\mbox{\hyperlink{_x_string_8h_a03209152a681f02e4ba73b6681dd4968}{XCHAR}}*\ nametable,\ \mbox{\hyperlink{_x_string_8h_a03209152a681f02e4ba73b6681dd4968}{XCHAR}}*\ fields[],\ \textcolor{keywordtype}{int}\ nfields)}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00540}00540\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00541}00541\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ \ \ \ \ \ querystring;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00542}00542\ \ \ \mbox{\hyperlink{class_d_b___s_q_l___q_u_e_r_y}{DB\_SQL\_QUERY}}*\ \ query\ \ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00543}00543\ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ status\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00544}00544\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00545}00545\ \ \ query\ =\ CreateQuery();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00546}00546\ \ \ \textcolor{keywordflow}{if}(!query)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00547}00547\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00548}00548\ \ \ querystring.\mbox{\hyperlink{group___x_u_t_i_l_s_ga2177bf8a150174dfd155c7fe1b7b2af9}{Format}}(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}CREATE\ TABLE\ \%s\ "{}}),\ nametable);}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00549}00549\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00550}00550\ \ \ querystring.\mbox{\hyperlink{group___x_u_t_i_l_s_gae19f84471c20a914d10a8ac757cacb9a}{Add}}(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}("{}}));}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00551}00551\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00552}00552\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ c=0;\ c<nfields;\ c++)}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00553}00553\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00554}00554\ \ \ \ \ \ \ querystring.\mbox{\hyperlink{group___x_u_t_i_l_s_gae19f84471c20a914d10a8ac757cacb9a}{Add}}(fields[c]);}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00555}00555\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(c\ !=\ nfields-\/1)\ querystring.\mbox{\hyperlink{group___x_u_t_i_l_s_gae19f84471c20a914d10a8ac757cacb9a}{Add}}(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{},"{}}));}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00556}00556\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00557}00557\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00558}00558\ \ \ querystring.\mbox{\hyperlink{group___x_u_t_i_l_s_gae19f84471c20a914d10a8ac757cacb9a}{Add}}(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{});"{}}));}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00559}00559\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00560}00560\ \ \ \textcolor{comment}{//XTRACE\_PRINTCOLOR(2,\_\_L("{}\%s"{}),\ querystring.Get());}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00561}00561\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00562}00562\ \ \ query-\/>Set(querystring.\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}());}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00563}00563\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00564}00564\ \ \ status\ =\ Execute(query);}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00565}00565\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00566}00566\ \ \ \textcolor{keyword}{delete}\ query;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00567}00567\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00568}00568\ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00569}00569\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00570}00570\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00571}00571\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00583}00583\ \textcolor{keywordtype}{bool}\ DB\_SQL\_DATABASE::Table\_Delete(\mbox{\hyperlink{_x_string_8h_a03209152a681f02e4ba73b6681dd4968}{XCHAR}}*\ nametable)}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00584}00584\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00585}00585\ \ \ \textcolor{keywordflow}{if}(!nametable)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00586}00586\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00587}00587\ \ \ \textcolor{keywordtype}{bool}\ status\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00588}00588\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00589}00589\ \ \ \mbox{\hyperlink{class_d_b___s_q_l___q_u_e_r_y}{DB\_SQL\_QUERY}}*\ query\ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00590}00590\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ \ \ \ \ \ \ querystring;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00591}00591\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00592}00592\ \ \ query\ =\ CreateQuery();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00593}00593\ \ \ \textcolor{keywordflow}{if}(!query)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00594}00594\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00595}00595\ \ \ querystring.\mbox{\hyperlink{group___x_u_t_i_l_s_ga2177bf8a150174dfd155c7fe1b7b2af9}{Format}}(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}DROP\ TABLE\ IF\ EXISTS\ \%s;"{}}),\ nametable);}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00596}00596\ \ \ query-\/>Set(querystring.\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}());}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00597}00597\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00598}00598\ \ \ status\ =\ Execute(query);}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00599}00599\ \ \ \textcolor{keywordflow}{if}(status)}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00600}00600\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00601}00601\ \ \ \ \ \ \ \mbox{\hyperlink{class_d_b___s_q_l___r_e_s_u_l_t}{DB\_SQL\_RESULT}}*\ result\ =\ query-\/>GetResult();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00602}00602\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(result)}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00603}00603\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00604}00604\ \ \ \ \ \ \ \ \ \ \ result-\/>ProcessRow();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00605}00605\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00606}00606\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00607}00607\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00608}00608\ \ \ \textcolor{keyword}{delete}\ query;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00609}00609\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00610}00610\ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00611}00611\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00612}00612\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00613}00613\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00626}00626\ \textcolor{keywordtype}{bool}\ DB\_SQL\_DATABASE::Table\_GetNRecords(\mbox{\hyperlink{_x_string_8h_a03209152a681f02e4ba73b6681dd4968}{XCHAR}}*\ nametable,\ \mbox{\hyperlink{_x_base_8h_a86128ef639d896f7b12288868ddb7ad5}{XQWORD}}\&\ nrecords)}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00627}00627\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00628}00628\ \ \ \mbox{\hyperlink{class_d_b___s_q_l___q_u_e_r_y}{DB\_SQL\_QUERY}}*\ query\ \ \ \ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00629}00629\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ \ \ \ \ \ \ querystring;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00630}00630\ \ \ \textcolor{keywordtype}{bool}\ \ \ \ \ \ \ \ \ \ status\ \ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00631}00631\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00632}00632\ \ \ nrecords\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00633}00633\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00634}00634\ \ \ query\ =\ CreateQuery();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00635}00635\ \ \ \textcolor{keywordflow}{if}(!query)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00636}00636\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00637}00637\ \ \ querystring.\mbox{\hyperlink{group___x_u_t_i_l_s_ga2177bf8a150174dfd155c7fe1b7b2af9}{Format}}(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}SELECT\ COUNT(*)\ FROM\ \%s;"{}}),\ nametable);}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00638}00638\ \ \ query-\/>Set(querystring.\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}());}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00639}00639\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00640}00640\ \ \ status\ =\ Execute(query);}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00641}00641\ \ \ \textcolor{keywordflow}{if}(status)}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00642}00642\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00643}00643\ \ \ \ \ \ \ \mbox{\hyperlink{class_d_b___s_q_l___r_e_s_u_l_t}{DB\_SQL\_RESULT}}*\ result\ =\ query-\/>GetResult();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00644}00644\ \ \ \ \ \ \ \textcolor{keywordflow}{if}(result)}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00645}00645\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00646}00646\ \ \ \ \ \ \ \ \ \ \ result-\/>ProcessRow();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00647}00647\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00648}00648\ \ \ \ \ \ \ \ \ \ \ DB\_SQL\_ROW*\ row\ =\ result-\/>GetRow();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00649}00649\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(row)\ nrecords\ =\ (\mbox{\hyperlink{_x_base_8h_a86128ef639d896f7b12288868ddb7ad5}{XQWORD}})row-\/>Get(0);}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00650}00650\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00651}00651\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00652}00652\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00653}00653\ \ \ \textcolor{keyword}{delete}\ query;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00654}00654\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00655}00655\ \ \ \textcolor{keywordflow}{return}\ status;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00656}00656\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00657}00657\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00658}00658\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00668}00668\ \textcolor{keywordtype}{bool}\ DB\_SQL\_DATABASE::IsThreadSafe()}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00669}00669\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00670}00670\ \ \ \textcolor{keywordflow}{return}\ isthreadsafe;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00671}00671\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00672}00672\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00673}00673\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00683}00683\ \textcolor{keywordtype}{bool}\ DB\_SQL\_DATABASE::Lock()}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00684}00684\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00685}00685\ \ \ \textcolor{keywordflow}{if}(isthreadsafe\ \&\&\ mutex)\ \textcolor{keywordflow}{return}\ mutex-\/>Lock();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00686}00686\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00687}00687\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00688}00688\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00689}00689\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00690}00690\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00700}00700\ \textcolor{keywordtype}{bool}\ DB\_SQL\_DATABASE::Unlock()}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00701}00701\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00702}00702\ \ \ \textcolor{keywordflow}{if}(isthreadsafe\ \&\&\ mutex)\ \textcolor{keywordflow}{return}\ mutex-\/>UnLock();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00703}00703\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00704}00704\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00705}00705\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00706}00706\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00707}00707\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00719}00719\ \textcolor{keywordtype}{bool}\ DB\_SQL\_DATABASE::ExecuteQuery(\mbox{\hyperlink{class_d_b___s_q_l___q_u_e_r_y}{DB\_SQL\_QUERY}}*\ wellconstructedquery)}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00720}00720\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00721}00721\ \ \ \textcolor{keywordflow}{if}(!connection)}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00722}00722\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00723}00723\ \ \ \ \ \ \ \mbox{\hyperlink{class_d_b___s_q_l___e_r_r_o_r}{DB\_SQL\_ERROR}}*\ error=\textcolor{keyword}{new}\ \mbox{\hyperlink{class_d_b___s_q_l___e_r_r_o_r}{DB\_SQL\_ERROR}}(DB\_SQL\_ERROR\_TYPE\_CONNECTION\_ERROR);}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00724}00724\ \ \ \ \ \ \ error-\/>description.Set(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}DATABASE\ not\ connected"{}}));}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00725}00725\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00726}00726\ \ \ \ \ \ \ GetErrorList()-\/>Add(error);}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00727}00727\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00728}00728\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00729}00729\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00730}00730\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00731}00731\ \ \ \textcolor{keywordflow}{return}\ wellconstructedquery-\/>Execute();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00732}00732\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00733}00733\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00734}00734\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00743}00743\ \textcolor{keywordtype}{void}\ DB\_SQL\_DATABASE::Clean()}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00744}00744\ \{}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00745}00745\ \ \ mutex\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00746}00746\ \ \ isthreadsafe\ \ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00747}00747\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00748}00748\ \ \ transactionstarted\ \ \ \ \ \ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00749}00749\ \ \ connection\ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \mbox{\hyperlink{_x_base_8h_a070d2ce7b6bb7e5c05602aa8c308d0c4}{NULL}};}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00750}00750\ \ \ type\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00751}00751\ \ \ defaultport\ \ \ \ \ \ \ \ \ \ \ \ \ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00752}00752\ \ \ defaultpath.Empty();}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00753}00753\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00754}00754\ \ \ status\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ DB\_SQL\_DATABASE\_FLAGS\_UNKNOWN;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00755}00755\ \ \ encodingtype\ \ \ \ \ \ \ \ \ \ \ \ =\ DB\_SQL\_DATABASE\_ENCODING\_UNKNOWN;}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00756}00756\ \}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00757}00757\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00758}00758\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00759}00759\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00760}00760\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00761}00761\ }
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00762}00762\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_d_b___s_q_l___database_8cpp_source_l00763}00763\ }
+
+\end{DoxyCode}

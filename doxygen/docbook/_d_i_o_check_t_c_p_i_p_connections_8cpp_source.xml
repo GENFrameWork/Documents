@@ -1,0 +1,752 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source" xml:lang="en-US">
+<title>DIOCheckTCPIPConnections.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/DataIO/DIOCheckTCPIPConnections.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_check_t_c_p_i_p_connections_8h">DIOCheckTCPIPConnections.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_factory_8h">XFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_sleep_8h">XSleep.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_timer_8h">XTimer.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_date_time_8h">XDateTime.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_buffer_8h">XBuffer.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_trace_8h">XTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_thread_collected_8h">XThreadCollected.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00049"/>00049 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00050"/>00050 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_factory_8h">DIOFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_u_r_l_8h">DIOURL.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_ping_8h">DIOPing.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00053"/>00053 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00054"/>00054 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00055"/>00055 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00056"/>00056 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00057"/>00057 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00058"/>00058 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00059"/>00059 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00060"/>00060 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00061"/>00061 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00062"/>00062 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00063"/>00063 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00064"/>00064 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00065"/>00065 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00066"/>00066 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00067"/>00067 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00068"/>00068 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00069"/>00069 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_DIOCHECKTCPIPCONNECTION_CUT</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00070"/>00070 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00071"/>00071 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00081"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n___c_u_t_1a7145337da33184344d9a96b515887611">00081</link> <link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n___c_u_t_1a7145337da33184344d9a96b515887611">DIOCHECKTCPIPCONNECTION_CUT::DIOCHECKTCPIPCONNECTION_CUT</link>()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00082"/>00082 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00083"/>00083 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00084"/>00084 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00085"/>00085 &#32;&#32;GEN_XFACTORY_CREATE(startdatetime,&#32;CreateDateTime())
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00086"/>00086 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00087"/>00087 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00088"/>00088 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00099"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n___c_u_t_1a8d7d3fe07835729dc084f9aef00a6af7">00099</link> <link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n___c_u_t_1a8d7d3fe07835729dc084f9aef00a6af7">DIOCHECKTCPIPCONNECTION_CUT::~DIOCHECKTCPIPCONNECTION_CUT</link>()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00100"/>00100 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00101"/>00101 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(startdatetime)&#32;GEN_XFACTORY.DeleteDateTime(startdatetime);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00102"/>00102 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00103"/>00103 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00104"/>00104 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00105"/>00105 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00106"/>00106 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00116"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n___c_u_t_1a621f922e6670d70f10c1c54149207b58">00116</link> <link linkend="_class_x_d_a_t_e_t_i_m_e">XDATETIME</link>*&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n___c_u_t_1a621f922e6670d70f10c1c54149207b58">DIOCHECKTCPIPCONNECTION_CUT::GetStartDateTime</link>()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00117"/>00117 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00118"/>00118 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;startdatetime;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00119"/>00119 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00120"/>00120 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00121"/>00121 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00131"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n___c_u_t_1aa23e5c101534a4808e24d59169dc7d53">00131</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n___c_u_t_1aa23e5c101534a4808e24d59169dc7d53">DIOCHECKTCPIPCONNECTION_CUT::GetMeasureNSeconds</link>()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00132"/>00132 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00133"/>00133 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;nseconds;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00134"/>00134 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00135"/>00135 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00136"/>00136 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00148"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n___c_u_t_1ad26d0a7d5c368194250e6e77d2809f95">00148</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n___c_u_t_1ad26d0a7d5c368194250e6e77d2809f95">DIOCHECKTCPIPCONNECTION_CUT::SetMeasureNSeconds</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;nseconds)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00149"/>00149 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00150"/>00150 &#32;&#32;this-&gt;nseconds&#32;=&#32;nseconds;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00151"/>00151 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00152"/>00152 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00153"/>00153 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00166"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n___c_u_t_1a09e6dc2550dad43e138985a21c77ff66">00166</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n___c_u_t_1a09e6dc2550dad43e138985a21c77ff66">DIOCHECKTCPIPCONNECTION_CUT::GetMeasureTimeString</link>(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;measuretime,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;large)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00167"/>00167 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00168"/>00168 &#32;&#32;<link linkend="_class_x_t_i_m_e_r">XTIMER</link>&#32;xtimer;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00169"/>00169 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00170"/>00170 &#32;&#32;xtimer.<link linkend="_class_x_t_i_m_e_r_1a461fee3826d400d29bc47f58f2c5d898">Reset</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00171"/>00171 &#32;&#32;xtimer.<link linkend="_class_x_t_i_m_e_r_1a455248fbec8f5d7bd7ea56edc268cedc">AddSeconds</link>(<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n___c_u_t_1aa23e5c101534a4808e24d59169dc7d53">GetMeasureNSeconds</link>());
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00172"/>00172 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00173"/>00173 &#32;&#32;xtimer.<link linkend="_class_x_t_i_m_e_r_1ab0b380bd590991d71201c2988b0cb0ad">GetMeasureString</link>(measuretime,&#32;large);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00174"/>00174 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00175"/>00175 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00176"/>00176 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00177"/>00177 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00178"/>00178 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00190"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n___c_u_t_1a22f05d35a819266ca2a157785b1a06b7">00190</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n___c_u_t_1a22f05d35a819266ca2a157785b1a06b7">DIOCHECKTCPIPCONNECTION_CUT::CopyFrom</link>(<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n___c_u_t">DIOCHECKTCPIPCONNECTION_CUT</link>*&#32;connectioncut)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00191"/>00191 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00192"/>00192 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!connectioncut)&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00193"/>00193 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00194"/>00194 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;connectioncut-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n___c_u_t_1a6565ca0dcdfeabb139752e36b7cca583">CopyTo</link>(<emphasis role="keyword">this</emphasis>);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00195"/>00195 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00196"/>00196 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00197"/>00197 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00209"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n___c_u_t_1a6565ca0dcdfeabb139752e36b7cca583">00209</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n___c_u_t_1a6565ca0dcdfeabb139752e36b7cca583">DIOCHECKTCPIPCONNECTION_CUT::CopyTo</link>(<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n___c_u_t">DIOCHECKTCPIPCONNECTION_CUT</link>*&#32;connectioncut)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00210"/>00210 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00211"/>00211 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!connectioncut)&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00212"/>00212 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00213"/>00213 &#32;&#32;connectioncut-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n___c_u_t_1a621f922e6670d70f10c1c54149207b58">GetStartDateTime</link>()-&gt;<link linkend="_class_x_d_a_t_e_t_i_m_e_1a580f6018996774252bbae5660c4d1b91">CopyFrom</link>(startdatetime);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00214"/>00214 &#32;&#32;connectioncut-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n___c_u_t_1ad26d0a7d5c368194250e6e77d2809f95">SetMeasureNSeconds</link>(nseconds);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00215"/>00215 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00216"/>00216 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00217"/>00217 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00218"/>00218 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00219"/>00219 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00230"/>00230 <emphasis role="keywordtype">void</emphasis>&#32;DIOCHECKTCPIPCONNECTION_CUT::Clean()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00231"/>00231 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00232"/>00232 &#32;&#32;startdatetime&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00233"/>00233 &#32;&#32;nseconds&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00234"/>00234 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00235"/>00235 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00236"/>00236 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00237"/>00237 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00238"/>00238 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00239"/>00239 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00240"/>00240 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_DIOCHECKTCPIPCONNECTION&#32;</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00241"/>00241 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00242"/>00242 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00252"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a159adc795a51f4c8ff23a4eb25d6bcf9">00252</link> <link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a159adc795a51f4c8ff23a4eb25d6bcf9">DIOCHECKTCPIPCONNECTION::DIOCHECKTCPIPCONNECTION</link>()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00253"/>00253 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00254"/>00254 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00255"/>00255 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00256"/>00256 &#32;&#32;url&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_u_r_l">DIOURL</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00257"/>00257 &#32;&#32;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00258"/>00258 &#32;&#32;GEN_XFACTORY_CREATE(timerconnexion,&#32;CreateTimer())&#32;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00259"/>00259 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00260"/>00260 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00261"/>00261 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00272"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a488a0c70950397c39c669953facaa96a">00272</link> <link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a488a0c70950397c39c669953facaa96a">DIOCHECKTCPIPCONNECTION::~DIOCHECKTCPIPCONNECTION</link>()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00273"/>00273 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00274"/>00274 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(url)&#32;<emphasis role="keyword">delete</emphasis>&#32;url;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00275"/>00275 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00276"/>00276 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(timerconnexion)&#32;GEN_XFACTORY.DeleteTimer(timerconnexion);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00277"/>00277 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00278"/>00278 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00279"/>00279 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00280"/>00280 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00281"/>00281 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00291"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1ab3c00aacd0c6331defecddf1c36d6dbd">00291</link> <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1ab3c00aacd0c6331defecddf1c36d6dbd">DIOCHECKTCPIPCONNECTION::GetID</link>()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00292"/>00292 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00293"/>00293 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ID;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00294"/>00294 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00295"/>00295 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00296"/>00296 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00306"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a30697b10b00bfb30757a8714fef65217">00306</link> <link linkend="_class_d_i_o_u_r_l">DIOURL</link>*&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a30697b10b00bfb30757a8714fef65217">DIOCHECKTCPIPCONNECTION::GetURL</link>()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00307"/>00307 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00308"/>00308 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;url;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00309"/>00309 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00310"/>00310 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00311"/>00311 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00321"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a6c0cee7d0ab753b4a6f8479a5d7d00a9">00321</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a6c0cee7d0ab753b4a6f8479a5d7d00a9">DIOCHECKTCPIPCONNECTION::IsConnected</link>()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00322"/>00322 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00323"/>00323 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;isconnected;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00324"/>00324 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00325"/>00325 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00326"/>00326 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00338"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a46943f10e4a6b12d7145df2cb9a829b3">00338</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a46943f10e4a6b12d7145df2cb9a829b3">DIOCHECKTCPIPCONNECTION::SetIsConnected</link>(<emphasis role="keywordtype">bool</emphasis>&#32;isconnected)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00339"/>00339 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00340"/>00340 &#32;&#32;this-&gt;isconnected&#32;=&#32;isconnected;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00341"/>00341 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00342"/>00342 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00343"/>00343 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00353"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a65d4fb24f258399c4d8c1c64347d3005">00353</link> <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a65d4fb24f258399c4d8c1c64347d3005">DIOCHECKTCPIPCONNECTION::GetNChecks</link>()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00354"/>00354 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00355"/>00355 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;nchecks;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00356"/>00356 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00357"/>00357 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00358"/>00358 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00370"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a16953fb9402b80cf2a888f0c1a82b775">00370</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a16953fb9402b80cf2a888f0c1a82b775">DIOCHECKTCPIPCONNECTION::SetNChecks</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;nchecks)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00371"/>00371 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00372"/>00372 &#32;&#32;this-&gt;nchecks&#32;=&#32;nchecks;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00373"/>00373 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00374"/>00374 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00375"/>00375 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00385"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a4b94e85224ada7361360b5a4103b591b">00385</link> <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a4b94e85224ada7361360b5a4103b591b">DIOCHECKTCPIPCONNECTION::IncNChecks</link>()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00386"/>00386 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00387"/>00387 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;++nchecks;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00388"/>00388 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00389"/>00389 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00390"/>00390 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00402"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1aa94791a5e081b388b60f92475326c52f">00402</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1aa94791a5e081b388b60f92475326c52f">DIOCHECKTCPIPCONNECTION::Set</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;url)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00403"/>00403 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00404"/>00404 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!this-&gt;url)&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00405"/>00405 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00406"/>00406 &#32;&#32;(*this-&gt;url)&#32;=&#32;url;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00407"/>00407 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00408"/>00408 &#32;&#32;this-&gt;url-&gt;Slash_Delete();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00409"/>00409 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00410"/>00410 &#32;&#32;ID&#32;=&#32;CreateID();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00411"/>00411 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00412"/>00412 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ID?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00413"/>00413 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00414"/>00414 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00415"/>00415 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00425"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a0e5155f5e431903f99b049deaa99dc86">00425</link> <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a0e5155f5e431903f99b049deaa99dc86">DIOCHECKTCPIPCONNECTION::GetElapsedTime</link>()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00426"/>00426 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00427"/>00427 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;elapsedtime;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00428"/>00428 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00429"/>00429 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00430"/>00430 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00442"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a40a3d1a3dde5cb4ffde4178d0d0420f4">00442</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a40a3d1a3dde5cb4ffde4178d0d0420f4">DIOCHECKTCPIPCONNECTION::SetElapsedTime</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;elapsedtime)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00443"/>00443 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00444"/>00444 &#32;&#32;this-&gt;elapsedtime&#32;=&#32;elapsedtime;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00445"/>00445 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00446"/>00446 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00447"/>00447 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00457"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1ad06e718cd88b452f891743d091904cb2">00457</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1ad06e718cd88b452f891743d091904cb2">DIOCHECKTCPIPCONNECTION::ResetTimeConnexionStatus</link>()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00458"/>00458 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00459"/>00459 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!timerconnexion)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00460"/>00460 &#32;&#32;timerconnexion-&gt;<link linkend="_class_x_t_i_m_e_r_1a461fee3826d400d29bc47f58f2c5d898">Reset</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00461"/>00461 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00462"/>00462 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00463"/>00463 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00464"/>00464 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00465"/>00465 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00475"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1ab35103c08ad32da9c5a5eeeee5c8e215">00475</link> <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1ab35103c08ad32da9c5a5eeeee5c8e215">DIOCHECKTCPIPCONNECTION::GetTimeConnexionStatus</link>()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00476"/>00476 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00477"/>00477 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!timerconnexion)&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00478"/>00478 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;timerconnexion-&gt;<link linkend="_class_x_t_i_m_e_r_1a02ae3c82df51ec1ed16288fe102d9d8b">GetMeasureSeconds</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00479"/>00479 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00480"/>00480 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00481"/>00481 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00491"/>00491 <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;DIOCHECKTCPIPCONNECTION::CreateID()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00492"/>00492 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00493"/>00493 &#32;&#32;<link linkend="_class_h_a_s_h_c_r_c32">HASHCRC32</link>&#32;hashcrc32;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00494"/>00494 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;&#32;&#32;_ID&#32;=&#32;0;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00495"/>00495 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00496"/>00496 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;charstr;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00497"/>00497 &#32;&#32;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00498"/>00498 &#32;&#32;url-&gt;<link linkend="_class_x_s_t_r_i_n_g_1acdbd12d83c920cfa06ac0ac1770adc29">ConvertToASCII</link>(charstr);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00499"/>00499 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(hashcrc32.<link linkend="_class_h_a_s_h_c_r_c32_1a170fa5c716219e92d4724553d6e8e0ce">Do</link>((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)charstr.<link linkend="_class_x_b_u_f_f_e_r_1a59d2c2b8d1c32098920f5d3eba0a5971">Get</link>(),&#32;url-&gt;<link linkend="_class_x_s_t_r_i_n_g_1a7c3fa0dd7b650399470c76192fbd4916">GetSize</link>()))&#32;_ID&#32;+=&#32;hashcrc32.<link linkend="_class_h_a_s_h_c_r_c32_1ab33e363f6374a0e559e99f2f80e5abf6">GetResultCRC32</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00500"/>00500 &#32;&#32;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00501"/>00501 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_ID;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00502"/>00502 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00503"/>00503 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00504"/>00504 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00515"/>00515 <emphasis role="keywordtype">void</emphasis>&#32;DIOCHECKTCPIPCONNECTION::Clean()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00516"/>00516 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00517"/>00517 &#32;&#32;ID&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00518"/>00518 &#32;&#32;url&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00519"/>00519 &#32;&#32;isconnected&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00520"/>00520 &#32;&#32;nchecks&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00521"/>00521 &#32;&#32;elapsedtime&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00522"/>00522 &#32;&#32;timerconnexion&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00523"/>00523 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00524"/>00524 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00525"/>00525 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00526"/>00526 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00527"/>00527 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00528"/>00528 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00529"/>00529 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_DIOCHECKTCPIPCONNECTIONS</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00530"/>00530 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00531"/>00531 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00541"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1aecfd4efb4647968dd9d6167f2a8d5bd0">00541</link> <link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1aecfd4efb4647968dd9d6167f2a8d5bd0">DIOCHECKTCPIPCONNECTIONS::DIOCHECKTCPIPCONNECTIONS</link>()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00542"/>00542 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00543"/>00543 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00544"/>00544 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00545"/>00545 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00546"/>00546 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00557"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a3c0450101503af5454c600546d7dd37c">00557</link> <link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a3c0450101503af5454c600546d7dd37c">DIOCHECKTCPIPCONNECTIONS::~DIOCHECKTCPIPCONNECTIONS</link>()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00558"/>00558 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00559"/>00559 &#32;&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a7281a5e79af57cc8fd164a104f542e0e">End</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00560"/>00560 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00561"/>00561 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00562"/>00562 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00563"/>00563 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00564"/>00564 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00578"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a5b1d3b428f700c14c1905ae95e89da63">00578</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a5b1d3b428f700c14c1905ae95e89da63">DIOCHECKTCPIPCONNECTIONS::Ini</link>(<emphasis role="keywordtype">int</emphasis>&#32;timeconnectionchecks,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;validsomeisconnected,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;dispersionmode)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00579"/>00579 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00580"/>00580 &#32;&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1ae61ad4c2cd6a1fced5e217310f3bf8a6">Setup</link>(timeconnectionchecks,&#32;validsomeisconnected,&#32;dispersionmode);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00581"/>00581 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00582"/>00582 &#32;&#32;GEN_XFACTORY_CREATE(xtimerfortimeconnectionchecks,&#32;CreateTimer())
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00583"/>00583 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xtimerfortimeconnectionchecks)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00584"/>00584 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00585"/>00585 &#32;&#32;GEN_XFACTORY_CREATE(xmutexconnections,&#32;Create_Mutex())
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00586"/>00586 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xmutexconnections)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00587"/>00587 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00588"/>00588 &#32;&#32;threadcheckconnections&#32;=&#32;<link linkend="__x_thread_collected_8h_1aad503e3655b9ff78d3ac660d1f1f5534">CREATEXTHREAD</link>(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6a46e6aa0a6448629ccf25ba6d13b62b3f">XTHREADGROUPID_DIOCHECKTCPIPCONNECTIONS</link>,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;DIOCHECKTCPIPCONNECTIONS::Ini&quot;</emphasis>),&#32;ThreadCheckConnections,&#32;(<emphasis role="keywordtype">void</emphasis>*)<emphasis role="keyword">this</emphasis>);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00589"/>00589 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!threadcheckconnections)&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00590"/>00590 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00591"/>00591 &#32;&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a939c6dde6a8689128fdb18cf7cfe2b08">SetIsCheckTimeConnections</link>(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00592"/>00592 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00593"/>00593 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;threadcheckconnections-&gt;Ini();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00594"/>00594 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00595"/>00595 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00596"/>00596 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00608"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a1e83f4fbc5766ff2585db15f0e82c991">00608</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a1e83f4fbc5766ff2585db15f0e82c991">DIOCHECKTCPIPCONNECTIONS::Run</link>(<emphasis role="keywordtype">bool</emphasis>&#32;activate)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00609"/>00609 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00610"/>00610 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!threadcheckconnections)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00611"/>00611 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;threadcheckconnections-&gt;Run(activate);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00612"/>00612 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00613"/>00613 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00614"/>00614 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00624"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a2a18ea063e5c1afc8d0075916ed2975d">00624</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a2a18ea063e5c1afc8d0075916ed2975d">DIOCHECKTCPIPCONNECTIONS::GetTimeConnectionChecks</link>()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00625"/>00625 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00626"/>00626 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;timeconnectionchecks;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00627"/>00627 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00628"/>00628 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00629"/>00629 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00639"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1ae50e034ede1f1eede08aead8577ec78a">00639</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1ae50e034ede1f1eede08aead8577ec78a">DIOCHECKTCPIPCONNECTIONS::IsCheckTimeConnections</link>()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00640"/>00640 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00641"/>00641 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ischecktimeconnections;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00642"/>00642 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00643"/>00643 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00644"/>00644 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00656"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a939c6dde6a8689128fdb18cf7cfe2b08">00656</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a939c6dde6a8689128fdb18cf7cfe2b08">DIOCHECKTCPIPCONNECTIONS::SetIsCheckTimeConnections</link>(<emphasis role="keywordtype">bool</emphasis>&#32;ischecktimeconnections)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00657"/>00657 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00658"/>00658 &#32;&#32;this-&gt;ischecktimeconnections&#32;=&#32;ischecktimeconnections;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00659"/>00659 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00660"/>00660 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00661"/>00661 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00675"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1ae61ad4c2cd6a1fced5e217310f3bf8a6">00675</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1ae61ad4c2cd6a1fced5e217310f3bf8a6">DIOCHECKTCPIPCONNECTIONS::Setup</link>(<emphasis role="keywordtype">int</emphasis>&#32;timeconnectionchecks,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;validsomeisconnected,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;dispersionmode)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00676"/>00676 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00677"/>00677 &#32;&#32;this-&gt;timeconnectionchecks&#32;&#32;=&#32;timeconnectionchecks;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00678"/>00678 &#32;&#32;this-&gt;validsomeisconnected&#32;&#32;=&#32;validsomeisconnected;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00679"/>00679 &#32;&#32;this-&gt;dispersionmode&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;dispersionmode;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00680"/>00680 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00681"/>00681 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00682"/>00682 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00695"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1ad803e499e31add616a7b93ec48a3a69e">00695</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1ad803e499e31add616a7b93ec48a3a69e">DIOCHECKTCPIPCONNECTIONS::Connection_Add</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;url,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;&#32;ID)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00696"/>00696 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00697"/>00697 &#32;&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n">DIOCHECKTCPIPCONNECTION</link>*&#32;connection&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n">DIOCHECKTCPIPCONNECTION</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00698"/>00698 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!connection)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00699"/>00699 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00700"/>00700 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(connection-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1aa94791a5e081b388b60f92475326c52f">Set</link>(url))
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00701"/>00701 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00702"/>00702 &#32;&#32;&#32;&#32;&#32;&#32;ID&#32;=&#32;connection-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1ab3c00aacd0c6331defecddf1c36d6dbd">GetID</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00703"/>00703 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00704"/>00704 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(ID)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00705"/>00705 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00706"/>00706 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexconnections)&#32;xmutexconnections-&gt;<link linkend="_class_x_m_u_t_e_x_1ae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00707"/>00707 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00708"/>00708 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;connections.<link linkend="_class_x_v_e_c_t_o_r_1a51a790aac8efd4603aee608ddcc83423">Add</link>(connection);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00709"/>00709 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00710"/>00710 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexconnections)&#32;xmutexconnections-&gt;<link linkend="_class_x_m_u_t_e_x_1afed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00711"/>00711 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00712"/>00712 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00713"/>00713 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00714"/>00714 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00715"/>00715 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00716"/>00716 &#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;connection;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00717"/>00717 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00718"/>00718 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00719"/>00719 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00720"/>00720 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00721"/>00721 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00734"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1afdafac709d0ce30cd17093e772d55bd7">00734</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1ad803e499e31add616a7b93ec48a3a69e">DIOCHECKTCPIPCONNECTIONS::Connection_Add</link>(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;url,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;&#32;ID)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00735"/>00735 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00736"/>00736 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1ad803e499e31add616a7b93ec48a3a69e">Connection_Add</link>(url.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;ID);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00737"/>00737 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00738"/>00738 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00739"/>00739 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00752"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a1dbdf016d953d03a64174fb8c3d6e932">00752</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1ad803e499e31add616a7b93ec48a3a69e">DIOCHECKTCPIPCONNECTIONS::Connection_Add</link>(<link linkend="_class_d_i_o_u_r_l">DIOURL</link>&amp;&#32;url,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;&#32;ID)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00753"/>00753 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00754"/>00754 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1ad803e499e31add616a7b93ec48a3a69e">Connection_Add</link>(url.<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;ID);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00755"/>00755 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00756"/>00756 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00757"/>00757 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00769"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1ac8d4d28d8a519baab62285540d7885a1">00769</link> <link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n">DIOCHECKTCPIPCONNECTION</link>*&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1ac8d4d28d8a519baab62285540d7885a1">DIOCHECKTCPIPCONNECTIONS::Connection_GetByID</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;ID)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00770"/>00770 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00771"/>00771 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexconnections)&#32;xmutexconnections-&gt;<link linkend="_class_x_m_u_t_e_x_1ae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00772"/>00772 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00773"/>00773 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;&#32;c&lt;connections.<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>();&#32;c++)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00774"/>00774 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00775"/>00775 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n">DIOCHECKTCPIPCONNECTION</link>*&#32;cc&#32;=&#32;connections.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(c);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00776"/>00776 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(cc)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00777"/>00777 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00778"/>00778 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(cc-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1ab3c00aacd0c6331defecddf1c36d6dbd">GetID</link>()&#32;==&#32;ID)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00779"/>00779 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00780"/>00780 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexconnections)&#32;xmutexconnections-&gt;<link linkend="_class_x_m_u_t_e_x_1afed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00781"/>00781 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;cc;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00782"/>00782 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00783"/>00783 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00784"/>00784 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00785"/>00785 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00786"/>00786 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexconnections)&#32;xmutexconnections-&gt;<link linkend="_class_x_m_u_t_e_x_1afed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00787"/>00787 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00788"/>00788 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00789"/>00789 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00790"/>00790 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00791"/>00791 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00804"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a02d547f211a7e0e86decd9b88f048cd3">00804</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a02d547f211a7e0e86decd9b88f048cd3">DIOCHECKTCPIPCONNECTIONS::Connection_IsActive</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;ID,&#32;<emphasis role="keywordtype">bool</emphasis>&amp;&#32;isactive)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00805"/>00805 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00806"/>00806 &#32;&#32;isactive&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00807"/>00807 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00808"/>00808 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexconnections)&#32;xmutexconnections-&gt;<link linkend="_class_x_m_u_t_e_x_1ae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00809"/>00809 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00810"/>00810 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;&#32;c&lt;connections.<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>();&#32;c++)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00811"/>00811 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00812"/>00812 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n">DIOCHECKTCPIPCONNECTION</link>*&#32;cc&#32;=&#32;connections.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(c);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00813"/>00813 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(cc)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00814"/>00814 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00815"/>00815 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(cc-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1ab3c00aacd0c6331defecddf1c36d6dbd">GetID</link>()&#32;==&#32;ID)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00816"/>00816 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00817"/>00817 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;isactive&#32;=&#32;cc-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a6c0cee7d0ab753b4a6f8479a5d7d00a9">IsConnected</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00818"/>00818 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexconnections)&#32;xmutexconnections-&gt;<link linkend="_class_x_m_u_t_e_x_1afed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00819"/>00819 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00820"/>00820 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00821"/>00821 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00822"/>00822 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00823"/>00823 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00824"/>00824 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00825"/>00825 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexconnections)&#32;xmutexconnections-&gt;<link linkend="_class_x_m_u_t_e_x_1afed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00826"/>00826 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00827"/>00827 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00828"/>00828 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00829"/>00829 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00830"/>00830 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00842"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a5ae4d9f73377cf64eee6e10fb165e6d7">00842</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a5ae4d9f73377cf64eee6e10fb165e6d7">DIOCHECKTCPIPCONNECTIONS::Connection_DeleteByID</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;ID)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00843"/>00843 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00844"/>00844 &#32;&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n">DIOCHECKTCPIPCONNECTION</link>*&#32;connection&#32;=&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1ac8d4d28d8a519baab62285540d7885a1">Connection_GetByID</link>(ID);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00845"/>00845 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(connection)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00846"/>00846 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00847"/>00847 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexconnections)&#32;xmutexconnections-&gt;<link linkend="_class_x_m_u_t_e_x_1ae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00848"/>00848 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00849"/>00849 &#32;&#32;&#32;&#32;&#32;&#32;connections.<link linkend="_class_x_v_e_c_t_o_r_1a1b2817263806966a47e30481e1561c27">Delete</link>(connection);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00850"/>00850 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;connection;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00851"/>00851 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00852"/>00852 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexconnections)&#32;xmutexconnections-&gt;<link linkend="_class_x_m_u_t_e_x_1afed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00853"/>00853 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00854"/>00854 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00855"/>00855 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00856"/>00856 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00857"/>00857 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00858"/>00858 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00859"/>00859 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00860"/>00860 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00870"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a98da9f7c399e2c267d938e49ad90a9a6">00870</link> <link linkend="_class_x_m_u_t_e_x">XMUTEX</link>*&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a98da9f7c399e2c267d938e49ad90a9a6">DIOCHECKTCPIPCONNECTIONS::Connections_GetMutex</link>()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00871"/>00871 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00872"/>00872 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;xmutexconnections;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00873"/>00873 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00874"/>00874 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00875"/>00875 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00885"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1af44871b9400c14d6857c2fcd163f9a0e">00885</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1af44871b9400c14d6857c2fcd163f9a0e">DIOCHECKTCPIPCONNECTIONS::Connections_IsAllChecked</link>()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00886"/>00886 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00887"/>00887 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ischeckallconnections&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00888"/>00888 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00889"/>00889 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexconnections)&#32;xmutexconnections-&gt;<link linkend="_class_x_m_u_t_e_x_1ae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00890"/>00890 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00891"/>00891 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;&#32;c&lt;connections.<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>();&#32;c++)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00892"/>00892 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00893"/>00893 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n">DIOCHECKTCPIPCONNECTION</link>*&#32;cc&#32;=&#32;connections.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(c);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00894"/>00894 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(cc)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00895"/>00895 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00896"/>00896 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!cc-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a65d4fb24f258399c4d8c1c64347d3005">GetNChecks</link>())&#32;ischeckallconnections&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00897"/>00897 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00898"/>00898 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00899"/>00899 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00900"/>00900 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexconnections)&#32;xmutexconnections-&gt;<link linkend="_class_x_m_u_t_e_x_1afed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00901"/>00901 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00902"/>00902 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ischeckallconnections;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00903"/>00903 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00904"/>00904 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00905"/>00905 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00915"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a581097b8e67d996a635f3f5d35040160">00915</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a581097b8e67d996a635f3f5d35040160">DIOCHECKTCPIPCONNECTIONS::Connections_IsSomeChecked</link>()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00916"/>00916 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00917"/>00917 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ischecksomeconnections&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00918"/>00918 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00919"/>00919 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexconnections)&#32;xmutexconnections-&gt;<link linkend="_class_x_m_u_t_e_x_1ae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00920"/>00920 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00921"/>00921 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;&#32;c&lt;connections.<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>();&#32;c++)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00922"/>00922 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00923"/>00923 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n">DIOCHECKTCPIPCONNECTION</link>*&#32;cc&#32;=&#32;connections.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(c);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00924"/>00924 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(cc)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00925"/>00925 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00926"/>00926 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(cc-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a65d4fb24f258399c4d8c1c64347d3005">GetNChecks</link>())
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00927"/>00927 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00928"/>00928 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ischecksomeconnections&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00929"/>00929 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00930"/>00930 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00931"/>00931 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00932"/>00932 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00933"/>00933 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00934"/>00934 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexconnections)&#32;xmutexconnections-&gt;<link linkend="_class_x_m_u_t_e_x_1afed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00935"/>00935 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00936"/>00936 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ischecksomeconnections;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00937"/>00937 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00938"/>00938 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00939"/>00939 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00951"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1ac221ec1e89a45c12bd4ed0b6b3662434">00951</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1ac221ec1e89a45c12bd4ed0b6b3662434">DIOCHECKTCPIPCONNECTIONS::Connections_WaitToAllChecked</link>(<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00952"/>00952 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00953"/>00953 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!connections.<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00954"/>00954 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00955"/>00955 &#32;&#32;<link linkend="_class_x_t_i_m_e_r">XTIMER</link>*&#32;GEN_XFACTORY_CREATE(xtimer,&#32;CreateTimer())
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00956"/>00956 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xtimer)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00957"/>00957 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00958"/>00958 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00959"/>00959 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00960"/>00960 &#32;&#32;xtimer-&gt;<link linkend="_class_x_t_i_m_e_r_1a461fee3826d400d29bc47f58f2c5d898">Reset</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00961"/>00961 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00962"/>00962 &#32;&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a939c6dde6a8689128fdb18cf7cfe2b08">SetIsCheckTimeConnections</link>(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00963"/>00963 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00964"/>00964 &#32;&#32;<emphasis role="keywordflow">while</emphasis>(1)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00965"/>00965 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00966"/>00966 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>&#32;!=&#32;<link linkend="__x_timer_8h_1adc9d414be5192058132a9ed6384f797d">XTIMER_INFINITE</link>)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00967"/>00967 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00968"/>00968 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xtimer-&gt;GetMeasureSeconds()&#32;&gt;=&#32;(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00969"/>00969 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00970"/>00970 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00971"/>00971 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00972"/>00972 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00973"/>00973 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00974"/>00974 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00975"/>00975 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1af44871b9400c14d6857c2fcd163f9a0e">Connections_IsAllChecked</link>())&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00976"/>00976 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00977"/>00977 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XSLEEP.MilliSeconds(100);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00978"/>00978 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00979"/>00979 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00980"/>00980 &#32;&#32;GEN_XFACTORY.DeleteTimer(xtimer);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00981"/>00981 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00982"/>00982 &#32;&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a939c6dde6a8689128fdb18cf7cfe2b08">SetIsCheckTimeConnections</link>(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00983"/>00983 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00984"/>00984 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00985"/>00985 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00986"/>00986 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00987"/>00987 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l00999"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1abf2e49acb3f49657081432b1da31f7f5">00999</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1abf2e49acb3f49657081432b1da31f7f5">DIOCHECKTCPIPCONNECTIONS::Connections_WaitToSomeIsChecked</link>(<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01000"/>01000 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01001"/>01001 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!connections.<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01002"/>01002 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01003"/>01003 &#32;&#32;<link linkend="_class_x_t_i_m_e_r">XTIMER</link>*&#32;GEN_XFACTORY_CREATE(xtimer,&#32;CreateTimer())
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01004"/>01004 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xtimer)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01005"/>01005 &#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01006"/>01006 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01007"/>01007 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01008"/>01008 &#32;&#32;xtimer-&gt;<link linkend="_class_x_t_i_m_e_r_1a461fee3826d400d29bc47f58f2c5d898">Reset</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01009"/>01009 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01010"/>01010 &#32;&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a939c6dde6a8689128fdb18cf7cfe2b08">SetIsCheckTimeConnections</link>(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01011"/>01011 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01012"/>01012 &#32;&#32;<emphasis role="keywordflow">while</emphasis>(1)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01013"/>01013 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01014"/>01014 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>&#32;!=&#32;<link linkend="__x_timer_8h_1adc9d414be5192058132a9ed6384f797d">XTIMER_INFINITE</link>)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01015"/>01015 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01016"/>01016 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xtimer-&gt;GetMeasureSeconds()&#32;&gt;=&#32;(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01017"/>01017 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01018"/>01018 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01019"/>01019 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01020"/>01020 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01021"/>01021 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01022"/>01022 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01023"/>01023 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a581097b8e67d996a635f3f5d35040160">Connections_IsSomeChecked</link>())&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01024"/>01024 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01025"/>01025 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XSLEEP.MilliSeconds(100);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01026"/>01026 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01027"/>01027 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01028"/>01028 &#32;&#32;GEN_XFACTORY.DeleteTimer(xtimer);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01029"/>01029 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01030"/>01030 &#32;&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a939c6dde6a8689128fdb18cf7cfe2b08">SetIsCheckTimeConnections</link>(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01031"/>01031 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01032"/>01032 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01033"/>01033 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01034"/>01034 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01035"/>01035 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01045"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a59ec0f5ab09f24a6225cd55faf2a1555">01045</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a59ec0f5ab09f24a6225cd55faf2a1555">DIOCHECKTCPIPCONNECTIONS::Connections_SomeIsConnected</link>()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01046"/>01046 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01047"/>01047 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;someisactive&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01048"/>01048 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01049"/>01049 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexconnections)&#32;xmutexconnections-&gt;<link linkend="_class_x_m_u_t_e_x_1ae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01050"/>01050 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01051"/>01051 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;&#32;c&lt;connections.<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>();&#32;c++)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01052"/>01052 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01053"/>01053 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n">DIOCHECKTCPIPCONNECTION</link>*&#32;cc&#32;=&#32;connections.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(c);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01054"/>01054 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(cc)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01055"/>01055 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01056"/>01056 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;someisactive&#32;=&#32;cc-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a6c0cee7d0ab753b4a6f8479a5d7d00a9">IsConnected</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01057"/>01057 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(someisactive)&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01058"/>01058 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01059"/>01059 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01060"/>01060 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01061"/>01061 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexconnections)&#32;xmutexconnections-&gt;<link linkend="_class_x_m_u_t_e_x_1afed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01062"/>01062 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01063"/>01063 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;someisactive;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01064"/>01064 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01065"/>01065 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01066"/>01066 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01076"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a6cf35e7d8fee75e3cfce051aac4b5a06">01076</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a6cf35e7d8fee75e3cfce051aac4b5a06">DIOCHECKTCPIPCONNECTIONS::Connections_DeleteAll</link>()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01077"/>01077 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01078"/>01078 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexconnections)&#32;xmutexconnections-&gt;<link linkend="_class_x_m_u_t_e_x_1ae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01079"/>01079 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01080"/>01080 &#32;&#32;connections.<link linkend="_class_x_v_e_c_t_o_r_1abae5097402824f18f274e21e18b23bea">DeleteContents</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01081"/>01081 &#32;&#32;connections.<link linkend="_class_x_v_e_c_t_o_r_1a57c72ab04fd14c60d1026e0a7b4a1887">DeleteAll</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01082"/>01082 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01083"/>01083 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexconnections)&#32;xmutexconnections-&gt;<link linkend="_class_x_m_u_t_e_x_1afed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01084"/>01084 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01085"/>01085 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01086"/>01086 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01087"/>01087 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01088"/>01088 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01098"/><link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a7281a5e79af57cc8fd164a104f542e0e">01098</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a7281a5e79af57cc8fd164a104f542e0e">DIOCHECKTCPIPCONNECTIONS::End</link>()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01099"/>01099 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01100"/>01100 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(threadcheckconnections)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01101"/>01101 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01102"/>01102 &#32;&#32;&#32;&#32;&#32;&#32;threadcheckconnections-&gt;End();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01103"/>01103 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01104"/>01104 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_thread_collected_8h_1a18fb843f5fbad51464b68d705ed29b8a">DELETEXTHREAD</link>(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6a46e6aa0a6448629ccf25ba6d13b62b3f">XTHREADGROUPID_DIOCHECKTCPIPCONNECTIONS</link>,&#32;threadcheckconnections);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01105"/>01105 &#32;&#32;&#32;&#32;&#32;&#32;threadcheckconnections&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01106"/>01106 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01107"/>01107 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01108"/>01108 &#32;&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1a6cf35e7d8fee75e3cfce051aac4b5a06">Connections_DeleteAll</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01109"/>01109 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01110"/>01110 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexconnections)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01111"/>01111 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01112"/>01112 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY.Delete_Mutex(xmutexconnections);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01113"/>01113 &#32;&#32;&#32;&#32;&#32;&#32;xmutexconnections&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01114"/>01114 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01115"/>01115 &#32;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01116"/>01116 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xtimerfortimeconnectionchecks)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01117"/>01117 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01118"/>01118 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY.DeleteTimer(xtimerfortimeconnectionchecks);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01119"/>01119 &#32;&#32;&#32;&#32;&#32;&#32;xtimerfortimeconnectionchecks&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01120"/>01120 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01121"/>01121 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01122"/>01122 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01123"/>01123 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01124"/>01124 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01125"/>01125 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01137"/>01137 <emphasis role="keywordtype">void</emphasis>&#32;DIOCHECKTCPIPCONNECTIONS::ThreadCheckConnections(<emphasis role="keywordtype">void</emphasis>*&#32;param)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01138"/>01138 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01139"/>01139 &#32;&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s">DIOCHECKTCPIPCONNECTIONS</link>*&#32;checkconnections&#32;=&#32;(<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s">DIOCHECKTCPIPCONNECTIONS</link>*)param;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01140"/>01140 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!checkconnections)&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01141"/>01141 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01142"/>01142 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!checkconnections-&gt;xmutexconnections)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01143"/>01143 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!checkconnections-&gt;xtimerfortimeconnectionchecks)&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01144"/>01144 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01145"/>01145 &#32;&#32;<emphasis role="keyword">static</emphasis>&#32;<emphasis role="keywordtype">int</emphasis>&#32;index&#32;=&#32;0;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01146"/>01146 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01147"/>01147 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;nconnections&#32;=&#32;checkconnections-&gt;connections.<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01148"/>01148 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!nconnections)&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01149"/>01149 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01150"/>01150 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(checkconnections-&gt;dispersionmode)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01151"/>01151 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01152"/>01152 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n">DIOCHECKTCPIPCONNECTION</link>*&#32;checkconnection&#32;=&#32;checkconnections-&gt;connections.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(index);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01153"/>01153 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!checkconnection)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01154"/>01154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01155"/>01155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;index&#32;=&#32;0;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01156"/>01156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;checkconnection&#32;=&#32;checkconnections-&gt;connections.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(index);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01157"/>01157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01158"/>01158 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01159"/>01159 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(checkconnection)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01160"/>01160 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01161"/>01161 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;checkconnections-&gt;xmutexconnections-&gt;<link linkend="_class_x_m_u_t_e_x_1ae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01162"/>01162 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01163"/>01163 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GEN_DIOPING.Set(checkconnection-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a30697b10b00bfb30757a8714fef65217">GetURL</link>()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01164"/>01164 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01165"/>01165 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;connexionstatus&#32;=&#32;GEN_DIOPING.Do(<link linkend="__d_i_o_check_t_c_p_i_p_connections_8h_1a5bc9e75040d381c866e493ebc2def6df">DIOCHECKTCPIPCONNECTIONS_DEFAULTNCHECKSFOREVERYCONNECTION</link>,&#32;<link linkend="__d_i_o_check_t_c_p_i_p_connections_8h_1a15acfeb4d81376dbfdee9fa51d08c077">DIOCHECKTCPIPCONNECTIONS_DEFAULTTIMERCONNECTIONCHECK</link>,&#32;checkconnections-&gt;validsomeisconnected);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01166"/>01166 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(connexionstatus&#32;!=&#32;checkconnection-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a6c0cee7d0ab753b4a6f8479a5d7d00a9">IsConnected</link>())&#32;checkconnection-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1ad06e718cd88b452f891743d091904cb2">ResetTimeConnexionStatus</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01167"/>01167 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01168"/>01168 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;checkconnection-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a46943f10e4a6b12d7145df2cb9a829b3">SetIsConnected</link>(connexionstatus);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01169"/>01169 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;checkconnection-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a4b94e85224ada7361360b5a4103b591b">IncNChecks</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01170"/>01170 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01171"/>01171 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(checkconnection-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a6c0cee7d0ab753b4a6f8479a5d7d00a9">IsConnected</link>())
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01172"/>01172 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;checkconnection-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a40a3d1a3dde5cb4ffde4178d0d0420f4">SetElapsedTime</link>(GEN_DIOPING.CalculateMeanTime());
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01173"/>01173 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;checkconnection-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a40a3d1a3dde5cb4ffde4178d0d0420f4">SetElapsedTime</link>(0);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01174"/>01174 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01175"/>01175 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;index++;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01176"/>01176 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01177"/>01177 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;checkconnections-&gt;xmutexconnections-&gt;<link linkend="_class_x_m_u_t_e_x_1afed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01178"/>01178 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01179"/>01179 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(checkconnections-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1ae50e034ede1f1eede08aead8577ec78a">IsCheckTimeConnections</link>())
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01180"/>01180 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01181"/>01181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;e=0;&#32;e&lt;checkconnections-&gt;timeconnectionchecks;&#32;e++)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01182"/>01182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01183"/>01183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!checkconnections-&gt;threadcheckconnections-&gt;IsRunning())&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01184"/>01184 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01185"/>01185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;d=0;&#32;d&lt;10;&#32;d++)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01186"/>01186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01187"/>01187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!checkconnections-&gt;threadcheckconnections-&gt;IsRunning())&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01188"/>01188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GEN_XSLEEP.MilliSeconds(100);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01189"/>01189 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01190"/>01190 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01191"/>01191 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01192"/>01192 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01193"/>01193 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01194"/>01194 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01195"/>01195 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01196"/>01196 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01197"/>01197 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01198"/>01198 &#32;&#32;&#32;&#32;&#32;&#32;checkconnections-&gt;xmutexconnections-&gt;<link linkend="_class_x_m_u_t_e_x_1ae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01199"/>01199 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01200"/>01200 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;c=0;&#32;c&lt;nconnections;&#32;c++)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01201"/>01201 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01202"/>01202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n">DIOCHECKTCPIPCONNECTION</link>*&#32;checkconnection&#32;=&#32;checkconnections-&gt;connections.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(c);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01203"/>01203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(checkconnection)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01204"/>01204 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01205"/>01205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GEN_DIOPING.<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1aa94791a5e081b388b60f92475326c52f">Set</link>(checkconnection-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a30697b10b00bfb30757a8714fef65217">GetURL</link>()-&gt;<link linkend="_class_x_s_t_r_i_n_g_1ad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01206"/>01206 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01207"/>01207 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;connexionstatus&#32;=&#32;GEN_DIOPING.Do(<link linkend="__d_i_o_check_t_c_p_i_p_connections_8h_1a5bc9e75040d381c866e493ebc2def6df">DIOCHECKTCPIPCONNECTIONS_DEFAULTNCHECKSFOREVERYCONNECTION</link>,&#32;<link linkend="__d_i_o_check_t_c_p_i_p_connections_8h_1a15acfeb4d81376dbfdee9fa51d08c077">DIOCHECKTCPIPCONNECTIONS_DEFAULTTIMERCONNECTIONCHECK</link>,&#32;checkconnections-&gt;validsomeisconnected);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01208"/>01208 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(connexionstatus&#32;!=&#32;checkconnection-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a6c0cee7d0ab753b4a6f8479a5d7d00a9">IsConnected</link>())&#32;checkconnection-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1ad06e718cd88b452f891743d091904cb2">ResetTimeConnexionStatus</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01209"/>01209 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01210"/>01210 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;checkconnection-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a46943f10e4a6b12d7145df2cb9a829b3">SetIsConnected</link>(connexionstatus);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01211"/>01211 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;checkconnection-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a4b94e85224ada7361360b5a4103b591b">IncNChecks</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01212"/>01212 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01213"/>01213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(checkconnection-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a6c0cee7d0ab753b4a6f8479a5d7d00a9">IsConnected</link>())
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01214"/>01214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;checkconnection-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a40a3d1a3dde5cb4ffde4178d0d0420f4">SetElapsedTime</link>(GEN_DIOPING.CalculateMeanTime());
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01215"/>01215 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;checkconnection-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a40a3d1a3dde5cb4ffde4178d0d0420f4">SetElapsedTime</link>(0);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01216"/>01216 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01217"/>01217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>((checkconnections-&gt;validsomeisconnected)&#32;&amp;&amp;&#32;(checkconnection-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_1a6c0cee7d0ab753b4a6f8479a5d7d00a9">IsConnected</link>()))&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01218"/>01218 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!checkconnections-&gt;threadcheckconnections-&gt;IsRunning())&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01219"/>01219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01220"/>01220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01221"/>01221 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01222"/>01222 &#32;&#32;&#32;&#32;&#32;&#32;checkconnections-&gt;xmutexconnections-&gt;<link linkend="_class_x_m_u_t_e_x_1afed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01223"/>01223 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01224"/>01224 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(checkconnections-&gt;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s_1ae50e034ede1f1eede08aead8577ec78a">IsCheckTimeConnections</link>())
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01225"/>01225 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01226"/>01226 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;e=0;&#32;e&lt;checkconnections-&gt;timeconnectionchecks;&#32;e++)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01227"/>01227 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01228"/>01228 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!checkconnections-&gt;threadcheckconnections-&gt;IsRunning())&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01229"/>01229 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01230"/>01230 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;d=0;&#32;d&lt;10;&#32;d++)
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01231"/>01231 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01232"/>01232 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!checkconnections-&gt;threadcheckconnections-&gt;IsRunning())&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01233"/>01233 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GEN_XSLEEP.MilliSeconds(100);
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01234"/>01234 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01235"/>01235 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01236"/>01236 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01237"/>01237 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01238"/>01238 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01239"/>01239 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01240"/>01240 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01251"/>01251 <emphasis role="keywordtype">void</emphasis>&#32;DIOCHECKTCPIPCONNECTIONS::Clean()
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01252"/>01252 {
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01253"/>01253 &#32;&#32;timeconnectionchecks&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__d_i_o_check_t_c_p_i_p_connections_8h_1a824677611582ec7c9ddacfac10ffe639">DIOCHECKTCPIPCONNECTIONS_DEFAULTTIMECONNECTIONCHECKS</link>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01254"/>01254 &#32;&#32;validsomeisconnected&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01255"/>01255 &#32;&#32;dispersionmode&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01256"/>01256 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01257"/>01257 &#32;&#32;xtimerfortimeconnectionchecks&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01258"/>01258 &#32;&#32;ischecktimeconnections&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01259"/>01259 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01260"/>01260 &#32;&#32;xmutexconnections&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01261"/>01261 &#32;&#32;threadcheckconnections&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01262"/>01262 }
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01263"/>01263 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01264"/>01264 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01265"/>01265 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01266"/>01266 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01267"/>01267 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01268"/>01268 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01269"/>01269 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01270"/>01270 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01271"/>01271 
+<anchor xml:id="__d_i_o_check_t_c_p_i_p_connections_8cpp_source_1l01272"/>01272 
+</programlisting></section>

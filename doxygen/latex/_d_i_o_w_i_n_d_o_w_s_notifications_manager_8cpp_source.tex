@@ -1,0 +1,252 @@
+\doxysection{DIOWINDOWSNotifications\+Manager.\+cpp}
+\hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source}{}\label{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source}\index{D:/Projects/GENFrameWork/GEN/Platforms/Windows/DIOWINDOWSNotificationsManager.cpp@{D:/Projects/GENFrameWork/GEN/Platforms/Windows/DIOWINDOWSNotificationsManager.cpp}}
+\mbox{\hyperlink{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00029}00029\ \textcolor{comment}{/*-\/-\/-\/-\/\ PRECOMPILATION\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00030}00030\ \textcolor{preprocessor}{\#pragma\ region\ PRECOMPILATION\_INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_e_n___defines_8h}{GEN\_Defines.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00034}00034\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00037}00037\ \textcolor{comment}{/*-\/-\/-\/-\/\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00038}00038\ \textcolor{preprocessor}{\#pragma\ region\ INCLUDES}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00040}00040\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8h}{DIOWINDOWSNotificationsManager.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00042}00042\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_memory___control_8h}{XMemory\_Control.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00044}00044\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00047}00047\ \textcolor{comment}{/*-\/-\/-\/-\/\ GENERAL\ VARIABLE\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00048}00048\ \textcolor{preprocessor}{\#pragma\ region\ GENERAL\_VARIABLE}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00050}00050\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00053}00053\ \textcolor{comment}{/*-\/-\/-\/-\/\ CLASS\ MEMBERS\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00054}00054\ \textcolor{preprocessor}{\#pragma\ region\ CLASS\_MEMBERS}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00064}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_ga82fc2fff38fa905233a39380ac43462b}{00064}}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_ga82fc2fff38fa905233a39380ac43462b}{DIOWINDOWSNOTIFICATIONSMANAGER::DIOWINDOWSNOTIFICATIONSMANAGER}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00065}00065\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00066}00066\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00067}00067\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00078}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_gaec297a7046254c075bba14ae511d76f2}{00078}}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_gaec297a7046254c075bba14ae511d76f2}{DIOWINDOWSNOTIFICATIONSMANAGER::\string~DIOWINDOWSNOTIFICATIONSMANAGER}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00079}00079\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00080}00080\ \ \ Clean();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00081}00081\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00096}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_gada438ae782eaecc102c7960d7df2f118}{00096}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_gada438ae782eaecc102c7960d7df2f118}{DIOWINDOWSNOTIFICATIONSMANAGER::Ini}}(\mbox{\hyperlink{_x_string_8h_a03209152a681f02e4ba73b6681dd4968}{XCHAR}}*\ titleowner,\ \mbox{\hyperlink{_x_string_8h_a03209152a681f02e4ba73b6681dd4968}{XCHAR}}*\ genericapp)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00097}00097\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00099}00099\ \textcolor{preprocessor}{\ \ \#if(\_MSC\_VER\ >=\ 1700)\ \&\&\ defined(\_USING\_V110\_SDK71\_)}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00101}00101\ \textcolor{preprocessor}{\ \ \#else}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00103}00103\ \ \ Microsoft::WRL::Wrappers::RoInitializeWrapper\ winRTInitializer(RO\_INIT\_MULTITHREADED);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00105}00105\ \ \ HRESULT\ hr\ =\ winRTInitializer;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00106}00106\ \ \ \textcolor{keywordflow}{if}(FAILED(hr))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00108}00108\ \ \ std::wstring\ sModuleName;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00109}00109\ \ \ hr\ =\ ToastPP::CManager::GetExecutablePath(sModuleName);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00110}00110\ \ \ \textcolor{keywordflow}{if}(FAILED(hr))\ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00112}00112\ \ \ RegisterCOMServer(sModuleName.c\_str());}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00114}00114\ \ \ hr\ =\ ToastPP::CManager::RegisterForNotificationSupport(titleowner,\ sModuleName.c\_str(),\ genericapp,\ \_\_uuidof(CToastNotificationActivationCallback));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00115}00115\ \ \ \textcolor{keywordflow}{if}(FAILED(hr))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00117}00117\ \ \ hr\ =\ manager.Create(genericapp);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00118}00118\ \ \ \textcolor{keywordflow}{if}(FAILED(hr))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00120}00120\ \ \ RegisterActivator();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00122}00122\ \textcolor{preprocessor}{\ \ \#endif}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00124}00124\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00125}00125\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00139}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_gab3e67b68133a83fb7ab95dec93feeaa8}{00139}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_gab3e67b68133a83fb7ab95dec93feeaa8}{DIOWINDOWSNOTIFICATIONSMANAGER::Do}}(\mbox{\hyperlink{class_d_i_o_n_o_t_i_f_i_c_a_t_i_o_n}{DIONOTIFICATION}}*\ notification)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00140}00140\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00141}00141\ \textcolor{preprocessor}{\ \ \#if(\_MSC\_VER\ >=\ 1700)\ \&\&\ defined(\_USING\_V110\_SDK71\_)}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00143}00143\ \ \ ShowBaloon(notification-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga8804dc154def137e266707391c6cbcab}{Get\_Title}}()-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}(),\ notification-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga4fa40703df574dc1ffbafce3af9a6773}{Get\_Message}}()-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}(),\ (HWND)notification-\/>GetWindowHandle(),\ (HICON)notification-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga36a77dc326a3a4b2f2d9e6e672d96f9f}{GetApplicationIcon}}());}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00145}00145\ \textcolor{preprocessor}{\ \ \#else}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00147}00147\ \ \ \mbox{\hyperlink{class_x_s_t_r_i_n_g}{XSTRING}}\ payload;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00149}00149\ \ \ payload\ +=\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}<toast>\ <visual>\ <binding\ template=\(\backslash\)"{}ToastGeneric\(\backslash\)"{}>"{}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00150}00150\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00151}00151\ \ \ \textcolor{keywordflow}{if}(!notification-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga8804dc154def137e266707391c6cbcab}{Get\_Title}}()-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_gad26690161f8c1e2722771322b7370005}{IsEmpty}}())\ \ \ \ payload.\mbox{\hyperlink{group___x_u_t_i_l_s_gae52f1473bb03e9d7260c7722e19ce223}{AddFormat}}(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}<text>\%s</text>"{}}),\ notification-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga8804dc154def137e266707391c6cbcab}{Get\_Title}}()-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}());}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00152}00152\ \ \ \textcolor{keywordflow}{if}(!notification-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga4fa40703df574dc1ffbafce3af9a6773}{Get\_Message}}()-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_gad26690161f8c1e2722771322b7370005}{IsEmpty}}())\ \ payload.\mbox{\hyperlink{group___x_u_t_i_l_s_gae52f1473bb03e9d7260c7722e19ce223}{AddFormat}}(\mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}<text>\%s</text>"{}}),\ notification-\/>\mbox{\hyperlink{group___d_a_t_a_i_o_ga4fa40703df574dc1ffbafce3af9a6773}{Get\_Message}}()-\/>\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}());}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00154}00154\ \ \ payload\ +=\ \mbox{\hyperlink{_x_string_8h_a2cbff438813b72648c18c8af875f47c9}{\_\_L}}(\textcolor{stringliteral}{"{}</binding></visual></toast>"{}});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00156}00156\ \ \ HRESULT\ hr\ =\ toast.Create(payload.\mbox{\hyperlink{group___x_u_t_i_l_s_gad1470753a96f93e2feb3ee54e6fef95f}{Get}}());}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00157}00157\ \ \ \textcolor{keywordflow}{if}(FAILED(hr))}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00158}00158\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00159}00159\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00160}00160\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00162}00162\ \ \ \textcolor{comment}{//Show\ the\ toast}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00163}00163\ \ \ hr\ =\ manager.Show(toast,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00164}00164\ \ \ \textcolor{keywordflow}{if}(FAILED(hr))}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00165}00165\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00166}00166\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00167}00167\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00169}00169\ \textcolor{preprocessor}{\ \ \#endif}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00171}00171\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00172}00172\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00184}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_ga3f8e871d9844e460b8cf0b97ea7c4cec}{00184}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_ga3f8e871d9844e460b8cf0b97ea7c4cec}{DIOWINDOWSNOTIFICATIONSMANAGER::End}}()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00185}00185\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00186}00186\ \textcolor{preprocessor}{\ \ \#if(\_MSC\_VER\ >=\ 1700)\ \&\&\ defined(\_USING\_V110\_SDK71\_)}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00188}00188\ \textcolor{preprocessor}{\ \ \#else}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00190}00190\ \ \ UnregisterActivator();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00191}00191\ \ \ UnRegisterCOMServer();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00193}00193\ \ \ manager.Detach();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00195}00195\ \textcolor{preprocessor}{\ \ \#endif}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00197}00197\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00198}00198\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00201}00201\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00202}00202\ \textcolor{preprocessor}{\#if(\_MSC\_VER\ >=\ 1700)\ \&\&\ defined(\_USING\_V110\_SDK71\_)}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00218}00218\ BOOL\ DIOWINDOWSNOTIFICATIONSMANAGER::ShowBaloon(LPCTSTR\ title,\ LPCTSTR\ text,\ HWND\ hwnd,\ HICON\ hicon)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00219}00219\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00220}00220\ \ \ NOTIFYICONDATA\ \ \ \ nid\ \ \ \ \ =\ \{\};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00221}00221\ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ GUID\ myguid\ \ =\ \{\ 0x23977b55,\ 0x10e0,\ 0x4041,\ \{\ 0xb8,\ 0x62,\ 0xb1,\ 0x95,\ 0x41,\ 0x96,\ 0x36,\ 0x68\ \}\ \};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00222}00222\ \ \ BOOL\ \ \ \ \ \ \ \ \ \ \ \ \ \ result\ \ =\ \mbox{\hyperlink{_x_s_t_m32___h_a_l_8h_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00224}00224\ \ \ ZeroMemory(\&nid,\ \textcolor{keyword}{sizeof}(NOTIFYICONDATA));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00226}00226\ \ \ nid.cbSize\ \ \ \ \ \ \ \ \ \ \ \ =\ \textcolor{keyword}{sizeof}(nid);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00227}00227\ \ \ nid.hWnd\ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ hwnd;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00228}00228\ \ \ nid.uVersion\ \ \ \ \ \ \ \ \ \ =\ 4;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00229}00229\ \ \ nid.uID\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ 1;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00230}00230\ \ \ nid.guidItem\ \ \ \ \ \ \ \ \ \ =\ myguid;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00231}00231\ \ \ nid.hIcon\ \ \ \ \ \ \ \ \ \ \ \ \ =\ hicon;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00232}00232\ \ \ nid.uFlags\ \ \ \ \ \ \ \ \ \ \ \ =\ NIF\_TIP\ |\ NIF\_ICON\ |\ NIF\_MESSAGE\ |\ NIF\_INFO\ |\ 0x00000080;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00233}00233\ \ \ nid.uCallbackMessage\ \ =\ WM\_LBUTTONDOWN;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00234}00234\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00235}00235\ \ \ wcscpy\_s(nid.szInfo\ \ \ \ \ ,\ ARRAYSIZE(nid.szInfo)\ \ \ \ \ ,\ text);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00236}00236\ \ \ wcscpy\_s(nid.szInfoTitle,\ ARRAYSIZE(nid.szInfoTitle),\ title);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00237}00237\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00238}00238\ \ \ result\ =\ Shell\_NotifyIcon(NIM\_DELETE,\ \&nid);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00239}00239\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00240}00240\ \ \ result\ =\ Shell\_NotifyIcon(NIM\_ADD,\ \&nid);}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00242}00242\ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00243}00243\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00244}00244\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00245}00245\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00246}00246\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00247}00247\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00248}00248\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00260}00260\ HRESULT\ \ DIOWINDOWSNOTIFICATIONSMANAGER::RegisterCOMServer(\_In\_z\_\ PCWSTR\ pszExePath)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00261}00261\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00262}00262\ \ \ \textcolor{comment}{//In\ this\ case,\ just\ register\ this\ application\ to\ start}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00263}00263\ \ \ \textcolor{keywordflow}{return}\ HRESULT\_FROM\_WIN32(::RegSetKeyValueW(HKEY\_CURRENT\_USER,\ L\textcolor{stringliteral}{"{}SOFTWARE\(\backslash\)\(\backslash\)Classes\(\backslash\)\(\backslash\)CLSID\(\backslash\)\(\backslash\)\{383803B6-\/AFDA-\/4220-\/BFC3-\/0DBF810106BF\}\(\backslash\)\(\backslash\)LocalServer32"{}},\ \textcolor{keyword}{nullptr},\ REG\_SZ,\ pszExePath,\ \textcolor{keyword}{static\_cast<}DWORD\textcolor{keyword}{>}(wcslen(pszExePath)*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{wchar\_t}))));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00264}00264\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00265}00265\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00266}00266\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00276}00276\ HRESULT\ \ DIOWINDOWSNOTIFICATIONSMANAGER::UnRegisterCOMServer()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00277}00277\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00278}00278\ \ \ HRESULT\ hr\ =\ HRESULT\_FROM\_WIN32(::RegDeleteKey(HKEY\_CURRENT\_USER,\ \_T(\textcolor{stringliteral}{"{}SOFTWARE\(\backslash\)\(\backslash\)Classes\(\backslash\)\(\backslash\)CLSID\(\backslash\)\(\backslash\)\{383803B6-\/AFDA-\/4220-\/BFC3-\/0DBF810106BF\}\(\backslash\)\(\backslash\)LocalServer32"{}})));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00279}00279\ \ \ \textcolor{keywordflow}{if}(FAILED(hr))\ \textcolor{keywordflow}{return}\ hr;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00280}00280\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00281}00281\ \ \ \textcolor{keywordflow}{return}\ HRESULT\_FROM\_WIN32(::RegDeleteKey(HKEY\_CURRENT\_USER,\ \_T(\textcolor{stringliteral}{"{}SOFTWARE\(\backslash\)\(\backslash\)Classes\(\backslash\)\(\backslash\)CLSID\(\backslash\)\(\backslash\)\{383803B6-\/AFDA-\/4220-\/BFC3-\/0DBF810106BF\}"{}})));}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00282}00282\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00283}00283\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00284}00284\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00294}00294\ HRESULT\ \ DIOWINDOWSNOTIFICATIONSMANAGER::RegisterActivator()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00295}00295\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00296}00296\ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ iscreate\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00297}00297\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00298}00298\ \ \ \textcolor{keywordflow}{if}(iscreate)\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00299}00299\ \ \ \ \ \{\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00300}00300\ \ \ \ \ \ \ Microsoft::WRL::Module<Microsoft::WRL::OutOfProc>::Create([]\ \{\});}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00301}00301\ \ \ \ \ \ \ iscreate\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00302}00302\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00303}00303\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00304}00304\ \ \ Microsoft::WRL::Module<Microsoft::WRL::OutOfProc>::GetModule().IncrementObjectCount();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00305}00305\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00306}00306\ \ \ \textcolor{keywordflow}{return}\ Microsoft::WRL::Module<Microsoft::WRL::OutOfProc>::GetModule().RegisterObjects();}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00307}00307\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00308}00308\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00309}00309\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00317}00317\ \textcolor{keywordtype}{void}\ \ DIOWINDOWSNOTIFICATIONSMANAGER::UnregisterActivator()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00318}00318\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00319}00319\ \ \ \textcolor{comment}{//Microsoft::WRL::Module<Microsoft::WRL::OutOfProc>::GetModule().DecrementObjectCount();\ \ }}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00320}00320\ \ \ \textcolor{comment}{//Microsoft::WRL::Module<Microsoft::WRL::OutOfProc>::GetModule().UnregisterObjects();\ \ }}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00321}00321\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00322}00322\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00338}00338\ HRESULT\ CToastNotificationActivationCallback::Activate(\_\_RPC\_\_in\_string\ LPCWSTR\ appUserModelId,\ \_\_RPC\_\_in\_opt\_string\ LPCWSTR\ \mbox{\hyperlink{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8h_a0a2f5e8fed87e2f21b9a8ec72222cf26}{invokedArgs}},\ \mbox{\hyperlink{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8h_ad308bcd32aa612bdf76be1a354c57c58}{\_\_RPC\_\_in\_ecount\_full\_opt}}(\mbox{\hyperlink{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8h_a6651a982e902850154af16d890039253}{count}})\ \textcolor{keyword}{const}\ \mbox{\hyperlink{struct_n_o_t_i_f_i_c_a_t_i_o_n___u_s_e_r___i_n_p_u_t___t_i_c_k_e_t}{NOTIFICATION\_USER\_INPUT\_TICKET}}*\ data,\ ULONG\ \mbox{\hyperlink{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8h_a6651a982e902850154af16d890039253}{count}})}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00339}00339\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00340}00340\ \ \ \textcolor{keywordflow}{return}\ S\_OK;}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00341}00341\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00342}00342\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00343}00343\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00354}00354\ \textcolor{keywordtype}{void}\ DIOWINDOWSNOTIFICATIONSMANAGER::ReportToastNotification(\_In\_z\_\ LPCTSTR\ pszDetails,\ \_In\_\ BOOL\ bAppend)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00355}00355\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00356}00356\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00357}00357\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00358}00358\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00359}00359\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00370}00370\ \textcolor{keywordtype}{void}\ DIOWINDOWSNOTIFICATIONSMANAGER::OnToastActivated(\_In\_opt\_\ ABI::Windows::UI::Notifications::IToastNotification*\ pSender,\ \_In\_opt\_\ IInspectable*\ pArgs)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00371}00371\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00372}00372\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00373}00373\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00374}00374\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00375}00375\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00386}00386\ \textcolor{keywordtype}{void}\ DIOWINDOWSNOTIFICATIONSMANAGER::OnToastDismissed(\_In\_opt\_\ ABI::Windows::UI::Notifications::IToastNotification*\ pSender,\ \_In\_\ ABI::Windows::UI::Notifications::ToastDismissalReason\ reason)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00387}00387\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00388}00388\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00389}00389\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00390}00390\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00391}00391\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00402}00402\ \textcolor{keywordtype}{void}\ DIOWINDOWSNOTIFICATIONSMANAGER::OnToastFailed(\_In\_opt\_\ ABI::Windows::UI::Notifications::IToastNotification*\ pSender,\ \_In\_\ HRESULT\ errorCode)}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00403}00403\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00404}00404\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00405}00405\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00406}00406\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00407}00407\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00408}00408\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00409}00409\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00410}00410\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00411}00411\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00420}00420\ \textcolor{keywordtype}{void}\ DIOWINDOWSNOTIFICATIONSMANAGER::Clean()}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00421}00421\ \{}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00422}00422\ \textcolor{preprocessor}{\ \ \#if(\_MSC\_VER\ >=\ 1700)\ \&\&\ defined(\_USING\_V110\_SDK71\_)}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00423}00423\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00424}00424\ \textcolor{preprocessor}{\ \ \#else}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00425}00425\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00426}00426\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00427}00427\ \textcolor{preprocessor}{\ \ \#endif}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00428}00428\ \}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00429}00429\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00430}00430\ }
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00431}00431\ \textcolor{preprocessor}{\#pragma\ endregion}}
+\DoxyCodeLine{\Hypertarget{_d_i_o_w_i_n_d_o_w_s_notifications_manager_8cpp_source_l00432}00432\ }
+
+\end{DoxyCode}

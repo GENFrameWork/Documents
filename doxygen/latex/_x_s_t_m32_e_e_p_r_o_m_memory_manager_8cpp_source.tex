@@ -1,0 +1,109 @@
+\doxysection{XSTM32\+EEPROMMemory\+Manager.\+cpp}
+\hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source}{}\label{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source}\index{D:/Projects/GENFrameWork/GEN/Platforms/Microcontrollers/STM32/XSTM32EEPROMMemoryManager.cpp@{D:/Projects/GENFrameWork/GEN/Platforms/Microcontrollers/STM32/XSTM32EEPROMMemoryManager.cpp}}
+\mbox{\hyperlink{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00029}00029\ \textcolor{comment}{/*-\/-\/-\/-\/\ PRECOMPILATION\ CONTROL\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_g_e_n___defines_8h}{GEN\_Defines.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00034}00034\ \textcolor{comment}{/*-\/-\/-\/-\/\ INCLUDES\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00036}00036\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00037}00037\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00039}00039\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8h}{XSTM32EEPROMMemoryManager.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00041}00041\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_x_memory___control_8h}{XMemory\_Control.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00043}00043\ \textcolor{comment}{/*-\/-\/-\/-\/\ GENERAL\ VARIABLE\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00045}00045\ \textcolor{comment}{/*-\/-\/-\/-\/\ CLASS\ MEMBERS\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/*/}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00055}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___s_t_m32_gad3c7d34ed1e024fcb54613c4d82ef514}{00055}}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___s_t_m32_gad3c7d34ed1e024fcb54613c4d82ef514}{XSTM32EEPROMMEMORYMANAGER::XSTM32EEPROMMEMORYMANAGER}}()}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00056}00056\ \{}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00058}00058\ \}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00070}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___s_t_m32_ga60a57bed6750b67061e61a0c979a8c52}{00070}}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___s_t_m32_ga60a57bed6750b67061e61a0c979a8c52}{XSTM32EEPROMMEMORYMANAGER::\string~XSTM32EEPROMMEMORYMANAGER}}()}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00071}00071\ \{}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00073}00073\ \}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00086}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___s_t_m32_gacb115ad7f1d9503c5d46e1beab7cc351}{00086}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___s_t_m32_gacb115ad7f1d9503c5d46e1beab7cc351}{XSTM32EEPROMMEMORYMANAGER::Ini}}()}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00087}00087\ \{}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00088}00088\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00089}00089\ \}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00102}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___s_t_m32_gac5f5e2a6d3e0228ab0c9490797010c2a}{00102}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___s_t_m32_gac5f5e2a6d3e0228ab0c9490797010c2a}{XSTM32EEPROMMEMORYMANAGER::End}}()}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00103}00103\ \{}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00104}00104\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00105}00105\ \}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00122}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___s_t_m32_ga1e8d2851e2c159a6700815bc5109eaca}{00122}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___s_t_m32_ga1e8d2851e2c159a6700815bc5109eaca}{XSTM32EEPROMMEMORYMANAGER::Read}}(\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ offset,\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ data,\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ size)}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00123}00123\ \{}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00124}00124\ \ \ \textcolor{keywordflow}{if}((offset\ +\ size)\ >\ \mbox{\hyperlink{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8h_a4bf1ca078e9b1842df8bae0c69a46bf7}{XSTM32EEPROMMEMORYMANAGER\_MAXSIZE}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00126}00126\ \textcolor{preprocessor}{\ \ \#if\ defined(STM32F407xx)\ ||\ defined(STM32F446xx)}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00128}00128\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ c=0;\ c<size;\ c++)}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00129}00129\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00130}00130\ \ \ \ \ \ \ (*(data+c))\ =\ (*(\_\_IO\ uint8\_t\ *)(\mbox{\hyperlink{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8h_a48dbb7f1b388ce11738dc904702c26d9}{XSTM32EEPROMMEMORYMANAGER\_BASE}}+offset+c));}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00131}00131\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00133}00133\ \textcolor{preprocessor}{\ \ \#endif}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00135}00135\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00136}00136\ \}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00153}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___s_t_m32_ga8d88c574495fdfb4ed722e6c6ea66e54}{00153}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___s_t_m32_ga8d88c574495fdfb4ed722e6c6ea66e54}{XSTM32EEPROMMEMORYMANAGER::Write}}(\mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ offset,\ \mbox{\hyperlink{_x_base_8h_a7ba3d378cab4450418bec78e604d47da}{XBYTE}}*\ data,\ \mbox{\hyperlink{_x_base_8h_a0e5b572e67f127f1afb599e257c539cf}{XDWORD}}\ size)}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00154}00154\ \{}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00155}00155\ \ \ \textcolor{keywordflow}{if}((offset\ +\ size)\ >\ \mbox{\hyperlink{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8h_a4bf1ca078e9b1842df8bae0c69a46bf7}{XSTM32EEPROMMEMORYMANAGER\_MAXSIZE}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00157}00157\ \textcolor{preprocessor}{\ \ \#if\ defined(STM32F407xx)\ ||\ defined(STM32F446xx)}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00158}00158\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00159}00159\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ c=0;\ c<size;\ c++)}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00160}00160\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00161}00161\ \ \ \ \ \ \ (*(\_\_IO\ uint8\_t\ *)(\mbox{\hyperlink{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8h_a48dbb7f1b388ce11738dc904702c26d9}{XSTM32EEPROMMEMORYMANAGER\_BASE}}+offset+c))\ =\ (*(data+c));}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00162}00162\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00164}00164\ \textcolor{preprocessor}{\ \ \#endif}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00166}00166\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00167}00167\ \}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00180}\mbox{\hyperlink{group___p_l_a_t_f_o_r_m___s_t_m32_ga46df2096d7eee3304fcd816bc6622231}{00180}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{group___p_l_a_t_f_o_r_m___s_t_m32_ga46df2096d7eee3304fcd816bc6622231}{XSTM32EEPROMMEMORYMANAGER::EraseAll}}()}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00181}00181\ \{}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00182}00182\ \textcolor{preprocessor}{\ \ \#if\ defined(STM32F407xx)\ ||\ defined(STM32F446xx)}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00184}00184\ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ c=0;\ c<\mbox{\hyperlink{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8h_a4bf1ca078e9b1842df8bae0c69a46bf7}{XSTM32EEPROMMEMORYMANAGER\_MAXSIZE}};\ c++)}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00185}00185\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00186}00186\ \ \ \ \ \ \ (*(\_\_IO\ uint8\_t\ *)(\mbox{\hyperlink{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8h_a48dbb7f1b388ce11738dc904702c26d9}{XSTM32EEPROMMEMORYMANAGER\_BASE}}+c))=\ 0;}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00187}00187\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00188}00188\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00189}00189\ \textcolor{preprocessor}{\ \ \#endif}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00190}00190\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00191}00191\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00192}00192\ \}}
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{_x_s_t_m32_e_e_p_r_o_m_memory_manager_8cpp_source_l00198}00198\ }
+
+\end{DoxyCode}

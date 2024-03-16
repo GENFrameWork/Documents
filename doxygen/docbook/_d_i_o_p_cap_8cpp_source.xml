@@ -1,0 +1,737 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_i_o_p_cap_8cpp_source" xml:lang="en-US">
+<title>DIOPCap.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/DataIO/DIOPCap.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00036"/>00036 <emphasis role="preprocessor">#ifdef&#32;DIO_PCAP_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00037"/>00037 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00038"/>00038 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00039"/>00039 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00040"/>00040 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00041"/>00041 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_p_cap_8h">DIOPCap.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00042"/>00042 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&lt;string.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00045"/>00045 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_base_8h">XBase.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_factory_8h">XFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_vector_8h">XVector.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00049"/>00049 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_system_8h">XSystem.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00050"/>00050 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00052"/>00052 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00053"/>00053 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00054"/>00054 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00055"/>00055 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00056"/>00056 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00057"/>00057 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00058"/>00058 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00059"/>00059 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00061"/>00061 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00062"/>00062 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00063"/>00063 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00064"/>00064 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00065"/>00065 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00066"/>00066 <emphasis role="preprocessor">#pragma&#32;region&#32;DIOPCAPNETINTERFACE_CLASS</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00067"/>00067 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00068"/>00068 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00078"/>00078 DIOPCAPNETINTERFACE::DIOPCAPNETINTERFACE()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00079"/>00079 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00080"/>00080 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00081"/>00081 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00082"/>00082 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00083"/>00083 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00094"/>00094 DIOPCAPNETINTERFACE::~DIOPCAPNETINTERFACE()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00095"/>00095 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00096"/>00096 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00097"/>00097 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00098"/>00098 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00099"/>00099 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00109"/>00109 <link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;DIOPCAPNETINTERFACE::GetName()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00110"/>00110 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00111"/>00111 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;name;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00112"/>00112 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00113"/>00113 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00114"/>00114 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00124"/>00124 <link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;DIOPCAPNETINTERFACE::GetDescription()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00125"/>00125 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00126"/>00126 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;description;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00127"/>00127 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00128"/>00128 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00129"/>00129 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00139"/>00139 <emphasis role="keywordtype">bool</emphasis>&#32;DIOPCAPNETINTERFACE::IsUp()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00140"/>00140 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00141"/>00141 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;isup;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00142"/>00142 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00143"/>00143 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00144"/>00144 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00156"/>00156 <emphasis role="keywordtype">void</emphasis>&#32;DIOPCAPNETINTERFACE::SetIsUp(<emphasis role="keywordtype">bool</emphasis>&#32;isup)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00157"/>00157 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00158"/>00158 &#32;&#32;this-&gt;isup&#32;=&#32;isup;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00159"/>00159 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00160"/>00160 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00161"/>00161 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00171"/>00171 <emphasis role="keywordtype">bool</emphasis>&#32;DIOPCAPNETINTERFACE::IsRunning()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00172"/>00172 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00173"/>00173 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;isrunning;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00174"/>00174 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00175"/>00175 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00176"/>00176 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00188"/>00188 <emphasis role="keywordtype">void</emphasis>&#32;DIOPCAPNETINTERFACE::SetIsRunning(<emphasis role="keywordtype">bool</emphasis>&#32;isrunning)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00189"/>00189 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00190"/>00190 &#32;&#32;this-&gt;isrunning&#32;=&#32;isrunning;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00191"/>00191 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00192"/>00192 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00193"/>00193 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00203"/>00203 <emphasis role="keywordtype">bool</emphasis>&#32;DIOPCAPNETINTERFACE::IsWireless()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00204"/>00204 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00205"/>00205 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;iswireless;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00206"/>00206 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00207"/>00207 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00208"/>00208 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00220"/>00220 <emphasis role="keywordtype">void</emphasis>&#32;DIOPCAPNETINTERFACE::SetIsWireless(<emphasis role="keywordtype">bool</emphasis>&#32;iswireless)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00221"/>00221 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00222"/>00222 &#32;&#32;this-&gt;iswireless&#32;=&#32;iswireless;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00223"/>00223 }&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00224"/>00224 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00225"/>00225 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00235"/>00235 <emphasis role="keywordtype">bool</emphasis>&#32;DIOPCAPNETINTERFACE::IsLoopBack()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00236"/>00236 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00237"/>00237 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;isloopback;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00238"/>00238 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00239"/>00239 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00240"/>00240 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00252"/>00252 <emphasis role="keywordtype">void</emphasis>&#32;DIOPCAPNETINTERFACE::SetIsLoopBack(<emphasis role="keywordtype">bool</emphasis>&#32;isloopback)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00253"/>00253 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00254"/>00254 &#32;&#32;this-&gt;isloopback&#32;=&#32;isloopback;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00255"/>00255 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00256"/>00256 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00257"/>00257 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00268"/>00268 <emphasis role="keywordtype">void</emphasis>&#32;DIOPCAPNETINTERFACE::Clean()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00269"/>00269 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00270"/>00270 &#32;&#32;isup&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00271"/>00271 &#32;&#32;isrunning&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00272"/>00272 &#32;&#32;iswireless&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00273"/>00273 &#32;&#32;isloopback&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00274"/>00274 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00275"/>00275 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00276"/>00276 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00277"/>00277 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00278"/>00278 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00279"/>00279 <emphasis role="preprocessor">#pragma&#32;region&#32;DIOPCAPFRAME_CLASS</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00280"/>00280 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00281"/>00281 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00294"/>00294 DIOPCAPFRAME::DIOPCAPFRAME(<emphasis role="keywordtype">bool</emphasis>&#32;hardwareuselittleendian,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;isloopback)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00295"/>00295 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00296"/>00296 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00297"/>00297 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00298"/>00298 &#32;&#32;this-&gt;hardwareuselittleendian&#32;=&#32;hardwareuselittleendian;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00299"/>00299 &#32;&#32;this-&gt;isloopback&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;isloopback;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00300"/>00300 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00301"/>00301 &#32;&#32;data&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00302"/>00302 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00303"/>00303 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00304"/>00304 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00305"/>00305 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00316"/>00316 DIOPCAPFRAME::~DIOPCAPFRAME()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00317"/>00317 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00318"/>00318 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(data)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00319"/>00319 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00320"/>00320 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;data;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00321"/>00321 &#32;&#32;&#32;&#32;&#32;&#32;data&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00322"/>00322 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00323"/>00323 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00324"/>00324 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00325"/>00325 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00326"/>00326 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00327"/>00327 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00337"/>00337 <link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>*&#32;DIOPCAPFRAME::GetData()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00338"/>00338 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00339"/>00339 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;data;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00340"/>00340 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00341"/>00341 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00342"/>00342 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00355"/>00355 <emphasis role="keywordtype">bool</emphasis>&#32;DIOPCAPFRAME::SetData(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;data,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;size)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00356"/>00356 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00357"/>00357 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!this-&gt;data)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00358"/>00358 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!data)&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00359"/>00359 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!size)&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00360"/>00360 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00361"/>00361 &#32;&#32;this-&gt;data-&gt;<link linkend="_class_x_b_u_f_f_e_r_1a0395231705663a2aeeee3b4be9d292bb">Delete</link>();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00362"/>00362 &#32;&#32;this-&gt;data-&gt;Add(data,size);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00363"/>00363 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00364"/>00364 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00365"/>00365 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00366"/>00366 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00367"/>00367 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00377"/>00377 DIOPCAPPROTOCOL_TYPE&#32;DIOPCAPFRAME::GetProtocolType()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00378"/>00378 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00379"/>00379 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;protocoltype;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00380"/>00380 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00381"/>00381 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00382"/>00382 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00394"/>00394 <emphasis role="keywordtype">void</emphasis>&#32;DIOPCAPFRAME::GetProtocolTypeString(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;protocoltypestr)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00395"/>00395 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00396"/>00396 &#32;&#32;protocoltypestr.<link linkend="_class_x_s_t_r_i_n_g_1a9275997c1605fa79646c301e63a77d06">Empty</link>();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00397"/>00397 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00398"/>00398 &#32;&#32;<emphasis role="keywordflow">switch</emphasis>(protocoltype)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00399"/>00399 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00400"/>00400 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;DIOPCAPPROTOCOL_TYPE_UNKNOWN&#32;&#32;:&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00401"/>00401 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;DIOPCAPPROTOCOL_TYPE_ICMP&#32;&#32;&#32;&#32;&#32;:&#32;protocoltypestr&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;ICMP&quot;</emphasis>);&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00402"/>00402 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;DIOPCAPPROTOCOL_TYPE_UDP&#32;&#32;&#32;&#32;&#32;&#32;:&#32;protocoltypestr&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;UDP&quot;</emphasis>);&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00403"/>00403 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;DIOPCAPPROTOCOL_TYPE_TCP&#32;&#32;&#32;&#32;&#32;&#32;:&#32;protocoltypestr&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;TCP&quot;</emphasis>);&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00404"/>00404 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00405"/>00405 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00406"/>00406 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00407"/>00407 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00419"/>00419 <emphasis role="keywordtype">bool</emphasis>&#32;DIOPCAPFRAME::SetProtocolType(DIOPCAPPROTOCOL_TYPE&#32;protocoltype)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00420"/>00420 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00421"/>00421 &#32;&#32;this-&gt;protocoltype&#32;=&#32;protocoltype;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00422"/>00422 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00423"/>00423 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00424"/>00424 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00425"/>00425 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00426"/>00426 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00436"/>00436 <link linkend="_class_d_i_o_m_a_c">DIOMAC</link>*&#32;DIOPCAPFRAME::GetSourceMAC()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00437"/>00437 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00438"/>00438 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;sourceMAC;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00439"/>00439 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00440"/>00440 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00441"/>00441 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00451"/>00451 <link linkend="_class_d_i_o_m_a_c">DIOMAC</link>*&#32;DIOPCAPFRAME::GetTargetMAC()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00452"/>00452 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00453"/>00453 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;targetMAC;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00454"/>00454 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00455"/>00455 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00456"/>00456 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00466"/>00466 <link linkend="_class_d_i_o_i_p">DIOIP</link>*&#32;DIOPCAPFRAME::GetSourceIP()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00467"/>00467 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00468"/>00468 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;sourceIP;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00469"/>00469 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00470"/>00470 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00471"/>00471 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00481"/>00481 <link linkend="_class_d_i_o_i_p">DIOIP</link>*&#32;DIOPCAPFRAME::GetTargetIP()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00482"/>00482 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00483"/>00483 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;targetIP;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00484"/>00484 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00485"/>00485 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00486"/>00486 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00496"/>00496 <link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;DIOPCAPFRAME::GetSourcePort()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00497"/>00497 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00498"/>00498 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;sourceport;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00499"/>00499 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00500"/>00500 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00501"/>00501 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00513"/>00513 <emphasis role="keywordtype">bool</emphasis>&#32;DIOPCAPFRAME::SetSourcePort(<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;port)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00514"/>00514 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00515"/>00515 &#32;&#32;this-&gt;sourceport&#32;=&#32;port;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00516"/>00516 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00517"/>00517 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00518"/>00518 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00519"/>00519 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00520"/>00520 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00530"/>00530 <link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;DIOPCAPFRAME::GetTargetPort()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00531"/>00531 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00532"/>00532 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;targetport;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00533"/>00533 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00534"/>00534 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00535"/>00535 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00547"/>00547 <emphasis role="keywordtype">bool</emphasis>&#32;DIOPCAPFRAME::SetTargetPort(<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;port)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00548"/>00548 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00549"/>00549 &#32;&#32;this-&gt;targetport&#32;=&#32;port;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00550"/>00550 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00551"/>00551 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00552"/>00552 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00553"/>00553 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00554"/>00554 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00564"/>00564 <link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;DIOPCAPFRAME::GetDataPayload()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00565"/>00565 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00566"/>00566 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;data_payload;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00567"/>00567 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00568"/>00568 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00569"/>00569 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00579"/>00579 <emphasis role="keywordtype">int</emphasis>&#32;DIOPCAPFRAME::GetDataPayLoadSize()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00580"/>00580 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00581"/>00581 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;data_payloadsize;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00582"/>00582 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00583"/>00583 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00584"/>00584 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00585"/>00585 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00595"/>00595 <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;DIOPCAPFRAME::GetAllHeadersSize()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00596"/>00596 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00597"/>00597 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;allheaderssize;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00598"/>00598 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00599"/>00599 &#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00600"/>00600 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00612"/>00612 <emphasis role="keywordtype">void</emphasis>&#32;DIOPCAPFRAME::SetAllHeadersSize(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;allheaderssize)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00613"/>00613 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00614"/>00614 &#32;&#32;this-&gt;allheaderssize&#32;=&#32;allheaderssize;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00615"/>00615 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00616"/>00616 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00617"/>00617 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00629"/>00629 <emphasis role="keywordtype">bool</emphasis>&#32;DIOPCAPFRAME::GetHeader(DIOPCAPETHERNETHEADER&amp;&#32;header)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00630"/>00630 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00631"/>00631 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!data)&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00632"/>00632 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00633"/>00633 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00634"/>00634 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00635"/>00635 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00636"/>00636 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(data-&gt;GetSize()&#32;&lt;&#32;(<emphasis role="keyword">sizeof</emphasis>(DIOPCAPETHERNETHEADER)))&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00637"/>00637 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00638"/>00638 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00639"/>00639 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00640"/>00640 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00641"/>00641 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!ethernet_header)&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00642"/>00642 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00643"/>00643 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00644"/>00644 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00645"/>00645 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00646"/>00646 &#32;&#32;memcpy((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;header,(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)(ethernet_header),<emphasis role="keyword">sizeof</emphasis>(DIOPCAPETHERNETHEADER));
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00647"/>00647 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00648"/>00648 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(hardwareuselittleendian)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00649"/>00649 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00650"/>00650 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1afacb625223a89d4cdf212ac4482a7e5c">SWAPWORD</link>(header.type);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00651"/>00651 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00652"/>00652 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00653"/>00653 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00654"/>00654 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00655"/>00655 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00656"/>00656 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00668"/>00668 <emphasis role="keywordtype">bool</emphasis>&#32;DIOPCAPFRAME::GetHeader(DIOPCAPIPHEADER&amp;&#32;header)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00669"/>00669 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00670"/>00670 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!data)&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00671"/>00671 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00672"/>00672 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00673"/>00673 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00674"/>00674 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00675"/>00675 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(data-&gt;GetSize()&#32;&lt;&#32;(<emphasis role="keyword">sizeof</emphasis>(DIOPCAPETHERNETHEADER)&#32;+&#32;<emphasis role="keyword">sizeof</emphasis>(DIOPCAPIPHEADER)))&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00676"/>00676 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00677"/>00677 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00678"/>00678 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00679"/>00679 &#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00680"/>00680 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!IP_header)&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00681"/>00681 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00682"/>00682 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00683"/>00683 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00684"/>00684 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00685"/>00685 &#32;&#32;memcpy((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;header,(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)(IP_header),<emphasis role="keyword">sizeof</emphasis>(DIOPCAPIPHEADER));
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00686"/>00686 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00687"/>00687 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(hardwareuselittleendian)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00688"/>00688 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00689"/>00689 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1afacb625223a89d4cdf212ac4482a7e5c">SWAPWORD</link>(header.len);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00690"/>00690 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1afacb625223a89d4cdf212ac4482a7e5c">SWAPWORD</link>(header.identification);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00691"/>00691 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1afacb625223a89d4cdf212ac4482a7e5c">SWAPWORD</link>(header.flags_fo);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00692"/>00692 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1afacb625223a89d4cdf212ac4482a7e5c">SWAPWORD</link>(header.CRC);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00693"/>00693 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00694"/>00694 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00695"/>00695 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;&#32;<emphasis role="comment">//length&#32;of&#32;ethernet&#32;header</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00696"/>00696 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00697"/>00697 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00698"/>00698 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00710"/>00710 <emphasis role="keywordtype">bool</emphasis>&#32;DIOPCAPFRAME::GetHeader(DIOPCAPUDPHEADER&amp;&#32;header)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00711"/>00711 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00712"/>00712 &#32;&#32;DIOPCAPIPHEADER&#32;ipheader;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00713"/>00713 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!GetHeader(ipheader))&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00714"/>00714 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00715"/>00715 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00716"/>00716 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00717"/>00717 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00718"/>00718 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;iplen&#32;=&#32;(ipheader.ver_ihl&#32;&amp;&#32;0xf)&#32;*&#32;4;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00719"/>00719 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00720"/>00720 &#32;&#32;UDP_header&#32;=&#32;(DIOPCAPUDPHEADER*)((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)data-&gt;Get()&#32;+&#32;<emphasis role="keyword">sizeof</emphasis>(DIOPCAPETHERNETHEADER)&#32;+&#32;iplen);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00721"/>00721 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!UDP_header)&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00722"/>00722 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00723"/>00723 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00724"/>00724 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00725"/>00725 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00726"/>00726 &#32;&#32;memcpy((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;header,(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)(UDP_header),<emphasis role="keyword">sizeof</emphasis>(DIOPCAPUDPHEADER));
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00727"/>00727 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00728"/>00728 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(hardwareuselittleendian)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00729"/>00729 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00730"/>00730 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1afacb625223a89d4cdf212ac4482a7e5c">SWAPWORD</link>(header.sourceport);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Source&#32;port</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00731"/>00731 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1afacb625223a89d4cdf212ac4482a7e5c">SWAPWORD</link>(header.targetport);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Target&#32;port</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00732"/>00732 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1afacb625223a89d4cdf212ac4482a7e5c">SWAPWORD</link>(header.datagramlen);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Datagram&#32;length</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00733"/>00733 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1afacb625223a89d4cdf212ac4482a7e5c">SWAPWORD</link>(header.checksum);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Checksum</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00734"/>00734 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00735"/>00735 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00736"/>00736 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00737"/>00737 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00738"/>00738 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00739"/>00739 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00751"/>00751 <emphasis role="keywordtype">bool</emphasis>&#32;DIOPCAPFRAME::GetHeader(DIOPCAPTCPHEADER&amp;&#32;header)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00752"/>00752 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00753"/>00753 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!TCP_header)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00754"/>00754 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00755"/>00755 &#32;&#32;memcpy((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;header,(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)(TCP_header),<emphasis role="keyword">sizeof</emphasis>(DIOPCAPTCPHEADER));
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00756"/>00756 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00757"/>00757 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(hardwareuselittleendian)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00758"/>00758 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00759"/>00759 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1afacb625223a89d4cdf212ac4482a7e5c">SWAPWORD</link>&#32;(header.sourceport);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00760"/>00760 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1afacb625223a89d4cdf212ac4482a7e5c">SWAPWORD</link>&#32;(header.targetport);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00761"/>00761 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a3a8bb12790711eb5164bf14eecd1cc4b">SWAPDWORD</link>(header.sequencenumber);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00762"/>00762 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a3a8bb12790711eb5164bf14eecd1cc4b">SWAPDWORD</link>(header.acknowledgementnumber);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00763"/>00763 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1afacb625223a89d4cdf212ac4482a7e5c">SWAPWORD</link>&#32;(header.hlenflags);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00764"/>00764 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1afacb625223a89d4cdf212ac4482a7e5c">SWAPWORD</link>&#32;(header.windowsize);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00765"/>00765 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1afacb625223a89d4cdf212ac4482a7e5c">SWAPWORD</link>&#32;(header.checksum);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00766"/>00766 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1afacb625223a89d4cdf212ac4482a7e5c">SWAPWORD</link>&#32;(header.urgentpointer);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00767"/>00767 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00768"/>00768 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00769"/>00769 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00770"/>00770 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00771"/>00771 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00772"/>00772 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00784"/>00784 <emphasis role="keywordtype">bool</emphasis>&#32;DIOPCAPFRAME::Set(DIOPCAPETHERNETHEADER*&#32;ethernet_header)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00785"/>00785 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00786"/>00786 &#32;&#32;this-&gt;ethernet_header&#32;=&#32;ethernet_header;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00787"/>00787 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00788"/>00788 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00789"/>00789 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00790"/>00790 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00791"/>00791 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00803"/>00803 <emphasis role="keywordtype">bool</emphasis>&#32;DIOPCAPFRAME::Set(DIOPCAPIPHEADER*&#32;IP_header)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00804"/>00804 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00805"/>00805 &#32;&#32;this-&gt;IP_header&#32;=&#32;IP_header;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00806"/>00806 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00807"/>00807 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00808"/>00808 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00809"/>00809 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00810"/>00810 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00822"/>00822 <emphasis role="keywordtype">bool</emphasis>&#32;DIOPCAPFRAME::Set(DIOPCAPUDPHEADER*&#32;UDP_header)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00823"/>00823 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00824"/>00824 &#32;&#32;this-&gt;UDP_header&#32;=&#32;UDP_header;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00825"/>00825 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00826"/>00826 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00827"/>00827 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00828"/>00828 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00829"/>00829 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00841"/>00841 <emphasis role="keywordtype">bool</emphasis>&#32;DIOPCAPFRAME::Set(DIOPCAPTCPHEADER*&#32;TCP_header)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00842"/>00842 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00843"/>00843 &#32;&#32;this-&gt;TCP_header&#32;=&#32;TCP_header;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00844"/>00844 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00845"/>00845 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00846"/>00846 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00847"/>00847 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00848"/>00848 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00861"/>00861 <emphasis role="keywordtype">bool</emphasis>&#32;DIOPCAPFRAME::Set(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;data_payload,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;data_payloadsize)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00862"/>00862 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00863"/>00863 &#32;&#32;this-&gt;data_payload&#32;&#32;&#32;&#32;&#32;&#32;=&#32;data_payload;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00864"/>00864 &#32;&#32;this-&gt;data_payloadsize&#32;&#32;=&#32;data_payloadsize;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00865"/>00865 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00866"/>00866 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00867"/>00867 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00868"/>00868 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00879"/>00879 <emphasis role="keywordtype">void</emphasis>&#32;DIOPCAPFRAME::Clean()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00880"/>00880 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00881"/>00881 &#32;&#32;hardwareuselittleendian&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00882"/>00882 &#32;&#32;isloopback&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00883"/>00883 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00884"/>00884 &#32;&#32;data&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00885"/>00885 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00886"/>00886 &#32;&#32;ethernet_header&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00887"/>00887 &#32;&#32;IP_header&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00888"/>00888 &#32;&#32;UDP_header&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00889"/>00889 &#32;&#32;TCP_header&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00890"/>00890 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00891"/>00891 &#32;&#32;protocoltype&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;DIOPCAPPROTOCOL_TYPE_UNKNOWN;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00892"/>00892 &#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00893"/>00893 &#32;&#32;sourceport&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00894"/>00894 &#32;&#32;targetport&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00895"/>00895 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00896"/>00896 &#32;&#32;data_payload&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00897"/>00897 &#32;&#32;data_payloadsize&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00898"/>00898 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00899"/>00899 &#32;&#32;allheaderssize&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00900"/>00900 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00901"/>00901 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00902"/>00902 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00903"/>00903 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00904"/>00904 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00905"/>00905 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00906"/>00906 <emphasis role="preprocessor">#pragma&#32;region&#32;DIOPCAP_CLASS</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00907"/>00907 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00917"/>00917 DIOPCAP::DIOPCAP()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00918"/>00918 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00919"/>00919 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00920"/>00920 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00921"/>00921 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00922"/>00922 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00933"/>00933 DIOPCAP::~DIOPCAP()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00934"/>00934 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00935"/>00935 &#32;&#32;End();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00936"/>00936 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00937"/>00937 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00938"/>00938 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00939"/>00939 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00940"/>00940 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00950"/>00950 <link linkend="_class_x_v_e_c_t_o_r">XVECTOR&lt;DIOPCAPNETINTERFACE*&gt;</link>*&#32;DIOPCAP::GetNetInterfaces()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00951"/>00951 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00952"/>00952 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;netinterfaces;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00953"/>00953 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00954"/>00954 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00955"/>00955 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00967"/>00967 DIOPCAPNETINTERFACE*&#32;DIOPCAP::GetNetInterface(<emphasis role="keywordtype">int</emphasis>&#32;index)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00968"/>00968 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00969"/>00969 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(DIOPCAPNETINTERFACE*)netinterfaces.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(index);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00970"/>00970 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00971"/>00971 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00972"/>00972 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00982"/>00982 DIOPCAPNETINTERFACE*&#32;DIOPCAP::GetNetInterfaceSelected()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00983"/>00983 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00984"/>00984 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;netinterfaceselected;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00985"/>00985 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00986"/>00986 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00987"/>00987 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00997"/>00997 <emphasis role="keywordtype">bool</emphasis>&#32;DIOPCAP::Ini()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00998"/>00998 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l00999"/>00999 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!CreateListNetInterfaces())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01000"/>01000 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01001"/>01001 &#32;&#32;GEN_XFACTORY_CREATE(xmutexframes,&#32;Create_Mutex())
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01002"/>01002 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01003"/>01003 &#32;&#32;return&#32;netinterfaces.GetSize()?true:false;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01004"/>01004 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01005"/>01005 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01006"/>01006 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01020"/>01020 <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_class_d_i_o_p_c_a_p">DIOPCAP</link>::Capture_Start(<emphasis role="keywordtype">int</emphasis>&#32;index,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;promiscuousmode,&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01021"/>01021 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01022"/>01022 &#32;&#32;DIOPCAPNETINTERFACE*&#32;netinterface&#32;=&#32;GetNetInterface(index);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01023"/>01023 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!netinterface)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01024"/>01024 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01025"/>01025 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;Capture_Start(netinterface,&#32;promiscuousmode,&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01026"/>01026 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01027"/>01027 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01028"/>01028 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01040"/>01040 DIOPCAPFRAME*&#32;DIOPCAP::Frames_Get(<emphasis role="keywordtype">int</emphasis>&#32;index)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01041"/>01041 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01042"/>01042 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(index&lt;0)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01043"/>01043 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(index&gt;=(<emphasis role="keywordtype">int</emphasis>)frames.GetSize())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01044"/>01044 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01045"/>01045 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexframes)&#32;xmutexframes-&gt;Lock();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01046"/>01046 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01047"/>01047 &#32;&#32;DIOPCAPFRAME*&#32;frame&#32;=&#32;(DIOPCAPFRAME*)frames.Get(index);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01048"/>01048 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01049"/>01049 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexframes)&#32;xmutexframes-&gt;UnLock();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01050"/>01050 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01051"/>01051 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;frame;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01052"/>01052 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01053"/>01053 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01054"/>01054 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01066"/>01066 <emphasis role="keywordtype">bool</emphasis>&#32;DIOPCAP::Frames_Delete(<emphasis role="keywordtype">int</emphasis>&#32;index)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01067"/>01067 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01068"/>01068 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexframes)&#32;xmutexframes-&gt;Lock();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01069"/>01069 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01070"/>01070 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01071"/>01071 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01072"/>01072 &#32;&#32;DIOPCAPFRAME*&#32;frame&#32;=&#32;(DIOPCAPFRAME*)frames.Get(index);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01073"/>01073 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(frame)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01074"/>01074 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01075"/>01075 &#32;&#32;&#32;&#32;&#32;&#32;frames.Delete(frame);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01076"/>01076 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;frame;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01077"/>01077 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01078"/>01078 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01079"/>01079 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01080"/>01080 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexframes)&#32;xmutexframes-&gt;UnLock();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01081"/>01081 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01082"/>01082 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01083"/>01083 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01084"/>01084 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01085"/>01085 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01095"/>01095 <link linkend="_class_x_v_e_c_t_o_r">XVECTOR&lt;DIOPCAPFRAME*&gt;</link>*&#32;DIOPCAP::Frames_Get()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01096"/>01096 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01097"/>01097 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;frames;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01098"/>01098 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01099"/>01099 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01100"/>01100 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01110"/>01110 <emphasis role="keywordtype">bool</emphasis>&#32;DIOPCAP::Frames_DeleteAll()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01111"/>01111 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01112"/>01112 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(frames.IsEmpty())&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01113"/>01113 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01114"/>01114 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexframes)&#32;xmutexframes-&gt;Lock();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01115"/>01115 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01116"/>01116 &#32;&#32;frames.<link linkend="_class_x_v_e_c_t_o_r_1abae5097402824f18f274e21e18b23bea">DeleteContents</link>();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01117"/>01117 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01118"/>01118 &#32;&#32;frames.DeleteAll();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01119"/>01119 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01120"/>01120 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexframes)&#32;xmutexframes-&gt;UnLock();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01121"/>01121 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01122"/>01122 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01123"/>01123 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01124"/>01124 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01125"/>01125 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01135"/>01135 <emphasis role="keywordtype">bool</emphasis>&#32;DIOPCAP::End()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01136"/>01136 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01137"/>01137 &#32;&#32;DeleteListNetInterfaces();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01138"/>01138 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01139"/>01139 &#32;&#32;Frames_DeleteAll();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01140"/>01140 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01141"/>01141 &#32;&#32;netinterfaceselected&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01142"/>01142 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01143"/>01143 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexframes)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01144"/>01144 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01145"/>01145 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY.Delete_Mutex(xmutexframes);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01146"/>01146 &#32;&#32;&#32;&#32;&#32;&#32;xmutexframes&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01147"/>01147 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01148"/>01148 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01149"/>01149 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01150"/>01150 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01151"/>01151 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01152"/>01152 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01166"/>01166 <emphasis role="keywordtype">bool</emphasis>&#32;DIOPCAP::Frames_Add(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;data,<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;size,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;isloopback)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01167"/>01167 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01168"/>01168 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!data)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01169"/>01169 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!size)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01170"/>01170 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01171"/>01171 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01172"/>01172 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01173"/>01173 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexframes)&#32;xmutexframes-&gt;Lock();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01174"/>01174 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01175"/>01175 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;allheaderssize&#32;=&#32;0;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01176"/>01176 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01177"/>01177 &#32;&#32;DIOPCAPFRAME*&#32;frame&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;DIOPCAPFRAME(GEN_XSYSTEM.HardwareUseLittleEndian(),&#32;isloopback);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01178"/>01178 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(frame)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01179"/>01179 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01180"/>01180 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(frame-&gt;SetData(data,size))
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01181"/>01181 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01182"/>01182 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;framedata&#32;=&#32;frame-&gt;GetData()-&gt;Get();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01183"/>01183 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(framedata)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01184"/>01184 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01185"/>01185 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!isloopback)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01186"/>01186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01187"/>01187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DIOPCAPETHERNETHEADER*&#32;ethernet_header&#32;=&#32;(DIOPCAPETHERNETHEADER*)framedata;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01188"/>01188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(ethernet_header)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01189"/>01189 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01190"/>01190 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(ethernet_header-&gt;type&#32;!=&#32;DIOPCAPETHERNETTYPE_IP)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01191"/>01191 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01192"/>01192 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame-&gt;GetSourceMAC()-&gt;Set(ethernet_header-&gt;MACsource);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01193"/>01193 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame-&gt;GetTargetMAC()-&gt;Set(ethernet_header-&gt;MACtarget);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01194"/>01194 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01195"/>01195 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame-&gt;Set((DIOPCAPETHERNETHEADER*)framedata);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01196"/>01196 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01197"/>01197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;allheaderssize&#32;=&#32;<emphasis role="keyword">sizeof</emphasis>(DIOPCAPETHERNETHEADER);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01198"/>01198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;framedata&#32;&#32;&#32;&#32;&#32;+=&#32;<emphasis role="keyword">sizeof</emphasis>(DIOPCAPETHERNETHEADER);&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01199"/>01199 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01200"/>01200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01201"/>01201 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01202"/>01202 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01203"/>01203 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01204"/>01204 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;allheaderssize&#32;=&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01205"/>01205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;framedata&#32;&#32;&#32;&#32;&#32;+=&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01206"/>01206 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01207"/>01207 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01208"/>01208 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DIOPCAPIPHEADER*&#32;IP_header&#32;=&#32;(DIOPCAPIPHEADER*)framedata;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01209"/>01209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(IP_header)&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01210"/>01210 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01211"/>01211 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame-&gt;GetSourceIP()-&gt;Set(IP_header-&gt;sourceaddr);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01212"/>01212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame-&gt;GetTargetIP()-&gt;Set(IP_header-&gt;targetaddr);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01213"/>01213 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01214"/>01214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame-&gt;Set((DIOPCAPIPHEADER*)framedata);&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01215"/>01215 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01216"/>01216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;allheaderssize&#32;&#32;+=&#32;<emphasis role="keyword">sizeof</emphasis>(DIOPCAPIPHEADER);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01217"/>01217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;framedata&#32;&#32;&#32;&#32;&#32;&#32;&#32;+=&#32;<emphasis role="keyword">sizeof</emphasis>(DIOPCAPIPHEADER);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01218"/>01218 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01219"/>01219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(framedata)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01220"/>01220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01221"/>01221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">switch</emphasis>(IP_header-&gt;protocol)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01222"/>01222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01223"/>01223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;DIOPCAPIPPROTOCOLTYPE_ICMP&#32;&#32;&#32;:&#32;frame-&gt;SetProtocolType(DIOPCAPPROTOCOL_TYPE_ICMP);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01224"/>01224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01225"/>01225 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01226"/>01226 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;DIOPCAPIPPROTOCOLTYPE_UDP&#32;&#32;&#32;&#32;:&#32;{&#32;DIOPCAPUDPHEADER*&#32;UDPheader&#32;=&#32;(DIOPCAPUDPHEADER*)framedata;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01227"/>01227 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(UDPheader)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01228"/>01228 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01229"/>01229 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame-&gt;SetProtocolType(DIOPCAPPROTOCOL_TYPE_UDP);&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01230"/>01230 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01231"/>01231 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame-&gt;SetSourcePort(<link linkend="__x_base_8cpp_1a4194dc6953f7f2e754c0ee59c30f500d">SwapWORD</link>(UDPheader-&gt;sourceport));&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01232"/>01232 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame-&gt;SetTargetPort(<link linkend="__x_base_8cpp_1a4194dc6953f7f2e754c0ee59c30f500d">SwapWORD</link>(UDPheader-&gt;targetport));&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01233"/>01233 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01234"/>01234 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame-&gt;Set((DIOPCAPUDPHEADER*)framedata);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01235"/>01235 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01236"/>01236 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;allheaderssize&#32;&#32;+=&#32;<emphasis role="keyword">sizeof</emphasis>(DIOPCAPUDPHEADER);&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01237"/>01237 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;framedata&#32;&#32;&#32;&#32;&#32;&#32;&#32;+=&#32;<emphasis role="keyword">sizeof</emphasis>(DIOPCAPUDPHEADER);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01238"/>01238 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01239"/>01239 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01240"/>01240 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01241"/>01241 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01242"/>01242 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;DIOPCAPIPPROTOCOLTYPE_TCP&#32;&#32;&#32;&#32;:&#32;{&#32;DIOPCAPTCPHEADER*&#32;TCPheader&#32;=&#32;(DIOPCAPTCPHEADER*)framedata;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01243"/>01243 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(TCPheader)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01244"/>01244 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01245"/>01245 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;TCPheadersize&#32;=&#32;(<link linkend="__x_base_8cpp_1a4194dc6953f7f2e754c0ee59c30f500d">SwapWORD</link>(TCPheader-&gt;hlenflags)&#32;&gt;&gt;&#32;12)&#32;*4;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01246"/>01246 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01247"/>01247 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame-&gt;SetProtocolType(DIOPCAPPROTOCOL_TYPE_TCP);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01248"/>01248 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01249"/>01249 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame-&gt;SetSourcePort(<link linkend="__x_base_8cpp_1a4194dc6953f7f2e754c0ee59c30f500d">SwapWORD</link>(TCPheader-&gt;sourceport));&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01250"/>01250 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame-&gt;SetTargetPort(<link linkend="__x_base_8cpp_1a4194dc6953f7f2e754c0ee59c30f500d">SwapWORD</link>(TCPheader-&gt;targetport));&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01251"/>01251 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01252"/>01252 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame-&gt;Set((DIOPCAPTCPHEADER*)framedata);&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01253"/>01253 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01254"/>01254 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;allheaderssize&#32;&#32;+=&#32;TCPheadersize;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01255"/>01255 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;framedata&#32;&#32;&#32;&#32;&#32;&#32;&#32;+=&#32;TCPheadersize;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01256"/>01256 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01257"/>01257 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01258"/>01258 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01259"/>01259 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01260"/>01260 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01261"/>01261 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01262"/>01262 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01263"/>01263 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01264"/>01264 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(frame-&gt;GetData()-&gt;GetSize()&#32;&gt;=&#32;allheaderssize)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01265"/>01265 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01266"/>01266 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame-&gt;SetAllHeadersSize(allheaderssize);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01267"/>01267 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01268"/>01268 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;sizepayload&#32;=&#32;(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)(frame-&gt;GetData()-&gt;GetSize()&#32;-&#32;allheaderssize);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01269"/>01269 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(sizepayload)
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01270"/>01270 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01271"/>01271 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame-&gt;Set(framedata,&#32;sizepayload);&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01272"/>01272 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01273"/>01273 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01274"/>01274 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frames.Add(frame);
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01275"/>01275 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01276"/>01276 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01277"/>01277 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01278"/>01278 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01279"/>01279 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;frame;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01280"/>01280 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;frame&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01281"/>01281 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01282"/>01282 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01283"/>01283 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01284"/>01284 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01285"/>01285 &#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01286"/>01286 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexframes)&#32;xmutexframes-&gt;UnLock();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01287"/>01287 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01288"/>01288 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01289"/>01289 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01290"/>01290 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01291"/>01291 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01302"/>01302 <emphasis role="keywordtype">void</emphasis>&#32;DIOPCAP::Clean()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01303"/>01303 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01304"/>01304 &#32;&#32;xmutexframes&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;&#32;&#32;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01305"/>01305 &#32;&#32;netinterfaceselected&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01306"/>01306 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01307"/>01307 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01308"/>01308 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01318"/>01318 <emphasis role="keywordtype">bool</emphasis>&#32;DIOPCAP::DeleteListNetInterfaces()
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01319"/>01319 {
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01320"/>01320 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(netinterfaces.IsEmpty())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01321"/>01321 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01322"/>01322 &#32;&#32;netinterfaces.DeleteContents();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01323"/>01323 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01324"/>01324 &#32;&#32;netinterfaces.DeleteAll();
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01325"/>01325 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01326"/>01326 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01327"/>01327 }
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01328"/>01328 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01329"/>01329 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01330"/>01330 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01331"/>01331 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01332"/>01332 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01333"/>01333 
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01334"/>01334 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_i_o_p_cap_8cpp_source_1l01335"/>01335 
+</programlisting></section>
