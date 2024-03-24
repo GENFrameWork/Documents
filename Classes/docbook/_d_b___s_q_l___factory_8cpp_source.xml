@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_b___s_q_l___factory_8cpp_source" xml:lang="en-US">
+<title>DB_SQL_Factory.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/Databases/SQL/DB_SQL_Factory.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00037"/>00037 <emphasis role="preprocessor">#ifdef&#32;DB_SQL_ACTIVE</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00038"/>00038 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00040"/>00040 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00041"/>00041 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00042"/>00042 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_b___s_q_l___factory_8h">DB_SQL_Factory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00044"/>00044 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_trace_8h">XTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00046"/>00046 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#ifdef&#32;DB_MYSQL_ACTIVE</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__my_s_q_l___database_8h">MySQL_Database.h</link>&quot;</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00049"/>00049 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00050"/>00050 <emphasis role="preprocessor">#ifdef&#32;DB_POSTGRESQL_ACTIVE</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__postgre_s_q_l___database_8h">PostgreSQL_Database.h</link>&quot;</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00053"/>00053 <emphasis role="preprocessor">#ifdef&#32;DB_SQLITE_ACTIVE</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00054"/>00054 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__s_q_lite___database_8h">SQLite_Database.h</link>&quot;</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00055"/>00055 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00056"/>00056 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00057"/>00057 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00058"/>00058 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00059"/>00059 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00061"/>00061 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00062"/>00062 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00063"/>00063 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00064"/>00064 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00065"/>00065 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00066"/>00066 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00067"/>00067 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00068"/>00068 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00069"/>00069 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00070"/>00070 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00082"/>00082 <link linkend="_class_d_b___s_q_l___d_a_t_a_b_a_s_e">DB_SQL_DATABASE</link>*&#32;DB_SQL_FACTORY::Create(&#32;DB_SQL_DATABASE_TYPE&#32;databasetype)
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00083"/>00083 {
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00084"/>00084 &#32;&#32;<link linkend="_class_d_b___s_q_l___d_a_t_a_b_a_s_e">DB_SQL_DATABASE</link>*&#32;db&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00085"/>00085 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00086"/>00086 &#32;&#32;<emphasis role="keywordflow">switch</emphasis>(databasetype)
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00087"/>00087 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00088"/>00088 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;DB_SQL_DATABASE_TYPE_MYSQL&#32;&#32;&#32;&#32;&#32;&#32;&#32;:
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00089"/>00089 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;DB_MYSQL_ACTIVE</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00090"/>00090 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;db&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_m_y_s_q_l___d_a_t_a_b_a_s_e">MYSQL_DATABASE</link>();
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00091"/>00091 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;db;
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00092"/>00092 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00094"/>00094 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;DB_SQL_DATABASE_TYPE_POSTGRESQL&#32;&#32;:
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00096"/>00096 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;DB_POSTGRESQL_ACTIVE</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00097"/>00097 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;db&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_p_o_s_t_g_r_e_s_q_l___d_a_t_a_b_a_s_e">POSTGRESQL_DATABASE</link>();
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;db;
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00099"/>00099 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00101"/>00101 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00102"/>00102 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;DB_SQL_DATABASE_TYPE_SQLITE&#32;&#32;&#32;&#32;&#32;&#32;:
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00103"/>00103 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;DB_SQLITE_ACTIVE</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00104"/>00104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;db&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_s_q_l_i_t_e___d_a_t_a_b_a_s_e">SQLITE_DATABASE</link>();
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;db;
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00106"/>00106 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00108"/>00108 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00109"/>00109 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;default&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00110"/>00110 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00111"/>00111 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00112"/>00112 &#32;&#32;<emphasis role="comment">//XTRACE_PRINTCOLOR(4,&#32;__L(&quot;Unrecognized&#32;database&#32;type&quot;));</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00113"/>00113 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00114"/>00114 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00115"/>00115 }
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00116"/>00116 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00117"/>00117 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00118"/>00118 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00119"/>00119 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00120"/>00120 
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00121"/>00121 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_b___s_q_l___factory_8cpp_source_1l00122"/>00122 
+</programlisting></section>

@@ -1,0 +1,268 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source" xml:lang="en-US">
+<title>DIOI2CTemHumSensorSHT20.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/DataIO/Drivers/I2C/DIOI2CTemHumSensorSHT20.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8h">DIOI2CTemHumSensorSHT20.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_factory_8h">XFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_sleep_8h">XSleep.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_buffer_8h">XBuffer.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_trace_8h">XTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00046"/>00046 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_factory_8h">DIOFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_i2_c_config_8h">DIOStreamI2CConfig.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00049"/>00049 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_i2_c_8h">DIOStreamI2C.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00050"/>00050 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00052"/>00052 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00053"/>00053 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00054"/>00054 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00055"/>00055 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00056"/>00056 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00057"/>00057 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00058"/>00058 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00059"/>00059 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00061"/>00061 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00062"/>00062 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00063"/>00063 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00064"/>00064 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00065"/>00065 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00073"/><link linkend="_group___d_a_t_a_i_o_1ga9771219560b52494dca37c702a7b98b2">00073</link> <link linkend="_group___d_a_t_a_i_o_1ga9771219560b52494dca37c702a7b98b2">DIOI2CTEMHUMSENSORSHT20::DIOI2CTEMHUMSENSORSHT20</link>():&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c">DIODEVICEI2C</link>()
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00074"/>00074 {
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00075"/>00075 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00076"/>00076 }
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00077"/>00077 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00078"/>00078 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00087"/><link linkend="_group___d_a_t_a_i_o_1ga03dde0e0f0449b756b5bf5fb930920cc">00087</link> <link linkend="_group___d_a_t_a_i_o_1ga03dde0e0f0449b756b5bf5fb930920cc">DIOI2CTEMHUMSENSORSHT20::~DIOI2CTEMHUMSENSORSHT20</link>()
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00088"/>00088 {
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00089"/>00089 &#32;&#32;<link linkend="_group___d_a_t_a_i_o_1gafdb786d3814b801ece9155e4a351e548">End</link>();
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00090"/>00090 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00091"/>00091 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00092"/>00092 }
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00093"/>00093 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00094"/>00094 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00104"/><link linkend="_group___d_a_t_a_i_o_1ga4a8acab6c0b3bce5490d36347a81b007">00104</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga4a8acab6c0b3bce5490d36347a81b007">DIOI2CTEMHUMSENSORSHT20::Reset</link>()
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00105"/>00105 {
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00106"/>00106 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00107"/>00107 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00108"/>00108 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;buffer;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00109"/>00109 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;status;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00110"/>00110 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00111"/>00111 &#32;&#32;buffer.<link linkend="_group___x_u_t_i_l_s_1ga03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>)<link linkend="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8h_1a9b0b5915134463f82085c611d723ec93">DIOI2CTEMHUMSENSORSHT20_CMD_SOFT_RESET</link>);
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00112"/>00112 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00113"/>00113 &#32;&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1gac04f4ad8ff28b97128a876063103dd50">Write</link>(buffer)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00114"/>00114 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga59dc380e213dd083940c80663667dae7">WaitToFlushOutXBuffer</link>(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1aa52a412cc095ba0e18211f4c994d69e2">timeout</link>);
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00115"/>00115 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00116"/>00116 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00117"/>00117 }
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00118"/>00118 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00119"/>00119 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00131"/><link linkend="_group___d_a_t_a_i_o_1gaeaa3b574503749a585cc2f1c96ecf4f6">00131</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gaeaa3b574503749a585cc2f1c96ecf4f6">DIOI2CTEMHUMSENSORSHT20::SetResolution</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;resolution)
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00132"/>00132 {
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00133"/>00133 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;userregister&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00134"/>00134 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00135"/>00135 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!ReadUserRegister(userregister))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00136"/>00136 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00137"/>00137 &#32;&#32;userregister&#32;&amp;=&#32;0x7E;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00138"/>00138 &#32;&#32;resolution&#32;&#32;&#32;&amp;=&#32;0x81;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00139"/>00139 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00140"/>00140 &#32;&#32;userregister&#32;|=&#32;resolution;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00141"/>00141 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00142"/>00142 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;WriteUserRegister(userregister);
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00143"/>00143 }
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00144"/>00144 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00145"/>00145 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00158"/><link linkend="_group___d_a_t_a_i_o_1ga4d29d62ed0f5b292e1be899cd19b3f75">00158</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga4d29d62ed0f5b292e1be899cd19b3f75">DIOI2CTEMHUMSENSORSHT20::Read</link>(<emphasis role="keywordtype">float</emphasis>&amp;&#32;temperature,&#32;<emphasis role="keywordtype">float</emphasis>&amp;&#32;humidity)
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00159"/>00159 {
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00160"/>00160 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00161"/>00161 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1gaffa2a228690e583d4c7c2a5f4adf9821">IsInitialized</link>())&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00162"/>00162 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00163"/>00163 &#32;&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;rawhumidity&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00164"/>00164 &#32;&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;rawtemperature&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00165"/>00165 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00166"/>00166 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!ReadValue(<link linkend="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8h_1a1a2aa1ed37958ffd275228f29d6ebf7d">DIOI2CTEMHUMSENSORSHT20_CMD_TRIGGER_HUMD_MEASURE_NOHOLD</link>,&#32;rawhumidity))
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00167"/>00167 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00168"/>00168 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00169"/>00169 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00170"/>00170 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00171"/>00171 &#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;temporalhumidity&#32;=&#32;rawhumidity&#32;*&#32;(125.0f&#32;/&#32;65536.0f);
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00172"/>00172 &#32;&#32;humidity&#32;=&#32;temporalhumidity&#32;-&#32;6.0f;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00173"/>00173 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00174"/>00174 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!ReadValue(<link linkend="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8h_1a0d679386cfea50cbd6c83eca3bbf9862">DIOI2CTEMHUMSENSORSHT20_CMD_TRIGGER_TEMP_MEASURE_NOHOLD</link>,&#32;rawtemperature))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00175"/>00175 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00176"/>00176 &#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;temporaltemperature&#32;=&#32;rawtemperature&#32;*&#32;(175.72f&#32;/&#32;65536.0f);
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00177"/>00177 &#32;&#32;temperature=&#32;temporaltemperature&#32;-&#32;46.85f;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00178"/>00178 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00179"/>00179 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00180"/>00180 }
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00181"/>00181 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00182"/>00182 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00192"/><link linkend="_group___d_a_t_a_i_o_1gafdb786d3814b801ece9155e4a351e548">00192</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gafdb786d3814b801ece9155e4a351e548">DIOI2CTEMHUMSENSORSHT20::End</link>()
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00193"/>00193 {
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00194"/>00194 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1ga97fa53ca512fb382b705033def5348c3">DIODEVICEI2C::End</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00195"/>00195 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00196"/>00196 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00197"/>00197 }
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00198"/>00198 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00199"/>00199 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00209"/>00209 <emphasis role="keywordtype">bool</emphasis>&#32;DIOI2CTEMHUMSENSORSHT20::IniDevice()
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00210"/>00210 {
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00211"/>00211 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1gafe0d936f40e0b1b96b28efaf22ee119e">DIODEVICEI2C::IniDevice</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00212"/>00212 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00213"/>00213 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1gafccebd8333bc1df1f36fb068af1c0a1a">Open</link>())
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00214"/>00214 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00215"/>00215 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1gacff76db4bc54a48fe2d2ceb165835c2f">WaitToConnected</link>(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1aa52a412cc095ba0e18211f4c994d69e2">timeout</link>))
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00216"/>00216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00217"/>00217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_group___d_a_t_a_i_o_1ga4a8acab6c0b3bce5490d36347a81b007">Reset</link>();
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00218"/>00218 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00219"/>00219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga2ce40a31520cdee813143e1f028ee629">DIODEVICE::Ini</link>();
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00220"/>00220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00221"/>00221 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00222"/>00222 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00223"/>00223 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00224"/>00224 }
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00225"/>00225 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00226"/>00226 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00239"/>00239 <emphasis role="keywordtype">bool</emphasis>&#32;DIOI2CTEMHUMSENSORSHT20::ReadValue(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;cmd,&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&amp;&#32;value)
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00240"/>00240 {
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00241"/>00241 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>)
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00242"/>00242 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00243"/>00243 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_trace_8h_1ad3489a73cc8c0aa8e64f91a03735e525">XTRACE_PRINTCOLOR</link>(4,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;Not&#32;datastream&#32;comand&#32;%02X&quot;</emphasis>),&#32;cmd);
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00244"/>00244 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00245"/>00245 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00246"/>00246 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00247"/>00247 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00248"/>00248 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;status;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00249"/>00249 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;command&#32;=&#32;cmd;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00250"/>00250 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00251"/>00251 &#32;&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1gac04f4ad8ff28b97128a876063103dd50">Write</link>(&amp;command,&#32;1)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00252"/>00252 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga59dc380e213dd083940c80663667dae7">WaitToFlushOutXBuffer</link>(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1aa52a412cc095ba0e18211f4c994d69e2">timeout</link>);
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00253"/>00253 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00254"/>00254 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00255"/>00255 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00256"/>00256 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_trace_8h_1ad3489a73cc8c0aa8e64f91a03735e525">XTRACE_PRINTCOLOR</link>(4,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;Not&#32;write&#32;comand&#32;%02X&quot;</emphasis>),&#32;cmd);
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00257"/>00257 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00258"/>00258 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00259"/>00259 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00260"/>00260 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00261"/>00261 &#32;&#32;GEN_XSLEEP.MilliSeconds(200);
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00262"/>00262 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00263"/>00263 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;data[3]&#32;=&#32;{&#32;0,&#32;0,&#32;0&#32;};
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00264"/>00264 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00265"/>00265 &#32;&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga6e20f03ff391343123fda221a5c2ed85">WaitToFilledReadingBuffer</link>(3,&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1aa52a412cc095ba0e18211f4c994d69e2">timeout</link>);
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00266"/>00266 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00267"/>00267 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00268"/>00268 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga20cd6c3635818f96468dee8bc601aec1">Read</link>(data,&#32;3)&#32;==&#32;3)?<emphasis role="keyword">true</emphasis>:false;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00269"/>00269 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00270"/>00270 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00271"/>00271 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_trace_8h_1ad3489a73cc8c0aa8e64f91a03735e525">XTRACE_PRINTCOLOR</link>(4,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;Not&#32;read&#32;comand&#32;%02X&quot;</emphasis>),&#32;cmd);
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00272"/>00272 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00273"/>00273 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00274"/>00274 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00275"/>00275 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00276"/>00276 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00277"/>00277 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00278"/>00278 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_trace_8h_1ad3489a73cc8c0aa8e64f91a03735e525">XTRACE_PRINTCOLOR</link>(4,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;Not&#32;data&#32;to&#32;read&#32;comand&#32;%02X&quot;</emphasis>),&#32;cmd);
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00279"/>00279 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00280"/>00280 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00281"/>00281 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00282"/>00282 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;msb&#32;&#32;&#32;&#32;&#32;&#32;=&#32;data[0];
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00283"/>00283 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;lsb&#32;&#32;&#32;&#32;&#32;&#32;=&#32;data[1];
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00284"/>00284 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;checksum&#32;=&#32;data[2];
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00285"/>00285 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00286"/>00286 &#32;&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;rawvalue&#32;=&#32;((<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>)&#32;msb&#32;&lt;&lt;&#32;8)&#32;|&#32;(<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>)&#32;lsb;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00287"/>00287 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00288"/>00288 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!CheckCRC(rawvalue,&#32;checksum))
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00289"/>00289 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00290"/>00290 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00291"/>00291 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00292"/>00292 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00293"/>00293 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00294"/>00294 &#32;&#32;value&#32;=&#32;rawvalue&#32;&amp;&#32;0xFFFC;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00295"/>00295 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00296"/>00296 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00297"/>00297 }
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00298"/>00298 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00299"/>00299 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00311"/>00311 <emphasis role="keywordtype">bool</emphasis>&#32;DIOI2CTEMHUMSENSORSHT20::ReadUserRegister(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&amp;&#32;userregister)
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00312"/>00312 {
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00313"/>00313 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00314"/>00314 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00315"/>00315 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;data;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00316"/>00316 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;status;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00317"/>00317 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00318"/>00318 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;command&#32;=&#32;<link linkend="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8h_1a251b61fc5ba85fe5887c7814f4a751ff">DIOI2CTEMHUMSENSORSHT20_CMD_READ_USER_REG</link>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00319"/>00319 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00320"/>00320 &#32;&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1gac04f4ad8ff28b97128a876063103dd50">Write</link>(&amp;command,&#32;1)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00321"/>00321 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga59dc380e213dd083940c80663667dae7">WaitToFlushOutXBuffer</link>(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1aa52a412cc095ba0e18211f4c994d69e2">timeout</link>);
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00322"/>00322 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00323"/>00323 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00324"/>00324 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00325"/>00325 &#32;&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga6e20f03ff391343123fda221a5c2ed85">WaitToFilledReadingBuffer</link>(1,&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1aa52a412cc095ba0e18211f4c994d69e2">timeout</link>);
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00326"/>00326 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;status&#32;=&#32;(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga20cd6c3635818f96468dee8bc601aec1">Read</link>(&amp;data,&#32;1)&#32;==&#32;1)?<emphasis role="keyword">true</emphasis>:false;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00327"/>00327 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00328"/>00328 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00329"/>00329 }
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00330"/>00330 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00331"/>00331 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00343"/>00343 <emphasis role="keywordtype">bool</emphasis>&#32;DIOI2CTEMHUMSENSORSHT20::WriteUserRegister(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;userregister)
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00344"/>00344 {
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00345"/>00345 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00346"/>00346 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00347"/>00347 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;buffer;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00348"/>00348 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;status;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00349"/>00349 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00350"/>00350 &#32;&#32;buffer.<link linkend="_group___x_u_t_i_l_s_1ga03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>)<link linkend="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8h_1ab1ea49bf0554c666396e987d170cd9af">DIOI2CTEMHUMSENSORSHT20_CMD_WRITE_USER_REG</link>);
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00351"/>00351 &#32;&#32;buffer.<link linkend="_group___x_u_t_i_l_s_1ga03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>)userregister);
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00352"/>00352 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00353"/>00353 &#32;&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1gac04f4ad8ff28b97128a876063103dd50">Write</link>(buffer)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00354"/>00354 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga59dc380e213dd083940c80663667dae7">WaitToFlushOutXBuffer</link>(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1aa52a412cc095ba0e18211f4c994d69e2">timeout</link>);
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00355"/>00355 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00356"/>00356 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00357"/>00357 }
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00358"/>00358 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00359"/>00359 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00372"/>00372 <emphasis role="keywordtype">bool</emphasis>&#32;DIOI2CTEMHUMSENSORSHT20::CheckCRC(<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;datasensor,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;checkvalue)
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00373"/>00373 {
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00374"/>00374 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;remainder&#32;=&#32;(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)datasensor&#32;&lt;&lt;&#32;8;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00375"/>00375 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00376"/>00376 &#32;&#32;remainder&#32;|=&#32;checkvalue;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00377"/>00377 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00378"/>00378 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;divisor&#32;=&#32;(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8h_1a4edef535e4ca80c03c2cc7fd985302e4">DIOI2CTEMHUMSENSORSHT20_SHIFTED_DIVISOR</link>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00379"/>00379 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00380"/>00380 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;c=0;&#32;c&#32;&lt;&#32;16&#32;;&#32;c++)
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00381"/>00381 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00382"/>00382 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(remainder&#32;&amp;&#32;(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)1&#32;&lt;&lt;&#32;(23&#32;-&#32;c))
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00383"/>00383 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00384"/>00384 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;remainder&#32;^=&#32;divisor;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00385"/>00385 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00386"/>00386 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00387"/>00387 &#32;&#32;&#32;&#32;&#32;&#32;divisor&#32;&gt;&gt;=&#32;1;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00388"/>00388 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00389"/>00389 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00390"/>00390 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;remainder?<emphasis role="keyword">false</emphasis>:<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00391"/>00391 }
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00392"/>00392 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00393"/>00393 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00402"/>00402 <emphasis role="keywordtype">void</emphasis>&#32;DIOI2CTEMHUMSENSORSHT20::Clean()
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00403"/>00403 {
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00404"/>00404 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00405"/>00405 }
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00406"/>00406 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00407"/>00407 
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00408"/>00408 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_i2_c_tem_hum_sensor_s_h_t20_8cpp_source_1l00409"/>00409 
+</programlisting></section>

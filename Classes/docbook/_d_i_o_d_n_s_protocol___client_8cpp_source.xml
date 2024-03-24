@@ -1,0 +1,420 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source" xml:lang="en-US">
+<title>DIODNSProtocol_Client.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/DataIO/Protocols/DIODNSProtocol_Client.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00030"/>00030 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00031"/>00031 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00032"/>00032 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00033"/>00033 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00034"/>00034 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00035"/>00035 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00037"/>00037 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00038"/>00038 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00039"/>00039 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00040"/>00040 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00041"/>00041 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_d_n_s_protocol___client_8h">DIODNSProtocol_Client.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00042"/>00042 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&lt;stdlib.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00045"/>00045 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_base_8h">XBase.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_factory_8h">XFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_date_time_8h">XDateTime.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00049"/>00049 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_trace_8h">XTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00050"/>00050 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_timer_8h">XTimer.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00051"/>00051 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_factory_8h">DIOFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00053"/>00053 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_u_d_p_config_8h">DIOStreamUDPConfig.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00054"/>00054 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_u_d_p_8h">DIOStreamUDP.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00055"/>00055 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00056"/>00056 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00057"/>00057 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00058"/>00058 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00059"/>00059 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00061"/>00061 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00062"/>00062 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00063"/>00063 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00064"/>00064 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00065"/>00065 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00066"/>00066 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00067"/>00067 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00068"/>00068 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00069"/>00069 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00070"/>00070 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00078"/><link linkend="_group___d_a_t_a_i_o_1ga30aa3ba120a7b635c3149845d1a80b0f">00078</link> <link linkend="_group___d_a_t_a_i_o_1ga30aa3ba120a7b635c3149845d1a80b0f">DIODNSPROTOCOLCLIENT::DIODNSPROTOCOLCLIENT</link>()
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00079"/>00079 {
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00080"/>00080 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00081"/>00081 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00082"/>00082 &#32;&#32;diostreamudpcfg&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_c_o_n_f_i_g">DIOSTREAMUDPCONFIG</link>();
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00083"/>00083 &#32;&#32;diostreamudp&#32;&#32;&#32;&#32;=&#32;(<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p">DIOSTREAMUDP</link>*)GEN_DIOFACTORY.CreateStreamIO(diostreamudpcfg);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00084"/>00084 }
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00085"/>00085 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00086"/>00086 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00095"/><link linkend="_group___d_a_t_a_i_o_1ga25b46f7da09ba5f7c2b9e857b22d4617">00095</link> <link linkend="_group___d_a_t_a_i_o_1ga25b46f7da09ba5f7c2b9e857b22d4617">DIODNSPROTOCOLCLIENT::~DIODNSPROTOCOLCLIENT</link>()
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00096"/>00096 {
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00097"/>00097 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(diostreamudpcfg)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00098"/>00098 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;diostreamudpcfg;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;diostreamudpcfg&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00101"/>00101 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00102"/>00102 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00103"/>00103 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(diostreamudp)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00104"/>00104 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00105"/>00105 &#32;&#32;&#32;&#32;&#32;&#32;GEN_DIOFACTORY.DeleteStreamIO(diostreamudp);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00106"/>00106 &#32;&#32;&#32;&#32;&#32;&#32;diostreamudp&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00107"/>00107 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00108"/>00108 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00109"/>00109 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00110"/>00110 }
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00111"/>00111 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00112"/>00112 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00125"/><link linkend="_group___d_a_t_a_i_o_1gade87c311d7a949a5f5df397b3f1da5c9">00125</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gade87c311d7a949a5f5df397b3f1da5c9">DIODNSPROTOCOLCLIENT::SetServer</link>(<link linkend="_class_d_i_o_i_p">DIOIP</link>&amp;&#32;serverIP,&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;serverport)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00126"/>00126 {
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00127"/>00127 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!serverIP.<link linkend="_group___d_a_t_a_i_o_1gaa7fc98655c9aab8feb85758307d928f5">Get</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00128"/>00128 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00129"/>00129 &#32;&#32;this-&gt;serverIP.<link linkend="_group___d_a_t_a_i_o_1ga1955ea08de61edcd19d7806e64ed9aaa">Set</link>(serverIP.<link linkend="_group___d_a_t_a_i_o_1gaa7fc98655c9aab8feb85758307d928f5">Get</link>());
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00130"/>00130 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00131"/>00131 &#32;&#32;this-&gt;serverport&#32;=&#32;serverport;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00132"/>00132 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00133"/>00133 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00134"/>00134 }
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00135"/>00135 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00136"/>00136 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00149"/><link linkend="_group___d_a_t_a_i_o_1ga0cb78b41ca7adb2b14494e03cf5992b9">00149</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gade87c311d7a949a5f5df397b3f1da5c9">DIODNSPROTOCOLCLIENT::SetServer</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;serverIP,&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;serverport)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00150"/>00150 {
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00151"/>00151 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!serverIP)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00152"/>00152 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00153"/>00153 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!this-&gt;serverIP.Set(serverIP))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00154"/>00154 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00155"/>00155 &#32;&#32;this-&gt;serverport&#32;=&#32;serverport;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00156"/>00156 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00157"/>00157 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00158"/>00158 }
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00159"/>00159 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00160"/>00160 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00173"/><link linkend="_group___d_a_t_a_i_o_1ga8ce1c0ac198a8403cb17bd07ad24de0d">00173</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gade87c311d7a949a5f5df397b3f1da5c9">DIODNSPROTOCOLCLIENT::SetServer</link>(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;serverIP,&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;serverport)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00174"/>00174 {
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00175"/>00175 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gade87c311d7a949a5f5df397b3f1da5c9">SetServer</link>(serverIP.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;serverport);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00176"/>00176 }
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00177"/>00177 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00178"/>00178 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00193"/><link linkend="_group___d_a_t_a_i_o_1gaee111d121883d0dc264868238fd4468f">00193</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gaee111d121883d0dc264868238fd4468f">DIODNSPROTOCOLCLIENT::ResolveURL</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;URL,&#32;<link linkend="_class_d_i_o_i_p">DIOIP</link>&amp;&#32;IPresolved,&#32;<emphasis role="keywordtype">int</emphasis>&#32;querytype,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00194"/>00194 {
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00195"/>00195 <emphasis role="preprocessor">&#32;&#32;#define&#32;ASK_ID&#32;0x55AA</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00196"/>00196 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00197"/>00197 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!diostreamudpcfg)&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00198"/>00198 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00199"/>00199 &#32;&#32;<link linkend="_class_d_i_o_u_r_l">DIOURL</link>&#32;&#32;url;&#32;&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00200"/>00200 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;serverIPDNSstring;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00201"/>00201 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;askbuffer;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00202"/>00202 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;answerbuffer;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00203"/>00203 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00204"/>00204 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00205"/>00205 &#32;&#32;url&#32;=&#32;URL;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00206"/>00206 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00207"/>00207 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!url.<link linkend="_group___d_a_t_a_i_o_1gaf02b761cb7c0f059ac0ad437016dde88">IsAURL</link>())
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00208"/>00208 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00209"/>00209 &#32;&#32;&#32;&#32;&#32;&#32;IPresolved.<link linkend="_group___d_a_t_a_i_o_1ga1955ea08de61edcd19d7806e64ed9aaa">Set</link>(url);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00210"/>00210 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00211"/>00211 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00212"/>00212 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00213"/>00213 &#32;&#32;serverIP.<link linkend="_group___d_a_t_a_i_o_1ga6a266ef4ef9e43473e91acc37a816725">GetXString</link>(serverIPDNSstring);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00214"/>00214 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00215"/>00215 &#32;&#32;diostreamudpcfg-&gt;<link linkend="_group___d_a_t_a_i_o_1ga458e110078121992cb1597c8a184c02d">SetMode</link>(<link linkend="__d_i_o_stream_config_8h_1ae47ddf801d21b825b353ae3a3008ceccae2f1cd5b3bdb86e59afda7eb0f8a91a8">DIOSTREAMMODE_CLIENT</link>);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00216"/>00216 &#32;&#32;diostreamudpcfg-&gt;<link linkend="_group___d_a_t_a_i_o_1ga7b848570dc12aadbd8f1564a094ca13a">SetIsUsedDatagrams</link>(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00217"/>00217 &#32;&#32;diostreamudpcfg-&gt;<link linkend="_group___d_a_t_a_i_o_1gacf6fa77ab365f7b646a9f701568cc916">GetRemoteURL</link>()-&gt;<link linkend="_group___x_u_t_i_l_s_1ga4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(serverIPDNSstring);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00218"/>00218 &#32;&#32;diostreamudpcfg-&gt;<link linkend="_group___d_a_t_a_i_o_1ga5d3d2983d54913f4ce5d5118eb629a68">SetRemotePort</link>(serverport?serverport:<link linkend="__d_i_o_d_n_s_protocol_8h_1a1bfdfde5ca66c22da3421d39e514ea02">DIODNSPROTOCOL_DEFAULTPORT</link>);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00219"/>00219 &#32;&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00220"/>00220 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(diostreamudp-&gt;<link linkend="_group___d_a_t_a_i_o_1ga8a6d7369be30f160abf2c060c2a76ece">Open</link>())
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00221"/>00221 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00222"/>00222 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___h_e_a_d_e_r">DIODNSPROTOCOL_HEADER</link>&#32;&#32;&#32;&#32;&#32;askheaderDNS;&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00223"/>00223 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;askURL;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00224"/>00224 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EncodedURL;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00225"/>00225 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___q_u_e_s_t_i_o_n">DIODNSPROTOCOL_QUESTION</link>&#32;&#32;&#32;question;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00226"/>00226 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00227"/>00227 &#32;&#32;&#32;&#32;&#32;&#32;askheaderDNS.<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___h_e_a_d_e_r_1ab78e6bc7909014630267b03e56ea2ff9">id</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__d_i_o_d_n_s_protocol___client_8cpp_1a043cd1d1f25ec54fe1e79b050a55cf5e">ASK_ID</link>;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00228"/>00228 &#32;&#32;&#32;&#32;&#32;&#32;askheaderDNS.<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___h_e_a_d_e_r_1ac30f91ccfd43da37685edb4c8d4a0a71">qr</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;&#32;&#32;<emphasis role="comment">//&#32;&#32;This&#32;is&#32;a&#32;query</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00229"/>00229 &#32;&#32;&#32;&#32;&#32;&#32;askheaderDNS.<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___h_e_a_d_e_r_1af5ca18fe755cddaea657b17e657f245e">opcode</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;&#32;&#32;<emphasis role="comment">//&#32;&#32;This&#32;is&#32;a&#32;standard&#32;query</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00230"/>00230 &#32;&#32;&#32;&#32;&#32;&#32;askheaderDNS.<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___h_e_a_d_e_r_1ac385ca8e5b976cc62717629423a23535">aa</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;&#32;&#32;<emphasis role="comment">//&#32;&#32;Not&#32;Authoritative</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00231"/>00231 &#32;&#32;&#32;&#32;&#32;&#32;askheaderDNS.<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___h_e_a_d_e_r_1ad4ce99f907460aab85f1cf647b559154">tc</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;&#32;&#32;<emphasis role="comment">//&#32;&#32;This&#32;message&#32;is&#32;not&#32;truncated</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00232"/>00232 &#32;&#32;&#32;&#32;&#32;&#32;askheaderDNS.<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___h_e_a_d_e_r_1a7ef49d03be91d10dde8af704bee07f95">rd</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;1;&#32;&#32;<emphasis role="comment">//&#32;&#32;Recursion&#32;Desired</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00233"/>00233 &#32;&#32;&#32;&#32;&#32;&#32;askheaderDNS.<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___h_e_a_d_e_r_1a633e2ef11165d6162529d18704c6253f">ra</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;&#32;&#32;<emphasis role="comment">//&#32;&#32;Recursion&#32;not&#32;available!&#32;hey&#32;we&#32;dont&#32;have&#32;it&#32;(lol)</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00234"/>00234 &#32;&#32;&#32;&#32;&#32;&#32;askheaderDNS.<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___h_e_a_d_e_r_1ae77fb808a5dacee6b973803f7bcd4a72">z</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00235"/>00235 &#32;&#32;&#32;&#32;&#32;&#32;askheaderDNS.<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___h_e_a_d_e_r_1ac5797032cd993c4ee17cafec1a2cf54d">ad</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00236"/>00236 &#32;&#32;&#32;&#32;&#32;&#32;askheaderDNS.<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___h_e_a_d_e_r_1a73ee44b6dc37d2dbfc554b866c5b8d8d">cd</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00237"/>00237 &#32;&#32;&#32;&#32;&#32;&#32;askheaderDNS.<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___h_e_a_d_e_r_1a8cbc1c36a5dd8775a3c3ca31e1124116">rcode</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00238"/>00238 &#32;&#32;&#32;&#32;&#32;&#32;askheaderDNS.<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___h_e_a_d_e_r_1af7cb8ccee44c744fc2b1652ecc63dbd5">q_count</link>&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8cpp_1a4194dc6953f7f2e754c0ee59c30f500d">SwapWORD</link>(1);&#32;&#32;<emphasis role="comment">//&#32;htons(1);&#32;//we&#32;have&#32;only&#32;1&#32;question</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00239"/>00239 &#32;&#32;&#32;&#32;&#32;&#32;askheaderDNS.<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___h_e_a_d_e_r_1ab9aa6f1dc483bd82f0adbde6d8771244">ans_count</link>&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00240"/>00240 &#32;&#32;&#32;&#32;&#32;&#32;askheaderDNS.<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___h_e_a_d_e_r_1ab3573ababdbc49898b3ce0c2a64a28ff">auth_count</link>&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00241"/>00241 &#32;&#32;&#32;&#32;&#32;&#32;askheaderDNS.<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___h_e_a_d_e_r_1abb2276bb7aea0da636d26e7b7044ceb2">add_count</link>&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00242"/>00242 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00243"/>00243 &#32;&#32;&#32;&#32;&#32;&#32;askbuffer.<link linkend="_group___x_u_t_i_l_s_1ga03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;askheaderDNS,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___h_e_a_d_e_r">DIODNSPROTOCOL_HEADER</link>));
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00244"/>00244 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00245"/>00245 &#32;&#32;&#32;&#32;&#32;&#32;askURL.<link linkend="_group___x_u_t_i_l_s_1ga4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(URL);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00246"/>00246 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_group___d_a_t_a_i_o_1gaa233a5cdf4893a4f7b7dc2a234efa4a6">EncodeDNSFormat</link>(askURL,&#32;EncodedURL);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00247"/>00247 &#32;&#32;&#32;&#32;&#32;&#32;askbuffer.<link linkend="_group___x_u_t_i_l_s_1ga03212e4f31a9d07995ac4f72db1dd0cf">Add</link>(EncodedURL);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00248"/>00248 &#32;&#32;&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00249"/>00249 &#32;&#32;&#32;&#32;&#32;&#32;question.<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___q_u_e_s_t_i_o_n_1a8c8964247645559446156fb0eaa314dc">qtype</link>&#32;&#32;=&#32;<link linkend="__x_base_8cpp_1a4194dc6953f7f2e754c0ee59c30f500d">SwapWORD</link>(querytype);&#32;&#32;&#32;<emphasis role="comment">//&#32;htons(querytype);</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00250"/>00250 &#32;&#32;&#32;&#32;&#32;&#32;question.<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___q_u_e_s_t_i_o_n_1ab78e2f9058b0863379f8c13bff638015">qclass</link>&#32;=&#32;<link linkend="__x_base_8cpp_1a4194dc6953f7f2e754c0ee59c30f500d">SwapWORD</link>(1);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;htons(1);</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00251"/>00251 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00252"/>00252 &#32;&#32;&#32;&#32;&#32;&#32;askbuffer.<link linkend="_group___x_u_t_i_l_s_1ga03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;question,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___q_u_e_s_t_i_o_n">DIODNSPROTOCOL_QUESTION</link>));
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00253"/>00253 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00254"/>00254 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;diostreamudp-&gt;<link linkend="_group___d_a_t_a_i_o_1gac04f4ad8ff28b97128a876063103dd50">Write</link>(askbuffer);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00255"/>00255 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00256"/>00256 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00257"/>00257 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;diostreamudp-&gt;<link linkend="_group___d_a_t_a_i_o_1ga59dc380e213dd083940c80663667dae7">WaitToFlushOutXBuffer</link>(3);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00258"/>00258 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00259"/>00259 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00260"/>00260 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00261"/>00261 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00262"/>00262 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;answerbuffer.<link linkend="_group___x_u_t_i_l_s_1ga3c14ba0ca9dfbf20b5127c87b275cb93">Empty</link>();
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00263"/>00263 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;answerbuffer.<link linkend="_group___x_u_t_i_l_s_1gacf69e379f1d0bf812ae9c1157eac172c">Resize</link>(65535);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00264"/>00264 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00265"/>00265 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;diostreamudp-&gt;<link linkend="_group___d_a_t_a_i_o_1ga6e20f03ff391343123fda221a5c2ed85">WaitToFilledReadingBuffer</link>(<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___h_e_a_d_e_r">DIODNSPROTOCOL_HEADER</link>)&#32;+&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_r_e_s___r_e_c_o_r_d">RES_RECORD</link>),&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00266"/>00266 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00267"/>00267 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00268"/>00268 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;diostreamudp-&gt;<link linkend="_group___d_a_t_a_i_o_1ga20cd6c3635818f96468dee8bc601aec1">Read</link>(answerbuffer);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00269"/>00269 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00270"/>00270 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00271"/>00271 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00272"/>00272 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00273"/>00273 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00274"/>00274 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00275"/>00275 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00276"/>00276 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___h_e_a_d_e_r">DIODNSPROTOCOL_HEADER</link>*&#32;answerheaderDNS&#32;=&#32;(<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___h_e_a_d_e_r">DIODNSPROTOCOL_HEADER</link>*)answerbuffer.<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>();
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00277"/>00277 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(answerheaderDNS)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00278"/>00278 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00279"/>00279 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(answerheaderDNS-&gt;<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___h_e_a_d_e_r_1ab78e6bc7909014630267b03e56ea2ff9">id</link>&#32;==&#32;<link linkend="__d_i_o_d_n_s_protocol___client_8cpp_1a043cd1d1f25ec54fe1e79b050a55cf5e">ASK_ID</link>)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00280"/>00280 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00281"/>00281 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;answerscount&#32;=&#32;<link linkend="__x_base_8cpp_1a4194dc6953f7f2e754c0ee59c30f500d">SwapWORD</link>(answerheaderDNS-&gt;<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___h_e_a_d_e_r_1ab9aa6f1dc483bd82f0adbde6d8771244">ans_count</link>);&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00282"/>00282 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00283"/>00283 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;c=0;&#32;c&lt;answerscount;&#32;c++)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00284"/>00284 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00285"/>00285 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_struct_r_e_s___r_e_c_o_r_d">RES_RECORD</link>*&#32;result&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_struct_r_e_s___r_e_c_o_r_d">RES_RECORD</link>();
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00286"/>00286 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(result)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00287"/>00287 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00288"/>00288 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;reader&#32;=&#32;&amp;answerbuffer.<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>()[askbuffer.<link linkend="_group___x_u_t_i_l_s_1ga726a6143d8a9293a199f8033c8198a0a">GetSize</link>()];
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00289"/>00289 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;&#32;&#32;type;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00290"/>00290 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;&#32;&#32;stop&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00291"/>00291 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00292"/>00292 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;result-&gt;<link linkend="_struct_r_e_s___r_e_c_o_r_d_1aae03249b15e32466f61f94dc462289b8">name</link>&#32;&#32;=&#32;<link linkend="_group___d_a_t_a_i_o_1ga4fd89a1c5dd8653ec289dbfa7e2bdfa2">GetBufferName</link>(reader,&#32;answerbuffer.<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>(),&#32;&amp;stop);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00293"/>00293 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;reader&#32;+=&#32;stop;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00294"/>00294 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00295"/>00295 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;result-&gt;<link linkend="_struct_r_e_s___r_e_c_o_r_d_1a23c2310af6cfef38d6a5deea4a9797e7">resource</link>&#32;=&#32;(<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___r___d_a_t_a">DIODNSPROTOCOL_R_DATA</link>*)reader;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00296"/>00296 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;reader&#32;+=&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___r___d_a_t_a">DIODNSPROTOCOL_R_DATA</link>);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00297"/>00297 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00298"/>00298 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;type&#32;=&#32;<link linkend="__x_base_8cpp_1a4194dc6953f7f2e754c0ee59c30f500d">SwapWORD</link>(result-&gt;<link linkend="_struct_r_e_s___r_e_c_o_r_d_1a23c2310af6cfef38d6a5deea4a9797e7">resource</link>-&gt;<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___r___d_a_t_a_1a205412c273335f954e21a8ed25016421">type</link>);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00299"/>00299 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00300"/>00300 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(type&#32;==&#32;1)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00301"/>00301 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00302"/>00302 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;IPresolved.<link linkend="_group___d_a_t_a_i_o_1ga1955ea08de61edcd19d7806e64ed9aaa">Set</link>((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)reader);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00303"/>00303 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;reader&#32;=&#32;reader&#32;+&#32;&#32;<link linkend="__x_base_8cpp_1a4194dc6953f7f2e754c0ee59c30f500d">SwapWORD</link>(result-&gt;<link linkend="_struct_r_e_s___r_e_c_o_r_d_1a23c2310af6cfef38d6a5deea4a9797e7">resource</link>-&gt;<link linkend="_struct_d_i_o_d_n_s_p_r_o_t_o_c_o_l___r___d_a_t_a_1aecd914ff703da93ac57781e3cbc59d7a">data_len</link>);&#32;&#32;<emphasis role="comment">//&#32;ntohs(result-&gt;resource-&gt;data_len);</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00304"/>00304 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00305"/>00305 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00306"/>00306 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00307"/>00307 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00308"/>00308 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;result-&gt;<link linkend="_struct_r_e_s___r_e_c_o_r_d_1a0d84c6a29dd82c8970fc1cf170effc35">rdata</link>&#32;=&#32;<link linkend="_group___d_a_t_a_i_o_1ga4fd89a1c5dd8653ec289dbfa7e2bdfa2">GetBufferName</link>(reader,&#32;answerbuffer.<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>(),&#32;&amp;stop);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00309"/>00309 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;reader&#32;+=&#32;stop;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00310"/>00310 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00311"/>00311 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;URLmore;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00312"/>00312 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00313"/>00313 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;URLmore&#32;=&#32;(<emphasis role="keywordtype">char</emphasis>*)result-&gt;<link linkend="_struct_r_e_s___r_e_c_o_r_d_1a0d84c6a29dd82c8970fc1cf170effc35">rdata</link>;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00314"/>00314 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00315"/>00315 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<link linkend="_group___d_a_t_a_i_o_1gaee111d121883d0dc264868238fd4468f">ResolveURL</link>((<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*)URLmore.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;IPresolved,&#32;querytype,&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00316"/>00316 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00317"/>00317 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00318"/>00318 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;free(result-&gt;<link linkend="_struct_r_e_s___r_e_c_o_r_d_1aae03249b15e32466f61f94dc462289b8">name</link>);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00319"/>00319 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;result;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00320"/>00320 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00321"/>00321 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;<emphasis role="keywordflow">break</emphasis>;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00322"/>00322 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00323"/>00323 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00324"/>00324 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00325"/>00325 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00326"/>00326 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00327"/>00327 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00328"/>00328 &#32;&#32;&#32;&#32;&#32;&#32;diostreamudp-&gt;<link linkend="_group___d_a_t_a_i_o_1ga42f9eb4342ba828c033258fae3ceafa6">Close</link>();
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00329"/>00329 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00330"/>00330 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00331"/>00331 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00332"/>00332 }
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00333"/>00333 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00334"/>00334 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00349"/><link linkend="_group___d_a_t_a_i_o_1gaa46c5e7b76bfe2e4255acc77aaba17f9">00349</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gaee111d121883d0dc264868238fd4468f">DIODNSPROTOCOLCLIENT::ResolveURL</link>(<link linkend="_class_d_i_o_u_r_l">DIOURL</link>&amp;&#32;URL,&#32;<link linkend="_class_d_i_o_i_p">DIOIP</link>&amp;&#32;IPresolved,&#32;<emphasis role="keywordtype">int</emphasis>&#32;querytype,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00350"/>00350 {
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00351"/>00351 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gaee111d121883d0dc264868238fd4468f">ResolveURL</link>(URL.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;IPresolved,&#32;querytype,&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00352"/>00352 }
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00353"/>00353 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00354"/>00354 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00369"/><link linkend="_group___d_a_t_a_i_o_1ga9ea0638b83173ce4b2d2e4dd21aeffc1">00369</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gaee111d121883d0dc264868238fd4468f">DIODNSPROTOCOLCLIENT::ResolveURL</link>(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;URL,&#32;<link linkend="_class_d_i_o_i_p">DIOIP</link>&amp;&#32;IPresolved,&#32;<emphasis role="keywordtype">int</emphasis>&#32;querytype,&#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00370"/>00370 {
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00371"/>00371 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gaee111d121883d0dc264868238fd4468f">ResolveURL</link>(URL.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;IPresolved,&#32;querytype,&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00372"/>00372 }
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00373"/>00373 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00374"/>00374 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00387"/><link linkend="_group___d_a_t_a_i_o_1gaa233a5cdf4893a4f7b7dc2a234efa4a6">00387</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gaa233a5cdf4893a4f7b7dc2a234efa4a6">DIODNSPROTOCOLCLIENT::EncodeDNSFormat</link>(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;URL,&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&amp;&#32;EncodedURL)&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00388"/>00388 {
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00389"/>00389 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;subsize&#32;=&#32;0;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00390"/>00390 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00391"/>00391 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(URL.<link linkend="_group___x_u_t_i_l_s_1gad26690161f8c1e2722771322b7370005">IsEmpty</link>())
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00392"/>00392 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00393"/>00393 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00394"/>00394 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00395"/>00395 &#32;&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00396"/>00396 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;c=0;&#32;c&lt;URL.<link linkend="_group___x_u_t_i_l_s_1ga7c3fa0dd7b650399470c76192fbd4916">GetSize</link>();&#32;c++)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00397"/>00397 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00398"/>00398 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;d=c;&#32;d&lt;URL.<link linkend="_group___x_u_t_i_l_s_1ga7c3fa0dd7b650399470c76192fbd4916">GetSize</link>();&#32;d++)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00399"/>00399 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00400"/>00400 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(URL.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>()[d]&#32;!=&#32;<link linkend="__x_string_8h_1ab483f167129a5d1941ea1d30f3df8d8a">__C</link>(<emphasis role="charliteral">&apos;.&apos;</emphasis>))
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00401"/>00401 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00402"/>00402 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;subsize++;&#32;&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00403"/>00403 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00404"/>00404 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00405"/>00405 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00406"/>00406 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00407"/>00407 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00408"/>00408 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00409"/>00409 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00410"/>00410 &#32;&#32;&#32;&#32;&#32;&#32;EncodedURL.<link linkend="_group___x_u_t_i_l_s_1ga03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>)subsize);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00411"/>00411 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00412"/>00412 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;d=0;&#32;d&lt;subsize;&#32;d++)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00413"/>00413 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00414"/>00414 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;EncodedURL.<link linkend="_group___x_u_t_i_l_s_1ga03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>)URL.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>()[c]);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00415"/>00415 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;c++;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00416"/>00416 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00417"/>00417 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00418"/>00418 &#32;&#32;&#32;&#32;&#32;&#32;subsize&#32;=&#32;0;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00419"/>00419 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00420"/>00420 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00421"/>00421 &#32;&#32;EncodedURL.<link linkend="_group___x_u_t_i_l_s_1ga03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>)0x00);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00422"/>00422 &#32;&#32;&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00423"/>00423 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00424"/>00424 }
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00425"/>00425 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00426"/>00426 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00439"/><link linkend="_group___d_a_t_a_i_o_1ga033fda6ec47819323329392037e84e74">00439</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga033fda6ec47819323329392037e84e74">DIODNSPROTOCOLCLIENT::DecodeDNSFormat</link>(<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&amp;&#32;EncodedURL,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;URL)&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00440"/>00440 {&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00441"/>00441 &#32;&#32;URL.<link linkend="_group___x_u_t_i_l_s_1ga9275997c1605fa79646c301e63a77d06">Empty</link>();
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00442"/>00442 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00443"/>00443 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;size&#32;&#32;=&#32;EncodedURL.<link linkend="_group___x_u_t_i_l_s_1ga726a6143d8a9293a199f8033c8198a0a">GetSize</link>();
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00444"/>00444 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!size)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00445"/>00445 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00446"/>00446 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00447"/>00447 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00448"/>00448 &#32;&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00449"/>00449 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;c=0;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00450"/>00450 &#32;&#32;<emphasis role="keywordflow">while</emphasis>(c&#32;&lt;&#32;size)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00451"/>00451 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00452"/>00452 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;count&#32;=&#32;EncodedURL.<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>()[c];
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00453"/>00453 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00454"/>00454 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!count)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00455"/>00455 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00456"/>00456 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00457"/>00457 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00458"/>00458 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00459"/>00459 &#32;&#32;&#32;&#32;&#32;&#32;c++;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00460"/>00460 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00461"/>00461 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;d=0;&#32;d&lt;count;&#32;d++)&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00462"/>00462 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00463"/>00463 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;URL.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(EncodedURL.<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>()[c]);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00464"/>00464 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;c++;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00465"/>00465 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00466"/>00466 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00467"/>00467 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(EncodedURL.<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>()[c])
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00468"/>00468 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00469"/>00469 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;URL.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(<link linkend="__x_string_8h_1ab483f167129a5d1941ea1d30f3df8d8a">__C</link>(<emphasis role="charliteral">&apos;.&apos;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00470"/>00470 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00471"/>00471 &#32;&#32;&#32;&#32;}&#32;&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00472"/>00472 &#32;&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00473"/>00473 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00474"/>00474 }
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00475"/>00475 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00476"/>00476 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00489"/><link linkend="_group___d_a_t_a_i_o_1ga1313ae988a32a7c9242393e5e21007a6">00489</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga033fda6ec47819323329392037e84e74">DIODNSPROTOCOLCLIENT::DecodeDNSFormat</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;EncodedURL,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;URL)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00490"/>00490 {
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00491"/>00491 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;_EncodedURL;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00492"/>00492 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;&#32;&#32;&#32;size&#32;=&#32;(int)strlen((<emphasis role="keywordtype">char</emphasis>*)EncodedURL);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00493"/>00493 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00494"/>00494 &#32;&#32;_EncodedURL.<link linkend="_group___x_u_t_i_l_s_1ga03212e4f31a9d07995ac4f72db1dd0cf">Add</link>(EncodedURL,&#32;size);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00495"/>00495 &#32;&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00496"/>00496 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga033fda6ec47819323329392037e84e74">DecodeDNSFormat</link>(_EncodedURL,&#32;URL);&#32;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00497"/>00497 }
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00498"/>00498 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00499"/>00499 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00513"/><link linkend="_group___d_a_t_a_i_o_1ga4fd89a1c5dd8653ec289dbfa7e2bdfa2">00513</link> <link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;<link linkend="_group___d_a_t_a_i_o_1ga4fd89a1c5dd8653ec289dbfa7e2bdfa2">DIODNSPROTOCOLCLIENT::GetBufferName</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;reader,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;buffer,&#32;<emphasis role="keywordtype">int</emphasis>*&#32;count)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00514"/>00514 {
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00515"/>00515 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;&#32;name;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00516"/>00516 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;p&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00517"/>00517 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;jumped&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00518"/>00518 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;offset;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00519"/>00519 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;&#32;&#32;&#32;i;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00520"/>00520 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;&#32;&#32;&#32;j;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00521"/>00521 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00522"/>00522 &#32;&#32;*count&#32;=&#32;1;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00523"/>00523 &#32;&#32;name&#32;=&#32;(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)malloc(<link linkend="__x_base_8h_1a647026fb22c438e4f73db846255990e9">_MAXSTR</link>);
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00524"/>00524 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00525"/>00525 &#32;&#32;name[0]&#32;=&#32;<emphasis role="charliteral">&apos;\0&apos;</emphasis>;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00526"/>00526 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00527"/>00527 &#32;&#32;<emphasis role="comment">//read&#32;the&#32;names&#32;in&#32;3www6google3com&#32;format</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00528"/>00528 &#32;&#32;<emphasis role="keywordflow">while</emphasis>(*reader&#32;!=&#32;0)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00529"/>00529 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00530"/>00530 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(*reader&#32;&gt;=&#32;192)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00531"/>00531 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00532"/>00532 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;offset&#32;=&#32;(*reader)*256&#32;+&#32;*(reader+1)&#32;-&#32;49152;&#32;<emphasis role="comment">//49152&#32;=&#32;11000000&#32;00000000&#32;;)</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00533"/>00533 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;reader&#32;=&#32;buffer&#32;+&#32;offset&#32;-&#32;1;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00534"/>00534 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;jumped&#32;=&#32;1;&#32;<emphasis role="comment">//we&#32;have&#32;jumped&#32;to&#32;another&#32;location&#32;so&#32;counting&#32;wont&#32;go&#32;up!</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00535"/>00535 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00536"/>00536 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00537"/>00537 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00538"/>00538 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;name[p++]&#32;=&#32;*reader;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00539"/>00539 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00540"/>00540 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00541"/>00541 &#32;&#32;&#32;&#32;&#32;reader&#32;=&#32;reader&#32;+&#32;1;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00542"/>00542 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00543"/>00543 &#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(jumped&#32;==&#32;0)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00544"/>00544 &#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00545"/>00545 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*count&#32;=&#32;*count&#32;+&#32;1;&#32;<emphasis role="comment">//if&#32;we&#32;havent&#32;jumped&#32;to&#32;another&#32;location&#32;then&#32;we&#32;can&#32;count&#32;up</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00546"/>00546 &#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00547"/>00547 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00548"/>00548 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00549"/>00549 &#32;&#32;name[p]&#32;=&#32;<emphasis role="charliteral">&apos;\0&apos;</emphasis>;&#32;<emphasis role="comment">//string&#32;complete</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00550"/>00550 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(jumped==1)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00551"/>00551 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00552"/>00552 &#32;&#32;&#32;&#32;&#32;&#32;*count&#32;=&#32;*count&#32;+&#32;1;&#32;<emphasis role="comment">//number&#32;of&#32;steps&#32;we&#32;actually&#32;moved&#32;forward&#32;in&#32;the&#32;packet</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00553"/>00553 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00554"/>00554 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00555"/>00555 &#32;&#32;<emphasis role="comment">//now&#32;convert&#32;3www6google3com0&#32;to&#32;www.google.com</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00556"/>00556 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(i=0;&#32;i&lt;(int)strlen((<emphasis role="keyword">const</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>*)name);&#32;i++)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00557"/>00557 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00558"/>00558 &#32;&#32;&#32;&#32;&#32;&#32;p&#32;=&#32;name[i];
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00559"/>00559 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00560"/>00560 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(j=0;&#32;j&lt;(int)p;&#32;j++)
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00561"/>00561 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00562"/>00562 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;name[i]=name[i+1];
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00563"/>00563 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;i&#32;=&#32;i&#32;+&#32;1;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00564"/>00564 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00565"/>00565 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00566"/>00566 &#32;&#32;&#32;&#32;&#32;&#32;name[i]=<emphasis role="charliteral">&apos;.&apos;</emphasis>;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00567"/>00567 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00568"/>00568 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00569"/>00569 &#32;&#32;name[i-1]=<emphasis role="charliteral">&apos;\0&apos;</emphasis>;&#32;<emphasis role="comment">//remove&#32;the&#32;last&#32;dot</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00570"/>00570 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00571"/>00571 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;name;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00572"/>00572 }
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00573"/>00573 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00574"/>00574 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00583"/>00583 <emphasis role="keywordtype">void</emphasis>&#32;DIODNSPROTOCOLCLIENT::Clean()
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00584"/>00584 {
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00585"/>00585 &#32;&#32;diostreamudpcfg&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00586"/>00586 &#32;&#32;diostreamudp&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00587"/>00587 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00588"/>00588 &#32;&#32;serverport&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00589"/>00589 }
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00590"/>00590 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00591"/>00591 
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00592"/>00592 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_d_n_s_protocol___client_8cpp_source_1l00593"/>00593 
+</programlisting></section>

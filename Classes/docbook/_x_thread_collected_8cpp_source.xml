@@ -1,0 +1,773 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_thread_collected_8cpp_source" xml:lang="en-US">
+<title>XThreadCollected.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/XUtils/XThreadCollected.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__x_thread_collected_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00037"/>00037 <emphasis role="preprocessor">#ifdef&#32;XTHREADCOLLECTED_ACTIVE</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00038"/>00038 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00040"/>00040 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00041"/>00041 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00042"/>00042 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_thread_collected_8h">XThreadCollected.h</link>&quot;</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00044"/>00044 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00046"/>00046 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00048"/>00048 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00049"/>00049 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00050"/>00050 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00052"/>00052 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00053"/>00053 XTHREADSCOLLECTEDMANAGER*&#32;XTHREADSCOLLECTEDMANAGER::instance&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00054"/>00054 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00055"/>00055 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00056"/>00056 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00057"/>00057 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00058"/>00058 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00059"/>00059 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00061"/>00061 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00062"/>00062 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_XTHREADCOLLECTED</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00063"/>00063 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00064"/>00064 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00072"/>00072 XTHREADCOLLECTED::XTHREADCOLLECTED()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00073"/>00073 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00074"/>00074 &#32;&#32;Clean();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00075"/>00075 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00076"/>00076 &#32;&#32;GEN_XFACTORY_CREATE(xtimerout,&#32;CreateTimer())
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00077"/>00077 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00078"/>00078 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00079"/>00079 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00092"/>00092 XTHREADCOLLECTED::XTHREADCOLLECTED(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6">XTHREADGROUPID</link>&#32;groupID,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;ID,&#32;<link linkend="__x_thread_8h_1a75cd5e654ca0f2255ae2473172af98d6">XTHREADFUNCTION</link>&#32;function,&#32;<emphasis role="keywordtype">void</emphasis>*&#32;param)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00093"/>00093 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00094"/>00094 &#32;&#32;Clean();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00095"/>00095 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00096"/>00096 &#32;&#32;GEN_XFACTORY_CREATE(directxthread,&#32;CreateThread(groupID,&#32;ID,&#32;function,&#32;param))
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00097"/>00097 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(directxthread)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00098"/>00098 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00099"/>00099 &#32;&#32;&#32;&#32;&#32;&#32;this-&gt;ID&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;ID;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00100"/>00100 &#32;&#32;&#32;&#32;&#32;&#32;this-&gt;function&#32;=&#32;function;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00101"/>00101 &#32;&#32;&#32;&#32;&#32;&#32;this-&gt;param&#32;&#32;&#32;&#32;=&#32;param;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00102"/>00102 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00103"/>00103 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00104"/>00104 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00105"/>00105 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00114"/>00114 XTHREADCOLLECTED::~XTHREADCOLLECTED()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00115"/>00115 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00116"/>00116 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xtimerout)&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY.DeleteTimer(xtimerout);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00117"/>00117 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(directxthread)&#32;GEN_XFACTORY.DeleteThread(groupID,&#32;directxthread);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00118"/>00118 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00119"/>00119 &#32;&#32;Clean();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00120"/>00120 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00121"/>00121 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00122"/>00122 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00134"/>00134 <emphasis role="keywordtype">bool</emphasis>&#32;XTHREADCOLLECTED::Ini(<emphasis role="keywordtype">bool</emphasis>&#32;run)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00135"/>00135 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00136"/>00136 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(directxthread)&#32;<emphasis role="keywordflow">return</emphasis>&#32;directxthread-&gt;Ini(run);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00137"/>00137 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00138"/>00138 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(run)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00139"/>00139 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00140"/>00140 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!Run(<emphasis role="keyword">true</emphasis>))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00141"/>00141 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00142"/>00142 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00143"/>00143 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<link linkend="__x_thread_8h_1a366a30be55b44789bcfebf624c8cb927a38a37e3fa13a372c1389ecbfa4b8af62">XTHREADSTATUS_STOP</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00145"/>00145 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00146"/>00146 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00147"/>00147 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00148"/>00148 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00149"/>00149 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00150"/>00150 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00160"/>00160 <emphasis role="keywordtype">void</emphasis>&#32;XTHREADCOLLECTED::Wait(<emphasis role="keywordtype">int</emphasis>&#32;milliseconds)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00161"/>00161 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00162"/>00162 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(directxthread)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00163"/>00163 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00164"/>00164 &#32;&#32;&#32;&#32;&#32;&#32;directxthread-&gt;Wait(milliseconds);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00165"/>00165 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00166"/>00166 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00167"/>00167 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00168"/>00168 &#32;&#32;GEN_XSLEEP.MilliSeconds(milliseconds);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00169"/>00169 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00170"/>00170 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00171"/>00171 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00181"/>00181 <emphasis role="keywordtype">bool</emphasis>&#32;XTHREADCOLLECTED::End()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00182"/>00182 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00183"/>00183 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(directxthread)&#32;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00184"/>00184 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00185"/>00185 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;directxthread-&gt;End();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00186"/>00186 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00187"/>00187 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00188"/>00188 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status&#32;==&#32;<link linkend="__x_thread_8h_1a366a30be55b44789bcfebf624c8cb927a0810d58d25021355fa8ae7bf348ed610">XTHREADSTATUS_END</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00189"/>00189 &#32;&#32;status&#32;=&#32;<link linkend="__x_thread_8h_1a366a30be55b44789bcfebf624c8cb927a93f78a60f2a85c943ec7559ae1893aec">XTHREADSTATUS_EXIT</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00190"/>00190 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00191"/>00191 &#32;&#32;WaitToEnd();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00192"/>00192 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00193"/>00193 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00194"/>00194 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00195"/>00195 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00196"/>00196 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00206"/>00206 <emphasis role="keywordtype">bool</emphasis>&#32;XTHREADCOLLECTED::IsRunning()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00207"/>00207 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00208"/>00208 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(directxthread)&#32;<emphasis role="keywordflow">return</emphasis>&#32;directxthread-&gt;IsRunning();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00209"/>00209 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00210"/>00210 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status&#32;==&#32;<link linkend="__x_thread_8h_1a366a30be55b44789bcfebf624c8cb927a4e8ecb23b264abef1f4f9bee700b5513">XTHREADSTATUS_RUN</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00211"/>00211 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00212"/>00212 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00213"/>00213 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00214"/>00214 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00226"/>00226 <emphasis role="keywordtype">bool</emphasis>&#32;XTHREADCOLLECTED::Run(<emphasis role="keywordtype">bool</emphasis>&#32;activate)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00227"/>00227 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00228"/>00228 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(directxthread)&#32;<emphasis role="keywordflow">return</emphasis>&#32;directxthread-&gt;Run(activate);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00229"/>00229 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00230"/>00230 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(activate)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00231"/>00231 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00232"/>00232 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(IsRunning())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00233"/>00233 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<link linkend="__x_thread_8h_1a366a30be55b44789bcfebf624c8cb927a4e8ecb23b264abef1f4f9bee700b5513">XTHREADSTATUS_RUN</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00234"/>00234 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00235"/>00235 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00236"/>00236 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00237"/>00237 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!IsRunning())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00238"/>00238 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<link linkend="__x_thread_8h_1a366a30be55b44789bcfebf624c8cb927a38a37e3fa13a372c1389ecbfa4b8af62">XTHREADSTATUS_STOP</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00239"/>00239 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00240"/>00240 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00241"/>00241 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00242"/>00242 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00243"/>00243 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00244"/>00244 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00254"/>00254 <emphasis role="keywordtype">bool</emphasis>&#32;XTHREADCOLLECTED::Exit()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00255"/>00255 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00256"/>00256 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(directxthread)&#32;<emphasis role="keywordflow">return</emphasis>&#32;directxthread-&gt;Exit();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00257"/>00257 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00258"/>00258 &#32;&#32;status&#32;=&#32;<link linkend="__x_thread_8h_1a366a30be55b44789bcfebf624c8cb927a93f78a60f2a85c943ec7559ae1893aec">XTHREADSTATUS_EXIT</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00259"/>00259 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00260"/>00260 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00261"/>00261 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00262"/>00262 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00272"/>00272 <link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6">XTHREADGROUPID</link>&#32;XTHREADCOLLECTED::GetGroupID()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00273"/>00273 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00274"/>00274 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;groupID;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00275"/>00275 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00276"/>00276 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00277"/>00277 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00287"/>00287 <emphasis role="keywordtype">void</emphasis>&#32;XTHREADCOLLECTED::SetGroupID(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6">XTHREADGROUPID</link>&#32;groupID)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00288"/>00288 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00289"/>00289 &#32;&#32;this-&gt;groupID&#32;=&#32;groupID;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00290"/>00290 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00291"/>00291 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00292"/>00292 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00302"/>00302 <link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;XTHREADCOLLECTED::GetID()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00303"/>00303 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00304"/>00304 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(directxthread)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00305"/>00305 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00306"/>00306 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;directxthread-&gt;GetID();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00307"/>00307 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00308"/>00308 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00309"/>00309 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00310"/>00310 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;ID;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00311"/>00311 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00312"/>00312 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00313"/>00313 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00314"/>00314 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00324"/>00324 <link linkend="__x_thread_8h_1a75cd5e654ca0f2255ae2473172af98d6">XTHREADFUNCTION</link>&#32;&#32;XTHREADCOLLECTED::GetFunction()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00325"/>00325 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00326"/>00326 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(directxthread)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00327"/>00327 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00328"/>00328 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;directxthread-&gt;GetFunction();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00329"/>00329 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00330"/>00330 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00331"/>00331 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00332"/>00332 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;function;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00333"/>00333 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00334"/>00334 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00335"/>00335 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00336"/>00336 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00346"/>00346 <emphasis role="keywordtype">void</emphasis>&#32;XTHREADCOLLECTED::SetFunction(<link linkend="__x_thread_8h_1a75cd5e654ca0f2255ae2473172af98d6">XTHREADFUNCTION</link>&#32;function)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00347"/>00347 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00348"/>00348 &#32;&#32;this-&gt;function&#32;=&#32;function;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00349"/>00349 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00350"/>00350 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00351"/>00351 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00361"/>00361 <emphasis role="keywordtype">void</emphasis>*&#32;XTHREADCOLLECTED::GetParam()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00362"/>00362 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00363"/>00363 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(directxthread)&#32;<emphasis role="keywordflow">return</emphasis>&#32;directxthread-&gt;GetParam();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00364"/>00364 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;param;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00365"/>00365 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00366"/>00366 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00367"/>00367 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00377"/>00377 <emphasis role="keywordtype">void</emphasis>&#32;XTHREADCOLLECTED::SetParam(<emphasis role="keywordtype">void</emphasis>*&#32;param)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00378"/>00378 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00379"/>00379 &#32;&#32;this-&gt;param&#32;=&#32;param;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00380"/>00380 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00381"/>00381 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00382"/>00382 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00392"/>00392 <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;XTHREADCOLLECTED::GetWaitYield()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00393"/>00393 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00394"/>00394 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(directxthread)&#32;<emphasis role="keywordflow">return</emphasis>&#32;directxthread-&gt;GetWaitYield();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00395"/>00395 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;waityield;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00396"/>00396 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00397"/>00397 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00398"/>00398 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00408"/>00408 <emphasis role="keywordtype">void</emphasis>&#32;XTHREADCOLLECTED::SetWaitYield(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;waityield)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00409"/>00409 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00410"/>00410 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(directxthread)&#32;<emphasis role="keywordflow">return</emphasis>&#32;directxthread-&gt;SetWaitYield(priority);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00411"/>00411 &#32;&#32;this-&gt;waityield&#32;=&#32;waityield;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00412"/>00412 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00413"/>00413 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00414"/>00414 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00424"/>00424 <link linkend="__x_thread_8h_1a9082e176800b19a3e755ff93b5678735">XTHREADPRIORITY</link>&#32;XTHREADCOLLECTED::GetPriority()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00425"/>00425 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00426"/>00426 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(directxthread)&#32;<emphasis role="keywordflow">return</emphasis>&#32;directxthread-&gt;GetPriority();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00427"/>00427 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;priority;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00428"/>00428 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00429"/>00429 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00430"/>00430 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00440"/>00440 <emphasis role="keywordtype">void</emphasis>&#32;XTHREADCOLLECTED::SetPriority(<link linkend="__x_thread_8h_1a9082e176800b19a3e755ff93b5678735">XTHREADPRIORITY</link>&#32;priority)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00441"/>00441 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00442"/>00442 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(directxthread)&#32;<emphasis role="keywordflow">return</emphasis>&#32;directxthread-&gt;SetPriority(priority);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00443"/>00443 &#32;&#32;this-&gt;priority&#32;=&#32;priority;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00444"/>00444 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00445"/>00445 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00446"/>00446 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00456"/>00456 <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;XTHREADCOLLECTED::GetStackSize()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00457"/>00457 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00458"/>00458 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;stacksize;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00459"/>00459 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00460"/>00460 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00461"/>00461 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00471"/>00471 <emphasis role="keywordtype">void</emphasis>&#32;XTHREADCOLLECTED::SetStackSize(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;stacksize)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00472"/>00472 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00473"/>00473 &#32;&#32;this-&gt;stacksize&#32;=&#32;stacksize;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00474"/>00474 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00475"/>00475 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00476"/>00476 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00486"/>00486 <emphasis role="keywordtype">bool</emphasis>&#32;XTHREADCOLLECTED::IsInFunction()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00487"/>00487 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00488"/>00488 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(directxthread)&#32;<emphasis role="keywordflow">return</emphasis>&#32;directxthread-&gt;IsInFunction();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00489"/>00489 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;isinfunction;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00490"/>00490 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00491"/>00491 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00492"/>00492 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00502"/>00502 <emphasis role="keywordtype">void</emphasis>&#32;XTHREADCOLLECTED::SetIsInFunction(<emphasis role="keywordtype">bool</emphasis>&#32;isinfunction)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00503"/>00503 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00504"/>00504 &#32;&#32;this-&gt;isinfunction&#32;=&#32;isinfunction;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00505"/>00505 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00506"/>00506 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00507"/>00507 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00517"/>00517 <link linkend="__x_thread_8h_1a366a30be55b44789bcfebf624c8cb927">XTHREADSTATUS</link>&#32;XTHREADCOLLECTED::GetStatus()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00518"/>00518 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00519"/>00519 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(directxthread)&#32;<emphasis role="keywordflow">return</emphasis>&#32;directxthread-&gt;GetStatusFunc();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00520"/>00520 &#32;&#32;<emphasis role="comment">//if(status&#32;==&#32;XTHREADSTATUS_EXIT)&#32;return&#32;XTHREADSTATUS_UNKNOWN;&#32;//&#32;#Imanol</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00521"/>00521 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00522"/>00522 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00523"/>00523 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00524"/>00524 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00525"/>00525 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00535"/>00535 <emphasis role="keywordtype">void</emphasis>&#32;XTHREADCOLLECTED::SetStatus(<link linkend="__x_thread_8h_1a366a30be55b44789bcfebf624c8cb927">XTHREADSTATUS</link>&#32;status)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00536"/>00536 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00537"/>00537 &#32;&#32;this-&gt;status&#32;=&#32;status;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00538"/>00538 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00539"/>00539 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00540"/>00540 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00550"/>00550 <emphasis role="keywordtype">bool</emphasis>&#32;XTHREADCOLLECTED::WaitToEnd()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00551"/>00551 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00552"/>00552 &#32;&#32;<emphasis role="keywordflow">while</emphasis>(GetStatus()&#32;!=&#32;<link linkend="__x_thread_8h_1a366a30be55b44789bcfebf624c8cb927a0810d58d25021355fa8ae7bf348ed610">XTHREADSTATUS_END</link>)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00553"/>00553 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00554"/>00554 &#32;&#32;&#32;&#32;&#32;&#32;Wait();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00555"/>00555 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00556"/>00556 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00557"/>00557 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00558"/>00558 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00559"/>00559 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00560"/>00560 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00569"/>00569 <emphasis role="keywordtype">void</emphasis>&#32;XTHREADCOLLECTED::Clean()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00570"/>00570 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00571"/>00571 &#32;&#32;groupID&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6aeceae7195c2308897817e2cc44a49192">XTHREADGROUPID_UNKNOWN</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00572"/>00572 &#32;&#32;ID.Empty();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00573"/>00573 &#32;&#32;function&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00574"/>00574 &#32;&#32;param&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00575"/>00575 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00576"/>00576 &#32;&#32;waityield&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_thread_8h_1abc7512ca71aa3c705da3806b4f6672bc">XTHREAD_DEFAULTWAITYIELD</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00577"/>00577 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00578"/>00578 &#32;&#32;priority&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_thread_8h_1a9082e176800b19a3e755ff93b5678735adc950499a79db57aa66cdb3ab7a1e96e">XTHREADPRIORITY_UNKNOWN</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00579"/>00579 &#32;&#32;stacksize&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00580"/>00580 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00581"/>00581 &#32;&#32;isinfunction&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00582"/>00582 &#32;&#32;status&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_thread_8h_1a366a30be55b44789bcfebf624c8cb927a81963178051e48ef3134324308613eee">XTHREADSTATUS_NONE</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00583"/>00583 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00584"/>00584 &#32;&#32;xtimerout&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00585"/>00585 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00586"/>00586 &#32;&#32;directxthread&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00587"/>00587 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00588"/>00588 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00589"/>00589 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00590"/>00590 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00591"/>00591 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00592"/>00592 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00593"/>00593 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_THREADSCOLLECTED</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00594"/>00594 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00595"/>00595 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00605"/>00605 XTHREADSCOLLECTED::XTHREADSCOLLECTED(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6">XTHREADGROUPID</link>&#32;groupID)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00606"/>00606 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00607"/>00607 &#32;&#32;Clean();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00608"/>00608 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00609"/>00609 &#32;&#32;this-&gt;groupID&#32;=&#32;groupID;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00610"/>00610 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00611"/>00611 &#32;&#32;GEN_XFACTORY_CREATE(xthreadsvectormutex,&#32;Create_Mutex())
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00612"/>00612 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00613"/>00613 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;stringID;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00614"/>00614 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00615"/>00615 &#32;&#32;GetGroupThreadIDString(stringID);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00616"/>00616 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00617"/>00617 &#32;&#32;if(xthreadsvectormutex)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00618"/>00618 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00619"/>00619 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY_CREATE(xthread,&#32;CreateThread(groupID,&#32;stringID.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;ThreadRunFunction,&#32;(<emphasis role="keywordtype">void</emphasis>*)<emphasis role="keyword">this</emphasis>));
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00620"/>00620 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xthread)&#32;xthread-&gt;Ini();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00621"/>00621 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00622"/>00622 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00623"/>00623 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00624"/>00624 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00632"/>00632 XTHREADSCOLLECTED::XTHREADSCOLLECTED()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00633"/>00633 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00634"/>00634 &#32;&#32;Clean();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00635"/>00635 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00636"/>00636 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00637"/>00637 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00646"/>00646 XTHREADSCOLLECTED::~XTHREADSCOLLECTED()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00647"/>00647 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00648"/>00648 &#32;&#32;ExitAll();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00649"/>00649 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00650"/>00650 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xthread)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00651"/>00651 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00652"/>00652 &#32;&#32;&#32;&#32;&#32;&#32;xthread-&gt;End();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00653"/>00653 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY.DeleteThread(groupID,&#32;xthread);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00654"/>00654 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00655"/>00655 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00656"/>00656 &#32;&#32;DeleteAll();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00657"/>00657 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00658"/>00658 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xthreadsvectormutex)&#32;GEN_XFACTORY.Delete_Mutex(xthreadsvectormutex);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00659"/>00659 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00660"/>00660 &#32;&#32;Clean();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00661"/>00661 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00662"/>00662 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00663"/>00663 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00673"/>00673 <link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6">XTHREADGROUPID</link>&#32;XTHREADSCOLLECTED::GetGroupID()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00674"/>00674 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00675"/>00675 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;groupID;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00676"/>00676 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00677"/>00677 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00678"/>00678 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00688"/>00688 <emphasis role="keywordtype">void</emphasis>&#32;XTHREADSCOLLECTED::SetGroupID(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6">XTHREADGROUPID</link>&#32;groupID)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00689"/>00689 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00690"/>00690 &#32;&#32;this-&gt;groupID&#32;=&#32;groupID;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00691"/>00691 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00692"/>00692 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00693"/>00693 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00708"/>00708 <link linkend="_class_x_t_h_r_e_a_d_c_o_l_l_e_c_t_e_d">XTHREADCOLLECTED</link>*&#32;XTHREADSCOLLECTED::Create(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6">XTHREADGROUPID</link>&#32;groupID,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;ID,&#32;<link linkend="__x_thread_8h_1a75cd5e654ca0f2255ae2473172af98d6">XTHREADFUNCTION</link>&#32;function,&#32;<emphasis role="keywordtype">void</emphasis>*&#32;param)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00709"/>00709 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00710"/>00710 &#32;&#32;<link linkend="_class_x_t_h_r_e_a_d_c_o_l_l_e_c_t_e_d">XTHREADCOLLECTED</link>*&#32;xthreadcollected&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00711"/>00711 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00712"/>00712 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xthread)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00713"/>00713 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00714"/>00714 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xthreadsvectormutex)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00715"/>00715 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00716"/>00716 &#32;&#32;&#32;&#32;&#32;&#32;xthreadsvectormutex-&gt;Lock();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00717"/>00717 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00718"/>00718 &#32;&#32;&#32;&#32;&#32;&#32;xthreadcollected&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="__x_thread_collected_8h_1a75f25da29b8b842713b49e5893910fd5">XTHREADCOLLECTED</link>();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00719"/>00719 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xthreadcollected)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00720"/>00720 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00721"/>00721 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xthreadcollected-&gt;SetGroupID(groupID);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00722"/>00722 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xthreadcollected-&gt;GetID()-&gt;Set(ID);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00723"/>00723 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xthreadcollected-&gt;SetFunction(function);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00724"/>00724 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xthreadcollected-&gt;SetParam(param);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00725"/>00725 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00726"/>00726 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xthreadsvector.Add(xthreadcollected);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00727"/>00727 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00728"/>00728 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00729"/>00729 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00730"/>00730 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;XTRACE_ACTIVE</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00731"/>00731 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;XSTRING&#32;groupID;</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00732"/>00732 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;GetGroupThreadIDString(groupID);</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00733"/>00733 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;XTRACE_PRINTCOLOR(XDEBUG_COLORINFO,&#32;__L(&quot;Create&#32;THREAD&#32;COLLECTED&#32;(%02d)&#32;grupo&#32;%s:&#32;%s&quot;),&#32;xthreadsvector.GetSize(),&#32;groupID.Get(),&#32;ID);</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00734"/>00734 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00735"/>00735 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00736"/>00736 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00737"/>00737 &#32;&#32;&#32;&#32;&#32;&#32;xthreadsvectormutex-&gt;UnLock();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00738"/>00738 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00739"/>00739 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00740"/>00740 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00741"/>00741 &#32;&#32;&#32;&#32;&#32;&#32;xthreadcollected&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="__x_thread_collected_8h_1a75f25da29b8b842713b49e5893910fd5">XTHREADCOLLECTED</link>(groupID,&#32;ID,&#32;function,&#32;param);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00742"/>00742 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xthreadcollected)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00743"/>00743 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00744"/>00744 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00745"/>00745 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00746"/>00746 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00747"/>00747 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00748"/>00748 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;xthreadcollected;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00749"/>00749 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00750"/>00750 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00751"/>00751 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00764"/>00764 <emphasis role="keywordtype">bool</emphasis>&#32;XTHREADSCOLLECTED::Delete(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6">XTHREADGROUPID</link>&#32;groupID,&#32;<link linkend="_class_x_t_h_r_e_a_d_c_o_l_l_e_c_t_e_d">XTHREADCOLLECTED</link>*&#32;xthreadcollected)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00765"/>00765 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00766"/>00766 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00767"/>00767 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00768"/>00768 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xthread)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00769"/>00769 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00770"/>00770 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xthreadsvectormutex)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00771"/>00771 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00772"/>00772 &#32;&#32;&#32;&#32;&#32;&#32;xthreadsvectormutex-&gt;Lock();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00773"/>00773 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00774"/>00774 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;index&#32;=&#32;0;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00775"/>00775 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00776"/>00776 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">do</emphasis>{&#32;<link linkend="_class_x_t_h_r_e_a_d_c_o_l_l_e_c_t_e_d">XTHREADCOLLECTED</link>*&#32;_xthreadcollected&#32;=&#32;xthreadsvector.Get(index);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00777"/>00777 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xthreadcollected&#32;==&#32;_xthreadcollected)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00778"/>00778 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00779"/>00779 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00780"/>00780 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;XTRACE_ACTIVE</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00781"/>00781 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;XSTRING&#32;groupID;</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00782"/>00782 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GetGroupThreadIDString(groupID);</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00783"/>00783 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;XTRACE_PRINTCOLOR(XDEBUG_COLORINFO,&#32;__L(&quot;Delete&#32;THREAD&#32;COLLECTED&#32;(%02d)&#32;grupo&#32;%s:&#32;%s&quot;),&#32;xthreadsvector.GetSize(),&#32;groupID.Get(),&#32;xthreadcollected-&gt;GetID()-&gt;Get());</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00784"/>00784 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00785"/>00785 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00786"/>00786 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00787"/>00787 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xthreadcollected-&gt;Exit();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00788"/>00788 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xthreadsvector.Delete(xthreadcollected);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00789"/>00789 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;xthreadcollected;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00790"/>00790 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00791"/>00791 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00792"/>00792 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00793"/>00793 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00794"/>00794 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00795"/>00795 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00796"/>00796 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;index++;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00797"/>00797 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00798"/>00798 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">while</emphasis>(index&#32;&lt;&#32;xthreadsvector.GetSize());
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00799"/>00799 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00800"/>00800 &#32;&#32;&#32;&#32;&#32;&#32;xthreadsvectormutex-&gt;UnLock();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00801"/>00801 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00802"/>00802 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00803"/>00803 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00804"/>00804 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;xthreadcollected;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00805"/>00805 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00806"/>00806 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00807"/>00807 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00808"/>00808 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00809"/>00809 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00810"/>00810 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00820"/>00820 <emphasis role="keywordtype">bool</emphasis>&#32;XTHREADSCOLLECTED::ExitAll()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00821"/>00821 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00822"/>00822 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xthreadsvectormutex)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00823"/>00823 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00824"/>00824 &#32;&#32;xthreadsvectormutex-&gt;Lock();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00825"/>00825 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00826"/>00826 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;&#32;c&lt;xthreadsvector.GetSize();&#32;c++)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00827"/>00827 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00828"/>00828 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_t_h_r_e_a_d_c_o_l_l_e_c_t_e_d">XTHREADCOLLECTED</link>*&#32;xthreadcollected&#32;&#32;=&#32;xthreadsvector.Get(c);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00829"/>00829 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xthreadcollected)&#32;xthreadcollected-&gt;Exit();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00830"/>00830 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00831"/>00831 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00832"/>00832 &#32;&#32;xthreadsvectormutex-&gt;UnLock();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00833"/>00833 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00834"/>00834 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00835"/>00835 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00836"/>00836 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00837"/>00837 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00847"/>00847 <emphasis role="keywordtype">bool</emphasis>&#32;XTHREADSCOLLECTED::DeleteAll()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00848"/>00848 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00849"/>00849 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xthreadsvectormutex)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00850"/>00850 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00851"/>00851 &#32;&#32;xthreadsvectormutex-&gt;Lock();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00852"/>00852 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00853"/>00853 &#32;&#32;xthreadsvector.DeleteContents();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00854"/>00854 &#32;&#32;xthreadsvector.DeleteAll();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00855"/>00855 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00856"/>00856 &#32;&#32;xthreadsvectormutex-&gt;UnLock();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00857"/>00857 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00858"/>00858 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00859"/>00859 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00860"/>00860 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00861"/>00861 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00873"/>00873 <emphasis role="keywordtype">void</emphasis>&#32;XTHREADSCOLLECTED::ThreadRunFunction(<emphasis role="keywordtype">void</emphasis>*&#32;param)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00874"/>00874 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00875"/>00875 &#32;&#32;XTHREADSCOLLECTED*&#32;xthreadscollected&#32;=&#32;(XTHREADSCOLLECTED*)param;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00876"/>00876 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xthreadscollected)&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00877"/>00877 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00878"/>00878 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xthreadscollected-&gt;xthreadsvectormutex)&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00879"/>00879 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00880"/>00880 &#32;&#32;xthreadscollected-&gt;xthreadsvectormutex-&gt;Lock();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00881"/>00881 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00882"/>00882 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;&#32;c&lt;xthreadscollected-&gt;xthreadsvector.GetSize();&#32;c++)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00883"/>00883 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00884"/>00884 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_t_h_r_e_a_d_c_o_l_l_e_c_t_e_d">XTHREADCOLLECTED</link>*&#32;xthreadcollected&#32;&#32;=&#32;xthreadscollected-&gt;xthreadsvector.Get(c);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00885"/>00885 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xthreadcollected)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00886"/>00886 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00887"/>00887 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">switch</emphasis>(xthreadcollected-&gt;GetStatus())
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00888"/>00888 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00889"/>00889 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_thread_8h_1a366a30be55b44789bcfebf624c8cb927a4e8ecb23b264abef1f4f9bee700b5513">XTHREADSTATUS_RUN</link>&#32;&#32;&#32;&#32;:&#32;xthreadcollected-&gt;SetIsInFunction(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00890"/>00890 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xthreadcollected-&gt;GetFunction()(xthreadcollected-&gt;GetParam());
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00891"/>00891 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xthreadcollected-&gt;SetIsInFunction(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00892"/>00892 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00893"/>00893 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xthreadscollected-&gt;xthread-&gt;Wait();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00894"/>00894 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00895"/>00895 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00896"/>00896 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_thread_8h_1a366a30be55b44789bcfebf624c8cb927a93f78a60f2a85c943ec7559ae1893aec">XTHREADSTATUS_EXIT</link>&#32;&#32;&#32;:&#32;xthreadcollected-&gt;SetStatus(<link linkend="__x_thread_8h_1a366a30be55b44789bcfebf624c8cb927a0810d58d25021355fa8ae7bf348ed610">XTHREADSTATUS_END</link>);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00897"/>00897 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00898"/>00898 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00899"/>00899 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00900"/>00900 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00901"/>00901 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00902"/>00902 &#32;&#32;xthreadscollected-&gt;xthreadsvectormutex-&gt;UnLock();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00903"/>00903 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00904"/>00904 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00905"/>00905 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00917"/>00917 <emphasis role="keywordtype">bool</emphasis>&#32;XTHREADSCOLLECTED::GetGroupThreadIDString(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;stringID)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00918"/>00918 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00919"/>00919 &#32;&#32;stringID&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;TGRP_&quot;</emphasis>);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00920"/>00920 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00921"/>00921 &#32;&#32;<emphasis role="keywordflow">switch</emphasis>(groupID)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00922"/>00922 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00923"/>00923 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6aeceae7195c2308897817e2cc44a49192">XTHREADGROUPID_UNKNOWN</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;stringID.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;UNKNOWN&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00924"/>00924 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6a60757c697f84ba3ee59e54ad99c3b6fe">XTHREADGROUPID_SCHEDULER</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;stringID.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;SCHEDULE&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00925"/>00925 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6a382da90833173dd82ea60c8ab490a1e1">XTHREADGROUPID_SCRIPT</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;stringID.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;SCRIPT&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00926"/>00926 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6ada7b3bfa71269bbca6f7b6680fa5c20c">XTHREADGROUPID_DIOSTREAM</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;stringID.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;DIOSTREAM&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00927"/>00927 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6afd5ea3f57252c8ca31afbd92ac8292ea">XTHREADGROUPID_DIOSTREAMUART</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;stringID.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;DIOSTREAMUART&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00928"/>00928 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6ab8479c55eebafff2cd86d042ae6937fb">XTHREADGROUPID_DIOSTREAMUDP</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;stringID.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;DIOSTREAMUDP&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00929"/>00929 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6ada2e589a571a125daf1059834f358c91">XTHREADGROUPID_DIOSTREAMTCPIP</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;stringID.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;DIOSTREAMTCPIP&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00930"/>00930 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6a37d26fb19e36a95c597124f179da2da5">XTHREADGROUPID_DIOSTREAMWIFI</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;stringID.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;DIOSTREAMWIFI&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00931"/>00931 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6ae5fe84bac24b5801142accfc171ea7df">XTHREADGROUPID_DIOSTREAMBLUETOOTH</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;stringID.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;DIOSTREAMBLUETOOTH&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00932"/>00932 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6a84cb8ce10e9d83f06cdd1b368d0b67ea">XTHREADGROUPID_DIOSTREAMUSB</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;stringID.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;DIOSTREAMUSB&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00933"/>00933 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6a9c0348562e57324dfddf5c0b1cf8d81f">XTHREADGROUPID_DIOSTREAMICMP</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;stringID.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;DIOSTREAMICMP&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00934"/>00934 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6a30fc7b8d19c0a99364d2df8b682f6e5b">XTHREADGROUPID_DIOSTREAMSPI</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;stringID.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;DIOSTREAMSPI&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00935"/>00935 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6af27fef13ef4a6c463e7a4be2795e126c">XTHREADGROUPID_DIOSTREAMCIPHER</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;stringID.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;DIOSTREAMCIPHER&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00936"/>00936 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6a8dce842e574ea112a8e631392ccc611e">XTHREADGROUPID_DIOPROTOCOL</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;stringID.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;DIOPROTOCOL&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00937"/>00937 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6adeb7510774d91a5e4bd4f69d61f9a36d">XTHREADGROUPID_DIOPROTOCOL_CONNECTIONMANAGER</link>&#32;:&#32;stringID.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;DIOPROTOCOL_CONNECTIONMANAGER&quot;</emphasis>));&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00938"/>00938 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6a47da7ae89a8ab44bce4f7bfa034be687">XTHREADGROUPID_DIOWEBSERVER</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;stringID.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;DIOWEBSERVER&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00939"/>00939 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6a19f067386794af4e73a4c53286d885a7">XTHREADGROUPID_DIOATCMS</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;stringID.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;DIOATCMS&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00940"/>00940 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6a341b0909dee4ba53548b3df06192acb2">XTHREADGROUPID_DIOALERTS</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;stringID.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;DIOALERTS&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00941"/>00941 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6a8571eded63180e29f70d8a9764c2f27c">XTHREADGROUPID_DIOPCAP</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;stringID.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;DIOPCAP&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00942"/>00942 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6a4594d7b6ee3560d52ab46a59b7936113">XTHREADGROUPID_VIDEO</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;stringID.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;VIDEO&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00943"/>00943 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6aad4478226de0b952e69aedb96c97aa0c">XTHREADGROUPID_APPOWNER</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00944"/>00944 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;default&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;{&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;IDlocal;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00945"/>00945 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;IDlocal.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;APPOWNER[%d]&quot;</emphasis>),&#32;groupID);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00946"/>00946 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00947"/>00947 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stringID.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(IDlocal);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00948"/>00948 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00949"/>00949 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00950"/>00950 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00951"/>00951 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00952"/>00952 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00953"/>00953 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00954"/>00954 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00955"/>00955 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00964"/>00964 <emphasis role="keywordtype">void</emphasis>&#32;XTHREADSCOLLECTED::Clean()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00965"/>00965 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00966"/>00966 &#32;&#32;groupID&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6aeceae7195c2308897817e2cc44a49192">XTHREADGROUPID_UNKNOWN</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00967"/>00967 &#32;&#32;xthreadsvectormutex&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00968"/>00968 &#32;&#32;xthread&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00969"/>00969 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00970"/>00970 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00971"/>00971 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00972"/>00972 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00973"/>00973 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00974"/>00974 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00975"/>00975 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_XTHREADSCOLLECTEDMANAGER</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00976"/>00976 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00977"/>00977 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00987"/>00987 XTHREADSCOLLECTEDMANAGER&amp;&#32;XTHREADSCOLLECTEDMANAGER::GetInstance()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00988"/>00988 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00989"/>00989 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!instance)&#32;instance&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;XTHREADSCOLLECTEDMANAGER();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00990"/>00990 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00991"/>00991 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(*instance);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00992"/>00992 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00993"/>00993 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l00994"/>00994 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01004"/>01004 <emphasis role="keywordtype">bool</emphasis>&#32;XTHREADSCOLLECTEDMANAGER::DelInstance()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01005"/>01005 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01006"/>01006 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(instance)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01007"/>01007 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01008"/>01008 &#32;&#32;&#32;&#32;&#32;&#32;instance-&gt;DeleteAll();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01009"/>01009 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01010"/>01010 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;instance;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01011"/>01011 &#32;&#32;&#32;&#32;&#32;&#32;instance&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01012"/>01012 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01013"/>01013 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01014"/>01014 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01015"/>01015 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01016"/>01016 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01017"/>01017 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01018"/>01018 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01019"/>01019 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01031"/>01031 <emphasis role="keywordtype">bool</emphasis>&#32;XTHREADSCOLLECTEDMANAGER::ActivateGroup(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6">XTHREADGROUPID</link>&#32;groupID)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01032"/>01032 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01033"/>01033 &#32;&#32;groupthreadsactivate.Add(groupID);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01034"/>01034 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01035"/>01035 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01036"/>01036 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01037"/>01037 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01049"/>01049 <emphasis role="keywordtype">bool</emphasis>&#32;XTHREADSCOLLECTEDMANAGER::DeactivateGroup(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6">XTHREADGROUPID</link>&#32;groupID)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01050"/>01050 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01051"/>01051 &#32;&#32;groupthreadsactivate.Delete(groupID);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01052"/>01052 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01053"/>01053 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01054"/>01054 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01055"/>01055 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01067"/>01067 <emphasis role="keywordtype">bool</emphasis>&#32;XTHREADSCOLLECTEDMANAGER::IsActivateGroup(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6">XTHREADGROUPID</link>&#32;groupID)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01068"/>01068 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01069"/>01069 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;&#32;c&lt;groupthreadsactivate.GetSize();&#32;c++)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01070"/>01070 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01071"/>01071 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6">XTHREADGROUPID</link>&#32;_groupID&#32;=&#32;groupthreadsactivate.Get(c);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01072"/>01072 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(groupID&#32;==&#32;_groupID)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01073"/>01073 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01074"/>01074 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01075"/>01075 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01076"/>01076 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01077"/>01077 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01078"/>01078 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01090"/>01090 XTHREADSCOLLECTED*&#32;XTHREADSCOLLECTEDMANAGER::GetThreadsCollectedByGroupID(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6">XTHREADGROUPID</link>&#32;groupID)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01091"/>01091 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01092"/>01092 &#32;&#32;XTHREADSCOLLECTED*&#32;xthreadscollected&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01093"/>01093 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01094"/>01094 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;&#32;c&lt;groupthreadsvector.GetSize();&#32;c++)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01095"/>01095 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01096"/>01096 &#32;&#32;&#32;&#32;&#32;&#32;XTHREADSCOLLECTED*&#32;_xthreadscollected&#32;=&#32;groupthreadsvector.Get(c);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01097"/>01097 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(_xthreadscollected)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01098"/>01098 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01099"/>01099 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(_xthreadscollected-&gt;GetGroupID()&#32;==&#32;groupID)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01100"/>01100 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01101"/>01101 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xthreadscollected&#32;=&#32;_xthreadscollected;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01102"/>01102 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01103"/>01103 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01104"/>01104 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01105"/>01105 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01106"/>01106 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01107"/>01107 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;xthreadscollected;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01108"/>01108 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01109"/>01109 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01110"/>01110 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01125"/>01125 <link linkend="_class_x_t_h_r_e_a_d_c_o_l_l_e_c_t_e_d">XTHREADCOLLECTED</link>*&#32;XTHREADSCOLLECTEDMANAGER::CreateThread(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6">XTHREADGROUPID</link>&#32;groupID,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;ID,&#32;<link linkend="__x_thread_8h_1a75cd5e654ca0f2255ae2473172af98d6">XTHREADFUNCTION</link>&#32;function,&#32;<emphasis role="keywordtype">void</emphasis>*&#32;param)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01126"/>01126 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01127"/>01127 &#32;&#32;<link linkend="_class_x_t_h_r_e_a_d_c_o_l_l_e_c_t_e_d">XTHREADCOLLECTED</link>*&#32;&#32;xthreadcollected&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01128"/>01128 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;isactivategroup&#32;&#32;=&#32;IsActivateGroup(groupID);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01129"/>01129 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01130"/>01130 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(isactivategroup)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01131"/>01131 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01132"/>01132 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!groupthreadsmutex)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01133"/>01133 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01134"/>01134 &#32;&#32;&#32;&#32;&#32;&#32;groupthreadsmutex-&gt;Lock();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01135"/>01135 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01136"/>01136 &#32;&#32;&#32;&#32;&#32;&#32;XTHREADSCOLLECTED*&#32;xthreadscollected&#32;=&#32;GetThreadsCollectedByGroupID(groupID);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01137"/>01137 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xthreadscollected)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01138"/>01138 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01139"/>01139 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xthreadscollected&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;XTHREADSCOLLECTED(groupID);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01140"/>01140 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xthreadscollected)&#32;groupthreadsvector.Add(xthreadscollected);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01141"/>01141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01142"/>01142 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01143"/>01143 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xthreadscollected)&#32;xthreadcollected&#32;=&#32;xthreadscollected-&gt;Create(groupID,&#32;ID,&#32;function,&#32;param);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01144"/>01144 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01145"/>01145 &#32;&#32;&#32;&#32;&#32;&#32;groupthreadsmutex-&gt;UnLock();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01146"/>01146 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01147"/>01147 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01148"/>01148 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01149"/>01149 &#32;&#32;&#32;&#32;&#32;&#32;XTHREADSCOLLECTED*&#32;xthreadscollected&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;XTHREADSCOLLECTED();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01150"/>01150 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xthreadscollected)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01151"/>01151 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01152"/>01152 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xthreadcollected&#32;=&#32;xthreadscollected-&gt;Create(groupID,&#32;ID,&#32;function,&#32;param);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01153"/>01153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;xthreadscollected;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01154"/>01154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01155"/>01155 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01156"/>01156 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01157"/>01157 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;xthreadcollected;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01158"/>01158 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01159"/>01159 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01160"/>01160 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01173"/>01173 <emphasis role="keywordtype">bool</emphasis>&#32;XTHREADSCOLLECTEDMANAGER::DeleteThread(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6">XTHREADGROUPID</link>&#32;groupID,&#32;<link linkend="_class_x_t_h_r_e_a_d_c_o_l_l_e_c_t_e_d">XTHREADCOLLECTED</link>*&#32;xthreadcollected)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01174"/>01174 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01175"/>01175 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;isactivategroup&#32;=&#32;IsActivateGroup(groupID);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01176"/>01176 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01177"/>01177 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01178"/>01178 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(isactivategroup)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01179"/>01179 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01180"/>01180 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!groupthreadsmutex)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01181"/>01181 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01182"/>01182 &#32;&#32;&#32;&#32;&#32;&#32;groupthreadsmutex-&gt;Lock();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01183"/>01183 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01184"/>01184 &#32;&#32;&#32;&#32;&#32;&#32;XTHREADSCOLLECTED*&#32;xthreadscollected&#32;=&#32;GetThreadsCollectedByGroupID(isactivategroup?groupID:<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6a3602f88b0771a975e509357d259b8431">XTHREADGROUPID_UNGROUP</link>);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01185"/>01185 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xthreadscollected)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01186"/>01186 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01187"/>01187 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;xthreadscollected-&gt;Delete(groupID,&#32;xthreadcollected);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01188"/>01188 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01189"/>01189 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01190"/>01190 &#32;&#32;&#32;&#32;&#32;&#32;groupthreadsmutex-&gt;UnLock();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01191"/>01191 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01192"/>01192 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01193"/>01193 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01194"/>01194 &#32;&#32;&#32;&#32;&#32;&#32;XTHREADSCOLLECTED*&#32;xthreadscollected&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;XTHREADSCOLLECTED();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01195"/>01195 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xthreadscollected)
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01196"/>01196 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01197"/>01197 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;xthreadscollected-&gt;Delete(groupID,&#32;xthreadcollected);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01198"/>01198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;xthreadscollected;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01199"/>01199 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01200"/>01200 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01201"/>01201 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01202"/>01202 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01203"/>01203 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01204"/>01204 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01205"/>01205 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01215"/>01215 <emphasis role="keywordtype">bool</emphasis>&#32;XTHREADSCOLLECTEDMANAGER::DeleteAll()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01216"/>01216 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01217"/>01217 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!groupthreadsmutex)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01218"/>01218 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01219"/>01219 &#32;&#32;groupthreadsmutex-&gt;Lock();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01220"/>01220 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01221"/>01221 &#32;&#32;groupthreadsvector.DeleteContents();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01222"/>01222 &#32;&#32;groupthreadsvector.DeleteAll();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01223"/>01223 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01224"/>01224 &#32;&#32;groupthreadsmutex-&gt;UnLock();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01225"/>01225 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01226"/>01226 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01227"/>01227 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01228"/>01228 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01229"/>01229 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01237"/>01237 XTHREADSCOLLECTEDMANAGER::XTHREADSCOLLECTEDMANAGER()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01238"/>01238 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01239"/>01239 &#32;&#32;Clean();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01240"/>01240 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01241"/>01241 &#32;&#32;GEN_XFACTORY_CREATE(groupthreadsmutex,&#32;Create_Mutex())
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01242"/>01242 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01243"/>01243 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01244"/>01244 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01253"/>01253 XTHREADSCOLLECTEDMANAGER::~XTHREADSCOLLECTEDMANAGER()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01254"/>01254 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01255"/>01255 &#32;&#32;DeleteAll();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01256"/>01256 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01257"/>01257 &#32;&#32;groupthreadsactivate.DeleteAll();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01258"/>01258 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01259"/>01259 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(groupthreadsmutex)&#32;GEN_XFACTORY.Delete_Mutex(groupthreadsmutex);
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01260"/>01260 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01261"/>01261 &#32;&#32;Clean();
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01262"/>01262 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01263"/>01263 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01264"/>01264 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01273"/>01273 <emphasis role="keywordtype">void</emphasis>&#32;XTHREADSCOLLECTEDMANAGER::Clean()
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01274"/>01274 {
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01275"/>01275 &#32;&#32;nogroupthread&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01276"/>01276 &#32;&#32;groupthreadsmutex&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01277"/>01277 }
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01278"/>01278 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01279"/>01279 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01280"/>01280 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01281"/>01281 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01282"/>01282 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01283"/>01283 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01284"/>01284 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01285"/>01285 
+<anchor xml:id="__x_thread_collected_8cpp_source_1l01286"/>01286 
+</programlisting></section>

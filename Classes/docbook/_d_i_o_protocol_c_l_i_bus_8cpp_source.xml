@@ -1,0 +1,369 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source" xml:lang="en-US">
+<title>DIOProtocolCLIBus.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/DataIO/Protocols/DIOProtocolCLIBus.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_protocol_c_l_i_bus_8h">DIOProtocolCLIBus.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_factory_8h">XFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_rand_8h">XRand.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_trace_8h">XTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_sleep_8h">XSleep.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00046"/>00046 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00048"/>00048 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00049"/>00049 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00050"/>00050 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00051"/>00051 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00052"/>00052 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00053"/>00053 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00054"/>00054 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00055"/>00055 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00056"/>00056 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00057"/>00057 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00058"/>00058 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00059"/>00059 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00061"/>00061 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00069"/><link linkend="_group___d_a_t_a_i_o_1ga044ef105f2a8ca4eec05360ce066135d">00069</link> <link linkend="_group___d_a_t_a_i_o_1ga044ef105f2a8ca4eec05360ce066135d">DIOPROTOCOLCLIBUS::DIOPROTOCOLCLIBUS</link>()
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00070"/>00070 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00071"/>00071 {
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00072"/>00072 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00073"/>00073 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00074"/>00074 &#32;&#32;nretries&#32;=&#32;<link linkend="__d_i_o_protocol_c_l_i_bus_8h_1adbad041f59c05bd4d3166a5423e7910e">DIOPROTOCOLCLIBUS_SEND_DEFAULNRETRIES</link>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00075"/>00075 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00076"/>00076 &#32;&#32;&#32;&#32;<link linkend="_group___d_a_t_a_i_o_1gafda31a7457ab9ef2cf64c4655dd9eabe">AddCommand</link>(<link linkend="__d_i_o_protocol_c_l_i_bus_8h_1a63a639c830072b2915a84565b649ef25">DIOPROTOCOLCLIBUS_COMMAND_VERSION</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;0);
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00077"/>00077 &#32;&#32;&#32;&#32;<link linkend="_group___d_a_t_a_i_o_1gafda31a7457ab9ef2cf64c4655dd9eabe">AddCommand</link>(<link linkend="__d_i_o_protocol_c_l_i_bus_8h_1afaf118aeb45288173daf236b290ed312">DIOPROTOCOLCLIBUS_COMMAND_PING</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;0);
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00078"/>00078 &#32;&#32;<link linkend="_group___d_a_t_a_i_o_1gafda31a7457ab9ef2cf64c4655dd9eabe">AddCommand</link>(<link linkend="__d_i_o_protocol_c_l_i_bus_8h_1ac771a5cd5ecbd9216db7ee2a20fe8f00">DIOPROTOCOLCLIBUS_COMMAND_ENUM</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;0);
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00079"/>00079 &#32;&#32;<link linkend="_group___d_a_t_a_i_o_1gafda31a7457ab9ef2cf64c4655dd9eabe">AddCommand</link>(<link linkend="__d_i_o_protocol_c_l_i_bus_8h_1ab40eed9d093894168a03d77cee43d753">DIOPROTOCOLCLIBUS_COMMAND_ENUMREQUEST</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;0);
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00080"/>00080 }
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00081"/>00081 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00082"/>00082 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00091"/><link linkend="_group___d_a_t_a_i_o_1gac3982c21d2c091b98f197bb44976492d">00091</link> <link linkend="_group___d_a_t_a_i_o_1gac3982c21d2c091b98f197bb44976492d">DIOPROTOCOLCLIBUS::~DIOPROTOCOLCLIBUS</link>()
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00092"/>00092 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00093"/>00093 {
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00094"/>00094 &#32;&#32;enum_remotedevices.<link linkend="_class_x_v_e_c_t_o_r_1abae5097402824f18f274e21e18b23bea">DeleteContents</link>();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00095"/>00095 &#32;&#32;enum_remotedevices.<link linkend="_class_x_v_e_c_t_o_r_1a57c72ab04fd14c60d1026e0a7b4a1887">DeleteAll</link>();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00096"/>00096 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00097"/>00097 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00098"/>00098 }
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00099"/>00099 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00100"/>00100 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00114"/><link linkend="_group___d_a_t_a_i_o_1ga77b4a1c720960d502730fe1c6c821d10">00114</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga77b4a1c720960d502730fe1c6c821d10">DIOPROTOCOLCLIBUS::Ini</link>(<link linkend="_class_d_i_o_s_t_r_e_a_m">DIOSTREAM</link>*&#32;diostream,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;ID,&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>)
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00115"/>00115 {&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00116"/>00116 &#32;&#32;&#32;&#32;this-&gt;ID&#32;=&#32;<link linkend="_class_d_i_o_p_r_o_t_o_c_o_l_c_l_i_1a5d6f4a32d1d9ac05d75e8165e699a65c">ID</link>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00117"/>00117 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00118"/>00118 &#32;&#32;GEN_XFACTORY_CREATE(xmutexsendcommand,&#32;Create_Mutex());
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00119"/>00119 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xmutexsendcommand)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00120"/>00120 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00121"/>00121 &#32;&#32;GEN_XFACTORY_CREATE(enum_mutex,&#32;Create_Mutex());
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00122"/>00122 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!enum_mutex)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00123"/>00123 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00124"/>00124 &#32;&#32;threadsendenumrequest&#32;=&#32;<link linkend="__x_thread_collected_8h_1aad503e3655b9ff78d3ac660d1f1f5534">CREATEXTHREAD</link>(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6a451f3b33bc0fcceff7e105bd021b53cd">XTHREADGROUPID_DIOPROTOCOL_CLI_BUS</link>,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;DIOPROTOCOLCLIBUS::Ini2&quot;</emphasis>),&#32;ThreadSendEnumRequest,&#32;(<emphasis role="keywordtype">void</emphasis>*)<emphasis role="keyword">this</emphasis>);
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00125"/>00125 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!threadsendenumrequest)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00126"/>00126 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00127"/>00127 &#32;&#32;&#32;&#32;threadreceivedcommand&#32;&#32;&#32;=&#32;<link linkend="__x_thread_collected_8h_1aad503e3655b9ff78d3ac660d1f1f5534">CREATEXTHREAD</link>(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6a451f3b33bc0fcceff7e105bd021b53cd">XTHREADGROUPID_DIOPROTOCOL_CLI_BUS</link>,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;DIOPROTOCOLCLIBUS::Ini&quot;</emphasis>),&#32;ThreadReceivedCommand,&#32;&#32;&#32;(<emphasis role="keywordtype">void</emphasis>*)<emphasis role="keyword">this</emphasis>);
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00128"/>00128 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!threadreceivedcommand)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00129"/>00129 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00130"/>00130 &#32;&#32;enum_timer&#32;=&#32;GEN_XFACTORY.CreateTimer();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00131"/>00131 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!enum_timer)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00132"/>00132 &#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00133"/>00133 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!threadreceivedcommand-&gt;Ini())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00134"/>00134 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00135"/>00135 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga7b80faf045104799d3696300645c53a3">DIOPROTOCOLCLI::Ini</link>(diostream,&#32;<link linkend="_class_d_i_o_p_r_o_t_o_c_o_l_c_l_i_1a5d6f4a32d1d9ac05d75e8165e699a65c">ID</link>,&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>);&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00136"/>00136 }
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00137"/>00137 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00138"/>00138 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00152"/><link linkend="_group___d_a_t_a_i_o_1ga63d92172dde10c48a1bda40c802e4f0a">00152</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga63d92172dde10c48a1bda40c802e4f0a">DIOPROTOCOLCLIBUS::GetVersion</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;&#32;version,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;&#32;subversion,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;&#32;subversionerror)
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00153"/>00153 {
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00154"/>00154 &#32;&#32;<emphasis role="keywordflow">if</emphasis>((!version)&#32;&amp;&amp;&#32;(!subversion)&#32;&amp;&amp;&#32;(!subversionerror))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00155"/>00155 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00156"/>00156 &#32;&#32;version&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;this-&gt;version;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00157"/>00157 &#32;&#32;subversion&#32;&#32;&#32;&#32;&#32;&#32;=&#32;this-&gt;subversion;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00158"/>00158 &#32;&#32;subversionerror&#32;=&#32;this-&gt;subversionerror;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00159"/>00159 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00160"/>00160 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00161"/>00161 }
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00162"/>00162 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00163"/>00163 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00175"/><link linkend="_group___d_a_t_a_i_o_1ga5edf021a2e93b6c949732ba1fc4a6a63">00175</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga5edf021a2e93b6c949732ba1fc4a6a63">DIOPROTOCOLCLIBUS::SetVersion</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;version,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;subversion,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;subversionerror)
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00176"/>00176 {
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00177"/>00177 &#32;&#32;this-&gt;version&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;version;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00178"/>00178 &#32;&#32;this-&gt;subversion&#32;&#32;&#32;&#32;&#32;&#32;=&#32;subversion;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00179"/>00179 &#32;&#32;this-&gt;subversionerror&#32;=&#32;subversionerror;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00180"/>00180 }
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00181"/>00181 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00182"/>00182 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00195"/><link linkend="_group___d_a_t_a_i_o_1ga0cf5c8cbdaa64c695bb6e23614bd8aca">00195</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga0cf5c8cbdaa64c695bb6e23614bd8aca">DIOPROTOCOLCLIBUS::EnumRemoteDevices</link>(<link linkend="_class_x_v_e_c_t_o_r">XVECTOR&lt;XSTRING*&gt;</link>*&#32;remotedevices,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;maxtime)
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00196"/>00196 {
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00197"/>00197 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00198"/>00198 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00199"/>00199 &#32;&#32;enum_remotedevices.<link linkend="_class_x_v_e_c_t_o_r_1abae5097402824f18f274e21e18b23bea">DeleteContents</link>();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00200"/>00200 &#32;&#32;enum_remotedevices.<link linkend="_class_x_v_e_c_t_o_r_1a57c72ab04fd14c60d1026e0a7b4a1887">DeleteAll</link>();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00201"/>00201 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00202"/>00202 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!enum_timer)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00203"/>00203 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00204"/>00204 &#32;&#32;<link linkend="_group___d_a_t_a_i_o_1gaac118636f8f2cab47276791cd2ff1a53">SendCommand</link>(<link linkend="__d_i_o_protocol_c_l_i_bus_8h_1ac771a5cd5ecbd9216db7ee2a20fe8f00">DIOPROTOCOLCLIBUS_COMMAND_ENUM</link>,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;0);
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00205"/>00205 &#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00206"/>00206 &#32;&#32;enum_maxtimersec&#32;=&#32;maxtime;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00207"/>00207 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00208"/>00208 &#32;&#32;enum_timer-&gt;<link linkend="_group___x_u_t_i_l_s_1ga461fee3826d400d29bc47f58f2c5d898">Reset</link>();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00209"/>00209 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00210"/>00210 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(remotedevices)
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00211"/>00211 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00212"/>00212 &#32;&#32;&#32;&#32;&#32;&#32;remotedevices-&gt;<link linkend="_class_x_v_e_c_t_o_r_1abae5097402824f18f274e21e18b23bea">DeleteContents</link>();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00213"/>00213 &#32;&#32;&#32;&#32;&#32;&#32;remotedevices-&gt;<link linkend="_class_x_v_e_c_t_o_r_1a57c72ab04fd14c60d1026e0a7b4a1887">DeleteAll</link>();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00214"/>00214 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00215"/>00215 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">do</emphasis>{&#32;GEN_XSLEEP.Seconds(1);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00216"/>00216 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00217"/>00217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">while</emphasis>(enum_timer-&gt;<link linkend="_group___x_u_t_i_l_s_1ga02ae3c82df51ec1ed16288fe102d9d8b">GetMeasureSeconds</link>()&#32;&lt;&#32;enum_maxtimersec);&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00218"/>00218 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00219"/>00219 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<link linkend="_group___d_a_t_a_i_o_1ga05428a015f422ecf9f28c0c8ce88ff0d">GetEnumRemoteDevices</link>((*remotedevices));
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00220"/>00220 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00221"/>00221 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">else</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00222"/>00222 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00223"/>00223 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00224"/>00224 }
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00225"/>00225 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00226"/>00226 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00238"/><link linkend="_group___d_a_t_a_i_o_1ga05428a015f422ecf9f28c0c8ce88ff0d">00238</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga05428a015f422ecf9f28c0c8ce88ff0d">DIOPROTOCOLCLIBUS::GetEnumRemoteDevices</link>(<link linkend="_class_x_v_e_c_t_o_r">XVECTOR&lt;XSTRING*&gt;</link>&amp;&#32;remotedevices)
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00239"/>00239 {
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00240"/>00240 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!enum_timer)&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00241"/>00241 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!enum_maxtimersec)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00242"/>00242 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00243"/>00243 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(enum_timer-&gt;<link linkend="_group___x_u_t_i_l_s_1ga02ae3c82df51ec1ed16288fe102d9d8b">GetMeasureSeconds</link>()&#32;&lt;&#32;enum_maxtimersec)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00244"/>00244 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00245"/>00245 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;&#32;c&lt;enum_remotedevices.<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>();&#32;c++)
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00246"/>00246 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00247"/>00247 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;device&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00248"/>00248 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(device)
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00249"/>00249 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00250"/>00250 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(*device)&#32;=&#32;enum_remotedevices.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(c)-&gt;<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00251"/>00251 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;remotedevices.<link linkend="_class_x_v_e_c_t_o_r_1a51a790aac8efd4603aee608ddcc83423">Add</link>(device);
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00252"/>00252 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00253"/>00253 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00254"/>00254 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00255"/>00255 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00256"/>00256 }
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00257"/>00257 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00258"/>00258 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00268"/><link linkend="_group___d_a_t_a_i_o_1ga70cbca92c8e3695cb75cd6a7dac44fbf">00268</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga70cbca92c8e3695cb75cd6a7dac44fbf">DIOPROTOCOLCLIBUS::GetNRetries</link>()
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00269"/>00269 {
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00270"/>00270 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;nretries;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00271"/>00271 }
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00272"/>00272 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00273"/>00273 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00283"/><link linkend="_group___d_a_t_a_i_o_1ga5a51201672e0435230dc22be3a2a64ba">00283</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga5a51201672e0435230dc22be3a2a64ba">DIOPROTOCOLCLIBUS::SetNRetries</link>(<emphasis role="keywordtype">int</emphasis>&#32;nretries)
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00284"/>00284 {
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00285"/>00285 &#32;&#32;this-&gt;nretries&#32;=&#32;nretries;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00286"/>00286 }
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00287"/>00287 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00288"/>00288 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00289"/>00289 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00305"/><link linkend="_group___d_a_t_a_i_o_1gaac118636f8f2cab47276791cd2ff1a53">00305</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gaac118636f8f2cab47276791cd2ff1a53">DIOPROTOCOLCLIBUS::SendCommand</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;command,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;target,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;answer,&#32;<emphasis role="keywordtype">int</emphasis>&#32;timeoutanswer,&#32;...)
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00306"/>00306 {
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00307"/>00307 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!command)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00308"/>00308 &#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00309"/>00309 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00310"/>00310 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00311"/>00311 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexsendcommand)&#32;xmutexsendcommand-&gt;<link linkend="_group___x_u_t_i_l_s_1gae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00312"/>00312 &#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00313"/>00313 &#32;&#32;va_list&#32;arg;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00314"/>00314 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00315"/>00315 &#32;&#32;va_start(arg,&#32;timeoutanswer);&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00316"/>00316 &#32;&#32;status&#32;=&#32;<link linkend="_group___d_a_t_a_i_o_1gafd94d4ce9516c366d7c831781571f81c">DIOPROTOCOLCLI::SendCommandArg</link>(command,&#32;target,&#32;answer,&#32;timeoutanswer,&#32;&amp;arg);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00317"/>00317 &#32;&#32;va_end(arg);&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00318"/>00318 &#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00319"/>00319 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexsendcommand)&#32;xmutexsendcommand-&gt;<link linkend="_group___x_u_t_i_l_s_1gafed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00320"/>00320 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00321"/>00321 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00322"/>00322 }&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00323"/>00323 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00324"/>00324 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00339"/><link linkend="_group___d_a_t_a_i_o_1ga5e1f3244b5d47508cd930e213f52122b">00339</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga5e1f3244b5d47508cd930e213f52122b">DIOPROTOCOLCLIBUS::ReceivedCommand</link>(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;originID,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;command,&#32;<link linkend="_class_x_v_e_c_t_o_r">XVECTOR&lt;XSTRING*&gt;</link>&amp;&#32;params,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;answer)
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00340"/>00340 {
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00341"/>00341 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00342"/>00342 &#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00343"/>00343 &#32;&#32;&#32;&#32;answer.<link linkend="_group___x_u_t_i_l_s_1ga9275997c1605fa79646c301e63a77d06">Empty</link>();&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00344"/>00344 &#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00345"/>00345 &#32;&#32;<link linkend="_class_d_i_o_p_r_o_t_o_c_o_l_c_l_i_c_o_m_m_a_n_d">DIOPROTOCOLCLICOMMAND</link>*&#32;protocolcommand&#32;=&#32;<link linkend="_group___d_a_t_a_i_o_1gaf75f505e42cd5d92aa86dacc15a6100e">GetCommand</link>(command.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00346"/>00346 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(protocolcommand)&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00347"/>00347 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00348"/>00348 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(protocolcommand-&gt;<link linkend="_group___d_a_t_a_i_o_1gabbe1d190527a4f0f59b404f88e801033">GetNParams</link>()&#32;&lt;&#32;(<emphasis role="keywordtype">int</emphasis>)params.<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00349"/>00349 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00350"/>00350 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!command.<link linkend="_group___x_u_t_i_l_s_1gaa41b9d6abe3eca02494d6eb043ed50c2">Compare</link>(<link linkend="__d_i_o_protocol_c_l_i_bus_8h_1a63a639c830072b2915a84565b649ef25">DIOPROTOCOLCLIBUS_COMMAND_VERSION</link>,&#32;<emphasis role="keyword">true</emphasis>))&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00351"/>00351 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00352"/>00352 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;answer.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%d.%d.%d&quot;</emphasis>),&#32;version,&#32;subversion,&#32;subversionerror);&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00353"/>00353 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00354"/>00354 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00355"/>00355 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00356"/>00356 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!command.<link linkend="_group___x_u_t_i_l_s_1gaa41b9d6abe3eca02494d6eb043ed50c2">Compare</link>(<link linkend="__d_i_o_protocol_c_l_i_bus_8h_1afaf118aeb45288173daf236b290ed312">DIOPROTOCOLCLIBUS_COMMAND_PING</link>,&#32;<emphasis role="keyword">true</emphasis>))&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00357"/>00357 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00358"/>00358 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00359"/>00359 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00360"/>00360 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00361"/>00361 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!command.<link linkend="_group___x_u_t_i_l_s_1gaa41b9d6abe3eca02494d6eb043ed50c2">Compare</link>(<link linkend="__d_i_o_protocol_c_l_i_bus_8h_1ac771a5cd5ecbd9216db7ee2a20fe8f00">DIOPROTOCOLCLIBUS_COMMAND_ENUM</link>,&#32;<emphasis role="keyword">true</emphasis>))&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00362"/>00362 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00363"/>00363 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;enum_mutex-&gt;<link linkend="_group___x_u_t_i_l_s_1gae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00364"/>00364 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00365"/>00365 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;enum_sendoriginID&#32;=&#32;originID;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00366"/>00366 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00367"/>00367 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;enum_mutex-&gt;<link linkend="_group___x_u_t_i_l_s_1gafed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00368"/>00368 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00369"/>00369 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;threadsendenumrequest-&gt;Ini();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00370"/>00370 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00371"/>00371 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00372"/>00372 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!command.<link linkend="_group___x_u_t_i_l_s_1gaa41b9d6abe3eca02494d6eb043ed50c2">Compare</link>(<link linkend="__d_i_o_protocol_c_l_i_bus_8h_1ab40eed9d093894168a03d77cee43d753">DIOPROTOCOLCLIBUS_COMMAND_ENUMREQUEST</link>,&#32;<emphasis role="keyword">true</emphasis>))
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00373"/>00373 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00374"/>00374 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;found&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00375"/>00375 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00376"/>00376 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;&#32;c&lt;enum_remotedevices.<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>();&#32;c++)
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00377"/>00377 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00378"/>00378 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;device&#32;=&#32;enum_remotedevices.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(c);
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00379"/>00379 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(device)
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00380"/>00380 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00381"/>00381 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!device-&gt;<link linkend="_group___x_u_t_i_l_s_1gaa41b9d6abe3eca02494d6eb043ed50c2">Compare</link>(originID,&#32;<emphasis role="keyword">true</emphasis>))&#32;found&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00382"/>00382 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00383"/>00383 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00384"/>00384 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00385"/>00385 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!found)
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00386"/>00386 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00387"/>00387 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;origin&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00388"/>00388 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(origin)
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00389"/>00389 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00390"/>00390 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(*origin)&#32;=&#32;originID;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00391"/>00391 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;enum_remotedevices.<link linkend="_class_x_v_e_c_t_o_r_1a51a790aac8efd4603aee608ddcc83423">Add</link>(origin);
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00392"/>00392 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00393"/>00393 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00394"/>00394 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00395"/>00395 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00396"/>00396 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00397"/>00397 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00398"/>00398 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00399"/>00399 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00400"/>00400 }
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00401"/>00401 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00402"/>00402 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00410"/><link linkend="_group___d_a_t_a_i_o_1ga02adae83df16754bf4d715755e6a2b70">00410</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga02adae83df16754bf4d715755e6a2b70">DIOPROTOCOLCLIBUS::End</link>()
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00411"/>00411 {
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00412"/>00412 &#32;&#32;exitproccess&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00413"/>00413 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00414"/>00414 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(threadsendenumrequest)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00415"/>00415 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00416"/>00416 &#32;&#32;&#32;&#32;&#32;&#32;threadsendenumrequest-&gt;End();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00417"/>00417 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_thread_collected_8h_1a18fb843f5fbad51464b68d705ed29b8a">DELETEXTHREAD</link>(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6a451f3b33bc0fcceff7e105bd021b53cd">XTHREADGROUPID_DIOPROTOCOL_CLI_BUS</link>,&#32;threadsendenumrequest);
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00418"/>00418 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00419"/>00419 &#32;&#32;&#32;&#32;&#32;&#32;threadsendenumrequest&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00420"/>00420 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00421"/>00421 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00422"/>00422 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(threadreceivedcommand)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00423"/>00423 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00424"/>00424 &#32;&#32;&#32;&#32;&#32;&#32;threadreceivedcommand-&gt;End();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00425"/>00425 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_thread_collected_8h_1a18fb843f5fbad51464b68d705ed29b8a">DELETEXTHREAD</link>(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6a451f3b33bc0fcceff7e105bd021b53cd">XTHREADGROUPID_DIOPROTOCOL_CLI_BUS</link>,&#32;threadreceivedcommand);
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00426"/>00426 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00427"/>00427 &#32;&#32;&#32;&#32;&#32;&#32;threadreceivedcommand&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00428"/>00428 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00429"/>00429 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00430"/>00430 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(enum_mutex)
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00431"/>00431 &#32;&#32;&#32;&#32;{&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00432"/>00432 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY.Delete_Mutex(enum_mutex);
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00433"/>00433 &#32;&#32;&#32;&#32;&#32;&#32;enum_mutex&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00434"/>00434 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00435"/>00435 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00436"/>00436 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexsendcommand)
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00437"/>00437 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00438"/>00438 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY.Delete_Mutex(xmutexsendcommand);
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00439"/>00439 &#32;&#32;&#32;&#32;&#32;&#32;xmutexsendcommand&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00440"/>00440 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00441"/>00441 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00442"/>00442 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(enum_timer)
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00443"/>00443 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00444"/>00444 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY.DeleteTimer(enum_timer);
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00445"/>00445 &#32;&#32;&#32;&#32;&#32;&#32;enum_timer&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00446"/>00446 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00447"/>00447 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00448"/>00448 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga11f395cb725eee8e6346d08a2a7d191a">DIOPROTOCOLCLI::End</link>();&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00449"/>00449 }
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00450"/>00450 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00451"/>00451 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00461"/>00461 <emphasis role="keywordtype">void</emphasis>&#32;DIOPROTOCOLCLIBUS::ThreadReceivedCommand(<emphasis role="keywordtype">void</emphasis>*&#32;param)
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00462"/>00462 {
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00463"/>00463 &#32;&#32;<link linkend="_class_d_i_o_p_r_o_t_o_c_o_l_c_l_i_b_u_s">DIOPROTOCOLCLIBUS</link>*&#32;sp&#32;=&#32;(<link linkend="_class_d_i_o_p_r_o_t_o_c_o_l_c_l_i_b_u_s">DIOPROTOCOLCLIBUS</link>*)param;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00464"/>00464 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!sp)&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00465"/>00465 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00466"/>00466 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(sp-&gt;exitproccess)&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00467"/>00467 &#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00468"/>00468 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00469"/>00469 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00470"/>00470 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00471"/>00471 &#32;&#32;sp-&gt;<link linkend="_group___d_a_t_a_i_o_1ga9be2b68b83c1e4fdc50c503907112c44">ReceivedCommandManager</link>();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00472"/>00472 }
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00473"/>00473 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00474"/>00474 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00484"/>00484 <emphasis role="keywordtype">void</emphasis>&#32;DIOPROTOCOLCLIBUS::ThreadSendEnumRequest(<emphasis role="keywordtype">void</emphasis>*&#32;param)
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00485"/>00485 {
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00486"/>00486 &#32;&#32;<link linkend="_class_d_i_o_p_r_o_t_o_c_o_l_c_l_i_b_u_s">DIOPROTOCOLCLIBUS</link>*&#32;sp&#32;=&#32;(<link linkend="_class_d_i_o_p_r_o_t_o_c_o_l_c_l_i_b_u_s">DIOPROTOCOLCLIBUS</link>*)param;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00487"/>00487 &#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!sp)&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00488"/>00488 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00489"/>00489 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(sp-&gt;exitproccess)&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00490"/>00490 &#32;&#32;&#32;&#32;{&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00491"/>00491 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00492"/>00492 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00493"/>00493 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00494"/>00494 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(sp-&gt;enum_mutex)&#32;sp-&gt;enum_mutex-&gt;<link linkend="_group___x_u_t_i_l_s_1gae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00495"/>00495 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00496"/>00496 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(sp-&gt;enum_sendoriginID.<link linkend="_group___x_u_t_i_l_s_1gad26690161f8c1e2722771322b7370005">IsEmpty</link>())&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00497"/>00497 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00498"/>00498 &#32;&#32;&#32;&#32;&#32;&#32;sp-&gt;threadsendenumrequest-&gt;Run(<emphasis role="keyword">false</emphasis>);&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00499"/>00499 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00500"/>00500 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00501"/>00501 &#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00502"/>00502 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;answer;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00503"/>00503 &#32;&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00504"/>00504 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;sp-&gt;<link linkend="_group___d_a_t_a_i_o_1gaac118636f8f2cab47276791cd2ff1a53">SendCommand</link>(<link linkend="__d_i_o_protocol_c_l_i_bus_8h_1ab40eed9d093894168a03d77cee43d753">DIOPROTOCOLCLIBUS_COMMAND_ENUMREQUEST</link>,&#32;&amp;sp-&gt;enum_sendoriginID,&#32;&amp;answer,&#32;sp-&gt;enum_maxtimersec);&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00505"/>00505 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00506"/>00506 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00507"/>00507 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sp-&gt;enum_sendoriginID.<link linkend="_group___x_u_t_i_l_s_1ga9275997c1605fa79646c301e63a77d06">Empty</link>();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00508"/>00508 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00509"/>00509 &#32;&#32;&#32;&#32;}&#32;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00510"/>00510 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00511"/>00511 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(sp-&gt;enum_mutex)&#32;sp-&gt;enum_mutex-&gt;<link linkend="_group___x_u_t_i_l_s_1gafed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00512"/>00512 }
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00513"/>00513 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00514"/>00514 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00523"/>00523 <emphasis role="keywordtype">void</emphasis>&#32;DIOPROTOCOLCLIBUS::Clean()
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00524"/>00524 {
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00525"/>00525 &#32;&#32;version&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00526"/>00526 &#32;&#32;subversion&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00527"/>00527 &#32;&#32;subversionerror&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00528"/>00528 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00529"/>00529 &#32;&#32;nretries&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00530"/>00530 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00531"/>00531 &#32;&#32;exitproccess&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00532"/>00532 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00533"/>00533 &#32;&#32;enum_mutex&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00534"/>00534 &#32;&#32;enum_sendoriginID.<link linkend="_group___x_u_t_i_l_s_1ga9275997c1605fa79646c301e63a77d06">Empty</link>();
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00535"/>00535 &#32;&#32;enum_timer&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00536"/>00536 &#32;&#32;enum_maxtimersec&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00537"/>00537 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00538"/>00538 &#32;&#32;xmutexsendcommand&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00539"/>00539 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00540"/>00540 &#32;&#32;&#32;&#32;threadreceivedcommand&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00541"/>00541 &#32;&#32;threadsendenumrequest&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00542"/>00542 }
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00543"/>00543 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00544"/>00544 
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00545"/>00545 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_protocol_c_l_i_bus_8cpp_source_1l00546"/>00546 
+</programlisting></section>

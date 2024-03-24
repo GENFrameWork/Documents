@@ -1,0 +1,314 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source" xml:lang="en-US">
+<title>DIOStreamUDPAcknowledge.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/DataIO/Streams/DIOStreamUDPAcknowledge.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_u_d_p_acknowledge_8h">DIOStreamUDPAcknowledge.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_factory_8h">XFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_buffer_8h">XBuffer.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_trace_8h">XTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_thread_collected_8h">XThreadCollected.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00046"/>00046 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_factory_8h">DIOFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_u_d_p_config_8h">DIOStreamUDPConfig.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00049"/>00049 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_u_d_p_8h">DIOStreamUDP.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00050"/>00050 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__hash_c_r_c32_8h">HashCRC32.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00052"/>00052 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00053"/>00053 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00054"/>00054 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00055"/>00055 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00056"/>00056 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00057"/>00057 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00058"/>00058 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00059"/>00059 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00061"/>00061 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00062"/>00062 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00063"/>00063 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00064"/>00064 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00065"/>00065 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00066"/>00066 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00067"/>00067 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00077"/><link linkend="_group___d_a_t_a_i_o_1ga6fd6aa9da597c643524e26b1dd805264">00077</link> <link linkend="_group___d_a_t_a_i_o_1ga6fd6aa9da597c643524e26b1dd805264">DIOSTREAMUDPACKNOWLEDGE::DIOSTREAMUDPACKNOWLEDGE</link>(<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_c_o_n_f_i_g">DIOSTREAMUDPCONFIG</link>*&#32;config)&#32;:&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p">DIOSTREAMUDP</link>()
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00078"/>00078 {
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00079"/>00079 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00080"/>00080 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00081"/>00081 &#32;&#32;this-&gt;config&#32;&#32;&#32;&#32;&#32;&#32;=&#32;config;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00082"/>00082 &#32;&#32;timeout&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__d_i_o_stream_u_d_p_acknowledge_8h_1ae38d0f358e7f8f00158a85a96ff40668">DIOSTREAMUDPACKNOWLEDGE_DEFAULTTIMEOUT</link>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00083"/>00083 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00084"/>00084 &#32;&#32;diostream&#32;=&#32;(<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p">DIOSTREAMUDP</link>*)GEN_DIOFACTORY.CreateStreamIO((<link linkend="_class_d_i_o_s_t_r_e_a_m_c_o_n_f_i_g">DIOSTREAMCONFIG</link>*)config);
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00085"/>00085 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(diostream)&#32;&#32;URLremote&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_u_r_l">DIOURL</link>();
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00086"/>00086 }
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00087"/>00087 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00088"/>00088 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00097"/><link linkend="_group___d_a_t_a_i_o_1ga75d9abd67e0f394d09cea6b0ee0a0903">00097</link> <link linkend="_group___d_a_t_a_i_o_1ga75d9abd67e0f394d09cea6b0ee0a0903">DIOSTREAMUDPACKNOWLEDGE::~DIOSTREAMUDPACKNOWLEDGE</link>()
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00098"/>00098 {
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00099"/>00099 &#32;&#32;<link linkend="_group___d_a_t_a_i_o_1gadeca2cff047caffaae85a632e0f29fd9">Close</link>();
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00100"/>00100 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00101"/>00101 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(diostream)&#32;GEN_DIOFACTORY.DeleteStreamIO(diostream);
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00102"/>00102 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(URLremote)&#32;<emphasis role="keyword">delete</emphasis>&#32;URLremote;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00103"/>00103 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00104"/>00104 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00105"/>00105 }
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00106"/>00106 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00107"/>00107 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00117"/><link linkend="_group___d_a_t_a_i_o_1ga5f9ff382999af37e6b986a87f79856cf">00117</link> <link linkend="_class_d_i_o_s_t_r_e_a_m_c_o_n_f_i_g">DIOSTREAMCONFIG</link>*&#32;<link linkend="_group___d_a_t_a_i_o_1ga5f9ff382999af37e6b986a87f79856cf">DIOSTREAMUDPACKNOWLEDGE::GetConfig</link>()
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00118"/>00118 {&#32;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00119"/>00119 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(<link linkend="_class_d_i_o_s_t_r_e_a_m_c_o_n_f_i_g">DIOSTREAMCONFIG</link>*)config;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00120"/>00120 }
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00121"/>00121 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00122"/>00122 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00134"/><link linkend="_group___d_a_t_a_i_o_1gad63e157901f22facd3abda920d0725c0">00134</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gad63e157901f22facd3abda920d0725c0">DIOSTREAMUDPACKNOWLEDGE::SetConfig</link>(<link linkend="_class_d_i_o_s_t_r_e_a_m_c_o_n_f_i_g">DIOSTREAMCONFIG</link>*&#32;config)
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00135"/>00135 {
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00136"/>00136 &#32;&#32;this-&gt;config&#32;=&#32;(<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_c_o_n_f_i_g">DIOSTREAMUDPCONFIG</link>*)config;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00137"/>00137 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00138"/>00138 }
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00139"/>00139 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00140"/>00140 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00150"/><link linkend="_group___d_a_t_a_i_o_1gada9223b12e0a0e65f9058dfcca1c585f">00150</link> <link linkend="__d_i_o_stream_8h_1ad10214ba9a07bd0f22017499f6f59a0f">DIOSTREAMSTATUS</link>&#32;<link linkend="_group___d_a_t_a_i_o_1gada9223b12e0a0e65f9058dfcca1c585f">DIOSTREAMUDPACKNOWLEDGE::GetConnectStatus</link>()
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00151"/>00151 {
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00152"/>00152 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!diostream)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__d_i_o_stream_8h_1ad10214ba9a07bd0f22017499f6f59a0fa516b51b4debec043e34f66f0d4710fa2">DIOSTREAMSTATUS_DISCONNECTED</link>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00153"/>00153 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;diostream-&gt;<link linkend="_group___d_a_t_a_i_o_1ga076ead754b614eb3ba77ccb3a9e45455">GetConnectStatus</link>();
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00154"/>00154 }
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00155"/>00155 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00156"/>00156 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00166"/><link linkend="_group___d_a_t_a_i_o_1ga9a73a7eb6e11898129ebab3f04a27816">00166</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga9a73a7eb6e11898129ebab3f04a27816">DIOSTREAMUDPACKNOWLEDGE::GetTimeout</link>()&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00167"/>00167 {&#32;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00168"/>00168 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;timeout;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00169"/>00169 }
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00170"/>00170 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00171"/>00171 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00181"/><link linkend="_group___d_a_t_a_i_o_1ga5aff9375540e1056ddbed628a78692bc">00181</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga5aff9375540e1056ddbed628a78692bc">DIOSTREAMUDPACKNOWLEDGE::SetTimeout</link>(<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>)
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00182"/>00182 {&#32;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00183"/>00183 &#32;&#32;this-&gt;timeout&#32;=&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00184"/>00184 }
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00185"/>00185 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00186"/>00186 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00196"/><link linkend="_group___d_a_t_a_i_o_1gae10512ea37b8d97fac519333f9c16ca3">00196</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gae10512ea37b8d97fac519333f9c16ca3">DIOSTREAMUDPACKNOWLEDGE::Open</link>()
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00197"/>00197 {
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00198"/>00198 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!diostream)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00199"/>00199 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!URLremote)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00200"/>00200 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!config)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00201"/>00201 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00202"/>00202 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(config-&gt;<link linkend="_group___d_a_t_a_i_o_1gacf6fa77ab365f7b646a9f701568cc916">GetRemoteURL</link>()-&gt;<link linkend="_group___x_u_t_i_l_s_1ga7c3fa0dd7b650399470c76192fbd4916">GetSize</link>())
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00203"/>00203 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00204"/>00204 &#32;&#32;&#32;&#32;&#32;&#32;URLremote-&gt;<link linkend="_group___x_u_t_i_l_s_1ga4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(config-&gt;<link linkend="_group___d_a_t_a_i_o_1gacf6fa77ab365f7b646a9f701568cc916">GetRemoteURL</link>()-&gt;<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00205"/>00205 &#32;&#32;&#32;&#32;&#32;&#32;URLremote-&gt;<link linkend="_group___d_a_t_a_i_o_1gaead21c974345fd5c3367a6a4aa093596">ResolveURL</link>(addressremote);
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00206"/>00206 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00207"/>00207 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00208"/>00208 &#32;&#32;portremote&#32;=&#32;config-&gt;<link linkend="_group___d_a_t_a_i_o_1gad7570e2ade5840136618dd28f45571b3">GetRemotePort</link>();
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00209"/>00209 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00210"/>00210 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!diostream-&gt;<link linkend="_group___d_a_t_a_i_o_1ga8a6d7369be30f160abf2c060c2a76ece">Open</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00211"/>00211 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00212"/>00212 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(config-&gt;<link linkend="_group___d_a_t_a_i_o_1gaad95fbae88786858a4ce32d85b97259a">IsServer</link>())
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00213"/>00213 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00214"/>00214 &#32;&#32;&#32;&#32;&#32;&#32;xthreadconnection&#32;&#32;=&#32;<link linkend="__x_thread_collected_8h_1aad503e3655b9ff78d3ac660d1f1f5534">CREATEXTHREAD</link>(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6ab8479c55eebafff2cd86d042ae6937fb">XTHREADGROUPID_DIOSTREAMUDP</link>,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;DIOSTREAMUDPACKNOWLEDGE::Open&quot;</emphasis>),&#32;ThreadRunFunction,&#32;(<emphasis role="keywordtype">void</emphasis>*)<emphasis role="keyword">this</emphasis>);
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00215"/>00215 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xthreadconnection)&#32;xthreadconnection-&gt;Ini();
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00216"/>00216 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00217"/>00217 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00218"/>00218 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00219"/>00219 }
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00220"/>00220 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00221"/>00221 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00234"/><link linkend="_group___d_a_t_a_i_o_1gaf73ebef54946766cefd7d1c4ada9e715">00234</link> <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;<link linkend="_group___d_a_t_a_i_o_1gaf73ebef54946766cefd7d1c4ada9e715">DIOSTREAMUDPACKNOWLEDGE::Write</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;buffer,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;size)
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00235"/>00235 {
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00236"/>00236 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!diostream)&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00237"/>00237 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!size)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00238"/>00238 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00239"/>00239 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(addressremote.<link linkend="_group___x_u_t_i_l_s_1gad26690161f8c1e2722771322b7370005">IsEmpty</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00240"/>00240 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00241"/>00241 &#32;&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p">DIOSTREAMUDP</link>*&#32;diostreamudp&#32;=&#32;(<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p">DIOSTREAMUDP</link>*)diostream;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00242"/>00242 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;bw&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00243"/>00243 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00244"/>00244 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(diostreamudp-&gt;<link linkend="_group___d_a_t_a_i_o_1gab0d0852629436fe9af4c2d221d9b2298">WriteDatagram</link>(addressremote,&#32;portremote,&#32;buffer,&#32;size))&#32;bw&#32;=&#32;size;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00245"/>00245 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00246"/>00246 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(diostreamudp-&gt;<link linkend="_group___d_a_t_a_i_o_1ga8699558c7bc3c36dd1f969109319de86">WaitToWriteDatagramsEmpty</link>(timeout))
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00247"/>00247 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00248"/>00248 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//XTRACE_PRINTCOLOR(1,&#32;__L(&quot;Write&#32;UDP&#32;%s:%d&#32;:&#32;%s&quot;),&#32;addressremote.Get(),&#32;portremote,&#32;bw==size?__L(&quot;Ok&quot;):__L(&quot;ERROR!&quot;));</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00249"/>00249 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00250"/>00250 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(diostreamudp-&gt;<link linkend="_group___d_a_t_a_i_o_1ga174528a6a908069f419ab4f23092a5ec">WaitToGetFirstDatagram</link>(<emphasis role="keyword">false</emphasis>,&#32;timeout)&#32;!=&#32;<link linkend="__d_i_o_stream_u_d_p_8h_1a188bbad0b1a8591fd64289b5dd3ec694">DIOSTREAMUDP_NOTFOUND</link>)
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00251"/>00251 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00252"/>00252 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;address;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00253"/>00253 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;&#32;&#32;port&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00254"/>00254 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;xbuffer;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00255"/>00255 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;hashresult[2]&#32;=&#32;{&#32;0,&#32;0&#32;};
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00256"/>00256 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00257"/>00257 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;diostreamudp-&gt;<link linkend="_group___d_a_t_a_i_o_1gaa79b54f9fc15cac61e872b01c590aff6">ReadDatagram</link>(address,&#32;port,&#32;xbuffer);
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00258"/>00258 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00259"/>00259 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xbuffer.<link linkend="_group___x_u_t_i_l_s_1gaa18ae97bc16eca76dad45de57c4dd08c">Extract</link>(hashresult[0]);
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00260"/>00260 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00261"/>00261 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_h_a_s_h_c_r_c32">HASHCRC32</link>&#32;&#32;hashcrc32;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00262"/>00262 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00263"/>00263 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hashcrc32.<link linkend="_group___c_i_p_h_e_r_1gab01cc6a04a2c4ee67dcca98c7b233913">ResetResult</link>();
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00264"/>00264 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hashcrc32.<link linkend="_group___c_i_p_h_e_r_1ga170fa5c716219e92d4724553d6e8e0ce">Do</link>(buffer,&#32;size);
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00265"/>00265 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00266"/>00266 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;hashresult[1]&#32;=&#32;hashcrc32.<link linkend="_group___c_i_p_h_e_r_1gab33e363f6374a0e559e99f2f80e5abf6">GetResultCRC32</link>();
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00267"/>00267 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00268"/>00268 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(hashresult[0]&#32;!=&#32;hashresult[1])
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00269"/>00269 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00270"/>00270 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//XTRACE_PRINTCOLOR(1,&#32;__L(&quot;Write&#32;received&#32;bad&#32;CRC!!&#32;%08X&#32;&lt;&gt;&#32;%08X&quot;),&#32;hashresult,&#32;hashcrc32.GetResultCRC32());</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00271"/>00271 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;bw&#32;=&#32;0;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00272"/>00272 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00273"/>00273 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00274"/>00274 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00275"/>00275 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00276"/>00276 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//XTRACE_PRINTCOLOR(1,&#32;__L(&quot;Write&#32;received&#32;NOT&#32;read&quot;));</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00277"/>00277 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;bw&#32;=&#32;0;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00278"/>00278 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00279"/>00279 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00280"/>00280 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00281"/>00281 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00282"/>00282 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//XTRACE_PRINTCOLOR(1,&#32;__L(&quot;Do&#32;not&#32;write&quot;));</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00283"/>00283 &#32;&#32;&#32;&#32;&#32;&#32;bw&#32;=&#32;0;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00284"/>00284 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00285"/>00285 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00286"/>00286 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!bw)
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00287"/>00287 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00288"/>00288 &#32;&#32;&#32;&#32;&#32;&#32;diostream-&gt;<link linkend="_group___d_a_t_a_i_o_1ga42f9eb4342ba828c033258fae3ceafa6">Close</link>();
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00289"/>00289 &#32;&#32;&#32;&#32;&#32;&#32;diostream-&gt;<link linkend="_group___d_a_t_a_i_o_1ga8a6d7369be30f160abf2c060c2a76ece">Open</link>();
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00290"/>00290 &#32;&#32;&#32;&#32;&#32;&#32;diostream-&gt;<link linkend="_group___d_a_t_a_i_o_1gacff76db4bc54a48fe2d2ceb165835c2f">WaitToConnected</link>(5);
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00291"/>00291 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00292"/>00292 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00293"/>00293 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;bw;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00294"/>00294 }
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00295"/>00295 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00296"/>00296 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00311"/><link linkend="_group___d_a_t_a_i_o_1ga1dce5f5cb5e3c2aab8d59d33670604f5">00311</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga1dce5f5cb5e3c2aab8d59d33670604f5">DIOSTREAMUDPACKNOWLEDGE::WriteDatagram</link>(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;address,&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;port,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;buffer,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;size)
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00312"/>00312 {
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00313"/>00313 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;old_address;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00314"/>00314 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;&#32;&#32;&#32;old_port;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00315"/>00315 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00316"/>00316 &#32;&#32;old_address&#32;&#32;&#32;=&#32;addressremote.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00317"/>00317 &#32;&#32;old_port&#32;&#32;&#32;&#32;&#32;&#32;=&#32;portremote;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00318"/>00318 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00319"/>00319 &#32;&#32;addressremote&#32;=&#32;address.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00320"/>00320 &#32;&#32;portremote&#32;&#32;&#32;&#32;=&#32;port;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00321"/>00321 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00322"/>00322 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;_size&#32;=&#32;<link linkend="_group___d_a_t_a_i_o_1gaf73ebef54946766cefd7d1c4ada9e715">Write</link>(buffer,&#32;size);
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00323"/>00323 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00324"/>00324 &#32;&#32;addressremote&#32;=&#32;old_address.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00325"/>00325 &#32;&#32;portremote&#32;&#32;&#32;&#32;=&#32;old_port;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00326"/>00326 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00327"/>00327 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(size&#32;==&#32;_size)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00328"/>00328 }
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00329"/>00329 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00330"/>00330 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00344"/><link linkend="_group___d_a_t_a_i_o_1gaec677723dc1d177082985965c3d1b966">00344</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga1dce5f5cb5e3c2aab8d59d33670604f5">DIOSTREAMUDPACKNOWLEDGE::WriteDatagram</link>(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;address,&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;port,&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&amp;&#32;xbuffer)
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00345"/>00345 {
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00346"/>00346 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga1dce5f5cb5e3c2aab8d59d33670604f5">WriteDatagram</link>(address,&#32;port,&#32;xbuffer.<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>(),&#32;xbuffer.<link linkend="_group___x_u_t_i_l_s_1ga726a6143d8a9293a199f8033c8198a0a">GetSize</link>());
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00347"/>00347 }
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00348"/>00348 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00349"/>00349 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00359"/><link linkend="_group___d_a_t_a_i_o_1gade55b03e6b565c919155b5b07336ecca">00359</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gade55b03e6b565c919155b5b07336ecca">DIOSTREAMUDPACKNOWLEDGE::Disconnect</link>()
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00360"/>00360 {
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00361"/>00361 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!diostream)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00362"/>00362 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00363"/>00363 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!config)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00364"/>00364 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00365"/>00365 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(config-&gt;<link linkend="_group___d_a_t_a_i_o_1gaad95fbae88786858a4ce32d85b97259a">IsServer</link>())
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00366"/>00366 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00367"/>00367 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xthreadconnection)
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00368"/>00368 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00369"/>00369 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xthreadconnection-&gt;End();
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00370"/>00370 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_thread_collected_8h_1a18fb843f5fbad51464b68d705ed29b8a">DELETEXTHREAD</link>(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6ab8479c55eebafff2cd86d042ae6937fb">XTHREADGROUPID_DIOSTREAMUDP</link>,&#32;xthreadconnection);
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00371"/>00371 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xthreadconnection&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00372"/>00372 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00373"/>00373 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00374"/>00374 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00375"/>00375 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!diostream-&gt;<link linkend="_group___d_a_t_a_i_o_1gaff142d74f35dfc10692bfa0c5ef1876f">Disconnect</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00376"/>00376 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00377"/>00377 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00378"/>00378 }
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00379"/>00379 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00380"/>00380 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00390"/><link linkend="_group___d_a_t_a_i_o_1gadeca2cff047caffaae85a632e0f29fd9">00390</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gadeca2cff047caffaae85a632e0f29fd9">DIOSTREAMUDPACKNOWLEDGE::Close</link>()
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00391"/>00391 {
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00392"/>00392 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!diostream)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00393"/>00393 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00394"/>00394 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!config)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00395"/>00395 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00396"/>00396 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(config-&gt;<link linkend="_group___d_a_t_a_i_o_1gaad95fbae88786858a4ce32d85b97259a">IsServer</link>())
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00397"/>00397 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00398"/>00398 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xthreadconnection)
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00399"/>00399 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00400"/>00400 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xthreadconnection-&gt;End();
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00401"/>00401 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_thread_collected_8h_1a18fb843f5fbad51464b68d705ed29b8a">DELETEXTHREAD</link>(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6ab8479c55eebafff2cd86d042ae6937fb">XTHREADGROUPID_DIOSTREAMUDP</link>,&#32;xthreadconnection);
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00402"/>00402 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xthreadconnection&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00403"/>00403 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00404"/>00404 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00405"/>00405 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00406"/>00406 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!diostream-&gt;<link linkend="_group___d_a_t_a_i_o_1ga42f9eb4342ba828c033258fae3ceafa6">Close</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00407"/>00407 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00408"/>00408 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00409"/>00409 }
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00410"/>00410 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00411"/>00411 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00421"/><link linkend="_group___d_a_t_a_i_o_1ga5b28624f11d67bef1d7c5fa3f62cc17f">00421</link> <link linkend="_class_d_i_o_s_t_r_e_a_m">DIOSTREAM</link>*&#32;<link linkend="_group___d_a_t_a_i_o_1ga5b28624f11d67bef1d7c5fa3f62cc17f">DIOSTREAMUDPACKNOWLEDGE::GetDIOStreamBase</link>()
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00422"/>00422 {&#32;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00423"/>00423 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;diostream;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00424"/>00424 }
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00425"/>00425 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00426"/>00426 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00436"/>00436 <emphasis role="keywordtype">void</emphasis>&#32;DIOSTREAMUDPACKNOWLEDGE::ThreadRunFunction(<emphasis role="keywordtype">void</emphasis>*&#32;param)
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00437"/>00437 {
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00438"/>00438 &#32;&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_a_c_k_n_o_w_l_e_d_g_e">DIOSTREAMUDPACKNOWLEDGE</link>*&#32;diostreamudpacknowledge&#32;=&#32;(<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p_a_c_k_n_o_w_l_e_d_g_e">DIOSTREAMUDPACKNOWLEDGE</link>*)param;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00439"/>00439 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!diostreamudpacknowledge)&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00440"/>00440 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00441"/>00441 &#32;&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_u_d_p">DIOSTREAMUDP</link>*&#32;diostreamudp&#32;=&#32;diostreamudpacknowledge-&gt;diostream;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00442"/>00442 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!diostreamudp)&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00443"/>00443 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00444"/>00444 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;&#32;data;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00445"/>00445 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;address;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00446"/>00446 &#32;&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;&#32;&#32;&#32;port;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00447"/>00447 &#32;&#32;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00448"/>00448 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(diostreamudp-&gt;<link linkend="_group___d_a_t_a_i_o_1gaa79b54f9fc15cac61e872b01c590aff6">ReadDatagram</link>(address,&#32;port,&#32;data))
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00449"/>00449 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00450"/>00450 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_h_a_s_h_c_r_c32">HASHCRC32</link>&#32;hashcrc32;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00451"/>00451 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00452"/>00452 &#32;&#32;&#32;&#32;&#32;&#32;hashcrc32.<link linkend="_group___c_i_p_h_e_r_1gab01cc6a04a2c4ee67dcca98c7b233913">ResetResult</link>();
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00453"/>00453 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(hashcrc32.<link linkend="_group___c_i_p_h_e_r_1ga170fa5c716219e92d4724553d6e8e0ce">Do</link>(data.<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>(),&#32;data.<link linkend="_group___x_u_t_i_l_s_1ga726a6143d8a9293a199f8033c8198a0a">GetSize</link>()))
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00454"/>00454 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00455"/>00455 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;result;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00456"/>00456 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;hashresult&#32;=&#32;hashcrc32.<link linkend="_group___c_i_p_h_e_r_1gab33e363f6374a0e559e99f2f80e5abf6">GetResultCRC32</link>();
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00457"/>00457 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00458"/>00458 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;result.<link linkend="_group___x_u_t_i_l_s_1ga03212e4f31a9d07995ac4f72db1dd0cf">Add</link>(hashresult);
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00459"/>00459 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00460"/>00460 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;diostreamudp-&gt;<link linkend="_group___d_a_t_a_i_o_1gab0d0852629436fe9af4c2d221d9b2298">WriteDatagram</link>(address,&#32;port,&#32;result);
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00461"/>00461 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(diostreamudp-&gt;<link linkend="_group___d_a_t_a_i_o_1ga8699558c7bc3c36dd1f969109319de86">WaitToWriteDatagramsEmpty</link>(diostreamudpacknowledge-&gt;timeout))
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00462"/>00462 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00463"/>00463 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;diostreamudpacknowledge-&gt;<link linkend="_group___d_a_t_a_i_o_1ga867bece88069def37e9a1dc14e298dfe">AddDatagram</link>(<emphasis role="keyword">false</emphasis>,&#32;address,&#32;port,&#32;data.<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>(),&#32;data.<link linkend="_group___x_u_t_i_l_s_1ga726a6143d8a9293a199f8033c8198a0a">GetSize</link>());
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00464"/>00464 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00465"/>00465 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00466"/>00466 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00467"/>00467 }
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00468"/>00468 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00469"/>00469 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00478"/>00478 <emphasis role="keywordtype">void</emphasis>&#32;DIOSTREAMUDPACKNOWLEDGE::Clean()
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00479"/>00479 {
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00480"/>00480 &#32;&#32;config&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00481"/>00481 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00482"/>00482 &#32;&#32;timeout&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00483"/>00483 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00484"/>00484 &#32;&#32;URLremote&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00485"/>00485 &#32;&#32;portremote&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00486"/>00486 &#32;&#32;diostream&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00487"/>00487 &#32;&#32;xthreadconnection&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00488"/>00488 }
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00489"/>00489 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00490"/>00490 
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00491"/>00491 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_stream_u_d_p_acknowledge_8cpp_source_1l00492"/>00492 
+</programlisting></section>

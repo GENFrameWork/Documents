@@ -1,0 +1,609 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source" xml:lang="en-US">
+<title>DIOLINUXWifiManagerMode.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/Platforms/Linux/DIOLINUXWifiManagerMode.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_wifi_manager_mode_8h">DIOLINUXWifiManagerMode.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&lt;stdlib.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&lt;unistd.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&lt;errno.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&lt;string.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&lt;dirent.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00048"/>00048 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00049"/>00049 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00050"/>00050 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_factory_8h">XFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_timer_8h">XTimer.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_trace_8h">XTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00053"/>00053 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_vector_8h">XVector.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00054"/>00054 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_sleep_8h">XSleep.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00055"/>00055 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_string_8h">XString.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00056"/>00056 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_file_t_x_t_8h">XFileTXT.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00057"/>00057 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_process_manager_8h">XProcessManager.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00058"/>00058 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00059"/>00059 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_factory_8h">DIOFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00060"/>00060 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_device_i_p_8h">DIOStreamDeviceIP.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00061"/>00061 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_enum_devices_8h">DIOStreamEnumDevices.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00062"/>00062 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00063"/>00063 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00064"/>00064 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00065"/>00065 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00066"/>00066 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00067"/>00067 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00068"/>00068 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00069"/>00069 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00070"/>00070 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00071"/>00071 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00072"/>00072 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00073"/>00073 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00074"/>00074 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00075"/>00075 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00076"/>00076 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00077"/>00077 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00085"/><link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1gad710551e69af879a45b541224f08f6b3">00085</link> <link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1gad710551e69af879a45b541224f08f6b3">DIOLINUXWIFIMANAGERMODE::DIOLINUXWIFIMANAGERMODE</link>()&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00086"/>00086 {&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00087"/>00087 &#32;&#32;Clean();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00088"/>00088 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00089"/>00089 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00090"/>00090 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00099"/><link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga54789906e10d6d9f5832cad004370502">00099</link> <link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga54789906e10d6d9f5832cad004370502">DIOLINUXWIFIMANAGERMODE::~DIOLINUXWIFIMANAGERMODE</link>()&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00100"/>00100 {&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00101"/>00101 &#32;&#32;Clean();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00102"/>00102 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00103"/>00103 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00104"/>00104 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00118"/><link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga9b0d15310af1b8fd36c6bfc10318d1a3">00118</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga9b0d15310af1b8fd36c6bfc10318d1a3">DIOLINUXWIFIMANAGERMODE::SetMode_AP</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;SSID,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;password,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;serialize)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00119"/>00119 {&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00120"/>00120 &#32;&#32;WPA_RemoveAllNetworks();
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00121"/>00121 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00122"/>00122 &#32;&#32;<link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1gaa45f0b7901f70abbdb81f61bed1e743e">APList_Reload</link>();
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00123"/>00123 &#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00124"/>00124 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;WPA_SetMode(2,&#32;SSID,&#32;password,&#32;-1,&#32;serialize);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00125"/>00125 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00126"/>00126 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00127"/>00127 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00141"/><link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga0f8b8ba3c796519a701a95300a9ff9c7">00141</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga0f8b8ba3c796519a701a95300a9ff9c7">DIOLINUXWIFIMANAGERMODE::SetMode_Client</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;SSID,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;password,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;serialize)&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00142"/>00142 {&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00143"/>00143 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00144"/>00144 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00145"/>00145 &#32;&#32;<emphasis role="keywordflow">switch</emphasis>(<link linkend="_class_d_i_o_w_i_f_i_m_a_n_a_g_e_r_m_o_d_e_1a3bd930db89d06d0568cd3063bd1da937">modetype</link>)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00146"/>00146 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00147"/>00147 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__d_i_o_wifi_manager_mode_8h_1a75271a54db473ee3d2141ae199552f46addc3dd0ef67f279c4dcc649769f5fade">DIOWIFIMANAGER_MODETYPE_DEFAULT</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;WPA_RemoveAllNetworks();&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00148"/>00148 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//APList_Reload();</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00149"/>00149 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;WPA_SetMode(0,&#32;SSID,&#32;password,&#32;-1,&#32;serialize);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00150"/>00150 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00151"/>00151 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00152"/>00152 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__d_i_o_wifi_manager_mode_8h_1a75271a54db473ee3d2141ae199552f46a39ded75067ffc5c9a8c45ec37fa7826b">DIOWIFIMANAGER_MODETYPE_LINUX_CLIENT_NM</link>&#32;&#32;&#32;&#32;&#32;&#32;:&#32;status&#32;=&#32;NM_SetMode(0,&#32;SSID,&#32;password,&#32;-1,&#32;serialize);&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00153"/>00153 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00154"/>00154 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00155"/>00155 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00156"/>00156 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00157"/>00157 }&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00158"/>00158 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00159"/>00159 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00169"/><link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1gae06e29344f3348409f5ccf03d8015739">00169</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1gae06e29344f3348409f5ccf03d8015739">DIOLINUXWIFIMANAGERMODE::IsDisconnected</link>()
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00170"/>00170 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00171"/>00171 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00172"/>00172 &#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00173"/>00173 &#32;&#32;<emphasis role="keywordflow">switch</emphasis>(<link linkend="_class_d_i_o_w_i_f_i_m_a_n_a_g_e_r_m_o_d_e_1a3bd930db89d06d0568cd3063bd1da937">modetype</link>)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00174"/>00174 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00175"/>00175 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__d_i_o_wifi_manager_mode_8h_1a75271a54db473ee3d2141ae199552f46addc3dd0ef67f279c4dcc649769f5fade">DIOWIFIMANAGER_MODETYPE_DEFAULT</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;status&#32;=&#32;WPA_IsDisconnected();&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00176"/>00176 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__d_i_o_wifi_manager_mode_8h_1a75271a54db473ee3d2141ae199552f46a39ded75067ffc5c9a8c45ec37fa7826b">DIOWIFIMANAGER_MODETYPE_LINUX_CLIENT_NM</link>&#32;&#32;&#32;&#32;&#32;&#32;:&#32;status&#32;=&#32;NM_IsDisconnected();&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00177"/>00177 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00178"/>00178 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00179"/>00179 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00180"/>00180 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00181"/>00181 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00182"/>00182 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00192"/><link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga2f5d7aba998a1c45c0bbaa9b49805aed">00192</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga2f5d7aba998a1c45c0bbaa9b49805aed">DIOLINUXWIFIMANAGERMODE::Disconnect</link>()
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00193"/>00193 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00194"/>00194 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00195"/>00195 &#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00196"/>00196 &#32;&#32;<emphasis role="keywordflow">switch</emphasis>(<link linkend="_class_d_i_o_w_i_f_i_m_a_n_a_g_e_r_m_o_d_e_1a3bd930db89d06d0568cd3063bd1da937">modetype</link>)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00197"/>00197 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00198"/>00198 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__d_i_o_wifi_manager_mode_8h_1a75271a54db473ee3d2141ae199552f46addc3dd0ef67f279c4dcc649769f5fade">DIOWIFIMANAGER_MODETYPE_DEFAULT</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;status&#32;=&#32;WPA_Disconnect();&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00199"/>00199 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__d_i_o_wifi_manager_mode_8h_1a75271a54db473ee3d2141ae199552f46a39ded75067ffc5c9a8c45ec37fa7826b">DIOWIFIMANAGER_MODETYPE_LINUX_CLIENT_NM</link>&#32;&#32;&#32;&#32;:&#32;status&#32;=&#32;NM_Disconnect();&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00200"/>00200 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00201"/>00201 &#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00202"/>00202 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00203"/>00203 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00204"/>00204 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00205"/>00205 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00215"/><link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1gaa45f0b7901f70abbdb81f61bed1e743e">00215</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1gaa45f0b7901f70abbdb81f61bed1e743e">DIOLINUXWIFIMANAGERMODE::APList_Reload</link>()
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00216"/>00216 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00217"/>00217 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;WPA_GetListRemoteAP(<link linkend="_class_d_i_o_w_i_f_i_m_a_n_a_g_e_r_m_o_d_e_1acf5b986981e6a94b4a9d0e919886c113">nameAPs</link>);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00218"/>00218 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00219"/>00219 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00220"/>00220 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00236"/>00236 <emphasis role="keywordtype">bool</emphasis>&#32;DIOLINUXWIFIMANAGERMODE::WPA_SetMode(<emphasis role="keywordtype">int</emphasis>&#32;mode,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;SSID,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;password,&#32;<emphasis role="keywordtype">int</emphasis>&#32;indexnetwork,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;serialize)&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00237"/>00237 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00238"/>00238 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;prefixcommand;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00239"/>00239 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;command;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00240"/>00240 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;modestr;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00241"/>00241 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;output;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00242"/>00242 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;indexnet;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00243"/>00243 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;status;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00244"/>00244 &#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00245"/>00245 &#32;&#32;prefixcommand.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__d_i_o_l_i_n_u_x_wifi_manager_mode_8h_1a1f541e9d2fa184ff889c3e4d303c27da">DIOLINUXWIFIMANAGERMODE_PREFIXCOMMAND</link>,&#32;<link linkend="_class_d_i_o_w_i_f_i_m_a_n_a_g_e_r_m_o_d_e_1a8e330835af91f45376fcc3f579c5b924">netinterface</link>.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00246"/>00246 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00247"/>00247 &#32;&#32;indexnet&#32;=&#32;indexnetwork;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00248"/>00248 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00249"/>00249 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(indexnet&#32;==&#32;-1)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00250"/>00250 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00251"/>00251 &#32;&#32;&#32;&#32;&#32;&#32;command.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%s&#32;add_network&quot;</emphasis>),&#32;prefixcommand.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00252"/>00252 &#32;&#32;&#32;&#32;&#32;&#32;WPA_CLI_Command(command,&#32;output);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00253"/>00253 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00254"/>00254 &#32;&#32;&#32;&#32;&#32;&#32;output.<link linkend="_group___x_u_t_i_l_s_1gacae4462012fcb5ee07db15505877d40a">DeleteCharacter</link>(<link linkend="__x_string_8h_1ab483f167129a5d1941ea1d30f3df8d8a">__C</link>(<emphasis role="charliteral">&apos;\n&apos;</emphasis>));
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00255"/>00255 &#32;&#32;&#32;&#32;&#32;&#32;output.<link linkend="_group___x_u_t_i_l_s_1gacae4462012fcb5ee07db15505877d40a">DeleteCharacter</link>(<link linkend="__x_string_8h_1ab483f167129a5d1941ea1d30f3df8d8a">__C</link>(<emphasis role="charliteral">&apos;\r&apos;</emphasis>));
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00256"/>00256 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00257"/>00257 &#32;&#32;&#32;&#32;&#32;&#32;indexnet&#32;=&#32;output.<link linkend="_group___x_u_t_i_l_s_1gaf09eaeaee7d47050a5c75303f3ae842c">ConvertToInt</link>();
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00258"/>00258 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00259"/>00259 &#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00260"/>00260 &#32;&#32;status&#32;=&#32;WPA_SetValue(indexnet,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;ssid&quot;</emphasis>),&#32;SSID,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00261"/>00261 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00262"/>00262 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00263"/>00263 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(password)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00264"/>00264 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00265"/>00265 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;WPA_SetValue(indexnet,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;psk&quot;</emphasis>),&#32;password,&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00266"/>00266 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00267"/>00267 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00268"/>00268 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00269"/>00269 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00270"/>00270 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;WPA_SetValue(indexnet,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;key_mgmt&quot;</emphasis>),&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;NONE&quot;</emphasis>),&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00271"/>00271 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00272"/>00272 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00273"/>00273 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00274"/>00274 &#32;&#32;modestr.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%d&quot;</emphasis>),&#32;mode);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00275"/>00275 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00276"/>00276 &#32;&#32;status&#32;=&#32;WPA_SetValue(indexnet,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;mode&quot;</emphasis>),&#32;modestr.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00277"/>00277 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00278"/>00278 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00279"/>00279 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(mode&#32;==&#32;2)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00280"/>00280 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00281"/>00281 &#32;&#32;&#32;&#32;&#32;&#32;command.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%s&#32;ap_scan&#32;1&quot;</emphasis>),&#32;prefixcommand.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00282"/>00282 &#32;&#32;&#32;&#32;&#32;&#32;WPA_CLI_Command(command,&#32;output);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00283"/>00283 &#32;&#32;&#32;&#32;}&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00284"/>00284 &#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00285"/>00285 &#32;&#32;command.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%s&#32;enable_network&#32;%d&quot;</emphasis>),&#32;prefixcommand.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;indexnet);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00286"/>00286 &#32;&#32;status&#32;=&#32;WPA_CLI_Command(command,&#32;output);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00287"/>00287 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00288"/>00288 &#32;&#32;command.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%s&#32;reconnect&quot;</emphasis>),&#32;prefixcommand.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;indexnet);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00289"/>00289 &#32;&#32;status&#32;=&#32;WPA_CLI_Command(command,&#32;output);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00290"/>00290 &#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00291"/>00291 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(mode&#32;==&#32;0)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00292"/>00292 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00293"/>00293 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;input;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00294"/>00294 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;param;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00295"/>00295 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;returncode&#32;=&#32;0;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00296"/>00296 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00297"/>00297 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00298"/>00298 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;c=0;&#32;c&lt;10;&#32;c++)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00299"/>00299 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00300"/>00300 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;param.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;-x&quot;</emphasis>));&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00301"/>00301 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GEN_XPROCESSMANAGER.Application_Execute(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;/sbin/dhcpcd&quot;</emphasis>),&#32;param.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;&amp;input,&#32;&amp;output,&#32;&amp;returncode);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00302"/>00302 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00303"/>00303 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00304"/>00304 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;c=0;&#32;c&lt;10;&#32;c++)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00305"/>00305 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00306"/>00306 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GEN_XPROCESSMANAGER.MakeSystemCommand(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;killall&#32;-9&#32;dhcpcd&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00307"/>00307 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00308"/>00308 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00309"/>00309 &#32;&#32;&#32;&#32;&#32;&#32;param.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;-4&#32;-t&#32;15&#32;%s&quot;</emphasis>),&#32;<link linkend="_class_d_i_o_w_i_f_i_m_a_n_a_g_e_r_m_o_d_e_1a8e330835af91f45376fcc3f579c5b924">netinterface</link>.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00310"/>00310 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00311"/>00311 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_trace_8h_1ad3489a73cc8c0aa8e64f91a03735e525">XTRACE_PRINTCOLOR</link>(<link linkend="__x_trace_8h_1aa1f99c23bc0af79572a9685f5519002e">XTRACE_COLOR_PURPLE</link>,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;dhcpcd:&#32;%s&quot;</emphasis>),&#32;param.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00312"/>00312 &#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00313"/>00313 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XPROCESSMANAGER.Application_Execute(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;/sbin/dhcpcd&quot;</emphasis>),&#32;param.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;&amp;input,&#32;&amp;output,&#32;&amp;returncode);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00314"/>00314 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_trace_8h_1ad3489a73cc8c0aa8e64f91a03735e525">XTRACE_PRINTCOLOR</link>(<link linkend="__x_trace_8h_1aa1f99c23bc0af79572a9685f5519002e">XTRACE_COLOR_PURPLE</link>,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;dhclient&#32;%s&#32;%d&quot;</emphasis>),&#32;output.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;returncode);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00315"/>00315 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00316"/>00316 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00317"/>00317 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(output.<link linkend="_group___x_u_t_i_l_s_1gaa5d59b7b88102beb4def8fe054449653">Find</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;rebinding&#32;lease&quot;</emphasis>),&#32;<emphasis role="keyword">true</emphasis>)&#32;!=&#32;<link linkend="__x_string_8h_1aee1ccda748b3ca0a483afb84276e3fc6">XSTRING_NOTFOUND</link>)&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00318"/>00318 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00319"/>00319 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00320"/>00320 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;c=0;&#32;c&lt;10;&#32;c++)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00321"/>00321 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00322"/>00322 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;param.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;-x&quot;</emphasis>));&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00323"/>00323 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GEN_XPROCESSMANAGER.Application_Execute(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;/sbin/dhcpcd&quot;</emphasis>),&#32;param.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;&amp;input,&#32;&amp;output,&#32;&amp;returncode);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00324"/>00324 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00325"/>00325 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00326"/>00326 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;c=0;&#32;c&lt;10;&#32;c++)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00327"/>00327 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00328"/>00328 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GEN_XPROCESSMANAGER.MakeSystemCommand(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;killall&#32;-9&#32;dhcpcd&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00329"/>00329 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00330"/>00330 &#32;&#32;&#32;&#32;}&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00331"/>00331 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00332"/>00332 &#32;&#32;<emphasis role="comment">/*</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00333"/>00333 <emphasis role="comment">&#32;&#32;if(mode&#32;==&#32;0)</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00334"/>00334 <emphasis role="comment">&#32;&#32;&#32;&#32;{</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00335"/>00335 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;XSTRING&#32;&#32;&#32;input;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00336"/>00336 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;XSTRING&#32;&#32;&#32;param;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00337"/>00337 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;int&#32;&#32;&#32;&#32;&#32;&#32;&#32;returncode&#32;=&#32;0;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00338"/>00338 <emphasis role="comment"></emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00339"/>00339 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;//GEN_XSLEEP.Seconds(2);</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00340"/>00340 <emphasis role="comment"></emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00341"/>00341 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;param&#32;=&#32;__L(&quot;-v&#32;wlan0&quot;);</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00342"/>00342 <emphasis role="comment"></emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00343"/>00343 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;XTRACE_PRINTCOLOR(XTRACE_COLOR_PURPLE,&#32;__L(&quot;dhclient&#32;...&#32;&quot;));</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00344"/>00344 <emphasis role="comment">&#32;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00345"/>00345 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;GEN_XPROCESSMANAGER.Application_Execute(__L(&quot;/sbin/dhclient&quot;),&#32;param.Get(),&#32;&amp;input,&#32;&amp;output,&#32;&amp;returncode);</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00346"/>00346 <emphasis role="comment"></emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00347"/>00347 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;XTRACE_PRINTCOLOR(XTRACE_COLOR_PURPLE,&#32;__L(&quot;dhclient&#32;%s&#32;%d&quot;),&#32;output.Get(),&#32;returncode);</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00348"/>00348 <emphasis role="comment">&#32;&#32;&#32;&#32;}&#32;&#32;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00349"/>00349 <emphasis role="comment">&#32;&#32;*/</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00350"/>00350 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00351"/>00351 &#32;&#32;<emphasis role="comment">/*</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00352"/>00352 <emphasis role="comment">&#32;&#32;&#32;if(mode&#32;==&#32;0)</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00353"/>00353 <emphasis role="comment">&#32;&#32;&#32;&#32;{</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00354"/>00354 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;XSTRING&#32;&#32;&#32;input;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00355"/>00355 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;XSTRING&#32;&#32;&#32;command;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00356"/>00356 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;int&#32;&#32;&#32;&#32;&#32;&#32;&#32;returncode&#32;=&#32;0;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00357"/>00357 <emphasis role="comment">&#32;&#32;&#32;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00358"/>00358 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;command&#32;=&#32;__L(&quot;/sbin/dhclient&#32;-v&#32;wlan0&quot;);</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00359"/>00359 <emphasis role="comment"></emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00360"/>00360 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;XTRACE_PRINTCOLOR(XTRACE_COLOR_PURPLE,&#32;__L(&quot;dhclient&#32;...&#32;&quot;));</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00361"/>00361 <emphasis role="comment">&#32;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00362"/>00362 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;GEN_XPROCESSMANAGER.MakeCommand(command.Get(),&#32;&amp;output,&#32;&amp;returncode);</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00363"/>00363 <emphasis role="comment"></emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00364"/>00364 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;XTRACE_PRINTCOLOR(XTRACE_COLOR_PURPLE,&#32;__L(&quot;dhclient&#32;%s&#32;%d&quot;),&#32;output.Get(),&#32;returncode);</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00365"/>00365 <emphasis role="comment">&#32;&#32;&#32;&#32;}&#32;&#32;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00366"/>00366 <emphasis role="comment">&#32;&#32;*/</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00367"/>00367 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00368"/>00368 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(serialize)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00369"/>00369 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00370"/>00370 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00371"/>00371 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00372"/>00372 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;command.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%s&#32;save_config&quot;</emphasis>),&#32;prefixcommand.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00373"/>00373 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;WPA_CLI_Command(command,&#32;output);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00374"/>00374 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00375"/>00375 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00376"/>00376 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00377"/>00377 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;command.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%s&#32;reconfigure&quot;</emphasis>),&#32;prefixcommand.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00378"/>00378 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;WPA_CLI_Command(command,&#32;output);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00379"/>00379 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00380"/>00380 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00381"/>00381 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00382"/>00382 &#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00383"/>00383 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00384"/>00384 }&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00385"/>00385 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00386"/>00386 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00396"/>00396 <emphasis role="keywordtype">bool</emphasis>&#32;DIOLINUXWIFIMANAGERMODE::WPA_IsDisconnected()
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00397"/>00397 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00398"/>00398 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;prefixcommand;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00399"/>00399 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;command;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00400"/>00400 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;output;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00401"/>00401 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00402"/>00402 &#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00403"/>00403 &#32;&#32;prefixcommand.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__d_i_o_l_i_n_u_x_wifi_manager_mode_8h_1a1f541e9d2fa184ff889c3e4d303c27da">DIOLINUXWIFIMANAGERMODE_PREFIXCOMMAND</link>,&#32;<link linkend="_class_d_i_o_w_i_f_i_m_a_n_a_g_e_r_m_o_d_e_1a8e330835af91f45376fcc3f579c5b924">netinterface</link>.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00404"/>00404 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00405"/>00405 &#32;&#32;command.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%s&#32;status&quot;</emphasis>),&#32;prefixcommand.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00406"/>00406 &#32;&#32;WPA_CLI_Command(command,&#32;output);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00407"/>00407 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00408"/>00408 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(output.<link linkend="_group___x_u_t_i_l_s_1gaa5d59b7b88102beb4def8fe054449653">Find</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;wpa_state=INACTIVE&quot;</emphasis>),&#32;<emphasis role="keyword">true</emphasis>)&#32;!=&#32;<link linkend="__x_string_8h_1aee1ccda748b3ca0a483afb84276e3fc6">XSTRING_NOTFOUND</link>)&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00409"/>00409 &#32;&#32;&#32;&#32;{&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00410"/>00410 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00411"/>00411 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00412"/>00412 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00413"/>00413 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00414"/>00414 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(output.<link linkend="_group___x_u_t_i_l_s_1gaa5d59b7b88102beb4def8fe054449653">Find</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;wpa_state=DISCONNECTED&quot;</emphasis>),&#32;<emphasis role="keyword">true</emphasis>)&#32;!=&#32;<link linkend="__x_string_8h_1aee1ccda748b3ca0a483afb84276e3fc6">XSTRING_NOTFOUND</link>)&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00415"/>00415 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00416"/>00416 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00417"/>00417 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00418"/>00418 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00419"/>00419 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00420"/>00420 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(output.<link linkend="_group___x_u_t_i_l_s_1gaa5d59b7b88102beb4def8fe054449653">Find</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;wpa_state=COMPLETED&quot;</emphasis>),&#32;<emphasis role="keyword">true</emphasis>)&#32;!=&#32;<link linkend="__x_string_8h_1aee1ccda748b3ca0a483afb84276e3fc6">XSTRING_NOTFOUND</link>)&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00421"/>00421 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00422"/>00422 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00423"/>00423 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00424"/>00424 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00425"/>00425 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00426"/>00426 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00427"/>00427 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00428"/>00428 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00429"/>00429 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00430"/>00430 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00440"/>00440 <emphasis role="keywordtype">bool</emphasis>&#32;DIOLINUXWIFIMANAGERMODE::WPA_Disconnect()
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00441"/>00441 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00442"/>00442 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;prefixcommand;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00443"/>00443 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;command;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00444"/>00444 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;output;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00445"/>00445 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00446"/>00446 &#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00447"/>00447 &#32;&#32;prefixcommand.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__d_i_o_l_i_n_u_x_wifi_manager_mode_8h_1a1f541e9d2fa184ff889c3e4d303c27da">DIOLINUXWIFIMANAGERMODE_PREFIXCOMMAND</link>,&#32;<link linkend="_class_d_i_o_w_i_f_i_m_a_n_a_g_e_r_m_o_d_e_1a8e330835af91f45376fcc3f579c5b924">netinterface</link>.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00448"/>00448 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00449"/>00449 &#32;&#32;command.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%s&#32;disconnect&quot;</emphasis>),&#32;prefixcommand.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00450"/>00450 &#32;&#32;status&#32;=&#32;&#32;WPA_CLI_Command(command,&#32;output);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00451"/>00451 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00452"/>00452 &#32;&#32;WPA_RemoveAllNetworks();
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00453"/>00453 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00454"/>00454 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00455"/>00455 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00456"/>00456 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00457"/>00457 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00467"/>00467 <emphasis role="keywordtype">bool</emphasis>&#32;DIOLINUXWIFIMANAGERMODE::WPA_RemoveAllNetworks()
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00468"/>00468 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00469"/>00469 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;prefixcommand;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00470"/>00470 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;command;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00471"/>00471 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;output;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00472"/>00472 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;status;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00473"/>00473 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00474"/>00474 &#32;&#32;prefixcommand.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__d_i_o_l_i_n_u_x_wifi_manager_mode_8h_1a1f541e9d2fa184ff889c3e4d303c27da">DIOLINUXWIFIMANAGERMODE_PREFIXCOMMAND</link>,&#32;<link linkend="_class_d_i_o_w_i_f_i_m_a_n_a_g_e_r_m_o_d_e_1a8e330835af91f45376fcc3f579c5b924">netinterface</link>.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00475"/>00475 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00476"/>00476 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;c=0;&#32;c&lt;32;&#32;c++)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00477"/>00477 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00478"/>00478 &#32;&#32;&#32;&#32;&#32;&#32;command.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%s&#32;remove_network&#32;%d&quot;</emphasis>),&#32;prefixcommand.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;c);&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00479"/>00479 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;WPA_CLI_Command(command,&#32;output);&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00480"/>00480 &#32;&#32;&#32;&#32;}&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00481"/>00481 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00482"/>00482 &#32;&#32;command.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%s&#32;save_config&quot;</emphasis>),&#32;prefixcommand.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00483"/>00483 &#32;&#32;status&#32;=&#32;WPA_CLI_Command(command,&#32;output);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00484"/>00484 &#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00485"/>00485 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00486"/>00486 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00487"/>00487 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00488"/>00488 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00503"/>00503 <emphasis role="keywordtype">bool</emphasis>&#32;DIOLINUXWIFIMANAGERMODE::WPA_SetValue(<emphasis role="keywordtype">int</emphasis>&#32;indexnetwork,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;namevalue,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;value,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;isstring)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00504"/>00504 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00505"/>00505 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;prefixcommand;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00506"/>00506 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;command;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00507"/>00507 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;output;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00508"/>00508 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;status;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00509"/>00509 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00510"/>00510 &#32;&#32;prefixcommand.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__d_i_o_l_i_n_u_x_wifi_manager_mode_8h_1a1f541e9d2fa184ff889c3e4d303c27da">DIOLINUXWIFIMANAGERMODE_PREFIXCOMMAND</link>,&#32;<link linkend="_class_d_i_o_w_i_f_i_m_a_n_a_g_e_r_m_o_d_e_1a8e330835af91f45376fcc3f579c5b924">netinterface</link>.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00511"/>00511 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00512"/>00512 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(isstring)&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00513"/>00513 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00514"/>00514 &#32;&#32;&#32;&#32;&#32;&#32;command.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%s&#32;set_network&#32;%d&#32;%s&#32;\&quot;%s\&quot;&quot;</emphasis>)&#32;,&#32;prefixcommand.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;indexnetwork,&#32;namevalue,&#32;value);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00515"/>00515 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00516"/>00516 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00517"/>00517 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00518"/>00518 &#32;&#32;&#32;&#32;&#32;&#32;command.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%s&#32;set_network&#32;%d&#32;%s&#32;%s&quot;</emphasis>)&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;prefixcommand.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;indexnetwork,&#32;namevalue,&#32;value);&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00519"/>00519 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00520"/>00520 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00521"/>00521 &#32;&#32;status&#32;=&#32;WPA_CLI_Command(command,&#32;output);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00522"/>00522 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00523"/>00523 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00524"/>00524 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00525"/>00525 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00526"/>00526 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00540"/>00540 <emphasis role="keywordtype">bool</emphasis>&#32;DIOLINUXWIFIMANAGERMODE::WPA_SetValue(<emphasis role="keywordtype">int</emphasis>&#32;indexnetwork,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;namevalue,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;value)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00541"/>00541 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00542"/>00542 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;WPA_SetValue(indexnetwork,&#32;namevalue.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;value.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00543"/>00543 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00544"/>00544 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00545"/>00545 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00557"/>00557 <emphasis role="keywordtype">bool</emphasis>&#32;DIOLINUXWIFIMANAGERMODE::WPA_GetListRemoteAP(<link linkend="_class_x_v_e_c_t_o_r">XVECTOR&lt;XSTRING*&gt;</link>&amp;&#32;nameAPs)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00558"/>00558 {&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00559"/>00559 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;prefixcommand;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00560"/>00560 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;command;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00561"/>00561 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;output;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00562"/>00562 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;status;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00563"/>00563 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00564"/>00564 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00565"/>00565 &#32;&#32;<link linkend="_class_d_i_o_w_i_f_i_m_a_n_a_g_e_r_m_o_d_e_1acf5b986981e6a94b4a9d0e919886c113">nameAPs</link>.<link linkend="_class_x_v_e_c_t_o_r_1abae5097402824f18f274e21e18b23bea">DeleteContents</link>();
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00566"/>00566 &#32;&#32;<link linkend="_class_d_i_o_w_i_f_i_m_a_n_a_g_e_r_m_o_d_e_1acf5b986981e6a94b4a9d0e919886c113">nameAPs</link>.<link linkend="_class_x_v_e_c_t_o_r_1a57c72ab04fd14c60d1026e0a7b4a1887">DeleteAll</link>();
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00567"/>00567 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00568"/>00568 &#32;&#32;prefixcommand.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__d_i_o_l_i_n_u_x_wifi_manager_mode_8h_1a1f541e9d2fa184ff889c3e4d303c27da">DIOLINUXWIFIMANAGERMODE_PREFIXCOMMAND</link>,&#32;<link linkend="_class_d_i_o_w_i_f_i_m_a_n_a_g_e_r_m_o_d_e_1a8e330835af91f45376fcc3f579c5b924">netinterface</link>.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00569"/>00569 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00570"/>00570 &#32;&#32;command.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%s&#32;scan&quot;</emphasis>)&#32;,&#32;prefixcommand.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00571"/>00571 &#32;&#32;status&#32;=&#32;WPA_CLI_Command(command,&#32;output);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00572"/>00572 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00573"/>00573 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00574"/>00574 &#32;&#32;GEN_XSLEEP.Seconds(3);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00575"/>00575 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00576"/>00576 &#32;&#32;command.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%s&#32;scan_results&quot;</emphasis>)&#32;,&#32;prefixcommand.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00577"/>00577 &#32;&#32;status&#32;=&#32;WPA_CLI_Command(command,&#32;output);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00578"/>00578 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00579"/>00579 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;indexfr&#32;=&#32;&#32;output.<link linkend="_group___x_u_t_i_l_s_1gaa5d59b7b88102beb4def8fe054449653">Find</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;\n&quot;</emphasis>),&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00580"/>00580 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(indexfr&#32;==&#32;<link linkend="__x_string_8h_1aee1ccda748b3ca0a483afb84276e3fc6">XSTRING_NOTFOUND</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00581"/>00581 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00582"/>00582 &#32;&#32;indexfr++;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00583"/>00583 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00584"/>00584 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;index&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00585"/>00585 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;indexstart&#32;=&#32;0;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00586"/>00586 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00587"/>00587 &#32;&#32;<emphasis role="keywordflow">do</emphasis>{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00588"/>00588 &#32;&#32;&#32;&#32;&#32;&#32;index&#32;=&#32;&#32;output.<link linkend="_group___x_u_t_i_l_s_1gaa5d59b7b88102beb4def8fe054449653">Find</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;\n&quot;</emphasis>),&#32;<emphasis role="keyword">true</emphasis>,&#32;indexfr);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00589"/>00589 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(index&#32;==&#32;<link linkend="__x_string_8h_1aee1ccda748b3ca0a483afb84276e3fc6">XSTRING_NOTFOUND</link>&#32;)&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00590"/>00590 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00591"/>00591 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;c=index;&#32;c&gt;0&#32;;&#32;c--)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00592"/>00592 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00593"/>00593 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(output.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>()[c]&#32;==&#32;<link linkend="__x_string_8h_1ab483f167129a5d1941ea1d30f3df8d8a">__C</link>(<emphasis role="charliteral">&apos;]&apos;</emphasis>))&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00594"/>00594 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00595"/>00595 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;indexstart&#32;=&#32;c;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00596"/>00596 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00597"/>00597 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00598"/>00598 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00599"/>00599 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00600"/>00600 &#32;&#32;&#32;&#32;&#32;&#32;indexfr&#32;=&#32;index+1;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00601"/>00601 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00602"/>00602 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(indexstart)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00603"/>00603 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00604"/>00604 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;newstr&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>();
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00605"/>00605 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(newstr)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00606"/>00606 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00607"/>00607 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;output.<link linkend="_group___x_u_t_i_l_s_1ga4fb725176450b2fed84aaa0dfbcdbe13">Copy</link>(indexstart+1,&#32;index,&#32;(*newstr));
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00608"/>00608 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;newstr-&gt;<link linkend="_group___x_u_t_i_l_s_1gacae4462012fcb5ee07db15505877d40a">DeleteCharacter</link>(<link linkend="__x_string_8h_1ab483f167129a5d1941ea1d30f3df8d8a">__C</link>(<emphasis role="charliteral">&apos;\t&apos;</emphasis>),&#32;<link linkend="__x_string_8h_1a5399fd4ffd356751bde3732db3435dfaac13b89e0ccf857123679250df41fa9e4">XSTRINGCONTEXT_FROM_FIRST</link>);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00609"/>00609 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00610"/>00610 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_w_i_f_i_m_a_n_a_g_e_r_m_o_d_e_1acf5b986981e6a94b4a9d0e919886c113">nameAPs</link>.<link linkend="_class_x_v_e_c_t_o_r_1a51a790aac8efd4603aee608ddcc83423">Add</link>(newstr);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00611"/>00611 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00612"/>00612 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00613"/>00613 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00614"/>00614 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">while</emphasis>(index&#32;!=&#32;<link linkend="__x_string_8h_1aee1ccda748b3ca0a483afb84276e3fc6">XSTRING_NOTFOUND</link>);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00615"/>00615 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00616"/>00616 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00617"/>00617 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00618"/>00618 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00619"/>00619 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00632"/>00632 <emphasis role="keywordtype">bool</emphasis>&#32;DIOLINUXWIFIMANAGERMODE::WPA_CLI_Command(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;command,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;output)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00633"/>00633 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00634"/>00634 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(command.<link linkend="_group___x_u_t_i_l_s_1gad26690161f8c1e2722771322b7370005">IsEmpty</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00635"/>00635 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00636"/>00636 &#32;&#32;output.<link linkend="_group___x_u_t_i_l_s_1ga9275997c1605fa79646c301e63a77d06">Empty</link>();
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00637"/>00637 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00638"/>00638 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;input;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00639"/>00639 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;returncode&#32;=&#32;0;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00640"/>00640 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;status&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00641"/>00641 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00642"/>00642 &#32;&#32;GEN_XPROCESSMANAGER.Application_Execute(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;/sbin/wpa_cli&quot;</emphasis>),&#32;command.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;&amp;input,&#32;&amp;output,&#32;&amp;returncode);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00643"/>00643 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(output.<link linkend="_group___x_u_t_i_l_s_1gaa5d59b7b88102beb4def8fe054449653">Find</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;OK&quot;</emphasis>),&#32;<emphasis role="keyword">true</emphasis>)&#32;!=&#32;<link linkend="__x_string_8h_1aee1ccda748b3ca0a483afb84276e3fc6">XSTRING_NOTFOUND</link>)&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00644"/>00644 &#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00645"/>00645 &#32;&#32;output.<link linkend="_group___x_u_t_i_l_s_1gacae4462012fcb5ee07db15505877d40a">DeleteCharacter</link>(<link linkend="__x_string_8h_1ab483f167129a5d1941ea1d30f3df8d8a">__C</link>(<emphasis role="charliteral">&apos;\n&apos;</emphasis>));
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00646"/>00646 &#32;&#32;output.<link linkend="_group___x_u_t_i_l_s_1gacae4462012fcb5ee07db15505877d40a">DeleteCharacter</link>(<link linkend="__x_string_8h_1ab483f167129a5d1941ea1d30f3df8d8a">__C</link>(<emphasis role="charliteral">&apos;\r&apos;</emphasis>));
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00647"/>00647 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00648"/>00648 &#32;&#32;<link linkend="__x_trace_8h_1ad3489a73cc8c0aa8e64f91a03735e525">XTRACE_PRINTCOLOR</link>(<link linkend="__x_trace_8h_1aa1f99c23bc0af79572a9685f5519002e">XTRACE_COLOR_PURPLE</link>,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;[WIFI&#32;manager]&#32;WPA&#32;CLI&#32;command&#32;[%s]:&#32;%s&quot;</emphasis>),&#32;command.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;output.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00649"/>00649 &#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00650"/>00650 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00651"/>00651 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00652"/>00652 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00653"/>00653 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00669"/>00669 <emphasis role="keywordtype">bool</emphasis>&#32;DIOLINUXWIFIMANAGERMODE::NM_SetMode(<emphasis role="keywordtype">int</emphasis>&#32;mode,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;SSID,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;password,&#32;<emphasis role="keywordtype">int</emphasis>&#32;indexnetwork,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;serialize)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00670"/>00670 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00671"/>00671 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;command;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00672"/>00672 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;output;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00673"/>00673 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00674"/>00674 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00675"/>00675 &#32;&#32;<emphasis role="comment">/*</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00676"/>00676 <emphasis role="comment">&#32;&#32;command&#32;=&#32;__L(&quot;radio&#32;wifi&#32;on&quot;);</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00677"/>00677 <emphasis role="comment">&#32;&#32;status&#32;=&#32;NM_CLI_Command(command,&#32;output);</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00678"/>00678 <emphasis role="comment">&#32;&#32;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00679"/>00679 <emphasis role="comment">&#32;&#32;if(!output.IsEmpty())&#32;return&#32;false;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00680"/>00680 <emphasis role="comment">&#32;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00681"/>00681 <emphasis role="comment">&#32;&#32;for(int&#32;c=0;&#32;c&lt;5;&#32;c++)</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00682"/>00682 <emphasis role="comment">&#32;&#32;&#32;&#32;{</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00683"/>00683 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;command&#32;=&#32;__L(&quot;device&#32;wifi&#32;rescan&quot;);</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00684"/>00684 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;NM_CLI_Command(command,&#32;output);</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00685"/>00685 <emphasis role="comment"></emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00686"/>00686 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;command&#32;=&#32;__L(&quot;device&#32;wifi&#32;list&quot;);</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00687"/>00687 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;NM_CLI_Command(command,&#32;output);</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00688"/>00688 <emphasis role="comment"></emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00689"/>00689 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;if(status)</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00690"/>00690 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00691"/>00691 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;if(output.Find(SSID,&#32;true)&#32;!=&#32;XSTRING_NOTFOUND)&#32;break;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00692"/>00692 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00693"/>00693 <emphasis role="comment">&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00694"/>00694 <emphasis role="comment">&#32;&#32;*/</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00695"/>00695 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00696"/>00696 &#32;&#32;command.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;device&#32;wifi&#32;connect&#32;%s&quot;</emphasis>),&#32;SSID);&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00697"/>00697 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(password)&#32;command.<link linkend="_group___x_u_t_i_l_s_1gae52f1473bb03e9d7260c7722e19ce223">AddFormat</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;&#32;password&#32;%s&quot;</emphasis>),&#32;password);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00698"/>00698 &#32;&#32;status&#32;=&#32;NM_CLI_Command(command,&#32;output);&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00699"/>00699 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00700"/>00700 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00701"/>00701 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(output.<link linkend="_group___x_u_t_i_l_s_1gaa5d59b7b88102beb4def8fe054449653">Find</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;successfully&#32;activated&quot;</emphasis>),&#32;<emphasis role="keyword">false</emphasis>)&#32;==&#32;<link linkend="__x_string_8h_1aee1ccda748b3ca0a483afb84276e3fc6">XSTRING_NOTFOUND</link>)&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00702"/>00702 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00703"/>00703 &#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00704"/>00704 &#32;&#32;lastSSID.<link linkend="_group___x_u_t_i_l_s_1ga9275997c1605fa79646c301e63a77d06">Empty</link>();
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00705"/>00705 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;lastSSID&#32;=&#32;SSID;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00706"/>00706 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00707"/>00707 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00708"/>00708 }&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00709"/>00709 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00710"/>00710 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00720"/>00720 <emphasis role="keywordtype">bool</emphasis>&#32;DIOLINUXWIFIMANAGERMODE::NM_IsDisconnected()
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00721"/>00721 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00722"/>00722 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;command;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00723"/>00723 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;output;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00724"/>00724 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00725"/>00725 &#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00726"/>00726 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(lastSSID.<link linkend="_group___x_u_t_i_l_s_1gad26690161f8c1e2722771322b7370005">IsEmpty</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00727"/>00727 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00728"/>00728 &#32;&#32;command.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;con&#32;show&#32;--active&quot;</emphasis>));&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00729"/>00729 &#32;&#32;status&#32;=&#32;NM_CLI_Command(command,&#32;output);&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00730"/>00730 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00731"/>00731 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00732"/>00732 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(output.<link linkend="_group___x_u_t_i_l_s_1gaa5d59b7b88102beb4def8fe054449653">Find</link>(lastSSID.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;<emphasis role="keyword">false</emphasis>)&#32;==&#32;<link linkend="__x_string_8h_1aee1ccda748b3ca0a483afb84276e3fc6">XSTRING_NOTFOUND</link>)&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;&#32;<emphasis role="keywordflow">else</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00733"/>00733 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00734"/>00734 &#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00735"/>00735 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00736"/>00736 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00737"/>00737 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00738"/>00738 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00748"/>00748 <emphasis role="keywordtype">bool</emphasis>&#32;DIOLINUXWIFIMANAGERMODE::NM_Disconnect()
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00749"/>00749 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00750"/>00750 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;command;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00751"/>00751 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;output;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00752"/>00752 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00753"/>00753 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00754"/>00754 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(lastSSID.<link linkend="_group___x_u_t_i_l_s_1gad26690161f8c1e2722771322b7370005">IsEmpty</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00755"/>00755 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00756"/>00756 &#32;&#32;command.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;con&#32;down&#32;%s&quot;</emphasis>),&#32;lastSSID.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00757"/>00757 &#32;&#32;status&#32;=&#32;NM_CLI_Command(command,&#32;output);&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00758"/>00758 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00759"/>00759 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00760"/>00760 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00761"/>00761 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(output.<link linkend="_group___x_u_t_i_l_s_1gaa5d59b7b88102beb4def8fe054449653">Find</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;successfully&#32;deactivated&quot;</emphasis>),&#32;<emphasis role="keyword">false</emphasis>)&#32;!=&#32;<link linkend="__x_string_8h_1aee1ccda748b3ca0a483afb84276e3fc6">XSTRING_NOTFOUND</link>)&#32;&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00762"/>00762 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00763"/>00763 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00764"/>00764 &#32;&#32;command.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;con&#32;del&#32;%s&quot;</emphasis>),&#32;lastSSID.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00765"/>00765 &#32;&#32;status&#32;=&#32;NM_CLI_Command(command,&#32;output);&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00766"/>00766 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00767"/>00767 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00768"/>00768 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00769"/>00769 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(output.<link linkend="_group___x_u_t_i_l_s_1gaa5d59b7b88102beb4def8fe054449653">Find</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;successfully&#32;deleted&quot;</emphasis>),&#32;<emphasis role="keyword">false</emphasis>)&#32;!=&#32;<link linkend="__x_string_8h_1aee1ccda748b3ca0a483afb84276e3fc6">XSTRING_NOTFOUND</link>)&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00770"/>00770 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00771"/>00771 &#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00772"/>00772 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00773"/>00773 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00774"/>00774 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;After&#32;disconnecting&#32;you&#32;have&#32;to&#32;wait&#32;3&#32;seconds&#32;for&#32;the&#32;WIFIs&#32;list&#32;to&#32;be&#32;available&#32;&#32;¿?&#32;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00775"/>00775 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00776"/>00776 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;for(int&#32;c=0;&#32;c&lt;12;&#32;c++)</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00777"/>00777 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00778"/>00778 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;command&#32;=&#32;__L(&quot;device&#32;wifi&#32;rescan&quot;);</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00779"/>00779 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;NM_CLI_Command(command,&#32;output);</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00780"/>00780 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;command&#32;=&#32;__L(&quot;device&#32;wifi&#32;list&quot;);</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00781"/>00781 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;NM_CLI_Command(command,&#32;output);</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00782"/>00782 <emphasis role="comment"></emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00783"/>00783 <emphasis role="comment"></emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00784"/>00784 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GEN_XSLEEP.Seconds(1);</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00785"/>00785 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00786"/>00786 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;*/</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00787"/>00787 &#32;&#32;&#32;&#32;&#32;&#32;lastSSID.<link linkend="_group___x_u_t_i_l_s_1ga9275997c1605fa79646c301e63a77d06">Empty</link>();
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00788"/>00788 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00789"/>00789 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00790"/>00790 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00791"/>00791 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00792"/>00792 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00793"/>00793 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00806"/>00806 <emphasis role="keywordtype">bool</emphasis>&#32;DIOLINUXWIFIMANAGERMODE::NM_CLI_Command(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;command,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;output)
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00807"/>00807 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00808"/>00808 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(command.<link linkend="_group___x_u_t_i_l_s_1gad26690161f8c1e2722771322b7370005">IsEmpty</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00809"/>00809 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00810"/>00810 &#32;&#32;output.<link linkend="_group___x_u_t_i_l_s_1ga9275997c1605fa79646c301e63a77d06">Empty</link>();
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00811"/>00811 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00812"/>00812 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;input;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00813"/>00813 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;returncode&#32;=&#32;0;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00814"/>00814 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;status&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00815"/>00815 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00816"/>00816 &#32;&#32;GEN_XPROCESSMANAGER.Application_Execute(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;/usr/bin/nmcli&quot;</emphasis>),&#32;command.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;&amp;input,&#32;&amp;output,&#32;&amp;returncode);
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00817"/>00817 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(output.<link linkend="_group___x_u_t_i_l_s_1ga7c3fa0dd7b650399470c76192fbd4916">GetSize</link>())&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00818"/>00818 &#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00819"/>00819 &#32;&#32;<link linkend="__x_trace_8h_1ad3489a73cc8c0aa8e64f91a03735e525">XTRACE_PRINTCOLOR</link>(<link linkend="__x_trace_8h_1aa1f99c23bc0af79572a9685f5519002e">XTRACE_COLOR_PURPLE</link>,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;[WIFI&#32;manager]&#32;NM&#32;CLI&#32;command&#32;[%s]:&#32;%s&quot;</emphasis>),&#32;command.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;output.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00820"/>00820 &#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00821"/>00821 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00822"/>00822 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00823"/>00823 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00824"/>00824 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00833"/>00833 <emphasis role="keywordtype">void</emphasis>&#32;DIOLINUXWIFIMANAGERMODE::Clean()
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00834"/>00834 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00835"/>00835 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00836"/>00836 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00837"/>00837 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00838"/>00838 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00839"/>00839 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00840"/>00840 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00841"/>00841 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00842"/>00842 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00843"/>00843 
+<anchor xml:id="__d_i_o_l_i_n_u_x_wifi_manager_mode_8cpp_source_1l00844"/>00844 
+</programlisting></section>

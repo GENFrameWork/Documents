@@ -1,0 +1,706 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__script_8cpp_source" xml:lang="en-US">
+<title>Script.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/Script/Script.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__script_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__script_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__script_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__script_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__script_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__script_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__script_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__script_8h">Script.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__script_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&lt;ctype.h&gt;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00044"/>00044 
+<anchor xml:id="__script_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_path_8h">XPath.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_factory_8h">XFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_file_t_x_t_8h">XFileTXT.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_trace_8h">XTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00049"/>00049 
+<anchor xml:id="__script_8cpp_source_1l00050"/>00050 <emphasis role="preprocessor">#ifdef&#32;SCRIPT_G_ACTIVE</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__script___language___g_8h">Script_Language_G.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00053"/>00053 
+<anchor xml:id="__script_8cpp_source_1l00054"/>00054 <emphasis role="preprocessor">#ifdef&#32;SCRIPT_LUA_ACTIVE</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00055"/>00055 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__script___language___lua_8h">Script_Language_Lua.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00056"/>00056 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00057"/>00057 
+<anchor xml:id="__script_8cpp_source_1l00058"/>00058 <emphasis role="preprocessor">#ifdef&#32;SCRIPT_JAVASCRIPT_ACTIVE</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00059"/>00059 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__script___language___javascript_8h">Script_Language_Javascript.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00060"/>00060 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00061"/>00061 
+<anchor xml:id="__script_8cpp_source_1l00062"/>00062 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__script___x_event_8h">Script_XEvent.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00063"/>00063 
+<anchor xml:id="__script_8cpp_source_1l00064"/>00064 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__script___lib___math_8h">Script_Lib_Math.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00065"/>00065 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__script___lib___rand_8h">Script_Lib_Rand.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00066"/>00066 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__script___lib___timer_8h">Script_Lib_Timer.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00067"/>00067 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__script___lib___string_8h">Script_Lib_String.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00068"/>00068 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__script___lib___path_8h">Script_Lib_Path.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00069"/>00069 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__script___lib___dir_8h">Script_Lib_Dir.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00070"/>00070 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__script___lib___trace_8h">Script_Lib_Trace.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00071"/>00071 
+<anchor xml:id="__script_8cpp_source_1l00072"/>00072 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__script___lib___system_8h">Script_Lib_System.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00073"/>00073 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__script___lib___process_8h">Script_Lib_Process.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00074"/>00074 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__script___lib___log_8h">Script_Lib_Log.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00075"/>00075 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__script___lib___console_8h">Script_Lib_Console.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00076"/>00076 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__script___lib___c_f_g_8h">Script_Lib_CFG.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00077"/>00077 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__script___lib___window_8h">Script_Lib_Window.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00078"/>00078 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__script___lib___input_simulate_8h">Script_Lib_InputSimulate.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00079"/>00079 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__script___lib___dev_test_8h">Script_Lib_DevTest.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00080"/>00080 
+<anchor xml:id="__script_8cpp_source_1l00081"/>00081 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00082"/>00082 
+<anchor xml:id="__script_8cpp_source_1l00083"/>00083 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00084"/>00084 
+<anchor xml:id="__script_8cpp_source_1l00085"/>00085 
+<anchor xml:id="__script_8cpp_source_1l00086"/>00086 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00087"/>00087 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00088"/>00088 
+<anchor xml:id="__script_8cpp_source_1l00089"/>00089 
+<anchor xml:id="__script_8cpp_source_1l00090"/>00090 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00091"/>00091 
+<anchor xml:id="__script_8cpp_source_1l00092"/>00092 
+<anchor xml:id="__script_8cpp_source_1l00093"/>00093 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00094"/>00094 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00095"/>00095 
+<anchor xml:id="__script_8cpp_source_1l00096"/>00096 
+<anchor xml:id="__script_8cpp_source_1l00097"/>00097 
+<anchor xml:id="__script_8cpp_source_1l00105"/><link linkend="_group___s_c_r_i_p_t_1gacc2d965563c8745bfdaa7ee8fe952b5f">00105</link> <link linkend="_group___s_c_r_i_p_t_1gacc2d965563c8745bfdaa7ee8fe952b5f">SCRIPT::SCRIPT</link>()
+<anchor xml:id="__script_8cpp_source_1l00106"/>00106 {
+<anchor xml:id="__script_8cpp_source_1l00107"/>00107 &#32;&#32;Clean();
+<anchor xml:id="__script_8cpp_source_1l00108"/>00108 
+<anchor xml:id="__script_8cpp_source_1l00109"/>00109 &#32;&#32;GEN_XFACTORY_CREATE(<link linkend="_class_s_c_r_i_p_t_1a3897cd730f95957a292f0624a28fb442">xtimer</link>,&#32;CreateTimer())
+<anchor xml:id="__script_8cpp_source_1l00110"/>00110 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_s_c_r_i_p_t_1a3897cd730f95957a292f0624a28fb442">xtimer</link>)&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00111"/>00111 
+<anchor xml:id="__script_8cpp_source_1l00112"/>00112 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a85ceca49c0089eda2d7354b55ee560c8">xfiletxt</link>&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_f_i_l_e_t_x_t">XFILETXT</link>();
+<anchor xml:id="__script_8cpp_source_1l00113"/>00113 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_s_c_r_i_p_t_1a85ceca49c0089eda2d7354b55ee560c8">xfiletxt</link>)&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00114"/>00114 
+<anchor xml:id="__script_8cpp_source_1l00115"/>00115 &#32;&#32;<link linkend="_group___x_u_t_i_l_s_1gac83006698567c749aecf727dddef5d9c">RegisterEvent</link>(<link linkend="__script___x_event_8h_1a37f2204faab7047837d8fcb2cf882374aed4931f2144fb77912998d6befec8f6c">SCRIPT_XEVENT_TYPE_ERROR</link>);
+<anchor xml:id="__script_8cpp_source_1l00116"/>00116 &#32;&#32;<link linkend="_group___x_u_t_i_l_s_1gac83006698567c749aecf727dddef5d9c">RegisterEvent</link>(<link linkend="__script___x_event_8h_1a37f2204faab7047837d8fcb2cf882374a0e0e219311672552c12243354e1547a3">SCRIPT_XEVENT_TYPE_BREAK</link>);
+<anchor xml:id="__script_8cpp_source_1l00117"/>00117 
+<anchor xml:id="__script_8cpp_source_1l00118"/>00118 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1add3c48b015b6540f47af7e44cfc18cc2">thread</link>&#32;=&#32;<link linkend="__x_thread_collected_8h_1aad503e3655b9ff78d3ac660d1f1f5534">CREATEXTHREAD</link>(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6a382da90833173dd82ea60c8ab490a1e1">XTHREADGROUPID_SCRIPT</link>,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;SCRIPT::SCRIPT&quot;</emphasis>),ThreadFunction,(<emphasis role="keywordtype">void</emphasis>*)<emphasis role="keyword">this</emphasis>);
+<anchor xml:id="__script_8cpp_source_1l00119"/>00119 
+<anchor xml:id="__script_8cpp_source_1l00120"/>00120 &#32;&#32;<link linkend="_group___s_c_r_i_p_t_1ga27f1d621d026216ccdab9be32259fb66">AddInternalLibraries</link>();
+<anchor xml:id="__script_8cpp_source_1l00121"/>00121 }
+<anchor xml:id="__script_8cpp_source_1l00122"/>00122 
+<anchor xml:id="__script_8cpp_source_1l00123"/>00123 
+<anchor xml:id="__script_8cpp_source_1l00132"/><link linkend="_group___s_c_r_i_p_t_1ga5fd24760c6a88b4e7328a4f2c7bff5e3">00132</link> <link linkend="_group___s_c_r_i_p_t_1ga5fd24760c6a88b4e7328a4f2c7bff5e3">SCRIPT::~SCRIPT</link>()
+<anchor xml:id="__script_8cpp_source_1l00133"/>00133 {
+<anchor xml:id="__script_8cpp_source_1l00134"/>00134 &#32;&#32;<link linkend="_group___x_u_t_i_l_s_1gab78992063b09d37612e7719e37d415bc">DeRegisterEvent</link>(<link linkend="__script___x_event_8h_1a37f2204faab7047837d8fcb2cf882374aed4931f2144fb77912998d6befec8f6c">SCRIPT_XEVENT_TYPE_ERROR</link>);
+<anchor xml:id="__script_8cpp_source_1l00135"/>00135 &#32;&#32;<link linkend="_group___x_u_t_i_l_s_1gab78992063b09d37612e7719e37d415bc">DeRegisterEvent</link>(<link linkend="__script___x_event_8h_1a37f2204faab7047837d8fcb2cf882374a0e0e219311672552c12243354e1547a3">SCRIPT_XEVENT_TYPE_BREAK</link>);
+<anchor xml:id="__script_8cpp_source_1l00136"/>00136 
+<anchor xml:id="__script_8cpp_source_1l00137"/>00137 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_s_c_r_i_p_t_1a3897cd730f95957a292f0624a28fb442">xtimer</link>)&#32;GEN_XFACTORY.DeleteTimer(<link linkend="_class_s_c_r_i_p_t_1a3897cd730f95957a292f0624a28fb442">xtimer</link>);
+<anchor xml:id="__script_8cpp_source_1l00138"/>00138 
+<anchor xml:id="__script_8cpp_source_1l00139"/>00139 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_s_c_r_i_p_t_1add3c48b015b6540f47af7e44cfc18cc2">thread</link>)
+<anchor xml:id="__script_8cpp_source_1l00140"/>00140 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00141"/>00141 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_c_r_i_p_t_1add3c48b015b6540f47af7e44cfc18cc2">thread</link>-&gt;End();
+<anchor xml:id="__script_8cpp_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_thread_collected_8h_1a18fb843f5fbad51464b68d705ed29b8a">DELETEXTHREAD</link>(<link linkend="__x_thread_8h_1a32ad650cdcf0656f543da04bc3ac68a6a382da90833173dd82ea60c8ab490a1e1">XTHREADGROUPID_SCRIPT</link>,&#32;<link linkend="_class_s_c_r_i_p_t_1add3c48b015b6540f47af7e44cfc18cc2">thread</link>);
+<anchor xml:id="__script_8cpp_source_1l00143"/>00143 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00144"/>00144 
+<anchor xml:id="__script_8cpp_source_1l00145"/>00145 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_s_c_r_i_p_t_1a85ceca49c0089eda2d7354b55ee560c8">xfiletxt</link>)
+<anchor xml:id="__script_8cpp_source_1l00146"/>00146 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00147"/>00147 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t_1a85ceca49c0089eda2d7354b55ee560c8">xfiletxt</link>;
+<anchor xml:id="__script_8cpp_source_1l00148"/>00148 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00149"/>00149 
+<anchor xml:id="__script_8cpp_source_1l00150"/>00150 &#32;&#32;<link linkend="_group___s_c_r_i_p_t_1ga0cf6812609e3aa15b89d5eb5ca7f1ea9">DeleteLibraryFuncions</link>();
+<anchor xml:id="__script_8cpp_source_1l00151"/>00151 
+<anchor xml:id="__script_8cpp_source_1l00152"/>00152 &#32;&#32;<link linkend="_group___s_c_r_i_p_t_1ga15ac703476631561ea5bbb5cbdd12907">DeleteAllLibrarys</link>();
+<anchor xml:id="__script_8cpp_source_1l00153"/>00153 
+<anchor xml:id="__script_8cpp_source_1l00154"/>00154 &#32;&#32;Clean();
+<anchor xml:id="__script_8cpp_source_1l00155"/>00155 }
+<anchor xml:id="__script_8cpp_source_1l00156"/>00156 
+<anchor xml:id="__script_8cpp_source_1l00157"/>00157 
+<anchor xml:id="__script_8cpp_source_1l00167"/><link linkend="_group___s_c_r_i_p_t_1gaf051282fb4c2c089dc17db8495c9cb40">00167</link> <link linkend="__script_8h_1a8fd75ba5dc815bc29e061eccb60f6500">SCRIPT_TYPE</link>&#32;<link linkend="_group___s_c_r_i_p_t_1gaf051282fb4c2c089dc17db8495c9cb40">SCRIPT::GetType</link>()
+<anchor xml:id="__script_8cpp_source_1l00168"/>00168 {
+<anchor xml:id="__script_8cpp_source_1l00169"/>00169 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t_1a2fc4602bd06fa76de90e798058f638fa">type</link>;
+<anchor xml:id="__script_8cpp_source_1l00170"/>00170 }
+<anchor xml:id="__script_8cpp_source_1l00171"/>00171 
+<anchor xml:id="__script_8cpp_source_1l00172"/>00172 
+<anchor xml:id="__script_8cpp_source_1l00184"/><link linkend="_group___s_c_r_i_p_t_1gaf0661a9465d5d845c1aad36254b5abb2">00184</link> <link linkend="__script_8h_1a8fd75ba5dc815bc29e061eccb60f6500">SCRIPT_TYPE</link>&#32;<link linkend="_group___s_c_r_i_p_t_1gaf0661a9465d5d845c1aad36254b5abb2">SCRIPT::GetTypeByExtension</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;namefilescript)
+<anchor xml:id="__script_8cpp_source_1l00185"/>00185 {
+<anchor xml:id="__script_8cpp_source_1l00186"/>00186 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;ext;
+<anchor xml:id="__script_8cpp_source_1l00187"/>00187 &#32;&#32;<link linkend="__script_8h_1a8fd75ba5dc815bc29e061eccb60f6500">SCRIPT_TYPE</link>&#32;&#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a2fc4602bd06fa76de90e798058f638fa">type</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__script_8h_1a8fd75ba5dc815bc29e061eccb60f6500a9e453b53dc4bd2d6124fa5aea7566e37">SCRIPT_TYPE_UNKNOWN</link>;
+<anchor xml:id="__script_8cpp_source_1l00188"/>00188 &#32;&#32;<link linkend="_class_x_p_a_t_h">XPATH</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_namefilescript;
+<anchor xml:id="__script_8cpp_source_1l00189"/>00189 
+<anchor xml:id="__script_8cpp_source_1l00190"/>00190 &#32;&#32;_namefilescript&#32;=&#32;namefilescript;
+<anchor xml:id="__script_8cpp_source_1l00191"/>00191 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00192"/>00192 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!_namefilescript.<link linkend="_group___x_u_t_i_l_s_1gad26690161f8c1e2722771322b7370005">IsEmpty</link>())
+<anchor xml:id="__script_8cpp_source_1l00193"/>00193 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00194"/>00194 &#32;&#32;&#32;&#32;&#32;&#32;_namefilescript.<link linkend="_group___x_u_t_i_l_s_1ga15bf9dc61ade260a93c19abe3d9a49ed">GetExt</link>(ext);
+<anchor xml:id="__script_8cpp_source_1l00195"/>00195 
+<anchor xml:id="__script_8cpp_source_1l00196"/>00196 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;SCRIPT_G_ACTIVE</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00197"/>00197 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!ext.<link linkend="_group___x_u_t_i_l_s_1gaa41b9d6abe3eca02494d6eb043ed50c2">Compare</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;.g&quot;</emphasis>)&#32;&#32;&#32;,&#32;<emphasis role="keyword">true</emphasis>))&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00198"/>00198 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00199"/>00199 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a2fc4602bd06fa76de90e798058f638fa">type</link>&#32;=&#32;<link linkend="__script_8h_1a8fd75ba5dc815bc29e061eccb60f6500a343f072f30413d69b01e688f9e6e6d85">SCRIPT_TYPE_G</link>;
+<anchor xml:id="__script_8cpp_source_1l00200"/>00200 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00201"/>00201 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00202"/>00202 
+<anchor xml:id="__script_8cpp_source_1l00203"/>00203 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;SCRIPT_LUA_ACTIVE</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00204"/>00204 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!ext.<link linkend="_group___x_u_t_i_l_s_1gaa41b9d6abe3eca02494d6eb043ed50c2">Compare</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;.lua&quot;</emphasis>)&#32;,&#32;<emphasis role="keyword">true</emphasis>))
+<anchor xml:id="__script_8cpp_source_1l00205"/>00205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00206"/>00206 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a2fc4602bd06fa76de90e798058f638fa">type</link>&#32;=&#32;<link linkend="__script_8h_1a8fd75ba5dc815bc29e061eccb60f6500af5753e379829c4d55d637bc9935a2ec6">SCRIPT_TYPE_LUA</link>;
+<anchor xml:id="__script_8cpp_source_1l00207"/>00207 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00208"/>00208 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00209"/>00209 
+<anchor xml:id="__script_8cpp_source_1l00210"/>00210 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;SCRIPT_JAVASCRIPT_ACTIVE</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00211"/>00211 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!ext.<link linkend="_group___x_u_t_i_l_s_1gaa41b9d6abe3eca02494d6eb043ed50c2">Compare</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;.js&quot;</emphasis>)&#32;&#32;,&#32;<emphasis role="keyword">true</emphasis>))&#32;
+<anchor xml:id="__script_8cpp_source_1l00212"/>00212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00213"/>00213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a2fc4602bd06fa76de90e798058f638fa">type</link>&#32;=&#32;<link linkend="__script_8h_1a8fd75ba5dc815bc29e061eccb60f6500a7b72439a2a181b189416e8a9fb7a1b38">SCRIPT_TYPE_JAVASCRIPT</link>;
+<anchor xml:id="__script_8cpp_source_1l00214"/>00214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00215"/>00215 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00216"/>00216 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00217"/>00217 
+<anchor xml:id="__script_8cpp_source_1l00218"/>00218 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t_1a2fc4602bd06fa76de90e798058f638fa">type</link>;
+<anchor xml:id="__script_8cpp_source_1l00219"/>00219 }
+<anchor xml:id="__script_8cpp_source_1l00220"/>00220 
+<anchor xml:id="__script_8cpp_source_1l00221"/>00221 
+<anchor xml:id="__script_8cpp_source_1l00233"/><link linkend="_group___s_c_r_i_p_t_1gaa3b7bc8318d49f14035c4a970f5341cd">00233</link> <link linkend="_class_s_c_r_i_p_t">SCRIPT</link>*&#32;<link linkend="_group___s_c_r_i_p_t_1gaa3b7bc8318d49f14035c4a970f5341cd">SCRIPT::Create</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;namefilescript)
+<anchor xml:id="__script_8cpp_source_1l00234"/>00234 {
+<anchor xml:id="__script_8cpp_source_1l00235"/>00235 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_group___s_c_r_i_p_t_1gaa3b7bc8318d49f14035c4a970f5341cd">Create</link>(<link linkend="_group___s_c_r_i_p_t_1gaf0661a9465d5d845c1aad36254b5abb2">GetTypeByExtension</link>(namefilescript));&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00236"/>00236 }
+<anchor xml:id="__script_8cpp_source_1l00237"/>00237 
+<anchor xml:id="__script_8cpp_source_1l00238"/>00238 
+<anchor xml:id="__script_8cpp_source_1l00250"/><link linkend="_group___s_c_r_i_p_t_1ga47ac7bb2a5065b8a5fc2399ba9929865">00250</link> <link linkend="_class_s_c_r_i_p_t">SCRIPT</link>*&#32;<link linkend="_group___s_c_r_i_p_t_1gaa3b7bc8318d49f14035c4a970f5341cd">SCRIPT::Create</link>(<link linkend="__script_8h_1a8fd75ba5dc815bc29e061eccb60f6500">SCRIPT_TYPE</link>&#32;type)
+<anchor xml:id="__script_8cpp_source_1l00251"/>00251 {
+<anchor xml:id="__script_8cpp_source_1l00252"/>00252 &#32;&#32;<link linkend="_class_s_c_r_i_p_t">SCRIPT</link>*&#32;<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__script_8cpp_source_1l00253"/>00253 
+<anchor xml:id="__script_8cpp_source_1l00254"/>00254 &#32;&#32;<emphasis role="keywordflow">switch</emphasis>(<link linkend="_class_s_c_r_i_p_t_1a2fc4602bd06fa76de90e798058f638fa">type</link>)
+<anchor xml:id="__script_8cpp_source_1l00255"/>00255 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00256"/>00256 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__script_8h_1a8fd75ba5dc815bc29e061eccb60f6500a9e453b53dc4bd2d6124fa5aea7566e37">SCRIPT_TYPE_UNKNOWN</link>&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00257"/>00257 
+<anchor xml:id="__script_8cpp_source_1l00258"/>00258 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__script_8h_1a8fd75ba5dc815bc29e061eccb60f6500a343f072f30413d69b01e688f9e6e6d85">SCRIPT_TYPE_G</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;
+<anchor xml:id="__script_8cpp_source_1l00259"/>00259 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;SCRIPT_G_ACTIVE</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00260"/>00260 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t___l_n_g___g">SCRIPT_LNG_G</link>();
+<anchor xml:id="__script_8cpp_source_1l00261"/>00261 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00262"/>00262 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00263"/>00263 
+<anchor xml:id="__script_8cpp_source_1l00264"/>00264 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__script_8h_1a8fd75ba5dc815bc29e061eccb60f6500af5753e379829c4d55d637bc9935a2ec6">SCRIPT_TYPE_LUA</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;
+<anchor xml:id="__script_8cpp_source_1l00265"/>00265 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;SCRIPT_LUA_ACTIVE</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00266"/>00266 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t___l_n_g___l_u_a">SCRIPT_LNG_LUA</link>();
+<anchor xml:id="__script_8cpp_source_1l00267"/>00267 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00268"/>00268 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00269"/>00269 
+<anchor xml:id="__script_8cpp_source_1l00270"/>00270 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__script_8h_1a8fd75ba5dc815bc29e061eccb60f6500a7b72439a2a181b189416e8a9fb7a1b38">SCRIPT_TYPE_JAVASCRIPT</link>&#32;&#32;&#32;:&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00271"/>00271 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;SCRIPT_JAVASCRIPT_ACTIVE</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00272"/>00272 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t___l_n_g___j_a_v_a_s_c_r_i_p_t">SCRIPT_LNG_JAVASCRIPT</link>();
+<anchor xml:id="__script_8cpp_source_1l00273"/>00273 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00274"/>00274 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00275"/>00275 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00276"/>00276 
+<anchor xml:id="__script_8cpp_source_1l00277"/>00277 
+<anchor xml:id="__script_8cpp_source_1l00278"/>00278 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>;
+<anchor xml:id="__script_8cpp_source_1l00279"/>00279 }
+<anchor xml:id="__script_8cpp_source_1l00280"/>00280 
+<anchor xml:id="__script_8cpp_source_1l00281"/>00281 
+<anchor xml:id="__script_8cpp_source_1l00294"/><link linkend="_group___s_c_r_i_p_t_1ga5d4bae49a03da74a0a050da070e02426">00294</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___s_c_r_i_p_t_1ga5d4bae49a03da74a0a050da070e02426">SCRIPT::Load</link>(<link linkend="_class_x_p_a_t_h">XPATH</link>&amp;&#32;xpath,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;add)
+<anchor xml:id="__script_8cpp_source_1l00295"/>00295 {
+<anchor xml:id="__script_8cpp_source_1l00296"/>00296 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_s_c_r_i_p_t_1a85ceca49c0089eda2d7354b55ee560c8">xfiletxt</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00297"/>00297 
+<anchor xml:id="__script_8cpp_source_1l00298"/>00298 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00299"/>00299 
+<anchor xml:id="__script_8cpp_source_1l00300"/>00300 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(add)
+<anchor xml:id="__script_8cpp_source_1l00301"/>00301 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00302"/>00302 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_group___s_c_r_i_p_t_1ga910a69a88f227351d7497932b06ed718">AddReturnByType</link>();
+<anchor xml:id="__script_8cpp_source_1l00303"/>00303 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_group___s_c_r_i_p_t_1ga910a69a88f227351d7497932b06ed718">AddReturnByType</link>();
+<anchor xml:id="__script_8cpp_source_1l00304"/>00304 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00305"/>00305 
+<anchor xml:id="__script_8cpp_source_1l00306"/>00306 &#32;&#32;this-&gt;xpath&#32;=&#32;<link linkend="_class_s_c_r_i_p_t_1ab66967d2cfc9e05ce975ff5794f6ed95">xpath</link>;
+<anchor xml:id="__script_8cpp_source_1l00307"/>00307 
+<anchor xml:id="__script_8cpp_source_1l00308"/>00308 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1ab66967d2cfc9e05ce975ff5794f6ed95">xpath</link>.<link linkend="_group___x_u_t_i_l_s_1gadcdd1f3f310af756a40f015071e0453e">GetNamefileExt</link>(<link linkend="_class_s_c_r_i_p_t_1a48714675bfc446548f235ad1bc959d13">namescript</link>);
+<anchor xml:id="__script_8cpp_source_1l00309"/>00309 
+<anchor xml:id="__script_8cpp_source_1l00310"/>00310 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_s_c_r_i_p_t_1a85ceca49c0089eda2d7354b55ee560c8">xfiletxt</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1gac1ba7a50ab19469934c6083fdcdec985">Open</link>(<link linkend="_class_s_c_r_i_p_t_1ab66967d2cfc9e05ce975ff5794f6ed95">xpath</link>))
+<anchor xml:id="__script_8cpp_source_1l00311"/>00311 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00312"/>00312 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_s_c_r_i_p_t_1a85ceca49c0089eda2d7354b55ee560c8">xfiletxt</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1gab45ab798e4a30caa0b784cad7815db22">ReadAllFile</link>())&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00313"/>00313 
+<anchor xml:id="__script_8cpp_source_1l00314"/>00314 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!add)&#32;
+<anchor xml:id="__script_8cpp_source_1l00315"/>00315 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00316"/>00316 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>.<link linkend="_group___x_u_t_i_l_s_1ga9275997c1605fa79646c301e63a77d06">Empty</link>();
+<anchor xml:id="__script_8cpp_source_1l00317"/>00317 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00318"/>00318 
+<anchor xml:id="__script_8cpp_source_1l00319"/>00319 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;c=0;&#32;c&lt;<link linkend="_class_s_c_r_i_p_t_1a85ceca49c0089eda2d7354b55ee560c8">xfiletxt</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1gaea68e645b7632bd70b5def1c5c52551c">GetNLines</link>();&#32;c++)
+<anchor xml:id="__script_8cpp_source_1l00320"/>00320 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00321"/>00321 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>&#32;+=&#32;<link linkend="_class_s_c_r_i_p_t_1a85ceca49c0089eda2d7354b55ee560c8">xfiletxt</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1gadc394551e572ffa1e6c3b9e3ac117f59">GetLine</link>(c)-&gt;<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__script_8cpp_source_1l00322"/>00322 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00323"/>00323 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_group___s_c_r_i_p_t_1ga910a69a88f227351d7497932b06ed718">AddReturnByType</link>();
+<anchor xml:id="__script_8cpp_source_1l00324"/>00324 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00325"/>00325 
+<anchor xml:id="__script_8cpp_source_1l00326"/>00326 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a85ceca49c0089eda2d7354b55ee560c8">xfiletxt</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1ga4111cffe51475f0aa3e9060889a9d3ff">Close</link>();
+<anchor xml:id="__script_8cpp_source_1l00327"/>00327 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00328"/>00328 
+<anchor xml:id="__script_8cpp_source_1l00329"/>00329 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__script_8cpp_source_1l00330"/>00330 }
+<anchor xml:id="__script_8cpp_source_1l00331"/>00331 
+<anchor xml:id="__script_8cpp_source_1l00332"/>00332 
+<anchor xml:id="__script_8cpp_source_1l00344"/><link linkend="_group___s_c_r_i_p_t_1ga7a04606d3e759481dcb1fff9b93d1974">00344</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___s_c_r_i_p_t_1ga7a04606d3e759481dcb1fff9b93d1974">SCRIPT::Save</link>(<link linkend="_class_x_p_a_t_h">XPATH</link>&amp;&#32;xpath)
+<anchor xml:id="__script_8cpp_source_1l00345"/>00345 {
+<anchor xml:id="__script_8cpp_source_1l00346"/>00346 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_s_c_r_i_p_t_1a85ceca49c0089eda2d7354b55ee560c8">xfiletxt</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00347"/>00347 
+<anchor xml:id="__script_8cpp_source_1l00348"/>00348 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00349"/>00349 
+<anchor xml:id="__script_8cpp_source_1l00350"/>00350 &#32;&#32;this-&gt;xpath&#32;=&#32;<link linkend="_class_s_c_r_i_p_t_1ab66967d2cfc9e05ce975ff5794f6ed95">xpath</link>;
+<anchor xml:id="__script_8cpp_source_1l00351"/>00351 
+<anchor xml:id="__script_8cpp_source_1l00352"/>00352 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_s_c_r_i_p_t_1a85ceca49c0089eda2d7354b55ee560c8">xfiletxt</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1ga2487ddeffced69e5f799aa480a58b1ce">Create</link>(<link linkend="_class_s_c_r_i_p_t_1ab66967d2cfc9e05ce975ff5794f6ed95">xpath</link>))
+<anchor xml:id="__script_8cpp_source_1l00353"/>00353 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00354"/>00354 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_s_c_r_i_p_t_1a85ceca49c0089eda2d7354b55ee560c8">xfiletxt</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1gaeb9aa74b334ad110e54c014c3c518e0e">WriteAllFile</link>())&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00355"/>00355 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a85ceca49c0089eda2d7354b55ee560c8">xfiletxt</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1ga4111cffe51475f0aa3e9060889a9d3ff">Close</link>();
+<anchor xml:id="__script_8cpp_source_1l00356"/>00356 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00357"/>00357 
+<anchor xml:id="__script_8cpp_source_1l00358"/>00358 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__script_8cpp_source_1l00359"/>00359 }
+<anchor xml:id="__script_8cpp_source_1l00360"/>00360 
+<anchor xml:id="__script_8cpp_source_1l00361"/>00361 
+<anchor xml:id="__script_8cpp_source_1l00374"/><link linkend="_group___s_c_r_i_p_t_1gaafee76de4ed65098643b70fe1c9fb7e3">00374</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___s_c_r_i_p_t_1gaafee76de4ed65098643b70fe1c9fb7e3">SCRIPT::LoadScriptAndRun</link>(<link linkend="_class_x_v_e_c_t_o_r">XVECTOR&lt;XSTRING*&gt;</link>*&#32;listscripts,&#32;<link linkend="__script_8h_1aa07fe48ed5a4ba343609acc1a8b3046d">SCRFUNCADJUSTLIBRARYS</link>&#32;adjustlibrarys)
+<anchor xml:id="__script_8cpp_source_1l00375"/>00375 {
+<anchor xml:id="__script_8cpp_source_1l00376"/>00376 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!listscripts)&#32;
+<anchor xml:id="__script_8cpp_source_1l00377"/>00377 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00378"/>00378 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00379"/>00379 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00380"/>00380 
+<anchor xml:id="__script_8cpp_source_1l00381"/>00381 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00382"/>00382 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00383"/>00383 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;&#32;c&lt;listscripts-&gt;<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>();&#32;c++)
+<anchor xml:id="__script_8cpp_source_1l00384"/>00384 &#32;&#32;&#32;&#32;{&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00385"/>00385 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;linescripts&#32;=&#32;listscripts-&gt;<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(c);&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00386"/>00386 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(linescripts)
+<anchor xml:id="__script_8cpp_source_1l00387"/>00387 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00388"/>00388 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!linescripts-&gt;<link linkend="_group___x_u_t_i_l_s_1gad26690161f8c1e2722771322b7370005">IsEmpty</link>())
+<anchor xml:id="__script_8cpp_source_1l00389"/>00389 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00390"/>00390 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_v_e_c_t_o_r">XVECTOR&lt;XSTRING*&gt;</link>&#32;namescripts;
+<anchor xml:id="__script_8cpp_source_1l00391"/>00391 
+<anchor xml:id="__script_8cpp_source_1l00392"/>00392 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;linescripts-&gt;<link linkend="_group___x_u_t_i_l_s_1ga19c5e1696f0c1ccaf987a8a78a8c4a2a">Split</link>(<link linkend="__x_string_8h_1ab483f167129a5d1941ea1d30f3df8d8a">__C</link>(<emphasis role="charliteral">&apos;,&apos;</emphasis>),&#32;namescripts);
+<anchor xml:id="__script_8cpp_source_1l00393"/>00393 
+<anchor xml:id="__script_8cpp_source_1l00394"/>00394 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;<link linkend="_class_s_c_r_i_p_t_1a48714675bfc446548f235ad1bc959d13">namescript</link>&#32;=&#32;namescripts.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(0);
+<anchor xml:id="__script_8cpp_source_1l00395"/>00395 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_s_c_r_i_p_t_1a48714675bfc446548f235ad1bc959d13">namescript</link>)
+<anchor xml:id="__script_8cpp_source_1l00396"/>00396 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00397"/>00397 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SCRIPT::EliminateExtraChars(<link linkend="_class_s_c_r_i_p_t_1a48714675bfc446548f235ad1bc959d13">namescript</link>);
+<anchor xml:id="__script_8cpp_source_1l00398"/>00398 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00399"/>00399 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_c_r_i_p_t">SCRIPT</link>*&#32;<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>&#32;=&#32;<link linkend="_group___s_c_r_i_p_t_1gaa3b7bc8318d49f14035c4a970f5341cd">SCRIPT::Create</link>(<link linkend="_class_s_c_r_i_p_t_1a48714675bfc446548f235ad1bc959d13">namescript</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__script_8cpp_source_1l00400"/>00400 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>)&#32;
+<anchor xml:id="__script_8cpp_source_1l00401"/>00401 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00402"/>00402 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(adjustlibrarys)
+<anchor xml:id="__script_8cpp_source_1l00403"/>00403 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00404"/>00404 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;adjustlibrarys(<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>);
+<anchor xml:id="__script_8cpp_source_1l00405"/>00405 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00406"/>00406 
+<anchor xml:id="__script_8cpp_source_1l00407"/>00407 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;d=0;&#32;d&lt;namescripts.<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>();&#32;d++)
+<anchor xml:id="__script_8cpp_source_1l00408"/>00408 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00409"/>00409 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a48714675bfc446548f235ad1bc959d13">namescript</link>&#32;=&#32;namescripts.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(d);
+<anchor xml:id="__script_8cpp_source_1l00410"/>00410 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_s_c_r_i_p_t_1a48714675bfc446548f235ad1bc959d13">namescript</link>)
+<anchor xml:id="__script_8cpp_source_1l00411"/>00411 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00412"/>00412 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_p_a_t_h">XPATH</link>&#32;<link linkend="_class_s_c_r_i_p_t_1ab66967d2cfc9e05ce975ff5794f6ed95">xpath</link>;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00413"/>00413 
+<anchor xml:id="__script_8cpp_source_1l00414"/>00414 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;SCRIPT::EliminateExtraChars(<link linkend="_class_s_c_r_i_p_t_1a48714675bfc446548f235ad1bc959d13">namescript</link>);
+<anchor xml:id="__script_8cpp_source_1l00415"/>00415 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00416"/>00416 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GEN_XPATHSMANAGER.GetPathOfSection(<link linkend="__x_paths_manager_8h_1a574bf1ebb371f804090c20183c9ff7dda22dd6fa2c872948f986ed63161bc8aa7">XPATHSMANAGERSECTIONTYPE_SCRIPTS</link>,&#32;<link linkend="_class_s_c_r_i_p_t_1ab66967d2cfc9e05ce975ff5794f6ed95">xpath</link>);
+<anchor xml:id="__script_8cpp_source_1l00417"/>00417 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_c_r_i_p_t_1ab66967d2cfc9e05ce975ff5794f6ed95">xpath</link>.<link linkend="_group___x_u_t_i_l_s_1ga337e940d48f7178186adfbdf4d268ac7">Slash_Add</link>();
+<anchor xml:id="__script_8cpp_source_1l00418"/>00418 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_c_r_i_p_t_1ab66967d2cfc9e05ce975ff5794f6ed95">xpath</link>&#32;+=&#32;<link linkend="_class_s_c_r_i_p_t_1a48714675bfc446548f235ad1bc959d13">namescript</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__script_8cpp_source_1l00419"/>00419 
+<anchor xml:id="__script_8cpp_source_1l00420"/>00420 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>-&gt;Load(<link linkend="_class_s_c_r_i_p_t_1ab66967d2cfc9e05ce975ff5794f6ed95">xpath</link>,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__script_8cpp_source_1l00421"/>00421 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00422"/>00422 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00423"/>00423 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00424"/>00424 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00425"/>00425 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00426"/>00426 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00427"/>00427 
+<anchor xml:id="__script_8cpp_source_1l00428"/>00428 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__script_8cpp_source_1l00429"/>00429 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00430"/>00430 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>-&gt;Run();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00431"/>00431 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00432"/>00432 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00433"/>00433 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>;
+<anchor xml:id="__script_8cpp_source_1l00434"/>00434 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__script_8cpp_source_1l00435"/>00435 
+<anchor xml:id="__script_8cpp_source_1l00436"/>00436 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00437"/>00437 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00438"/>00438 
+<anchor xml:id="__script_8cpp_source_1l00439"/>00439 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;namescripts.<link linkend="_class_x_v_e_c_t_o_r_1abae5097402824f18f274e21e18b23bea">DeleteContents</link>();
+<anchor xml:id="__script_8cpp_source_1l00440"/>00440 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;namescripts.<link linkend="_class_x_v_e_c_t_o_r_1a57c72ab04fd14c60d1026e0a7b4a1887">DeleteAll</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00441"/>00441 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00442"/>00442 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;
+<anchor xml:id="__script_8cpp_source_1l00443"/>00443 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;
+<anchor xml:id="__script_8cpp_source_1l00444"/>00444 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00445"/>00445 &#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00446"/>00446 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__script_8cpp_source_1l00447"/>00447 }
+<anchor xml:id="__script_8cpp_source_1l00448"/>00448 
+<anchor xml:id="__script_8cpp_source_1l00449"/>00449 
+<anchor xml:id="__script_8cpp_source_1l00459"/><link linkend="_group___s_c_r_i_p_t_1ga910a69a88f227351d7497932b06ed718">00459</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___s_c_r_i_p_t_1ga910a69a88f227351d7497932b06ed718">SCRIPT::AddReturnByType</link>()
+<anchor xml:id="__script_8cpp_source_1l00460"/>00460 {
+<anchor xml:id="__script_8cpp_source_1l00461"/>00461 &#32;&#32;<emphasis role="keywordflow">switch</emphasis>(<link linkend="_class_s_c_r_i_p_t_1a2fc4602bd06fa76de90e798058f638fa">type</link>)
+<anchor xml:id="__script_8cpp_source_1l00462"/>00462 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00463"/>00463 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__script_8h_1a8fd75ba5dc815bc29e061eccb60f6500a9e453b53dc4bd2d6124fa5aea7566e37">SCRIPT_TYPE_UNKNOWN</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;
+<anchor xml:id="__script_8cpp_source_1l00464"/>00464 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;default&#32;&#32;&#32;:&#32;<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>&#32;+=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;\r\n&quot;</emphasis>);&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00465"/>00465 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__script_8h_1a8fd75ba5dc815bc29e061eccb60f6500a343f072f30413d69b01e688f9e6e6d85">SCRIPT_TYPE_G</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>&#32;+=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;\r\n&quot;</emphasis>);&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00466"/>00466 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__script_8h_1a8fd75ba5dc815bc29e061eccb60f6500af5753e379829c4d55d637bc9935a2ec6">SCRIPT_TYPE_LUA</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>&#32;+=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;\r&quot;</emphasis>);&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00467"/>00467 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__script_8h_1a8fd75ba5dc815bc29e061eccb60f6500a7b72439a2a181b189416e8a9fb7a1b38">SCRIPT_TYPE_JAVASCRIPT</link>&#32;&#32;&#32;&#32;:&#32;<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>&#32;+=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;\r&quot;</emphasis>);&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00468"/>00468 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00469"/>00469 
+<anchor xml:id="__script_8cpp_source_1l00470"/>00470 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00471"/>00471 }
+<anchor xml:id="__script_8cpp_source_1l00472"/>00472 
+<anchor xml:id="__script_8cpp_source_1l00473"/>00473 
+<anchor xml:id="__script_8cpp_source_1l00486"/><link linkend="_group___s_c_r_i_p_t_1gac1cc799014b5e5ee8829639722af36de">00486</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___s_c_r_i_p_t_1gac1cc799014b5e5ee8829639722af36de">SCRIPT::IsScript</link>(<link linkend="_class_x_p_a_t_h">XPATH</link>&amp;&#32;xpath,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;extension)
+<anchor xml:id="__script_8cpp_source_1l00487"/>00487 {
+<anchor xml:id="__script_8cpp_source_1l00488"/>00488 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_s_c_r_i_p_t_1ab66967d2cfc9e05ce975ff5794f6ed95">xpath</link>.<link linkend="_group___x_u_t_i_l_s_1gad26690161f8c1e2722771322b7370005">IsEmpty</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00489"/>00489 
+<anchor xml:id="__script_8cpp_source_1l00490"/>00490 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_s_c_r_i_p_t_1ab66967d2cfc9e05ce975ff5794f6ed95">xpath</link>.<link linkend="_group___x_u_t_i_l_s_1gaa5d59b7b88102beb4def8fe054449653">Find</link>(extension,&#32;<emphasis role="keyword">true</emphasis>))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00491"/>00491 
+<anchor xml:id="__script_8cpp_source_1l00492"/>00492 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00493"/>00493 }
+<anchor xml:id="__script_8cpp_source_1l00494"/>00494 
+<anchor xml:id="__script_8cpp_source_1l00495"/>00495 
+<anchor xml:id="__script_8cpp_source_1l00505"/><link linkend="_group___s_c_r_i_p_t_1ga0d6fd905c1b580b84816f52b2266dea7">00505</link> <link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;<link linkend="_group___s_c_r_i_p_t_1ga0d6fd905c1b580b84816f52b2266dea7">SCRIPT::GetNameScript</link>()
+<anchor xml:id="__script_8cpp_source_1l00506"/>00506 {
+<anchor xml:id="__script_8cpp_source_1l00507"/>00507 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;<link linkend="_class_s_c_r_i_p_t_1a48714675bfc446548f235ad1bc959d13">namescript</link>;
+<anchor xml:id="__script_8cpp_source_1l00508"/>00508 }
+<anchor xml:id="__script_8cpp_source_1l00509"/>00509 
+<anchor xml:id="__script_8cpp_source_1l00510"/>00510 
+<anchor xml:id="__script_8cpp_source_1l00520"/><link linkend="_group___s_c_r_i_p_t_1ga46aba00e142a6e6a50309871d8f11942">00520</link> <link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;<link linkend="_group___s_c_r_i_p_t_1ga46aba00e142a6e6a50309871d8f11942">SCRIPT::GetScript</link>()
+<anchor xml:id="__script_8cpp_source_1l00521"/>00521 {
+<anchor xml:id="__script_8cpp_source_1l00522"/>00522 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>;
+<anchor xml:id="__script_8cpp_source_1l00523"/>00523 }
+<anchor xml:id="__script_8cpp_source_1l00524"/>00524 
+<anchor xml:id="__script_8cpp_source_1l00525"/>00525 
+<anchor xml:id="__script_8cpp_source_1l00535"/><link linkend="_group___s_c_r_i_p_t_1ga7e54732b41ef8f7d3110b7a11a2b1733">00535</link> <link linkend="_class_x_p_a_t_h">XPATH</link>*&#32;<link linkend="_group___s_c_r_i_p_t_1ga7e54732b41ef8f7d3110b7a11a2b1733">SCRIPT::GetPath</link>()
+<anchor xml:id="__script_8cpp_source_1l00536"/>00536 {
+<anchor xml:id="__script_8cpp_source_1l00537"/>00537 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;<link linkend="_class_s_c_r_i_p_t_1ab66967d2cfc9e05ce975ff5794f6ed95">xpath</link>;
+<anchor xml:id="__script_8cpp_source_1l00538"/>00538 }
+<anchor xml:id="__script_8cpp_source_1l00539"/>00539 
+<anchor xml:id="__script_8cpp_source_1l00540"/>00540 
+<anchor xml:id="__script_8cpp_source_1l00552"/><link linkend="_group___s_c_r_i_p_t_1ga3f77de45249a6133976b857a34a8a921">00552</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_group___s_c_r_i_p_t_1ga3f77de45249a6133976b857a34a8a921">SCRIPT::Run</link>(<emphasis role="keywordtype">int</emphasis>*&#32;returnval)
+<anchor xml:id="__script_8cpp_source_1l00553"/>00553 {
+<anchor xml:id="__script_8cpp_source_1l00554"/>00554 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>.<link linkend="_group___x_u_t_i_l_s_1gad26690161f8c1e2722771322b7370005">IsEmpty</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__script___error_code_8h_1ab71f770a3544167b2b522becbd5acee6a439cd7f3b1a14bee2383b692c2c08b44">SCRIPT_ERRORCODE_INTERNALERROR</link>;
+<anchor xml:id="__script_8cpp_source_1l00555"/>00555 
+<anchor xml:id="__script_8cpp_source_1l00556"/>00556 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1af8c98269a72a407ae67705f76d94db0a">isrunwiththread</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00557"/>00557 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_s_c_r_i_p_t_1add3c48b015b6540f47af7e44cfc18cc2">thread</link>)&#32;<link linkend="_class_s_c_r_i_p_t_1af8c98269a72a407ae67705f76d94db0a">isrunwiththread</link>&#32;=&#32;<link linkend="_class_s_c_r_i_p_t_1add3c48b015b6540f47af7e44cfc18cc2">thread</link>-&gt;IsRunning();
+<anchor xml:id="__script_8cpp_source_1l00558"/>00558 
+<anchor xml:id="__script_8cpp_source_1l00559"/>00559 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a7c4a576f28475d240bd48de5b5e0ea50">errorcode</link>&#32;&#32;=&#32;0;
+<anchor xml:id="__script_8cpp_source_1l00560"/>00560 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a63a3b34023f70f99220cd0cbf179e978">iscancelexec</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00561"/>00561 &#32;
+<anchor xml:id="__script_8cpp_source_1l00562"/>00562 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t_1a7c4a576f28475d240bd48de5b5e0ea50">errorcode</link>;
+<anchor xml:id="__script_8cpp_source_1l00563"/>00563 }
+<anchor xml:id="__script_8cpp_source_1l00564"/>00564 
+<anchor xml:id="__script_8cpp_source_1l00565"/>00565 
+<anchor xml:id="__script_8cpp_source_1l00575"/><link linkend="_group___s_c_r_i_p_t_1ga61a739c6f5810dcd7cb279208e53bbe3">00575</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___s_c_r_i_p_t_1ga61a739c6f5810dcd7cb279208e53bbe3">SCRIPT::RunWithThread</link>()
+<anchor xml:id="__script_8cpp_source_1l00576"/>00576 {
+<anchor xml:id="__script_8cpp_source_1l00577"/>00577 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_s_c_r_i_p_t_1add3c48b015b6540f47af7e44cfc18cc2">thread</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00578"/>00578 
+<anchor xml:id="__script_8cpp_source_1l00579"/>00579 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t_1add3c48b015b6540f47af7e44cfc18cc2">thread</link>-&gt;Ini();
+<anchor xml:id="__script_8cpp_source_1l00580"/>00580 }
+<anchor xml:id="__script_8cpp_source_1l00581"/>00581 
+<anchor xml:id="__script_8cpp_source_1l00582"/>00582 
+<anchor xml:id="__script_8cpp_source_1l00583"/>00583 
+<anchor xml:id="__script_8cpp_source_1l00593"/><link linkend="_group___s_c_r_i_p_t_1ga6e1d41ad1d598cffd61f68343833b682">00593</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___s_c_r_i_p_t_1ga6e1d41ad1d598cffd61f68343833b682">SCRIPT::IsRunWithThread</link>()
+<anchor xml:id="__script_8cpp_source_1l00594"/>00594 {
+<anchor xml:id="__script_8cpp_source_1l00595"/>00595 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t_1af8c98269a72a407ae67705f76d94db0a">isrunwiththread</link>;
+<anchor xml:id="__script_8cpp_source_1l00596"/>00596 }
+<anchor xml:id="__script_8cpp_source_1l00597"/>00597 
+<anchor xml:id="__script_8cpp_source_1l00598"/>00598 
+<anchor xml:id="__script_8cpp_source_1l00611"/><link linkend="_group___s_c_r_i_p_t_1gab04d573d11dea820e156b204ddaab1db">00611</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___s_c_r_i_p_t_1gab04d573d11dea820e156b204ddaab1db">SCRIPT::IsRunThread</link>(<emphasis role="keywordtype">int</emphasis>*&#32;error,<emphasis role="keywordtype">int</emphasis>*&#32;returnvalue)
+<anchor xml:id="__script_8cpp_source_1l00612"/>00612 {
+<anchor xml:id="__script_8cpp_source_1l00613"/>00613 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_s_c_r_i_p_t_1add3c48b015b6540f47af7e44cfc18cc2">thread</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00614"/>00614 
+<anchor xml:id="__script_8cpp_source_1l00615"/>00615 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;isrun&#32;=&#32;<link linkend="_class_s_c_r_i_p_t_1add3c48b015b6540f47af7e44cfc18cc2">thread</link>-&gt;IsRunning();
+<anchor xml:id="__script_8cpp_source_1l00616"/>00616 
+<anchor xml:id="__script_8cpp_source_1l00617"/>00617 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!isrun)
+<anchor xml:id="__script_8cpp_source_1l00618"/>00618 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00619"/>00619 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(error)&#32;(*error)&#32;=&#32;<link linkend="_class_s_c_r_i_p_t_1a7c4a576f28475d240bd48de5b5e0ea50">errorcode</link>;
+<anchor xml:id="__script_8cpp_source_1l00620"/>00620 
+<anchor xml:id="__script_8cpp_source_1l00621"/>00621 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_s_c_r_i_p_t_1a7c4a576f28475d240bd48de5b5e0ea50">errorcode</link>)
+<anchor xml:id="__script_8cpp_source_1l00622"/>00622 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00623"/>00623 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(returnvalue)&#32;(*returnvalue)&#32;=&#32;<link linkend="_class_s_c_r_i_p_t_1a3131348c4f80a73616ef619206482b98">returnvaluescript</link>;
+<anchor xml:id="__script_8cpp_source_1l00624"/>00624 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00625"/>00625 
+<anchor xml:id="__script_8cpp_source_1l00626"/>00626 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_c_r_i_p_t_1add3c48b015b6540f47af7e44cfc18cc2">thread</link>-&gt;End();
+<anchor xml:id="__script_8cpp_source_1l00627"/>00627 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00628"/>00628 
+<anchor xml:id="__script_8cpp_source_1l00629"/>00629 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;isrun;
+<anchor xml:id="__script_8cpp_source_1l00630"/>00630 }
+<anchor xml:id="__script_8cpp_source_1l00631"/>00631 
+<anchor xml:id="__script_8cpp_source_1l00632"/>00632 
+<anchor xml:id="__script_8cpp_source_1l00642"/><link linkend="_group___s_c_r_i_p_t_1ga085e676a70599d41e737fa1c04963391">00642</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___s_c_r_i_p_t_1ga085e676a70599d41e737fa1c04963391">SCRIPT::CancelExecution</link>()
+<anchor xml:id="__script_8cpp_source_1l00643"/>00643 {
+<anchor xml:id="__script_8cpp_source_1l00644"/>00644 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>.<link linkend="_group___x_u_t_i_l_s_1gad26690161f8c1e2722771322b7370005">IsEmpty</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00645"/>00645 
+<anchor xml:id="__script_8cpp_source_1l00646"/>00646 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a63a3b34023f70f99220cd0cbf179e978">iscancelexec</link>&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00647"/>00647 
+<anchor xml:id="__script_8cpp_source_1l00648"/>00648 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00649"/>00649 }
+<anchor xml:id="__script_8cpp_source_1l00650"/>00650 
+<anchor xml:id="__script_8cpp_source_1l00651"/>00651 
+<anchor xml:id="__script_8cpp_source_1l00661"/><link linkend="_group___s_c_r_i_p_t_1ga0280d2853649f1125f1f441be71ad064">00661</link> <link linkend="_class_x_t_i_m_e_r">XTIMER</link>*&#32;<link linkend="_group___s_c_r_i_p_t_1ga0280d2853649f1125f1f441be71ad064">SCRIPT::GetTimer</link>()
+<anchor xml:id="__script_8cpp_source_1l00662"/>00662 {
+<anchor xml:id="__script_8cpp_source_1l00663"/>00663 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t_1a3897cd730f95957a292f0624a28fb442">xtimer</link>;
+<anchor xml:id="__script_8cpp_source_1l00664"/>00664 }
+<anchor xml:id="__script_8cpp_source_1l00665"/>00665 
+<anchor xml:id="__script_8cpp_source_1l00666"/>00666 
+<anchor xml:id="__script_8cpp_source_1l00676"/><link linkend="_group___s_c_r_i_p_t_1ga584b3a52afaac5a4ebd3aeac9ef1d977">00676</link> <link linkend="_class_x_t_h_r_e_a_d_c_o_l_l_e_c_t_e_d">XTHREADCOLLECTED</link>*&#32;<link linkend="_group___s_c_r_i_p_t_1ga584b3a52afaac5a4ebd3aeac9ef1d977">SCRIPT::GetThread</link>()
+<anchor xml:id="__script_8cpp_source_1l00677"/>00677 {
+<anchor xml:id="__script_8cpp_source_1l00678"/>00678 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t_1add3c48b015b6540f47af7e44cfc18cc2">thread</link>;
+<anchor xml:id="__script_8cpp_source_1l00679"/>00679 }
+<anchor xml:id="__script_8cpp_source_1l00680"/>00680 
+<anchor xml:id="__script_8cpp_source_1l00681"/>00681 
+<anchor xml:id="__script_8cpp_source_1l00693"/><link linkend="_group___s_c_r_i_p_t_1gace8c454b8f0767c45a861ec9012440b1">00693</link> <link linkend="_class_s_c_r_i_p_t___l_i_b">SCRIPT_LIB</link>*&#32;<link linkend="_group___s_c_r_i_p_t_1gace8c454b8f0767c45a861ec9012440b1">SCRIPT::GetLibrary</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;ID)
+<anchor xml:id="__script_8cpp_source_1l00694"/>00694 {
+<anchor xml:id="__script_8cpp_source_1l00695"/>00695 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_s_c_r_i_p_t_1abc81e15ff525fde91d3492935bc2c2f8">librarys</link>.<link linkend="_class_x_v_e_c_t_o_r_1acfb28e72022a067c3a4635f0c14734fb">IsEmpty</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__script_8cpp_source_1l00696"/>00696 
+<anchor xml:id="__script_8cpp_source_1l00697"/>00697 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;c=0;c&lt;(int)<link linkend="_class_s_c_r_i_p_t_1abc81e15ff525fde91d3492935bc2c2f8">librarys</link>.<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>();c++)
+<anchor xml:id="__script_8cpp_source_1l00698"/>00698 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00699"/>00699 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_c_r_i_p_t___l_i_b">SCRIPT_LIB</link>*&#32;scriptlib&#32;=&#32;(<link linkend="_class_s_c_r_i_p_t___l_i_b">SCRIPT_LIB</link>*)<link linkend="_class_s_c_r_i_p_t_1abc81e15ff525fde91d3492935bc2c2f8">librarys</link>.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(c);
+<anchor xml:id="__script_8cpp_source_1l00700"/>00700 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(scriptlib)
+<anchor xml:id="__script_8cpp_source_1l00701"/>00701 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00702"/>00702 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;IDlib&#32;=&#32;scriptlib-&gt;<link linkend="_group___s_c_r_i_p_t_1gac2038b8a1e4f56fbf8ab19299474a8d0">GetID</link>();
+<anchor xml:id="__script_8cpp_source_1l00703"/>00703 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(IDlib)
+<anchor xml:id="__script_8cpp_source_1l00704"/>00704 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00705"/>00705 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!IDlib-&gt;<link linkend="_group___x_u_t_i_l_s_1gaa41b9d6abe3eca02494d6eb043ed50c2">Compare</link>(ID))&#32;
+<anchor xml:id="__script_8cpp_source_1l00706"/>00706 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00707"/>00707 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;scriptlib;
+<anchor xml:id="__script_8cpp_source_1l00708"/>00708 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00709"/>00709 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00710"/>00710 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00711"/>00711 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00712"/>00712 
+<anchor xml:id="__script_8cpp_source_1l00713"/>00713 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__script_8cpp_source_1l00714"/>00714 }
+<anchor xml:id="__script_8cpp_source_1l00715"/>00715 
+<anchor xml:id="__script_8cpp_source_1l00716"/>00716 
+<anchor xml:id="__script_8cpp_source_1l00728"/><link linkend="_group___s_c_r_i_p_t_1ga51ff5f405330e67242e80f0afb4c2d6a">00728</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___s_c_r_i_p_t_1ga51ff5f405330e67242e80f0afb4c2d6a">SCRIPT::AddLibrary</link>(<link linkend="_class_s_c_r_i_p_t___l_i_b">SCRIPT_LIB</link>*&#32;scriptlib)
+<anchor xml:id="__script_8cpp_source_1l00729"/>00729 {
+<anchor xml:id="__script_8cpp_source_1l00730"/>00730 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!scriptlib)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00731"/>00731 
+<anchor xml:id="__script_8cpp_source_1l00732"/>00732 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1abc81e15ff525fde91d3492935bc2c2f8">librarys</link>.<link linkend="_class_x_v_e_c_t_o_r_1a51a790aac8efd4603aee608ddcc83423">Add</link>(scriptlib);
+<anchor xml:id="__script_8cpp_source_1l00733"/>00733 
+<anchor xml:id="__script_8cpp_source_1l00734"/>00734 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;scriptlib-&gt;<link linkend="_group___s_c_r_i_p_t_1ga812691967ab1f182fbd6c153eb66356f">AddLibraryFunctions</link>(<emphasis role="keyword">this</emphasis>);
+<anchor xml:id="__script_8cpp_source_1l00735"/>00735 }
+<anchor xml:id="__script_8cpp_source_1l00736"/>00736 
+<anchor xml:id="__script_8cpp_source_1l00737"/>00737 
+<anchor xml:id="__script_8cpp_source_1l00747"/><link linkend="_group___s_c_r_i_p_t_1ga15ac703476631561ea5bbb5cbdd12907">00747</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___s_c_r_i_p_t_1ga15ac703476631561ea5bbb5cbdd12907">SCRIPT::DeleteAllLibrarys</link>()
+<anchor xml:id="__script_8cpp_source_1l00748"/>00748 {
+<anchor xml:id="__script_8cpp_source_1l00749"/>00749 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_s_c_r_i_p_t_1abc81e15ff525fde91d3492935bc2c2f8">librarys</link>.<link linkend="_class_x_v_e_c_t_o_r_1acfb28e72022a067c3a4635f0c14734fb">IsEmpty</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00750"/>00750 
+<anchor xml:id="__script_8cpp_source_1l00751"/>00751 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1abc81e15ff525fde91d3492935bc2c2f8">librarys</link>.<link linkend="_class_x_v_e_c_t_o_r_1abae5097402824f18f274e21e18b23bea">DeleteContents</link>();
+<anchor xml:id="__script_8cpp_source_1l00752"/>00752 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1abc81e15ff525fde91d3492935bc2c2f8">librarys</link>.<link linkend="_class_x_v_e_c_t_o_r_1a57c72ab04fd14c60d1026e0a7b4a1887">DeleteAll</link>();
+<anchor xml:id="__script_8cpp_source_1l00753"/>00753 
+<anchor xml:id="__script_8cpp_source_1l00754"/>00754 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00755"/>00755 }
+<anchor xml:id="__script_8cpp_source_1l00756"/>00756 
+<anchor xml:id="__script_8cpp_source_1l00757"/>00757 
+<anchor xml:id="__script_8cpp_source_1l00769"/><link linkend="_group___s_c_r_i_p_t_1gac2bc2853ee2110e37f919f922545a23b">00769</link> <link linkend="_class_s_c_r_i_p_t___l_i_b___f_u_n_c_t_i_o_n">SCRIPT_LIB_FUNCTION</link>*&#32;<link linkend="_group___s_c_r_i_p_t_1gac2bc2853ee2110e37f919f922545a23b">SCRIPT::GetLibraryFunction</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;name)
+<anchor xml:id="__script_8cpp_source_1l00770"/>00770 {
+<anchor xml:id="__script_8cpp_source_1l00771"/>00771 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;c&lt;<link linkend="_class_s_c_r_i_p_t_1a480a32f89a05bc1aba8db7572b1fc061">libraryfunctions</link>.<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>();&#32;c++)
+<anchor xml:id="__script_8cpp_source_1l00772"/>00772 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00773"/>00773 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_c_r_i_p_t___l_i_b___f_u_n_c_t_i_o_n">SCRIPT_LIB_FUNCTION</link>*&#32;function&#32;=&#32;(<link linkend="_class_s_c_r_i_p_t___l_i_b___f_u_n_c_t_i_o_n">SCRIPT_LIB_FUNCTION</link>*)<link linkend="_class_s_c_r_i_p_t_1a480a32f89a05bc1aba8db7572b1fc061">libraryfunctions</link>.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(c);
+<anchor xml:id="__script_8cpp_source_1l00774"/>00774 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(function)
+<anchor xml:id="__script_8cpp_source_1l00775"/>00775 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00776"/>00776 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!function-&gt;<link linkend="_group___s_c_r_i_p_t_1gae9cfdb5796f2b365da323f728f923350">GetName</link>()-&gt;<link linkend="_group___x_u_t_i_l_s_1gaa41b9d6abe3eca02494d6eb043ed50c2">Compare</link>(name))&#32;<emphasis role="keywordflow">return</emphasis>&#32;function;
+<anchor xml:id="__script_8cpp_source_1l00777"/>00777 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00778"/>00778 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00779"/>00779 
+<anchor xml:id="__script_8cpp_source_1l00780"/>00780 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__script_8cpp_source_1l00781"/>00781 }
+<anchor xml:id="__script_8cpp_source_1l00782"/>00782 
+<anchor xml:id="__script_8cpp_source_1l00783"/>00783 
+<anchor xml:id="__script_8cpp_source_1l00795"/><link linkend="_group___s_c_r_i_p_t_1gad8be5fd0cb632d9f3726d7ecbc4cf5eb">00795</link> <link linkend="_class_s_c_r_i_p_t___l_i_b___f_u_n_c_t_i_o_n">SCRIPT_LIB_FUNCTION</link>*&#32;<link linkend="_group___s_c_r_i_p_t_1gac2bc2853ee2110e37f919f922545a23b">SCRIPT::GetLibraryFunction</link>(<emphasis role="keywordtype">void</emphasis>*&#32;ptrfunction)
+<anchor xml:id="__script_8cpp_source_1l00796"/>00796 {
+<anchor xml:id="__script_8cpp_source_1l00797"/>00797 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;c&lt;<link linkend="_class_s_c_r_i_p_t_1a480a32f89a05bc1aba8db7572b1fc061">libraryfunctions</link>.<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>();&#32;c++)
+<anchor xml:id="__script_8cpp_source_1l00798"/>00798 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00799"/>00799 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_s_c_r_i_p_t___l_i_b___f_u_n_c_t_i_o_n">SCRIPT_LIB_FUNCTION</link>*&#32;function&#32;=&#32;(<link linkend="_class_s_c_r_i_p_t___l_i_b___f_u_n_c_t_i_o_n">SCRIPT_LIB_FUNCTION</link>*)<link linkend="_class_s_c_r_i_p_t_1a480a32f89a05bc1aba8db7572b1fc061">libraryfunctions</link>.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(c);
+<anchor xml:id="__script_8cpp_source_1l00800"/>00800 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(function)
+<anchor xml:id="__script_8cpp_source_1l00801"/>00801 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00802"/>00802 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>((<emphasis role="keywordtype">void</emphasis>*)(function-&gt;<link linkend="_group___s_c_r_i_p_t_1ga0816f1acb84434c081b511f68194982f">GetFunctionLibrary</link>())&#32;==&#32;ptrfunction)&#32;<emphasis role="keywordflow">return</emphasis>&#32;function;
+<anchor xml:id="__script_8cpp_source_1l00803"/>00803 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00804"/>00804 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l00805"/>00805 
+<anchor xml:id="__script_8cpp_source_1l00806"/>00806 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__script_8cpp_source_1l00807"/>00807 }
+<anchor xml:id="__script_8cpp_source_1l00808"/>00808 
+<anchor xml:id="__script_8cpp_source_1l00809"/>00809 
+<anchor xml:id="__script_8cpp_source_1l00823"/><link linkend="_group___s_c_r_i_p_t_1ga362138cda217bfd4dc7a67a2b462c5ee">00823</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___s_c_r_i_p_t_1ga362138cda217bfd4dc7a67a2b462c5ee">SCRIPT::AddLibraryFunction</link>(<link linkend="_class_s_c_r_i_p_t___l_i_b">SCRIPT_LIB</link>*&#32;library,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;name,&#32;<link linkend="__script___lib___function_8h_1aa8fcdf89b53e742cd3ffbdf53d127ee3">SCRFUNCIONLIBRARY</link>&#32;libfunction)
+<anchor xml:id="__script_8cpp_source_1l00824"/>00824 {
+<anchor xml:id="__script_8cpp_source_1l00825"/>00825 &#32;&#32;<link linkend="_class_s_c_r_i_p_t___l_i_b___f_u_n_c_t_i_o_n">SCRIPT_LIB_FUNCTION</link>*&#32;function&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t___l_i_b___f_u_n_c_t_i_o_n">SCRIPT_LIB_FUNCTION</link>(library,&#32;name,&#32;libfunction);
+<anchor xml:id="__script_8cpp_source_1l00826"/>00826 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!function)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00827"/>00827 
+<anchor xml:id="__script_8cpp_source_1l00828"/>00828 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a480a32f89a05bc1aba8db7572b1fc061">libraryfunctions</link>.<link linkend="_class_x_v_e_c_t_o_r_1a51a790aac8efd4603aee608ddcc83423">Add</link>(function);
+<anchor xml:id="__script_8cpp_source_1l00829"/>00829 
+<anchor xml:id="__script_8cpp_source_1l00830"/>00830 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00831"/>00831 }
+<anchor xml:id="__script_8cpp_source_1l00832"/>00832 
+<anchor xml:id="__script_8cpp_source_1l00833"/>00833 
+<anchor xml:id="__script_8cpp_source_1l00843"/><link linkend="_group___s_c_r_i_p_t_1ga0cf6812609e3aa15b89d5eb5ca7f1ea9">00843</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___s_c_r_i_p_t_1ga0cf6812609e3aa15b89d5eb5ca7f1ea9">SCRIPT::DeleteLibraryFuncions</link>()
+<anchor xml:id="__script_8cpp_source_1l00844"/>00844 {
+<anchor xml:id="__script_8cpp_source_1l00845"/>00845 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_s_c_r_i_p_t_1a480a32f89a05bc1aba8db7572b1fc061">libraryfunctions</link>.<link linkend="_class_x_v_e_c_t_o_r_1acfb28e72022a067c3a4635f0c14734fb">IsEmpty</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00846"/>00846 
+<anchor xml:id="__script_8cpp_source_1l00847"/>00847 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a480a32f89a05bc1aba8db7572b1fc061">libraryfunctions</link>.<link linkend="_class_x_v_e_c_t_o_r_1abae5097402824f18f274e21e18b23bea">DeleteContents</link>();
+<anchor xml:id="__script_8cpp_source_1l00848"/>00848 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a480a32f89a05bc1aba8db7572b1fc061">libraryfunctions</link>.<link linkend="_class_x_v_e_c_t_o_r_1a57c72ab04fd14c60d1026e0a7b4a1887">DeleteAll</link>();
+<anchor xml:id="__script_8cpp_source_1l00849"/>00849 
+<anchor xml:id="__script_8cpp_source_1l00850"/>00850 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00851"/>00851 }
+<anchor xml:id="__script_8cpp_source_1l00852"/>00852 
+<anchor xml:id="__script_8cpp_source_1l00853"/>00853 
+<anchor xml:id="__script_8cpp_source_1l00863"/><link linkend="_group___s_c_r_i_p_t_1ga27f1d621d026216ccdab9be32259fb66">00863</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___s_c_r_i_p_t_1ga27f1d621d026216ccdab9be32259fb66">SCRIPT::AddInternalLibraries</link>()
+<anchor xml:id="__script_8cpp_source_1l00864"/>00864 {&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00865"/>00865 &#32;&#32;<link linkend="_class_s_c_r_i_p_t___l_i_b">SCRIPT_LIB</link>*&#32;lib;
+<anchor xml:id="__script_8cpp_source_1l00866"/>00866 
+<anchor xml:id="__script_8cpp_source_1l00867"/>00867 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;c=0;&#32;c&lt;15;&#32;c++)
+<anchor xml:id="__script_8cpp_source_1l00868"/>00868 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00869"/>00869 &#32;&#32;&#32;&#32;&#32;&#32;lib&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__script_8cpp_source_1l00870"/>00870 
+<anchor xml:id="__script_8cpp_source_1l00871"/>00871 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">switch</emphasis>(c)
+<anchor xml:id="__script_8cpp_source_1l00872"/>00872 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00873"/>00873 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Standard&#32;</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00874"/>00874 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;&#32;0&#32;:&#32;lib&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t___l_i_b___m_a_t_h">SCRIPT_LIB_MATH</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00875"/>00875 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;&#32;1&#32;:&#32;lib&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t___l_i_b___r_a_n_d">SCRIPT_LIB_RAND</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00876"/>00876 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;&#32;2&#32;:&#32;lib&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t___l_i_b___t_i_m_e_r">SCRIPT_LIB_TIMER</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00877"/>00877 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;&#32;3&#32;:&#32;lib&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t___l_i_b___s_t_r_i_n_g">SCRIPT_LIB_STRING</link>();&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00878"/>00878 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;&#32;4&#32;:&#32;lib&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t___l_i_b___p_a_t_h">SCRIPT_LIB_PATH</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00879"/>00879 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;&#32;5&#32;:&#32;lib&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t___l_i_b___d_i_r">SCRIPT_LIB_DIR</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00880"/>00880 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;&#32;6&#32;:&#32;lib&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t___l_i_b___t_r_a_c_e">SCRIPT_LIB_TRACE</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00881"/>00881 
+<anchor xml:id="__script_8cpp_source_1l00882"/>00882 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Optionals</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00883"/>00883 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;&#32;7&#32;:
+<anchor xml:id="__script_8cpp_source_1l00884"/>00884 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;SCRIPT_LIB_SYSTEM_ACTIVE</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00885"/>00885 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lib&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t___l_i_b___s_y_s_t_e_m">SCRIPT_LIB_SYSTEM</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00886"/>00886 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00887"/>00887 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00888"/>00888 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;&#32;8&#32;:
+<anchor xml:id="__script_8cpp_source_1l00889"/>00889 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;SCRIPT_LIB_PROCESS_ACTIVE</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00890"/>00890 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lib&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t___l_i_b___p_r_o_c_e_s_s">SCRIPT_LIB_PROCESS</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00891"/>00891 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00892"/>00892 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00893"/>00893 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;&#32;9&#32;:
+<anchor xml:id="__script_8cpp_source_1l00894"/>00894 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;SCRIPT_LIB_LOG_ACTIVE</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00895"/>00895 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lib&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t___l_i_b___l_o_g">SCRIPT_LIB_LOG</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00896"/>00896 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00897"/>00897 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00898"/>00898 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;10&#32;:
+<anchor xml:id="__script_8cpp_source_1l00899"/>00899 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;SCRIPT_LIB_CONSOLE_ACTIVE</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00900"/>00900 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lib&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t___l_i_b___c_o_n_s_o_l_e">SCRIPT_LIB_CONSOLE</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00901"/>00901 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00902"/>00902 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00903"/>00903 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;11&#32;:
+<anchor xml:id="__script_8cpp_source_1l00904"/>00904 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;SCRIPT_LIB_CFG_ACTIVE</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00905"/>00905 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lib&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t___l_i_b___c_f_g">SCRIPT_LIB_CFG</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00906"/>00906 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00907"/>00907 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00908"/>00908 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;12&#32;:
+<anchor xml:id="__script_8cpp_source_1l00909"/>00909 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;SCRIPT_LIB_WINDOW_ACTIVE</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00910"/>00910 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lib&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t___l_i_b___w_i_n_d_o_w">SCRIPT_LIB_WINDOW</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00911"/>00911 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00912"/>00912 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00913"/>00913 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;13&#32;:
+<anchor xml:id="__script_8cpp_source_1l00914"/>00914 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;SCRIPT_LIB_INPUTSIMULATE_ACTIVE</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00915"/>00915 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lib&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t___l_i_b___i_n_p_u_t_s_i_m_u_l_a_t_e">SCRIPT_LIB_INPUTSIMULATE</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00916"/>00916 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00917"/>00917 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00918"/>00918 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;14&#32;:
+<anchor xml:id="__script_8cpp_source_1l00919"/>00919 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;SCRIPT_LIB_DEVTEST_ACTIVE</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00920"/>00920 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;lib&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t___l_i_b___d_e_v_t_e_s_t">SCRIPT_LIB_DEVTEST</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00921"/>00921 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__script_8cpp_source_1l00922"/>00922 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00923"/>00923 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;
+<anchor xml:id="__script_8cpp_source_1l00924"/>00924 
+<anchor xml:id="__script_8cpp_source_1l00925"/>00925 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(lib)
+<anchor xml:id="__script_8cpp_source_1l00926"/>00926 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l00927"/>00927 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_group___s_c_r_i_p_t_1ga51ff5f405330e67242e80f0afb4c2d6a">AddLibrary</link>(lib);
+<anchor xml:id="__script_8cpp_source_1l00928"/>00928 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00929"/>00929 &#32;&#32;&#32;&#32;}&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l00930"/>00930 
+<anchor xml:id="__script_8cpp_source_1l00931"/>00931 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00932"/>00932 }
+<anchor xml:id="__script_8cpp_source_1l00933"/>00933 
+<anchor xml:id="__script_8cpp_source_1l00934"/>00934 
+<anchor xml:id="__script_8cpp_source_1l00944"/><link linkend="_group___s_c_r_i_p_t_1gab591f166376a6624731afe05bd2bf1c5">00944</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_group___s_c_r_i_p_t_1gab591f166376a6624731afe05bd2bf1c5">SCRIPT::GetErrorScript</link>()
+<anchor xml:id="__script_8cpp_source_1l00945"/>00945 {
+<anchor xml:id="__script_8cpp_source_1l00946"/>00946 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t_1a7c4a576f28475d240bd48de5b5e0ea50">errorcode</link>;
+<anchor xml:id="__script_8cpp_source_1l00947"/>00947 }
+<anchor xml:id="__script_8cpp_source_1l00948"/>00948 
+<anchor xml:id="__script_8cpp_source_1l00949"/>00949 
+<anchor xml:id="__script_8cpp_source_1l00961"/><link linkend="_group___s_c_r_i_p_t_1ga1e8196a428647dc64409501853f293fd">00961</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___s_c_r_i_p_t_1ga1e8196a428647dc64409501853f293fd">SCRIPT::SetErrorScript</link>(<emphasis role="keywordtype">int</emphasis>&#32;errorcode)
+<anchor xml:id="__script_8cpp_source_1l00962"/>00962 {
+<anchor xml:id="__script_8cpp_source_1l00963"/>00963 &#32;&#32;this-&gt;errorcode&#32;=&#32;<link linkend="_class_s_c_r_i_p_t_1a7c4a576f28475d240bd48de5b5e0ea50">errorcode</link>;
+<anchor xml:id="__script_8cpp_source_1l00964"/>00964 
+<anchor xml:id="__script_8cpp_source_1l00965"/>00965 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00966"/>00966 }
+<anchor xml:id="__script_8cpp_source_1l00967"/>00967 
+<anchor xml:id="__script_8cpp_source_1l00968"/>00968 
+<anchor xml:id="__script_8cpp_source_1l00980"/><link linkend="_group___s_c_r_i_p_t_1ga9b6211aae3517ced521a3907ca6ef648">00980</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___s_c_r_i_p_t_1ga9b6211aae3517ced521a3907ca6ef648">SCRIPT::HaveError</link>(<emphasis role="keywordtype">int</emphasis>&#32;errorcode)
+<anchor xml:id="__script_8cpp_source_1l00981"/>00981 {
+<anchor xml:id="__script_8cpp_source_1l00982"/>00982 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(!<link linkend="_class_s_c_r_i_p_t_1a7c4a576f28475d240bd48de5b5e0ea50">errorcode</link>)?<emphasis role="keyword">false</emphasis>:<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l00983"/>00983 }
+<anchor xml:id="__script_8cpp_source_1l00984"/>00984 
+<anchor xml:id="__script_8cpp_source_1l00985"/>00985 
+<anchor xml:id="__script_8cpp_source_1l00997"/>00997 <emphasis role="keywordtype">bool</emphasis>&#32;SCRIPT::EliminateExtraChars(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;namescript)
+<anchor xml:id="__script_8cpp_source_1l00998"/>00998 {
+<anchor xml:id="__script_8cpp_source_1l00999"/>00999 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_s_c_r_i_p_t_1a48714675bfc446548f235ad1bc959d13">namescript</link>)
+<anchor xml:id="__script_8cpp_source_1l01000"/>01000 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l01001"/>01001 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l01002"/>01002 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l01003"/>01003 
+<anchor xml:id="__script_8cpp_source_1l01004"/>01004 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_s_c_r_i_p_t_1a48714675bfc446548f235ad1bc959d13">namescript</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1gad26690161f8c1e2722771322b7370005">IsEmpty</link>())
+<anchor xml:id="__script_8cpp_source_1l01005"/>01005 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__script_8cpp_source_1l01006"/>01006 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l01007"/>01007 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__script_8cpp_source_1l01008"/>01008 
+<anchor xml:id="__script_8cpp_source_1l01009"/>01009 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a48714675bfc446548f235ad1bc959d13">namescript</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1gacae4462012fcb5ee07db15505877d40a">DeleteCharacter</link>(<link linkend="__x_string_8h_1ab483f167129a5d1941ea1d30f3df8d8a">__C</link>(<emphasis role="charliteral">&apos;&#32;&apos;</emphasis>),&#32;<link linkend="__x_string_8h_1a5399fd4ffd356751bde3732db3435dfaac13b89e0ccf857123679250df41fa9e4">XSTRINGCONTEXT_FROM_FIRST</link>);
+<anchor xml:id="__script_8cpp_source_1l01010"/>01010 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a48714675bfc446548f235ad1bc959d13">namescript</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1gacae4462012fcb5ee07db15505877d40a">DeleteCharacter</link>(<link linkend="__x_string_8h_1ab483f167129a5d1941ea1d30f3df8d8a">__C</link>(<emphasis role="charliteral">&apos;&#32;&apos;</emphasis>),&#32;<link linkend="__x_string_8h_1a5399fd4ffd356751bde3732db3435dfaaf637cd12b204455cf7aae0c1a2eae8f2">XSTRINGCONTEXT_TO_END</link>);
+<anchor xml:id="__script_8cpp_source_1l01011"/>01011 
+<anchor xml:id="__script_8cpp_source_1l01012"/>01012 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a48714675bfc446548f235ad1bc959d13">namescript</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1gacae4462012fcb5ee07db15505877d40a">DeleteCharacter</link>(<link linkend="__x_string_8h_1ab483f167129a5d1941ea1d30f3df8d8a">__C</link>(<emphasis role="charliteral">&apos;\t&apos;</emphasis>),&#32;<link linkend="__x_string_8h_1a5399fd4ffd356751bde3732db3435dfaac13b89e0ccf857123679250df41fa9e4">XSTRINGCONTEXT_FROM_FIRST</link>);
+<anchor xml:id="__script_8cpp_source_1l01013"/>01013 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a48714675bfc446548f235ad1bc959d13">namescript</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1gacae4462012fcb5ee07db15505877d40a">DeleteCharacter</link>(<link linkend="__x_string_8h_1ab483f167129a5d1941ea1d30f3df8d8a">__C</link>(<emphasis role="charliteral">&apos;\t&apos;</emphasis>),&#32;<link linkend="__x_string_8h_1a5399fd4ffd356751bde3732db3435dfaaf637cd12b204455cf7aae0c1a2eae8f2">XSTRINGCONTEXT_TO_END</link>);
+<anchor xml:id="__script_8cpp_source_1l01014"/>01014 &#32;&#32;
+<anchor xml:id="__script_8cpp_source_1l01015"/>01015 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l01016"/>01016 }
+<anchor xml:id="__script_8cpp_source_1l01017"/>01017 
+<anchor xml:id="__script_8cpp_source_1l01018"/>01018 
+<anchor xml:id="__script_8cpp_source_1l01029"/>01029 <emphasis role="keywordtype">void</emphasis>&#32;SCRIPT::HandleEvent(<link linkend="_class_x_e_v_e_n_t">XEVENT</link>*&#32;xevent)
+<anchor xml:id="__script_8cpp_source_1l01030"/>01030 {
+<anchor xml:id="__script_8cpp_source_1l01031"/>01031 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xevent)&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l01032"/>01032 }
+<anchor xml:id="__script_8cpp_source_1l01033"/>01033 
+<anchor xml:id="__script_8cpp_source_1l01034"/>01034 
+<anchor xml:id="__script_8cpp_source_1l01044"/>01044 <emphasis role="keywordtype">void</emphasis>&#32;SCRIPT::ThreadFunction(<emphasis role="keywordtype">void</emphasis>*&#32;data)
+<anchor xml:id="__script_8cpp_source_1l01045"/>01045 {
+<anchor xml:id="__script_8cpp_source_1l01046"/>01046 &#32;&#32;<link linkend="_class_s_c_r_i_p_t">SCRIPT</link>*&#32;<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>&#32;=&#32;(<link linkend="_class_s_c_r_i_p_t">SCRIPT</link>*)data;
+<anchor xml:id="__script_8cpp_source_1l01047"/>01047 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>)&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l01048"/>01048 
+<anchor xml:id="__script_8cpp_source_1l01049"/>01049 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_class_s_c_r_i_p_t_1a3131348c4f80a73616ef619206482b98">returnvaluescript</link>;
+<anchor xml:id="__script_8cpp_source_1l01050"/>01050 
+<anchor xml:id="__script_8cpp_source_1l01051"/>01051 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>-&gt;SetErrorScript(<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>-&gt;Run(&amp;<link linkend="_class_s_c_r_i_p_t_1a3131348c4f80a73616ef619206482b98">returnvaluescript</link>));
+<anchor xml:id="__script_8cpp_source_1l01052"/>01052 
+<anchor xml:id="__script_8cpp_source_1l01053"/>01053 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>-&gt;GetThread()-&gt;Run(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__script_8cpp_source_1l01054"/>01054 }
+<anchor xml:id="__script_8cpp_source_1l01055"/>01055 
+<anchor xml:id="__script_8cpp_source_1l01056"/>01056 
+<anchor xml:id="__script_8cpp_source_1l01065"/>01065 <emphasis role="keywordtype">void</emphasis>&#32;SCRIPT::Clean()
+<anchor xml:id="__script_8cpp_source_1l01066"/>01066 {
+<anchor xml:id="__script_8cpp_source_1l01067"/>01067 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a2fc4602bd06fa76de90e798058f638fa">type</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__script_8h_1a8fd75ba5dc815bc29e061eccb60f6500a9e453b53dc4bd2d6124fa5aea7566e37">SCRIPT_TYPE_UNKNOWN</link>;
+<anchor xml:id="__script_8cpp_source_1l01068"/>01068 
+<anchor xml:id="__script_8cpp_source_1l01069"/>01069 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1ab66967d2cfc9e05ce975ff5794f6ed95">xpath</link>.<link linkend="_group___x_u_t_i_l_s_1ga9275997c1605fa79646c301e63a77d06">Empty</link>();
+<anchor xml:id="__script_8cpp_source_1l01070"/>01070 
+<anchor xml:id="__script_8cpp_source_1l01071"/>01071 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a85ceca49c0089eda2d7354b55ee560c8">xfiletxt</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__script_8cpp_source_1l01072"/>01072 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a48714675bfc446548f235ad1bc959d13">namescript</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;N/A&quot;</emphasis>);
+<anchor xml:id="__script_8cpp_source_1l01073"/>01073 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1af14ce4cf53f400f6bf6ff46a36999cf8">script</link>.<link linkend="_group___x_u_t_i_l_s_1ga9275997c1605fa79646c301e63a77d06">Empty</link>();
+<anchor xml:id="__script_8cpp_source_1l01074"/>01074 
+<anchor xml:id="__script_8cpp_source_1l01075"/>01075 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a3897cd730f95957a292f0624a28fb442">xtimer</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__script_8cpp_source_1l01076"/>01076 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a7c4a576f28475d240bd48de5b5e0ea50">errorcode</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__script_8cpp_source_1l01077"/>01077 
+<anchor xml:id="__script_8cpp_source_1l01078"/>01078 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1add3c48b015b6540f47af7e44cfc18cc2">thread</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__script_8cpp_source_1l01079"/>01079 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1af8c98269a72a407ae67705f76d94db0a">isrunwiththread</link>&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l01080"/>01080 
+<anchor xml:id="__script_8cpp_source_1l01081"/>01081 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a3131348c4f80a73616ef619206482b98">returnvaluescript</link>&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__script_8cpp_source_1l01082"/>01082 
+<anchor xml:id="__script_8cpp_source_1l01083"/>01083 &#32;&#32;<link linkend="_class_s_c_r_i_p_t_1a63a3b34023f70f99220cd0cbf179e978">iscancelexec</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__script_8cpp_source_1l01084"/>01084 }
+<anchor xml:id="__script_8cpp_source_1l01085"/>01085 
+<anchor xml:id="__script_8cpp_source_1l01086"/>01086 
+<anchor xml:id="__script_8cpp_source_1l01087"/>01087 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__script_8cpp_source_1l01088"/>01088 
+<anchor xml:id="__script_8cpp_source_1l01089"/>01089 
+</programlisting></section>

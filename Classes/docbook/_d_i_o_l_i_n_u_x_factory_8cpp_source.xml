@@ -1,0 +1,294 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source" xml:lang="en-US">
+<title>DIOLINUXFactory.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/Platforms/Linux/DIOLINUXFactory.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_factory_8h">DIOLINUXFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_factory_macros_8h">XFactoryMacros.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_trace_8h">XTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00044"/>00044 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#ifdef&#32;DIO_STREAMUART_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_u_a_r_t_config_8h">DIOStreamUARTConfig.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_stream_u_a_r_t_local_enum_devices_8h">DIOLINUXStreamUARTLocalEnumDevices.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_stream_u_a_r_t_8h">DIOLINUXStreamUART.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00049"/>00049 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00050"/>00050 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#ifdef&#32;DIO_STREAMUSB_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_u_s_b_config_8h">DIOStreamUSBConfig.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00053"/>00053 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_stream_u_s_b_local_enum_devices_8h">DIOLINUXStreamUSBLocalEnumDevices.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00054"/>00054 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_stream_u_s_b_8h">DIOLINUXStreamUSB.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00055"/>00055 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00056"/>00056 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00057"/>00057 <emphasis role="preprocessor">#if&#32;defined(DIO_STREAMICMP_ACTIVE)&#32;||&#32;defined(DIO_STREAMUDP_ACTIVE)&#32;||&#32;defined(DIO_STREAMTCPIP_ACTIVE)</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00058"/>00058 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_stream_i_p_local_enum_devices_8h">DIOLINUXStreamIPLocalEnumDevices.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00059"/>00059 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00061"/>00061 <emphasis role="preprocessor">#ifdef&#32;DIO_STREAMICMP_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00062"/>00062 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_i_c_m_p_config_8h">DIOStreamICMPConfig.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00063"/>00063 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_stream_i_c_m_p_8h">DIOLINUXStreamICMP.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00064"/>00064 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00065"/>00065 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00066"/>00066 <emphasis role="preprocessor">#ifdef&#32;DIO_STREAMUDP_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00067"/>00067 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_u_d_p_config_8h">DIOStreamUDPConfig.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00068"/>00068 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_stream_u_d_p_8h">DIOLINUXStreamUDP.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00069"/>00069 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00070"/>00070 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00071"/>00071 <emphasis role="preprocessor">#ifdef&#32;DIO_STREAMTCPIP_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00072"/>00072 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_t_c_p_i_p_config_8h">DIOStreamTCPIPConfig.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00073"/>00073 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_stream_t_c_p_i_p_8h">DIOLINUXStreamTCPIP.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00074"/>00074 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00075"/>00075 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00076"/>00076 <emphasis role="preprocessor">#if&#32;defined(DIO_STREAMBLUETOOTH_ACTIVE)&#32;||&#32;defined(DIO_STREAMBLUETOOTHLE_ACTIVE)</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00077"/>00077 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_bluetooth_config_8h">DIOStreamBluetoothConfig.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00078"/>00078 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_stream_bluetooth_8h">DIOLINUXStreamBluetooth.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00079"/>00079 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_stream_bluetooth_local_enum_devices_8h">DIOLINUXStreamBluetoothLocalEnumDevices.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00080"/>00080 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00081"/>00081 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00082"/>00082 <emphasis role="preprocessor">#ifdef&#32;DIO_STREAMBLUETOOTH_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00083"/>00083 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_stream_bluetooth_remote_enum_devices_8h">DIOLINUXStreamBluetoothRemoteEnumDevices.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00084"/>00084 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00085"/>00085 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00086"/>00086 <emphasis role="preprocessor">#ifdef&#32;DIO_STREAMBLUETOOTHLE_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00087"/>00087 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_stream_bluetooth_l_e_remote_enum_devices_8h">DIOLINUXStreamBluetoothLERemoteEnumDevices.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00088"/>00088 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00089"/>00089 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00090"/>00090 <emphasis role="preprocessor">#ifdef&#32;DIO_STREAMTWIFI_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00091"/>00091 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_stream_wifi_remote_enum_devices_8h">DIOLINUXStreamWifiRemoteEnumDevices.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00092"/>00092 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00093"/>00093 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00094"/>00094 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00095"/>00095 <emphasis role="preprocessor">#ifdef&#32;DIO_WIFIMANAGERMODE_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00096"/>00096 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_wifi_manager_mode_8h">DIOLINUXWifiManagerMode.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00097"/>00097 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00098"/>00098 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00099"/>00099 <emphasis role="preprocessor">#ifdef&#32;DIO_STREAMSPI_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00100"/>00100 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_s_p_i_config_8h">DIOStreamSPIConfig.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00101"/>00101 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_stream_s_p_i_8h">DIOLINUXStreamSPI.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00102"/>00102 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00103"/>00103 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00104"/>00104 <emphasis role="preprocessor">#ifdef&#32;DIO_STREAMI2C_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00105"/>00105 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_i2_c_config_8h">DIOStreamI2CConfig.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00106"/>00106 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_stream_i2_c_8h">DIOLINUXStreamI2C.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00107"/>00107 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00108"/>00108 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00109"/>00109 <emphasis role="preprocessor">#ifdef&#32;DIO_PING_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00110"/>00110 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_ping_8h">DIOLINUXPing.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00111"/>00111 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00112"/>00112 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00113"/>00113 <emphasis role="preprocessor">#ifdef&#32;DIO_PCAP_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00114"/>00114 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_p_cap_8h">DIOLINUXPCap.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00115"/>00115 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00116"/>00116 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00117"/>00117 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00118"/>00118 <emphasis role="preprocessor">#ifdef&#32;DIO_LEDNEOPIXELWS2812B_ACTIVE&#32;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00119"/>00119 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00120"/>00120 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_led_neo_pixel_w_s2812_b_8h">DIOLedNeoPixelWS2812B.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00121"/>00121 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00122"/>00122 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;HW_PC&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00123"/>00123 <emphasis role="preprocessor">&#32;&#32;#endif&#32;&#32;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00124"/>00124 &#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00125"/>00125 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;HW_RASPBERRYPI</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00126"/>00126 <emphasis role="preprocessor">&#32;&#32;#include&#32;&quot;<link linkend="__d_i_o_l_i_n_u_x_led_neo_pixel_w_s2812_b_raspberry_pi_8h">DIOLINUXLedNeoPixelWS2812BRaspberryPi.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00127"/>00127 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00128"/>00128 &#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00129"/>00129 <emphasis role="preprocessor">&#32;&#32;#if&#32;defined(HW_ARM)&#32;||&#32;defined(HW_ARM64)&#32;&#32;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00130"/>00130 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00131"/>00131 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00132"/>00132 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00133"/>00133 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00134"/>00134 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00135"/>00135 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00136"/>00136 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00137"/>00137 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00138"/>00138 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00139"/>00139 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00140"/>00140 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00141"/>00141 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00142"/>00142 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00143"/>00143 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00144"/>00144 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00145"/>00145 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00146"/>00146 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00147"/>00147 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00148"/>00148 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00149"/>00149 <emphasis role="preprocessor">#ifdef&#32;ANYTYPEOFDIOSTREAMIO</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00150"/>00150 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00151"/>00151 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00163"/>00163 <link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_d_e_v_i_c_e_s">DIOSTREAMENUMDEVICES</link>*&#32;DIOLINUXFACTORY::CreateStreamEnumDevices(<link linkend="__d_i_o_stream_enum_devices_8h_1a002fa6ddc871265914f8862eefde794e">DIOSTREAMENUMTYPE</link>&#32;type)
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00164"/>00164 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00165"/>00165 &#32;&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_d_e_v_i_c_e_s">DIOSTREAMENUMDEVICES</link>*&#32;_class&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00166"/>00166 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00167"/>00167 &#32;&#32;<emphasis role="keywordflow">switch</emphasis>(type)
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00168"/>00168 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00169"/>00169 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;DIO_STREAMUART_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00170"/>00170 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__d_i_o_stream_enum_devices_8h_1a002fa6ddc871265914f8862eefde794ea4040f5de0d8b266bd18664d12cce2287">DIOSTREAMENUMTYPE_UART_LOCAL</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;_class&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_l_i_n_u_x_s_t_r_e_a_m_u_a_r_t_l_o_c_a_l_e_n_u_m_d_e_v_i_c_e_s">DIOLINUXSTREAMUARTLOCALENUMDEVICES</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00171"/>00171 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00172"/>00172 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00173"/>00173 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;DIO_STREAMUSB_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00174"/>00174 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__d_i_o_stream_enum_devices_8h_1a002fa6ddc871265914f8862eefde794eaa70d3af03443e1366cf2f1905744a0bf">DIOSTREAMENUMTYPE_USB_LOCAL</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;_class&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_l_i_n_u_x_s_t_r_e_a_m_u_s_b_l_o_c_a_l_e_n_u_m_d_e_v_i_c_e_s">DIOLINUXSTREAMUSBLOCALENUMDEVICES</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00175"/>00175 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00176"/>00176 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00177"/>00177 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#if&#32;defined(DIO_STREAMUDP_ACTIVE)&#32;||&#32;defined(DIO_STREAMTCPIP_ACTIVE)</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00178"/>00178 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__d_i_o_stream_enum_devices_8h_1a002fa6ddc871265914f8862eefde794ea38b1c621f1083fe75b0ac08241706793">DIOSTREAMENUMTYPE_IP_LOCAL</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;&#32;_class&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_l_i_n_u_x_s_t_r_e_a_m_i_p_l_o_c_a_l_e_n_u_m_d_e_v_i_c_e_s">DIOLINUXSTREAMIPLOCALENUMDEVICES</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00179"/>00179 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00180"/>00180 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00181"/>00181 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#if&#32;defined(DIO_STREAMBLUETOOTH_ACTIVE)&#32;||&#32;defined(DIO_STREAMBLUETOOTHLE_ACTIVE)</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00182"/>00182 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__d_i_o_stream_enum_devices_8h_1a002fa6ddc871265914f8862eefde794ead861c9facf5a4fa749201ba58edcde7b">DIOSTREAMENUMTYPE_BLUETOOTH_LOCAL</link>&#32;&#32;&#32;&#32;&#32;&#32;:&#32;&#32;_class&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_l_i_n_u_x_s_t_r_e_a_m_b_l_u_e_t_o_o_t_h_l_o_c_a_l_e_n_u_m_d_e_v_i_c_e_s">DIOLINUXSTREAMBLUETOOTHLOCALENUMDEVICES</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00183"/>00183 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00184"/>00184 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00185"/>00185 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#if&#32;DIO_STREAMBLUETOOTH_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00186"/>00186 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__d_i_o_stream_enum_devices_8h_1a002fa6ddc871265914f8862eefde794ea5bcc6ed1fd164d2228eeee03ee7f333d">DIOSTREAMENUMTYPE_BLUETOOTH_REMOTE</link>&#32;&#32;&#32;&#32;&#32;:&#32;&#32;_class&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_l_i_n_u_x_s_t_r_e_a_m_b_l_u_e_t_o_o_t_h_r_e_m_o_t_e_e_n_u_m_d_e_v_i_c_e_s">DIOLINUXSTREAMBLUETOOTHREMOTEENUMDEVICES</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00187"/>00187 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00188"/>00188 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00189"/>00189 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#if&#32;DIO_STREAMBLUETOOTHLE_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00190"/>00190 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__d_i_o_stream_enum_devices_8h_1a002fa6ddc871265914f8862eefde794ea5aa959447b77d5f03183cf2481e96d63">DIOSTREAMENUMTYPE_BLUETOOTHLE_REMOTE</link>&#32;&#32;&#32;:&#32;&#32;_class&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_l_i_n_u_x_s_t_r_e_a_m_b_l_u_e_t_o_o_t_h_l_e_r_e_m_o_t_e_e_n_u_m_d_e_v_i_c_e_s">DIOLINUXSTREAMBLUETOOTHLEREMOTEENUMDEVICES</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00191"/>00191 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00192"/>00192 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00193"/>00193 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;DIO_STREAMTWIFI_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00194"/>00194 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__d_i_o_stream_enum_devices_8h_1a002fa6ddc871265914f8862eefde794ea716a03c26cb047f4350b261d292990be">DIOSTREAMENUMTYPE_WIFI_REMOTE</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;&#32;_class&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_l_i_n_u_x_s_t_r_e_a_m_w_i_f_i_r_e_m_o_t_e_e_n_u_m_d_e_v_i_c_e_s">DIOLINUXSTREAMWIFIREMOTEENUMDEVICES</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00195"/>00195 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00196"/>00196 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;default&#32;&#32;&#32;:&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00197"/>00197 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00198"/>00198 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00199"/>00199 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(_class)&#32;_class-&gt;<link linkend="_group___d_a_t_a_i_o_1gab317acb8017f8d624878a9cd8fcbace0">SetType</link>(type);
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00200"/>00200 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00201"/>00201 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;_class;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00202"/>00202 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00203"/>00203 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00204"/>00204 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00216"/>00216 <emphasis role="keywordtype">bool</emphasis>&#32;DIOLINUXFACTORY::DeleteStreamEnumDevices(<link linkend="_class_d_i_o_s_t_r_e_a_m_e_n_u_m_d_e_v_i_c_e_s">DIOSTREAMENUMDEVICES</link>*&#32;enumdevices)
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00217"/>00217 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00218"/>00218 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!enumdevices)&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00219"/>00219 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00220"/>00220 &#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;enumdevices;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00221"/>00221 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00222"/>00222 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00223"/>00223 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00224"/>00224 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00225"/>00225 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00237"/>00237 <link linkend="_class_d_i_o_s_t_r_e_a_m">DIOSTREAM</link>*&#32;DIOLINUXFACTORY::CreateStreamIO(<link linkend="_class_d_i_o_s_t_r_e_a_m_c_o_n_f_i_g">DIOSTREAMCONFIG</link>*&#32;config)
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00238"/>00238 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00239"/>00239 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!config)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00240"/>00240 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00241"/>00241 &#32;&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m">DIOSTREAM</link>*&#32;_class=<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00242"/>00242 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00243"/>00243 &#32;&#32;<emphasis role="keywordflow">switch</emphasis>(config-&gt;<link linkend="_group___d_a_t_a_i_o_1ga199966f1cfc19907fa9315f5d589307b">GetType</link>())
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00244"/>00244 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00245"/>00245 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__d_i_o_stream_config_8h_1a65e3d357d3ec64f2da54a8c1e02c9183aac63ea29c43579e3c2927bdf3464dfeb">DIOSTREAMTYPE_UNKNOWN</link>&#32;&#32;&#32;&#32;:&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00246"/>00246 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00247"/>00247 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;DIO_STREAMUART_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00248"/>00248 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__d_i_o_stream_config_8h_1a65e3d357d3ec64f2da54a8c1e02c9183a5c218676e6a35e52f7ded71510ef77a4">DIOSTREAMTYPE_UART</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;_class&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_l_i_n_u_x_s_t_r_e_a_m_u_a_r_t">DIOLINUXSTREAMUART</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00249"/>00249 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00250"/>00250 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00251"/>00251 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;DIO_STREAMUSB_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00252"/>00252 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__d_i_o_stream_config_8h_1a65e3d357d3ec64f2da54a8c1e02c9183a5a6468ff0eef6dbd2d47880ea97329d7">DIOSTREAMTYPE_USB</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;_class&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_l_i_n_u_x_s_t_r_e_a_m_u_s_b">DIOLINUXSTREAMUSB</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00253"/>00253 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00254"/>00254 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00255"/>00255 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;DIO_STREAMICMP_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00256"/>00256 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__d_i_o_stream_config_8h_1a65e3d357d3ec64f2da54a8c1e02c9183abb222a72edb8c596f97a1f482616a8cc">DIOSTREAMTYPE_ICMP</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;_class&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_l_i_n_u_x_s_t_r_e_a_m_i_c_m_p">DIOLINUXSTREAMICMP</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00257"/>00257 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00258"/>00258 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00259"/>00259 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;DIO_STREAMUDP_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00260"/>00260 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__d_i_o_stream_config_8h_1a65e3d357d3ec64f2da54a8c1e02c9183ad593bac3e1c2d7b91ce2cf4b73d6cd38">DIOSTREAMTYPE_UDP</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;_class&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_l_i_n_u_x_s_t_r_e_a_m_u_d_p">DIOLINUXSTREAMUDP</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00261"/>00261 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00262"/>00262 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00263"/>00263 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;DIO_STREAMTCPIP_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00264"/>00264 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__d_i_o_stream_config_8h_1a65e3d357d3ec64f2da54a8c1e02c9183a6f119df6c9eec1594580370e27b485e7">DIOSTREAMTYPE_TCPIP</link>&#32;&#32;&#32;&#32;&#32;&#32;:&#32;_class&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_l_i_n_u_x_s_t_r_e_a_m_t_c_p_i_p">DIOLINUXSTREAMTCPIP</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00265"/>00265 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00266"/>00266 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00267"/>00267 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#if&#32;(defined(DIO_STREAMBLUETOOTH_ACTIVE)&#32;||&#32;defined(DIO_STREAMBLUETOOTHLE_ACTIVE))</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00268"/>00268 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__d_i_o_stream_config_8h_1a65e3d357d3ec64f2da54a8c1e02c9183a780cbf943e1fcfff226f20ef4c562b5e">DIOSTREAMTYPE_BLUETOOTH</link>&#32;&#32;:&#32;_class&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_l_i_n_u_x_s_t_r_e_a_m_b_l_u_e_t_o_o_t_h">DIOLINUXSTREAMBLUETOOTH</link>();&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00269"/>00269 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00270"/>00270 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00271"/>00271 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;DIO_STREAMSPI_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00272"/>00272 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__d_i_o_stream_config_8h_1a65e3d357d3ec64f2da54a8c1e02c9183a6134d3c83ac6940fa06e0f64a907bb27">DIOSTREAMTYPE_SPI</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;_class&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_l_i_n_u_x_s_t_r_e_a_m_s_p_i">DIOLINUXSTREAMSPI</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00273"/>00273 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00274"/>00274 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00275"/>00275 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;DIO_STREAMI2C_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00276"/>00276 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__d_i_o_stream_config_8h_1a65e3d357d3ec64f2da54a8c1e02c9183a3ce0b6db1546499eb26b4b6a2ad30cb5">DIOSTREAMTYPE_I2C</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;_class&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_l_i_n_u_x_s_t_r_e_a_m_i2_c">DIOLINUXSTREAMI2C</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00277"/>00277 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00278"/>00278 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;default&#32;&#32;&#32;:&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00279"/>00279 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00280"/>00280 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00281"/>00281 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(_class)
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00282"/>00282 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00283"/>00283 &#32;&#32;&#32;&#32;&#32;&#32;_class-&gt;<link linkend="_group___d_a_t_a_i_o_1gaf2f4b45f7481a3413f55c4e0af20c067">SetType</link>&#32;&#32;&#32;(config-&gt;<link linkend="_group___d_a_t_a_i_o_1ga199966f1cfc19907fa9315f5d589307b">GetType</link>());
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00284"/>00284 &#32;&#32;&#32;&#32;&#32;&#32;_class-&gt;<link linkend="_class_d_i_o_s_t_r_e_a_m_1ac35f65a6ffa5ed428af5a32f60017b3f">SetConfig</link>&#32;(config);
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00285"/>00285 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00286"/>00286 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00287"/>00287 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&#32;_class;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00288"/>00288 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00289"/>00289 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00290"/>00290 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00302"/>00302 <emphasis role="keywordtype">bool</emphasis>&#32;DIOLINUXFACTORY::DeleteStreamIO(<link linkend="_class_d_i_o_s_t_r_e_a_m">DIOSTREAM</link>*&#32;diostream)
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00303"/>00303 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00304"/>00304 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!diostream)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00305"/>00305 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00306"/>00306 &#32;&#32;<emphasis role="keyword">delete</emphasis>(diostream);
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00307"/>00307 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00308"/>00308 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00309"/>00309 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00310"/>00310 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00311"/>00311 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00312"/>00312 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00313"/>00313 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00314"/>00314 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00315"/>00315 <emphasis role="preprocessor">#ifdef&#32;DIO_WIFIMANAGERMODE_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00316"/>00316 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00317"/>00317 <link linkend="__x_factory_macros_8h_1a6def18b38ffab6fb52746f4f6de08384">CREATEFUNC</link>(<link linkend="_class_d_i_o_l_i_n_u_x_f_a_c_t_o_r_y">DIOLINUXFACTORY</link>,&#32;<link linkend="_class_d_i_o_w_i_f_i_m_a_n_a_g_e_r_m_o_d_e">DIOWIFIMANAGERMODE</link>&#32;&#32;,&#32;<link linkend="_class_d_i_o_l_i_n_u_x_w_i_f_i_m_a_n_a_g_e_r_m_o_d_e">DIOLINUXWIFIMANAGERMODE</link>&#32;&#32;&#32;&#32;,&#32;CreateWifiManagerMode)
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00318"/>00318 <link linkend="__x_factory_macros_8h_1a0ebafd1585be0b82957568b9931469dc">DELETEFUNC</link>(<link linkend="_class_d_i_o_l_i_n_u_x_f_a_c_t_o_r_y">DIOLINUXFACTORY</link>,&#32;<link linkend="_class_d_i_o_w_i_f_i_m_a_n_a_g_e_r_m_o_d_e">DIOWIFIMANAGERMODE</link>&#32;&#32;,&#32;<link linkend="_class_d_i_o_l_i_n_u_x_w_i_f_i_m_a_n_a_g_e_r_m_o_d_e">DIOLINUXWIFIMANAGERMODE</link>&#32;&#32;&#32;&#32;,&#32;DeleteWifiManagerMode)
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00319"/>00319 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00320"/>00320 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00321"/>00321 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00322"/>00322 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00323"/>00323 <emphasis role="preprocessor">#ifdef&#32;DIO_PCAP_ACTIVE</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00324"/>00324 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00325"/>00325 <link linkend="__x_factory_macros_8h_1a6def18b38ffab6fb52746f4f6de08384">CREATEFUNC</link>(<link linkend="_class_d_i_o_l_i_n_u_x_f_a_c_t_o_r_y">DIOLINUXFACTORY</link>,&#32;<link linkend="_class_d_i_o_p_c_a_p">DIOPCAP</link>&#32;&#32;&#32;,&#32;<link linkend="_class_d_i_o_l_i_n_u_x_p_c_a_p">DIOLINUXPCAP</link>&#32;&#32;&#32;&#32;,&#32;CreatePCap)
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00326"/>00326 <link linkend="__x_factory_macros_8h_1a0ebafd1585be0b82957568b9931469dc">DELETEFUNC</link>(<link linkend="_class_d_i_o_l_i_n_u_x_f_a_c_t_o_r_y">DIOLINUXFACTORY</link>,&#32;<link linkend="_class_d_i_o_p_c_a_p">DIOPCAP</link>&#32;&#32;&#32;,&#32;<link linkend="_class_d_i_o_l_i_n_u_x_p_c_a_p">DIOLINUXPCAP</link>&#32;&#32;&#32;&#32;,&#32;DeletePCap)
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00327"/>00327 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00328"/>00328 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00329"/>00329 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00330"/>00330 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00331"/>00331 <emphasis role="preprocessor">#ifdef&#32;DIO_LEDNEOPIXELWS2812B_ACTIVE&#32;</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00332"/>00332 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00342"/>00342 <link linkend="_class_d_i_o_l_e_d_n_e_o_p_i_x_e_l_w_s2812_b">DIOLEDNEOPIXELWS2812B</link>*&#32;DIOLINUXFACTORY::CreateLedNeopixelWS2812B()
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00343"/>00343 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00344"/>00344 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;HW_RASPBERRYPI</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00345"/>00345 &#32;&#32;<link linkend="_class_d_i_o_l_i_n_u_x_l_e_d_n_e_o_p_i_x_e_l_w_s2812_b_r_a_s_p_b_e_r_r_y_p_i">DIOLINUXLEDNEOPIXELWS2812BRASPBERRYPI</link>*&#32;ledneopixelws2812b&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_l_i_n_u_x_l_e_d_n_e_o_p_i_x_e_l_w_s2812_b_r_a_s_p_b_e_r_r_y_p_i">DIOLINUXLEDNEOPIXELWS2812BRASPBERRYPI</link>();
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00346"/>00346 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ledneopixelws2812b;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00347"/>00347 <emphasis role="preprocessor">&#32;&#32;#else</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00348"/>00348 &#32;&#32;<link linkend="_class_d_i_o_l_e_d_n_e_o_p_i_x_e_l_w_s2812_b">DIOLEDNEOPIXELWS2812B</link>*&#32;ledneopixelws2812b&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_l_e_d_n_e_o_p_i_x_e_l_w_s2812_b">DIOLEDNEOPIXELWS2812B</link>();
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00349"/>00349 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ledneopixelws2812b;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00350"/>00350 <emphasis role="preprocessor">&#32;&#32;#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00351"/>00351 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00352"/>00352 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00353"/>00353 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00365"/>00365 <emphasis role="keywordtype">bool</emphasis>&#32;DIOLINUXFACTORY::DeleteLedNeopixelWS2812B(<link linkend="_class_d_i_o_l_e_d_n_e_o_p_i_x_e_l_w_s2812_b">DIOLEDNEOPIXELWS2812B</link>*&#32;ledneopixelws2812b)
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00366"/>00366 {
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00367"/>00367 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!ledneopixelws2812b)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00368"/>00368 &#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00369"/>00369 &#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;ledneopixelws2812b;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00370"/>00370 &#32;&#32;ledneopixelws2812b&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00371"/>00371 &#32;&#32;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00372"/>00372 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00373"/>00373 }
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00374"/>00374 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00375"/>00375 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00376"/>00376 <emphasis role="preprocessor">#endif</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00377"/>00377 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00378"/>00378 
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00379"/>00379 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_l_i_n_u_x_factory_8cpp_source_1l00380"/>00380 
+</programlisting></section>

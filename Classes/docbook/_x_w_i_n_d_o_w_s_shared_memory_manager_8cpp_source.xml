@@ -1,0 +1,194 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source" xml:lang="en-US">
+<title>XWINDOWSSharedMemoryManager.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/Platforms/Windows/XWINDOWSSharedMemoryManager.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_w_i_n_d_o_w_s_shared_memory_manager_8h">XWINDOWSSharedMemoryManager.h</link>&quot;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&lt;windows.h&gt;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&lt;sddl.h&gt;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00044"/>00044 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&lt;stdlib.h&gt;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&lt;string.h&gt;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00048"/>00048 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00049"/>00049 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_trace_8h">XTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00050"/>00050 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00052"/>00052 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00053"/>00053 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00054"/>00054 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00055"/>00055 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00056"/>00056 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00057"/>00057 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00058"/>00058 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00059"/>00059 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00061"/>00061 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00062"/>00062 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00063"/>00063 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00064"/>00064 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00065"/>00065 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00073"/><link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1gafd5424faad61dccb6864376b1de83552">00073</link> <link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1gafd5424faad61dccb6864376b1de83552">XWINDOWSSHAREDMEMORYMANAGER::XWINDOWSSHAREDMEMORYMANAGER</link>()
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00074"/>00074 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00075"/>00075 &#32;&#32;Clean();
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00076"/>00076 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00077"/>00077 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00078"/>00078 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00087"/><link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1ga0786055e09a6ed574d8899d824d0349c">00087</link> <link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1ga0786055e09a6ed574d8899d824d0349c">XWINDOWSSHAREDMEMORYMANAGER::~XWINDOWSSHAREDMEMORYMANAGER</link>()
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00088"/>00088 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00089"/>00089 &#32;&#32;Clean();
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00090"/>00090 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00091"/>00091 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00092"/>00092 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00106"/><link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1ga2cd20514442d172d44df04a156b7e489">00106</link> <link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;<link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1ga2cd20514442d172d44df04a156b7e489">XWINDOWSSHAREDMEMORYMANAGER::Create</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;ID,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;size,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;ispublic)
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00107"/>00107 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00108"/>00108 &#32;&#32;<emphasis role="comment">//&#32;Allocate&#32;shared&#32;memory&#32;from&#32;the&#32;system&#32;by&#32;creating&#32;a&#32;shared&#32;memory</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00109"/>00109 &#32;&#32;<emphasis role="comment">//&#32;pool&#32;basing&#32;it&#32;out&#32;of&#32;the&#32;system&#32;paging&#32;(swapper)&#32;file.</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00110"/>00110 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00111"/>00111 &#32;&#32;this-&gt;ID&#32;&#32;&#32;=&#32;<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a93a1dcca53372624771246470103af51">ID</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00112"/>00112 &#32;&#32;this-&gt;size&#32;=&#32;(<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a1fdbd1105889101acb8af92a36bb9127">size</link>&#32;+&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>));
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00113"/>00113 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00114"/>00114 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(ispublic)
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00115"/>00115 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;SECURITY_ATTRIBUTES&#32;&#32;attributes;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">wchar_t</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sdd[71]&#32;=&#32;L<emphasis role="stringliteral">&quot;D:&quot;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00118"/>00118 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;L<emphasis role="stringliteral">&quot;(D;OICI;GA;;;BG)&quot;</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Deny&#32;guests</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;L<emphasis role="stringliteral">&quot;(D;OICI;GA;;;AN)&quot;</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Deny&#32;anonymous</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;L<emphasis role="stringliteral">&quot;(A;OICI;GRGWGX;;;AU)&quot;</emphasis>&#32;&#32;<emphasis role="comment">//&#32;Allow&#32;read,&#32;write&#32;and&#32;execute&#32;for&#32;Users</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00121"/>00121 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;L<emphasis role="stringliteral">&quot;(A;OICI;GA;;;BA)&quot;</emphasis>;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Allow&#32;all&#32;for&#32;Administrators</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00122"/>00122 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00123"/>00123 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;ZeroMemory(&amp;attributes,&#32;<emphasis role="keyword">sizeof</emphasis>(attributes));
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00125"/>00125 &#32;&#32;&#32;&#32;&#32;&#32;attributes.nLength&#32;=&#32;<emphasis role="keyword">sizeof</emphasis>(attributes);
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00126"/>00126 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(ConvertStringSecurityDescriptorToSecurityDescriptor(sdd,&#32;SDDL_REVISION_1,&#32;&amp;attributes.lpSecurityDescriptor,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>)&#32;!=&#32;<link linkend="__x_s_t_m32___h_a_l_8h_1aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00128"/>00128 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00129"/>00129 &#32;&#32;&#32;&#32;&#32;&#32;handlefile&#32;=&#32;CreateFileMapping((HANDLE)<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&amp;attributes,
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;PAGE_READWRITE,
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00132"/>00132 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0,
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00133"/>00133 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this-&gt;size,
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00134"/>00134 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a93a1dcca53372624771246470103af51">ID</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00135"/>00135 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;LocalFree(attributes.lpSecurityDescriptor);
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00137"/>00137 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00138"/>00138 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00139"/>00139 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00140"/>00140 &#32;&#32;&#32;&#32;&#32;&#32;handlefile&#32;=&#32;CreateFileMapping((HANDLE)<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00141"/>00141 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;PAGE_READWRITE,
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;0,
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this-&gt;size,
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00145"/>00145 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a93a1dcca53372624771246470103af51">ID</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00146"/>00146 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00147"/>00147 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00148"/>00148 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!handlefile)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00149"/>00149 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00150"/>00150 &#32;&#32;<emphasis role="comment">//&#32;Map&#32;the&#32;file&#32;to&#32;this&#32;process&apos;&#32;address&#32;space,&#32;starting&#32;at&#32;an&#32;address</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00151"/>00151 &#32;&#32;<emphasis role="comment">//&#32;that&#32;should&#32;also&#32;be&#32;available&#32;in&#32;child&#32;processe(s)</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00152"/>00152 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00153"/>00153 &#32;&#32;<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a1505d5af787c9a9ed04d084e72750ec6">base</link>&#32;=&#32;(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)MapViewOfFileEx(handlefile,&#32;FILE_MAP_WRITE,&#32;0,&#32;0,&#32;0,&#32;0);
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00154"/>00154 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a1505d5af787c9a9ed04d084e72750ec6">base</link>)
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00155"/>00155 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00156"/>00156 &#32;&#32;&#32;&#32;&#32;&#32;memcpy((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a1505d5af787c9a9ed04d084e72750ec6">base</link>,&#32;(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;this-&gt;size,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>));
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00157"/>00157 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00158"/>00158 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//XTRACE_PRINTCOLOR(XTRACE_COLOR_PURPLE,&#32;__L(&quot;[WINDOWS&#32;Shared&#32;Mem]&#32;&#32;Create&#32;Size&#32;[%d]&quot;),&#32;this-&gt;size);</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00159"/>00159 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00160"/>00160 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a497436e23bc4e037e545c08a5ebed33d">pointer</link>&#32;&#32;=&#32;<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a1505d5af787c9a9ed04d084e72750ec6">base</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00161"/>00161 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a497436e23bc4e037e545c08a5ebed33d">pointer</link>&#32;+=&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00162"/>00162 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00163"/>00163 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00164"/>00164 &#32;&#32;<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1ad71827748ce7202a1a6e300a90c03976">isserver</link>&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00165"/>00165 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00166"/>00166 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a497436e23bc4e037e545c08a5ebed33d">pointer</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00167"/>00167 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00168"/>00168 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00169"/>00169 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00170"/>00170 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00183"/><link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1gaec57ccedc2f0826e3aebbb242b724c12">00183</link> <link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;<link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1gaec57ccedc2f0826e3aebbb242b724c12">XWINDOWSSHAREDMEMORYMANAGER::Open</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;ID,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;&#32;size)
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00184"/>00184 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00185"/>00185 &#32;&#32;<emphasis role="comment">//&#32;Open&#32;the&#32;shared&#32;memory&#32;file&#32;by&#32;name.&#32;&#32;The&#32;file&#32;is&#32;based&#32;on&#32;the</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00186"/>00186 &#32;&#32;<emphasis role="comment">//&#32;system&#32;paging&#32;(swapper)&#32;file.</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00187"/>00187 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00188"/>00188 &#32;&#32;this-&gt;ID&#32;&#32;&#32;=&#32;<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a93a1dcca53372624771246470103af51">ID</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00189"/>00189 &#32;&#32;this-&gt;size&#32;=&#32;0;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00190"/>00190 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00191"/>00191 &#32;&#32;<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a1fdbd1105889101acb8af92a36bb9127">size</link>&#32;=&#32;0;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00192"/>00192 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00193"/>00193 &#32;&#32;handlefile&#32;&#32;=&#32;OpenFileMapping(FILE_MAP_WRITE,&#32;<link linkend="__x_s_t_m32___h_a_l_8h_1aa93f0eb578d23995850d61f7d61c55c1">FALSE</link>,&#32;<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a93a1dcca53372624771246470103af51">ID</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00194"/>00194 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!handlefile)
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00195"/>00195 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00196"/>00196 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//DWORD&#32;error&#32;=&#32;GetLastError();</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00197"/>00197 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00198"/>00198 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00199"/>00199 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00200"/>00200 &#32;&#32;<emphasis role="comment">//&#32;Figure&#32;out&#32;where&#32;to&#32;map&#32;this&#32;file&#32;by&#32;looking&#32;at&#32;the&#32;address&#32;in&#32;the</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00201"/>00201 &#32;&#32;<emphasis role="comment">//&#32;shared&#32;memory&#32;where&#32;the&#32;memory&#32;was&#32;mapped&#32;in&#32;the&#32;parent&#32;process.</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00202"/>00202 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00203"/>00203 &#32;&#32;<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a1505d5af787c9a9ed04d084e72750ec6">base</link>&#32;=&#32;(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)MapViewOfFile(handlefile,&#32;FILE_MAP_WRITE,&#32;0,&#32;0,&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>));
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00204"/>00204 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a1505d5af787c9a9ed04d084e72750ec6">base</link>)
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00205"/>00205 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00206"/>00206 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00207"/>00207 &#32;&#32;&#32;&#32;&#32;&#32;&#32;memcpy((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;this-&gt;size,&#32;<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a1505d5af787c9a9ed04d084e72750ec6">base</link>,<emphasis role="keyword">sizeof</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>));
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00208"/>00208 &#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00209"/>00209 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//XTRACE_PRINTCOLOR(XTRACE_COLOR_PURPLE,&#32;__L(&quot;[WINDOWS&#32;Shared&#32;Mem]&#32;&#32;Open&#32;Size&#32;[%d]&quot;),&#32;this-&gt;size);</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00210"/>00210 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00211"/>00211 &#32;&#32;&#32;&#32;&#32;&#32;&#32;UnmapViewOfFile(<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a1505d5af787c9a9ed04d084e72750ec6">base</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00212"/>00212 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00213"/>00213 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a1505d5af787c9a9ed04d084e72750ec6">base</link>&#32;=&#32;(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)MapViewOfFile(handlefile,&#32;FILE_MAP_WRITE,&#32;0,&#32;0,&#32;this-&gt;size);
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00214"/>00214 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a1505d5af787c9a9ed04d084e72750ec6">base</link>)
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00215"/>00215 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00216"/>00216 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this-&gt;size&#32;-=&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00217"/>00217 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a1fdbd1105889101acb8af92a36bb9127">size</link>&#32;=&#32;this-&gt;<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a1fdbd1105889101acb8af92a36bb9127">size</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00218"/>00218 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00219"/>00219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//XTRACE_PRINTCOLOR(XTRACE_COLOR_PURPLE,&#32;__L(&quot;[WINDOWS&#32;Shared&#32;Mem]&#32;&#32;Open&#32;Size&#32;[%d]&quot;),&#32;this-&gt;size);</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00220"/>00220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00221"/>00221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a497436e23bc4e037e545c08a5ebed33d">pointer</link>&#32;&#32;=&#32;<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a1505d5af787c9a9ed04d084e72750ec6">base</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00222"/>00222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a497436e23bc4e037e545c08a5ebed33d">pointer</link>&#32;+=&#32;<emphasis role="keyword">sizeof</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00223"/>00223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00224"/>00224 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00225"/>00225 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00226"/>00226 &#32;&#32;<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1ad71827748ce7202a1a6e300a90c03976">isserver</link>&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00227"/>00227 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00228"/>00228 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a497436e23bc4e037e545c08a5ebed33d">pointer</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00229"/>00229 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00230"/>00230 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00231"/>00231 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00241"/><link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1gafbaa230d5f2016265bda9aef43e47ba7">00241</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1gafbaa230d5f2016265bda9aef43e47ba7">XWINDOWSSHAREDMEMORYMANAGER::Close</link>()
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00242"/>00242 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00243"/>00243 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a1505d5af787c9a9ed04d084e72750ec6">base</link>)&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00244"/>00244 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a497436e23bc4e037e545c08a5ebed33d">pointer</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00245"/>00245 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00246"/>00246 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1ad71827748ce7202a1a6e300a90c03976">isserver</link>)&#32;UnmapViewOfFile(<link linkend="_class_x_s_h_a_r_e_d_m_e_m_o_r_y_m_a_n_a_g_e_r_1a1505d5af787c9a9ed04d084e72750ec6">base</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00247"/>00247 &#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00248"/>00248 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(handlefile)&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00249"/>00249 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00250"/>00250 &#32;&#32;&#32;&#32;&#32;&#32;CloseHandle(handlefile);
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00251"/>00251 &#32;&#32;&#32;&#32;&#32;&#32;handlefile&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00252"/>00252 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00253"/>00253 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00254"/>00254 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00255"/>00255 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00256"/>00256 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00257"/>00257 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00266"/>00266 <emphasis role="keywordtype">void</emphasis>&#32;XWINDOWSSHAREDMEMORYMANAGER::Clean()
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00267"/>00267 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00268"/>00268 &#32;&#32;handlefile&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00269"/>00269 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00270"/>00270 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00271"/>00271 
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00272"/>00272 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_shared_memory_manager_8cpp_source_1l00273"/>00273 
+</programlisting></section>

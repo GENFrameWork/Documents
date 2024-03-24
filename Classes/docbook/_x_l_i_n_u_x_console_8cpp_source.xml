@@ -1,0 +1,215 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_l_i_n_u_x_console_8cpp_source" xml:lang="en-US">
+<title>XLINUXConsole.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/Platforms/Linux/XLINUXConsole.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_l_i_n_u_x_console_8h">XLINUXConsole.h</link>&quot;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&lt;stdlib.h&gt;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&lt;termios.h&gt;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&lt;unistd.h&gt;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&lt;fcntl.h&gt;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&lt;sys/ioctl.h&gt;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00048"/>00048 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00049"/>00049 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_trace_8h">XTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00050"/>00050 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00052"/>00052 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00053"/>00053 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00054"/>00054 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00055"/>00055 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00056"/>00056 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00057"/>00057 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00058"/>00058 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00059"/>00059 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00061"/>00061 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00062"/>00062 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00063"/>00063 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00064"/>00064 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00065"/>00065 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00073"/><link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga6f425b488522098a1d14f7ea936ab914">00073</link> <link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga6f425b488522098a1d14f7ea936ab914">XLINUXCONSOLE::XLINUXCONSOLE</link>():&#32;<link linkend="_class_x_c_o_n_s_o_l_e">XCONSOLE</link>()
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00074"/>00074 {
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00075"/>00075 &#32;&#32;RawModeEnable();
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00076"/>00076 }
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00077"/>00077 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00078"/>00078 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00087"/><link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga78edad9c3549865cd89392ff0f43c5e7">00087</link> <link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga78edad9c3549865cd89392ff0f43c5e7">XLINUXCONSOLE::~XLINUXCONSOLE</link>()
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00088"/>00088 {
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00089"/>00089 &#32;&#32;RawModeDisable();
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00090"/>00090 }
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00091"/>00091 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00092"/>00092 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00105"/><link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga83676dd5366e04c99db4fa7c241592f1">00105</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga83676dd5366e04c99db4fa7c241592f1">XLINUXCONSOLE::GetSizeText</link>(<emphasis role="keywordtype">int</emphasis>&amp;&#32;columns,&#32;<emphasis role="keywordtype">int</emphasis>&amp;&#32;rows)
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00106"/>00106 {
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00107"/>00107 &#32;&#32;<emphasis role="keyword">struct&#32;</emphasis>winsize&#32;console_size;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00108"/>00108 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00109"/>00109 &#32;&#32;<emphasis role="comment">//ioctl(0,&#32;TIOCGWINSZ,&#32;&amp;console_size);</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00110"/>00110 &#32;&#32;ioctl(STDOUT_FILENO,&#32;TIOCGWINSZ,&#32;&amp;console_size);
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00111"/>00111 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00112"/>00112 &#32;&#32;columns&#32;=&#32;console_size.ws_col;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00113"/>00113 &#32;&#32;rows&#32;&#32;&#32;&#32;=&#32;console_size.ws_row;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00114"/>00114 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00115"/>00115 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00116"/>00116 }
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00117"/>00117 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00118"/>00118 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00128"/><link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga778d7e2c1e79ecf365eaab85f03526d3">00128</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga778d7e2c1e79ecf365eaab85f03526d3">XLINUXCONSOLE::Maximize</link>()
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00129"/>00129 {
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00130"/>00130 &#32;&#32;setvbuf(stdout,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,_IONBF,0);
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00131"/>00131 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00132"/>00132 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00133"/>00133 }
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00134"/>00134 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00135"/>00135 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00145"/><link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga78890f294385c9ca29c2971828f348c4">00145</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga78890f294385c9ca29c2971828f348c4">XLINUXCONSOLE::Minimize</link>()
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00146"/>00146 {
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00147"/>00147 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00148"/>00148 }
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00149"/>00149 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00150"/>00150 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00160"/><link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1gad3b35c9d2e00fa4c6eb113fdf0e352d3">00160</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1gad3b35c9d2e00fa4c6eb113fdf0e352d3">XLINUXCONSOLE::Hide</link>()
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00161"/>00161 {
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00162"/>00162 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00163"/>00163 }
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00164"/>00164 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00165"/>00165 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00175"/><link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga164d913522c34e093b529ddd7d98433f">00175</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga164d913522c34e093b529ddd7d98433f">XLINUXCONSOLE::IsHide</link>()
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00176"/>00176 {
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00177"/>00177 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00178"/>00178 }
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00179"/>00179 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00180"/>00180 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00192"/><link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga2f5521b1e5646874341ca4dfe27e32ff">00192</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga2f5521b1e5646874341ca4dfe27e32ff">XLINUXCONSOLE::Print</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;<emphasis role="keywordtype">string</emphasis>)
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00193"/>00193 {
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00194"/>00194 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<emphasis role="keywordtype">string</emphasis>)&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00195"/>00195 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<emphasis role="keywordtype">string</emphasis>[0])&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00196"/>00196 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00197"/>00197 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;_string;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00198"/>00198 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00199"/>00199 &#32;&#32;_string&#32;=&#32;string;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00200"/>00200 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00201"/>00201 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;charstr;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00202"/>00202 &#32;&#32;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00203"/>00203 &#32;&#32;_string.<link linkend="_group___x_u_t_i_l_s_1gacdbd12d83c920cfa06ac0ac1770adc29">ConvertToASCII</link>(charstr);&#32;&#32;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00204"/>00204 &#32;&#32;printf(charstr.<link linkend="_group___x_u_t_i_l_s_1ga66e2dbd897e717ce38e395d6ad87b754">GetPtrChar</link>());
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00205"/>00205 &#32;&#32;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00206"/>00206 &#32;&#32;fflush(stdout);
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00207"/>00207 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00208"/>00208 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00209"/>00209 }
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00210"/>00210 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00211"/>00211 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00223"/><link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga1f004321d26392c03795d4d83b074715">00223</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga1f004321d26392c03795d4d83b074715">XLINUXCONSOLE::Clear</link>(<emphasis role="keywordtype">bool</emphasis>&#32;fill)
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00224"/>00224 {
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00225"/>00225 &#32;&#32;printf(<emphasis role="stringliteral">&quot;\033[2J&quot;</emphasis>);
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00226"/>00226 &#32;&#32;printf(<emphasis role="stringliteral">&quot;\033[H&quot;</emphasis>);
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00227"/>00227 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00228"/>00228 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00229"/>00229 &#32;&#32;<emphasis role="comment">//printf(&quot;\033[2J\033[H&quot;);&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00230"/>00230 &#32;&#32;<emphasis role="comment">//printf(&quot;\e[3J&quot;);</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00231"/>00231 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00232"/>00232 &#32;&#32;<emphasis role="comment">//printf(&quot;\033c&quot;);&#32;&#32;&#32;&#32;//&#32;KDE</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00233"/>00233 &#32;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00234"/>00234 &#32;&#32;<emphasis role="comment">//system(&quot;clear&quot;);</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00235"/>00235 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00236"/>00236 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00237"/>00237 }
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00238"/>00238 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00239"/>00239 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00249"/><link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga469d278826a10068b227bd8e17f227d9">00249</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1ga469d278826a10068b227bd8e17f227d9">XLINUXCONSOLE::KBHit</link>(<emphasis role="keywordtype">void</emphasis>)
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00250"/>00250 {
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00251"/>00251 &#32;&#32;<emphasis role="comment">/*</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00252"/>00252 <emphasis role="comment">&#32;&#32;struct&#32;termios&#32;oldt;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00253"/>00253 <emphasis role="comment">&#32;&#32;struct&#32;termios&#32;newt;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00254"/>00254 <emphasis role="comment">&#32;&#32;int&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ch;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00255"/>00255 <emphasis role="comment">&#32;&#32;int&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;oldf;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00256"/>00256 <emphasis role="comment"></emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00257"/>00257 <emphasis role="comment">&#32;&#32;tcgetattr(STDIN_FILENO,&#32;&amp;oldt);</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00258"/>00258 <emphasis role="comment"></emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00259"/>00259 <emphasis role="comment">&#32;&#32;newt&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;oldt;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00260"/>00260 <emphasis role="comment">&#32;&#32;newt.c_lflag&#32;&amp;=&#32;~(ICANON&#32;|&#32;ECHO);</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00261"/>00261 <emphasis role="comment"></emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00262"/>00262 <emphasis role="comment">&#32;&#32;tcsetattr(STDIN_FILENO,&#32;TCSANOW,&#32;&amp;newt);</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00263"/>00263 <emphasis role="comment"></emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00264"/>00264 <emphasis role="comment">&#32;&#32;oldf&#32;=&#32;fcntl(STDIN_FILENO,&#32;F_GETFL,&#32;0);</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00265"/>00265 <emphasis role="comment"></emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00266"/>00266 <emphasis role="comment">&#32;&#32;fcntl(STDIN_FILENO,&#32;F_SETFL,&#32;oldf&#32;|&#32;O_NONBLOCK);</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00267"/>00267 <emphasis role="comment"></emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00268"/>00268 <emphasis role="comment">&#32;&#32;ch&#32;=&#32;getchar();</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00269"/>00269 <emphasis role="comment"></emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00270"/>00270 <emphasis role="comment">&#32;&#32;tcsetattr(STDIN_FILENO,&#32;TCSANOW,&#32;&amp;oldt);</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00271"/>00271 <emphasis role="comment">&#32;&#32;fcntl(STDIN_FILENO,&#32;F_SETFL,&#32;oldf);</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00272"/>00272 <emphasis role="comment"></emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00273"/>00273 <emphasis role="comment">&#32;&#32;if(ch&#32;!=&#32;EOF)</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00274"/>00274 <emphasis role="comment">&#32;&#32;&#32;&#32;{</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00275"/>00275 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;ungetc(ch,&#32;stdin);</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00276"/>00276 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;return&#32;true;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00277"/>00277 <emphasis role="comment">&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00278"/>00278 <emphasis role="comment"></emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00279"/>00279 <emphasis role="comment">&#32;&#32;return&#32;false;</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00280"/>00280 <emphasis role="comment">&#32;&#32;*/</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00281"/>00281 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00282"/>00282 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;byteswaiting;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00283"/>00283 &#32;&#32;ioctl(0,&#32;FIONREAD,&#32;&amp;byteswaiting);
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00284"/>00284 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00285"/>00285 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;byteswaiting&#32;&gt;&#32;0;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00286"/>00286 }
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00287"/>00287 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00288"/>00288 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00298"/><link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1gadcab8649400683c51bfaf53587fc047b">00298</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_group___p_l_a_t_f_o_r_m___l_i_n_u_x_1gadcab8649400683c51bfaf53587fc047b">XLINUXCONSOLE::GetChar</link>()
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00299"/>00299 {
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00300"/>00300 &#32;&#32;<emphasis role="keyword">struct&#32;</emphasis>termios&#32;oldt,&#32;newt;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00301"/>00301 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;ch;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00302"/>00302 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00303"/>00303 &#32;&#32;tcgetattr(&#32;STDIN_FILENO,&#32;&amp;oldt&#32;);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Obtenemos&#32;atributos&#32;del&#32;terminal&#32;*/</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00304"/>00304 &#32;&#32;newt&#32;=&#32;oldt;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00305"/>00305 &#32;&#32;newt.c_lflag&#32;&amp;=&#32;~ICANON;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00306"/>00306 &#32;&#32;newt.c_lflag&#32;&amp;=&#32;~ECHO;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Eliminamos&#32;el&#32;Echo&#32;*/</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00307"/>00307 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00308"/>00308 &#32;&#32;tcsetattr(&#32;STDIN_FILENO,&#32;TCSANOW,&#32;&amp;newt&#32;);&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Definimos&#32;los&#32;nuevos&#32;atributos&#32;al&#32;terminal&#32;*/</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00309"/>00309 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00310"/>00310 &#32;&#32;ch&#32;=&#32;getchar();
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00311"/>00311 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00312"/>00312 &#32;&#32;tcsetattr(&#32;STDIN_FILENO,&#32;TCSANOW,&#32;&amp;oldt&#32;);&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">/*&#32;Ponemos&#32;los&#32;atributos&#32;como&#32;estaban&#32;al&#32;principio&#32;*/</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00313"/>00313 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00314"/>00314 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ch;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00315"/>00315 }
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00316"/>00316 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00317"/>00317 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00325"/>00325 <emphasis role="keywordtype">void</emphasis>&#32;XLINUXCONSOLE::RawModeEnable()
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00326"/>00326 {
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00327"/>00327 &#32;&#32;termios&#32;term;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00328"/>00328 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00329"/>00329 &#32;&#32;tcgetattr(0,&#32;&amp;term);
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00330"/>00330 &#32;&#32;term.c_lflag&#32;&amp;=&#32;~(ICANON&#32;|&#32;ECHO);&#32;<emphasis role="comment">//&#32;Disable&#32;echo&#32;as&#32;well</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00331"/>00331 &#32;&#32;tcsetattr(0,&#32;TCSANOW,&#32;&amp;term);
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00332"/>00332 }
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00333"/>00333 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00334"/>00334 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00342"/>00342 <emphasis role="keywordtype">void</emphasis>&#32;XLINUXCONSOLE::RawModeDisable()
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00343"/>00343 {
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00344"/>00344 &#32;&#32;termios&#32;term;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00345"/>00345 &#32;&#32;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00346"/>00346 &#32;&#32;tcgetattr(0,&#32;&amp;term);
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00347"/>00347 &#32;&#32;term.c_lflag&#32;|=&#32;ICANON&#32;|&#32;ECHO;
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00348"/>00348 &#32;&#32;tcsetattr(0,&#32;TCSANOW,&#32;&amp;term);
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00349"/>00349 }
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00350"/>00350 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00351"/>00351 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00352"/>00352 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00353"/>00353 
+<anchor xml:id="__x_l_i_n_u_x_console_8cpp_source_1l00354"/>00354 
+</programlisting></section>

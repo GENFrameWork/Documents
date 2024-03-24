@@ -1,0 +1,324 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source" xml:lang="en-US">
+<title>DIOScraperWebGeolocationIP.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/DataIO/ScraperWeb/DIOScraperWebGeolocationIP.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_scraper_web_geolocation_i_p_8h">DIOScraperWebGeolocationIP.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_thread_8h">XThread.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00043"/>00043 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00045"/>00045 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00047"/>00047 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00048"/>00048 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00049"/>00049 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00050"/>00050 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00051"/>00051 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00053"/>00053 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00054"/>00054 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00055"/>00055 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00056"/>00056 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00057"/>00057 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00058"/>00058 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00059"/>00059 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00060"/>00060 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_DIOGEOLOCATIONIP_RESULT</emphasis>
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00061"/>00061 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00062"/>00062 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00070"/><link linkend="_group___d_a_t_a_i_o_1gaef1306caedd5272d65a6ad2913add0ef">00070</link> <link linkend="_group___d_a_t_a_i_o_1gaef1306caedd5272d65a6ad2913add0ef">DIOGEOLOCATIONIP_RESULT::DIOGEOLOCATIONIP_RESULT</link>():&#32;<link linkend="_class_d_i_o_s_c_r_a_p_e_r_w_e_b_c_a_c_h_e___r_e_s_u_l_t">DIOSCRAPERWEBCACHE_RESULT</link>()
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00071"/>00071 {
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00072"/>00072 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00073"/>00073 }
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00074"/>00074 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00075"/>00075 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00084"/><link linkend="_group___d_a_t_a_i_o_1gadd95ddcbc43900a94b0d1430b0de3568">00084</link> <link linkend="_group___d_a_t_a_i_o_1gadd95ddcbc43900a94b0d1430b0de3568">DIOGEOLOCATIONIP_RESULT::~DIOGEOLOCATIONIP_RESULT</link>()
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00085"/>00085 {
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00086"/>00086 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00087"/>00087 }
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00088"/>00088 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00089"/>00089 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00099"/><link linkend="_group___d_a_t_a_i_o_1ga914fe43595986daaf06c03e9d6f45347">00099</link> <link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;<link linkend="_group___d_a_t_a_i_o_1ga914fe43595986daaf06c03e9d6f45347">DIOGEOLOCATIONIP_RESULT::GetCountry</link>()
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00100"/>00100 {
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00101"/>00101 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;country.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00102"/>00102 }
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00103"/>00103 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00104"/>00104 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00114"/><link linkend="_group___d_a_t_a_i_o_1gaa49382edf86f7cdfa4e6519b17752722">00114</link> <link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;<link linkend="_group___d_a_t_a_i_o_1gaa49382edf86f7cdfa4e6519b17752722">DIOGEOLOCATIONIP_RESULT::GetState</link>()
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00115"/>00115 {
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00116"/>00116 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;state.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00117"/>00117 }
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00118"/>00118 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00119"/>00119 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00129"/><link linkend="_group___d_a_t_a_i_o_1ga6a40fed5995ef6811ea4358d80600da0">00129</link> <link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;<link linkend="_group___d_a_t_a_i_o_1ga6a40fed5995ef6811ea4358d80600da0">DIOGEOLOCATIONIP_RESULT::GetCity</link>()
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00130"/>00130 {
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00131"/>00131 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;city.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00132"/>00132 }
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00133"/>00133 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00134"/>00134 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00144"/><link linkend="_group___d_a_t_a_i_o_1ga79441d30a24a1d83436834ad5157f5ec">00144</link> <link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;<link linkend="_group___d_a_t_a_i_o_1ga79441d30a24a1d83436834ad5157f5ec">DIOGEOLOCATIONIP_RESULT::GetISP</link>()
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00145"/>00145 {
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00146"/>00146 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ISP.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00147"/>00147 }
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00148"/>00148 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00149"/>00149 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00159"/><link linkend="_group___d_a_t_a_i_o_1gab1b5be64fdbc9f5af5daf1a6a35eca49">00159</link> <link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;<link linkend="_group___d_a_t_a_i_o_1gab1b5be64fdbc9f5af5daf1a6a35eca49">DIOGEOLOCATIONIP_RESULT::GetOrganization</link>()
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00160"/>00160 {
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00161"/>00161 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;organization.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>();
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00162"/>00162 }
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00163"/>00163 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00164"/>00164 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00174"/><link linkend="_group___d_a_t_a_i_o_1gab881915467b2977ece0f7505e8b9edb9">00174</link> <emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gab881915467b2977ece0f7505e8b9edb9">DIOGEOLOCATIONIP_RESULT::GetLatitude</link>()
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00175"/>00175 {
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00176"/>00176 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;latitude;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00177"/>00177 }
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00178"/>00178 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00179"/>00179 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00189"/><link linkend="_group___d_a_t_a_i_o_1ga4b4ca94a6cbdb69115073d7e4a57af08">00189</link> <emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga4b4ca94a6cbdb69115073d7e4a57af08">DIOGEOLOCATIONIP_RESULT::GetLongitude</link>()
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00190"/>00190 {
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00191"/>00191 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;longitude;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00192"/>00192 }
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00193"/>00193 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00194"/>00194 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00204"/><link linkend="_group___d_a_t_a_i_o_1ga9a4c045170e4fcd10d1aa9e182abb541">00204</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga9a4c045170e4fcd10d1aa9e182abb541">DIOGEOLOCATIONIP_RESULT::IsEmpty</link>()
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00205"/>00205 {
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00206"/>00206 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(country.<link linkend="_group___x_u_t_i_l_s_1gad26690161f8c1e2722771322b7370005">IsEmpty</link>()&#32;||&#32;state.<link linkend="_group___x_u_t_i_l_s_1gad26690161f8c1e2722771322b7370005">IsEmpty</link>()&#32;||&#32;city.<link linkend="_group___x_u_t_i_l_s_1gad26690161f8c1e2722771322b7370005">IsEmpty</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00207"/>00207 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00208"/>00208 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00209"/>00209 }
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00210"/>00210 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00211"/>00211 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00223"/><link linkend="_group___d_a_t_a_i_o_1gaecec1a4a78c2b933337b629082a7ace8">00223</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gaecec1a4a78c2b933337b629082a7ace8">DIOGEOLOCATIONIP_RESULT::CopyFrom</link>(<link linkend="_class_d_i_o_s_c_r_a_p_e_r_w_e_b_c_a_c_h_e___r_e_s_u_l_t">DIOSCRAPERWEBCACHE_RESULT</link>*&#32;result)
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00224"/>00224 {
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00225"/>00225 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!result)&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00226"/>00226 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00227"/>00227 &#32;&#32;<link linkend="_class_d_i_o_g_e_o_l_o_c_a_t_i_o_n_i_p___r_e_s_u_l_t">DIOGEOLOCATIONIP_RESULT</link>*&#32;geolocationIP&#32;=&#32;(<link linkend="_class_d_i_o_g_e_o_l_o_c_a_t_i_o_n_i_p___r_e_s_u_l_t">DIOGEOLOCATIONIP_RESULT</link>*)result;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00228"/>00228 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00229"/>00229 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(geolocationIP-&gt;<link linkend="_group___d_a_t_a_i_o_1ga9a4c045170e4fcd10d1aa9e182abb541">IsEmpty</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00230"/>00230 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00231"/>00231 &#32;&#32;country&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;geolocationIP-&gt;country;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00232"/>00232 &#32;&#32;state&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;geolocationIP-&gt;state;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00233"/>00233 &#32;&#32;city&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;geolocationIP-&gt;city;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00234"/>00234 &#32;&#32;ISP&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;geolocationIP-&gt;ISP;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00235"/>00235 &#32;&#32;organization&#32;&#32;=&#32;geolocationIP-&gt;organization;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00236"/>00236 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00237"/>00237 &#32;&#32;latitude&#32;&#32;&#32;&#32;&#32;&#32;=&#32;geolocationIP-&gt;latitude;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00238"/>00238 &#32;&#32;longitude&#32;&#32;&#32;&#32;&#32;=&#32;geolocationIP-&gt;longitude;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00239"/>00239 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00240"/>00240 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00241"/>00241 }
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00242"/>00242 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00243"/>00243 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00255"/><link linkend="_group___d_a_t_a_i_o_1gaf636b357c68f7abdb7615ca75c803dc5">00255</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gaf636b357c68f7abdb7615ca75c803dc5">DIOGEOLOCATIONIP_RESULT::CopyTo</link>(<link linkend="_class_d_i_o_s_c_r_a_p_e_r_w_e_b_c_a_c_h_e___r_e_s_u_l_t">DIOSCRAPERWEBCACHE_RESULT</link>*&#32;result)
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00256"/>00256 {
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00257"/>00257 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!result)&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00258"/>00258 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_group___d_a_t_a_i_o_1ga9a4c045170e4fcd10d1aa9e182abb541">IsEmpty</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00259"/>00259 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00260"/>00260 &#32;&#32;<link linkend="_class_d_i_o_g_e_o_l_o_c_a_t_i_o_n_i_p___r_e_s_u_l_t">DIOGEOLOCATIONIP_RESULT</link>*&#32;geolocationIP&#32;=&#32;(<link linkend="_class_d_i_o_g_e_o_l_o_c_a_t_i_o_n_i_p___r_e_s_u_l_t">DIOGEOLOCATIONIP_RESULT</link>*)result;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00261"/>00261 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00262"/>00262 &#32;&#32;geolocationIP-&gt;country&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;country;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00263"/>00263 &#32;&#32;geolocationIP-&gt;state&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;state;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00264"/>00264 &#32;&#32;geolocationIP-&gt;city&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;city;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00265"/>00265 &#32;&#32;geolocationIP-&gt;ISP&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;ISP;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00266"/>00266 &#32;&#32;geolocationIP-&gt;organization&#32;&#32;=&#32;organization;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00267"/>00267 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00268"/>00268 &#32;&#32;geolocationIP-&gt;latitude&#32;&#32;&#32;&#32;&#32;&#32;=&#32;latitude;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00269"/>00269 &#32;&#32;geolocationIP-&gt;longitude&#32;&#32;&#32;&#32;&#32;=&#32;longitude;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00270"/>00270 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00271"/>00271 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00272"/>00272 }
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00273"/>00273 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00274"/>00274 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00290"/><link linkend="_group___d_a_t_a_i_o_1ga8351de3f4f071970de91e1274866b4f7">00290</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga8351de3f4f071970de91e1274866b4f7">DIOGEOLOCATIONIP_RESULT::Set</link>(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;country,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;state,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;city,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;ISP,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;organization)
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00291"/>00291 {
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00292"/>00292 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga8351de3f4f071970de91e1274866b4f7">Set</link>(country.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;state.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;city.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;ISP.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;organization.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00293"/>00293 }
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00294"/>00294 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00295"/>00295 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00311"/><link linkend="_group___d_a_t_a_i_o_1gadc47392b527393606b518d81ae69f51d">00311</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga8351de3f4f071970de91e1274866b4f7">DIOGEOLOCATIONIP_RESULT::Set</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;country,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;state,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;city,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;ISP,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;organization)
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00312"/>00312 {
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00313"/>00313 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(country)&#32;&#32;&#32;&#32;&#32;&#32;&#32;this-&gt;country&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;country;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00314"/>00314 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(state)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this-&gt;state&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;state;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00315"/>00315 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(city)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this-&gt;city&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;city;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00316"/>00316 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(ISP)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this-&gt;ISP&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;ISP;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00317"/>00317 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(organization)&#32;&#32;this-&gt;organization&#32;&#32;=&#32;organization;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00318"/>00318 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00319"/>00319 &#32;&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>&#32;character[3]&#32;=&#32;{&#32;0x09,&#32;0x0A,&#32;0x0D&#32;};
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00320"/>00320 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00321"/>00321 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;c=0;c&lt;3;c++)
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00322"/>00322 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00323"/>00323 &#32;&#32;&#32;&#32;&#32;&#32;this-&gt;country.DeleteCharacter(character[c],<link linkend="__x_string_8h_1a5399fd4ffd356751bde3732db3435dfaa86e1ab57b955b09e4c016039ea942e7c">XSTRINGCONTEXT_ALLSTRING</link>);
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00324"/>00324 &#32;&#32;&#32;&#32;&#32;&#32;this-&gt;state.DeleteCharacter(character[c],<link linkend="__x_string_8h_1a5399fd4ffd356751bde3732db3435dfaa86e1ab57b955b09e4c016039ea942e7c">XSTRINGCONTEXT_ALLSTRING</link>);
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00325"/>00325 &#32;&#32;&#32;&#32;&#32;&#32;this-&gt;city.DeleteCharacter(character[c],<link linkend="__x_string_8h_1a5399fd4ffd356751bde3732db3435dfaa86e1ab57b955b09e4c016039ea942e7c">XSTRINGCONTEXT_ALLSTRING</link>);
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00326"/>00326 &#32;&#32;&#32;&#32;&#32;&#32;this-&gt;ISP.DeleteCharacter(character[c],<link linkend="__x_string_8h_1a5399fd4ffd356751bde3732db3435dfaa86e1ab57b955b09e4c016039ea942e7c">XSTRINGCONTEXT_ALLSTRING</link>);
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00327"/>00327 &#32;&#32;&#32;&#32;&#32;&#32;this-&gt;organization.DeleteCharacter(character[c],<link linkend="__x_string_8h_1a5399fd4ffd356751bde3732db3435dfaa86e1ab57b955b09e4c016039ea942e7c">XSTRINGCONTEXT_ALLSTRING</link>);
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00328"/>00328 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00329"/>00329 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00330"/>00330 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00331"/>00331 }
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00332"/>00332 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00333"/>00333 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00346"/><link linkend="_group___d_a_t_a_i_o_1ga77b667f0a45d749284fb3df60639100b">00346</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga8351de3f4f071970de91e1274866b4f7">DIOGEOLOCATIONIP_RESULT::Set</link>(<emphasis role="keywordtype">float</emphasis>&#32;latitude,&#32;<emphasis role="keywordtype">float</emphasis>&#32;longitude)
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00347"/>00347 {
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00348"/>00348 &#32;&#32;this-&gt;latitude&#32;&#32;=&#32;latitude;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00349"/>00349 &#32;&#32;this-&gt;longitude&#32;=&#32;longitude;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00350"/>00350 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00351"/>00351 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00352"/>00352 }
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00353"/>00353 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00354"/>00354 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00363"/>00363 <emphasis role="keywordtype">void</emphasis>&#32;DIOGEOLOCATIONIP_RESULT::Clean()
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00364"/>00364 {
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00365"/>00365 &#32;&#32;latitude&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00366"/>00366 &#32;&#32;longitude&#32;=&#32;0;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00367"/>00367 }
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00368"/>00368 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00369"/>00369 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00370"/>00370 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00371"/>00371 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00372"/>00372 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00373"/>00373 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_DIOSCRAPERWEBGEOLOCATIONIP</emphasis>
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00374"/>00374 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00375"/>00375 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00385"/><link linkend="_group___d_a_t_a_i_o_1gac7f2afa4e8834d8d37442200045b7e36">00385</link> <link linkend="_group___d_a_t_a_i_o_1gac7f2afa4e8834d8d37442200045b7e36">DIOSCRAPERWEBGEOLOCATIONIP::DIOSCRAPERWEBGEOLOCATIONIP</link>(<link linkend="_class_d_i_o_w_e_b_c_l_i_e_n_t">DIOWEBCLIENT</link>*&#32;webclient):&#32;<link linkend="_class_d_i_o_s_c_r_a_p_e_r_w_e_b">DIOSCRAPERWEB</link>()
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00386"/>00386 {
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00387"/>00387 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00388"/>00388 }
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00389"/>00389 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00390"/>00390 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00399"/><link linkend="_group___d_a_t_a_i_o_1ga0b23596123604814432c5056a982252b">00399</link> <link linkend="_group___d_a_t_a_i_o_1ga0b23596123604814432c5056a982252b">DIOSCRAPERWEBGEOLOCATIONIP::~DIOSCRAPERWEBGEOLOCATIONIP</link>()
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00400"/>00400 {
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00401"/>00401 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00402"/>00402 }
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00403"/>00403 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00404"/>00404 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00417"/><link linkend="_group___d_a_t_a_i_o_1gaf4351b1ad6a2d75652b64e6a3f718f4e">00417</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gaf4351b1ad6a2d75652b64e6a3f718f4e">DIOSCRAPERWEBGEOLOCATIONIP::ChangeURL</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;maskurl,&#32;<link linkend="_class_d_i_o_u_r_l">DIOURL</link>&amp;&#32;url)
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00418"/>00418 {
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00419"/>00419 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;IPstring;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00420"/>00420 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00421"/>00421 &#32;&#32;IP.<link linkend="_group___d_a_t_a_i_o_1ga6a266ef4ef9e43473e91acc37a816725">GetXString</link>(IPstring);
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00422"/>00422 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00423"/>00423 &#32;&#32;url.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(maskurl,&#32;IPstring.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00424"/>00424 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00425"/>00425 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00426"/>00426 }
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00427"/>00427 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00428"/>00428 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00444"/><link linkend="_group___d_a_t_a_i_o_1ga0800bcb3a90630cc14322b603a279de3">00444</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga0800bcb3a90630cc14322b603a279de3">DIOSCRAPERWEBGEOLOCATIONIP::Get</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;IP,&#32;<link linkend="_class_d_i_o_g_e_o_l_o_c_a_t_i_o_n_i_p___r_e_s_u_l_t">DIOGEOLOCATIONIP_RESULT</link>&amp;&#32;geolocationIPresult,&#32;<emphasis role="keywordtype">int</emphasis>&#32;timeoutforurl,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;localIP,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;usecache)
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00445"/>00445 {
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00446"/>00446 &#32;&#32;<link linkend="_class_d_i_o_i_p">DIOIP</link>&#32;_IP;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00447"/>00447 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00448"/>00448 &#32;&#32;_IP.<link linkend="_group___d_a_t_a_i_o_1ga1955ea08de61edcd19d7806e64ed9aaa">Set</link>(IP);
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00449"/>00449 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00450"/>00450 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga0800bcb3a90630cc14322b603a279de3">Get</link>(_IP,&#32;geolocationIPresult,&#32;timeoutforurl,&#32;localIP,&#32;usecache);
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00451"/>00451 }
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00452"/>00452 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00453"/>00453 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00469"/><link linkend="_group___d_a_t_a_i_o_1ga3621513a6d73c451c91c5bedc0f2bd9e">00469</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga0800bcb3a90630cc14322b603a279de3">DIOSCRAPERWEBGEOLOCATIONIP::Get</link>(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;IP,&#32;<link linkend="_class_d_i_o_g_e_o_l_o_c_a_t_i_o_n_i_p___r_e_s_u_l_t">DIOGEOLOCATIONIP_RESULT</link>&amp;&#32;geolocationIPresult,&#32;<emphasis role="keywordtype">int</emphasis>&#32;timeoutforurl,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;localIP,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;usecache)
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00470"/>00470 {
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00471"/>00471 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga0800bcb3a90630cc14322b603a279de3">Get</link>(IP.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;geolocationIPresult,&#32;timeoutforurl,&#32;localIP,&#32;usecache);
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00472"/>00472 }
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00473"/>00473 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00474"/>00474 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00490"/><link linkend="_group___d_a_t_a_i_o_1gae485082d065ce8b7f766623717c5eced">00490</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga0800bcb3a90630cc14322b603a279de3">DIOSCRAPERWEBGEOLOCATIONIP::Get</link>(<link linkend="_class_d_i_o_i_p">DIOIP</link>&amp;&#32;IP,&#32;<link linkend="_class_d_i_o_g_e_o_l_o_c_a_t_i_o_n_i_p___r_e_s_u_l_t">DIOGEOLOCATIONIP_RESULT</link>&amp;&#32;geolocationIPresult,&#32;<emphasis role="keywordtype">int</emphasis>&#32;timeoutforurl,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;localIP,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;usecache)
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00491"/>00491 {
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00492"/>00492 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00493"/>00493 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00494"/>00494 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_d_i_o_s_c_r_a_p_e_r_w_e_b_1a413d9456a6c8b9c4739013f5f839f4dc">xmutexdo</link>)&#32;<link linkend="_class_d_i_o_s_c_r_a_p_e_r_w_e_b_1a413d9456a6c8b9c4739013f5f839f4dc">xmutexdo</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1gae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00495"/>00495 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00496"/>00496 &#32;&#32;this-&gt;IP.<link linkend="_group___d_a_t_a_i_o_1ga1955ea08de61edcd19d7806e64ed9aaa">Set</link>(IP.<link linkend="_group___d_a_t_a_i_o_1gaa7fc98655c9aab8feb85758307d928f5">Get</link>());
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00497"/>00497 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00498"/>00498 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(usecache)
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00499"/>00499 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00500"/>00500 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;IPstring;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00501"/>00501 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00502"/>00502 &#32;&#32;&#32;&#32;&#32;&#32;IP.<link linkend="_group___d_a_t_a_i_o_1ga6a266ef4ef9e43473e91acc37a816725">GetXString</link>(IPstring);
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00503"/>00503 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00504"/>00504 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_g_e_o_l_o_c_a_t_i_o_n_i_p___r_e_s_u_l_t">DIOGEOLOCATIONIP_RESULT</link>*&#32;geoIPresult&#32;=&#32;(<link linkend="_class_d_i_o_g_e_o_l_o_c_a_t_i_o_n_i_p___r_e_s_u_l_t">DIOGEOLOCATIONIP_RESULT</link>*)<link linkend="_class_d_i_o_s_c_r_a_p_e_r_w_e_b_1a3d5f1bb63bf5ee16dd79924884dcf91f">cache</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga0074da4f9d4ab5ec86126210e2d2d955">Get</link>(IPstring);
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00505"/>00505 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(geoIPresult)
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00506"/>00506 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00507"/>00507 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;geolocationIPresult.<link linkend="_group___d_a_t_a_i_o_1gaecec1a4a78c2b933337b629082a7ace8">CopyFrom</link>(geoIPresult);
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00508"/>00508 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00509"/>00509 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_d_i_o_s_c_r_a_p_e_r_w_e_b_1a413d9456a6c8b9c4739013f5f839f4dc">xmutexdo</link>)&#32;<link linkend="_class_d_i_o_s_c_r_a_p_e_r_w_e_b_1a413d9456a6c8b9c4739013f5f839f4dc">xmutexdo</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1gafed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00510"/>00510 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00511"/>00511 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00512"/>00512 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00513"/>00513 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00514"/>00514 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_group___d_a_t_a_i_o_1gacab060d8df5178edca4dd5dfb46a3c4b">Load</link>(<link linkend="__d_i_o_scraper_web_geolocation_i_p_8h_1aee7f421ff99778ba50d99f980b550c78">DIOSCRAPERWEBGEOLOCATIONIP_NAMEFILE</link>))
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00515"/>00515 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00516"/>00516 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_group___d_a_t_a_i_o_1gae8df5b02e4280111b316d8f928595378">Do</link>(<link linkend="__d_i_o_scraper_web_geolocation_i_p_8h_1a3da837d953266ee631054647d404b080">DIOSCRAPERWEBGEOLOCATIONIP_NAMESERVICE</link>,&#32;timeoutforurl,&#32;localIP))
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00517"/>00517 &#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00518"/>00518 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;country;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00519"/>00519 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;state;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00520"/>00520 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;city;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00521"/>00521 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ISP;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00522"/>00522 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;organization;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00523"/>00523 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;latitude&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00524"/>00524 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">double</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;longitude&#32;=&#32;0;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00525"/>00525 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;string;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00526"/>00526 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00527"/>00527 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;country&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="_group___d_a_t_a_i_o_1gac3fe9b1f589ac283405efe2147e4aff7">GetValue</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;COUNTRY&quot;</emphasis>));
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00528"/>00528 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;state&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="_group___d_a_t_a_i_o_1gac3fe9b1f589ac283405efe2147e4aff7">GetValue</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;STATE&quot;</emphasis>));
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00529"/>00529 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;city&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="_group___d_a_t_a_i_o_1gac3fe9b1f589ac283405efe2147e4aff7">GetValue</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;CITY&quot;</emphasis>));
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00530"/>00530 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ISP&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="_group___d_a_t_a_i_o_1gac3fe9b1f589ac283405efe2147e4aff7">GetValue</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;ISP&quot;</emphasis>));
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00531"/>00531 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;organization&#32;&#32;=&#32;<link linkend="_group___d_a_t_a_i_o_1gac3fe9b1f589ac283405efe2147e4aff7">GetValue</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;ORGANIZATION&quot;</emphasis>));
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00532"/>00532 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00533"/>00533 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="_group___d_a_t_a_i_o_1gac3fe9b1f589ac283405efe2147e4aff7">GetValue</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;LATITUDE&quot;</emphasis>));
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00534"/>00534 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<emphasis role="keywordtype">string</emphasis>.IsEmpty())&#32;<emphasis role="keywordtype">string</emphasis>.UnFormat(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%f&quot;</emphasis>),&#32;&amp;latitude);
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00535"/>00535 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00536"/>00536 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">string</emphasis>&#32;&#32;=&#32;<link linkend="_group___d_a_t_a_i_o_1gac3fe9b1f589ac283405efe2147e4aff7">GetValue</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;LONGITUDE&quot;</emphasis>));
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00537"/>00537 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<emphasis role="keywordtype">string</emphasis>.IsEmpty())&#32;<emphasis role="keywordtype">string</emphasis>.UnFormat(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%f&quot;</emphasis>),&#32;&amp;longitude);
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00538"/>00538 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00539"/>00539 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;geolocationIPresult.<link linkend="_group___d_a_t_a_i_o_1ga8351de3f4f071970de91e1274866b4f7">Set</link>(country,&#32;state,&#32;city,&#32;ISP,&#32;organization);
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00540"/>00540 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;geolocationIPresult.<link linkend="_group___d_a_t_a_i_o_1ga8351de3f4f071970de91e1274866b4f7">Set</link>((<emphasis role="keywordtype">float</emphasis>)latitude,&#32;(<emphasis role="keywordtype">float</emphasis>)longitude);
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00541"/>00541 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00542"/>00542 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!geolocationIPresult.<link linkend="_group___d_a_t_a_i_o_1ga9a4c045170e4fcd10d1aa9e182abb541">IsEmpty</link>())
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00543"/>00543 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00544"/>00544 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(usecache)
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00545"/>00545 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00546"/>00546 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_g_e_o_l_o_c_a_t_i_o_n_i_p___r_e_s_u_l_t">DIOGEOLOCATIONIP_RESULT</link>*&#32;geoIPresult&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_g_e_o_l_o_c_a_t_i_o_n_i_p___r_e_s_u_l_t">DIOGEOLOCATIONIP_RESULT</link>();
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00547"/>00547 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(geoIPresult)
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00548"/>00548 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00549"/>00549 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;IPstring;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00550"/>00550 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00551"/>00551 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;IP.<link linkend="_group___d_a_t_a_i_o_1ga6a266ef4ef9e43473e91acc37a816725">GetXString</link>(IPstring);
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00552"/>00552 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00553"/>00553 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;geoIPresult-&gt;<link linkend="_group___d_a_t_a_i_o_1gaecec1a4a78c2b933337b629082a7ace8">CopyFrom</link>(&amp;geolocationIPresult);
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00554"/>00554 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_s_c_r_a_p_e_r_w_e_b_1a3d5f1bb63bf5ee16dd79924884dcf91f">cache</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1gad5e3c7865b19b7f84f6e9c9174512806">Add</link>(IPstring,&#32;geoIPresult);
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00555"/>00555 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00556"/>00556 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00557"/>00557 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00558"/>00558 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00559"/>00559 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00560"/>00560 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00561"/>00561 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00562"/>00562 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00563"/>00563 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_d_i_o_s_c_r_a_p_e_r_w_e_b_1a413d9456a6c8b9c4739013f5f839f4dc">xmutexdo</link>)&#32;<link linkend="_class_d_i_o_s_c_r_a_p_e_r_w_e_b_1a413d9456a6c8b9c4739013f5f839f4dc">xmutexdo</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1gafed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00564"/>00564 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00565"/>00565 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00566"/>00566 }
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00567"/>00567 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00568"/>00568 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00577"/>00577 <emphasis role="keywordtype">void</emphasis>&#32;DIOSCRAPERWEBGEOLOCATIONIP::Clean()
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00578"/>00578 {
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00579"/>00579 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00580"/>00580 }
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00581"/>00581 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00582"/>00582 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00583"/>00583 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00584"/>00584 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00585"/>00585 
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00586"/>00586 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_scraper_web_geolocation_i_p_8cpp_source_1l00587"/>00587 
+</programlisting></section>

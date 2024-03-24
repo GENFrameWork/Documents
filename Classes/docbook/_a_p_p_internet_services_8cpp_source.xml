@@ -1,0 +1,796 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__a_p_p_internet_services_8cpp_source" xml:lang="en-US">
+<title>APPInternetServices.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/Application/APPInternetServices.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__a_p_p_internet_services_8h">APPInternetServices.h</link>&quot;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_log_8h">XLog.h</link>&quot;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_scheduler_8h">XScheduler.h</link>&quot;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_scheduler___x_event_8h">XScheduler_XEvent.h</link>&quot;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_system_8h">XSystem.h</link>&quot;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_translation_8h">XTranslation.h</link>&quot;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_translation___g_e_n_8h">XTranslation_GEN.h</link>&quot;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_translation_8h">XTranslation.h</link>&quot;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00049"/>00049 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_language___i_s_o__639__3_8h">XLanguage_ISO_639_3.h</link>&quot;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00050"/>00050 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_factory_8h">DIOFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_device_i_p_8h">DIOStreamDeviceIP.h</link>&quot;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00053"/>00053 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_i_p_local_enum_devices_8h">DIOStreamIPLocalEnumDevices.h</link>&quot;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00054"/>00054 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_check_t_c_p_i_p_connections_8h">DIOCheckTCPIPConnections.h</link>&quot;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00055"/>00055 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_check_internet_connection_8h">DIOCheckInternetConnection.h</link>&quot;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00056"/>00056 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_scraper_web_public_i_p_8h">DIOScraperWebPublicIP.h</link>&quot;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00057"/>00057 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_n_t_p_8h">DIONTP.h</link>&quot;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00058"/>00058 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_dyn_d_n_s___manager_8h">DIODynDNS_Manager.h</link>&quot;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00059"/>00059 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__a_p_p_log_8h">APPLog.h</link>&quot;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00061"/>00061 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__a_p_p_c_f_g_8h">APPCFG.h</link>&quot;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00062"/>00062 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00063"/>00063 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__a_p_p_internet_services___x_event_8h">APPInternetServices_XEvent.h</link>&quot;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00064"/>00064 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00065"/>00065 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00066"/>00066 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00067"/>00067 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00068"/>00068 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00069"/>00069 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00070"/>00070 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00071"/>00071 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00072"/>00072 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00073"/>00073 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00074"/>00074 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00075"/>00075 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00076"/>00076 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00077"/>00077 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00078"/>00078 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00079"/>00079 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00087"/><link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1gacbf6350f9c1f6bf53f4f71285fc5be91">00087</link> <link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1gacbf6350f9c1f6bf53f4f71285fc5be91">APPINTERNETSERVICES::APPINTERNETSERVICES</link>()
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00088"/>00088 {
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00089"/>00089 &#32;&#32;Clean();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00090"/>00090 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00091"/>00091 &#32;&#32;<link linkend="_group___x_u_t_i_l_s_1gac83006698567c749aecf727dddef5d9c">RegisterEvent</link>(<link linkend="__a_p_p_internet_services___x_event_8h_1ab0a245f0dd924df561a811d379e46600af066621e55711d5f884d263e8d94d640">APPINTERNETSERVICES_XEVENT_TYPE_CHECKINTERNETCONNEXION</link>);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00092"/>00092 &#32;&#32;<link linkend="_group___x_u_t_i_l_s_1gac83006698567c749aecf727dddef5d9c">RegisterEvent</link>(<link linkend="__a_p_p_internet_services___x_event_8h_1ab0a245f0dd924df561a811d379e46600a79d41dcc22ca9ce9983d5a6c33e43888">APPINTERNETSERVICES_XEVENT_TYPE_CHANGEIP</link>);&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00093"/>00093 &#32;&#32;<link linkend="_group___x_u_t_i_l_s_1gac83006698567c749aecf727dddef5d9c">RegisterEvent</link>(<link linkend="__a_p_p_internet_services___x_event_8h_1ab0a245f0dd924df561a811d379e46600aa840fbd18413ac395b9ed9715cba3992">APPINTERNETSERVICES_XEVENT_TYPE_ADJUSTDATETIME</link>);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00094"/>00094 &#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00095"/>00095 &#32;&#32;GEN_XFACTORY_CREATE(xmutex_datetime_local,&#32;Create_Mutex())
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00096"/>00096 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xmutex_datetime_local)&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00097"/>00097 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00098"/>00098 &#32;&#32;GEN_XFACTORY_CREATE(xmutex_datetime_UTC,&#32;Create_Mutex())
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00099"/>00099 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xmutex_datetime_UTC)&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00100"/>00100 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00101"/>00101 &#32;&#32;GEN_XFACTORY_CREATE(xdatetime_local,&#32;CreateDateTime())
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00102"/>00102 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xdatetime_local)&#32;xdatetime_local-&gt;<link linkend="_group___x_u_t_i_l_s_1ga0e2f3589654fc19d26c588506994fb20">Read</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00103"/>00103 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00104"/>00104 &#32;&#32;GEN_XFACTORY_CREATE(xdatetime_UTC,&#32;CreateDateTime())
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00105"/>00105 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xdatetime_UTC)&#32;xdatetime_UTC-&gt;<link linkend="_group___x_u_t_i_l_s_1ga0e2f3589654fc19d26c588506994fb20">Read</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00106"/>00106 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00107"/>00107 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;APP_CFG_DYNDNSMANAGER_ACTIVE</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00108"/>00108 &#32;&#32;dyndnsmanager&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_d_y_n_d_n_s___m_a_n_a_g_e_r">DIODYNDNS_MANAGER</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00109"/>00109 <emphasis role="preprocessor">&#32;&#32;#endif&#32;&#32;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00110"/>00110 }
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00111"/>00111 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00112"/>00112 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00121"/><link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1ga705b8ce55dbabe9aa031b4cb0fa3ba97">00121</link> <link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1ga705b8ce55dbabe9aa031b4cb0fa3ba97">APPINTERNETSERVICES::~APPINTERNETSERVICES</link>()
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00122"/>00122 {
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00123"/>00123 &#32;&#32;<link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1ga24ac7e628d4be8f4af24fff3fdde8106">End</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00124"/>00124 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00125"/>00125 &#32;&#32;NTPservers.<link linkend="_class_x_v_e_c_t_o_r_1abae5097402824f18f274e21e18b23bea">DeleteContents</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00126"/>00126 &#32;&#32;NTPservers.<link linkend="_class_x_v_e_c_t_o_r_1a57c72ab04fd14c60d1026e0a7b4a1887">DeleteAll</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00127"/>00127 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00128"/>00128 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xdatetime_local)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00129"/>00129 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00130"/>00130 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY.DeleteDateTime(xdatetime_local);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00131"/>00131 &#32;&#32;&#32;&#32;&#32;&#32;xdatetime_local&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00132"/>00132 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00133"/>00133 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00134"/>00134 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xdatetime_UTC)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00135"/>00135 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00136"/>00136 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY.DeleteDateTime(xdatetime_UTC);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00137"/>00137 &#32;&#32;&#32;&#32;&#32;&#32;xdatetime_UTC&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00138"/>00138 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00139"/>00139 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00140"/>00140 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutex_datetime_local)&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00141"/>00141 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY.Delete_Mutex(xmutex_datetime_local);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;xmutex_datetime_local&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00144"/>00144 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00145"/>00145 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00146"/>00146 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutex_datetime_UTC)&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00147"/>00147 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00148"/>00148 &#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY.Delete_Mutex(xmutex_datetime_UTC);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00149"/>00149 &#32;&#32;&#32;&#32;&#32;&#32;xmutex_datetime_UTC&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00150"/>00150 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00151"/>00151 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00152"/>00152 &#32;&#32;<link linkend="_group___x_u_t_i_l_s_1gab78992063b09d37612e7719e37d415bc">DeRegisterEvent</link>(<link linkend="__a_p_p_internet_services___x_event_8h_1ab0a245f0dd924df561a811d379e46600af066621e55711d5f884d263e8d94d640">APPINTERNETSERVICES_XEVENT_TYPE_CHECKINTERNETCONNEXION</link>);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00153"/>00153 &#32;&#32;<link linkend="_group___x_u_t_i_l_s_1gab78992063b09d37612e7719e37d415bc">DeRegisterEvent</link>(<link linkend="__a_p_p_internet_services___x_event_8h_1ab0a245f0dd924df561a811d379e46600a79d41dcc22ca9ce9983d5a6c33e43888">APPINTERNETSERVICES_XEVENT_TYPE_CHANGEIP</link>);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00154"/>00154 &#32;&#32;<link linkend="_group___x_u_t_i_l_s_1gab78992063b09d37612e7719e37d415bc">DeRegisterEvent</link>(<link linkend="__a_p_p_internet_services___x_event_8h_1ab0a245f0dd924df561a811d379e46600aa840fbd18413ac395b9ed9715cba3992">APPINTERNETSERVICES_XEVENT_TYPE_ADJUSTDATETIME</link>);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00155"/>00155 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00156"/>00156 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00157"/>00157 <emphasis role="preprocessor">&#32;&#32;#ifdef&#32;APP_CFG_DYNDNSMANAGER_ACTIVE</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00158"/>00158 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(dyndnsmanager)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00159"/>00159 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00160"/>00160 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;dyndnsmanager;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00161"/>00161 &#32;&#32;&#32;&#32;&#32;&#32;dyndnsmanager&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00162"/>00162 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00163"/>00163 <emphasis role="preprocessor">&#32;&#32;#endif&#32;&#32;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00164"/>00164 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00165"/>00165 &#32;&#32;Clean();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00166"/>00166 }
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00167"/>00167 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00168"/>00168 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00181"/><link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1ga3cfc42d81c1d300a3d984598b40415bc">00181</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1ga3cfc42d81c1d300a3d984598b40415bc">APPINTERNETSERVICES::Ini</link>(<link linkend="_class_a_p_p_c_f_g">APPCFG</link>*&#32;cfg,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;timeoutgetpublicip)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00182"/>00182 {
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00183"/>00183 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00184"/>00184 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00185"/>00185 &#32;&#32;this-&gt;cfg&#32;=&#32;cfg;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00186"/>00186 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00187"/>00187 &#32;&#32;xscheduler&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r">XSCHEDULER</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00188"/>00188 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xscheduler)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00189"/>00189 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00190"/>00190 &#32;&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k">XSCHEDULERTASK</link>*&#32;xtask;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00191"/>00191 &#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00192"/>00192 &#32;&#32;<emphasis role="comment">//-------------------------------------------------------------------</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00193"/>00193 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00194"/>00194 &#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00195"/>00195 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(cfg-&gt;InternetServices_GetCheckInternetStatusCadence())
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00196"/>00196 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00197"/>00197 &#32;&#32;&#32;&#32;&#32;&#32;xtask&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k">XSCHEDULERTASK</link>(&#32;xscheduler);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00198"/>00198 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xtask)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00199"/>00199 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00200"/>00200 &#32;&#32;&#32;&#32;&#32;&#32;xtask-&gt;<link linkend="_group___x_u_t_i_l_s_1ga01a9c9cad767a1ecada80832ee64790b">SetNCycles</link>(<link linkend="__x_scheduler_8h_1a0a0f7373bbd46e610b0529ce34f0bf46">XSCHEDULER_CYCLEFOREVER</link>,&#32;cfg-&gt;InternetServices_GetCheckInternetStatusCadence());
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00201"/>00201 &#32;&#32;&#32;&#32;&#32;&#32;xtask-&gt;<link linkend="_group___x_u_t_i_l_s_1ga59e7fe9c868a162daf2d37d7e637b7da">SetID</link>(<link linkend="__a_p_p_internet_services_8h_1abda28ec94ba6b640a1719bd9875e613ea8610a2256360cb9247bb10425dd81cfb">APPINTERNETSERVICES_TASKID_CHECKCONNECTIONINTERNET</link>);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00202"/>00202 &#32;&#32;&#32;&#32;&#32;&#32;xtask-&gt;<link linkend="_group___x_u_t_i_l_s_1ga55b32a8806e2a7459367f1e38325ae97">SetIsStartImmediatelyCycles</link>(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00203"/>00203 &#32;&#32;&#32;&#32;&#32;&#32;xtask-&gt;<link linkend="_group___x_u_t_i_l_s_1ga5e59c92a4529f014a9e9db4b9761586d">SetIsActive</link>(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00204"/>00204 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00205"/>00205 &#32;&#32;&#32;&#32;&#32;&#32;xscheduler-&gt;<link linkend="_group___x_u_t_i_l_s_1gaa87c3401008063bc3037f593dcaa7bbc">Task_Add</link>(xtask);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00206"/>00206 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00207"/>00207 &#32;&#32;&#32;&#32;&#32;&#32;checkinternetconnection&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_c_h_e_c_k_i_n_t_e_r_n_e_t_c_o_n_n_e_c_t_i_o_n">DIOCHECKINTERNETCONNECTION</link>(cfg-&gt;InternetServices_GetCheckInternetStatusCadence()/2);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00208"/>00208 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=(checkinternetconnection)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00209"/>00209 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00210"/>00210 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00211"/>00211 &#32;&#32;<emphasis role="comment">//-------------------------------------------------------------------</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00212"/>00212 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00213"/>00213 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(cfg-&gt;InternetServices_GetCheckIPsChangeCadence())
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00214"/>00214 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00215"/>00215 &#32;&#32;&#32;&#32;&#32;&#32;scraperwebpublicIP&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_s_c_r_a_p_e_r_w_e_b_p_u_b_l_i_c_i_p">DIOSCRAPERWEBPUBLICIP</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00216"/>00216 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;(scraperwebpublicIP?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00217"/>00217 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00218"/>00218 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00219"/>00219 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00220"/>00220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xtask&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k">XSCHEDULERTASK</link>(xscheduler);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00221"/>00221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xtask)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00222"/>00222 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00223"/>00223 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xtask-&gt;<link linkend="_group___x_u_t_i_l_s_1ga01a9c9cad767a1ecada80832ee64790b">SetNCycles</link>(<link linkend="__x_scheduler_8h_1a0a0f7373bbd46e610b0529ce34f0bf46">XSCHEDULER_CYCLEFOREVER</link>,&#32;5);&#32;&#32;<emphasis role="comment">//&#32;Get&#32;IP&#32;first&#32;time</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00224"/>00224 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xtask-&gt;<link linkend="_group___x_u_t_i_l_s_1ga59e7fe9c868a162daf2d37d7e637b7da">SetID</link>(<link linkend="__a_p_p_internet_services_8h_1abda28ec94ba6b640a1719bd9875e613ea6eaee5e2352fc5c8c1ed537d8ca69305">APPINTERNETSERVICES_TASKID_GETIPS</link>);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00225"/>00225 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xtask-&gt;<link linkend="_group___x_u_t_i_l_s_1ga55b32a8806e2a7459367f1e38325ae97">SetIsStartImmediatelyCycles</link>(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00226"/>00226 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xtask-&gt;<link linkend="_group___x_u_t_i_l_s_1ga5e59c92a4529f014a9e9db4b9761586d">SetIsActive</link>(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00227"/>00227 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00228"/>00228 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xscheduler-&gt;<link linkend="_group___x_u_t_i_l_s_1gaa87c3401008063bc3037f593dcaa7bbc">Task_Add</link>(xtask);&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00229"/>00229 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00230"/>00230 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;APP_CFG_DYNDNSMANAGER_ACTIVE</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00231"/>00231 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(dyndnsmanager)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00232"/>00232 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00233"/>00233 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;&#32;c&lt;cfg-&gt;DNSManager_GetURLs()-&gt;GetSize();&#32;c++)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00234"/>00234 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00235"/>00235 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;dyndnsmanager-&gt;<link linkend="_group___d_a_t_a_i_o_1gac04243fd11db9ac10e3f58116bc962e0">AddDNS</link>((*cfg-&gt;DNSManager_GetURL(c)));
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00236"/>00236 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00237"/>00237 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00238"/>00238 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00239"/>00239 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif&#32;&#32;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00240"/>00240 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00241"/>00241 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00242"/>00242 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00243"/>00243 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00244"/>00244 &#32;&#32;<emphasis role="comment">//-------------------------------------------------------------------</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00245"/>00245 &#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00246"/>00246 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(cfg-&gt;InternetServices_GetUpdateTimeByNTPCadence())
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00247"/>00247 &#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00248"/>00248 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;&#32;c&lt;cfg-&gt;InternetServices_GetUpdateTimeNTPServers()-&gt;GetSize();&#32;c++)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00249"/>00249 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00250"/>00250 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;server&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00251"/>00251 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(server)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00252"/>00252 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00253"/>00253 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;server-&gt;<link linkend="_group___x_u_t_i_l_s_1ga4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(cfg-&gt;InternetServices_GetUpdateTimeNTPServer(c)-&gt;Get());
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00254"/>00254 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;NTPservers.<link linkend="_class_x_v_e_c_t_o_r_1a51a790aac8efd4603aee608ddcc83423">Add</link>(server);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00255"/>00255 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00256"/>00256 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;server&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00257"/>00257 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00258"/>00258 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00259"/>00259 &#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00260"/>00260 &#32;&#32;&#32;&#32;&#32;&#32;xtask&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k">XSCHEDULERTASK</link>(&#32;xscheduler);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00261"/>00261 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xtask)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00262"/>00262 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00263"/>00263 &#32;&#32;&#32;&#32;&#32;&#32;xtask-&gt;<link linkend="_group___x_u_t_i_l_s_1ga01a9c9cad767a1ecada80832ee64790b">SetNCycles</link>(<link linkend="__x_scheduler_8h_1a0a0f7373bbd46e610b0529ce34f0bf46">XSCHEDULER_CYCLEFOREVER</link>,&#32;cfg-&gt;InternetServices_GetUpdateTimeByNTPCadence());
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00264"/>00264 &#32;&#32;&#32;&#32;&#32;&#32;xtask-&gt;<link linkend="_group___x_u_t_i_l_s_1ga59e7fe9c868a162daf2d37d7e637b7da">SetID</link>(<link linkend="__a_p_p_internet_services_8h_1abda28ec94ba6b640a1719bd9875e613ea06b170794fcc3381996661145a98fffc">APPINTERNETSERVICES_TASKID_CHECKNTPDATETIME</link>);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00265"/>00265 &#32;&#32;&#32;&#32;&#32;&#32;xtask-&gt;<link linkend="_group___x_u_t_i_l_s_1ga55b32a8806e2a7459367f1e38325ae97">SetIsStartImmediatelyCycles</link>(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00266"/>00266 &#32;&#32;&#32;&#32;&#32;&#32;xtask-&gt;<link linkend="_group___x_u_t_i_l_s_1ga5e59c92a4529f014a9e9db4b9761586d">SetIsActive</link>(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00267"/>00267 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00268"/>00268 &#32;&#32;&#32;&#32;&#32;&#32;xscheduler-&gt;<link linkend="_group___x_u_t_i_l_s_1gaa87c3401008063bc3037f593dcaa7bbc">Task_Add</link>(xtask);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00269"/>00269 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00270"/>00270 &#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00271"/>00271 &#32;&#32;<emphasis role="comment">//-------------------------------------------------------------------</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00272"/>00272 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00273"/>00273 &#32;&#32;<link linkend="_group___x_u_t_i_l_s_1ga137f7c55eb9b778873286232d22a5c12">SubscribeEvent</link>(<link linkend="__x_event_8h_1aabf5f0b55ced84b808fb2c2e45dbb1e8a15553b6b979ac77333c3538da7c70d4b">XEVENT_TYPE_SCHEDULER</link>,&#32;xscheduler);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00274"/>00274 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xscheduler-&gt;<link linkend="_group___x_u_t_i_l_s_1ga324cf5ad7c09fdaeb78fd46c12e13b12">Ini</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00275"/>00275 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00276"/>00276 &#32;&#32;<emphasis role="comment">//-------------------------------------------------------------------</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00277"/>00277 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00278"/>00278 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(timeoutgetpublicip)&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00279"/>00279 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00280"/>00280 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(cfg-&gt;InternetServices_GetCheckIPsChangeCadence()&#32;&gt;&#32;0)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00281"/>00281 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00282"/>00282 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_t_i_m_e_r">XTIMER</link>*&#32;GEN_XFACTORY_CREATE(<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>,&#32;CreateTimer())
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00283"/>00283 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00284"/>00284 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00285"/>00285 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">do</emphasis>{&#32;<emphasis role="keywordflow">if</emphasis>(!publicIP.<link linkend="_group___x_u_t_i_l_s_1gad26690161f8c1e2722771322b7370005">IsEmpty</link>())&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00286"/>00286 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00287"/>00287 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GEN_XSLEEP.MilliSeconds(50);&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00288"/>00288 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00289"/>00289 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">while</emphasis>(<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>-&gt;GetMeasureSeconds()&#32;&lt;=&#32;timeoutgetpublicip);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00290"/>00290 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00291"/>00291 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00292"/>00292 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY.DeleteTimer(<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>);&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00293"/>00293 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00294"/>00294 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00295"/>00295 &#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00296"/>00296 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00297"/>00297 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00298"/>00298 }
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00299"/>00299 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00300"/>00300 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00310"/><link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1ga2a57eedaf82fd521a16eb86791f6d2eb">00310</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1ga2a57eedaf82fd521a16eb86791f6d2eb">APPINTERNETSERVICES::HaveInternetConnection</link>()
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00311"/>00311 {
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00312"/>00312 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;haveinternetconnection;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00313"/>00313 }
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00314"/>00314 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00315"/>00315 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00325"/><link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1ga564ac33c62a7b10cb2aae5559343cedd">00325</link> <link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;<link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1ga564ac33c62a7b10cb2aae5559343cedd">APPINTERNETSERVICES::GetAutomaticLocalIP</link>()
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00326"/>00326 {
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00327"/>00327 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;automaticlocalIP;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00328"/>00328 }
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00329"/>00329 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00330"/>00330 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00340"/><link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1gaefffaa22e4e0eaf2c45881977cf04040">00340</link> <link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;<link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1gaefffaa22e4e0eaf2c45881977cf04040">APPINTERNETSERVICES::GetAllLocalIP</link>()
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00341"/>00341 {
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00342"/>00342 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;alllocalIP;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00343"/>00343 }
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00344"/>00344 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00345"/>00345 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00355"/><link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1ga6adb8a972ebb7daa72470abe7c6f4ecc">00355</link> <link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;<link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1ga6adb8a972ebb7daa72470abe7c6f4ecc">APPINTERNETSERVICES::GetPublicIP</link>()
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00356"/>00356 {
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00357"/>00357 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;publicIP;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00358"/>00358 }
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00359"/>00359 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00360"/>00360 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00374"/><link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1gaa060833f50ac25a68c75f86b29c1c560">00374</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1gaa060833f50ac25a68c75f86b29c1c560">APPINTERNETSERVICES::ChangeCadenceCheck</link>(<link linkend="__a_p_p_internet_services_8h_1abda28ec94ba6b640a1719bd9875e613e">APPINTERNETSERVICES_TASKID</link>&#32;taskID,&#32;<emphasis role="keywordtype">int</emphasis>&#32;timecadenceseconds,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;startimmediatelycycles)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00375"/>00375 {
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00376"/>00376 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xscheduler)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00377"/>00377 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00378"/>00378 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00379"/>00379 &#32;&#32;&#32;&#32;}&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00380"/>00380 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00381"/>00381 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!timecadenceseconds)&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00382"/>00382 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00383"/>00383 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00384"/>00384 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00385"/>00385 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00386"/>00386 &#32;&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r_t_a_s_k">XSCHEDULERTASK</link>*&#32;task&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00387"/>00387 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00388"/>00388 &#32;&#32;xscheduler-&gt;<link linkend="_group___x_u_t_i_l_s_1gae1f404b133cd5a64c88128cc293798d4">GetMutexScheduler</link>()-&gt;<link linkend="_group___x_u_t_i_l_s_1gae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00389"/>00389 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00390"/>00390 &#32;&#32;task&#32;=&#32;xscheduler-&gt;<link linkend="_group___x_u_t_i_l_s_1gad1927167ea8af8f14692a9cc9a4f025a">Task_GetForID</link>(taskID);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00391"/>00391 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(task)&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00392"/>00392 &#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00393"/>00393 &#32;&#32;&#32;&#32;&#32;&#32;task-&gt;<link linkend="_group___x_u_t_i_l_s_1ga01a9c9cad767a1ecada80832ee64790b">SetNCycles</link>(<link linkend="__x_scheduler_8h_1a0a0f7373bbd46e610b0529ce34f0bf46">XSCHEDULER_CYCLEFOREVER</link>,&#32;timecadenceseconds);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00394"/>00394 &#32;&#32;&#32;&#32;&#32;&#32;task-&gt;<link linkend="_group___x_u_t_i_l_s_1ga55b32a8806e2a7459367f1e38325ae97">SetIsStartImmediatelyCycles</link>(startimmediatelycycles);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00395"/>00395 &#32;&#32;&#32;&#32;&#32;&#32;task-&gt;<link linkend="_group___x_u_t_i_l_s_1ga5e59c92a4529f014a9e9db4b9761586d">SetIsActive</link>(<emphasis role="keyword">true</emphasis>);&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00396"/>00396 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00397"/>00397 &#32;&#32;&#32;&#32;&#32;&#32;task-&gt;<link linkend="_group___x_u_t_i_l_s_1ga1d591be0140cc14363ed003836bc0e79">ResetCondition</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00398"/>00398 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00399"/>00399 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00400"/>00400 &#32;&#32;xscheduler-&gt;<link linkend="_group___x_u_t_i_l_s_1gae1f404b133cd5a64c88128cc293798d4">GetMutexScheduler</link>()-&gt;<link linkend="_group___x_u_t_i_l_s_1gafed160c15de8de926a73f4ce978f0bc0">UnLock</link>();&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00401"/>00401 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00402"/>00402 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;task?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00403"/>00403 }
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00404"/>00404 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00405"/>00405 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00418"/><link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1ga2846ce24a1f31dcb99b26351d486421d">00418</link> <link linkend="_class_x_d_a_t_e_t_i_m_e">XDATETIME</link>*&#32;<link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1ga2846ce24a1f31dcb99b26351d486421d">APPINTERNETSERVICES::DateTime_GetLocal</link>(<emphasis role="keywordtype">bool</emphasis>&#32;active_daylightsave,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;active_meridian)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00419"/>00419 {
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00420"/>00420 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xdatetime_local)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00421"/>00421 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00422"/>00422 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutex_datetime_local)&#32;&#32;xmutex_datetime_local-&gt;<link linkend="_group___x_u_t_i_l_s_1gae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00423"/>00423 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00424"/>00424 &#32;&#32;xdatetime_local-&gt;<link linkend="_group___x_u_t_i_l_s_1ga0e2f3589654fc19d26c588506994fb20">Read</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00425"/>00425 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00426"/>00426 &#32;&#32;<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;seconds&#32;=&#32;xdatetime_local-&gt;<link linkend="_group___x_u_t_i_l_s_1ga8005b8d3f065b4cb2dd1a208165ad5b6">GetSeconsFromDate</link>(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00427"/>00427 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(seconds)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00428"/>00428 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00429"/>00429 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!active_meridian)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00430"/>00430 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00431"/>00431 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;seconds&#32;-=&#32;(<link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1ga1dcbd906be96aeabdd0350b9316e1f2c">DateTime_GetMeridian</link>()&#32;*&#32;3600);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00432"/>00432 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00433"/>00433 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00434"/>00434 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!active_daylightsave)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00435"/>00435 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00436"/>00436 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(cfg-&gt;InternetServices_GetUpdateTimeNTPUseDayLightSaving())
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00437"/>00437 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00438"/>00438 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xdatetime_local-&gt;<link linkend="_group___x_u_t_i_l_s_1ga1cfbf078c77203367a1157d79260f3a2">IsDayLigthSavingTime</link>())&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00439"/>00439 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00440"/>00440 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;seconds&#32;-=&#32;3600;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00441"/>00441 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00442"/>00442 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00443"/>00443 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00444"/>00444 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00445"/>00445 &#32;&#32;&#32;&#32;&#32;&#32;&#32;xdatetime_local-&gt;<link linkend="_group___x_u_t_i_l_s_1ga9286dec11106f3d547c442b6d49397ab">SetDateToZero</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00446"/>00446 &#32;&#32;&#32;&#32;&#32;&#32;&#32;xdatetime_local-&gt;<link linkend="_group___x_u_t_i_l_s_1gacd20980f885927ed1f53a7a3ab351f62">SetDateFromSeconds</link>(seconds,&#32;<emphasis role="keyword">false</emphasis>);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00447"/>00447 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00448"/>00448 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00449"/>00449 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutex_datetime_local)&#32;&#32;xmutex_datetime_local-&gt;<link linkend="_group___x_u_t_i_l_s_1gafed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00450"/>00450 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00451"/>00451 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;xdatetime_local;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00452"/>00452 }
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00453"/>00453 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00454"/>00454 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00464"/><link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1ga2bda429ba3768588e48b3ed4ed5e8377">00464</link> <link linkend="_class_x_d_a_t_e_t_i_m_e">XDATETIME</link>*&#32;<link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1ga2bda429ba3768588e48b3ed4ed5e8377">APPINTERNETSERVICES::DateTime_GetUTC</link>()
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00465"/>00465 {
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00466"/>00466 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xdatetime_UTC)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00467"/>00467 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00468"/>00468 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutex_datetime_UTC)&#32;&#32;xmutex_datetime_UTC-&gt;<link linkend="_group___x_u_t_i_l_s_1gae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00469"/>00469 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00470"/>00470 &#32;&#32;xdatetime_UTC-&gt;<link linkend="_group___x_u_t_i_l_s_1ga0e2f3589654fc19d26c588506994fb20">Read</link>(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00471"/>00471 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00472"/>00472 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutex_datetime_UTC)&#32;&#32;xmutex_datetime_UTC-&gt;<link linkend="_group___x_u_t_i_l_s_1gafed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00473"/>00473 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00474"/>00474 &#32;<emphasis role="keywordflow">return</emphasis>&#32;xdatetime_UTC;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00475"/>00475 }
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00476"/>00476 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00477"/>00477 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00487"/><link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1ga1dcbd906be96aeabdd0350b9316e1f2c">00487</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1ga1dcbd906be96aeabdd0350b9316e1f2c">APPINTERNETSERVICES::DateTime_GetMeridian</link>()
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00488"/>00488 {
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00489"/>00489 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;meridian&#32;=&#32;0;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00490"/>00490 &#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00491"/>00491 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(cfg-&gt;InternetServices_GetUpdateTimeNTPMeridianDifference()&#32;==&#32;APP_CFG_INTERNETSERVICES_UPDATETIMENTPMERIDIANDIFFERENCE_AUTO)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00492"/>00492 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00493"/>00493 &#32;&#32;&#32;&#32;&#32;&#32;meridian&#32;=&#32;xdatetime_local-&gt;<link linkend="_group___x_u_t_i_l_s_1ga1bf0f006a2b48eeefdd5dd1126c6f687">GetMeridianDifference</link>();&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00494"/>00494 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00495"/>00495 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00496"/>00496 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00497"/>00497 &#32;&#32;&#32;&#32;&#32;&#32;meridian&#32;=&#32;cfg-&gt;InternetServices_GetUpdateTimeNTPMeridianDifference();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00498"/>00498 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00499"/>00499 &#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00500"/>00500 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;meridian;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00501"/>00501 }
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00502"/>00502 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00503"/>00503 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00513"/><link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1ga73b8d6c4d9e2c5fba5a94a0b336476f5">00513</link> <link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s">DIOCHECKTCPIPCONNECTIONS</link>*&#32;<link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1ga73b8d6c4d9e2c5fba5a94a0b336476f5">APPINTERNETSERVICES::GetCheckTCPIPConnections</link>()
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00514"/>00514 {
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00515"/>00515 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&#32;checkinternetconnection-&gt;<link linkend="_group___d_a_t_a_i_o_1ga473efd9f36a09fc6b934532c569ee3a3">GetCheckConnections</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00516"/>00516 }
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00517"/>00517 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00518"/>00518 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00528"/><link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1gafd3edb47a4d666f6c1800ae85db6d453">00528</link> <link linkend="_class_d_i_o_c_h_e_c_k_i_n_t_e_r_n_e_t_c_o_n_n_e_c_t_i_o_n">DIOCHECKINTERNETCONNECTION</link>*&#32;<link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1gafd3edb47a4d666f6c1800ae85db6d453">APPINTERNETSERVICES::GetCheckInternetConnection</link>()
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00529"/>00529 {
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00530"/>00530 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;checkinternetconnection;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00531"/>00531 }
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00532"/>00532 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00533"/>00533 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00543"/><link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1gae96c0d6fe737b0c0c490ce3450e2d42f">00543</link> <link linkend="_class_d_i_o_d_y_n_d_n_s___m_a_n_a_g_e_r">DIODYNDNS_MANAGER</link>*&#32;<link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1gae96c0d6fe737b0c0c490ce3450e2d42f">APPINTERNETSERVICES::GetDynDNSManager</link>()
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00544"/>00544 {
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00545"/>00545 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;dyndnsmanager;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00546"/>00546 }
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00547"/>00547 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00548"/>00548 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00558"/><link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1gada8de382ce84f62dc79fafd3037e5388">00558</link> <link linkend="_class_x_s_c_h_e_d_u_l_e_r">XSCHEDULER</link>*&#32;<link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1gada8de382ce84f62dc79fafd3037e5388">APPINTERNETSERVICES::GetXScheduler</link>()
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00559"/>00559 {
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00560"/>00560 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;xscheduler;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00561"/>00561 }
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00562"/>00562 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00563"/>00563 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00573"/><link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1ga24ac7e628d4be8f4af24fff3fdde8106">00573</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1ga24ac7e628d4be8f4af24fff3fdde8106">APPINTERNETSERVICES::End</link>()
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00574"/>00574 {
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00575"/>00575 &#32;&#32;endservices&#32;=&#32;&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00576"/>00576 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00577"/>00577 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xscheduler)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00578"/>00578 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00579"/>00579 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;xscheduler;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00580"/>00580 &#32;&#32;&#32;&#32;&#32;&#32;xscheduler&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00581"/>00581 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00582"/>00582 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00583"/>00583 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(scraperwebpublicIP)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00584"/>00584 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00585"/>00585 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;scraperwebpublicIP;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00586"/>00586 &#32;&#32;&#32;&#32;&#32;&#32;scraperwebpublicIP&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00587"/>00587 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00588"/>00588 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00589"/>00589 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(checkinternetconnection)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00590"/>00590 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00591"/>00591 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;checkinternetconnection;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00592"/>00592 &#32;&#32;&#32;&#32;&#32;&#32;checkinternetconnection&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00593"/>00593 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00594"/>00594 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00595"/>00595 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00596"/>00596 }
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00597"/>00597 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00598"/>00598 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00608"/>00608 <emphasis role="keywordtype">bool</emphasis>&#32;APPINTERNETSERVICES::CheckInternetConnection()
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00609"/>00609 {
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00610"/>00610 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;donotletinternetconnectionmatter&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00611"/>00611 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00612"/>00612 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(cfg)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00613"/>00613 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00614"/>00614 &#32;&#32;&#32;&#32;&#32;&#32;donotletinternetconnectionmatter&#32;=&#32;cfg-&gt;InternetServices_DoNotLetInternetConnectionMatter();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00615"/>00615 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00616"/>00616 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00617"/>00617 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(donotletinternetconnectionmatter)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00618"/>00618 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00619"/>00619 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00620"/>00620 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00621"/>00621 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00622"/>00622 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00623"/>00623 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;haveinternetconnection;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00624"/>00624 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00625"/>00625 &#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00626"/>00626 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00627"/>00627 }
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00628"/>00628 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00629"/>00629 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00639"/>00639 <emphasis role="keywordtype">bool</emphasis>&#32;APPINTERNETSERVICES::CheckInternetStatus()
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00640"/>00640 {
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00641"/>00641 &#32;&#32;<link linkend="_class_a_p_p_i_n_t_e_r_n_e_t_s_e_r_v_i_c_e_s___x_e_v_e_n_t">APPINTERNETSERVICES_XEVENT</link>&#32;xevent(<emphasis role="keyword">this</emphasis>,&#32;<link linkend="__a_p_p_internet_services___x_event_8h_1ab0a245f0dd924df561a811d379e46600af066621e55711d5f884d263e8d94d640">APPINTERNETSERVICES_XEVENT_TYPE_CHECKINTERNETCONNEXION</link>);&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00642"/>00642 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00643"/>00643 &#32;&#32;xevent.SetInternetConnexionState(<link linkend="__a_p_p_internet_services___x_event_8h_1ab9b9e8bc49aae49c7b3d4c93f0f7a849a706a17da4dae4511a62a492dcff4f22a">APPINTERNETSERVICES_CHECKINTERNETCONNEXION_STATE_CHECKING</link>);&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00644"/>00644 &#32;&#32;<link linkend="_group___x_u_t_i_l_s_1gadb65926d5f56410c9243d2f7c69a87a3">PostEvent</link>(&amp;xevent);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00645"/>00645 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00646"/>00646 &#32;&#32;haveinternetconnection&#32;=&#32;checkinternetconnection-&gt;<link linkend="_group___d_a_t_a_i_o_1ga42b7c7cf5320b231285f40fe41a8b2f0">Check</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00647"/>00647 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00648"/>00648 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(checkinternetconnection-&gt;<link linkend="_group___d_a_t_a_i_o_1ga5f794c615f8fae7f2ebd4060e18414b2">IsChangeConnectionStatus</link>())
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00649"/>00649 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00650"/>00650 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(haveinternetconnection)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00651"/>00651 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00652"/>00652 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n___c_u_t">DIOCHECKTCPIPCONNECTION_CUT</link>*&#32;&#32;connectioncut&#32;=&#32;&#32;checkinternetconnection-&gt;<link linkend="_group___d_a_t_a_i_o_1gaadd9fd65d4c5ee03e87ebe6c2d992439">GetLastConnectionsCut</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00653"/>00653 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;measuretime;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00654"/>00654 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00655"/>00655 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(connectioncut)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00656"/>00656 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00657"/>00657 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;connectioncut-&gt;<link linkend="_group___d_a_t_a_i_o_1ga09e6dc2550dad43e138985a21c77ff66">GetMeasureTimeString</link>(measuretime,&#32;<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00658"/>00658 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00659"/>00659 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.SetInternetConnexionState(<link linkend="__a_p_p_internet_services___x_event_8h_1ab9b9e8bc49aae49c7b3d4c93f0f7a849aa9405f71c54f9bba6215bd8d114ca0ed">APPINTERNETSERVICES_CHECKINTERNETCONNEXION_STATE_RESTORE</link>);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00660"/>00660 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.SetInternetConnextionCut(connectioncut);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00661"/>00661 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00662"/>00662 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(cfg-&gt;InternetServices_GetCheckInternetStatusCadence())
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00663"/>00663 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00664"/>00664 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE,&#32;__L(&quot;[APP&#32;Internet&#32;Services]&#32;Get&#32;Internet&#32;Services&#32;cadence&#32;%d]&quot;),&#32;cfg-&gt;InternetServices_GetCheckInternetStatusCadence());</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00665"/>00665 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00666"/>00666 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1gaa060833f50ac25a68c75f86b29c1c560">ChangeCadenceCheck</link>(<link linkend="__a_p_p_internet_services_8h_1abda28ec94ba6b640a1719bd9875e613ea8610a2256360cb9247bb10425dd81cfb">APPINTERNETSERVICES_TASKID_CHECKCONNECTIONINTERNET</link>,&#32;cfg-&gt;InternetServices_GetCheckInternetStatusCadence());&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00667"/>00667 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00668"/>00668 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00669"/>00669 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(cfg-&gt;InternetServices_GetCheckIPsChangeCadence())
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00670"/>00670 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00671"/>00671 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE,&#32;__L(&quot;[APP&#32;Internet&#32;Services]&#32;Get&#32;IPs&#32;ajust&#32;to&#32;30&#32;seconds]&quot;));</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00672"/>00672 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00673"/>00673 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1gaa060833f50ac25a68c75f86b29c1c560">ChangeCadenceCheck</link>(<link linkend="__a_p_p_internet_services_8h_1abda28ec94ba6b640a1719bd9875e613ea6eaee5e2352fc5c8c1ed537d8ca69305">APPINTERNETSERVICES_TASKID_GETIPS</link>,&#32;30,&#32;<emphasis role="keyword">false</emphasis>);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00674"/>00674 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00675"/>00675 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00676"/>00676 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00677"/>00677 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00678"/>00678 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.SetInternetConnexionState(<link linkend="__a_p_p_internet_services___x_event_8h_1ab9b9e8bc49aae49c7b3d4c93f0f7a849a9be6b413af107915964a4137756f203e">APPINTERNETSERVICES_CHECKINTERNETCONNEXION_STATE_CHECKED</link>);&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00679"/>00679 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00680"/>00680 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00681"/>00681 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00682"/>00682 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00683"/>00683 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.SetInternetConnexionState(<link linkend="__a_p_p_internet_services___x_event_8h_1ab9b9e8bc49aae49c7b3d4c93f0f7a849a4a4e917ac2b263ac949e92c1d99239f0">APPINTERNETSERVICES_CHECKINTERNETCONNEXION_STATE_CUT</link>);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00684"/>00684 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00685"/>00685 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(cfg-&gt;InternetServices_GetCheckInternetStatusCadence())
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00686"/>00686 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00687"/>00687 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE,&#32;__L(&quot;[APP&#32;Internet&#32;Services]&#32;Get&#32;Internet&#32;Services&#32;cadence&#32;10]&quot;));&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00688"/>00688 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00689"/>00689 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1gaa060833f50ac25a68c75f86b29c1c560">ChangeCadenceCheck</link>(<link linkend="__a_p_p_internet_services_8h_1abda28ec94ba6b640a1719bd9875e613ea8610a2256360cb9247bb10425dd81cfb">APPINTERNETSERVICES_TASKID_CHECKCONNECTIONINTERNET</link>,&#32;10,&#32;<emphasis role="keyword">false</emphasis>);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00690"/>00690 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00691"/>00691 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00692"/>00692 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00693"/>00693 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00694"/>00694 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00695"/>00695 &#32;&#32;&#32;&#32;&#32;&#32;xevent.SetInternetConnexionState(<link linkend="__a_p_p_internet_services___x_event_8h_1ab9b9e8bc49aae49c7b3d4c93f0f7a849a9be6b413af107915964a4137756f203e">APPINTERNETSERVICES_CHECKINTERNETCONNEXION_STATE_CHECKED</link>);&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00696"/>00696 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00697"/>00697 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00698"/>00698 &#32;&#32;<link linkend="_group___x_u_t_i_l_s_1gadb65926d5f56410c9243d2f7c69a87a3">PostEvent</link>(&amp;xevent);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00699"/>00699 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00700"/>00700 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00701"/>00701 }
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00702"/>00702 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00703"/>00703 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00713"/>00713 <emphasis role="keywordtype">bool</emphasis>&#32;APPINTERNETSERVICES::UpdateIPs(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;actualpublicIP)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00714"/>00714 {
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00715"/>00715 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;actualautomaticlocalIP;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00716"/>00716 &#32;&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_i_p_l_o_c_a_l_e_n_u_m_d_e_v_i_c_e_s">DIOSTREAMIPLOCALENUMDEVICES</link>*&#32;&#32;enumdevices&#32;&#32;&#32;&#32;&#32;=&#32;(<link linkend="_class_d_i_o_s_t_r_e_a_m_i_p_l_o_c_a_l_e_n_u_m_d_e_v_i_c_e_s">DIOSTREAMIPLOCALENUMDEVICES</link>*)GEN_DIOFACTORY.CreateStreamEnumDevices(<link linkend="__d_i_o_stream_enum_devices_8h_1a002fa6ddc871265914f8862eefde794ea38b1c621f1083fe75b0ac08241706793">DIOSTREAMENUMTYPE_IP_LOCAL</link>);&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00717"/>00717 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sendchangeevent&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00718"/>00718 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00719"/>00719 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00720"/>00720 &#32;&#32;<link linkend="_class_a_p_p_i_n_t_e_r_n_e_t_s_e_r_v_i_c_e_s___x_e_v_e_n_t">APPINTERNETSERVICES_XEVENT</link>&#32;&#32;&#32;&#32;xevent(<emphasis role="keyword">this</emphasis>,&#32;<link linkend="__a_p_p_internet_services___x_event_8h_1ab0a245f0dd924df561a811d379e46600a79d41dcc22ca9ce9983d5a6c33e43888">APPINTERNETSERVICES_XEVENT_TYPE_CHANGEIP</link>);&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00721"/>00721 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00722"/>00722 &#32;&#32;<link linkend="__a_p_p_log_8h_1afb1d4a8362f8d6826c3cb80f645069d8">APP_LOG_ENTRY</link>(<link linkend="__x_log_8h_1ae1355d3a7970c84298e4ead76cba266dac3015d5994a7e1e9841e87a7c9e8e428">XLOGLEVEL_INFO</link>,&#32;APP_CFG_LOG_SECTIONID_CONNEXIONS,&#32;<emphasis role="keyword">false</emphasis>,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;[Update&#32;IPs]&#32;Ini&#32;Get&#32;Local&#32;IP...&#32;&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00723"/>00723 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00724"/>00724 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(enumdevices)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00725"/>00725 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00726"/>00726 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_i_p">DIOSTREAMDEVICEIP</link>*&#32;device&#32;=&#32;(<link linkend="_class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_i_p">DIOSTREAMDEVICEIP</link>*)enumdevices-&gt;<link linkend="_group___d_a_t_a_i_o_1ga0ecaef6bc345e04f3b85e5cb535d547c">GetFirstActiveDevice</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00727"/>00727 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(device)&#32;&#32;device-&gt;<link linkend="_group___d_a_t_a_i_o_1gafbf7a2e1a9ce6b1b2d6c1b193c80f5f9">GetIP</link>()-&gt;<link linkend="_group___d_a_t_a_i_o_1ga6a266ef4ef9e43473e91acc37a816725">GetXString</link>(actualautomaticlocalIP);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00728"/>00728 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00729"/>00729 &#32;&#32;&#32;&#32;&#32;&#32;alllocalIP.<link linkend="_group___x_u_t_i_l_s_1ga9275997c1605fa79646c301e63a77d06">Empty</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00730"/>00730 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00731"/>00731 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;&#32;c&lt;enumdevices-&gt;<link linkend="_group___d_a_t_a_i_o_1gace3b6536060dcc534847e7483ab2d8b7">GetDevices</link>()-&gt;<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>();&#32;c++)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00732"/>00732 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00733"/>00733 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;device&#32;=&#32;(<link linkend="_class_d_i_o_s_t_r_e_a_m_d_e_v_i_c_e_i_p">DIOSTREAMDEVICEIP</link>*)enumdevices-&gt;<link linkend="_group___d_a_t_a_i_o_1gace3b6536060dcc534847e7483ab2d8b7">GetDevices</link>()-&gt;<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(c);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00734"/>00734 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(device)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00735"/>00735 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00736"/>00736 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>((!device-&gt;<link linkend="_group___d_a_t_a_i_o_1gafbf7a2e1a9ce6b1b2d6c1b193c80f5f9">GetIP</link>()-&gt;<link linkend="_group___d_a_t_a_i_o_1ga0558112e9e88c41258d33098e43538a5">IsEmpty</link>())&#32;&amp;&amp;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00737"/>00737 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(!device-&gt;<link linkend="_group___d_a_t_a_i_o_1gafbf7a2e1a9ce6b1b2d6c1b193c80f5f9">GetIP</link>()-&gt;<link linkend="_group___d_a_t_a_i_o_1ga95886ce25d47506c5b5eddfe9830ec93">IsAPIPA</link>())&#32;&amp;&amp;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00738"/>00738 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;((device-&gt;<link linkend="_group___d_a_t_a_i_o_1ga9e15957a8ec266ba4fc1a0063c525292">GetIPType</link>()&#32;==&#32;<link linkend="__d_i_o_stream_device_i_p_8h_1a63a390efd90dbf7d67b3a03483c3fac7abe5bdec90f5462c8e4081f0b3f174980">DIOSTREAMIPDEVICE_TYPE_ETHERNET</link>)&#32;||
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00739"/>00739 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(device-&gt;<link linkend="_group___d_a_t_a_i_o_1ga9e15957a8ec266ba4fc1a0063c525292">GetIPType</link>()&#32;==&#32;<link linkend="__d_i_o_stream_device_i_p_8h_1a63a390efd90dbf7d67b3a03483c3fac7a15b66b166a70112d8477acc66358398c">DIOSTREAMIPDEVICE_TYPE_WIFI</link>)&#32;&#32;&#32;&#32;&#32;||
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00740"/>00740 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(device-&gt;<link linkend="_group___d_a_t_a_i_o_1ga9e15957a8ec266ba4fc1a0063c525292">GetIPType</link>()&#32;==&#32;<link linkend="__d_i_o_stream_device_i_p_8h_1a63a390efd90dbf7d67b3a03483c3fac7a0d9c58d6f9928fcbedc8c250f9415739">DIOSTREAMIPDEVICE_TYPE_PPP</link>)))
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00741"/>00741 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00742"/>00742 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;locaIPstring;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00743"/>00743 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00744"/>00744 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!alllocalIP.<link linkend="_group___x_u_t_i_l_s_1gad26690161f8c1e2722771322b7370005">IsEmpty</link>())&#32;alllocalIP.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(<emphasis role="stringliteral">&quot;,&quot;</emphasis>);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00745"/>00745 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00746"/>00746 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;device-&gt;<link linkend="_group___d_a_t_a_i_o_1gafbf7a2e1a9ce6b1b2d6c1b193c80f5f9">GetIP</link>()-&gt;<link linkend="_group___d_a_t_a_i_o_1ga6a266ef4ef9e43473e91acc37a816725">GetXString</link>(locaIPstring);&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00747"/>00747 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;alllocalIP.<link linkend="_group___x_u_t_i_l_s_1gae19f84471c20a914d10a8ac757cacb9a">Add</link>(locaIPstring.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00748"/>00748 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00749"/>00749 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00750"/>00750 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00751"/>00751 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00752"/>00752 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00753"/>00753 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00754"/>00754 &#32;&#32;&#32;&#32;&#32;&#32;GEN_DIOFACTORY.DeleteStreamEnumDevices(enumdevices);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00755"/>00755 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00756"/>00756 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00757"/>00757 &#32;&#32;<link linkend="__a_p_p_log_8h_1afb1d4a8362f8d6826c3cb80f645069d8">APP_LOG_ENTRY</link>(status?<link linkend="__x_log_8h_1ae1355d3a7970c84298e4ead76cba266dac3015d5994a7e1e9841e87a7c9e8e428">XLOGLEVEL_INFO</link>:<link linkend="__x_log_8h_1ae1355d3a7970c84298e4ead76cba266da926800a951286d5e6d1ca672577d1858">XLOGLEVEL_ERROR</link>,&#32;APP_CFG_LOG_SECTIONID_CONNEXIONS,&#32;false,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;[Update&#32;IPs]&#32;End&#32;Get&#32;Local&#32;IP&#32;:&#32;[%s]&#32;&quot;</emphasis>),&#32;actualautomaticlocalIP.Get());&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00758"/>00758 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00759"/>00759 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00760"/>00760 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00761"/>00761 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_i_p">DIOIP</link>&#32;ip;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00762"/>00762 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00763"/>00763 &#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00764"/>00764 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00765"/>00765 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Check&#32;Local&#32;IP&#32;changed</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00766"/>00766 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(automaticlocalIP.<link linkend="_group___x_u_t_i_l_s_1gaa41b9d6abe3eca02494d6eb043ed50c2">Compare</link>(actualautomaticlocalIP))
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00767"/>00767 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00768"/>00768 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.SetIsChangeLocalIP(<emphasis role="keyword">true</emphasis>);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00769"/>00769 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.GetChangeLocalIP()-&gt;<link linkend="_group___d_a_t_a_i_o_1ga1955ea08de61edcd19d7806e64ed9aaa">Set</link>(actualautomaticlocalIP);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00770"/>00770 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00771"/>00771 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;automaticlocalIP&#32;&#32;=&#32;actualautomaticlocalIP;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00772"/>00772 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sendchangeevent&#32;&#32;&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00773"/>00773 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00774"/>00774 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00775"/>00775 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__a_p_p_log_8h_1afb1d4a8362f8d6826c3cb80f645069d8">APP_LOG_ENTRY</link>(<link linkend="__x_log_8h_1ae1355d3a7970c84298e4ead76cba266dac3015d5994a7e1e9841e87a7c9e8e428">XLOGLEVEL_INFO</link>,&#32;APP_CFG_LOG_SECTIONID_CONNEXIONS,&#32;<emphasis role="keyword">false</emphasis>,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;[Update&#32;IPs]&#32;Ini&#32;Get&#32;Public&#32;IP...&#32;&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00776"/>00776 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00777"/>00777 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(scraperwebpublicIP-&gt;<link linkend="_group___d_a_t_a_i_o_1gaf58d6ded3a3e198a9cdf0c8cfe06250c">Get</link>(ip,&#32;10,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;<emphasis role="keyword">false</emphasis>))&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00778"/>00778 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00779"/>00779 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;ip.<link linkend="_group___d_a_t_a_i_o_1ga6a266ef4ef9e43473e91acc37a816725">GetXString</link>(actualpublicIP);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00780"/>00780 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00781"/>00781 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00782"/>00782 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!actualpublicIP.<link linkend="_group___x_u_t_i_l_s_1gad26690161f8c1e2722771322b7370005">IsEmpty</link>())
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00783"/>00783 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00784"/>00784 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Check&#32;Public&#32;IP&#32;changed</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00785"/>00785 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(publicIP.<link linkend="_group___x_u_t_i_l_s_1gaa41b9d6abe3eca02494d6eb043ed50c2">Compare</link>(actualpublicIP))
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00786"/>00786 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00787"/>00787 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.SetIsChangePublicIP(<emphasis role="keyword">true</emphasis>);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00788"/>00788 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xevent.GetChangePublicIP()-&gt;Set(actualpublicIP);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00789"/>00789 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00790"/>00790 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;publicIP&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;actualpublicIP;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00791"/>00791 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;sendchangeevent&#32;=&#32;<emphasis role="keyword">true</emphasis>;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00792"/>00792 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00793"/>00793 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00794"/>00794 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00795"/>00795 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00796"/>00796 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00797"/>00797 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(actualpublicIP.<link linkend="_group___x_u_t_i_l_s_1gad26690161f8c1e2722771322b7370005">IsEmpty</link>())
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00798"/>00798 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00799"/>00799 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__a_p_p_log_8h_1afb1d4a8362f8d6826c3cb80f645069d8">APP_LOG_ENTRY</link>(<link linkend="__x_log_8h_1ae1355d3a7970c84298e4ead76cba266da926800a951286d5e6d1ca672577d1858">XLOGLEVEL_ERROR</link>,&#32;APP_CFG_LOG_SECTIONID_CONNEXIONS,&#32;<emphasis role="keyword">false</emphasis>,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;[Update&#32;IPs]&#32;End&#32;Get&#32;Public&#32;IP:&#32;Error&#32;not&#32;IP!&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00800"/>00800 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00801"/>00801 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00802"/>00802 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00803"/>00803 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__a_p_p_log_8h_1afb1d4a8362f8d6826c3cb80f645069d8">APP_LOG_ENTRY</link>((status?<link linkend="__x_log_8h_1ae1355d3a7970c84298e4ead76cba266dac3015d5994a7e1e9841e87a7c9e8e428">XLOGLEVEL_INFO</link>:<link linkend="__x_log_8h_1ae1355d3a7970c84298e4ead76cba266da926800a951286d5e6d1ca672577d1858">XLOGLEVEL_ERROR</link>),&#32;APP_CFG_LOG_SECTIONID_CONNEXIONS,&#32;false,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;[Update&#32;IPs]&#32;End&#32;Get&#32;Public&#32;IP:&#32;[%s]&#32;(%s)&quot;</emphasis>),&#32;actualpublicIP.Get(),&#32;sendchangeevent?<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;has&#32;changed&quot;</emphasis>):<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;has&#32;not&#32;changed&quot;</emphasis>));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00804"/>00804 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00805"/>00805 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00806"/>00806 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00807"/>00807 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(sendchangeevent)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00808"/>00808 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00809"/>00809 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_group___x_u_t_i_l_s_1gadb65926d5f56410c9243d2f7c69a87a3">PostEvent</link>(&amp;xevent);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00810"/>00810 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00811"/>00811 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00812"/>00812 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;sendchangeevent;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00813"/>00813 }
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00814"/>00814 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00815"/>00815 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00816"/>00816 <emphasis role="preprocessor">&#32;#ifdef&#32;APP_CFG_DYNDNSMANAGER_ACTIVE</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00826"/>00826 <emphasis role="keywordtype">bool</emphasis>&#32;APPINTERNETSERVICES::UpdateDynDNSURLs(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;actualpublicIP)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00827"/>00827 {
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00828"/>00828 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!dyndnsmanager)&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00829"/>00829 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00830"/>00830 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00831"/>00831 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00832"/>00832 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00833"/>00833 &#32;&#32;<link linkend="__a_p_p_log_8h_1afb1d4a8362f8d6826c3cb80f645069d8">APP_LOG_ENTRY</link>(<link linkend="__x_log_8h_1ae1355d3a7970c84298e4ead76cba266dac3015d5994a7e1e9841e87a7c9e8e428">XLOGLEVEL_INFO</link>,&#32;APP_CFG_LOG_SECTIONID_CONNEXIONS,&#32;<emphasis role="keyword">false</emphasis>,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;[Update&#32;IPs]&#32;Ini&#32;Update&#32;Dyndns&#32;URLs:&#32;[%s]&#32;&quot;</emphasis>),&#32;actualpublicIP.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00834"/>00834 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00835"/>00835 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;dyndnsmanager-&gt;<link linkend="_group___d_a_t_a_i_o_1gae4562cf5058d9e44a8ca52921c68f5e6">AssingAll</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00836"/>00836 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00837"/>00837 &#32;&#32;<link linkend="__a_p_p_log_8h_1afb1d4a8362f8d6826c3cb80f645069d8">APP_LOG_ENTRY</link>((status?<link linkend="__x_log_8h_1ae1355d3a7970c84298e4ead76cba266dac3015d5994a7e1e9841e87a7c9e8e428">XLOGLEVEL_INFO</link>:<link linkend="__x_log_8h_1ae1355d3a7970c84298e4ead76cba266da926800a951286d5e6d1ca672577d1858">XLOGLEVEL_ERROR</link>),&#32;APP_CFG_LOG_SECTIONID_CONNEXIONS,&#32;false,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;[Update&#32;IPs]&#32;End&#32;Update&#32;Dyndns&#32;URLs:&#32;[%s]&quot;</emphasis>),&#32;actualpublicIP.Get());&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00838"/>00838 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00839"/>00839 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00840"/>00840 }
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00841"/>00841 <emphasis role="preprocessor">#endif&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00842"/>00842 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00843"/>00843 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00855"/>00855 <emphasis role="keywordtype">bool</emphasis>&#32;APPINTERNETSERVICES::AdjustTimerByNTP(<link linkend="_class_x_v_e_c_t_o_r">XVECTOR&lt;XSTRING*&gt;</link>*&#32;servers)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00856"/>00856 {
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00857"/>00857 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!servers)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00858"/>00858 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00859"/>00859 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00860"/>00860 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00861"/>00861 &#32;&#32;<link linkend="_class_d_i_o_n_t_p">DIONTP</link>*&#32;ntp&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_n_t_p">DIONTP</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00862"/>00862 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(ntp)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00863"/>00863 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00864"/>00864 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_u_r_l">DIOURL</link>*&#32;url&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_u_r_l">DIOURL</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00865"/>00865 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(url)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00866"/>00866 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00867"/>00867 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00868"/>00868 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;&#32;c&lt;servers-&gt;<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>();&#32;c++)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00869"/>00869 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00870"/>00870 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(*url)&#32;=&#32;servers-&gt;<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(c)-&gt;Get();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00871"/>00871 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00872"/>00872 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xdatetime_local-&gt;<link linkend="_group___x_u_t_i_l_s_1ga0e2f3589654fc19d26c588506994fb20">Read</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00873"/>00873 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00874"/>00874 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(endservices)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00875"/>00875 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00876"/>00876 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00877"/>00877 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00878"/>00878 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00879"/>00879 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;ntp-&gt;<link linkend="_group___d_a_t_a_i_o_1ga0847c0f480200299a8d7dc297343df90">GetTime</link>((*url),&#32;<link linkend="__d_i_o_n_t_p_8h_1acf025c4fbe24d02fabae02fe0661190a">DIONTP_DEFAULTTIMEOUT</link>,&#32;GEN_XSYSTEM.HardwareUseLittleEndian(),&#32;(*xdatetime_local));
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00880"/>00880 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00881"/>00881 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00882"/>00882 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(cfg-&gt;InternetServices_GetUpdateTimeNTPMeridianDifference()&#32;==&#32;APP_CFG_INTERNETSERVICES_UPDATETIMENTPMERIDIANDIFFERENCE_AUTO)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00883"/>00883 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00884"/>00884 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xdatetime_local-&gt;<link linkend="_group___x_u_t_i_l_s_1gad566682e128db1927cd42bcf65af936c">AddSeconds</link>(xdatetime_local-&gt;<link linkend="_group___x_u_t_i_l_s_1ga1bf0f006a2b48eeefdd5dd1126c6f687">GetMeridianDifference</link>()&#32;*&#32;60);&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00885"/>00885 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00886"/>00886 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00887"/>00887 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00888"/>00888 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xdatetime_local-&gt;<link linkend="_group___x_u_t_i_l_s_1gad566682e128db1927cd42bcf65af936c">AddSeconds</link>(cfg-&gt;InternetServices_GetUpdateTimeNTPMeridianDifference()&#32;*&#32;60);&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00889"/>00889 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00890"/>00890 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00891"/>00891 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(cfg-&gt;InternetServices_GetUpdateTimeNTPUseDayLightSaving())
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00892"/>00892 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00893"/>00893 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xdatetime_local-&gt;<link linkend="_group___x_u_t_i_l_s_1ga1cfbf078c77203367a1157d79260f3a2">IsDayLigthSavingTime</link>())&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00894"/>00894 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00895"/>00895 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xdatetime_local-&gt;<link linkend="_group___x_u_t_i_l_s_1gad566682e128db1927cd42bcf65af936c">AddSeconds</link>(3600);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00896"/>00896 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00897"/>00897 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00898"/>00898 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00899"/>00899 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;xdatetime_local-&gt;<link linkend="_group___x_u_t_i_l_s_1ga3e4b217bdd4cbc8eed3f260438824e16">Write</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00900"/>00900 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00901"/>00901 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00902"/>00902 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00903"/>00903 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00904"/>00904 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00905"/>00905 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;url;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00906"/>00906 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00907"/>00907 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00908"/>00908 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;ntp;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00909"/>00909 &#32;&#32;&#32;&#32;}&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00910"/>00910 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00911"/>00911 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00912"/>00912 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00913"/>00913 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_a_p_p_i_n_t_e_r_n_e_t_s_e_r_v_i_c_e_s___x_e_v_e_n_t">APPINTERNETSERVICES_XEVENT</link>&#32;xevent(<emphasis role="keyword">this</emphasis>,&#32;<link linkend="__a_p_p_internet_services___x_event_8h_1ab0a245f0dd924df561a811d379e46600aa840fbd18413ac395b9ed9715cba3992">APPINTERNETSERVICES_XEVENT_TYPE_ADJUSTDATETIME</link>);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00914"/>00914 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_group___x_u_t_i_l_s_1gadb65926d5f56410c9243d2f7c69a87a3">PostEvent</link>(&amp;xevent);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00915"/>00915 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00916"/>00916 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00917"/>00917 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00918"/>00918 }
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00919"/>00919 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00920"/>00920 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00931"/>00931 <emphasis role="keywordtype">void</emphasis>&#32;APPINTERNETSERVICES::HandleEvent_Scheduler(<link linkend="_class_x_s_c_h_e_d_u_l_e_r___x_e_v_e_n_t">XSCHEDULER_XEVENT</link>*&#32;event)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00932"/>00932 {
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00933"/>00933 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(checkinternetconnection)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00934"/>00934 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00935"/>00935 &#32;&#32;&#32;&#32;&#32;&#32;checkinternetconnection-&gt;<link linkend="_group___d_a_t_a_i_o_1ga473efd9f36a09fc6b934532c569ee3a3">GetCheckConnections</link>()-&gt;<link linkend="_group___d_a_t_a_i_o_1ga98da9f7c399e2c267d938e49ad90a9a6">Connections_GetMutex</link>()-&gt;<link linkend="_group___x_u_t_i_l_s_1gae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00936"/>00936 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00937"/>00937 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00938"/>00938 &#32;&#32;<emphasis role="keywordflow">switch</emphasis>(event-&gt;<link linkend="_group___x_u_t_i_l_s_1ga290b9f3a35a67352dbd57ab6254a4b9c">GetTask</link>()-&gt;<link linkend="_group___x_u_t_i_l_s_1ga498bc0307b75f7e5d8ac1fbba9cfe3a0">GetID</link>())
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00939"/>00939 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00940"/>00940 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__a_p_p_internet_services_8h_1abda28ec94ba6b640a1719bd9875e613ea8610a2256360cb9247bb10425dd81cfb">APPINTERNETSERVICES_TASKID_CHECKCONNECTIONINTERNET</link>&#32;:&#32;CheckInternetStatus();&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00941"/>00941 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00942"/>00942 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00943"/>00943 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__a_p_p_internet_services_8h_1abda28ec94ba6b640a1719bd9875e613ea6eaee5e2352fc5c8c1ed537d8ca69305">APPINTERNETSERVICES_TASKID_GETIPS</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="comment">//&#32;XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE,&#32;__L(&quot;[APP&#32;Internet&#32;Services]&#32;Check&#32;Get&#32;IPs...&quot;));&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00944"/>00944 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00945"/>00945 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(CheckInternetConnection())&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00946"/>00946 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00947"/>00947 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;actualpublicIP;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00948"/>00948 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00949"/>00949 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(UpdateIPs(actualpublicIP))
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00950"/>00950 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00951"/>00951 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE,&#32;__L(&quot;[APP&#32;Internet&#32;Services]&#32;Update&#32;public&#32;IP&quot;));&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00952"/>00952 &#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00953"/>00953 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;XTRACE_ACTIVE&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00954"/>00954 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_trace_8h_1a8f93729264e0adbc51795c7cdb38ea2d">XTRACE_RESOLVEALLRESOURCES</link>;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00955"/>00955 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif&#32;&#32;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00956"/>00956 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00957"/>00957 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;APP_CFG_DYNDNSMANAGER_ACTIVE</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00958"/>00958 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;UpdateDynDNSURLs(actualpublicIP);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00959"/>00959 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00960"/>00960 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00961"/>00961 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00962"/>00962 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!actualpublicIP.<link linkend="_group___x_u_t_i_l_s_1gad26690161f8c1e2722771322b7370005">IsEmpty</link>())
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00963"/>00963 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00964"/>00964 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#ifdef&#32;APP_CFG_DYNDNSMANAGER_ACTIVE&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00965"/>00965 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE,&#32;__L(&quot;[APP&#32;Internet&#32;Services]&#32;Get&#32;IPs&#32;ajust&#32;to&#32;%d&#32;seconds]&quot;),&#32;cfg-&gt;InternetServices_GetCheckIPsChangeCadence());</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00966"/>00966 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_group___a_p_p_l_i_c_a_t_i_o_n_1gaa060833f50ac25a68c75f86b29c1c560">ChangeCadenceCheck</link>(<link linkend="__a_p_p_internet_services_8h_1abda28ec94ba6b640a1719bd9875e613ea6eaee5e2352fc5c8c1ed537d8ca69305">APPINTERNETSERVICES_TASKID_GETIPS</link>,&#32;cfg-&gt;InternetServices_GetCheckIPsChangeCadence());&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00967"/>00967 <emphasis role="preprocessor">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;#endif&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00968"/>00968 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00969"/>00969 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00970"/>00970 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00971"/>00971 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00972"/>00972 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__a_p_p_internet_services_8h_1abda28ec94ba6b640a1719bd9875e613ea06b170794fcc3381996661145a98fffc">APPINTERNETSERVICES_TASKID_CHECKNTPDATETIME</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="keywordflow">if</emphasis>(CheckInternetConnection())&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00973"/>00973 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00974"/>00974 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;AdjustTimerByNTP(&amp;NTPservers);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00975"/>00975 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00976"/>00976 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00977"/>00977 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00978"/>00978 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00979"/>00979 &#32;&#32;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00980"/>00980 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(checkinternetconnection)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00981"/>00981 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00982"/>00982 &#32;&#32;&#32;&#32;&#32;&#32;checkinternetconnection-&gt;<link linkend="_group___d_a_t_a_i_o_1ga473efd9f36a09fc6b934532c569ee3a3">GetCheckConnections</link>()-&gt;<link linkend="_group___d_a_t_a_i_o_1ga98da9f7c399e2c267d938e49ad90a9a6">Connections_GetMutex</link>()-&gt;<link linkend="_group___x_u_t_i_l_s_1gafed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00983"/>00983 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00984"/>00984 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00985"/>00985 }
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00986"/>00986 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00987"/>00987 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00998"/>00998 <emphasis role="keywordtype">void</emphasis>&#32;APPINTERNETSERVICES::HandleEvent(<link linkend="_class_x_e_v_e_n_t">XEVENT</link>*&#32;xevent)
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l00999"/>00999 {
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01000"/>01000 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xevent)&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01001"/>01001 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01002"/>01002 &#32;&#32;<emphasis role="keywordflow">switch</emphasis>(xevent-&gt;<link linkend="_group___x_u_t_i_l_s_1ga5fd619f9604c67639b9eda9aa0ac120b">GetEventFamily</link>())
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01003"/>01003 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01004"/>01004 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_event_8h_1aabf5f0b55ced84b808fb2c2e45dbb1e8a15553b6b979ac77333c3538da7c70d4b">XEVENT_TYPE_SCHEDULER</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;{&#32;&#32;<link linkend="_class_x_s_c_h_e_d_u_l_e_r___x_e_v_e_n_t">XSCHEDULER_XEVENT</link>*&#32;<emphasis role="keyword">event</emphasis>&#32;=&#32;(<link linkend="_class_x_s_c_h_e_d_u_l_e_r___x_e_v_e_n_t">XSCHEDULER_XEVENT</link>*)xevent;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01005"/>01005 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!event)&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01006"/>01006 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01007"/>01007 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;HandleEvent_Scheduler(event);
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01008"/>01008 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01009"/>01009 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01010"/>01010 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01011"/>01011 }
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01012"/>01012 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01013"/>01013 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01022"/>01022 <emphasis role="keywordtype">void</emphasis>&#32;APPINTERNETSERVICES::Clean()
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01023"/>01023 {
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01024"/>01024 &#32;&#32;xscheduler&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01025"/>01025 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01026"/>01026 &#32;&#32;automaticlocalIP.<link linkend="_group___x_u_t_i_l_s_1ga9275997c1605fa79646c301e63a77d06">Empty</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01027"/>01027 &#32;&#32;alllocalIP.<link linkend="_group___x_u_t_i_l_s_1ga9275997c1605fa79646c301e63a77d06">Empty</link>();
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01028"/>01028 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01029"/>01029 &#32;&#32;checkinternetconnection&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01030"/>01030 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01031"/>01031 &#32;&#32;haveinternetconnection&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01032"/>01032 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01033"/>01033 &#32;&#32;endservices&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01034"/>01034 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01035"/>01035 &#32;&#32;scraperwebpublicIP&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01036"/>01036 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01037"/>01037 &#32;&#32;xdatetime_local&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01038"/>01038 &#32;&#32;xdatetime_UTC&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01039"/>01039 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01040"/>01040 &#32;&#32;dyndnsmanager&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01041"/>01041 }
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01042"/>01042 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01043"/>01043 
+<anchor xml:id="__a_p_p_internet_services_8cpp_source_1l01044"/>01044 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+</programlisting></section>

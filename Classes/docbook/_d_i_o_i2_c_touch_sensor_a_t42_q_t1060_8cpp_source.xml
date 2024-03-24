@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source" xml:lang="en-US">
+<title>DIOI2CTouchSensorAT42QT1060.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/DataIO/Drivers/I2C/DIOI2CTouchSensorAT42QT1060.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8h">DIOI2CTouchSensorAT42QT1060.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&lt;math.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00044"/>00044 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_factory_8h">XFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_sleep_8h">XSleep.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_buffer_8h">XBuffer.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_trace_8h">XTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00049"/>00049 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00050"/>00050 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_factory_8h">DIOFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00051"/>00051 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_i2_c_config_8h">DIOStreamI2CConfig.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_i2_c_8h">DIOStreamI2C.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00053"/>00053 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_g_p_i_o_8h">DIOGPIO.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00054"/>00054 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00055"/>00055 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00056"/>00056 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00057"/>00057 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00058"/>00058 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00059"/>00059 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00060"/>00060 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00061"/>00061 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00062"/>00062 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00063"/>00063 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00064"/>00064 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00065"/>00065 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00066"/>00066 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00067"/>00067 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00068"/>00068 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00069"/>00069 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00077"/><link linkend="_group___d_a_t_a_i_o_1gad0c696f9500e430638fc058fd4c381bf">00077</link> <link linkend="_group___d_a_t_a_i_o_1gad0c696f9500e430638fc058fd4c381bf">DIOI2CTOUCHSENSORAT42QT1060::DIOI2CTOUCHSENSORAT42QT1060</link>()&#32;:&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c">DIODEVICEI2C</link>()
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00078"/>00078 {
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00079"/>00079 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00080"/>00080 }
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00081"/>00081 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00082"/>00082 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00091"/><link linkend="_group___d_a_t_a_i_o_1ga81d7010fe5626d75afa197ee766d0474">00091</link> <link linkend="_group___d_a_t_a_i_o_1ga81d7010fe5626d75afa197ee766d0474">DIOI2CTOUCHSENSORAT42QT1060::~DIOI2CTOUCHSENSORAT42QT1060</link>()
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00092"/>00092 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00093"/>00093 {
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00094"/>00094 &#32;&#32;<link linkend="_group___d_a_t_a_i_o_1gaf849bdd1b1c2f1a944a951870d710e2e">End</link>();
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00095"/>00095 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00096"/>00096 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00097"/>00097 }
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00098"/>00098 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00099"/>00099 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00109"/><link linkend="_group___d_a_t_a_i_o_1ga60186a720f080adba05ff97ecb4cb6d0">00109</link> <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;<link linkend="_group___d_a_t_a_i_o_1ga60186a720f080adba05ff97ecb4cb6d0">DIOI2CTOUCHSENSORAT42QT1060::GetGPIOInterruptEntryID</link>()
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00110"/>00110 {
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00111"/>00111 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;GPIOinterruptentryID;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00112"/>00112 }
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00113"/>00113 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00114"/>00114 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00126"/><link linkend="_group___d_a_t_a_i_o_1ga600f488c68a95c951bae21d04ae2dbfe">00126</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga600f488c68a95c951bae21d04ae2dbfe">DIOI2CTOUCHSENSORAT42QT1060::SetGPIOInterruptEntryID</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;GPIOentryID)
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00127"/>00127 {
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00128"/>00128 &#32;&#32;GPIOinterruptentryID&#32;=&#32;GPIOentryID;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00129"/>00129 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00130"/>00130 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00131"/>00131 }
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00132"/>00132 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00133"/>00133 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00145"/><link linkend="_group___d_a_t_a_i_o_1gafd8f3db5857e99d435f3622799f5b486">00145</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gafd8f3db5857e99d435f3622799f5b486">DIOI2CTOUCHSENSORAT42QT1060::GetHW_ID</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&amp;&#32;ID)
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00146"/>00146 {
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00147"/>00147 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00148"/>00148 &#32;&#32;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00149"/>00149 &#32;&#32;ID&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00150"/>00150 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00151"/>00151 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;valread;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00152"/>00152 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00153"/>00153 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!ReadRegister(<link linkend="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8h_1a9624f2ecbde650e267aa4e47b315964f">DIOI2CTOUCHSENSORAT42QT1060_CHIP_ID_REG</link>,&#32;valread))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00154"/>00154 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00155"/>00155 &#32;&#32;ID&#32;=&#32;valread;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00156"/>00156 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00157"/>00157 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00158"/>00158 }
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00159"/>00159 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00160"/>00160 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00170"/><link linkend="_group___d_a_t_a_i_o_1ga0bbb2a9d871659cb7d22677253eb5b73">00170</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga0bbb2a9d871659cb7d22677253eb5b73">DIOI2CTOUCHSENSORAT42QT1060::IsNecessaryUpdate</link>()
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00171"/>00171 {
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00172"/>00172 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;isnecessaryupdate;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00173"/>00173 }
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00174"/>00174 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00175"/>00175 &#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00185"/><link linkend="_group___d_a_t_a_i_o_1ga644bbf9734f44f09dfae7b4fed24b3b2">00185</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga644bbf9734f44f09dfae7b4fed24b3b2">DIOI2CTOUCHSENSORAT42QT1060::SetIsNecessaryUpdate</link>(<emphasis role="keywordtype">bool</emphasis>&#32;isnecessaryupdate)
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00186"/>00186 {
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00187"/>00187 &#32;&#32;this-&gt;isnecessaryupdate&#32;=&#32;isnecessaryupdate;&#32;&#32;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00188"/>00188 }
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00189"/>00189 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00190"/>00190 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00200"/><link linkend="_group___d_a_t_a_i_o_1ga788ef5e18a75fe37cc2c14b8f5cfd7b8">00200</link> <link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;<link linkend="_group___d_a_t_a_i_o_1ga788ef5e18a75fe37cc2c14b8f5cfd7b8">DIOI2CTOUCHSENSORAT42QT1060::GetStatus</link>()
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00201"/>00201 {
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00202"/>00202 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;regvalue&#32;=&#32;0xFF;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00203"/>00203 &#32;&#32;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00204"/>00204 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_group___d_a_t_a_i_o_1ga0bbb2a9d871659cb7d22677253eb5b73">IsNecessaryUpdate</link>())
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00205"/>00205 &#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00206"/>00206 &#32;&#32;&#32;&#32;&#32;&#32;prevtouch&#32;=&#32;regvalue;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00207"/>00207 &#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00208"/>00208 &#32;&#32;&#32;&#32;&#32;&#32;ReadRegister(<link linkend="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8h_1ad7ab2de9c8eb5359ac3470034d411c44">DIOI2CTOUCHSENSORAT42QT1060_INPUT_PORT_STATUS_REG</link>,&#32;regvalue);
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00209"/>00209 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00210"/>00210 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_group___d_a_t_a_i_o_1ga644bbf9734f44f09dfae7b4fed24b3b2">SetIsNecessaryUpdate</link>(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00211"/>00211 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00212"/>00212 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00213"/>00213 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;regvalue;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00214"/>00214 }
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00215"/>00215 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00216"/>00216 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00226"/><link linkend="_group___d_a_t_a_i_o_1gaf849bdd1b1c2f1a944a951870d710e2e">00226</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gaf849bdd1b1c2f1a944a951870d710e2e">DIOI2CTOUCHSENSORAT42QT1060::End</link>()
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00227"/>00227 {
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00228"/>00228 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1gac96c34c9d5f91768940985b082c0dad2">DIODEVICE::End</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00229"/>00229 &#32;&#32;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00230"/>00230 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00231"/>00231 }
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00232"/>00232 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00233"/>00233 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00243"/>00243 <emphasis role="keywordtype">bool</emphasis>&#32;DIOI2CTOUCHSENSORAT42QT1060::IniDevice()
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00244"/>00244 {
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00245"/>00245 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1gafe0d936f40e0b1b96b28efaf22ee119e">DIODEVICEI2C::IniDevice</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00246"/>00246 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00247"/>00247 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1gafccebd8333bc1df1f36fb068af1c0a1a">Open</link>())
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00248"/>00248 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00249"/>00249 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1gacff76db4bc54a48fe2d2ceb165835c2f">WaitToConnected</link>(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1aa52a412cc095ba0e18211f4c994d69e2">timeout</link>))
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00250"/>00250 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00251"/>00251 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!Initializate())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00252"/>00252 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00253"/>00253 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga2ce40a31520cdee813143e1f028ee629">DIODEVICE::Ini</link>();
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00254"/>00254 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00255"/>00255 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00256"/>00256 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00257"/>00257 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00258"/>00258 }
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00259"/>00259 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00260"/>00260 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00270"/>00270 <emphasis role="keywordtype">bool</emphasis>&#32;DIOI2CTOUCHSENSORAT42QT1060::Initializate()
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00271"/>00271 {
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00272"/>00272 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;hardwareID&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00273"/>00273 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00274"/>00274 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1gafd8f3db5857e99d435f3622799f5b486">GetHW_ID</link>(hardwareID))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00275"/>00275 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(hardwareID&#32;==&#32;<link linkend="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8h_1aa16a009f5a55a3dd6e1f00c155e6795d">DIOI2CTOUCHSENSORAT42QT1060_HW_ID</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00276"/>00276 &#32;&#32;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00277"/>00277 &#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;&#32;Key&#32;Mask&#32;Enable&#32;CHG&#32;interrupt&#32;for&#32;KEYs&#32;0-3</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00278"/>00278 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!WriteRegister(<link linkend="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8h_1ad300714cc60cf385b5a3866202b3c45d">DIOI2CTOUCHSENSORAT42QT1060_KEY_MASK_REG</link>,&#32;0x0F))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00279"/>00279 &#32;&#32;GEN_XSLEEP.MilliSeconds(10);
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00280"/>00280 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00281"/>00281 &#32;&#32;<emphasis role="comment">//&#32;AKS&#32;Mask&#32;Enable&#32;KEYs&#32;0-3&#32;in&#32;the&#32;AKS&#32;groups</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00282"/>00282 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!WriteRegister(<link linkend="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8h_1a358b0455aaa8737fa56f0ab588ea196f">DIOI2CTOUCHSENSORAT42QT1060_AKS_MASK_REG</link>,&#32;0x0F))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00283"/>00283 &#32;&#32;GEN_XSLEEP.MilliSeconds(10);
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00284"/>00284 &#32;&#32;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00285"/>00285 &#32;&#32;<emphasis role="comment">//&#32;NTHR&#32;Key&#32;Threshold&#32;value&#32;KEY0.&#32;Count&#32;of&#32;Xms&#32;pooling&#32;&#32;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00286"/>00286 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!WriteRegister(<link linkend="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8h_1ac349fa9176bacc1f8b0a549b69ceeed4">DIOI2CTOUCHSENSORAT42QT1060_NTHR_KEY_0</link>,&#32;30))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;&#32;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00287"/>00287 &#32;&#32;GEN_XSLEEP.MilliSeconds(10);
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00288"/>00288 &#32;&#32;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00289"/>00289 &#32;&#32;<emphasis role="comment">//&#32;NTHR&#32;Key&#32;Threshold&#32;value&#32;KEY1.&#32;Count&#32;of&#32;Xms&#32;pooling&#32;&#32;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00290"/>00290 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!WriteRegister(<link linkend="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8h_1aa5238676f99f2d3cc3985244774047d9">DIOI2CTOUCHSENSORAT42QT1060_NTHR_KEY_1</link>,&#32;30))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00291"/>00291 &#32;&#32;GEN_XSLEEP.MilliSeconds(10);
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00292"/>00292 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00293"/>00293 &#32;&#32;<emphasis role="comment">//&#32;NTHR&#32;Key&#32;Threshold&#32;value&#32;KEY2.&#32;Count&#32;of&#32;Xms&#32;pooling&#32;&#32;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00294"/>00294 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!WriteRegister(<link linkend="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8h_1a9973bb76cd748b3e867bb3f318865d00">DIOI2CTOUCHSENSORAT42QT1060_NTHR_KEY_2</link>,&#32;30))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00295"/>00295 &#32;&#32;GEN_XSLEEP.MilliSeconds(10);
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00296"/>00296 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00297"/>00297 &#32;&#32;<emphasis role="comment">//NTHR&#32;Key&#32;Threshold&#32;value&#32;KEY3.&#32;Count&#32;of&#32;Xms&#32;pooling&#32;&#32;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00298"/>00298 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!WriteRegister(<link linkend="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8h_1a611001c194c0a02892ff8bd0b55acb0d">DIOI2CTOUCHSENSORAT42QT1060_NTHR_KEY_3</link>,&#32;30))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00299"/>00299 &#32;&#32;GEN_XSLEEP.MilliSeconds(10);&#32;&#32;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00300"/>00300 &#32;&#32;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00301"/>00301 &#32;&#32;&#32;&#32;<emphasis role="comment">//LP&#32;Mode&#32;&#32;&#32;16ms&#32;pooling&#32;&#32;</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00302"/>00302 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!WriteRegister(<link linkend="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8h_1aea47db78842f49648ce03cc59df5084c">DIOI2CTOUCHSENSORAT42QT1060_LPM_MODE</link>,&#32;0x01))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00303"/>00303 &#32;&#32;GEN_XSLEEP.MilliSeconds(10);
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00304"/>00304 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00305"/>00305 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00306"/>00306 &#32;&#32;<emphasis role="comment">//&#32;Charger&#32;GPIO&#32;Interrupts</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00307"/>00307 &#32;&#32;<link linkend="_class_d_i_o_g_p_i_o___e_n_t_r_y">DIOGPIO_ENTRY</link>*&#32;interrupt&#32;=&#32;GEN_DIOGPIO.GPIOEntry_GetByID(GPIOinterruptentryID);
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00308"/>00308 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(interrupt)
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00309"/>00309 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00310"/>00310 &#32;&#32;&#32;&#32;&#32;&#32;interrupt-&gt;<link linkend="_group___d_a_t_a_i_o_1gaa943b12c08fbe7c7ddbbb3a525f6efd2">SetIntFunctionPointer</link>(DIOI2CTOUCHSENSORAT42QT1060::Handler_Interrupt);&#32;&#32;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00311"/>00311 &#32;&#32;&#32;&#32;&#32;&#32;interrupt-&gt;<link linkend="_group___d_a_t_a_i_o_1gacb450e2aaf4f5250abdccb731d554ff7">SetIntParamPointer</link>((<emphasis role="keywordtype">void</emphasis>*)<emphasis role="keyword">this</emphasis>);&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00312"/>00312 &#32;&#32;&#32;&#32;&#32;&#32;GEN_DIOGPIO.SetMode(GPIOinterruptentryID,&#32;<link linkend="__d_i_o_g_p_i_o_8h_1a4fa9329aaa840e643f98dba8211d63ba">DIOGPIO_MODE_INTERRUPT</link>);&#32;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00313"/>00313 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00314"/>00314 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00315"/>00315 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00316"/>00316 }
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00317"/>00317 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00318"/>00318 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00331"/>00331 <emphasis role="keywordtype">bool</emphasis>&#32;DIOI2CTOUCHSENSORAT42QT1060::ReadRegister(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;offset,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&amp;&#32;data)
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00332"/>00332 {
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00333"/>00333 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;ReadRegister(offset,&#32;&amp;data,&#32;1);
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00334"/>00334 }
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00335"/>00335 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00336"/>00336 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00350"/>00350 <emphasis role="keywordtype">bool</emphasis>&#32;DIOI2CTOUCHSENSORAT42QT1060::ReadRegister(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;offset,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;data,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;sizedata)
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00351"/>00351 {
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00352"/>00352 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00353"/>00353 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00354"/>00354 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00355"/>00355 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00356"/>00356 &#32;&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1gac04f4ad8ff28b97128a876063103dd50">Write</link>(&amp;offset,&#32;1)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00357"/>00357 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga59dc380e213dd083940c80663667dae7">WaitToFlushOutXBuffer</link>(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1aa52a412cc095ba0e18211f4c994d69e2">timeout</link>);
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00358"/>00358 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00359"/>00359 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00360"/>00360 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00361"/>00361 &#32;&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga6e20f03ff391343123fda221a5c2ed85">WaitToFilledReadingBuffer</link>(sizedata,&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1aa52a412cc095ba0e18211f4c994d69e2">timeout</link>);
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00362"/>00362 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;status&#32;=&#32;(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga20cd6c3635818f96468dee8bc601aec1">Read</link>(data,&#32;sizedata)&#32;==&#32;sizedata)?<emphasis role="keyword">true</emphasis>:false;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00363"/>00363 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00364"/>00364 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00365"/>00365 }
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00366"/>00366 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00367"/>00367 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00380"/>00380 <emphasis role="keywordtype">bool</emphasis>&#32;DIOI2CTOUCHSENSORAT42QT1060::WriteRegister(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;offset,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;data)
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00381"/>00381 {
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00382"/>00382 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;WriteRegister(offset,&#32;&amp;data,&#32;1);
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00383"/>00383 }
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00384"/>00384 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00385"/>00385 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00399"/>00399 <emphasis role="keywordtype">bool</emphasis>&#32;DIOI2CTOUCHSENSORAT42QT1060::WriteRegister(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;offset,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;data,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;sizedata)
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00400"/>00400 {
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00401"/>00401 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00402"/>00402 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00403"/>00403 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;buffer;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00404"/>00404 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;status;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00405"/>00405 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00406"/>00406 &#32;&#32;buffer.<link linkend="_group___x_u_t_i_l_s_1ga03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>)offset);
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00407"/>00407 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(data&#32;&amp;&amp;&#32;sizedata)&#32;buffer.<link linkend="_group___x_u_t_i_l_s_1ga03212e4f31a9d07995ac4f72db1dd0cf">Add</link>(data,&#32;sizedata);
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00408"/>00408 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00409"/>00409 &#32;&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1gac04f4ad8ff28b97128a876063103dd50">Write</link>(buffer)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00410"/>00410 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga59dc380e213dd083940c80663667dae7">WaitToFlushOutXBuffer</link>(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1aa52a412cc095ba0e18211f4c994d69e2">timeout</link>);
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00411"/>00411 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00412"/>00412 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00413"/>00413 }
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00414"/>00414 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00415"/>00415 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00416"/>00416 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00426"/>00426 <emphasis role="keywordtype">void</emphasis>&#32;DIOI2CTOUCHSENSORAT42QT1060::Handler_Interrupt(<emphasis role="keywordtype">void</emphasis>*&#32;param)
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00427"/>00427 {
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00428"/>00428 &#32;&#32;<link linkend="_class_d_i_o_i2_c_t_o_u_c_h_s_e_n_s_o_r_a_t42_q_t1060">DIOI2CTOUCHSENSORAT42QT1060</link>*&#32;touchsensor&#32;=&#32;(<link linkend="_class_d_i_o_i2_c_t_o_u_c_h_s_e_n_s_o_r_a_t42_q_t1060">DIOI2CTOUCHSENSORAT42QT1060</link>*)param;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00429"/>00429 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(touchsensor)&#32;touchsensor-&gt;<link linkend="_group___d_a_t_a_i_o_1ga644bbf9734f44f09dfae7b4fed24b3b2">SetIsNecessaryUpdate</link>(<emphasis role="keyword">true</emphasis>);
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00430"/>00430 }
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00431"/>00431 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00432"/>00432 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00441"/>00441 <emphasis role="keywordtype">void</emphasis>&#32;DIOI2CTOUCHSENSORAT42QT1060::Clean()
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00442"/>00442 {
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00443"/>00443 &#32;&#32;GPIOinterruptentryID&#32;&#32;=&#32;<link linkend="__d_i_o_g_p_i_o_8h_1a488a85f4fab8868ca6503c2f0112744a">DIOGPIO_ID_NOTDEFINED</link>;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00444"/>00444 &#32;&#32;isnecessaryupdate&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;&#32;&#32;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00445"/>00445 &#32;&#32;prevtouch&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00446"/>00446 }
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00447"/>00447 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00448"/>00448 
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00449"/>00449 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_i2_c_touch_sensor_a_t42_q_t1060_8cpp_source_1l00450"/>00450 
+</programlisting></section>

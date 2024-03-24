@@ -1,0 +1,511 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source" xml:lang="en-US">
+<title>DIOI2C6AxisTrackingLSM303DLHC.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/DataIO/Drivers/I2C/DIOI2C6AxisTrackingLSM303DLHC.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8h">DIOI2C6AxisTrackingLSM303DLHC.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&lt;math.h&gt;</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00043"/>00043 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_factory_8h">XFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_buffer_8h">XBuffer.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_trace_8h">XTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00047"/>00047 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_factory_8h">DIOFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00049"/>00049 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_i2_c_config_8h">DIOStreamI2CConfig.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00050"/>00050 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_i2_c_8h">DIOStreamI2C.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00051"/>00051 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00053"/>00053 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00054"/>00054 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00055"/>00055 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00056"/>00056 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00057"/>00057 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00058"/>00058 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00059"/>00059 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00060"/>00060 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00061"/>00061 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00062"/>00062 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00063"/>00063 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00064"/>00064 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00065"/>00065 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00066"/>00066 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00067"/>00067 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_DIOI2CLSM303DLHCVECTOR</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00068"/>00068 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00069"/>00069 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00077"/><link linkend="_group___d_a_t_a_i_o_1gaf44975fae1337991cd38a78cce561318">00077</link> <link linkend="_group___d_a_t_a_i_o_1gaf44975fae1337991cd38a78cce561318">DIOI2CLSM303DLHCVECTOR::DIOI2CLSM303DLHCVECTOR</link>()
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00078"/>00078 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00079"/>00079 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00080"/>00080 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00081"/>00081 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00082"/>00082 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00091"/><link linkend="_group___d_a_t_a_i_o_1ga4ae0e883002c42bd5fbe2aa769e62860">00091</link> <link linkend="_group___d_a_t_a_i_o_1ga4ae0e883002c42bd5fbe2aa769e62860">DIOI2CLSM303DLHCVECTOR::~DIOI2CLSM303DLHCVECTOR</link>()
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00092"/>00092 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00093"/>00093 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00094"/>00094 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00095"/>00095 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00096"/>00096 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00108"/><link linkend="_group___d_a_t_a_i_o_1gab8d77e710335b4eda214e8ba137da176">00108</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gab8d77e710335b4eda214e8ba137da176">DIOI2CLSM303DLHCVECTOR::Cross</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r">DIOI2CLSM303DLHCVECTOR</link>&amp;&#32;a,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r">DIOI2CLSM303DLHCVECTOR</link>&amp;&#32;b,&#32;<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r">DIOI2CLSM303DLHCVECTOR</link>&amp;&#32;out)
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00109"/>00109 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00110"/>00110 &#32;&#32;out.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1ab9ffb45911f6f1e18df79c8d0209d4ac">x</link>&#32;=&#32;a.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1a030e03e237e2095e1a52b27e1116fa78">y</link>&#32;*&#32;b.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1afaeb086b60a706ca3322b9ecd046dcc3">z</link>&#32;-&#32;a.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1afaeb086b60a706ca3322b9ecd046dcc3">z</link>&#32;*&#32;b.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1a030e03e237e2095e1a52b27e1116fa78">y</link>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00111"/>00111 &#32;&#32;out.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1a030e03e237e2095e1a52b27e1116fa78">y</link>&#32;=&#32;a.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1afaeb086b60a706ca3322b9ecd046dcc3">z</link>&#32;*&#32;b.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1ab9ffb45911f6f1e18df79c8d0209d4ac">x</link>&#32;-&#32;a.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1ab9ffb45911f6f1e18df79c8d0209d4ac">x</link>&#32;*&#32;b.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1afaeb086b60a706ca3322b9ecd046dcc3">z</link>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00112"/>00112 &#32;&#32;out.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1afaeb086b60a706ca3322b9ecd046dcc3">z</link>&#32;=&#32;a.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1ab9ffb45911f6f1e18df79c8d0209d4ac">x</link>&#32;*&#32;b.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1a030e03e237e2095e1a52b27e1116fa78">y</link>&#32;-&#32;a.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1a030e03e237e2095e1a52b27e1116fa78">y</link>&#32;*&#32;b.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1ab9ffb45911f6f1e18df79c8d0209d4ac">x</link>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00113"/>00113 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00114"/>00114 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00115"/>00115 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00128"/><link linkend="_group___d_a_t_a_i_o_1ga1c7451e6ed7bf21f6a57a48a5c0d3a83">00128</link> <emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga1c7451e6ed7bf21f6a57a48a5c0d3a83">DIOI2CLSM303DLHCVECTOR::Dot</link>(<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r">DIOI2CLSM303DLHCVECTOR</link>&amp;&#32;a,&#32;<emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r">DIOI2CLSM303DLHCVECTOR</link>&amp;&#32;b)
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00129"/>00129 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00130"/>00130 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;a.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1ab9ffb45911f6f1e18df79c8d0209d4ac">x</link>&#32;*&#32;b.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1ab9ffb45911f6f1e18df79c8d0209d4ac">x</link>&#32;+&#32;a.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1a030e03e237e2095e1a52b27e1116fa78">y</link>&#32;*&#32;b.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1a030e03e237e2095e1a52b27e1116fa78">y</link>&#32;+&#32;a.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1afaeb086b60a706ca3322b9ecd046dcc3">z</link>&#32;*&#32;b.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1afaeb086b60a706ca3322b9ecd046dcc3">z</link>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00131"/>00131 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00132"/>00132 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00133"/>00133 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00143"/><link linkend="_group___d_a_t_a_i_o_1gaf8c8874c9661b89433c768c4c159adc5">00143</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gaf8c8874c9661b89433c768c4c159adc5">DIOI2CLSM303DLHCVECTOR::Normalize</link>(<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r">DIOI2CLSM303DLHCVECTOR</link>&amp;&#32;a)
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00144"/>00144 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00145"/>00145 &#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;mag&#32;=&#32;(float)sqrt(<link linkend="_group___d_a_t_a_i_o_1ga1c7451e6ed7bf21f6a57a48a5c0d3a83">Dot</link>(a,a));
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00146"/>00146 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00147"/>00147 &#32;&#32;a.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1ab9ffb45911f6f1e18df79c8d0209d4ac">x</link>&#32;/=&#32;float(mag);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00148"/>00148 &#32;&#32;a.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1a030e03e237e2095e1a52b27e1116fa78">y</link>&#32;/=&#32;float(mag);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00149"/>00149 &#32;&#32;a.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1afaeb086b60a706ca3322b9ecd046dcc3">z</link>&#32;/=&#32;float(mag);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00150"/>00150 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00151"/>00151 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00152"/>00152 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00161"/>00161 <emphasis role="keywordtype">void</emphasis>&#32;DIOI2CLSM303DLHCVECTOR::Clean()
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00162"/>00162 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00163"/>00163 &#32;&#32;<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1ab9ffb45911f6f1e18df79c8d0209d4ac">x</link>&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00164"/>00164 &#32;&#32;<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1a030e03e237e2095e1a52b27e1116fa78">y</link>&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00165"/>00165 &#32;&#32;<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1afaeb086b60a706ca3322b9ecd046dcc3">z</link>&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00166"/>00166 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00167"/>00167 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00168"/>00168 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00169"/>00169 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00170"/>00170 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00171"/>00171 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00172"/>00172 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00173"/>00173 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00174"/>00174 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_DIOI2CLSM303DLHC</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00175"/>00175 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00176"/>00176 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00184"/><link linkend="_group___d_a_t_a_i_o_1ga0d50d6db58eb9b050ca14e8626143f19">00184</link> <link linkend="_group___d_a_t_a_i_o_1ga0d50d6db58eb9b050ca14e8626143f19">DIOI2CLSM303DLHC::DIOI2CLSM303DLHC</link>()&#32;:&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c">DIODEVICEI2C</link>()
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00185"/>00185 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00186"/>00186 &#32;&#32;<link linkend="_group___d_a_t_a_i_o_1ga5397a87e9ad60025d7fc250ffc826084">Clean</link>();
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00187"/>00187 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00188"/>00188 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00189"/>00189 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00198"/><link linkend="_group___d_a_t_a_i_o_1ga6b6336d80bc8b95853b4e46dd14488b1">00198</link> <link linkend="_group___d_a_t_a_i_o_1ga6b6336d80bc8b95853b4e46dd14488b1">DIOI2CLSM303DLHC::~DIOI2CLSM303DLHC</link>()
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00199"/>00199 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00200"/>00200 &#32;&#32;<link linkend="_group___d_a_t_a_i_o_1ga1616420b5666a1a0aa64f2a85fc9792d">End</link>();
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00201"/>00201 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00202"/>00202 &#32;&#32;<link linkend="_group___d_a_t_a_i_o_1ga5397a87e9ad60025d7fc250ffc826084">Clean</link>();
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00203"/>00203 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00204"/>00204 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00205"/>00205 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00215"/><link linkend="_group___d_a_t_a_i_o_1ga1616420b5666a1a0aa64f2a85fc9792d">00215</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga1616420b5666a1a0aa64f2a85fc9792d">DIOI2CLSM303DLHC::End</link>()
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00216"/>00216 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00217"/>00217 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1ga97fa53ca512fb382b705033def5348c3">DIODEVICEI2C::End</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00218"/>00218 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00219"/>00219 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00220"/>00220 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00221"/>00221 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00222"/>00222 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00232"/><link linkend="_group___d_a_t_a_i_o_1ga225b3f7ca8423b24b6bc59b7b00346a9">00232</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga225b3f7ca8423b24b6bc59b7b00346a9">DIOI2CLSM303DLHC::IniDevice</link>()
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00233"/>00233 {&#32;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00234"/>00234 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1gafe0d936f40e0b1b96b28efaf22ee119e">DIODEVICEI2C::IniDevice</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00235"/>00235 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00236"/>00236 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1gafccebd8333bc1df1f36fb068af1c0a1a">Open</link>())
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00237"/>00237 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00238"/>00238 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1gacff76db4bc54a48fe2d2ceb165835c2f">WaitToConnected</link>(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1aa52a412cc095ba0e18211f4c994d69e2">timeout</link>))
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00239"/>00239 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00240"/>00240 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga2ce40a31520cdee813143e1f028ee629">DIODEVICE::Ini</link>();
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00241"/>00241 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00242"/>00242 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00243"/>00243 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00244"/>00244 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00245"/>00245 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00246"/>00246 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00247"/>00247 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00260"/><link linkend="_group___d_a_t_a_i_o_1ga03a58536cf6451e6d8d986d149a5de35">00260</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga03a58536cf6451e6d8d986d149a5de35">DIOI2CLSM303DLHC::ReadRegister</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;reg,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&amp;&#32;value)
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00261"/>00261 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00262"/>00262 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00263"/>00263 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1gaffa2a228690e583d4c7c2a5f4adf9821">IsInitialized</link>())&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00264"/>00264 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00265"/>00265 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;status;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00266"/>00266 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00267"/>00267 &#32;&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1gac04f4ad8ff28b97128a876063103dd50">Write</link>(&amp;reg,&#32;1)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00268"/>00268 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga59dc380e213dd083940c80663667dae7">WaitToFlushOutXBuffer</link>(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1aa52a412cc095ba0e18211f4c994d69e2">timeout</link>);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00269"/>00269 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00270"/>00270 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00271"/>00271 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00272"/>00272 &#32;&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga6e20f03ff391343123fda221a5c2ed85">WaitToFilledReadingBuffer</link>(1,&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1aa52a412cc095ba0e18211f4c994d69e2">timeout</link>);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00273"/>00273 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga20cd6c3635818f96468dee8bc601aec1">Read</link>(&amp;value,&#32;1)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00274"/>00274 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00275"/>00275 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00276"/>00276 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00277"/>00277 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00278"/>00278 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00291"/><link linkend="_group___d_a_t_a_i_o_1ga4f889a88036c578576d42cf96ee76298">00291</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga03a58536cf6451e6d8d986d149a5de35">DIOI2CLSM303DLHC::ReadRegister</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;reg,&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&amp;&#32;value)
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00292"/>00292 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00293"/>00293 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>)&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00294"/>00294 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1gaffa2a228690e583d4c7c2a5f4adf9821">IsInitialized</link>())&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00295"/>00295 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00296"/>00296 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;status;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00297"/>00297 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00298"/>00298 &#32;&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1gac04f4ad8ff28b97128a876063103dd50">Write</link>(&amp;reg,&#32;1)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00299"/>00299 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga59dc380e213dd083940c80663667dae7">WaitToFlushOutXBuffer</link>(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1aa52a412cc095ba0e18211f4c994d69e2">timeout</link>);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00300"/>00300 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00301"/>00301 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!status)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00302"/>00302 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00303"/>00303 &#32;&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga6e20f03ff391343123fda221a5c2ed85">WaitToFilledReadingBuffer</link>(2,&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1aa52a412cc095ba0e18211f4c994d69e2">timeout</link>);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00304"/>00304 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga20cd6c3635818f96468dee8bc601aec1">Read</link>((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*)&amp;value,&#32;2)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00305"/>00305 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00306"/>00306 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00307"/>00307 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00308"/>00308 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00309"/>00309 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00322"/><link linkend="_group___d_a_t_a_i_o_1gadf72efac92017c649a5c471004a008f1">00322</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gadf72efac92017c649a5c471004a008f1">DIOI2CLSM303DLHC::WriteRegister</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;reg,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;value)
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00323"/>00323 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00324"/>00324 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>)&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00325"/>00325 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1gaffa2a228690e583d4c7c2a5f4adf9821">IsInitialized</link>())&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00326"/>00326 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00327"/>00327 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;xbuffer;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00328"/>00328 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00329"/>00329 &#32;&#32;xbuffer.<link linkend="_group___x_u_t_i_l_s_1ga03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>)reg);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00330"/>00330 &#32;&#32;xbuffer.<link linkend="_group___x_u_t_i_l_s_1ga03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>)value);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00331"/>00331 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00332"/>00332 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1gac04f4ad8ff28b97128a876063103dd50">Write</link>(xbuffer)?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00333"/>00333 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;status&#32;=&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1a3b497a58b1ba1b029aa63b269f43dbb0">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga59dc380e213dd083940c80663667dae7">WaitToFlushOutXBuffer</link>(<link linkend="_class_d_i_o_d_e_v_i_c_e_i2_c_1aa52a412cc095ba0e18211f4c994d69e2">timeout</link>);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00334"/>00334 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00335"/>00335 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00336"/>00336 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00337"/>00337 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00338"/>00338 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00347"/><link linkend="_group___d_a_t_a_i_o_1ga5397a87e9ad60025d7fc250ffc826084">00347</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga5397a87e9ad60025d7fc250ffc826084">DIOI2CLSM303DLHC::Clean</link>()
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00348"/>00348 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00349"/>00349 &#32;&#32;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00350"/>00350 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00351"/>00351 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00352"/>00352 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00353"/>00353 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00354"/>00354 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00355"/>00355 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00356"/>00356 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_DIOI2C3DCOMPASSLSM303DLHC</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00357"/>00357 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00358"/>00358 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00366"/><link linkend="_group___d_a_t_a_i_o_1ga73ea5760e0556bded8e79662d791e1c0">00366</link> <link linkend="_group___d_a_t_a_i_o_1ga73ea5760e0556bded8e79662d791e1c0">DIOI2C3DCOMPASSLSM303DLHC::DIOI2C3DCOMPASSLSM303DLHC</link>()
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00367"/>00367 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00368"/>00368 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00369"/>00369 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00370"/>00370 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00371"/>00371 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00380"/><link linkend="_group___d_a_t_a_i_o_1ga892ba135fb60bd8e1988d2a2c3598206">00380</link> <link linkend="_group___d_a_t_a_i_o_1ga892ba135fb60bd8e1988d2a2c3598206">DIOI2C3DCOMPASSLSM303DLHC::~DIOI2C3DCOMPASSLSM303DLHC</link>()
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00381"/>00381 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00382"/>00382 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00383"/>00383 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00384"/>00384 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00385"/>00385 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00395"/><link linkend="_group___d_a_t_a_i_o_1ga10318293ac9c8ffcd46bc4d6ee39e179">00395</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga10318293ac9c8ffcd46bc4d6ee39e179">DIOI2C3DACCELEROMETERLSM303DLHC::Configure</link>()
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00396"/>00396 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00397"/>00397 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1gaffa2a228690e583d4c7c2a5f4adf9821">IsInitialized</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00398"/>00398 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00399"/>00399 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;value;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00400"/>00400 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00401"/>00401 &#32;&#32;value&#32;&#32;=&#32;0x00;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00402"/>00402 &#32;&#32;value&#32;|=&#32;0x01&#32;&lt;&lt;&#32;5;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Normal&#32;mode</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00403"/>00403 &#32;&#32;value&#32;|=&#32;0x07;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;X/Y/Z&#32;axis&#32;enable.</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00404"/>00404 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1gadf72efac92017c649a5c471004a008f1">WriteRegister</link>(<link linkend="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8h_1a43a21b5802131be07932ed444ea88874ac1b7d7d773dd5b034033bcc91ea96568">DIOI2CLSM303DLHC_CTRL_REG1_A</link>&#32;,&#32;value))&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00405"/>00405 &#32;&#32;value&#32;&#32;=&#32;0x00;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00406"/>00406 &#32;&#32;<link linkend="_group___d_a_t_a_i_o_1ga03a58536cf6451e6d8d986d149a5de35">ReadRegister</link>(<link linkend="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8h_1a43a21b5802131be07932ed444ea88874ac1b7d7d773dd5b034033bcc91ea96568">DIOI2CLSM303DLHC_CTRL_REG1_A</link>,&#32;value);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00407"/>00407 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00408"/>00408 &#32;&#32;value&#32;&#32;=&#32;0x00;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00409"/>00409 &#32;&#32;value&#32;|=&#32;0x01&#32;&lt;&lt;&#32;6;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;1:&#32;data&#32;MSB&#32;@&#32;lower&#32;address</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00410"/>00410 &#32;&#32;value&#32;|=&#32;0x01&#32;&lt;&lt;&#32;4;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;+/-&#32;4g</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00411"/>00411 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1gadf72efac92017c649a5c471004a008f1">WriteRegister</link>(<link linkend="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8h_1a43a21b5802131be07932ed444ea88874ac509f7a9421a6201961a818aa93fcb2a">DIOI2CLSM303DLHC_CTRL_REG4_A</link>,&#32;value))&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00412"/>00412 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00413"/>00413 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00414"/>00414 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00415"/>00415 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00416"/>00416 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00430"/><link linkend="_group___d_a_t_a_i_o_1ga5a44d90ac41fd12277d37b39174a2e4d">00430</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga5a44d90ac41fd12277d37b39174a2e4d">DIOI2C3DACCELEROMETERLSM303DLHC::Read</link>(<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&amp;&#32;a_x,&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&amp;&#32;a_y,&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&amp;&#32;a_z)
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00431"/>00431 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00432"/>00432 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1gaffa2a228690e583d4c7c2a5f4adf9821">IsInitialized</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00433"/>00433 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00434"/>00434 &#32;&#32;a_x&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00435"/>00435 &#32;&#32;a_y&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00436"/>00436 &#32;&#32;a_z&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00437"/>00437 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00438"/>00438 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1ga03a58536cf6451e6d8d986d149a5de35">ReadRegister</link>(<link linkend="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8h_1a43a21b5802131be07932ed444ea88874aa4c7a6f8dfa33415aa7bd52612b29814">DIOI2CLSM303DLHC_OUT_X_A</link>,&#32;a_x))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00439"/>00439 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1ga03a58536cf6451e6d8d986d149a5de35">ReadRegister</link>(<link linkend="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8h_1a43a21b5802131be07932ed444ea88874a9a54e5ee1e250a29984172a88358191f">DIOI2CLSM303DLHC_OUT_Y_A</link>,&#32;a_y))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00440"/>00440 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1ga03a58536cf6451e6d8d986d149a5de35">ReadRegister</link>(<link linkend="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8h_1a43a21b5802131be07932ed444ea88874a8c51cbb912c357f0b77fc855812a79a5">DIOI2CLSM303DLHC_OUT_Z_A</link>,&#32;a_z))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00441"/>00441 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00442"/>00442 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00443"/>00443 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00444"/>00444 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00445"/>00445 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00446"/>00446 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00447"/>00447 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00448"/>00448 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00449"/>00449 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_DIOI2C3DACCELEROMETERLSM303DLHC</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00450"/>00450 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00451"/>00451 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00459"/><link linkend="_group___d_a_t_a_i_o_1gaac660a137577663691496a209c96c2d1">00459</link> <link linkend="_group___d_a_t_a_i_o_1gaac660a137577663691496a209c96c2d1">DIOI2C3DACCELEROMETERLSM303DLHC::DIOI2C3DACCELEROMETERLSM303DLHC</link>()
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00460"/>00460 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00461"/>00461 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00462"/>00462 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00463"/>00463 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00464"/>00464 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00473"/><link linkend="_group___d_a_t_a_i_o_1ga046beb58e8044f352a889778f9f664e7">00473</link> <link linkend="_group___d_a_t_a_i_o_1ga046beb58e8044f352a889778f9f664e7">DIOI2C3DACCELEROMETERLSM303DLHC::~DIOI2C3DACCELEROMETERLSM303DLHC</link>()
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00474"/>00474 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00475"/>00475 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00476"/>00476 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00477"/>00477 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00478"/>00478 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00488"/><link linkend="_group___d_a_t_a_i_o_1gaf389c74722895049aa9c6173ddfec690">00488</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gaf389c74722895049aa9c6173ddfec690">DIOI2C3DCOMPASSLSM303DLHC::Configure</link>()
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00489"/>00489 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00490"/>00490 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1gaffa2a228690e583d4c7c2a5f4adf9821">IsInitialized</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00491"/>00491 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00492"/>00492 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;value;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00493"/>00493 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00494"/>00494 &#32;&#32;value&#32;&#32;=&#32;0x00;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00495"/>00495 &#32;&#32;value&#32;|=&#32;0x04&#32;&lt;&lt;&#32;2;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Minimum&#32;data&#32;output&#32;rate&#32;=&#32;15Hz</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00496"/>00496 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1gadf72efac92017c649a5c471004a008f1">WriteRegister</link>(<link linkend="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8h_1a43a21b5802131be07932ed444ea88874aad892da313e1207bce72fc43ec411ef8">DIOI2CLSM303DLHC_CRA_REG_M</link>,&#32;value))&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00497"/>00497 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00498"/>00498 &#32;&#32;value&#32;&#32;=&#32;0x00;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00499"/>00499 <emphasis role="comment">//value&#32;|=&#32;0x01&#32;&lt;&lt;&#32;5;&#32;&#32;&#32;&#32;&#32;//&#32;+-1.3Gauss</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00500"/>00500 &#32;&#32;value&#32;|=&#32;0x07&#32;&lt;&lt;&#32;5;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;+-8.1Gauss</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00501"/>00501 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1gadf72efac92017c649a5c471004a008f1">WriteRegister</link>(<link linkend="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8h_1a43a21b5802131be07932ed444ea88874aa2d6cf9674a73b204248da2e2592b12f">DIOI2CLSM303DLHC_CRB_REG_M</link>,&#32;value))&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00502"/>00502 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00503"/>00503 &#32;&#32;value&#32;=&#32;0x00;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Continuous-conversion&#32;mode</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00504"/>00504 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1gadf72efac92017c649a5c471004a008f1">WriteRegister</link>(<link linkend="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8h_1a43a21b5802131be07932ed444ea88874adbf0fc199b5511b75433bb85828c8f45">DIOI2CLSM303DLHC_MR_REG_M</link>,&#32;value))&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00505"/>00505 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00506"/>00506 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00507"/>00507 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00508"/>00508 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00509"/>00509 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00523"/><link linkend="_group___d_a_t_a_i_o_1ga6f0925803978812128107a1902c41e82">00523</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga6f0925803978812128107a1902c41e82">DIOI2C3DCOMPASSLSM303DLHC::Read</link>(<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&amp;&#32;c_x,&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&amp;&#32;c_y,&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&amp;&#32;c_z)
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00524"/>00524 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00525"/>00525 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1gaffa2a228690e583d4c7c2a5f4adf9821">IsInitialized</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00526"/>00526 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00527"/>00527 &#32;&#32;c_x&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00528"/>00528 &#32;&#32;c_y&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00529"/>00529 &#32;&#32;c_z&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00530"/>00530 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00531"/>00531 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1ga03a58536cf6451e6d8d986d149a5de35">ReadRegister</link>(<link linkend="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8h_1a43a21b5802131be07932ed444ea88874a018d01cf6efaa0e701da33b3580903fe">DIOI2CLSM303DLHC_OUT_X_M</link>,&#32;c_x))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00532"/>00532 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1ga03a58536cf6451e6d8d986d149a5de35">ReadRegister</link>(<link linkend="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8h_1a43a21b5802131be07932ed444ea88874a068c7e40d4f5fbd18d173e86c22f8a09">DIOI2CLSM303DLHC_OUT_Y_M</link>,&#32;c_y))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00533"/>00533 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1ga03a58536cf6451e6d8d986d149a5de35">ReadRegister</link>(<link linkend="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8h_1a43a21b5802131be07932ed444ea88874a3d116728276b79e291981a037c1bf1a1">DIOI2CLSM303DLHC_OUT_Z_M</link>,&#32;c_z))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00534"/>00534 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00535"/>00535 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00536"/>00536 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00537"/>00537 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00538"/>00538 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00539"/>00539 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00540"/>00540 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00541"/>00541 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_DIOI2C3DACCELEROMETERLSM303DLHC</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00542"/>00542 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00543"/>00543 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00551"/><link linkend="_group___d_a_t_a_i_o_1ga343185a8b7ad4428b9803fa19f3b1ecd">00551</link> <link linkend="_group___d_a_t_a_i_o_1ga343185a8b7ad4428b9803fa19f3b1ecd">DIOI2C6AXISTRACKINGLSM303DLHC::DIOI2C6AXISTRACKINGLSM303DLHC</link>()
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00552"/>00552 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00553"/>00553 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00554"/>00554 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00555"/>00555 &#32;&#32;accelerometer&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_i2_c3_d_a_c_c_e_l_e_r_o_m_e_t_e_r_l_s_m303_d_l_h_c">DIOI2C3DACCELEROMETERLSM303DLHC</link>();
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00556"/>00556 &#32;&#32;compass&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_i2_c3_d_c_o_m_p_a_s_s_l_s_m303_d_l_h_c">DIOI2C3DCOMPASSLSM303DLHC</link>();
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00557"/>00557 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00558"/>00558 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00559"/>00559 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00568"/><link linkend="_group___d_a_t_a_i_o_1gaf098c8967d5b6684414abd043f86b8da">00568</link> <link linkend="_group___d_a_t_a_i_o_1gaf098c8967d5b6684414abd043f86b8da">DIOI2C6AXISTRACKINGLSM303DLHC::~DIOI2C6AXISTRACKINGLSM303DLHC</link>()
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00569"/>00569 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00570"/>00570 &#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;accelerometer;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00571"/>00571 &#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;compass;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00572"/>00572 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00573"/>00573 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00574"/>00574 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00575"/>00575 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00576"/>00576 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00591"/><link linkend="_group___d_a_t_a_i_o_1ga8b0c062b75c30b2281beaeaa553e41ce">00591</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga8b0c062b75c30b2281beaeaa553e41ce">DIOI2C6AXISTRACKINGLSM303DLHC::Ini</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;localdevicename,&#32;<emphasis role="keywordtype">int</emphasis>&#32;remotedeviceaddressaccelerometer,&#32;<emphasis role="keywordtype">int</emphasis>&#32;remotedeviceaddresscompass,&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>)
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00592"/>00592 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00593"/>00593 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!accelerometer)&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00594"/>00594 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!compass)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00595"/>00595 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00596"/>00596 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!accelerometer-&gt;<link linkend="_group___d_a_t_a_i_o_1gaf147398c24bc58e36045ffc1be189d44">Ini</link>(localdevicename,&#32;remotedeviceaddressaccelerometer,&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00597"/>00597 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!compass-&gt;<link linkend="_group___d_a_t_a_i_o_1gaf147398c24bc58e36045ffc1be189d44">Ini</link>(localdevicename,&#32;remotedeviceaddresscompass,&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>))&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00598"/>00598 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00599"/>00599 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!accelerometer-&gt;<link linkend="_group___d_a_t_a_i_o_1ga10318293ac9c8ffcd46bc4d6ee39e179">Configure</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00600"/>00600 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!compass-&gt;<link linkend="_group___d_a_t_a_i_o_1gaf389c74722895049aa9c6173ddfec690">Configure</link>())&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00601"/>00601 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00602"/>00602 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00603"/>00603 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00604"/>00604 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00605"/>00605 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00620"/><link linkend="_group___d_a_t_a_i_o_1ga867ceb7f7819e04dcb14cb4ecc9767a7">00620</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga8b0c062b75c30b2281beaeaa553e41ce">DIOI2C6AXISTRACKINGLSM303DLHC::Ini</link>(<emphasis role="keywordtype">int</emphasis>&#32;port,&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;remotedeviceaddressaccelerometer,&#32;<emphasis role="keywordtype">int</emphasis>&#32;remotedeviceaddresscompass,&#32;<emphasis role="keywordtype">int</emphasis>&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>)
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00621"/>00621 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00622"/>00622 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!accelerometer)&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00623"/>00623 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!compass)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00624"/>00624 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00625"/>00625 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00626"/>00626 &#32;&#32;filter_az&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;6000;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00627"/>00627 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00628"/>00628 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!accelerometer-&gt;<link linkend="_group___d_a_t_a_i_o_1gaf147398c24bc58e36045ffc1be189d44">Ini</link>(port,&#32;remotedeviceaddressaccelerometer,&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00629"/>00629 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!compass-&gt;<link linkend="_group___d_a_t_a_i_o_1gaf147398c24bc58e36045ffc1be189d44">Ini</link>(port,&#32;remotedeviceaddresscompass,&#32;<link linkend="__x_l_i_n_u_x_system_8cpp_1a493b57f443cc38b3d3df9c1e584d9d82">timeout</link>))&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00630"/>00630 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00631"/>00631 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!accelerometer-&gt;<link linkend="_group___d_a_t_a_i_o_1ga10318293ac9c8ffcd46bc4d6ee39e179">Configure</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00632"/>00632 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!compass-&gt;<link linkend="_group___d_a_t_a_i_o_1gaf389c74722895049aa9c6173ddfec690">Configure</link>())&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00633"/>00633 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00634"/>00634 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00635"/>00635 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00636"/>00636 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00637"/>00637 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00649"/><link linkend="_group___d_a_t_a_i_o_1ga3c8c7338ba8ee85b2102a3e26302a67b">00649</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga3c8c7338ba8ee85b2102a3e26302a67b">DIOI2C6AXISTRACKINGLSM303DLHC::SetOffset</link>(<emphasis role="keywordtype">float</emphasis>&#32;x,&#32;<emphasis role="keywordtype">float</emphasis>&#32;y,&#32;<emphasis role="keywordtype">float</emphasis>&#32;z)
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00650"/>00650 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00651"/>00651 &#32;&#32;offset_x&#32;=&#32;x;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00652"/>00652 &#32;&#32;offset_y&#32;=&#32;y;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00653"/>00653 &#32;&#32;offset_z&#32;=&#32;z;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00654"/>00654 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00655"/>00655 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00656"/>00656 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00668"/><link linkend="_group___d_a_t_a_i_o_1ga199ba1fcc79e2c4944a8643f9a03d322">00668</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga199ba1fcc79e2c4944a8643f9a03d322">DIOI2C6AXISTRACKINGLSM303DLHC::SetScale</link>(<emphasis role="keywordtype">float</emphasis>&#32;x,&#32;<emphasis role="keywordtype">float</emphasis>&#32;y,&#32;<emphasis role="keywordtype">float</emphasis>&#32;z)
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00669"/>00669 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00670"/>00670 &#32;&#32;scale_x&#32;=&#32;x;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00671"/>00671 &#32;&#32;scale_y&#32;=&#32;y;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00672"/>00672 &#32;&#32;scale_z&#32;=&#32;z;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00673"/>00673 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00674"/>00674 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00675"/>00675 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00692"/><link linkend="_group___d_a_t_a_i_o_1ga246e12114af56838ba4642bbbd6f0df6">00692</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga246e12114af56838ba4642bbbd6f0df6">DIOI2C6AXISTRACKINGLSM303DLHC::Read</link>(<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&amp;&#32;a_x,&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&amp;&#32;a_y,&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&amp;&#32;a_z,&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&amp;&#32;c_x,&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&amp;&#32;c_y,&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&amp;&#32;c_z)
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00693"/>00693 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00694"/>00694 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!accelerometer)&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00695"/>00695 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!compass)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00696"/>00696 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00697"/>00697 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00698"/>00698 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00699"/>00699 &#32;&#32;status&#32;=&#32;accelerometer-&gt;<link linkend="_group___d_a_t_a_i_o_1ga5a44d90ac41fd12277d37b39174a2e4d">Read</link>(a_x,&#32;a_y,&#32;a_z);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00700"/>00700 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;status&#32;=&#32;compass-&gt;<link linkend="_group___d_a_t_a_i_o_1ga6f0925803978812128107a1902c41e82">Read</link>(c_x,&#32;c_y,&#32;c_z);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00701"/>00701 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00702"/>00702 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00703"/>00703 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00704"/>00704 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00705"/>00705 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00718"/><link linkend="_group___d_a_t_a_i_o_1gaeb4acca1f65efafd64165ae66ad07889">00718</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga246e12114af56838ba4642bbbd6f0df6">DIOI2C6AXISTRACKINGLSM303DLHC::Read</link>(<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r">DIOI2CLSM303DLHCVECTOR</link>&amp;&#32;a,&#32;<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r">DIOI2CLSM303DLHCVECTOR</link>&amp;&#32;c)
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00719"/>00719 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00720"/>00720 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!accelerometer)&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00721"/>00721 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!compass)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00722"/>00722 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00723"/>00723 &#32;&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;ax&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00724"/>00724 &#32;&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;ay&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00725"/>00725 &#32;&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;az&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00726"/>00726 &#32;&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;cx&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00727"/>00727 &#32;&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;cy&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00728"/>00728 &#32;&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;cz&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00729"/>00729 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00730"/>00730 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1ga246e12114af56838ba4642bbbd6f0df6">Read</link>(ax,&#32;ay,&#32;az,&#32;cx,&#32;cy,&#32;cz))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00731"/>00731 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00732"/>00732 &#32;&#32;<emphasis role="comment">//&#32;Perform&#32;simple&#32;lowpass&#32;filtering&#32;Intended&#32;to&#32;stabilize&#32;heading&#32;despite&#32;device&#32;vibration&#32;such&#32;as&#32;on&#32;a&#32;UGV</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00733"/>00733 &#32;&#32;filter_ax&#32;+=&#32;ax&#32;-&#32;(filter_ax&#32;&gt;&gt;&#32;<link linkend="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8h_1a1cfdccd97a7e1d138ac256f03acb56f3">DIOI2CLSM303DLHC_FILTERSHIFT</link>);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00734"/>00734 &#32;&#32;filter_ay&#32;+=&#32;ay&#32;-&#32;(filter_ay&#32;&gt;&gt;&#32;<link linkend="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8h_1a1cfdccd97a7e1d138ac256f03acb56f3">DIOI2CLSM303DLHC_FILTERSHIFT</link>);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00735"/>00735 &#32;&#32;filter_az&#32;+=&#32;az&#32;-&#32;(filter_az&#32;&gt;&gt;&#32;<link linkend="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8h_1a1cfdccd97a7e1d138ac256f03acb56f3">DIOI2CLSM303DLHC_FILTERSHIFT</link>);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00736"/>00736 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00737"/>00737 &#32;&#32;a.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1ab9ffb45911f6f1e18df79c8d0209d4ac">x</link>&#32;=&#32;(float)(filter_ax&#32;&gt;&gt;&#32;<link linkend="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8h_1a1cfdccd97a7e1d138ac256f03acb56f3">DIOI2CLSM303DLHC_FILTERSHIFT</link>);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00738"/>00738 &#32;&#32;a.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1a030e03e237e2095e1a52b27e1116fa78">y</link>&#32;=&#32;(float)(filter_ay&#32;&gt;&gt;&#32;<link linkend="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8h_1a1cfdccd97a7e1d138ac256f03acb56f3">DIOI2CLSM303DLHC_FILTERSHIFT</link>);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00739"/>00739 &#32;&#32;a.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1afaeb086b60a706ca3322b9ecd046dcc3">z</link>&#32;=&#32;(float)(filter_az&#32;&gt;&gt;&#32;<link linkend="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8h_1a1cfdccd97a7e1d138ac256f03acb56f3">DIOI2CLSM303DLHC_FILTERSHIFT</link>);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00740"/>00740 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00741"/>00741 &#32;&#32;<emphasis role="comment">//&#32;offset&#32;and&#32;scale</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00742"/>00742 &#32;&#32;c.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1ab9ffb45911f6f1e18df79c8d0209d4ac">x</link>&#32;=&#32;(cx&#32;+&#32;offset_x)&#32;*&#32;scale_x;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00743"/>00743 &#32;&#32;c.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1a030e03e237e2095e1a52b27e1116fa78">y</link>&#32;=&#32;(cy&#32;+&#32;offset_y)&#32;*&#32;scale_y;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00744"/>00744 &#32;&#32;c.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1afaeb086b60a706ca3322b9ecd046dcc3">z</link>&#32;=&#32;(cz&#32;+&#32;offset_z)&#32;*&#32;scale_z;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00745"/>00745 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00746"/>00746 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00747"/>00747 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00748"/>00748 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00749"/>00749 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00759"/><link linkend="_group___d_a_t_a_i_o_1gaec697bf464c26234bfd42bbee9e760bf">00759</link> <emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gaec697bf464c26234bfd42bbee9e760bf">DIOI2C6AXISTRACKINGLSM303DLHC::Heading</link>()
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00760"/>00760 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00761"/>00761 &#32;&#32;<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r">DIOI2CLSM303DLHCVECTOR</link>&#32;vector;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00762"/>00762 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00763"/>00763 &#32;&#32;vector.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1ab9ffb45911f6f1e18df79c8d0209d4ac">x</link>&#32;=&#32;&#32;0;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00764"/>00764 &#32;&#32;vector.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1a030e03e237e2095e1a52b27e1116fa78">y</link>&#32;=&#32;-1;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00765"/>00765 &#32;&#32;vector.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1afaeb086b60a706ca3322b9ecd046dcc3">z</link>&#32;=&#32;&#32;0;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00766"/>00766 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00767"/>00767 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gaec697bf464c26234bfd42bbee9e760bf">Heading</link>(vector);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00768"/>00768 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00769"/>00769 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00770"/>00770 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00782"/><link linkend="_group___d_a_t_a_i_o_1gaf48a4d9091eb1ff88a2b91f6f5276db2">00782</link> <emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gaec697bf464c26234bfd42bbee9e760bf">DIOI2C6AXISTRACKINGLSM303DLHC::Heading</link>(<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r">DIOI2CLSM303DLHCVECTOR</link>&amp;&#32;from)
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00783"/>00783 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00784"/>00784 &#32;&#32;<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r">DIOI2CLSM303DLHCVECTOR</link>&#32;a;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00785"/>00785 &#32;&#32;<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r">DIOI2CLSM303DLHCVECTOR</link>&#32;c;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00786"/>00786 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00787"/>00787 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1ga246e12114af56838ba4642bbbd6f0df6">Read</link>(a,&#32;c))&#32;<emphasis role="keywordflow">return</emphasis>&#32;0.0f;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00788"/>00788 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00789"/>00789 &#32;&#32;<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r">DIOI2CLSM303DLHCVECTOR</link>&#32;temp_a;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00790"/>00790 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00791"/>00791 &#32;&#32;temp_a.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1ab9ffb45911f6f1e18df79c8d0209d4ac">x</link>&#32;=&#32;a.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1ab9ffb45911f6f1e18df79c8d0209d4ac">x</link>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00792"/>00792 &#32;&#32;temp_a.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1a030e03e237e2095e1a52b27e1116fa78">y</link>&#32;=&#32;a.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1a030e03e237e2095e1a52b27e1116fa78">y</link>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00793"/>00793 &#32;&#32;temp_a.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1afaeb086b60a706ca3322b9ecd046dcc3">z</link>&#32;=&#32;a.<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r_1afaeb086b60a706ca3322b9ecd046dcc3">z</link>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00794"/>00794 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00795"/>00795 &#32;&#32;<emphasis role="comment">//&#32;normalize</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00796"/>00796 &#32;&#32;<link linkend="_group___d_a_t_a_i_o_1gaf8c8874c9661b89433c768c4c159adc5">DIOI2CLSM303DLHCVECTOR::Normalize</link>(temp_a);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00797"/>00797 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00798"/>00798 &#32;&#32;<emphasis role="comment">//&#32;compute&#32;E&#32;and&#32;N</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00799"/>00799 &#32;&#32;<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r">DIOI2CLSM303DLHCVECTOR</link>&#32;e;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00800"/>00800 &#32;&#32;<link linkend="_class_d_i_o_i2_c_l_s_m303_d_l_h_c_v_e_c_t_o_r">DIOI2CLSM303DLHCVECTOR</link>&#32;n;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00801"/>00801 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00802"/>00802 &#32;&#32;<link linkend="_group___d_a_t_a_i_o_1gab8d77e710335b4eda214e8ba137da176">DIOI2CLSM303DLHCVECTOR::Cross</link>(c&#32;,temp_a,&#32;e);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00803"/>00803 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00804"/>00804 &#32;&#32;<link linkend="_group___d_a_t_a_i_o_1gaf8c8874c9661b89433c768c4c159adc5">DIOI2CLSM303DLHCVECTOR::Normalize</link>(e);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00805"/>00805 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00806"/>00806 &#32;&#32;<link linkend="_group___d_a_t_a_i_o_1gab8d77e710335b4eda214e8ba137da176">DIOI2CLSM303DLHCVECTOR::Cross</link>(temp_a,&#32;e&#32;,&#32;n);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00807"/>00807 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00808"/>00808 &#32;&#32;<emphasis role="comment">//&#32;compute&#32;heading</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00809"/>00809 &#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;heading&#32;=&#32;(float)atan2(&#32;<link linkend="_group___d_a_t_a_i_o_1ga1c7451e6ed7bf21f6a57a48a5c0d3a83">DIOI2CLSM303DLHCVECTOR::Dot</link>(e&#32;,&#32;from),&#32;<link linkend="_group___d_a_t_a_i_o_1ga1c7451e6ed7bf21f6a57a48a5c0d3a83">DIOI2CLSM303DLHCVECTOR::Dot</link>(n&#32;,&#32;from))&#32;*&#32;(180/<link linkend="__x_base_8h_1a598a3330b3c21701223ee0ca14316eca">PI</link>);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00810"/>00810 &#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(heading&#32;&lt;&#32;0)&#32;heading&#32;+=&#32;360;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00811"/>00811 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00812"/>00812 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;float(heading);
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00813"/>00813 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00814"/>00814 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00815"/>00815 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00825"/><link linkend="_group___d_a_t_a_i_o_1ga38c98fdb9ce4b84f3ce3969f1a9fb8fe">00825</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga38c98fdb9ce4b84f3ce3969f1a9fb8fe">DIOI2C6AXISTRACKINGLSM303DLHC::End</link>()
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00826"/>00826 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00827"/>00827 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!accelerometer)&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00828"/>00828 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!compass)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00829"/>00829 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00830"/>00830 &#32;&#32;accelerometer-&gt;<link linkend="_group___d_a_t_a_i_o_1ga1616420b5666a1a0aa64f2a85fc9792d">End</link>();
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00831"/>00831 &#32;&#32;compass-&gt;<link linkend="_group___d_a_t_a_i_o_1ga1616420b5666a1a0aa64f2a85fc9792d">End</link>();
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00832"/>00832 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00833"/>00833 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00834"/>00834 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00835"/>00835 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00836"/>00836 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00845"/>00845 <emphasis role="keywordtype">void</emphasis>&#32;DIOI2C6AXISTRACKINGLSM303DLHC::Clean()
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00846"/>00846 {
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00847"/>00847 &#32;&#32;accelerometer&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00848"/>00848 &#32;&#32;compass&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00849"/>00849 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00850"/>00850 &#32;&#32;offset_x&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0.0f;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00851"/>00851 &#32;&#32;offset_y&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0.0f;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00852"/>00852 &#32;&#32;offset_z&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0.0f;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00853"/>00853 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00854"/>00854 &#32;&#32;scale_x&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0.0f;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00855"/>00855 &#32;&#32;scale_y&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0.0f;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00856"/>00856 &#32;&#32;scale_z&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0.0f;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00857"/>00857 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00858"/>00858 &#32;&#32;filter_ax&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00859"/>00859 &#32;&#32;filter_ay&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00860"/>00860 &#32;&#32;filter_az&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00861"/>00861 }
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00862"/>00862 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00863"/>00863 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00864"/>00864 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00865"/>00865 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00866"/>00866 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00867"/>00867 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00868"/>00868 
+<anchor xml:id="__d_i_o_i2_c6_axis_tracking_l_s_m303_d_l_h_c_8cpp_source_1l00869"/>00869 
+</programlisting></section>

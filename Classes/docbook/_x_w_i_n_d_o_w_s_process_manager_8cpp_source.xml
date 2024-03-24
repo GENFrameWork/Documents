@@ -1,0 +1,601 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source" xml:lang="en-US">
+<title>XWINDOWSProcessManager.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/Platforms/Windows/XWINDOWSProcessManager.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_w_i_n_d_o_w_s_process_manager_8h">XWINDOWSProcessManager.h</link>&quot;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&lt;tlhelp32.h&gt;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&lt;psapi.h&gt;</emphasis>&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&lt;tchar.h&gt;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00045"/>00045 <emphasis role="preprocessor">#include&#32;&lt;process.h&gt;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00046"/>00046 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_factory_8h">XFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_file_8h">XFile.h</link>&quot;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00049"/>00049 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_sleep_8h">XSleep.h</link>&quot;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00050"/>00050 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_trace_8h">XTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00051"/>00051 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00053"/>00053 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00054"/>00054 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00055"/>00055 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00056"/>00056 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00057"/>00057 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00058"/>00058 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00059"/>00059 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00061"/>00061 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00062"/>00062 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00063"/>00063 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00064"/>00064 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00065"/>00065 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00066"/>00066 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00067"/>00067 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00075"/><link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1gafcb32b94e72430d0cf26b7f9769c467e">00075</link> <link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1gafcb32b94e72430d0cf26b7f9769c467e">XWINDOWSPROCESSMANAGER::XWINDOWSPROCESSMANAGER</link>()&#32;:&#32;<link linkend="_class_x_p_r_o_c_e_s_s_m_a_n_a_g_e_r">XPROCESSMANAGER</link>()
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00076"/>00076 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00077"/>00077 &#32;&#32;Clean();
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00078"/>00078 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00079"/>00079 &#32;&#32;xmutexgetsrunninglist&#32;=&#32;GEN_XFACTORY.Create_Mutex();
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00080"/>00080 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00081"/>00081 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00082"/>00082 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00091"/><link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1ga1f364488fb43c5418dc3fe1bb94bbeed">00091</link> <link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1ga1f364488fb43c5418dc3fe1bb94bbeed">XWINDOWSPROCESSMANAGER::~XWINDOWSPROCESSMANAGER</link>()
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00092"/>00092 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00093"/>00093 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexgetsrunninglist)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00094"/>00094 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00095"/>00095 &#32;&#32;&#32;&#32;&#32;&#32;&#32;GEN_XFACTORY.Delete_Mutex(xmutexgetsrunninglist);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00096"/>00096 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00097"/>00097 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00098"/>00098 &#32;&#32;Clean();
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00099"/>00099 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00100"/>00100 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00101"/>00101 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00113"/><link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1ga40a0a2230c203067fac3771d1ec740c2">00113</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1ga40a0a2230c203067fac3771d1ec740c2">XWINDOWSPROCESSMANAGER::MakeSystemCommand</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;command)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00114"/>00114 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00115"/>00115 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(_wsystem(command)&#32;==&#32;-1)?<emphasis role="keyword">false</emphasis>:<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00116"/>00116 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00117"/>00117 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00118"/>00118 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00132"/><link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1ga31c6b5bde79db2f8c05b8793358e3fa9">00132</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1ga31c6b5bde79db2f8c05b8793358e3fa9">XWINDOWSPROCESSMANAGER::MakeCommand</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;command,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;out,&#32;<emphasis role="keywordtype">int</emphasis>*&#32;returncode)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00133"/>00133 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00134"/>00134 &#32;&#32;<emphasis role="keywordtype">char</emphasis>&#32;&#32;&#32;&#32;buffer[256];
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00135"/>00135 &#32;&#32;FILE*&#32;&#32;&#32;pipe;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00136"/>00136 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00137"/>00137 &#32;&#32;<emphasis role="keywordflow">if</emphasis>((pipe&#32;=&#32;_wpopen(command,&#32;<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;rt&quot;</emphasis>)&#32;))&#32;==&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00138"/>00138 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00139"/>00139 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(out)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00140"/>00140 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00141"/>00141 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">while</emphasis>(fgets(buffer,&#32;256,&#32;pipe))
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00142"/>00142 &#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00143"/>00143 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(*out)&#32;+=&#32;buffer;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00144"/>00144 &#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00145"/>00145 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00146"/>00146 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00147"/>00147 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(feof(pipe))
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00148"/>00148 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00149"/>00149 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(returncode)&#32;(*returncode)&#32;=&#32;&#32;_pclose(pipe);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00150"/>00150 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00151"/>00151 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00152"/>00152 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00153"/>00153 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00154"/>00154 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00155"/>00155 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00156"/>00156 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00157"/>00157 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00158"/>00158 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00159"/>00159 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00171"/><link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1ga34f16b51cf44c8335a9d08d03a2d16ad">00171</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1ga34f16b51cf44c8335a9d08d03a2d16ad">XWINDOWSPROCESSMANAGER::OpenURL</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;url)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00172"/>00172 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00173"/>00173 &#32;&#32;<emphasis role="comment">//HINSTANCE&#32;handle&#32;=&#32;ShellExecute(NULL,&#32;L&quot;open&quot;,&#32;url&#32;,NULL,&#32;NULL,&#32;SW_SHOWNORMAL);&#32;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00174"/>00174 &#32;&#32;<emphasis role="comment">//if((int)handle&#32;&lt;=&#32;32)&#32;return&#32;false;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00175"/>00175 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00176"/>00176 &#32;&#32;ShellExecute(<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;L<emphasis role="stringliteral">&quot;open&quot;</emphasis>,&#32;url&#32;,<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;SW_SHOWNORMAL);&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00177"/>00177 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00178"/>00178 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00179"/>00179 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00180"/>00180 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00181"/>00181 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00197"/><link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1gad9eb658ddbc9ed5ae7a81a1c73ef7cc9">00197</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1gad9eb658ddbc9ed5ae7a81a1c73ef7cc9">XWINDOWSPROCESSMANAGER::Application_Execute</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;applicationpath,&#32;<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;params,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;in,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>*&#32;out,&#32;<emphasis role="keywordtype">int</emphasis>*&#32;returncode)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00198"/>00198 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00199"/>00199 <emphasis role="preprocessor">&#32;&#32;#define&#32;CMDLINE_SIZE&#32;&#32;(10*1024)</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00200"/>00200 <emphasis role="preprocessor">&#32;&#32;#define&#32;OUTBUF_SIZE&#32;&#32;&#32;(10*1024*1024)</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00201"/>00201 <emphasis role="preprocessor">&#32;&#32;#define&#32;TEMPBUF_SIZE&#32;&#32;(10*1024)</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00202"/>00202 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00203"/>00203 &#32;&#32;PROCESS_INFORMATION&#32;processinfo;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00204"/>00204 &#32;&#32;STARTUPINFOA&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;startupinfo;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00205"/>00205 &#32;&#32;SECURITY_ATTRIBUTES&#32;saattr;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00206"/>00206 &#32;&#32;<emphasis role="keywordtype">char</emphasis>*&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;cmdline&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00207"/>00207 &#32;&#32;<emphasis role="keywordtype">char</emphasis>*&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;outbuf&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00208"/>00208 &#32;&#32;DWORD&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;bytes_read;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00209"/>00209 &#32;&#32;<emphasis role="keywordtype">char</emphasis>*&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;tempbuf&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00210"/>00210 &#32;&#32;DWORD&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;exitcode;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00211"/>00211 &#32;&#32;HANDLE&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stdhandle_out_read&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00212"/>00212 &#32;&#32;HANDLE&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stdhandle_out_write&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00213"/>00213 &#32;&#32;HANDLE&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stdhandle_in_read&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00214"/>00214 &#32;&#32;HANDLE&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;stdhandle_in_write&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00215"/>00215 &#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;_command;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00216"/>00216 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00217"/>00217 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00218"/>00218 &#32;&#32;cmdline&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>[<link linkend="__x_w_i_n_d_o_w_s_process_manager_8cpp_1a3a3b718d1bc0534ada8875fc419bb1e6">CMDLINE_SIZE</link>];
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00219"/>00219 &#32;&#32;outbuf&#32;&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>[<link linkend="__x_w_i_n_d_o_w_s_process_manager_8cpp_1a3df829d6427c2cd4fbd387268040cc65">OUTBUF_SIZE</link>];
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00220"/>00220 &#32;&#32;tempbuf&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<emphasis role="keywordtype">char</emphasis>[<link linkend="__x_w_i_n_d_o_w_s_process_manager_8cpp_1a51f9e909e63b8ab5c81c7f4779010226">TEMPBUF_SIZE</link>];
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00221"/>00221 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00222"/>00222 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(cmdline&#32;&amp;&amp;&#32;outbuf&#32;&amp;&amp;&#32;tempbuf)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00223"/>00223 &#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00224"/>00224 &#32;&#32;&#32;&#32;&#32;&#32;_command.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;\&quot;%s\&quot;&quot;</emphasis>),&#32;applicationpath);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00225"/>00225 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00226"/>00226 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(params)&#32;_command.<link linkend="_group___x_u_t_i_l_s_1gae52f1473bb03e9d7260c7722e19ce223">AddFormat</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;&#32;%s&quot;</emphasis>),&#32;params);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00227"/>00227 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00228"/>00228 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;charstr;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00229"/>00229 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00230"/>00230 &#32;&#32;&#32;&#32;&#32;&#32;_command.<link linkend="_group___x_u_t_i_l_s_1gacdbd12d83c920cfa06ac0ac1770adc29">ConvertToASCII</link>(charstr);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00231"/>00231 &#32;&#32;&#32;&#32;&#32;&#32;memcpy(cmdline,&#32;charstr.<link linkend="_group___x_u_t_i_l_s_1ga66e2dbd897e717ce38e395d6ad87b754">GetPtrChar</link>(),&#32;_command.<link linkend="_group___x_u_t_i_l_s_1ga7c3fa0dd7b650399470c76192fbd4916">GetSize</link>()+1);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00232"/>00232 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00233"/>00233 &#32;&#32;&#32;&#32;&#32;&#32;memset(&amp;saattr,&#32;0,&#32;<emphasis role="keyword">sizeof</emphasis>(saattr));
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00234"/>00234 &#32;&#32;&#32;&#32;&#32;&#32;saattr.nLength&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">sizeof</emphasis>(SECURITY_ATTRIBUTES);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00235"/>00235 &#32;&#32;&#32;&#32;&#32;&#32;saattr.bInheritHandle&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_s_t_m32___h_a_l_8h_1aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00236"/>00236 &#32;&#32;&#32;&#32;&#32;&#32;saattr.lpSecurityDescriptor&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00237"/>00237 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00238"/>00238 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;a&#32;pipe&#32;for&#32;the&#32;child&#32;process&apos;s&#32;STDOUT.</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00239"/>00239 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!CreatePipe(&amp;stdhandle_out_read,&#32;&amp;stdhandle_out_write,&#32;&amp;saattr,&#32;0))&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00240"/>00240 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Ensure&#32;the&#32;read&#32;handle&#32;to&#32;the&#32;pipe&#32;for&#32;STDOUT&#32;is&#32;not&#32;inherited.</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00241"/>00241 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!SetHandleInformation(stdhandle_out_read,&#32;HANDLE_FLAG_INHERIT,&#32;0))&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00242"/>00242 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00243"/>00243 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Create&#32;a&#32;pipe&#32;for&#32;the&#32;child&#32;process&apos;s&#32;STDIN.</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00244"/>00244 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!CreatePipe(&amp;stdhandle_in_read,&#32;&amp;stdhandle_in_write,&#32;&amp;saattr,&#32;0))&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00245"/>00245 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;Ensure&#32;the&#32;read&#32;handle&#32;to&#32;the&#32;pipe&#32;for&#32;STDIN&#32;is&#32;not&#32;inherited.</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00246"/>00246 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!SetHandleInformation(stdhandle_in_write,&#32;HANDLE_FLAG_INHERIT,&#32;0))&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00247"/>00247 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00248"/>00248 &#32;&#32;&#32;&#32;&#32;&#32;ZeroMemory(&amp;processinfo,&#32;<emphasis role="keyword">sizeof</emphasis>(PROCESS_INFORMATION));
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00249"/>00249 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00250"/>00250 &#32;&#32;&#32;&#32;&#32;&#32;ZeroMemory(&amp;startupinfo,&#32;<emphasis role="keyword">sizeof</emphasis>(STARTUPINFO));
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00251"/>00251 &#32;&#32;&#32;&#32;&#32;&#32;startupinfo.cb&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">sizeof</emphasis>(startupinfo);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00252"/>00252 &#32;&#32;&#32;&#32;&#32;&#32;startupinfo.hStdError&#32;&#32;&#32;=&#32;stdhandle_out_write;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00253"/>00253 &#32;&#32;&#32;&#32;&#32;&#32;startupinfo.hStdOutput&#32;&#32;=&#32;stdhandle_out_write;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00254"/>00254 &#32;&#32;&#32;&#32;&#32;&#32;startupinfo.hStdInput&#32;&#32;&#32;=&#32;stdhandle_in_read;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;GetStdHandle(STD_INPUT_HANDLE);</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00255"/>00255 &#32;&#32;&#32;&#32;&#32;&#32;startupinfo.dwFlags&#32;&#32;&#32;&#32;|=&#32;STARTF_USESTDHANDLES;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00256"/>00256 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00257"/>00257 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(CreateProcessA(<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;cmdline,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;<link linkend="__x_s_t_m32___h_a_l_8h_1aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</link>,&#32;CREATE_NO_WINDOW,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;&amp;startupinfo,&#32;&amp;processinfo))
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00258"/>00258 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00259"/>00259 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CloseHandle(stdhandle_out_write);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00260"/>00260 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00261"/>00261 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(in)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00262"/>00262 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00263"/>00263 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(in-&gt;<link linkend="_group___x_u_t_i_l_s_1ga7c3fa0dd7b650399470c76192fbd4916">GetSize</link>())
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00264"/>00264 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00265"/>00265 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;DWORD&#32;bytes_write;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00266"/>00266 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00267"/>00267 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&#32;charstr;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00268"/>00268 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00269"/>00269 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(*in).ConvertToASCII(charstr);&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00270"/>00270 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;WriteFile(stdhandle_in_write,&#32;charstr.<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>(),&#32;in-&gt;<link linkend="_group___x_u_t_i_l_s_1ga7c3fa0dd7b650399470c76192fbd4916">GetSize</link>(),&#32;&amp;bytes_write,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00271"/>00271 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00272"/>00272 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;FlushFileBuffers(stdhandle_in_write);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00273"/>00273 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00274"/>00274 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00275"/>00275 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00276"/>00276 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CloseHandle(stdhandle_in_write);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00277"/>00277 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00278"/>00278 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(out)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00279"/>00279 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00280"/>00280 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcpy(outbuf,&#32;<emphasis role="stringliteral">&quot;&quot;</emphasis>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00281"/>00281 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00282"/>00282 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(;;)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00283"/>00283 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00284"/>00284 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!ReadFile(stdhandle_out_read,&#32;tempbuf,&#32;<link linkend="__x_w_i_n_d_o_w_s_process_manager_8cpp_1a51f9e909e63b8ab5c81c7f4779010226">TEMPBUF_SIZE</link>-1,&#32;&amp;bytes_read,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>))
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00285"/>00285 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00286"/>00286 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00287"/>00287 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00288"/>00288 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00289"/>00289 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(bytes_read&#32;&gt;&#32;0)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00290"/>00290 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00291"/>00291 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;tempbuf[bytes_read]&#32;=&#32;<emphasis role="charliteral">&apos;\0&apos;</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00292"/>00292 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;strcat(outbuf,&#32;tempbuf);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00293"/>00293 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00294"/>00294 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00295"/>00295 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00296"/>00296 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;(*out)&#32;=&#32;outbuf;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00297"/>00297 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00298"/>00298 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00299"/>00299 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(WaitForSingleObject(processinfo.hProcess,&#32;(out?INFINITE:500))&#32;==&#32;WAIT_OBJECT_0)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00300"/>00300 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00301"/>00301 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(out)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00302"/>00302 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00303"/>00303 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(GetExitCodeProcess(processinfo.hProcess,&#32;&amp;exitcode))
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00304"/>00304 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00305"/>00305 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(returncode)&#32;(*returncode)&#32;=&#32;exitcode;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00306"/>00306 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00307"/>00307 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00308"/>00308 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CloseHandle(processinfo.hProcess);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00309"/>00309 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CloseHandle(processinfo.hThread);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00310"/>00310 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00311"/>00311 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00312"/>00312 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00313"/>00313 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00314"/>00314 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00315"/>00315 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00316"/>00316 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00317"/>00317 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(cmdline)&#32;<emphasis role="keyword">delete</emphasis>&#32;[]&#32;cmdline;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00318"/>00318 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(outbuf)&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;[]&#32;outbuf;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00319"/>00319 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(tempbuf)&#32;<emphasis role="keyword">delete</emphasis>&#32;[]&#32;tempbuf;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00320"/>00320 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00321"/>00321 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00322"/>00322 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00323"/>00323 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00324"/>00324 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00337"/><link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1ga9de411d99ae2cce6fe12f0ea3bbb6bf9">00337</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1ga9de411d99ae2cce6fe12f0ea3bbb6bf9">XWINDOWSPROCESSMANAGER::Application_IsRunning</link>(<link linkend="__x_string_8h_1a03209152a681f02e4ba73b6681dd4968">XCHAR</link>*&#32;applicationname,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>*&#32;ID)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00338"/>00338 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00339"/>00339 &#32;&#32;<link linkend="_class_x_v_e_c_t_o_r">XVECTOR&lt;XPROCESS*&gt;</link>&#32;&#32;applist;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00340"/>00340 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;status&#32;=&#32;GEN_XPROCESSMANAGER.Application_GetRunningList(applist);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00341"/>00341 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;exists&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00342"/>00342 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00343"/>00343 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00344"/>00344 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00345"/>00345 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;&#32;c&lt;applist.<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>();&#32;c++)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00346"/>00346 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00347"/>00347 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;nameapp;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00348"/>00348 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;_applicationname&#32;=&#32;applicationname;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00349"/>00349 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00350"/>00350 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;nameapp&#32;&#32;=&#32;applist.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(c)-&gt;GetName()-&gt;Get();
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00351"/>00351 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00352"/>00352 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(_applicationname.<link linkend="_group___x_u_t_i_l_s_1gaa5d59b7b88102beb4def8fe054449653">Find</link>(nameapp,&#32;<emphasis role="keyword">true</emphasis>)&#32;!=&#32;<link linkend="__x_string_8h_1aee1ccda748b3ca0a483afb84276e3fc6">XSTRING_NOTFOUND</link>)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00353"/>00353 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00354"/>00354 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(ID)&#32;(*ID)&#32;=&#32;applist.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(c)-&gt;GetID();
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00355"/>00355 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;exists&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00356"/>00356 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00357"/>00357 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00358"/>00358 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00359"/>00359 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00360"/>00360 &#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00361"/>00361 &#32;&#32;applist.<link linkend="_class_x_v_e_c_t_o_r_1abae5097402824f18f274e21e18b23bea">DeleteContents</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00362"/>00362 &#32;&#32;applist.<link linkend="_class_x_v_e_c_t_o_r_1a57c72ab04fd14c60d1026e0a7b4a1887">DeleteAll</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00363"/>00363 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00364"/>00364 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;exists;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00365"/>00365 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00366"/>00366 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00367"/>00367 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00380"/><link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1ga1dd9a258b095d52a79c95f62f65f4319">00380</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1ga1dd9a258b095d52a79c95f62f65f4319">XWINDOWSPROCESSMANAGER::Application_GetRunningList</link>(<link linkend="_class_x_v_e_c_t_o_r">XVECTOR&lt;XPROCESS*&gt;</link>&amp;&#32;applist,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;onlywithvalidwindow)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00381"/>00381 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00382"/>00382 &#32;&#32;PROCESSENTRY32&#32;processentry;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00383"/>00383 &#32;&#32;HANDLE&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;snapshot&#32;=&#32;CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00384"/>00384 &#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00385"/>00385 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(snapshot&#32;==&#32;INVALID_HANDLE_VALUE)&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00386"/>00386 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00387"/>00387 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00388"/>00388 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00389"/>00389 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00390"/>00390 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexgetsrunninglist)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00391"/>00391 &#32;&#32;&#32;&#32;{&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00392"/>00392 &#32;&#32;&#32;&#32;&#32;&#32;xmutexgetsrunninglist-&gt;<link linkend="_group___x_u_t_i_l_s_1gae6d5410f1787702c59c2eae9e8b85b74">Lock</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00393"/>00393 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00394"/>00394 &#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00395"/>00395 &#32;&#32;applist.<link linkend="_class_x_v_e_c_t_o_r_1abae5097402824f18f274e21e18b23bea">DeleteContents</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00396"/>00396 &#32;&#32;applist.<link linkend="_class_x_v_e_c_t_o_r_1a57c72ab04fd14c60d1026e0a7b4a1887">DeleteAll</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00397"/>00397 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00398"/>00398 &#32;&#32;memset(&amp;processentry,&#32;0,&#32;<emphasis role="keyword">sizeof</emphasis>(PROCESSENTRY32));
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00399"/>00399 &#32;&#32;processentry.dwSize&#32;=&#32;<emphasis role="keyword">sizeof</emphasis>(PROCESSENTRY32);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00400"/>00400 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00401"/>00401 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(Process32First(snapshot,&#32;&amp;processentry))
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00402"/>00402 &#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00403"/>00403 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">do</emphasis>{&#32;<link linkend="_class_x_p_r_o_c_e_s_s">XPROCESS</link>*&#32;xprocess&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_p_r_o_c_e_s_s">XPROCESS</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00404"/>00404 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xprocess)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00405"/>00405 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00406"/>00406 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;HANDLE&#32;&#32;processhandle&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00407"/>00407 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;TCHAR&#32;&#32;&#32;pathfilename[MAX_PATH];
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00408"/>00408 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00409"/>00409 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xprocess-&gt;<link linkend="_group___x_u_t_i_l_s_1gad2bd220850cdb8a823083ee797b8938b">SetID</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)processentry.th32ProcessID);&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00410"/>00410 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xprocess-&gt;<link linkend="_group___x_u_t_i_l_s_1ga2d1f11b7b0bc67ee1cb23453dc1a2d68">GetName</link>()-&gt;<link linkend="_group___x_u_t_i_l_s_1ga4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(processentry.szExeFile);&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00411"/>00411 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00412"/>00412 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;processhandle&#32;=&#32;OpenProcess(PROCESS_QUERY_INFORMATION&#32;|&#32;PROCESS_VM_READ,&#32;<link linkend="__x_s_t_m32___h_a_l_8h_1aa93f0eb578d23995850d61f7d61c55c1">FALSE</link>,&#32;processentry.th32ProcessID);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00413"/>00413 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(processhandle&#32;!=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>)&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00414"/>00414 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00415"/>00415 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GetModuleFileNameEx(processhandle,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;pathfilename,&#32;MAX_PATH);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00416"/>00416 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00417"/>00417 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xprocess-&gt;<link linkend="_group___x_u_t_i_l_s_1gaa9c9ecad834bdacd11384239c7e23e13">GetPath</link>()-&gt;<link linkend="_group___x_u_t_i_l_s_1ga4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(pathfilename);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00418"/>00418 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00419"/>00419 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;CloseHandle(processhandle);&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00420"/>00420 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00421"/>00421 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00422"/>00422 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;applist.<link linkend="_class_x_v_e_c_t_o_r_1a51a790aac8efd4603aee608ddcc83423">Add</link>(xprocess);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00423"/>00423 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00424"/>00424 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00425"/>00425 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;memset(&amp;processentry,&#32;0,&#32;<emphasis role="keyword">sizeof</emphasis>(PROCESSENTRY32));
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00426"/>00426 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;processentry.dwSize&#32;=&#32;<emphasis role="keyword">sizeof</emphasis>(PROCESSENTRY32);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00427"/>00427 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00428"/>00428 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">while</emphasis>(Process32Next(snapshot,&#32;&amp;processentry));
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00429"/>00429 &#32;&#32;&#32;&#32;}&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00430"/>00430 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00431"/>00431 &#32;&#32;CloseHandle(snapshot);&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00432"/>00432 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00433"/>00433 &#32;&#32;GetChildProcesses(applist);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00434"/>00434 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00435"/>00435 &#32;&#32;<link linkend="__x_w_i_n_d_o_w_s_process_manager_8h_1a89fd2b2abd9a162cdd605090b502437a">MAPWINPROCESS</link>&#32;mapofwinprocess;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00436"/>00436 &#32;&#32;GetMapOfWinProcess(mapofwinprocess);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00437"/>00437 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00438"/>00438 &#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00439"/>00439 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c&#32;=&#32;0;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00440"/>00440 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00441"/>00441 &#32;&#32;<emphasis role="keywordflow">do</emphasis>{&#32;<link linkend="_class_x_p_r_o_c_e_s_s">XPROCESS</link>*&#32;xprocess&#32;=&#32;applist.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(c);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00442"/>00442 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xprocess)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00443"/>00443 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00444"/>00444 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xprocess-&gt;<link linkend="_group___x_u_t_i_l_s_1ga2b8c71c3d305646556547dd54955bfad">GetWindowHandle</link>())&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00445"/>00445 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00446"/>00446 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;d=0;&#32;d&lt;mapofwinprocess.GetSize();&#32;d++)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00447"/>00447 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00448"/>00448 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;HWND&#32;&#32;&#32;&#32;hwnd&#32;&#32;&#32;&#32;&#32;&#32;=&#32;mapofwinprocess.GetKey(d);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00449"/>00449 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;processID&#32;=&#32;mapofwinprocess.GetElement(d);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00450"/>00450 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00451"/>00451 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;e=0;&#32;e&lt;xprocess-&gt;<link linkend="_group___x_u_t_i_l_s_1gafec769f9cf7f08aa1e98cdec6b596a7b">GetProcessIDs</link>()-&gt;GetSize();&#32;e++)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00452"/>00452 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00453"/>00453 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(processID&#32;==&#32;xprocess-&gt;<link linkend="_group___x_u_t_i_l_s_1gafec769f9cf7f08aa1e98cdec6b596a7b">GetProcessIDs</link>()-&gt;<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(e))
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00454"/>00454 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00455"/>00455 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;&#32;&#32;&#32;&#32;title;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00456"/>00456 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_g_r_p_r_e_c_t_b_a_s_e">GRPRECTINT</link>&#32;&#32;rect;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00457"/>00457 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00458"/>00458 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GetWindowPropertys(hwnd,&#32;title,&#32;rect);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00459"/>00459 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00460"/>00460 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xprocess-&gt;<link linkend="_group___x_u_t_i_l_s_1ga2b8c71c3d305646556547dd54955bfad">GetWindowHandle</link>())&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00461"/>00461 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00462"/>00462 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xprocess-&gt;<link linkend="_group___x_u_t_i_l_s_1gab15072df678552b2db790a028632edc6">SetWindowHandle</link>((<emphasis role="keywordtype">void</emphasis>*)hwnd);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00463"/>00463 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xprocess-&gt;<link linkend="_group___x_u_t_i_l_s_1gaaaea783c8520240c4ceb978fc9fe27cf">GetWindowTitle</link>()-&gt;<link linkend="_group___x_u_t_i_l_s_1ga4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(title.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00464"/>00464 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xprocess-&gt;<link linkend="_group___x_u_t_i_l_s_1ga5c0209124ee071ff48b7d8be5dd8148f">GetWindowRect</link>()-&gt;<link linkend="_class_g_r_p_r_e_c_t_b_a_s_e_1acd2125688450260f4fa711e324054d1c">CopyFrom</link>(&amp;rect);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00465"/>00465 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xprocess-&gt;<link linkend="_group___x_u_t_i_l_s_1ga2a907e86b6d8f4e51409c433a060dee8">SetWindowTitleHeight</link>(GetWindowTitleHeight(hwnd));
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00466"/>00466 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xprocess-&gt;<link linkend="_group___x_u_t_i_l_s_1ga13c8af1851b0d50f0e5aed1be4c2182c">SetWindowBorderWidth</link>(GetWindowBorderWidth(hwnd));&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00467"/>00467 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00468"/>00468 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00469"/>00469 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00470"/>00470 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_p_r_o_c_e_s_s">XPROCESS</link>*&#32;newxprocess&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_p_r_o_c_e_s_s">XPROCESS</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00471"/>00471 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(newxprocess)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00472"/>00472 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00473"/>00473 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;newxprocess-&gt;<link linkend="_group___x_u_t_i_l_s_1ga5b36c465bfebd29141201515e303c694">CopyFrom</link>((*xprocess));&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00474"/>00474 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00475"/>00475 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;newxprocess-&gt;<link linkend="_group___x_u_t_i_l_s_1gab15072df678552b2db790a028632edc6">SetWindowHandle</link>((<emphasis role="keywordtype">void</emphasis>*)hwnd);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00476"/>00476 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;newxprocess-&gt;<link linkend="_group___x_u_t_i_l_s_1gaaaea783c8520240c4ceb978fc9fe27cf">GetWindowTitle</link>()-&gt;<link linkend="_group___x_u_t_i_l_s_1ga4e97e075650e9bc8cfb7deb28e4c9ce4">Set</link>(title.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>());
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00477"/>00477 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;newxprocess-&gt;<link linkend="_group___x_u_t_i_l_s_1ga5c0209124ee071ff48b7d8be5dd8148f">GetWindowRect</link>()-&gt;<link linkend="_class_g_r_p_r_e_c_t_b_a_s_e_1acd2125688450260f4fa711e324054d1c">CopyFrom</link>(&amp;rect);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00478"/>00478 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;newxprocess-&gt;<link linkend="_group___x_u_t_i_l_s_1ga2a907e86b6d8f4e51409c433a060dee8">SetWindowTitleHeight</link>(GetWindowTitleHeight(hwnd));
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00479"/>00479 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;newxprocess-&gt;<link linkend="_group___x_u_t_i_l_s_1ga13c8af1851b0d50f0e5aed1be4c2182c">SetWindowBorderWidth</link>(GetWindowBorderWidth(hwnd));
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00480"/>00480 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00481"/>00481 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;applist.<link linkend="_class_x_v_e_c_t_o_r_1a51a790aac8efd4603aee608ddcc83423">Add</link>(newxprocess);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00482"/>00482 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00483"/>00483 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00484"/>00484 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00485"/>00485 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00486"/>00486 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00487"/>00487 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00488"/>00488 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00489"/>00489 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00490"/>00490 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00491"/>00491 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00492"/>00492 &#32;&#32;&#32;&#32;&#32;&#32;c++;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00493"/>00493 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00494"/>00494 &#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">while</emphasis>(c&lt;applist.<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>());&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00495"/>00495 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00496"/>00496 &#32;&#32;mapofwinprocess.DeleteAll();
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00497"/>00497 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00498"/>00498 &#32;&#32;<emphasis role="comment">//------------------------------------------------------------------------</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00499"/>00499 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00500"/>00500 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(onlywithvalidwindow)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00501"/>00501 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00502"/>00502 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c&#32;=&#32;0;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00503"/>00503 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00504"/>00504 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">do</emphasis>{&#32;<link linkend="_class_x_p_r_o_c_e_s_s">XPROCESS</link>*&#32;xprocess&#32;=&#32;applist.<link linkend="_class_x_v_e_c_t_o_r_1a2af4855d7fe0bc28201f6967110d064e">Get</link>(c);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00505"/>00505 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(xprocess)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00506"/>00506 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00507"/>00507 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xprocess-&gt;<link linkend="_group___x_u_t_i_l_s_1ga2b8c71c3d305646556547dd54955bfad">GetWindowHandle</link>()&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;||&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00508"/>00508 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xprocess-&gt;<link linkend="_group___x_u_t_i_l_s_1gaaaea783c8520240c4ceb978fc9fe27cf">GetWindowTitle</link>()-&gt;<link linkend="_group___x_u_t_i_l_s_1gad26690161f8c1e2722771322b7370005">IsEmpty</link>()&#32;||&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00509"/>00509 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;xprocess-&gt;<link linkend="_group___x_u_t_i_l_s_1ga5c0209124ee071ff48b7d8be5dd8148f">GetWindowRect</link>()-&gt;<link linkend="_class_g_r_p_r_e_c_t_b_a_s_e_1a36e9d0093ad2a40692fee5795fc0b19d">IsEmpty</link>())
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00510"/>00510 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00511"/>00511 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;applist.<link linkend="_class_x_v_e_c_t_o_r_1a1b2817263806966a47e30481e1561c27">Delete</link>(xprocess);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00512"/>00512 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;xprocess;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00513"/>00513 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00514"/>00514 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00515"/>00515 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00516"/>00516 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;c++;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00517"/>00517 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00518"/>00518 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00519"/>00519 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00520"/>00520 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00521"/>00521 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00522"/>00522 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00523"/>00523 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00524"/>00524 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">while</emphasis>(c&lt;applist.<link linkend="_class_x_v_e_c_t_o_r_1ab9cec1d9ae7a1f5699f9dde55ccde2bf">GetSize</link>());&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00525"/>00525 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00526"/>00526 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00527"/>00527 &#32;&#32;<emphasis role="comment">//------------------------------------------------------------------------</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00528"/>00528 &#32;&#32;<emphasis role="comment">/*</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00529"/>00529 <emphasis role="comment">&#32;&#32;#ifdef&#32;XTRACE_ACTIVE</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00530"/>00530 <emphasis role="comment">&#32;&#32;for(XDWORD&#32;c&#32;=&#32;0;&#32;c&#32;&lt;&#32;applist.GetSize();&#32;c++)</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00531"/>00531 <emphasis role="comment">&#32;&#32;&#32;&#32;{</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00532"/>00532 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;XPROCESS*&#32;process&#32;=&#32;applist.Get(c);</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00533"/>00533 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;if(process)</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00534"/>00534 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00535"/>00535 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;XTRACE_PRINTCOLOR(XTRACE_COLOR_BLUE,&#32;__L(&quot;ID:&#32;%08X,&#32;%s,&#32;%s,&#32;%08X,&#32;%s,&#32;[%d,%d,%d,%d]&quot;)&#32;,&#32;process-&gt;GetID()</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00536"/>00536 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;process-&gt;GetName()-&gt;Get()</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00537"/>00537 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;process-&gt;GetPath()-&gt;Get()&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00538"/>00538 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;process-&gt;GetWindowHandle()</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00539"/>00539 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;process-&gt;GetWindowTitle()-&gt;Get()</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00540"/>00540 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;process-&gt;GetWindowRect()-&gt;x1</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00541"/>00541 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;process-&gt;GetWindowRect()-&gt;y1</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00542"/>00542 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;process-&gt;GetWindowRect()-&gt;x2</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00543"/>00543 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;,&#32;process-&gt;GetWindowRect()-&gt;y2</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00544"/>00544 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;);</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00545"/>00545 <emphasis role="comment">&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00546"/>00546 <emphasis role="comment">&#32;&#32;&#32;&#32;}&#32;&#32;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00547"/>00547 <emphasis role="comment">&#32;&#32;#endif&#32;&#32;</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00548"/>00548 <emphasis role="comment">&#32;&#32;*/</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00549"/>00549 &#32;&#32;<emphasis role="comment">//------------------------------------------------------------------------</emphasis>
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00550"/>00550 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00551"/>00551 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(xmutexgetsrunninglist)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00552"/>00552 &#32;&#32;&#32;&#32;{&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00553"/>00553 &#32;&#32;&#32;&#32;&#32;&#32;xmutexgetsrunninglist-&gt;<link linkend="_group___x_u_t_i_l_s_1gafed160c15de8de926a73f4ce978f0bc0">UnLock</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00554"/>00554 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00555"/>00555 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00556"/>00556 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00557"/>00557 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00558"/>00558 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00559"/>00559 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00572"/><link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1gaddd98526722485bab77e088bb15c2638">00572</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s_1gaddd98526722485bab77e088bb15c2638">XWINDOWSPROCESSMANAGER::Application_Terminate</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;processID,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;exitcode)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00573"/>00573 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00574"/>00574 &#32;&#32;DWORD&#32;&#32;&#32;desiredaccess&#32;&#32;&#32;=&#32;PROCESS_TERMINATE;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00575"/>00575 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;&#32;&#32;inherithandle&#32;&#32;&#32;=&#32;<link linkend="__x_s_t_m32___h_a_l_8h_1aa93f0eb578d23995850d61f7d61c55c1">FALSE</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00576"/>00576 &#32;&#32;HANDLE&#32;&#32;hprocess&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00577"/>00577 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00578"/>00578 &#32;&#32;hprocess&#32;=&#32;OpenProcess(desiredaccess,&#32;inherithandle,&#32;processID);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00579"/>00579 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(hprocess&#32;==&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00580"/>00580 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00581"/>00581 &#32;&#32;BOOL&#32;result&#32;=&#32;TerminateProcess(hprocess,&#32;exitcode);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00582"/>00582 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00583"/>00583 &#32;&#32;CloseHandle(hprocess);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00584"/>00584 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00585"/>00585 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(result?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00586"/>00586 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00587"/>00587 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00588"/>00588 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00602"/>00602 <emphasis role="keywordtype">bool</emphasis>&#32;XWINDOWSPROCESSMANAGER::GetWindowPropertys(HWND&#32;hwnd,&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;title,&#32;<link linkend="_class_g_r_p_r_e_c_t_b_a_s_e">GRPRECTINT</link>&amp;&#32;rect)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00603"/>00603 {&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00604"/>00604 &#32;&#32;title.<link linkend="_group___x_u_t_i_l_s_1ga9275997c1605fa79646c301e63a77d06">Empty</link>();&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00605"/>00605 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00606"/>00606 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;sizetitlewindow&#32;=&#32;GetWindowTextLength(hwnd);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00607"/>00607 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!sizetitlewindow)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00608"/>00608 &#32;&#32;&#32;&#32;{&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00609"/>00609 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00610"/>00610 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00611"/>00611 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00612"/>00612 &#32;&#32;title.<link linkend="_group___x_u_t_i_l_s_1ga5daae19734452be6010c65f3d812aa00">AdjustSize</link>(sizetitlewindow+1);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00613"/>00613 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;size&#32;=&#32;GetWindowText(hwnd,&#32;title.<link linkend="_group___x_u_t_i_l_s_1gad1470753a96f93e2feb3ee54e6fef95f">Get</link>(),&#32;sizetitlewindow&#32;+&#32;1);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00614"/>00614 &#32;&#32;title.<link linkend="_group___x_u_t_i_l_s_1ga5daae19734452be6010c65f3d812aa00">AdjustSize</link>();
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00615"/>00615 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00616"/>00616 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!size)&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00617"/>00617 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00618"/>00618 &#32;&#32;&#32;&#32;&#32;&#32;title.<link linkend="_group___x_u_t_i_l_s_1ga9275997c1605fa79646c301e63a77d06">Empty</link>();&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00619"/>00619 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00620"/>00620 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00621"/>00621 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00622"/>00622 &#32;&#32;RECT&#32;wrect;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00623"/>00623 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00624"/>00624 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(GetWindowRect(hwnd,&#32;&amp;wrect))
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00625"/>00625 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00626"/>00626 &#32;&#32;&#32;&#32;&#32;&#32;rect.<link linkend="_class_g_r_p_r_e_c_t_b_a_s_e_1a7a73d30153f0e92ed137b30b5f702110">x1</link>&#32;=&#32;wrect.left;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00627"/>00627 &#32;&#32;&#32;&#32;&#32;&#32;rect.<link linkend="_class_g_r_p_r_e_c_t_b_a_s_e_1a028e1409aaffbbc869e87ae3e556f0a1">y1</link>&#32;=&#32;wrect.top;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00628"/>00628 &#32;&#32;&#32;&#32;&#32;&#32;rect.<link linkend="_class_g_r_p_r_e_c_t_b_a_s_e_1a4b0cacd1f2cc2c042d0dedee03df2a37">x2</link>&#32;=&#32;wrect.right;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00629"/>00629 &#32;&#32;&#32;&#32;&#32;&#32;rect.<link linkend="_class_g_r_p_r_e_c_t_b_a_s_e_1a412007307746805b078b5c15c541aed4">y2</link>&#32;=&#32;wrect.bottom;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00630"/>00630 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00631"/>00631 &#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00632"/>00632 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00633"/>00633 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00634"/>00634 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00635"/>00635 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00647"/>00647 <emphasis role="keywordtype">int</emphasis>&#32;XWINDOWSPROCESSMANAGER::GetWindowTitleHeight(HWND&#32;hwnd)&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00648"/>00648 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00649"/>00649 &#32;&#32;RECT&#32;window_rectangle;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00650"/>00650 &#32;&#32;RECT&#32;client_rectangle;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00651"/>00651 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;height;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00652"/>00652 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;width;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00653"/>00653 &#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00654"/>00654 &#32;&#32;GetWindowRect(hwnd,&#32;&amp;window_rectangle);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00655"/>00655 &#32;&#32;GetClientRect(hwnd,&#32;&amp;client_rectangle);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00656"/>00656 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00657"/>00657 &#32;&#32;height&#32;=&#32;(window_rectangle.bottom&#32;-&#32;window_rectangle.top)&#32;-&#32;(client_rectangle.bottom&#32;-&#32;client_rectangle.top);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00658"/>00658 &#32;&#32;width&#32;&#32;=&#32;(window_rectangle.right&#32;-&#32;window_rectangle.left)&#32;-&#32;(client_rectangle.right&#32;-&#32;client_rectangle.left);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00659"/>00659 &#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00660"/>00660 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;height&#32;-&#32;(width/2);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00661"/>00661 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00662"/>00662 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00663"/>00663 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00675"/>00675 <emphasis role="keywordtype">int</emphasis>&#32;XWINDOWSPROCESSMANAGER::GetWindowBorderWidth(HWND&#32;hwnd)&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00676"/>00676 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00677"/>00677 &#32;&#32;RECT&#32;window_rectangle;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00678"/>00678 &#32;&#32;RECT&#32;client_rectangle;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00679"/>00679 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00680"/>00680 &#32;&#32;GetWindowRect(hwnd,&#32;&amp;window_rectangle);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00681"/>00681 &#32;&#32;GetClientRect(hwnd,&#32;&amp;client_rectangle);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00682"/>00682 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00683"/>00683 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;((window_rectangle.right&#32;-&#32;window_rectangle.left)&#32;-&#32;client_rectangle.right)&#32;/&#32;2;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00684"/>00684 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00685"/>00685 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00686"/>00686 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00698"/>00698 <emphasis role="keywordtype">bool</emphasis>&#32;XWINDOWSPROCESSMANAGER::GetChildProcesses(<link linkend="_class_x_v_e_c_t_o_r">XVECTOR&lt;XPROCESS*&gt;</link>&amp;&#32;applist)&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00699"/>00699 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00700"/>00700 &#32;&#32;HANDLE&#32;threadSnapshot&#32;=&#32;CreateToolhelp32Snapshot(TH32CS_SNAPTHREAD,&#32;0);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00701"/>00701 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(threadSnapshot&#32;==&#32;INVALID_HANDLE_VALUE)&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00702"/>00702 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00703"/>00703 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00704"/>00704 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00705"/>00705 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00706"/>00706 &#32;&#32;THREADENTRY32&#32;threadEntry;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00707"/>00707 &#32;&#32;threadEntry.dwSize&#32;=&#32;<emphasis role="keyword">sizeof</emphasis>(THREADENTRY32);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00708"/>00708 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00709"/>00709 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!Thread32First(threadSnapshot,&#32;&amp;threadEntry))&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00710"/>00710 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00711"/>00711 &#32;&#32;&#32;&#32;&#32;&#32;CloseHandle(threadSnapshot);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00712"/>00712 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00713"/>00713 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00714"/>00714 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00715"/>00715 &#32;&#32;<emphasis role="keywordflow">do</emphasis>&#32;{&#32;<link linkend="_class_x_p_r_o_c_e_s_s">XPROCESS</link>*&#32;mainprocess&#32;=&#32;<link linkend="_group___x_u_t_i_l_s_1gaffc90cac4e8999451bf762a3af54584a">Application_GetProcessByID</link>(threadEntry.th32OwnerProcessID,&#32;applist);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00716"/>00716 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(mainprocess)&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00717"/>00717 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00718"/>00718 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(mainprocess-&gt;<link linkend="_group___x_u_t_i_l_s_1gafec769f9cf7f08aa1e98cdec6b596a7b">GetProcessIDs</link>()-&gt;<link linkend="_class_x_v_e_c_t_o_r_1acfb28e72022a067c3a4635f0c14734fb">IsEmpty</link>())
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00719"/>00719 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00720"/>00720 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;mainprocess-&gt;<link linkend="_group___x_u_t_i_l_s_1gafec769f9cf7f08aa1e98cdec6b596a7b">GetProcessIDs</link>()-&gt;<link linkend="_class_x_v_e_c_t_o_r_1a51a790aac8efd4603aee608ddcc83423">Add</link>(threadEntry.th32OwnerProcessID);&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00721"/>00721 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00722"/>00722 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00723"/>00723 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;mainprocess-&gt;<link linkend="_group___x_u_t_i_l_s_1gafec769f9cf7f08aa1e98cdec6b596a7b">GetProcessIDs</link>()-&gt;<link linkend="_class_x_v_e_c_t_o_r_1a51a790aac8efd4603aee608ddcc83423">Add</link>(threadEntry.th32ThreadID);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00724"/>00724 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00725"/>00725 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00726"/>00726 &#32;&#32;&#32;&#32;&#32;&#32;}&#32;<emphasis role="keywordflow">while</emphasis>&#32;(Thread32Next(threadSnapshot,&#32;&amp;threadEntry));
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00727"/>00727 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00728"/>00728 &#32;&#32;CloseHandle(threadSnapshot);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00729"/>00729 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00730"/>00730 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00731"/>00731 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00732"/>00732 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00733"/>00733 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00746"/>00746 BOOL&#32;CALLBACK&#32;XWINDOWSPROCESSMANAGER::EnumWindowsProc(HWND&#32;hwnd,&#32;LPARAM&#32;lparam)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00747"/>00747 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00748"/>00748 &#32;&#32;<link linkend="__x_w_i_n_d_o_w_s_process_manager_8h_1a89fd2b2abd9a162cdd605090b502437a">MAPWINPROCESS</link>*&#32;mapofwinprocess&#32;=&#32;(<link linkend="__x_w_i_n_d_o_w_s_process_manager_8h_1a89fd2b2abd9a162cdd605090b502437a">MAPWINPROCESS</link>*)lparam;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00749"/>00749 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!mapofwinprocess)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00750"/>00750 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00751"/>00751 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_s_t_m32___h_a_l_8h_1aa93f0eb578d23995850d61f7d61c55c1">FALSE</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00752"/>00752 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00753"/>00753 &#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00754"/>00754 &#32;&#32;DWORD&#32;processID;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00755"/>00755 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00756"/>00756 &#32;&#32;GetWindowThreadProcessId(hwnd,&#32;&amp;processID);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00757"/>00757 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00758"/>00758 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(processID)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00759"/>00759 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00760"/>00760 &#32;&#32;&#32;&#32;&#32;&#32;mapofwinprocess-&gt;Add(hwnd,&#32;processID);
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00761"/>00761 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00762"/>00762 &#32;&#32;&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00763"/>00763 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_s_t_m32___h_a_l_8h_1aa8cecfc5c5c054d2875c03e77b7be15d">TRUE</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00764"/>00764 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00765"/>00765 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00766"/>00766 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00778"/>00778 <emphasis role="keywordtype">bool</emphasis>&#32;XWINDOWSPROCESSMANAGER::GetMapOfWinProcess(<link linkend="__x_w_i_n_d_o_w_s_process_manager_8h_1a89fd2b2abd9a162cdd605090b502437a">MAPWINPROCESS</link>&amp;&#32;mapofwinprocess)
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00779"/>00779 {&#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00780"/>00780 &#32;&#32;mapofwinprocess.DeleteAll();
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00781"/>00781 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00782"/>00782 &#32;&#32;BOOL&#32;result&#32;=&#32;EnumWindows(EnumWindowsProc,&#32;(LPARAM)(&amp;mapofwinprocess));
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00783"/>00783 &#32;&#32;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00784"/>00784 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;result?<emphasis role="keyword">true</emphasis>:<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00785"/>00785 &#32;}
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00786"/>00786 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00787"/>00787 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00796"/>00796 <emphasis role="keywordtype">void</emphasis>&#32;XWINDOWSPROCESSMANAGER::Clean()
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00797"/>00797 {
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00798"/>00798 &#32;&#32;xmutexgetsrunninglist&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00799"/>00799 }
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00800"/>00800 
+<anchor xml:id="__x_w_i_n_d_o_w_s_process_manager_8cpp_source_1l00801"/>00801 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+</programlisting></section>

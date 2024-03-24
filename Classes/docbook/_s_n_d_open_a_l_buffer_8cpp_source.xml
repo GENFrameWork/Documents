@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__s_n_d_open_a_l_buffer_8cpp_source" xml:lang="en-US">
+<title>SNDOpenALBuffer.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/Sound/OpenAL/SNDOpenALBuffer.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__s_n_d_open_a_l_buffer_8h">SNDOpenALBuffer.h</link>&quot;</emphasis>
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&lt;stdio.h&gt;</emphasis>
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&lt;stdlib.h&gt;</emphasis>
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&lt;math.h&gt;</emphasis>
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00045"/>00045 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00047"/>00047 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00049"/>00049 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00050"/>00050 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00051"/>00051 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00053"/>00053 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00054"/>00054 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00055"/>00055 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00056"/>00056 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00057"/>00057 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00058"/>00058 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00059"/>00059 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00068"/><link linkend="_group___s_o_u_n_d_1ga408a623d21638f75c51998716f0e8d15">00068</link> <link linkend="_group___s_o_u_n_d_1ga408a623d21638f75c51998716f0e8d15">SNDOPENALBUFFER::SNDOPENALBUFFER</link>()
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00069"/>00069 {
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00070"/>00070 &#32;&#32;Clean();
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00071"/>00071 }
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00072"/>00072 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00073"/>00073 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00082"/><link linkend="_group___s_o_u_n_d_1ga92e398bcd203231e2a6fefe500859737">00082</link> <link linkend="_group___s_o_u_n_d_1ga92e398bcd203231e2a6fefe500859737">SNDOPENALBUFFER::~SNDOPENALBUFFER</link>()
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00083"/>00083 {
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00084"/>00084 &#32;&#32;Clean();
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00085"/>00085 }
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00086"/>00086 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00087"/>00087 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00095"/><link linkend="_group___s_o_u_n_d_1ga8a173bcd67b319aecc40aac871ae6066">00095</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___s_o_u_n_d_1ga8a173bcd67b319aecc40aac871ae6066">SNDOPENALBUFFER::Create</link>()
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00096"/>00096 {
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00097"/>00097 &#32;&#32;alGenBuffers(1,&#32;&amp;buffer);
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00098"/>00098 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00099"/>00099 &#32;&#32;xbuffer.<link linkend="_group___x_u_t_i_l_s_1ga3c14ba0ca9dfbf20b5127c87b275cb93">Empty</link>();
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00100"/>00100 }
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00101"/>00101 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00102"/>00102 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00110"/><link linkend="_group___s_o_u_n_d_1ga4aec40286a92484bed310b8cab2fd61a">00110</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___s_o_u_n_d_1ga4aec40286a92484bed310b8cab2fd61a">SNDOPENALBUFFER::Delete</link>()
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00111"/>00111 {
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00112"/>00112 &#32;&#32;alDeleteBuffers(1,&#32;&amp;buffer);
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00113"/>00113 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00114"/>00114 &#32;&#32;xbuffer.<link linkend="_group___x_u_t_i_l_s_1ga3c14ba0ca9dfbf20b5127c87b275cb93">Empty</link>();
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00115"/>00115 }
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00116"/>00116 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00117"/>00117 &#32;&#32;&#32;&#32;
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00127"/><link linkend="_group___s_o_u_n_d_1gae57761fa7e2802be07835fde8c6cabb3">00127</link> ALuint&#32;<link linkend="_group___s_o_u_n_d_1gae57761fa7e2802be07835fde8c6cabb3">SNDOPENALBUFFER::GetHandle</link>()
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00128"/>00128 {&#32;
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00129"/>00129 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;buffer;&#32;
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00130"/>00130 }
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00131"/>00131 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00132"/>00132 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00144"/><link linkend="_group___s_o_u_n_d_1gaa17032d6bc5443e4c9b92c6cbb7ef9ca">00144</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___s_o_u_n_d_1gaa17032d6bc5443e4c9b92c6cbb7ef9ca">SNDOPENALBUFFER::SetHandle</link>(ALuint&#32;handle)
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00145"/>00145 {
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00146"/>00146 &#32;&#32;this-&gt;buffer&#32;=&#32;handle;
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00147"/>00147 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00148"/>00148 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00149"/>00149 }
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00150"/>00150 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00151"/>00151 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00161"/><link linkend="_group___s_o_u_n_d_1gaaa3dff419f0caaa3ba4c9feb2791b9ac">00161</link> <link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>*&#32;<link linkend="_group___s_o_u_n_d_1gaaa3dff419f0caaa3ba4c9feb2791b9ac">SNDOPENALBUFFER::GetXBuffer</link>()
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00162"/>00162 {
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00163"/>00163 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;&amp;xbuffer;
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00164"/>00164 }
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00165"/>00165 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00166"/>00166 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00180"/><link linkend="_group___s_o_u_n_d_1ga7388831e08989e20492f1c6aa9f0a381">00180</link> <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;<link linkend="_class_s_n_d_o_p_e_n_a_l_b_u_f_f_e_r_1a08b74a7e9e816099772502f7030af8b9">SNDOPENALBUFFER::GenerateNote</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;frequency,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;duration,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;samplerate)
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00181"/>00181 {
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00182"/>00182 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!frequency&#32;||&#32;!duration)
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00183"/>00183 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00184"/>00184 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00185"/>00185 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00186"/>00186 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00187"/>00187 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;size&#32;=&#32;(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)((duration/1000)&#32;*&#32;samplerate);&#32;&#32;
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00188"/>00188 &#32;&#32;
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00189"/>00189 &#32;&#32;xbuffer.<link linkend="_group___x_u_t_i_l_s_1ga0db241bb6c353478652138e31b798696">SetLocalHardwareUseLittleEndian</link>(<emphasis role="keyword">false</emphasis>);
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00190"/>00190 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00191"/>00191 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;&#32;c&lt;size;&#32;c++)
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00192"/>00192 &#32;&#32;&#32;&#32;{&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00193"/>00193 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;data&#32;=&#32;(short)(32760&#32;*&#32;sin(2&#32;*&#32;<link linkend="__x_base_8h_1a598a3330b3c21701223ee0ca14316eca">PI</link>&#32;*&#32;c&#32;*&#32;frequency/samplerate));
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00194"/>00194 &#32;&#32;&#32;&#32;&#32;&#32;xbuffer.<link linkend="_group___x_u_t_i_l_s_1ga03212e4f31a9d07995ac4f72db1dd0cf">Add</link>((<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>)data);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00195"/>00195 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00196"/>00196 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00197"/>00197 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;size;
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00198"/>00198 }
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00199"/>00199 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00200"/>00200 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00214"/><link linkend="_group___s_o_u_n_d_1gaccad81153e6a19c2fbd0f79c6c61ff39">00214</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___s_o_u_n_d_1gaccad81153e6a19c2fbd0f79c6c61ff39">SNDOPENALBUFFER::Assign</link>(<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;channels,&#32;<emphasis role="keywordtype">size_t</emphasis>&#32;size,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;samplerate)
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00215"/>00215 {
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00216"/>00216 &#32;&#32;ALenum&#32;format&#32;=&#32;AL_FORMAT_MONO16;
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00217"/>00217 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00218"/>00218 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(channels&#32;==&#32;2)
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00219"/>00219 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00220"/>00220 &#32;&#32;&#32;&#32;&#32;&#32;format&#32;=&#32;AL_FORMAT_STEREO16;
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00221"/>00221 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00222"/>00222 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00223"/>00223 &#32;&#32;alBufferData(buffer,&#32;format,&#32;(<emphasis role="keywordtype">void</emphasis>*)xbuffer.<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>(),&#32;(ALsizei)size,&#32;samplerate);
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00224"/>00224 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00225"/>00225 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00226"/>00226 }
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00227"/>00227 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00228"/>00228 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00237"/>00237 <emphasis role="keywordtype">void</emphasis>&#32;SNDOPENALBUFFER::Clean()
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00238"/>00238 {
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00239"/>00239 &#32;&#32;buffer&#32;=&#32;0;
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00240"/>00240 }
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00241"/>00241 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00242"/>00242 
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00243"/>00243 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__s_n_d_open_a_l_buffer_8cpp_source_1l00244"/>00244 
+</programlisting></section>

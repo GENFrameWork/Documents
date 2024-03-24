@@ -1,0 +1,294 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__cipher_8cpp_source" xml:lang="en-US">
+<title>Cipher.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/Cipher/Cipher.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__cipher_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__cipher_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__cipher_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__cipher_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__cipher_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__cipher_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__cipher_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__cipher_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__cipher_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__cipher_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__cipher_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__cipher_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__cipher_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__cipher_8h">Cipher.h</link>&quot;</emphasis>
+<anchor xml:id="__cipher_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__cipher_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&lt;string.h&gt;</emphasis>
+<anchor xml:id="__cipher_8cpp_source_1l00043"/>00043 
+<anchor xml:id="__cipher_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_factory_8h">XFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__cipher_8cpp_source_1l00045"/>00045 
+<anchor xml:id="__cipher_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__cipher_8cpp_source_1l00047"/>00047 
+<anchor xml:id="__cipher_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__cipher_8cpp_source_1l00049"/>00049 
+<anchor xml:id="__cipher_8cpp_source_1l00050"/>00050 
+<anchor xml:id="__cipher_8cpp_source_1l00051"/>00051 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__cipher_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__cipher_8cpp_source_1l00053"/>00053 
+<anchor xml:id="__cipher_8cpp_source_1l00054"/>00054 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__cipher_8cpp_source_1l00055"/>00055 
+<anchor xml:id="__cipher_8cpp_source_1l00056"/>00056 
+<anchor xml:id="__cipher_8cpp_source_1l00057"/>00057 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__cipher_8cpp_source_1l00058"/>00058 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__cipher_8cpp_source_1l00059"/>00059 
+<anchor xml:id="__cipher_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__cipher_8cpp_source_1l00068"/><link linkend="_group___c_i_p_h_e_r_1ga2a294062c23eb2c2c270faffa46afa6d">00068</link> <link linkend="_group___c_i_p_h_e_r_1ga2a294062c23eb2c2c270faffa46afa6d">CIPHER::CIPHER</link>()
+<anchor xml:id="__cipher_8cpp_source_1l00069"/>00069 {
+<anchor xml:id="__cipher_8cpp_source_1l00070"/>00070 &#32;&#32;Clean();
+<anchor xml:id="__cipher_8cpp_source_1l00071"/>00071 
+<anchor xml:id="__cipher_8cpp_source_1l00072"/>00072 &#32;&#32;<link linkend="_class_c_i_p_h_e_r_1a416572c28446389769158d381de9d24f">type</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__cipher_8h_1a52cc908e38756716669a3bcb38a61cf7a32e22ba8524088a2852cfc3d6181d27b">CIPHERTYPE_XOR</link>;
+<anchor xml:id="__cipher_8cpp_source_1l00073"/>00073 &#32;&#32;<link linkend="_class_c_i_p_h_e_r_1a80d51b9bdea87754bd8144999eeb5f2e">paddingadjustsize</link>&#32;=&#32;0;
+<anchor xml:id="__cipher_8cpp_source_1l00074"/>00074 
+<anchor xml:id="__cipher_8cpp_source_1l00075"/>00075 &#32;&#32;<link linkend="_class_c_i_p_h_e_r_1aaf021d9a81c4cf827bcc1fac1008d15b">inivector</link>&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>();
+<anchor xml:id="__cipher_8cpp_source_1l00076"/>00076 &#32;&#32;<link linkend="_class_c_i_p_h_e_r_1a81d924a4beba9c1acb6bb56f3fdf181a">result</link>&#32;&#32;&#32;&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>();
+<anchor xml:id="__cipher_8cpp_source_1l00077"/>00077 }
+<anchor xml:id="__cipher_8cpp_source_1l00078"/>00078 
+<anchor xml:id="__cipher_8cpp_source_1l00079"/>00079 
+<anchor xml:id="__cipher_8cpp_source_1l00088"/><link linkend="_group___c_i_p_h_e_r_1ga9b94649a215dee14621db10d8455862d">00088</link> <link linkend="_group___c_i_p_h_e_r_1ga9b94649a215dee14621db10d8455862d">CIPHER::~CIPHER</link>()
+<anchor xml:id="__cipher_8cpp_source_1l00089"/>00089 {
+<anchor xml:id="__cipher_8cpp_source_1l00090"/>00090 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_c_i_p_h_e_r_1aaf021d9a81c4cf827bcc1fac1008d15b">inivector</link>)
+<anchor xml:id="__cipher_8cpp_source_1l00091"/>00091 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__cipher_8cpp_source_1l00092"/>00092 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;<link linkend="_class_c_i_p_h_e_r_1aaf021d9a81c4cf827bcc1fac1008d15b">inivector</link>;
+<anchor xml:id="__cipher_8cpp_source_1l00093"/>00093 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_c_i_p_h_e_r_1aaf021d9a81c4cf827bcc1fac1008d15b">inivector</link>&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__cipher_8cpp_source_1l00094"/>00094 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__cipher_8cpp_source_1l00095"/>00095 
+<anchor xml:id="__cipher_8cpp_source_1l00096"/><link linkend="_class_c_i_p_h_e_r3_d_e_s_1a0fc06658fae446ff6610e286e158eb77">00096</link> &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_c_i_p_h_e_r_1a81d924a4beba9c1acb6bb56f3fdf181a">result</link>)
+<anchor xml:id="__cipher_8cpp_source_1l00097"/><link linkend="_class_c_i_p_h_e_r3_d_e_s_1a2a0b6f2a6866eb4473a30e4e0cabf895">00097</link> &#32;&#32;&#32;&#32;{
+<anchor xml:id="__cipher_8cpp_source_1l00098"/>00098 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;<link linkend="_class_c_i_p_h_e_r_1a81d924a4beba9c1acb6bb56f3fdf181a">result</link>;
+<anchor xml:id="__cipher_8cpp_source_1l00099"/><link linkend="_class_c_i_p_h_e_r3_d_e_s_1a33b7770a971251b24deb1bb01e75eed8">00099</link> &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_c_i_p_h_e_r_1a81d924a4beba9c1acb6bb56f3fdf181a">result</link>&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__cipher_8cpp_source_1l00100"/><link linkend="_class_c_i_p_h_e_r3_d_e_s_1af9712639cfcaca8f7e33122a2730f842">00100</link> &#32;&#32;&#32;&#32;}
+<anchor xml:id="__cipher_8cpp_source_1l00101"/>00101 
+<anchor xml:id="__cipher_8cpp_source_1l00102"/>00102 &#32;&#32;Clean();
+<anchor xml:id="__cipher_8cpp_source_1l00103"/>00103 }
+<anchor xml:id="__cipher_8cpp_source_1l00104"/>00104 
+<anchor xml:id="__cipher_8cpp_source_1l00105"/>00105 
+<anchor xml:id="__cipher_8cpp_source_1l00115"/><link linkend="_group___c_i_p_h_e_r_1ga2301712d3f4d431676584eba37730aed">00115</link> <link linkend="__cipher_8h_1a52cc908e38756716669a3bcb38a61cf7">CIPHERTYPE</link>&#32;<link linkend="_group___c_i_p_h_e_r_1ga2301712d3f4d431676584eba37730aed">CIPHER::GetType</link>()
+<anchor xml:id="__cipher_8cpp_source_1l00116"/>00116 {&#32;
+<anchor xml:id="__cipher_8cpp_source_1l00117"/>00117 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_c_i_p_h_e_r_1a416572c28446389769158d381de9d24f">type</link>;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__cipher_8cpp_source_1l00118"/>00118 }
+<anchor xml:id="__cipher_8cpp_source_1l00119"/>00119 
+<anchor xml:id="__cipher_8cpp_source_1l00120"/>00120 
+<anchor xml:id="__cipher_8cpp_source_1l00130"/><link linkend="_group___c_i_p_h_e_r_1ga210926f9d4ca8cef4a844d1c688cbb30">00130</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___c_i_p_h_e_r_1ga210926f9d4ca8cef4a844d1c688cbb30">CIPHER::SetType</link>(<link linkend="__cipher_8h_1a52cc908e38756716669a3bcb38a61cf7">CIPHERTYPE</link>&#32;type)
+<anchor xml:id="__cipher_8cpp_source_1l00131"/>00131 {&#32;
+<anchor xml:id="__cipher_8cpp_source_1l00132"/>00132 &#32;&#32;this-&gt;type&#32;=&#32;<link linkend="_class_c_i_p_h_e_r_1a416572c28446389769158d381de9d24f">type</link>;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__cipher_8cpp_source_1l00133"/>00133 }
+<anchor xml:id="__cipher_8cpp_source_1l00134"/>00134 
+<anchor xml:id="__cipher_8cpp_source_1l00135"/>00135 
+<anchor xml:id="__cipher_8cpp_source_1l00145"/><link linkend="_group___c_i_p_h_e_r_1gac4534db114136a559c8fb09f7c8b42ab">00145</link> <link linkend="__cipher_8h_1ae802f26095cf19cb1a0d793a5156812f">CIPHERCHAININGMODE</link>&#32;<link linkend="_group___c_i_p_h_e_r_1gac4534db114136a559c8fb09f7c8b42ab">CIPHER::GetChainingMode</link>()
+<anchor xml:id="__cipher_8cpp_source_1l00146"/>00146 {&#32;
+<anchor xml:id="__cipher_8cpp_source_1l00147"/>00147 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_c_i_p_h_e_r_1a4450db63c939054030f67d08acac7643">chainingmode</link>;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__cipher_8cpp_source_1l00148"/>00148 }
+<anchor xml:id="__cipher_8cpp_source_1l00149"/>00149 
+<anchor xml:id="__cipher_8cpp_source_1l00150"/>00150 
+<anchor xml:id="__cipher_8cpp_source_1l00160"/><link linkend="_group___c_i_p_h_e_r_1gadb6eeabf5dbd8ce6ac81f1044da2e9ac">00160</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___c_i_p_h_e_r_1gadb6eeabf5dbd8ce6ac81f1044da2e9ac">CIPHER::SetChainingMode</link>(<link linkend="__cipher_8h_1ae802f26095cf19cb1a0d793a5156812f">CIPHERCHAININGMODE</link>&#32;chainingmode)
+<anchor xml:id="__cipher_8cpp_source_1l00161"/>00161 {&#32;
+<anchor xml:id="__cipher_8cpp_source_1l00162"/>00162 &#32;&#32;this-&gt;chainingmode&#32;=&#32;<link linkend="_class_c_i_p_h_e_r_1a4450db63c939054030f67d08acac7643">chainingmode</link>;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__cipher_8cpp_source_1l00163"/>00163 }
+<anchor xml:id="__cipher_8cpp_source_1l00164"/>00164 
+<anchor xml:id="__cipher_8cpp_source_1l00165"/>00165 
+<anchor xml:id="__cipher_8cpp_source_1l00175"/><link linkend="_group___c_i_p_h_e_r_1ga5295cab6dfef5a300bfaf900cfc7e8ce">00175</link> <link linkend="__x_buffer_8h_1ac248004dbafba62384287a2eba38cd35">XBUFFER_PADDINGTYPE</link>&#32;<link linkend="_group___c_i_p_h_e_r_1ga5295cab6dfef5a300bfaf900cfc7e8ce">CIPHER::GetPaddingType</link>()
+<anchor xml:id="__cipher_8cpp_source_1l00176"/>00176 {&#32;
+<anchor xml:id="__cipher_8cpp_source_1l00177"/>00177 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_c_i_p_h_e_r_1a07eb94b4c2c26e21bfa3ec3942777e0c">paddingtype</link>;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__cipher_8cpp_source_1l00178"/>00178 }
+<anchor xml:id="__cipher_8cpp_source_1l00179"/>00179 
+<anchor xml:id="__cipher_8cpp_source_1l00180"/>00180 
+<anchor xml:id="__cipher_8cpp_source_1l00190"/><link linkend="_group___c_i_p_h_e_r_1ga8d60fdb0bc07274dc9a3db02397fac6f">00190</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___c_i_p_h_e_r_1ga8d60fdb0bc07274dc9a3db02397fac6f">CIPHER::SetPaddingType</link>(<link linkend="__x_buffer_8h_1ac248004dbafba62384287a2eba38cd35">XBUFFER_PADDINGTYPE</link>&#32;paddingtype)
+<anchor xml:id="__cipher_8cpp_source_1l00191"/>00191 {&#32;
+<anchor xml:id="__cipher_8cpp_source_1l00192"/>00192 &#32;&#32;this-&gt;paddingtype&#32;=&#32;<link linkend="_class_c_i_p_h_e_r_1a07eb94b4c2c26e21bfa3ec3942777e0c">paddingtype</link>;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__cipher_8cpp_source_1l00193"/>00193 }
+<anchor xml:id="__cipher_8cpp_source_1l00194"/>00194 
+<anchor xml:id="__cipher_8cpp_source_1l00195"/>00195 
+<anchor xml:id="__cipher_8cpp_source_1l00205"/><link linkend="_group___c_i_p_h_e_r_1ga98850ddf6fd42c4fa6ed409b08b36385">00205</link> <emphasis role="keywordtype">int</emphasis>&#32;<link linkend="_group___c_i_p_h_e_r_1ga98850ddf6fd42c4fa6ed409b08b36385">CIPHER::GetPaddingAdjustSize</link>()
+<anchor xml:id="__cipher_8cpp_source_1l00206"/>00206 {&#32;
+<anchor xml:id="__cipher_8cpp_source_1l00207"/>00207 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_c_i_p_h_e_r_1a80d51b9bdea87754bd8144999eeb5f2e">paddingadjustsize</link>;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__cipher_8cpp_source_1l00208"/>00208 }
+<anchor xml:id="__cipher_8cpp_source_1l00209"/>00209 
+<anchor xml:id="__cipher_8cpp_source_1l00210"/>00210 
+<anchor xml:id="__cipher_8cpp_source_1l00220"/><link linkend="_group___c_i_p_h_e_r_1ga6153c73b8a8b2163a746ec3e0439ffc3">00220</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___c_i_p_h_e_r_1ga6153c73b8a8b2163a746ec3e0439ffc3">CIPHER::SetPaddingAdjustSize</link>(<emphasis role="keywordtype">int</emphasis>&#32;paddingadjustsize)
+<anchor xml:id="__cipher_8cpp_source_1l00221"/>00221 {&#32;
+<anchor xml:id="__cipher_8cpp_source_1l00222"/>00222 &#32;&#32;this-&gt;paddingadjustsize&#32;=&#32;<link linkend="_class_c_i_p_h_e_r_1a80d51b9bdea87754bd8144999eeb5f2e">paddingadjustsize</link>;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__cipher_8cpp_source_1l00223"/>00223 }
+<anchor xml:id="__cipher_8cpp_source_1l00224"/>00224 
+<anchor xml:id="__cipher_8cpp_source_1l00225"/>00225 
+<anchor xml:id="__cipher_8cpp_source_1l00237"/><link linkend="_group___c_i_p_h_e_r_1ga617de7ca065e58b8b29d54c246ab7e05">00237</link> <link linkend="_class_c_i_p_h_e_r_k_e_y">CIPHERKEY</link>*&#32;<link linkend="_group___c_i_p_h_e_r_1ga617de7ca065e58b8b29d54c246ab7e05">CIPHER::GetKey</link>(<link linkend="__cipher_key_8h_1a89ede88d7cb071f6ba999841bdb412f0">CIPHERKEYTYPE</link>&#32;type)
+<anchor xml:id="__cipher_8cpp_source_1l00238"/>00238 {
+<anchor xml:id="__cipher_8cpp_source_1l00239"/>00239 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;index;
+<anchor xml:id="__cipher_8cpp_source_1l00240"/>00240 
+<anchor xml:id="__cipher_8cpp_source_1l00241"/>00241 &#32;&#32;<emphasis role="keywordflow">switch</emphasis>(<link linkend="_class_c_i_p_h_e_r_1a416572c28446389769158d381de9d24f">type</link>)
+<anchor xml:id="__cipher_8cpp_source_1l00242"/>00242 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__cipher_8cpp_source_1l00243"/>00243 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__cipher_key_8h_1a89ede88d7cb071f6ba999841bdb412f0a056f2d04cee58f83158540595715d079">CIPHERKEYTYPE_SYMMETRICAL</link>&#32;:
+<anchor xml:id="__cipher_8cpp_source_1l00244"/>00244 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__cipher_key_8h_1a89ede88d7cb071f6ba999841bdb412f0a588037d02adddccad94e477ee850527e">CIPHERKEYTYPE_PUBLIC</link>&#32;&#32;&#32;&#32;&#32;&#32;:&#32;index&#32;=&#32;0;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__cipher_8cpp_source_1l00245"/>00245 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__cipher_key_8h_1a89ede88d7cb071f6ba999841bdb412f0a502afc9251e1d0331301d5931bd75b54">CIPHERKEYTYPE_PRIVATE</link>&#32;&#32;&#32;&#32;&#32;:&#32;index&#32;=&#32;1;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__cipher_8cpp_source_1l00246"/>00246 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;default&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__cipher_8cpp_source_1l00247"/>00247 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__cipher_8cpp_source_1l00248"/>00248 
+<anchor xml:id="__cipher_8cpp_source_1l00249"/>00249 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_c_i_p_h_e_r_1a2b3b7313b196a54d62388eff30678ea9">keys</link>[index];
+<anchor xml:id="__cipher_8cpp_source_1l00250"/>00250 }
+<anchor xml:id="__cipher_8cpp_source_1l00251"/>00251 
+<anchor xml:id="__cipher_8cpp_source_1l00252"/>00252 
+<anchor xml:id="__cipher_8cpp_source_1l00265"/><link linkend="_group___c_i_p_h_e_r_1gae2655d45967a87437e48a437c89e2d60">00265</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___c_i_p_h_e_r_1gae2655d45967a87437e48a437c89e2d60">CIPHER::SetKey</link>(<link linkend="_class_c_i_p_h_e_r_k_e_y">CIPHERKEY</link>*&#32;key,&#32;<emphasis role="keywordtype">bool</emphasis>&#32;integritycheck)
+<anchor xml:id="__cipher_8cpp_source_1l00266"/>00266 {
+<anchor xml:id="__cipher_8cpp_source_1l00267"/>00267 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!key)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__cipher_8cpp_source_1l00268"/>00268 
+<anchor xml:id="__cipher_8cpp_source_1l00269"/>00269 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;index;
+<anchor xml:id="__cipher_8cpp_source_1l00270"/>00270 
+<anchor xml:id="__cipher_8cpp_source_1l00271"/>00271 &#32;&#32;<emphasis role="keywordflow">switch</emphasis>(key-&gt;<link linkend="_group___c_i_p_h_e_r_1gabc3d72dff111cf700f8d1ed5a51a5e74">GetType</link>())
+<anchor xml:id="__cipher_8cpp_source_1l00272"/>00272 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__cipher_8cpp_source_1l00273"/>00273 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__cipher_key_8h_1a89ede88d7cb071f6ba999841bdb412f0a056f2d04cee58f83158540595715d079">CIPHERKEYTYPE_SYMMETRICAL</link>&#32;:
+<anchor xml:id="__cipher_8cpp_source_1l00274"/>00274 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__cipher_key_8h_1a89ede88d7cb071f6ba999841bdb412f0a588037d02adddccad94e477ee850527e">CIPHERKEYTYPE_PUBLIC</link>&#32;&#32;&#32;&#32;&#32;&#32;:&#32;index&#32;=&#32;0;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__cipher_8cpp_source_1l00275"/>00275 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__cipher_key_8h_1a89ede88d7cb071f6ba999841bdb412f0a502afc9251e1d0331301d5931bd75b54">CIPHERKEYTYPE_PRIVATE</link>&#32;&#32;&#32;&#32;&#32;:&#32;index&#32;=&#32;1;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__cipher_8cpp_source_1l00276"/>00276 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;default&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__cipher_8cpp_source_1l00277"/>00277 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__cipher_8cpp_source_1l00278"/>00278 
+<anchor xml:id="__cipher_8cpp_source_1l00279"/>00279 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_group___c_i_p_h_e_r_1gae2655d45967a87437e48a437c89e2d60">SetKey</link>(index,&#32;key);
+<anchor xml:id="__cipher_8cpp_source_1l00280"/>00280 }
+<anchor xml:id="__cipher_8cpp_source_1l00281"/>00281 
+<anchor xml:id="__cipher_8cpp_source_1l00282"/>00282 
+<anchor xml:id="__cipher_8cpp_source_1l00292"/><link linkend="_group___c_i_p_h_e_r_1gad6b072831abecf6ff67b77ae351b78e8">00292</link> <link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;<link linkend="_group___c_i_p_h_e_r_1gad6b072831abecf6ff67b77ae351b78e8">CIPHER::GetInitVector</link>()
+<anchor xml:id="__cipher_8cpp_source_1l00293"/>00293 {
+<anchor xml:id="__cipher_8cpp_source_1l00294"/>00294 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_c_i_p_h_e_r_1aaf021d9a81c4cf827bcc1fac1008d15b">inivector</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__cipher_8cpp_source_1l00295"/>00295 
+<anchor xml:id="__cipher_8cpp_source_1l00296"/>00296 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_c_i_p_h_e_r_1aaf021d9a81c4cf827bcc1fac1008d15b">inivector</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>();
+<anchor xml:id="__cipher_8cpp_source_1l00297"/>00297 }
+<anchor xml:id="__cipher_8cpp_source_1l00298"/>00298 
+<anchor xml:id="__cipher_8cpp_source_1l00299"/>00299 
+<anchor xml:id="__cipher_8cpp_source_1l00312"/><link linkend="_group___c_i_p_h_e_r_1ga83906f3b0ed251d01b71e818e0b19e96">00312</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___c_i_p_h_e_r_1ga83906f3b0ed251d01b71e818e0b19e96">CIPHER::SetInitVector</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;vector,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;size)
+<anchor xml:id="__cipher_8cpp_source_1l00313"/>00313 {
+<anchor xml:id="__cipher_8cpp_source_1l00314"/>00314 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!vector)&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__cipher_8cpp_source_1l00315"/>00315 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_c_i_p_h_e_r_1aaf021d9a81c4cf827bcc1fac1008d15b">inivector</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__cipher_8cpp_source_1l00316"/>00316 
+<anchor xml:id="__cipher_8cpp_source_1l00317"/>00317 &#32;&#32;<link linkend="_class_c_i_p_h_e_r_1aaf021d9a81c4cf827bcc1fac1008d15b">inivector</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1ga0395231705663a2aeeee3b4be9d292bb">Delete</link>();
+<anchor xml:id="__cipher_8cpp_source_1l00318"/>00318 &#32;&#32;<link linkend="_class_c_i_p_h_e_r_1aaf021d9a81c4cf827bcc1fac1008d15b">inivector</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1ga03212e4f31a9d07995ac4f72db1dd0cf">Add</link>(vector,size);
+<anchor xml:id="__cipher_8cpp_source_1l00319"/>00319 
+<anchor xml:id="__cipher_8cpp_source_1l00320"/>00320 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__cipher_8cpp_source_1l00321"/>00321 }
+<anchor xml:id="__cipher_8cpp_source_1l00322"/>00322 
+<anchor xml:id="__cipher_8cpp_source_1l00323"/>00323 
+<anchor xml:id="__cipher_8cpp_source_1l00335"/><link linkend="_group___c_i_p_h_e_r_1ga9529cfd20af3c100551cfa3640c87ec1">00335</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___c_i_p_h_e_r_1ga83906f3b0ed251d01b71e818e0b19e96">CIPHER::SetInitVector</link>(<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&amp;&#32;vector)
+<anchor xml:id="__cipher_8cpp_source_1l00336"/>00336 {
+<anchor xml:id="__cipher_8cpp_source_1l00337"/>00337 &#32;&#32;<link linkend="_class_c_i_p_h_e_r_1aaf021d9a81c4cf827bcc1fac1008d15b">inivector</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1ga0395231705663a2aeeee3b4be9d292bb">Delete</link>();
+<anchor xml:id="__cipher_8cpp_source_1l00338"/>00338 &#32;&#32;<link linkend="_class_c_i_p_h_e_r_1aaf021d9a81c4cf827bcc1fac1008d15b">inivector</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1ga03212e4f31a9d07995ac4f72db1dd0cf">Add</link>(vector);
+<anchor xml:id="__cipher_8cpp_source_1l00339"/>00339 
+<anchor xml:id="__cipher_8cpp_source_1l00340"/>00340 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__cipher_8cpp_source_1l00341"/>00341 }
+<anchor xml:id="__cipher_8cpp_source_1l00342"/>00342 
+<anchor xml:id="__cipher_8cpp_source_1l00343"/>00343 
+<anchor xml:id="__cipher_8cpp_source_1l00356"/><link linkend="_group___c_i_p_h_e_r_1ga0fc06658fae446ff6610e286e158eb77">00356</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___c_i_p_h_e_r_1ga0fc06658fae446ff6610e286e158eb77">CIPHER::Cipher</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;input,<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;size)
+<anchor xml:id="__cipher_8cpp_source_1l00357"/>00357 {
+<anchor xml:id="__cipher_8cpp_source_1l00358"/>00358 &#32;&#32;<link linkend="_class_c_i_p_h_e_r_1a81d924a4beba9c1acb6bb56f3fdf181a">result</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1ga0395231705663a2aeeee3b4be9d292bb">Delete</link>();
+<anchor xml:id="__cipher_8cpp_source_1l00359"/>00359 &#32;&#32;<link linkend="_class_c_i_p_h_e_r_1a81d924a4beba9c1acb6bb56f3fdf181a">result</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1ga03212e4f31a9d07995ac4f72db1dd0cf">Add</link>(input,&#32;size);
+<anchor xml:id="__cipher_8cpp_source_1l00360"/>00360 
+<anchor xml:id="__cipher_8cpp_source_1l00361"/>00361 &#32;&#32;<link linkend="_class_c_i_p_h_e_r_k_e_y_s_y_m_m_e_t_r_i_c_a_l">CIPHERKEYSYMMETRICAL</link>*&#32;key&#32;=&#32;(<link linkend="_class_c_i_p_h_e_r_k_e_y_s_y_m_m_e_t_r_i_c_a_l">CIPHERKEYSYMMETRICAL</link>*)<link linkend="_group___c_i_p_h_e_r_1ga617de7ca065e58b8b29d54c246ab7e05">GetKey</link>(0);
+<anchor xml:id="__cipher_8cpp_source_1l00362"/>00362 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!key)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__cipher_8cpp_source_1l00363"/>00363 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!key-&gt;<link linkend="_group___c_i_p_h_e_r_1ga491605bfd782fc1524b9f94d0d982dd2">Get</link>()-&gt;Get())&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__cipher_8cpp_source_1l00364"/>00364 
+<anchor xml:id="__cipher_8cpp_source_1l00365"/>00365 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;indexkey&#32;=&#32;0;
+<anchor xml:id="__cipher_8cpp_source_1l00366"/>00366 
+<anchor xml:id="__cipher_8cpp_source_1l00367"/>00367 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;c=0;&#32;c&lt;size;&#32;c++)
+<anchor xml:id="__cipher_8cpp_source_1l00368"/>00368 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__cipher_8cpp_source_1l00369"/>00369 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_c_i_p_h_e_r_1a81d924a4beba9c1acb6bb56f3fdf181a">result</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>()[c]&#32;^=&#32;key-&gt;<link linkend="_group___c_i_p_h_e_r_1ga491605bfd782fc1524b9f94d0d982dd2">Get</link>()-&gt;GetByte(indexkey);
+<anchor xml:id="__cipher_8cpp_source_1l00370"/>00370 
+<anchor xml:id="__cipher_8cpp_source_1l00371"/>00371 &#32;&#32;&#32;&#32;&#32;&#32;indexkey++;
+<anchor xml:id="__cipher_8cpp_source_1l00372"/>00372 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(indexkey&#32;&gt;=&#32;(<emphasis role="keywordtype">int</emphasis>)key-&gt;<link linkend="_group___c_i_p_h_e_r_1ga491605bfd782fc1524b9f94d0d982dd2">Get</link>()-&gt;GetSize())&#32;indexkey&#32;=&#32;0;
+<anchor xml:id="__cipher_8cpp_source_1l00373"/>00373 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__cipher_8cpp_source_1l00374"/>00374 
+<anchor xml:id="__cipher_8cpp_source_1l00375"/>00375 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__cipher_8cpp_source_1l00376"/>00376 }
+<anchor xml:id="__cipher_8cpp_source_1l00377"/>00377 
+<anchor xml:id="__cipher_8cpp_source_1l00378"/>00378 
+<anchor xml:id="__cipher_8cpp_source_1l00390"/><link linkend="_group___c_i_p_h_e_r_1ga2a0b6f2a6866eb4473a30e4e0cabf895">00390</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___c_i_p_h_e_r_1ga0fc06658fae446ff6610e286e158eb77">CIPHER::Cipher</link>(<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&amp;&#32;input)
+<anchor xml:id="__cipher_8cpp_source_1l00391"/>00391 {
+<anchor xml:id="__cipher_8cpp_source_1l00392"/>00392 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_group___c_i_p_h_e_r_1ga0fc06658fae446ff6610e286e158eb77">Cipher</link>(input.<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>(),&#32;input.<link linkend="_group___x_u_t_i_l_s_1ga726a6143d8a9293a199f8033c8198a0a">GetSize</link>());
+<anchor xml:id="__cipher_8cpp_source_1l00393"/>00393 }
+<anchor xml:id="__cipher_8cpp_source_1l00394"/>00394 
+<anchor xml:id="__cipher_8cpp_source_1l00395"/>00395 
+<anchor xml:id="__cipher_8cpp_source_1l00408"/><link linkend="_group___c_i_p_h_e_r_1ga33b7770a971251b24deb1bb01e75eed8">00408</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___c_i_p_h_e_r_1ga33b7770a971251b24deb1bb01e75eed8">CIPHER::Uncipher</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;input,<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;size)
+<anchor xml:id="__cipher_8cpp_source_1l00409"/>00409 {
+<anchor xml:id="__cipher_8cpp_source_1l00410"/>00410 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_group___c_i_p_h_e_r_1ga0fc06658fae446ff6610e286e158eb77">Cipher</link>(input,size);
+<anchor xml:id="__cipher_8cpp_source_1l00411"/>00411 }
+<anchor xml:id="__cipher_8cpp_source_1l00412"/>00412 
+<anchor xml:id="__cipher_8cpp_source_1l00413"/>00413 
+<anchor xml:id="__cipher_8cpp_source_1l00425"/><link linkend="_group___c_i_p_h_e_r_1gaf9712639cfcaca8f7e33122a2730f842">00425</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___c_i_p_h_e_r_1ga33b7770a971251b24deb1bb01e75eed8">CIPHER::Uncipher</link>(<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>&amp;&#32;input)
+<anchor xml:id="__cipher_8cpp_source_1l00426"/>00426 {
+<anchor xml:id="__cipher_8cpp_source_1l00427"/>00427 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_group___c_i_p_h_e_r_1ga33b7770a971251b24deb1bb01e75eed8">Uncipher</link>(input.<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>(),&#32;input.<link linkend="_group___x_u_t_i_l_s_1ga726a6143d8a9293a199f8033c8198a0a">GetSize</link>());
+<anchor xml:id="__cipher_8cpp_source_1l00428"/>00428 }
+<anchor xml:id="__cipher_8cpp_source_1l00429"/>00429 
+<anchor xml:id="__cipher_8cpp_source_1l00430"/>00430 
+<anchor xml:id="__cipher_8cpp_source_1l00442"/><link linkend="_group___c_i_p_h_e_r_1gad9a63cedccb6bb057c88b0ebbcd74f24">00442</link> <link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;<link linkend="_group___c_i_p_h_e_r_1gaf5afd6c1d0d1e2f3dcc6d7ab3d331041">CIPHER::GetResult</link>(<emphasis role="keywordtype">int</emphasis>&amp;&#32;resultsize)
+<anchor xml:id="__cipher_8cpp_source_1l00443"/>00443 {
+<anchor xml:id="__cipher_8cpp_source_1l00444"/>00444 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_c_i_p_h_e_r_1a81d924a4beba9c1acb6bb56f3fdf181a">result</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__cipher_8cpp_source_1l00445"/>00445 
+<anchor xml:id="__cipher_8cpp_source_1l00446"/>00446 &#32;&#32;resultsize&#32;=&#32;<link linkend="_class_c_i_p_h_e_r_1a81d924a4beba9c1acb6bb56f3fdf181a">result</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1ga726a6143d8a9293a199f8033c8198a0a">GetSize</link>();
+<anchor xml:id="__cipher_8cpp_source_1l00447"/>00447 
+<anchor xml:id="__cipher_8cpp_source_1l00448"/>00448 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_c_i_p_h_e_r_1a81d924a4beba9c1acb6bb56f3fdf181a">result</link>-&gt;<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>();
+<anchor xml:id="__cipher_8cpp_source_1l00449"/>00449 }
+<anchor xml:id="__cipher_8cpp_source_1l00450"/>00450 
+<anchor xml:id="__cipher_8cpp_source_1l00451"/>00451 
+<anchor xml:id="__cipher_8cpp_source_1l00461"/><link linkend="_group___c_i_p_h_e_r_1gaf5afd6c1d0d1e2f3dcc6d7ab3d331041">00461</link> <link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>*&#32;<link linkend="_group___c_i_p_h_e_r_1gaf5afd6c1d0d1e2f3dcc6d7ab3d331041">CIPHER::GetResult</link>()
+<anchor xml:id="__cipher_8cpp_source_1l00462"/>00462 {
+<anchor xml:id="__cipher_8cpp_source_1l00463"/>00463 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_c_i_p_h_e_r_1a81d924a4beba9c1acb6bb56f3fdf181a">result</link>;
+<anchor xml:id="__cipher_8cpp_source_1l00464"/>00464 }
+<anchor xml:id="__cipher_8cpp_source_1l00465"/>00465 
+<anchor xml:id="__cipher_8cpp_source_1l00466"/>00466 
+<anchor xml:id="__cipher_8cpp_source_1l00478"/><link linkend="_group___c_i_p_h_e_r_1gabcc16178ae9ca562683b8302a35879d2">00478</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___c_i_p_h_e_r_1gabcc16178ae9ca562683b8302a35879d2">CIPHER::GetResultString</link>(<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&amp;&#32;stringhex)
+<anchor xml:id="__cipher_8cpp_source_1l00479"/>00479 {
+<anchor xml:id="__cipher_8cpp_source_1l00480"/>00480 &#32;&#32;stringhex.<link linkend="_group___x_u_t_i_l_s_1ga9275997c1605fa79646c301e63a77d06">Empty</link>();
+<anchor xml:id="__cipher_8cpp_source_1l00481"/>00481 
+<anchor xml:id="__cipher_8cpp_source_1l00482"/>00482 &#32;&#32;<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>*&#32;xbuffer&#32;=&#32;<link linkend="_group___c_i_p_h_e_r_1gaf5afd6c1d0d1e2f3dcc6d7ab3d331041">GetResult</link>();
+<anchor xml:id="__cipher_8cpp_source_1l00483"/>00483 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xbuffer)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__cipher_8cpp_source_1l00484"/>00484 
+<anchor xml:id="__cipher_8cpp_source_1l00485"/>00485 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!xbuffer-&gt;<link linkend="_group___x_u_t_i_l_s_1ga726a6143d8a9293a199f8033c8198a0a">GetSize</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__cipher_8cpp_source_1l00486"/>00486 
+<anchor xml:id="__cipher_8cpp_source_1l00487"/>00487 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;c=0;c&lt;(int)xbuffer-&gt;<link linkend="_group___x_u_t_i_l_s_1ga726a6143d8a9293a199f8033c8198a0a">GetSize</link>();c++)
+<anchor xml:id="__cipher_8cpp_source_1l00488"/>00488 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__cipher_8cpp_source_1l00489"/>00489 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_s_t_r_i_n_g">XSTRING</link>&#32;strbyte;
+<anchor xml:id="__cipher_8cpp_source_1l00490"/>00490 
+<anchor xml:id="__cipher_8cpp_source_1l00491"/>00491 &#32;&#32;&#32;&#32;&#32;&#32;strbyte.<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;%02x&quot;</emphasis>),xbuffer-&gt;<link linkend="_group___x_u_t_i_l_s_1gabfaf967d136d37f0c5dcf4ded0296dac">GetByte</link>(c));
+<anchor xml:id="__cipher_8cpp_source_1l00492"/>00492 
+<anchor xml:id="__cipher_8cpp_source_1l00493"/>00493 &#32;&#32;&#32;&#32;&#32;&#32;stringhex&#32;+=&#32;strbyte;
+<anchor xml:id="__cipher_8cpp_source_1l00494"/>00494 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__cipher_8cpp_source_1l00495"/>00495 
+<anchor xml:id="__cipher_8cpp_source_1l00496"/>00496 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__cipher_8cpp_source_1l00497"/>00497 }
+<anchor xml:id="__cipher_8cpp_source_1l00498"/>00498 
+<anchor xml:id="__cipher_8cpp_source_1l00499"/>00499 
+<anchor xml:id="__cipher_8cpp_source_1l00511"/>00511 <link linkend="_class_c_i_p_h_e_r_k_e_y">CIPHERKEY</link>*&#32;<link linkend="_group___c_i_p_h_e_r_1ga617de7ca065e58b8b29d54c246ab7e05">CIPHER::GetKey</link>(<emphasis role="keywordtype">int</emphasis>&#32;index)
+<anchor xml:id="__cipher_8cpp_source_1l00512"/>00512 {
+<anchor xml:id="__cipher_8cpp_source_1l00513"/>00513 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(index&#32;&lt;&#32;0)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__cipher_8cpp_source_1l00514"/>00514 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(index&#32;&gt;=&#32;<link linkend="__cipher_8h_1ab1fbec092506cad8c9db07b5cf5f316c">CIPHERMAXKEYS</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__cipher_8cpp_source_1l00515"/>00515 
+<anchor xml:id="__cipher_8cpp_source_1l00516"/>00516 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_c_i_p_h_e_r_1a2b3b7313b196a54d62388eff30678ea9">keys</link>[index];
+<anchor xml:id="__cipher_8cpp_source_1l00517"/>00517 }
+<anchor xml:id="__cipher_8cpp_source_1l00518"/>00518 
+<anchor xml:id="__cipher_8cpp_source_1l00519"/>00519 
+<anchor xml:id="__cipher_8cpp_source_1l00532"/>00532 <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___c_i_p_h_e_r_1gae2655d45967a87437e48a437c89e2d60">CIPHER::SetKey</link>(<emphasis role="keywordtype">int</emphasis>&#32;index,&#32;<link linkend="_class_c_i_p_h_e_r_k_e_y">CIPHERKEY</link>*&#32;key)
+<anchor xml:id="__cipher_8cpp_source_1l00533"/>00533 {
+<anchor xml:id="__cipher_8cpp_source_1l00534"/>00534 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(index&#32;&lt;&#32;0)&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__cipher_8cpp_source_1l00535"/>00535 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(index&#32;&gt;=&#32;<link linkend="__cipher_8h_1ab1fbec092506cad8c9db07b5cf5f316c">CIPHERMAXKEYS</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__cipher_8cpp_source_1l00536"/>00536 
+<anchor xml:id="__cipher_8cpp_source_1l00537"/>00537 &#32;&#32;this-&gt;<link linkend="_class_c_i_p_h_e_r_1a2b3b7313b196a54d62388eff30678ea9">keys</link>[index]&#32;=&#32;key;
+<anchor xml:id="__cipher_8cpp_source_1l00538"/>00538 
+<anchor xml:id="__cipher_8cpp_source_1l00539"/>00539 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__cipher_8cpp_source_1l00540"/>00540 }
+<anchor xml:id="__cipher_8cpp_source_1l00541"/>00541 
+<anchor xml:id="__cipher_8cpp_source_1l00542"/>00542 
+<anchor xml:id="__cipher_8cpp_source_1l00551"/>00551 <emphasis role="keywordtype">void</emphasis>&#32;CIPHER::Clean()
+<anchor xml:id="__cipher_8cpp_source_1l00552"/>00552 {
+<anchor xml:id="__cipher_8cpp_source_1l00553"/>00553 &#32;&#32;<link linkend="_class_c_i_p_h_e_r_1a07eb94b4c2c26e21bfa3ec3942777e0c">paddingtype</link>&#32;&#32;=&#32;<link linkend="__x_buffer_8h_1ac248004dbafba62384287a2eba38cd35aa2fccdb92c2ee954bbdf4083351347de">XBUFFER_PADDINGTYPE_NONE</link>;
+<anchor xml:id="__cipher_8cpp_source_1l00554"/>00554 &#32;&#32;<link linkend="_class_c_i_p_h_e_r_1a4450db63c939054030f67d08acac7643">chainingmode</link>&#32;=&#32;<link linkend="__cipher_8h_1ae802f26095cf19cb1a0d793a5156812fa71efc2d0b0eed2196b0cf8e866f7d600">CIPHERCHAININGMODE_UNKNOWN</link>;
+<anchor xml:id="__cipher_8cpp_source_1l00555"/>00555 
+<anchor xml:id="__cipher_8cpp_source_1l00556"/>00556 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(<emphasis role="keywordtype">int</emphasis>&#32;c=0;&#32;c&lt;<link linkend="__cipher_8h_1ab1fbec092506cad8c9db07b5cf5f316c">CIPHERMAXKEYS</link>;&#32;c++)
+<anchor xml:id="__cipher_8cpp_source_1l00557"/>00557 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__cipher_8cpp_source_1l00558"/>00558 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_c_i_p_h_e_r_1a2b3b7313b196a54d62388eff30678ea9">keys</link>[c]&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__cipher_8cpp_source_1l00559"/>00559 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__cipher_8cpp_source_1l00560"/>00560 
+<anchor xml:id="__cipher_8cpp_source_1l00561"/>00561 &#32;&#32;<link linkend="_class_c_i_p_h_e_r_1aaf021d9a81c4cf827bcc1fac1008d15b">inivector</link>&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__cipher_8cpp_source_1l00562"/>00562 &#32;&#32;<link linkend="_class_c_i_p_h_e_r_1a81d924a4beba9c1acb6bb56f3fdf181a">result</link>&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__cipher_8cpp_source_1l00563"/>00563 }
+<anchor xml:id="__cipher_8cpp_source_1l00564"/>00564 
+<anchor xml:id="__cipher_8cpp_source_1l00565"/>00565 
+<anchor xml:id="__cipher_8cpp_source_1l00566"/>00566 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+</programlisting></section>

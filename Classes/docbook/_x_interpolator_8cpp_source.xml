@@ -1,0 +1,542 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__x_interpolator_8cpp_source" xml:lang="en-US">
+<title>XInterpolator.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/XUtils/XInterpolator.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__x_interpolator_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_interpolator_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__x_interpolator_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__x_interpolator_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_interpolator_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_interpolator_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__x_interpolator_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_interpolator_8h">XInterpolator.h</link>&quot;</emphasis>
+<anchor xml:id="__x_interpolator_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_trace_8h">XTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__x_interpolator_8cpp_source_1l00043"/>00043 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__x_interpolator_8cpp_source_1l00045"/>00045 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_interpolator_8cpp_source_1l00047"/>00047 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00048"/>00048 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00049"/>00049 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_interpolator_8cpp_source_1l00050"/>00050 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__x_interpolator_8cpp_source_1l00051"/>00051 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_interpolator_8cpp_source_1l00053"/>00053 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00054"/>00054 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00055"/>00055 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__x_interpolator_8cpp_source_1l00056"/>00056 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__x_interpolator_8cpp_source_1l00057"/>00057 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00058"/>00058 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00068"/><link linkend="_group___x_u_t_i_l_s_1gaf35cea0aa879eafb793b3cc76b584523">00068</link> <link linkend="_group___x_u_t_i_l_s_1gaf35cea0aa879eafb793b3cc76b584523">XINTERPOLATOR::XINTERPOLATOR</link>(<link linkend="__x_interpolator_8h_1a5147f35432f5fe37a20ec0854c7cf68b">XINTERPOLATOR_TYPE</link>&#32;type)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00069"/>00069 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00070"/>00070 &#32;&#32;Clean();
+<anchor xml:id="__x_interpolator_8cpp_source_1l00071"/>00071 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00072"/>00072 &#32;&#32;this-&gt;type&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a22af4effe78d839f56df9637a1794609">type</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00073"/>00073 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a207fdccc703371612d4ec783636c380a">carry</link>&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0.0f;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00074"/>00074 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00075"/>00075 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00076"/>00076 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00085"/><link linkend="_group___x_u_t_i_l_s_1gab77287a633f0c52d5cdb260319e8a67d">00085</link> <link linkend="_group___x_u_t_i_l_s_1gab77287a633f0c52d5cdb260319e8a67d">XINTERPOLATOR::~XINTERPOLATOR</link>()
+<anchor xml:id="__x_interpolator_8cpp_source_1l00086"/>00086 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00087"/>00087 &#32;&#32;Clean();
+<anchor xml:id="__x_interpolator_8cpp_source_1l00088"/>00088 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00089"/>00089 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00090"/>00090 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00100"/><link linkend="_group___x_u_t_i_l_s_1ga8375e53f830cf0590182267a2591532e">00100</link> <link linkend="__x_interpolator_8h_1a5147f35432f5fe37a20ec0854c7cf68b">XINTERPOLATOR_TYPE</link>&#32;<link linkend="_group___x_u_t_i_l_s_1ga8375e53f830cf0590182267a2591532e">XINTERPOLATOR::GetType</link>()
+<anchor xml:id="__x_interpolator_8cpp_source_1l00101"/>00101 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00102"/>00102 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a22af4effe78d839f56df9637a1794609">type</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00103"/>00103 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00104"/>00104 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00105"/>00105 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00115"/><link linkend="_group___x_u_t_i_l_s_1ga7a341b6aeb0e025a5cb60027cab3918b">00115</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1ga7a341b6aeb0e025a5cb60027cab3918b">XINTERPOLATOR::SetType</link>(<link linkend="__x_interpolator_8h_1a5147f35432f5fe37a20ec0854c7cf68b">XINTERPOLATOR_TYPE</link>&#32;type)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00116"/>00116 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00117"/>00117 &#32;&#32;this-&gt;type&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a22af4effe78d839f56df9637a1794609">type</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00118"/>00118 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00119"/>00119 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00120"/>00120 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00130"/><link linkend="_group___x_u_t_i_l_s_1gae893dac3351d099c6d5187819eeb4cec">00130</link> <link linkend="__x_interpolator_8h_1a70c03a6bc027de7062fca5e2748080a5">XINTERPOLATOR_LIMITMODE</link>&#32;<link linkend="_group___x_u_t_i_l_s_1gae893dac3351d099c6d5187819eeb4cec">XINTERPOLATOR::GetMode</link>()
+<anchor xml:id="__x_interpolator_8cpp_source_1l00131"/>00131 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00132"/>00132 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aab65c4a1cf16c23c0c0d2782a690f366">mode</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00133"/>00133 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00134"/>00134 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00135"/>00135 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00145"/><link linkend="_group___x_u_t_i_l_s_1ga81f57137e850c2858554d2f0e76058ff">00145</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1ga81f57137e850c2858554d2f0e76058ff">XINTERPOLATOR::SetMode</link>(<link linkend="__x_interpolator_8h_1a70c03a6bc027de7062fca5e2748080a5">XINTERPOLATOR_LIMITMODE</link>&#32;mode)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00146"/>00146 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00147"/>00147 &#32;&#32;this-&gt;mode&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aab65c4a1cf16c23c0c0d2782a690f366">mode</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00148"/>00148 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00149"/>00149 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00150"/>00150 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00162"/><link linkend="_group___x_u_t_i_l_s_1ga409869eadfc762319d068dd0a502485a">00162</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1ga409869eadfc762319d068dd0a502485a">XINTERPOLATOR::Get</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;&#32;current,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;&#32;target,&#32;<emphasis role="keywordtype">float</emphasis>&amp;&#32;speed)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00163"/>00163 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00164"/>00164 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a250b3f6b2d74a6a9c8686720c0c5dff6">current</link>&#32;=&#32;this-&gt;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a250b3f6b2d74a6a9c8686720c0c5dff6">current</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00165"/>00165 &#32;&#32;target&#32;&#32;=&#32;this-&gt;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aa1c03e2572407a2d066eecf2d268317b">target</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00166"/>00166 &#32;&#32;speed&#32;&#32;&#32;=&#32;this-&gt;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1afbcb78cebc57a41c258bff410597cfbb">speed</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00167"/>00167 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00168"/>00168 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00169"/>00169 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00181"/><link linkend="_group___x_u_t_i_l_s_1gad64f2be9881b3e0b95f613f85994e78b">00181</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1gad64f2be9881b3e0b95f613f85994e78b">XINTERPOLATOR::Set</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;current,&#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;target,&#32;<emphasis role="keywordtype">float</emphasis>&#32;speed)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00182"/>00182 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00183"/>00183 &#32;&#32;this-&gt;current&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a250b3f6b2d74a6a9c8686720c0c5dff6">current</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00184"/>00184 &#32;&#32;this-&gt;target&#32;&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aa1c03e2572407a2d066eecf2d268317b">target</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00185"/>00185 &#32;&#32;this-&gt;speed&#32;&#32;&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1afbcb78cebc57a41c258bff410597cfbb">speed</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00186"/>00186 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00187"/>00187 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00188"/>00188 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00198"/><link linkend="_group___x_u_t_i_l_s_1gae1464e7d86201fed6ad16c887dea77a3">00198</link> <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;<link linkend="_group___x_u_t_i_l_s_1gae1464e7d86201fed6ad16c887dea77a3">XINTERPOLATOR::GetCurrent</link>()
+<anchor xml:id="__x_interpolator_8cpp_source_1l00199"/>00199 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00200"/>00200 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a250b3f6b2d74a6a9c8686720c0c5dff6">current</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00201"/>00201 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00202"/>00202 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00203"/>00203 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00213"/><link linkend="_group___x_u_t_i_l_s_1ga5975038e0fce3d8b8cac0ea152260066">00213</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1ga5975038e0fce3d8b8cac0ea152260066">XINTERPOLATOR::SetCurrent</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;current)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00214"/>00214 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00215"/>00215 &#32;&#32;this-&gt;current&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a250b3f6b2d74a6a9c8686720c0c5dff6">current</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00216"/>00216 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00217"/>00217 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1ad4040689d4a102307469c890a957fc78">limits</link>&#32;&amp;&#32;<link linkend="__x_interpolator_8h_1a4c26f49909541c967995ae7b0cf069f2a360f08af70996d6f31eb7f42b27346b6">XINTERPOLATOR_LIMITS_MAXIMUN</link>)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00218"/>00218 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00219"/>00219 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a250b3f6b2d74a6a9c8686720c0c5dff6">current</link>&gt;(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)(<link linkend="_group___x_u_t_i_l_s_1gaf7f0433b0028eb9155774e7985e52df0">GetMaximun</link>()&#32;*&#32;<link linkend="_group___x_u_t_i_l_s_1ga81e7ae6b2c9fe4932b42a10cc826085a">GetMultiplicator</link>()))
+<anchor xml:id="__x_interpolator_8cpp_source_1l00220"/>00220 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00221"/>00221 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this-&gt;current&#32;=(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)(<link linkend="_group___x_u_t_i_l_s_1gaf7f0433b0028eb9155774e7985e52df0">GetMaximun</link>()&#32;*&#32;<link linkend="_group___x_u_t_i_l_s_1ga81e7ae6b2c9fe4932b42a10cc826085a">GetMultiplicator</link>());
+<anchor xml:id="__x_interpolator_8cpp_source_1l00222"/>00222 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_interpolator_8cpp_source_1l00223"/>00223 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_interpolator_8cpp_source_1l00224"/>00224 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00225"/>00225 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1ad4040689d4a102307469c890a957fc78">limits</link>&#32;&amp;&#32;<link linkend="__x_interpolator_8h_1a4c26f49909541c967995ae7b0cf069f2add6e56f2391bf277aafae01e4feb4625">XINTERPOLATOR_LIMITS_MINIMUN</link>)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00226"/>00226 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00227"/>00227 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(this-&gt;current&lt;(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)(<link linkend="_group___x_u_t_i_l_s_1ga288a783c32e93993e69997722c0195d7">GetMinimun</link>()&#32;*&#32;<link linkend="_group___x_u_t_i_l_s_1ga81e7ae6b2c9fe4932b42a10cc826085a">GetMultiplicator</link>()))
+<anchor xml:id="__x_interpolator_8cpp_source_1l00228"/>00228 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00229"/>00229 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this-&gt;current&#32;=(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)(<link linkend="_group___x_u_t_i_l_s_1ga288a783c32e93993e69997722c0195d7">GetMinimun</link>()&#32;*&#32;<link linkend="_group___x_u_t_i_l_s_1ga81e7ae6b2c9fe4932b42a10cc826085a">GetMultiplicator</link>());
+<anchor xml:id="__x_interpolator_8cpp_source_1l00230"/>00230 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_interpolator_8cpp_source_1l00231"/>00231 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_interpolator_8cpp_source_1l00232"/>00232 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00233"/>00233 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00234"/>00234 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00244"/><link linkend="_group___x_u_t_i_l_s_1gadea19fcf8db89c45db164e5aef695431">00244</link> <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;<link linkend="_group___x_u_t_i_l_s_1gadea19fcf8db89c45db164e5aef695431">XINTERPOLATOR::GetTarget</link>()
+<anchor xml:id="__x_interpolator_8cpp_source_1l00245"/>00245 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00246"/>00246 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aa1c03e2572407a2d066eecf2d268317b">target</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00247"/>00247 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00248"/>00248 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00249"/>00249 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00259"/><link linkend="_group___x_u_t_i_l_s_1gacf40277d52e8ac0321eb78c5778f528d">00259</link> <emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1gacf40277d52e8ac0321eb78c5778f528d">XINTERPOLATOR::GetSpeed</link>()
+<anchor xml:id="__x_interpolator_8cpp_source_1l00260"/>00260 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00261"/>00261 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1afbcb78cebc57a41c258bff410597cfbb">speed</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00262"/>00262 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00263"/>00263 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00264"/>00264 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00274"/><link linkend="_group___x_u_t_i_l_s_1ga714b636c30d729e97f02eab623ba378c">00274</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1ga714b636c30d729e97f02eab623ba378c">XINTERPOLATOR::SetSpeed</link>(<emphasis role="keywordtype">float</emphasis>&#32;speed)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00275"/>00275 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00276"/>00276 &#32;&#32;this-&gt;speed&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1afbcb78cebc57a41c258bff410597cfbb">speed</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00277"/>00277 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00278"/>00278 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00279"/>00279 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00289"/><link linkend="_group___x_u_t_i_l_s_1gaf7f0433b0028eb9155774e7985e52df0">00289</link> <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;<link linkend="_group___x_u_t_i_l_s_1gaf7f0433b0028eb9155774e7985e52df0">XINTERPOLATOR::GetMaximun</link>()
+<anchor xml:id="__x_interpolator_8cpp_source_1l00290"/>00290 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00291"/>00291 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a4744ea0497533b496dd1e1115fc2a680">max</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00292"/>00292 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00293"/>00293 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00294"/>00294 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00304"/><link linkend="_group___x_u_t_i_l_s_1gad22f409e530e815ced0b53fcd67b2474">00304</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1gad22f409e530e815ced0b53fcd67b2474">XINTERPOLATOR::SetMaximun</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;max)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00305"/>00305 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00306"/>00306 &#32;&#32;this-&gt;max&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a4744ea0497533b496dd1e1115fc2a680">max</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00307"/>00307 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00308"/>00308 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00309"/>00309 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00319"/><link linkend="_group___x_u_t_i_l_s_1ga288a783c32e93993e69997722c0195d7">00319</link> <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;<link linkend="_group___x_u_t_i_l_s_1ga288a783c32e93993e69997722c0195d7">XINTERPOLATOR::GetMinimun</link>()
+<anchor xml:id="__x_interpolator_8cpp_source_1l00320"/>00320 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00321"/>00321 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aec63cbfc3c51e3edb80e6a7fcce984bd">min</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00322"/>00322 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00323"/>00323 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00324"/>00324 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00334"/><link linkend="_group___x_u_t_i_l_s_1gae23c2ee2a8b991325af057a1bcc1697c">00334</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1gae23c2ee2a8b991325af057a1bcc1697c">XINTERPOLATOR::SetMinimun</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;min)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00335"/>00335 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00336"/>00336 &#32;&#32;this-&gt;min&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aec63cbfc3c51e3edb80e6a7fcce984bd">min</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00337"/>00337 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00338"/>00338 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00339"/>00339 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00349"/><link linkend="_group___x_u_t_i_l_s_1ga81e7ae6b2c9fe4932b42a10cc826085a">00349</link> <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;<link linkend="_group___x_u_t_i_l_s_1ga81e7ae6b2c9fe4932b42a10cc826085a">XINTERPOLATOR::GetMultiplicator</link>()
+<anchor xml:id="__x_interpolator_8cpp_source_1l00350"/>00350 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00351"/>00351 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a0ec09437e12b8e8c343b7bbfcd780bb3">multiplier</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00352"/>00352 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00353"/>00353 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00354"/>00354 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00364"/><link linkend="_group___x_u_t_i_l_s_1ga38102bf1cc8ba9aae0ee3f4922c56d32">00364</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1ga38102bf1cc8ba9aae0ee3f4922c56d32">XINTERPOLATOR::SetMultiplicator</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;multiplier)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00365"/>00365 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00366"/>00366 &#32;&#32;this-&gt;multiplier&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a0ec09437e12b8e8c343b7bbfcd780bb3">multiplier</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00367"/>00367 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00368"/>00368 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00369"/>00369 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00379"/><link linkend="_group___x_u_t_i_l_s_1ga0f6c5dc6a69a70b00c6953750963fc61">00379</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1ga0f6c5dc6a69a70b00c6953750963fc61">XINTERPOLATOR::SetFactorType</link>(<link linkend="__x_interpolator_8h_1a967b95f07b9215c75b3c2055ff15757c">XINTERPOLATOR_FACTOR</link>&#32;factortype)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00380"/>00380 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00381"/>00381 &#32;&#32;this-&gt;factortype&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aae73c28c6ff62da3022d9cbf3cab8061">factortype</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00382"/>00382 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00383"/>00383 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00384"/>00384 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00394"/><link linkend="_group___x_u_t_i_l_s_1gac8c8495361aed228f4e5570406b7a7f9">00394</link> <link linkend="__x_interpolator_8h_1a967b95f07b9215c75b3c2055ff15757c">XINTERPOLATOR_FACTOR</link>&#32;<link linkend="_group___x_u_t_i_l_s_1gac8c8495361aed228f4e5570406b7a7f9">XINTERPOLATOR::GetFactorType</link>()
+<anchor xml:id="__x_interpolator_8cpp_source_1l00395"/>00395 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00396"/>00396 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aae73c28c6ff62da3022d9cbf3cab8061">factortype</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00397"/>00397 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00398"/>00398 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00399"/>00399 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00409"/><link linkend="_group___x_u_t_i_l_s_1gaa48d593b68aba735d692384d3f539990">00409</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1gaa48d593b68aba735d692384d3f539990">XINTERPOLATOR::SetLimitFlags</link>(<link linkend="__x_interpolator_8h_1a4c26f49909541c967995ae7b0cf069f2">XINTERPOLATOR_LIMITS</link>&#32;limits)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00410"/>00410 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00411"/>00411 &#32;&#32;this-&gt;limits&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1ad4040689d4a102307469c890a957fc78">limits</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00412"/>00412 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00413"/>00413 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00414"/>00414 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00424"/><link linkend="_group___x_u_t_i_l_s_1ga2ecfb690275d9519bde8d63e14c636f0">00424</link> <link linkend="__x_interpolator_8h_1a4c26f49909541c967995ae7b0cf069f2">XINTERPOLATOR_LIMITS</link>&#32;&#32;<link linkend="_group___x_u_t_i_l_s_1ga2ecfb690275d9519bde8d63e14c636f0">XINTERPOLATOR::GetLimitFlags</link>()
+<anchor xml:id="__x_interpolator_8cpp_source_1l00425"/>00425 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00426"/>00426 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1ad4040689d4a102307469c890a957fc78">limits</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00427"/>00427 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00428"/>00428 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00429"/>00429 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00441"/><link linkend="_group___x_u_t_i_l_s_1ga20dcbddb807f533ccd965b3bc80b6a0a">00441</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1ga20dcbddb807f533ccd965b3bc80b6a0a">XINTERPOLATOR::CopyFrom</link>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r">XINTERPOLATOR</link>&amp;&#32;interpolator)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00442"/>00442 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00443"/>00443 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a22af4effe78d839f56df9637a1794609">type</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;interpolator.<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a22af4effe78d839f56df9637a1794609">type</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00444"/>00444 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aab65c4a1cf16c23c0c0d2782a690f366">mode</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;interpolator.<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aab65c4a1cf16c23c0c0d2782a690f366">mode</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00445"/>00445 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00446"/>00446 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a250b3f6b2d74a6a9c8686720c0c5dff6">current</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;interpolator.<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a250b3f6b2d74a6a9c8686720c0c5dff6">current</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00447"/>00447 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aa1c03e2572407a2d066eecf2d268317b">target</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;interpolator.<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aa1c03e2572407a2d066eecf2d268317b">target</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00448"/>00448 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1afbcb78cebc57a41c258bff410597cfbb">speed</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;interpolator.<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1afbcb78cebc57a41c258bff410597cfbb">speed</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00449"/>00449 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a4744ea0497533b496dd1e1115fc2a680">max</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;interpolator.<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a4744ea0497533b496dd1e1115fc2a680">max</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00450"/>00450 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aec63cbfc3c51e3edb80e6a7fcce984bd">min</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;interpolator.<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aec63cbfc3c51e3edb80e6a7fcce984bd">min</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00451"/>00451 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1ad4040689d4a102307469c890a957fc78">limits</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;interpolator.<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1ad4040689d4a102307469c890a957fc78">limits</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00452"/>00452 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00453"/>00453 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aae73c28c6ff62da3022d9cbf3cab8061">factortype</link>&#32;&#32;&#32;&#32;=&#32;interpolator.<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aae73c28c6ff62da3022d9cbf3cab8061">factortype</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00454"/>00454 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00455"/>00455 &#32;&#32;<link linkend="_group___x_u_t_i_l_s_1gafa68acb2a56d6b05cd55d47a79339680">Update</link>(0);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00456"/>00456 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00457"/>00457 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00458"/>00458 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00459"/>00459 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00460"/>00460 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00472"/><link linkend="_group___x_u_t_i_l_s_1ga76d466d98d767c22741c001596872546">00472</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1ga20dcbddb807f533ccd965b3bc80b6a0a">XINTERPOLATOR::CopyFrom</link>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r">XINTERPOLATOR</link>*&#32;interpolator)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00473"/>00473 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00474"/>00474 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!interpolator)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00475"/>00475 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00476"/>00476 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1ga20dcbddb807f533ccd965b3bc80b6a0a">CopyFrom</link>((*interpolator));
+<anchor xml:id="__x_interpolator_8cpp_source_1l00477"/>00477 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00478"/>00478 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00479"/>00479 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00491"/><link linkend="_group___x_u_t_i_l_s_1gafe3cb2b5c020e40d7f29579c8031566b">00491</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1gafe3cb2b5c020e40d7f29579c8031566b">XINTERPOLATOR::CopyTo</link>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r">XINTERPOLATOR</link>&amp;&#32;interpolator)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00492"/>00492 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00493"/>00493 &#32;&#32;interpolator.<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a22af4effe78d839f56df9637a1794609">type</link>&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a22af4effe78d839f56df9637a1794609">type</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00494"/>00494 &#32;&#32;interpolator.<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aab65c4a1cf16c23c0c0d2782a690f366">mode</link>&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aab65c4a1cf16c23c0c0d2782a690f366">mode</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00495"/>00495 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00496"/>00496 &#32;&#32;interpolator.<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a250b3f6b2d74a6a9c8686720c0c5dff6">current</link>&#32;&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a250b3f6b2d74a6a9c8686720c0c5dff6">current</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00497"/>00497 &#32;&#32;interpolator.<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aa1c03e2572407a2d066eecf2d268317b">target</link>&#32;&#32;&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aa1c03e2572407a2d066eecf2d268317b">target</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00498"/>00498 &#32;&#32;interpolator.<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1afbcb78cebc57a41c258bff410597cfbb">speed</link>&#32;&#32;&#32;&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1afbcb78cebc57a41c258bff410597cfbb">speed</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00499"/>00499 &#32;&#32;interpolator.<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a4744ea0497533b496dd1e1115fc2a680">max</link>&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a4744ea0497533b496dd1e1115fc2a680">max</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00500"/>00500 &#32;&#32;interpolator.<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aec63cbfc3c51e3edb80e6a7fcce984bd">min</link>&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aec63cbfc3c51e3edb80e6a7fcce984bd">min</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00501"/>00501 &#32;&#32;interpolator.<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1ad4040689d4a102307469c890a957fc78">limits</link>&#32;&#32;&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1ad4040689d4a102307469c890a957fc78">limits</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00502"/>00502 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00503"/>00503 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aae73c28c6ff62da3022d9cbf3cab8061">factortype</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;interpolator.<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aae73c28c6ff62da3022d9cbf3cab8061">factortype</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00504"/>00504 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00505"/>00505 &#32;&#32;<link linkend="_group___x_u_t_i_l_s_1gafa68acb2a56d6b05cd55d47a79339680">Update</link>(0);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00506"/>00506 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00507"/>00507 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00508"/>00508 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00509"/>00509 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00510"/>00510 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00522"/><link linkend="_group___x_u_t_i_l_s_1ga359cfedfb068af49666ffd595136d15f">00522</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1gafe3cb2b5c020e40d7f29579c8031566b">XINTERPOLATOR::CopyTo</link>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r">XINTERPOLATOR</link>*&#32;interpolator)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00523"/>00523 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00524"/>00524 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!interpolator)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00525"/>00525 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00526"/>00526 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1gafe3cb2b5c020e40d7f29579c8031566b">CopyTo</link>((*interpolator));
+<anchor xml:id="__x_interpolator_8cpp_source_1l00527"/>00527 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00528"/>00528 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00529"/>00529 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00541"/><link linkend="_group___x_u_t_i_l_s_1ga2834b355906d2f416ac2b48cb8c222ef">00541</link> <emphasis role="keyword">const</emphasis>&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r">XINTERPOLATOR</link>&#32;<link linkend="_group___x_u_t_i_l_s_1ga2834b355906d2f416ac2b48cb8c222ef">XINTERPOLATOR::operator = </link>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r">XINTERPOLATOR</link>&amp;&#32;interpolator)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00542"/>00542 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00543"/>00543 &#32;&#32;<link linkend="_group___x_u_t_i_l_s_1ga20dcbddb807f533ccd965b3bc80b6a0a">CopyFrom</link>(interpolator);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00544"/>00544 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(*<emphasis role="keyword">this</emphasis>);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00545"/>00545 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00546"/>00546 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00547"/>00547 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00557"/><link linkend="_group___x_u_t_i_l_s_1gae82bd806b981ad98fbc6f21f121291ff">00557</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1gae82bd806b981ad98fbc6f21f121291ff">XINTERPOLATOR::SetTarget</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;target)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00558"/>00558 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00559"/>00559 &#32;&#32;<emphasis role="comment">//XTRACE_PRINTCOLOR(3,__L(&quot;XINTERPOLATOR::SetTarget(%d)&quot;),target);</emphasis>
+<anchor xml:id="__x_interpolator_8cpp_source_1l00560"/>00560 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00561"/>00561 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1ad4040689d4a102307469c890a957fc78">limits</link>&#32;&amp;&#32;<link linkend="__x_interpolator_8h_1a4c26f49909541c967995ae7b0cf069f2a360f08af70996d6f31eb7f42b27346b6">XINTERPOLATOR_LIMITS_MAXIMUN</link>)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00562"/>00562 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00563"/>00563 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aa1c03e2572407a2d066eecf2d268317b">target</link>&gt;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a4744ea0497533b496dd1e1115fc2a680">max</link>)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00564"/>00564 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00565"/>00565 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//XTRACE_PRINTCOLOR(4,__L(&quot;Assigned&#32;over&#32;maximun:&#32;%d/%d&quot;),target,max);</emphasis>
+<anchor xml:id="__x_interpolator_8cpp_source_1l00566"/>00566 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00567"/>00567 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this-&gt;target&#32;&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a4744ea0497533b496dd1e1115fc2a680">max</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00568"/>00568 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00569"/>00569 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00570"/>00570 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_interpolator_8cpp_source_1l00571"/>00571 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_interpolator_8cpp_source_1l00572"/>00572 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00573"/>00573 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1ad4040689d4a102307469c890a957fc78">limits</link>&#32;&amp;&#32;<link linkend="__x_interpolator_8h_1a4c26f49909541c967995ae7b0cf069f2add6e56f2391bf277aafae01e4feb4625">XINTERPOLATOR_LIMITS_MINIMUN</link>)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00574"/>00574 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00575"/>00575 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aa1c03e2572407a2d066eecf2d268317b">target</link>&#32;&lt;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aec63cbfc3c51e3edb80e6a7fcce984bd">min</link>)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00576"/>00576 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00577"/>00577 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//XTRACE_PRINTCOLOR(4,__L(&quot;Assigned&#32;under&#32;minimun:&#32;%d/%d&quot;),target,max);</emphasis>
+<anchor xml:id="__x_interpolator_8cpp_source_1l00578"/>00578 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00579"/>00579 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;this-&gt;target&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aec63cbfc3c51e3edb80e6a7fcce984bd">min</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00580"/>00580 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00581"/>00581 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00582"/>00582 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_interpolator_8cpp_source_1l00583"/>00583 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_interpolator_8cpp_source_1l00584"/>00584 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00585"/>00585 &#32;&#32;this-&gt;target&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aa1c03e2572407a2d066eecf2d268317b">target</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00586"/>00586 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00587"/>00587 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00588"/>00588 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00600"/><link linkend="_group___x_u_t_i_l_s_1gafa68acb2a56d6b05cd55d47a79339680">00600</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1gafa68acb2a56d6b05cd55d47a79339680">XINTERPOLATOR::Update</link>(<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;delta)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00601"/>00601 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00602"/>00602 &#32;&#32;<emphasis role="keywordflow">switch</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a22af4effe78d839f56df9637a1794609">type</link>)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00603"/>00603 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00604"/>00604 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_interpolator_8h_1a5147f35432f5fe37a20ec0854c7cf68ba314387cea3db5c50834e951c7d8a97ef">XINTERPOLATOR_TYPE_LIMIT</link>&#32;&#32;&#32;&#32;&#32;:&#32;<link linkend="_group___x_u_t_i_l_s_1ga2429451a75a21da90043e8e93feab9ee">Interpolate</link>(delta);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00605"/>00605 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00606"/>00606 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aab65c4a1cf16c23c0c0d2782a690f366">mode</link>&#32;==&#32;<link linkend="__x_interpolator_8h_1a70c03a6bc027de7062fca5e2748080a5a39627e4a204efa08b744f08bd984a682">XINTERPOLATOR_LIMITMODE_INCREMENTAL</link>)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00607"/>00607 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00608"/>00608 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aa1c03e2572407a2d066eecf2d268317b">target</link>&lt;=<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a250b3f6b2d74a6a9c8686720c0c5dff6">current</link>)&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a250b3f6b2d74a6a9c8686720c0c5dff6">current</link>=<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aa1c03e2572407a2d066eecf2d268317b">target</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00609"/>00609 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_interpolator_8cpp_source_1l00610"/>00610 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__x_interpolator_8cpp_source_1l00611"/>00611 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00612"/>00612 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aab65c4a1cf16c23c0c0d2782a690f366">mode</link>&#32;==&#32;<link linkend="__x_interpolator_8h_1a70c03a6bc027de7062fca5e2748080a5a03f19ee7659a2d8983cf731b9f930a5c">XINTERPOLATOR_LIMITMODE_DECREMENTAL</link>)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00613"/>00613 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aa1c03e2572407a2d066eecf2d268317b">target</link>&gt;=<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a250b3f6b2d74a6a9c8686720c0c5dff6">current</link>)&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a250b3f6b2d74a6a9c8686720c0c5dff6">current</link>&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aa1c03e2572407a2d066eecf2d268317b">target</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00614"/>00614 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_interpolator_8cpp_source_1l00615"/>00615 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00616"/>00616 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00617"/>00617 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00618"/>00618 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_interpolator_8h_1a5147f35432f5fe37a20ec0854c7cf68ba60475a79ef306fc4ee3e604eb753a77f">XINTERPOLATOR_TYPE_RELATIVE</link>&#32;&#32;:
+<anchor xml:id="__x_interpolator_8cpp_source_1l00619"/>00619 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_interpolator_8h_1a5147f35432f5fe37a20ec0854c7cf68bab64b3b97550e5c22e9512c06af19a89d">XINTERPOLATOR_TYPE_ABSOLUTE</link>&#32;&#32;:&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a250b3f6b2d74a6a9c8686720c0c5dff6">current</link>&#32;&gt;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aa1c03e2572407a2d066eecf2d268317b">target</link>)&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a250b3f6b2d74a6a9c8686720c0c5dff6">current</link>&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aa1c03e2572407a2d066eecf2d268317b">target</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00620"/>00620 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a250b3f6b2d74a6a9c8686720c0c5dff6">current</link>&#32;&lt;&#32;0)&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a250b3f6b2d74a6a9c8686720c0c5dff6">current</link>&#32;=&#32;0;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00621"/>00621 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00622"/>00622 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00623"/>00623 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_interpolator_8h_1a5147f35432f5fe37a20ec0854c7cf68ba6222c3482f500591f8a37285850f16c5">XINTERPOLATOR_TYPE_NONE</link>&#32;&#32;&#32;&#32;&#32;&#32;:&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00624"/>00624 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_interpolator_8cpp_source_1l00625"/>00625 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00626"/>00626 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00627"/>00627 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00628"/>00628 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00629"/>00629 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00641"/><link linkend="_group___x_u_t_i_l_s_1ga2429451a75a21da90043e8e93feab9ee">00641</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1ga2429451a75a21da90043e8e93feab9ee">XINTERPOLATOR::Interpolate</link>(<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;delta)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00642"/>00642 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00643"/>00643 &#32;&#32;<emphasis role="keywordflow">switch</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aae73c28c6ff62da3022d9cbf3cab8061">factortype</link>)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00644"/>00644 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00645"/>00645 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_interpolator_8h_1a967b95f07b9215c75b3c2055ff15757ca1d36dbbbf683d4b557660e309906a943">XINTERPOLATOR_FACTOR_RELATIVE</link>&#32;&#32;:&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1ga729fa33aa46d7ed16f4921f027827737">InterpolateRelative</link>(delta);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00646"/>00646 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_interpolator_8h_1a967b95f07b9215c75b3c2055ff15757ca090608a59aca382bcb170d5606eda8f9">XINTERPOLATOR_FACTOR_LINEAR</link>&#32;&#32;&#32;&#32;:&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1ga879b1be5923024a5d87f8781fae7263a">InterpolateLinear</link>&#32;&#32;(delta);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00647"/>00647 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">case</emphasis>&#32;<link linkend="__x_interpolator_8h_1a967b95f07b9215c75b3c2055ff15757ca570fb3a0513c1f094139982a014b5073">XINTERPOLATOR_FACTOR_NONE</link>&#32;&#32;&#32;&#32;&#32;&#32;:
+<anchor xml:id="__x_interpolator_8cpp_source_1l00648"/>00648 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;default&#32;&#32;&#32;:&#32;<emphasis role="keywordflow">break</emphasis>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00649"/>00649 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_interpolator_8cpp_source_1l00650"/>00650 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00651"/>00651 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00652"/>00652 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00653"/>00653 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00654"/>00654 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00666"/><link linkend="_group___x_u_t_i_l_s_1ga879b1be5923024a5d87f8781fae7263a">00666</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1ga879b1be5923024a5d87f8781fae7263a">XINTERPOLATOR::InterpolateLinear</link>(<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;delta)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00667"/>00667 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00668"/>00668 &#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;&#32;&#32;fdelta&#32;&#32;&#32;&#32;=&#32;(float)(delta/100.0f);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00669"/>00669 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;&#32;&#32;&#32;itarget&#32;&#32;&#32;=&#32;(int)(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aa1c03e2572407a2d066eecf2d268317b">target</link>);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00670"/>00670 &#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;&#32;&#32;result&#32;&#32;&#32;&#32;=&#32;(float)<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a250b3f6b2d74a6a9c8686720c0c5dff6">current</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00671"/>00671 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;&#32;&#32;&#32;margin&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00672"/>00672 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00673"/>00673 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(result&#32;==&#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aa1c03e2572407a2d066eecf2d268317b">target</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00674"/>00674 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00675"/>00675 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(result&#32;&lt;&#32;itarget)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00676"/>00676 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00677"/>00677 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(delta!=0)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00678"/>00678 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00679"/>00679 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a207fdccc703371612d4ec783636c380a">carry</link>&lt;0.0000001f)&#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a207fdccc703371612d4ec783636c380a">carry</link>=0.0f;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00680"/>00680 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00681"/>00681 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;inc&#32;=&#32;(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1afbcb78cebc57a41c258bff410597cfbb">speed</link>*fdelta)&#32;+&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a207fdccc703371612d4ec783636c380a">carry</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00682"/>00682 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a207fdccc703371612d4ec783636c380a">carry</link>&#32;=&#32;inc&#32;-&#32;float((<emphasis role="keywordtype">int</emphasis>)inc);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00683"/>00683 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00684"/>00684 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;result&#32;+=&#32;(int)inc;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00685"/>00685 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_interpolator_8cpp_source_1l00686"/>00686 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00687"/>00687 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(result&#32;&gt;=&#32;itarget)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00688"/>00688 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00689"/>00689 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;result&#32;&#32;=&#32;(float)itarget;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00690"/>00690 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a207fdccc703371612d4ec783636c380a">carry</link>&#32;&#32;&#32;=&#32;0.0f;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00691"/>00691 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_interpolator_8cpp_source_1l00692"/>00692 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00693"/>00693 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_interpolator_8cpp_source_1l00694"/>00694 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__x_interpolator_8cpp_source_1l00695"/>00695 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00696"/>00696 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(delta!=0)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00697"/>00697 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00698"/>00698 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a207fdccc703371612d4ec783636c380a">carry</link>&lt;0.0000001f)&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a207fdccc703371612d4ec783636c380a">carry</link>=0.0f;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00699"/>00699 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00700"/>00700 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;inc=(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1afbcb78cebc57a41c258bff410597cfbb">speed</link>*fdelta)+<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a207fdccc703371612d4ec783636c380a">carry</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00701"/>00701 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a207fdccc703371612d4ec783636c380a">carry</link>=inc-float((<emphasis role="keywordtype">int</emphasis>)inc);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00702"/>00702 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00703"/>00703 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;result&#32;-=&#32;(int)inc;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00704"/>00704 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_interpolator_8cpp_source_1l00705"/>00705 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00706"/>00706 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(result&#32;&lt;=&#32;<emphasis role="keywordtype">float</emphasis>(itarget))
+<anchor xml:id="__x_interpolator_8cpp_source_1l00707"/>00707 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00708"/>00708 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;result&#32;=&#32;(float)itarget;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00709"/>00709 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a207fdccc703371612d4ec783636c380a">carry</link>&#32;&#32;=&#32;0.0f;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00710"/>00710 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_interpolator_8cpp_source_1l00711"/>00711 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_interpolator_8cpp_source_1l00712"/>00712 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00713"/>00713 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a250b3f6b2d74a6a9c8686720c0c5dff6">current</link>&#32;=&#32;(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)result;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00714"/>00714 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00715"/>00715 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00716"/>00716 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00717"/>00717 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00718"/>00718 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00730"/><link linkend="_group___x_u_t_i_l_s_1ga729fa33aa46d7ed16f4921f027827737">00730</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1ga729fa33aa46d7ed16f4921f027827737">XINTERPOLATOR::InterpolateRelative</link>(<link linkend="__x_base_8h_1a86128ef639d896f7b12288868ddb7ad5">XQWORD</link>&#32;delta)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00731"/>00731 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00732"/>00732 &#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;&#32;&#32;fdelta&#32;&#32;&#32;&#32;=&#32;(float)&#32;(delta/100.0f);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00733"/>00733 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;&#32;&#32;&#32;itarget&#32;&#32;&#32;=&#32;(int)&#32;&#32;&#32;(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aa1c03e2572407a2d066eecf2d268317b">target</link>);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00734"/>00734 &#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;&#32;&#32;result&#32;&#32;&#32;&#32;=&#32;(float)&#32;(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a250b3f6b2d74a6a9c8686720c0c5dff6">current</link>);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00735"/>00735 &#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;&#32;&#32;&#32;&#32;margin&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00736"/>00736 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00737"/>00737 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(result&#32;==&#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aa1c03e2572407a2d066eecf2d268317b">target</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00738"/>00738 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00739"/>00739 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(result&#32;&lt;&#32;itarget)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00740"/>00740 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00741"/>00741 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(delta!=0)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00742"/>00742 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00743"/>00743 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a207fdccc703371612d4ec783636c380a">carry</link>&lt;0.0000001f)&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a207fdccc703371612d4ec783636c380a">carry</link>=0.0f;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00744"/>00744 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00745"/>00745 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;dif&#32;=&#32;(float)(itarget&#32;-&#32;result);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00746"/>00746 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;inc&#32;=&#32;((<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1afbcb78cebc57a41c258bff410597cfbb">speed</link>/100.0f)*fdelta*dif)+<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a207fdccc703371612d4ec783636c380a">carry</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00747"/>00747 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00748"/>00748 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a207fdccc703371612d4ec783636c380a">carry</link>&#32;&#32;&#32;=&#32;inc&#32;-&#32;float((<emphasis role="keywordtype">int</emphasis>)inc);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00749"/>00749 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;result&#32;+=&#32;(int)inc;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00750"/>00750 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_interpolator_8cpp_source_1l00751"/>00751 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00752"/>00752 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(result&#32;&gt;&#32;(itarget-margin))
+<anchor xml:id="__x_interpolator_8cpp_source_1l00753"/>00753 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00754"/>00754 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;result&#32;&#32;=&#32;(float)itarget;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00755"/>00755 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a207fdccc703371612d4ec783636c380a">carry</link>&#32;&#32;&#32;=&#32;0.0f;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00756"/>00756 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_interpolator_8cpp_source_1l00757"/>00757 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_interpolator_8cpp_source_1l00758"/>00758 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__x_interpolator_8cpp_source_1l00759"/>00759 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00760"/>00760 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(delta!=0)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00761"/>00761 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00762"/>00762 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>&#32;(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a207fdccc703371612d4ec783636c380a">carry</link>&lt;0.0000001f)&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a207fdccc703371612d4ec783636c380a">carry</link>=0.0f;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00763"/>00763 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00764"/>00764 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;dif&#32;=&#32;(float)(result-itarget);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00765"/>00765 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;inc&#32;=&#32;((<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1afbcb78cebc57a41c258bff410597cfbb">speed</link>/100.0f)*fdelta*dif)+<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a207fdccc703371612d4ec783636c380a">carry</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00766"/>00766 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00767"/>00767 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a207fdccc703371612d4ec783636c380a">carry</link>&#32;&#32;&#32;=&#32;inc&#32;-&#32;float((<emphasis role="keywordtype">int</emphasis>)inc);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00768"/>00768 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;result&#32;-=&#32;(int)inc;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00769"/>00769 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_interpolator_8cpp_source_1l00770"/>00770 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00771"/>00771 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(result&#32;&lt;&#32;<emphasis role="keywordtype">float</emphasis>(itarget+margin))
+<anchor xml:id="__x_interpolator_8cpp_source_1l00772"/>00772 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00773"/>00773 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;result&#32;=&#32;(float)itarget;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00774"/>00774 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a207fdccc703371612d4ec783636c380a">carry</link>&#32;&#32;=&#32;0.0f;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00775"/>00775 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_interpolator_8cpp_source_1l00776"/>00776 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__x_interpolator_8cpp_source_1l00777"/>00777 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00778"/>00778 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a250b3f6b2d74a6a9c8686720c0c5dff6">current</link>&#32;=&#32;(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)result;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00779"/>00779 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00780"/>00780 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00781"/>00781 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00782"/>00782 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00783"/>00783 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00795"/><link linkend="_group___x_u_t_i_l_s_1gab671104737ecad3c633553916ea6fae9">00795</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1gab671104737ecad3c633553916ea6fae9">XINTERPOLATOR::DeSerialize</link>(<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>*&#32;xbuffer)<emphasis role="keyword">&#32;const</emphasis>
+<anchor xml:id="__x_interpolator_8cpp_source_1l00796"/>00796 <emphasis role="keyword"></emphasis>{
+<anchor xml:id="__x_interpolator_8cpp_source_1l00797"/>00797 &#32;&#32;xbuffer-&gt;<link linkend="_group___x_u_t_i_l_s_1gacf69e379f1d0bf812ae9c1157eac172c">Resize</link>(9*<emphasis role="keyword">sizeof</emphasis>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)&#32;+&#32;1*<emphasis role="keyword">sizeof</emphasis>(<emphasis role="keywordtype">float</emphasis>));
+<anchor xml:id="__x_interpolator_8cpp_source_1l00798"/>00798 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00799"/>00799 &#32;&#32;xbuffer-&gt;<link linkend="_group___x_u_t_i_l_s_1gacff899b0385a3d04c1a26d463647ab07">SetPosition</link>(0);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00800"/>00800 &#32;&#32;xbuffer-&gt;<link linkend="_group___x_u_t_i_l_s_1gad9bc0fe2244df7440d31b152bd2e24fb">Set</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a9ab76b3ee157632e9a07ba15c9b1df10">mask</link>);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00801"/>00801 &#32;&#32;xbuffer-&gt;<link linkend="_group___x_u_t_i_l_s_1gad9bc0fe2244df7440d31b152bd2e24fb">Set</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a22af4effe78d839f56df9637a1794609">type</link>);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00802"/>00802 &#32;&#32;xbuffer-&gt;<link linkend="_group___x_u_t_i_l_s_1gad9bc0fe2244df7440d31b152bd2e24fb">Set</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aab65c4a1cf16c23c0c0d2782a690f366">mode</link>);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00803"/>00803 &#32;&#32;xbuffer-&gt;<link linkend="_group___x_u_t_i_l_s_1gad9bc0fe2244df7440d31b152bd2e24fb">Set</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a250b3f6b2d74a6a9c8686720c0c5dff6">current</link>);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00804"/>00804 &#32;&#32;xbuffer-&gt;<link linkend="_group___x_u_t_i_l_s_1gad9bc0fe2244df7440d31b152bd2e24fb">Set</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aa1c03e2572407a2d066eecf2d268317b">target</link>);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00805"/>00805 &#32;&#32;xbuffer-&gt;<link linkend="_group___x_u_t_i_l_s_1gad9bc0fe2244df7440d31b152bd2e24fb">Set</link>((<emphasis role="keywordtype">float</emphasis>)<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1afbcb78cebc57a41c258bff410597cfbb">speed</link>);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00806"/>00806 &#32;&#32;xbuffer-&gt;<link linkend="_group___x_u_t_i_l_s_1gad9bc0fe2244df7440d31b152bd2e24fb">Set</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a4744ea0497533b496dd1e1115fc2a680">max</link>);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00807"/>00807 &#32;&#32;xbuffer-&gt;<link linkend="_group___x_u_t_i_l_s_1gad9bc0fe2244df7440d31b152bd2e24fb">Set</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aec63cbfc3c51e3edb80e6a7fcce984bd">min</link>);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00808"/>00808 &#32;&#32;xbuffer-&gt;<link linkend="_group___x_u_t_i_l_s_1gad9bc0fe2244df7440d31b152bd2e24fb">Set</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a0ec09437e12b8e8c343b7bbfcd780bb3">multiplier</link>);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00809"/>00809 &#32;&#32;xbuffer-&gt;<link linkend="_group___x_u_t_i_l_s_1gad9bc0fe2244df7440d31b152bd2e24fb">Set</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aae73c28c6ff62da3022d9cbf3cab8061">factortype</link>);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00810"/>00810 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00811"/>00811 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00812"/>00812 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00813"/>00813 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00814"/>00814 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00826"/><link linkend="_group___x_u_t_i_l_s_1gad3c2d016e6accbda8ed550c25a21029f">00826</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1ga99755fe1a284eb7a7ce8fbd57045694a">XINTERPOLATOR::Serialize</link>(<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>*&#32;buffer)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00827"/>00827 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00828"/>00828 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;buffer_type,&#32;&#32;&#32;&#32;buffer_target,&#32;buffer_mode,&#32;&#32;&#32;buffer_factortype,buffer_max,&#32;&#32;&#32;&#32;&#32;&#32;buffer_min,buffer_current,buffer_multiplier;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00829"/>00829 &#32;&#32;<emphasis role="keywordtype">float</emphasis>&#32;&#32;buffer_speed;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00830"/>00830 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00831"/>00831 &#32;&#32;buffer-&gt;<link linkend="_group___x_u_t_i_l_s_1gacff899b0385a3d04c1a26d463647ab07">SetPosition</link>(0);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00832"/>00832 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00833"/>00833 &#32;&#32;buffer-&gt;<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;)<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a9ab76b3ee157632e9a07ba15c9b1df10">mask</link>);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00834"/>00834 &#32;&#32;buffer-&gt;<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;)buffer_type);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00835"/>00835 &#32;&#32;buffer-&gt;<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;)buffer_mode);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00836"/>00836 &#32;&#32;buffer-&gt;<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;)buffer_current);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00837"/>00837 &#32;&#32;buffer-&gt;<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;)buffer_target);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00838"/>00838 &#32;&#32;buffer-&gt;<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>((<emphasis role="keywordtype">float</emphasis>&amp;)buffer_speed);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00839"/>00839 &#32;&#32;buffer-&gt;<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;)buffer_max);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00840"/>00840 &#32;&#32;buffer-&gt;<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;)buffer_min);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00841"/>00841 &#32;&#32;buffer-&gt;<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;)buffer_multiplier);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00842"/>00842 &#32;&#32;buffer-&gt;<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&amp;)buffer_factortype);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00843"/>00843 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00844"/>00844 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a9ab76b3ee157632e9a07ba15c9b1df10">mask</link>&#32;&amp;&#32;<link linkend="__x_interpolator_8h_1ae06a2bd97e58d3114adec83e0b58926ba22b3e707f96e50175d6604bd97d47e2f">XINTERPOLATOR_MASK_SPEED</link>)&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1afbcb78cebc57a41c258bff410597cfbb">speed</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;buffer_speed;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00845"/>00845 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a9ab76b3ee157632e9a07ba15c9b1df10">mask</link>&#32;&amp;&#32;<link linkend="__x_interpolator_8h_1ae06a2bd97e58d3114adec83e0b58926ba08b90a855ec7230ff619cd28d05ceab5">XINTERPOLATOR_MASK_MAXIMUN</link>)&#32;&#32;&#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a4744ea0497533b496dd1e1115fc2a680">max</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;buffer_max;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00846"/>00846 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a9ab76b3ee157632e9a07ba15c9b1df10">mask</link>&#32;&amp;&#32;<link linkend="__x_interpolator_8h_1ae06a2bd97e58d3114adec83e0b58926ba397a80a3ea925b1865572178f19b7490">XINTERPOLATOR_MASK_MINIMUN</link>)&#32;&#32;&#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aec63cbfc3c51e3edb80e6a7fcce984bd">min</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;buffer_min;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00847"/>00847 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a9ab76b3ee157632e9a07ba15c9b1df10">mask</link>&#32;&amp;&#32;<link linkend="__x_interpolator_8h_1ae06a2bd97e58d3114adec83e0b58926ba743395f8c60be4ac915504089d778f7d">XINTERPOLATOR_MASK_MULTIPLIER</link>)&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a0ec09437e12b8e8c343b7bbfcd780bb3">multiplier</link>&#32;&#32;=&#32;buffer_multiplier;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00848"/>00848 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a9ab76b3ee157632e9a07ba15c9b1df10">mask</link>&#32;&amp;&#32;<link linkend="__x_interpolator_8h_1ae06a2bd97e58d3114adec83e0b58926ba5d5aca779e4b8fbfd5513ca700129cde">XINTERPOLATOR_MASK_TYPE</link>)&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a22af4effe78d839f56df9637a1794609">type</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;(<link linkend="__x_interpolator_8h_1a5147f35432f5fe37a20ec0854c7cf68b">XINTERPOLATOR_TYPE</link>)buffer_type;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00849"/>00849 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a9ab76b3ee157632e9a07ba15c9b1df10">mask</link>&#32;&amp;&#32;<link linkend="__x_interpolator_8h_1ae06a2bd97e58d3114adec83e0b58926ba83885a13afec787dd1e1c61e57d48d5a">XINTERPOLATOR_MASK_FACTOR</link>)&#32;&#32;&#32;&#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aae73c28c6ff62da3022d9cbf3cab8061">factortype</link>&#32;&#32;=&#32;(<link linkend="__x_interpolator_8h_1a967b95f07b9215c75b3c2055ff15757c">XINTERPOLATOR_FACTOR</link>)buffer_factortype;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00850"/>00850 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a9ab76b3ee157632e9a07ba15c9b1df10">mask</link>&#32;&amp;&#32;<link linkend="__x_interpolator_8h_1ae06a2bd97e58d3114adec83e0b58926ba2577ae11d726b589b878eaf41870d66e">XINTERPOLATOR_MASK_TARGET</link>)&#32;&#32;&#32;&#32;&#32;<link linkend="_group___x_u_t_i_l_s_1gae82bd806b981ad98fbc6f21f121291ff">SetTarget</link>(buffer_target);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00851"/>00851 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a9ab76b3ee157632e9a07ba15c9b1df10">mask</link>&#32;&amp;&#32;<link linkend="__x_interpolator_8h_1ae06a2bd97e58d3114adec83e0b58926ba26273e6a56e83f44f16f9de50adecb7a">XINTERPOLATOR_MASK_CURRENT</link>)&#32;&#32;&#32;&#32;<link linkend="_group___x_u_t_i_l_s_1ga5975038e0fce3d8b8cac0ea152260066">SetCurrent</link>(buffer_current);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00852"/>00852 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00853"/>00853 &#32;&#32;<link linkend="_group___x_u_t_i_l_s_1gafa68acb2a56d6b05cd55d47a79339680">Update</link>(0);
+<anchor xml:id="__x_interpolator_8cpp_source_1l00854"/>00854 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00855"/>00855 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00856"/>00856 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00857"/>00857 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00858"/>00858 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00870"/><link linkend="_group___x_u_t_i_l_s_1ga346948289aef691d47a6a97ed4bca0a3">00870</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1ga346948289aef691d47a6a97ed4bca0a3">XINTERPOLATOR::SetMask</link>(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;mask)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00871"/>00871 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00872"/>00872 &#32;&#32;this-&gt;mask&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a9ab76b3ee157632e9a07ba15c9b1df10">mask</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00873"/>00873 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00874"/>00874 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00875"/>00875 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00876"/>00876 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00877"/>00877 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00887"/><link linkend="_group___x_u_t_i_l_s_1ga8a08c94a612192d3bfea81c1fb90321e">00887</link> <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;<link linkend="_group___x_u_t_i_l_s_1ga8a08c94a612192d3bfea81c1fb90321e">XINTERPOLATOR::GetMask</link>()
+<anchor xml:id="__x_interpolator_8cpp_source_1l00888"/>00888 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00889"/>00889 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a9ab76b3ee157632e9a07ba15c9b1df10">mask</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00890"/>00890 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00891"/>00891 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00892"/>00892 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00902"/><link linkend="_group___x_u_t_i_l_s_1ga4ff889925f8e3aafc5f4dff61fafe152">00902</link> <emphasis role="keywordtype">float</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1ga4ff889925f8e3aafc5f4dff61fafe152">XINTERPOLATOR::GetCarry</link>()
+<anchor xml:id="__x_interpolator_8cpp_source_1l00903"/>00903 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00904"/>00904 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a207fdccc703371612d4ec783636c380a">carry</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00905"/>00905 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00906"/>00906 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00907"/>00907 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00917"/><link linkend="_group___x_u_t_i_l_s_1ga54c0bf7839a0044fb7a60edd859fbaac">00917</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___x_u_t_i_l_s_1ga54c0bf7839a0044fb7a60edd859fbaac">XINTERPOLATOR::SetCarry</link>(<emphasis role="keywordtype">float</emphasis>&#32;carry)
+<anchor xml:id="__x_interpolator_8cpp_source_1l00918"/>00918 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00919"/>00919 &#32;&#32;this-&gt;carry&#32;=&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a207fdccc703371612d4ec783636c380a">carry</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00920"/>00920 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00921"/>00921 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00922"/>00922 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00931"/>00931 <emphasis role="keywordtype">void</emphasis>&#32;XINTERPOLATOR::Clean()
+<anchor xml:id="__x_interpolator_8cpp_source_1l00932"/>00932 {
+<anchor xml:id="__x_interpolator_8cpp_source_1l00933"/>00933 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a9ab76b3ee157632e9a07ba15c9b1df10">mask</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_interpolator_8h_1ae06a2bd97e58d3114adec83e0b58926ba903091f52e83b7b4b135963f5399b334">XINTERPOLATOR_MASK_ALL</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00934"/>00934 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a22af4effe78d839f56df9637a1794609">type</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_interpolator_8h_1a5147f35432f5fe37a20ec0854c7cf68bab64b3b97550e5c22e9512c06af19a89d">XINTERPOLATOR_TYPE_ABSOLUTE</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00935"/>00935 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aab65c4a1cf16c23c0c0d2782a690f366">mode</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_interpolator_8h_1a70c03a6bc027de7062fca5e2748080a5aafb6772618b74c3438cdf6efc0e78a8e">XINTERPOLATOR_LIMITMODE_NONE</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00936"/>00936 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00937"/>00937 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a4744ea0497533b496dd1e1115fc2a680">max</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00938"/>00938 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aec63cbfc3c51e3edb80e6a7fcce984bd">min</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00939"/>00939 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a250b3f6b2d74a6a9c8686720c0c5dff6">current</link>&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00940"/>00940 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aa1c03e2572407a2d066eecf2d268317b">target</link>&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00941"/>00941 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1afbcb78cebc57a41c258bff410597cfbb">speed</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0.0f;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00942"/>00942 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1aae73c28c6ff62da3022d9cbf3cab8061">factortype</link>&#32;&#32;=&#32;<link linkend="__x_interpolator_8h_1a967b95f07b9215c75b3c2055ff15757ca090608a59aca382bcb170d5606eda8f9">XINTERPOLATOR_FACTOR_LINEAR</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00943"/>00943 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1ad4040689d4a102307469c890a957fc78">limits</link>&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_interpolator_8h_1a4c26f49909541c967995ae7b0cf069f2a9b61d081ffc8db0b7aadccf8ab43b226">XINTERPOLATOR_LIMITS_NONE</link>;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00944"/>00944 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a207fdccc703371612d4ec783636c380a">carry</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0.0f;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00945"/>00945 &#32;&#32;<link linkend="_class_x_i_n_t_e_r_p_o_l_a_t_o_r_1a0ec09437e12b8e8c343b7bbfcd780bb3">multiplier</link>&#32;&#32;=&#32;1;
+<anchor xml:id="__x_interpolator_8cpp_source_1l00946"/>00946 }
+<anchor xml:id="__x_interpolator_8cpp_source_1l00947"/>00947 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00948"/>00948 
+<anchor xml:id="__x_interpolator_8cpp_source_1l00949"/>00949 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__x_interpolator_8cpp_source_1l00950"/>00950 
+</programlisting></section>

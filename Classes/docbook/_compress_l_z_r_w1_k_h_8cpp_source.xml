@@ -1,0 +1,274 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__compress_l_z_r_w1_k_h_8cpp_source" xml:lang="en-US">
+<title>CompressLZRW1KH.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/Compress/CompressLZRW1KH.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__compress_l_z_r_w1_k_h_8h">CompressLZRW1KH.h</link>&quot;</emphasis>
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_buffer_8h">XBuffer.h</link>&quot;</emphasis>
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00043"/>00043 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00045"/>00045 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00047"/>00047 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00048"/>00048 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00049"/>00049 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00050"/>00050 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00051"/>00051 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00053"/>00053 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00054"/>00054 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00055"/>00055 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00056"/>00056 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00057"/>00057 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00058"/>00058 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00066"/><link linkend="_group___c_o_m_p_r_e_s_s_1ga7bab20ce5c41da57a8cabbf98184d8aa">00066</link> <link linkend="_group___c_o_m_p_r_e_s_s_1ga7bab20ce5c41da57a8cabbf98184d8aa">COMPRESS_LZRW1KH::COMPRESS_LZRW1KH</link>()
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00067"/>00067 {
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00068"/>00068 &#32;&#32;<link linkend="_group___c_o_m_p_r_e_s_s_1ga9a7d68961c2af05ba8e21f6584cde06f">SetType</link>(<link linkend="__compress_base_8h_1ae531f940df1055ce7c28e7cbc784a22fa0891e56717849244d9f952a267c899f1">COMPRESSBASE_TYPE_LZRW1KH</link>);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00069"/>00069 }
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00070"/>00070 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00071"/>00071 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00080"/><link linkend="_group___c_o_m_p_r_e_s_s_1gac3e4c3e5d03dea04676d63d03eee5541">00080</link> <link linkend="_group___c_o_m_p_r_e_s_s_1gac3e4c3e5d03dea04676d63d03eee5541">COMPRESS_LZRW1KH::~COMPRESS_LZRW1KH</link>()
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00081"/>00081 {
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00082"/>00082 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00083"/>00083 }
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00084"/>00084 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00085"/>00085 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00099"/><link linkend="_group___c_o_m_p_r_e_s_s_1ga17987731a540f1635e58febff4491e1a">00099</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___c_o_m_p_r_e_s_s_1ga17987731a540f1635e58febff4491e1a">COMPRESS_LZRW1KH::Compress</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;origin,<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;size,<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>*&#32;buffer)
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00100"/>00100 {
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00101"/>00101 &#32;&#32;<link linkend="_class_c_o_m_p_r_e_s_s_b_a_s_e_1a912f2c51ea571d790654cebe7754c772">param1</link>&#32;&#32;=&#32;&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00102"/>00102 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00103"/>00103 &#32;&#32;buffer-&gt;<link linkend="_group___x_u_t_i_l_s_1ga6bd4541f3a87cb76a2261817538d0edc">SetSize</link>(CompressionBuffer(origin,&#32;buffer-&gt;<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>(),(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)size));
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00104"/>00104 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00105"/>00105 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00106"/>00106 }
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00107"/>00107 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00108"/>00108 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00122"/><link linkend="_group___c_o_m_p_r_e_s_s_1ga9e93047c9b8c203ee833d5b9dda86c81">00122</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___c_o_m_p_r_e_s_s_1ga9e93047c9b8c203ee833d5b9dda86c81">COMPRESS_LZRW1KH::Decompress</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;origin,<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;size,<link linkend="_class_x_b_u_f_f_e_r">XBUFFER</link>*&#32;buffer)
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00123"/>00123 {
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00124"/>00124 &#32;&#32;<link linkend="_class_c_o_m_p_r_e_s_s_b_a_s_e_1a912f2c51ea571d790654cebe7754c772">param1</link>&#32;&#32;=&#32;&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00125"/>00125 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00126"/>00126 &#32;&#32;buffer-&gt;<link linkend="_group___x_u_t_i_l_s_1ga6bd4541f3a87cb76a2261817538d0edc">SetSize</link>(DecompressionBuffer(origin,&#32;buffer-&gt;<link linkend="_group___x_u_t_i_l_s_1ga59d2c2b8d1c32098920f5d3eba0a5971">Get</link>(),&#32;(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)size));
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00127"/>00127 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00128"/>00128 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00129"/>00129 }
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00130"/>00130 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00131"/>00131 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00145"/><link linkend="_group___c_o_m_p_r_e_s_s_1gab04ca007f63c2c7330f0680ab1412e24">00145</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___c_o_m_p_r_e_s_s_1ga17987731a540f1635e58febff4491e1a">COMPRESS_LZRW1KH::Compress</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;origin,<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;size,<emphasis role="keywordtype">void</emphasis>*&#32;param1)
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00146"/>00146 {
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00147"/>00147 &#32;&#32;this-&gt;param1&#32;&#32;=&#32;&#32;<link linkend="_class_c_o_m_p_r_e_s_s_b_a_s_e_1a912f2c51ea571d790654cebe7754c772">param1</link>;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00148"/>00148 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00149"/>00149 &#32;&#32;CompressionBuffer(origin,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)size);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00150"/>00150 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00151"/>00151 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00152"/>00152 }
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00153"/>00153 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00154"/>00154 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00168"/><link linkend="_group___c_o_m_p_r_e_s_s_1ga9b31cc2ed082ea996dcdd396c1b6ac0c">00168</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___c_o_m_p_r_e_s_s_1ga9e93047c9b8c203ee833d5b9dda86c81">COMPRESS_LZRW1KH::Decompress</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;origin,<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;size,<emphasis role="keywordtype">void</emphasis>*&#32;param1)
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00169"/>00169 {
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00170"/>00170 &#32;&#32;this-&gt;param1&#32;&#32;=&#32;&#32;<link linkend="_class_c_o_m_p_r_e_s_s_b_a_s_e_1a912f2c51ea571d790654cebe7754c772">param1</link>;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00171"/>00171 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00172"/>00172 &#32;&#32;DecompressionBuffer(origin,&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>,&#32;(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)size);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00173"/>00173 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00174"/>00174 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00175"/>00175 }
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00176"/>00176 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00177"/>00177 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00194"/>00194 <link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;COMPRESS_LZRW1KH::GetMatch(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;source,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;x,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;sourcesize,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>*&#32;hash,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>*&#32;size,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>*&#32;pos)
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00195"/>00195 {
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00196"/>00196 &#32;&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;hashvalue&#32;=&#32;(<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>)((40543L*((((source[x]&#32;&lt;&lt;&#32;4)&#32;^&#32;source[x+1])&#32;&lt;&lt;&#32;4)&#32;^&#32;source[x+2])&#32;&gt;&gt;&#32;4)&#32;&amp;&#32;0xfff);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00197"/>00197 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00198"/>00198 &#32;&#32;(*pos)&#32;=&#32;hash[hashvalue];
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00199"/>00199 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00200"/>00200 &#32;&#32;hash[hashvalue]&#32;=&#32;x;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00201"/>00201 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00202"/>00202 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(((*pos)!=-1)&amp;&amp;((x-*pos)&#32;&lt;&#32;4096))
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00203"/>00203 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00204"/>00204 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;((*size)&#32;=&#32;0;&#32;(((*size)&#32;&lt;&#32;18)&amp;&amp;&#32;(source[x+(*size)]&#32;==&#32;source[(*pos)+(*size)])&#32;&amp;&amp;&#32;((x+*size)&#32;&lt;&#32;sourcesize));&#32;(*size)++)
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00205"/>00205 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00206"/>00206 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00207"/>00207 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00208"/>00208 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00209"/>00209 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;((*size)&#32;&gt;=&#32;3);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00210"/>00210 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00211"/>00211 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00212"/>00212 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00213"/>00213 }
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00214"/>00214 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00215"/>00215 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00229"/>00229 <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;COMPRESS_LZRW1KH::CompressionBuffer(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;source,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>*&#32;target,&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;sourcesize)
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00230"/>00230 {
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00231"/>00231 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;key;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00232"/>00232 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;size;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00233"/>00233 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;pos;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00234"/>00234 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;&#32;&#32;bit&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00235"/>00235 &#32;&#32;<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>&#32;&#32;&#32;command&#32;&#32;=&#32;0;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00236"/>00236 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;x&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00237"/>00237 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;y&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;3;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00238"/>00238 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;z&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;1;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00239"/>00239 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00240"/>00240 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(key&#32;=&#32;0;&#32;key&#32;&lt;&#32;4096;&#32;key++)
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00241"/>00241 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00242"/>00242 &#32;&#32;&#32;&#32;&#32;&#32;hash[key]&#32;=&#32;0x80000000;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00243"/>00243 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00244"/>00244 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00245"/>00245 &#32;&#32;<link linkend="__compress_l_z_r_w1_k_h_8h_1a20abbb58f7c19879f89a040355f3b047">CMPTARGET</link>(<emphasis role="keyword">true</emphasis>,0,<link linkend="__compress_l_z_r_w1_k_h_8h_1ada2b32ebdfd2464c31a73af6eabd253c">CMPFLAG_COMPRESS</link>);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00246"/>00246 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00247"/>00247 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(;(x&lt;sourcesize)&#32;&amp;&amp;&#32;(y&lt;=sourcesize);)
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00248"/>00248 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00249"/>00249 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(bit&gt;15)
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00250"/>00250 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00251"/>00251 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__compress_l_z_r_w1_k_h_8h_1a20abbb58f7c19879f89a040355f3b047">CMPTARGET</link>(<emphasis role="keyword">true</emphasis>,z++&#32;,(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>)((command&#32;&gt;&gt;&#32;8)&#32;&amp;&#32;0x00ff));
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00252"/>00252 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__compress_l_z_r_w1_k_h_8h_1a20abbb58f7c19879f89a040355f3b047">CMPTARGET</link>(<emphasis role="keyword">true</emphasis>,z&#32;&#32;&#32;,(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>)(command&#32;&amp;&#32;0x00ff));
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00253"/>00253 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00254"/>00254 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;z&#32;=&#32;y;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00255"/>00255 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;bit&#32;=&#32;0;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00256"/>00256 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;y&#32;+=&#32;2;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00257"/>00257 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00258"/>00258 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00259"/>00259 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(size=1;&#32;(source[x]&#32;==&#32;source[x+size])&#32;&amp;&amp;&#32;(size&#32;&lt;&#32;0x0fff)&#32;&amp;&amp;&#32;(x+size&#32;&lt;&#32;sourcesize);&#32;size++)
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00260"/>00260 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00261"/>00261 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00262"/>00262 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00263"/>00263 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00264"/>00264 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(size&#32;&gt;=&#32;16)
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00265"/>00265 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00266"/>00266 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__compress_l_z_r_w1_k_h_8h_1a20abbb58f7c19879f89a040355f3b047">CMPTARGET</link>(<emphasis role="keyword">true</emphasis>,y++,0);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00267"/>00267 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__compress_l_z_r_w1_k_h_8h_1a20abbb58f7c19879f89a040355f3b047">CMPTARGET</link>(<emphasis role="keyword">true</emphasis>,y++,(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>)(((size&#32;-&#32;16)&#32;&gt;&gt;&#32;8)&#32;&amp;&#32;0x00ff));
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00268"/>00268 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__compress_l_z_r_w1_k_h_8h_1a20abbb58f7c19879f89a040355f3b047">CMPTARGET</link>(<emphasis role="keyword">true</emphasis>,y++,(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>)((size&#32;-&#32;16)&#32;&amp;&#32;0x00ff));
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00269"/>00269 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__compress_l_z_r_w1_k_h_8h_1a20abbb58f7c19879f89a040355f3b047">CMPTARGET</link>(<emphasis role="keyword">true</emphasis>,y++,source[x]);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00270"/>00270 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00271"/>00271 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;x=(x+size);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00272"/>00272 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;command&#32;=&#32;(<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>)((command&#32;&lt;&lt;&#32;1)&#32;+&#32;1);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00273"/>00273 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00274"/>00274 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00275"/>00275 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00276"/>00276 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(GetMatch(source,x,sourcesize,hash,&amp;size,(<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>*)&amp;pos))
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00277"/>00277 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00278"/>00278 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;key&#32;=&#32;(((x-pos)&#32;&lt;&lt;&#32;4)&#32;+&#32;(size&#32;-&#32;3));
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00279"/>00279 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00280"/>00280 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__compress_l_z_r_w1_k_h_8h_1a20abbb58f7c19879f89a040355f3b047">CMPTARGET</link>(<emphasis role="keyword">true</emphasis>,y++,(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>)((key&#32;&gt;&gt;&#32;8)&#32;&amp;&#32;0x00ff));
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00281"/>00281 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__compress_l_z_r_w1_k_h_8h_1a20abbb58f7c19879f89a040355f3b047">CMPTARGET</link>(<emphasis role="keyword">true</emphasis>,y++,(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>)(key&#32;&amp;&#32;0x00ff));
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00282"/>00282 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00283"/>00283 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;x&#32;=&#32;(x+size);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00284"/>00284 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;command&#32;=&#32;(<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>)((command&#32;&lt;&lt;&#32;1)&#32;+&#32;1);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00285"/>00285 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00286"/>00286 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00287"/>00287 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00288"/>00288 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__compress_l_z_r_w1_k_h_8h_1a20abbb58f7c19879f89a040355f3b047">CMPTARGET</link>(<emphasis role="keyword">true</emphasis>,y++,source[x++]);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00289"/>00289 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00290"/>00290 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;command&#32;=&#32;(<link linkend="__x_base_8h_1a3f1fe1487089bc987e3d549a9064e653">XWORD</link>)((command&#32;&lt;&lt;&#32;1));
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00291"/>00291 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00292"/>00292 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00293"/>00293 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00294"/>00294 &#32;&#32;&#32;&#32;&#32;&#32;bit++;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00295"/>00295 &#32;&#32;&#32;}
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00296"/>00296 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00297"/>00297 &#32;&#32;command&#32;&lt;&lt;=&#32;(16-bit);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00298"/>00298 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00299"/>00299 &#32;&#32;<link linkend="__compress_l_z_r_w1_k_h_8h_1a20abbb58f7c19879f89a040355f3b047">CMPTARGET</link>(<emphasis role="keyword">true</emphasis>,z++,(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>)((command&#32;&gt;&gt;&#32;8)&#32;&amp;&#32;0x00ff));
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00300"/>00300 &#32;&#32;<link linkend="__compress_l_z_r_w1_k_h_8h_1a20abbb58f7c19879f89a040355f3b047">CMPTARGET</link>(<emphasis role="keyword">true</emphasis>,z&#32;&#32;&#32;,(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>)(command&#32;&amp;&#32;0x00ff));
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00301"/>00301 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00302"/>00302 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(y&#32;&gt;&#32;sourcesize)
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00303"/>00303 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00304"/>00304 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(y=0;&#32;y&lt;sourcesize;&#32;<link linkend="__compress_l_z_r_w1_k_h_8h_1a20abbb58f7c19879f89a040355f3b047">CMPTARGET</link>(<emphasis role="keyword">true</emphasis>,&#32;y+1,&#32;source[y++])&#32;)&#32;<emphasis role="comment">//&#32;#Imanol&#32;order&#32;of&#32;execution&#32;not&#32;guaranteed,&#32;y&#32;could&#32;have&#32;weird&#32;values</emphasis>
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00305"/>00305 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00306"/>00306 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00307"/>00307 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00308"/>00308 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00309"/>00309 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__compress_l_z_r_w1_k_h_8h_1a20abbb58f7c19879f89a040355f3b047">CMPTARGET</link>(<emphasis role="keyword">true</emphasis>,0,<link linkend="__compress_l_z_r_w1_k_h_8h_1a2f0f692367c2e03382b3bbbd262d32bb">CMPFLAG_COPIED</link>);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00310"/>00310 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00311"/>00311 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(sourcesize+1);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00312"/>00312 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00313"/>00313 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00314"/>00314 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;y;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00315"/>00315 }
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00316"/>00316 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00317"/>00317 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00331"/>00331 <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;COMPRESS_LZRW1KH::DecompressionBuffer(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;*source,<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;*target,<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;sourcesize)
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00332"/>00332 {
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00333"/>00333 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;&#32;&#32;x&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;3;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00334"/>00334 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;&#32;&#32;y&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00335"/>00335 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;&#32;&#32;pos;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00336"/>00336 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;&#32;&#32;size;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00337"/>00337 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;&#32;&#32;&#32;k;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00338"/>00338 &#32;&#32;<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>&#32;&#32;&#32;&#32;command&#32;=&#32;((source[1]&#32;&lt;&lt;&#32;8)&#32;+&#32;source[2]);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00339"/>00339 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;&#32;&#32;&#32;&#32;bit&#32;&#32;&#32;&#32;&#32;=&#32;16;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00340"/>00340 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00341"/>00341 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(source[0]==<link linkend="__compress_l_z_r_w1_k_h_8h_1a2f0f692367c2e03382b3bbbd262d32bb">CMPFLAG_COPIED</link>)
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00342"/>00342 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00343"/>00343 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(y=1;&#32;y&lt;sourcesize;&#32;<link linkend="__compress_l_z_r_w1_k_h_8h_1a20abbb58f7c19879f89a040355f3b047">CMPTARGET</link>(<emphasis role="keyword">false</emphasis>,&#32;y-1,&#32;source[y++])&#32;)
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00344"/>00344 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00345"/>00345 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00346"/>00346 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00347"/>00347 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00348"/>00348 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;(sourcesize-1);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00349"/>00349 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00350"/>00350 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00351"/>00351 &#32;&#32;<emphasis role="keywordflow">for</emphasis>(;x&lt;sourcesize;)
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00352"/>00352 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00353"/>00353 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(bit&#32;==&#32;0)
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00354"/>00354 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00355"/>00355 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;command&#32;&#32;=&#32;((source[x++]&#32;&lt;&lt;&#32;8));
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00356"/>00356 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;command&#32;&#32;=&#32;(command&#32;+&#32;source[x++]);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00357"/>00357 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;bit&#32;=&#32;16;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00358"/>00358 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00359"/>00359 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00360"/>00360 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(command&amp;0x8000)
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00361"/>00361 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00362"/>00362 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pos&#32;=&#32;(source[x++]&#32;&lt;&lt;&#32;4);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00363"/>00363 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;pos&#32;=&#32;(pos&#32;+&#32;(source[x]&#32;&gt;&gt;&#32;4));
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00364"/>00364 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00365"/>00365 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(pos)
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00366"/>00366 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00367"/>00367 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;size&#32;=&#32;((source[x++]&#32;&amp;&#32;0x0f)+3);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00368"/>00368 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00369"/>00369 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>(k=0;k&lt;size;k++)
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00370"/>00370 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00371"/>00371 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__compress_l_z_r_w1_k_h_8h_1a20abbb58f7c19879f89a040355f3b047">CMPTARGET</link>(<emphasis role="keyword">false</emphasis>,y+k,target[y-pos+k]);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00372"/>00372 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00373"/>00373 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00374"/>00374 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;y&#32;=&#32;(y+size);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00375"/>00375 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00376"/>00376 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00377"/>00377 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00378"/>00378 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;size&#32;=&#32;(source[x++]&#32;&lt;&lt;&#32;8);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00379"/>00379 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;size&#32;=&#32;(size&#32;+&#32;source[x++]&#32;+&#32;16);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00380"/>00380 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00381"/>00381 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">for</emphasis>&#32;(k=0;k&lt;size;<link linkend="__compress_l_z_r_w1_k_h_8h_1a20abbb58f7c19879f89a040355f3b047">CMPTARGET</link>(<emphasis role="keyword">false</emphasis>,y+k++,source[x]))
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00382"/>00382 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00383"/>00383 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00384"/>00384 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00385"/>00385 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00386"/>00386 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;x++;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00387"/>00387 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;y=&#32;(y+size);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00388"/>00388 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00389"/>00389 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00390"/>00390 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00391"/>00391 &#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00392"/>00392 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00393"/>00393 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__compress_l_z_r_w1_k_h_8h_1a20abbb58f7c19879f89a040355f3b047">CMPTARGET</link>(<emphasis role="keyword">false</emphasis>,y++,source[x++]);
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00394"/>00394 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00395"/>00395 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00396"/>00396 &#32;&#32;&#32;&#32;&#32;&#32;&#32;command&#32;&lt;&lt;=&#32;1;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00397"/>00397 &#32;&#32;&#32;&#32;&#32;&#32;&#32;bit--;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00398"/>00398 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00399"/>00399 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00400"/>00400 &#32;<emphasis role="keywordflow">return</emphasis>&#32;y;
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00401"/>00401 }
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00402"/>00402 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00403"/>00403 
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00404"/>00404 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__compress_l_z_r_w1_k_h_8cpp_source_1l00405"/>00405 
+</programlisting></section>

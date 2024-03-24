@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__hash_whirlpool_8cpp" xml:lang="en-US">
+<title>D:/Projects/GENFrameWork/GEN/Cipher/HashWhirlpool.cpp File Reference</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/Cipher/HashWhirlpool.cpp</primary></indexterm>
+<programlisting linenumbering="unnumbered">#include &quot;GEN_Defines.h&quot;<?linebreak?>#include &quot;HashWhirlpool.h&quot;<?linebreak?>#include &lt;string.h&gt;<?linebreak?>#include &quot;XBuffer.h&quot;<?linebreak?>#include &quot;XMemory_Control.h&quot;<?linebreak?></programlisting>Include dependency graph for HashWhirlpool.cpp:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="_hash_whirlpool_8cpp__incl.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Macros    </title>
+        <itemizedlist>
+            <listitem><para>#define <link linkend="__hash_whirlpool_8cpp_1a6334d34b3f8c1e83c6beaaf7f79ad5af">LL</link>(v)&#160;&#160;&#160;(v##ULL)</para>
+</listitem>
+            <listitem><para>#define <link linkend="__hash_whirlpool_8cpp_1ad3e56d67d07f5ced4028419807b214dd">ONE32</link>&#160;&#160;&#160;0xffffffffU</para>
+</listitem>
+            <listitem><para>#define <link linkend="__hash_whirlpool_8cpp_1aa595954041b9758bbe549d2448167e04">ONE8</link>&#160;&#160;&#160;0xffU</para>
+</listitem>
+            <listitem><para>#define <link linkend="__hash_whirlpool_8cpp_1ad036f0165e309c31821319a52a4dc2d1">ONE16</link>&#160;&#160;&#160;0xffffU</para>
+</listitem>
+            <listitem><para>#define <link linkend="__hash_whirlpool_8cpp_1a94dc5201b3731f408f7d47c3b5ce983c">ONE64</link>&#160;&#160;&#160;<link linkend="__hash_whirlpool_8cpp_1a6334d34b3f8c1e83c6beaaf7f79ad5af">LL</link>(0xffffffffffffffff)</para>
+</listitem>
+            <listitem><para>#define <link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(x)&#160;&#160;&#160;((x) &amp; <link linkend="__hash_whirlpool_8cpp_1aa595954041b9758bbe549d2448167e04">ONE8</link>)</para>
+</listitem>
+            <listitem><para>#define <link linkend="__hash_whirlpool_8cpp_1a51531d8a5e7fb42142ac35c0f6488745">T16</link>(x)&#160;&#160;&#160;((x) &amp; <link linkend="__hash_whirlpool_8cpp_1ad036f0165e309c31821319a52a4dc2d1">ONE16</link>)</para>
+</listitem>
+            <listitem><para>#define <link linkend="__hash_whirlpool_8cpp_1a9f52a9d9145a1f027fd1a79070a49e4b">T32</link>(x)&#160;&#160;&#160;((x) &amp; <link linkend="__hash_whirlpool_8cpp_1ad3e56d67d07f5ced4028419807b214dd">ONE32</link>)</para>
+</listitem>
+            <listitem><para>#define <link linkend="__hash_whirlpool_8cpp_1ac25644f5912069154e204b1d557d0eda">T64</link>(x)&#160;&#160;&#160;((x) &amp; <link linkend="__hash_whirlpool_8cpp_1a94dc5201b3731f408f7d47c3b5ce983c">ONE64</link>)</para>
+</listitem>
+            <listitem><para>#define <link linkend="__hash_whirlpool_8cpp_1a3721df74aa1812d2a89b914bed00a05c">ROTR64</link>(v,  n)&#160;&#160;&#160;(((v) &gt;&gt; (n)) | <link linkend="__hash_whirlpool_8cpp_1ac25644f5912069154e204b1d557d0eda">T64</link>((v) &lt;&lt; (64 - (n))))</para>
+</listitem>
+            <listitem><para>#define <link linkend="__hash_whirlpool_8cpp_1ab66a8dd74414b28a87115ee13468c5b0">U8TO32_BIG</link>(c)&#160;&#160;&#160;(((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(*(c)) &lt;&lt; 24) | ((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(*((c) + 1)) &lt;&lt; 16) | ((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(*((c) + 2)) &lt;&lt; 8) | ((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(*((c) + 3))))</para>
+</listitem>
+            <listitem><para>#define <link linkend="__hash_whirlpool_8cpp_1ad8184508656107f7393e03463bdd8509">U8TO32_LITTLE</link>(c)&#160;&#160;&#160;(((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(*(c))) | ((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(*((c) + 1)) &lt;&lt; 8) | (<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(*((c) + 2)) &lt;&lt; 16) | ((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(*((c) + 3)) &lt;&lt; 24))</para>
+</listitem>
+            <listitem><para>#define <link linkend="__hash_whirlpool_8cpp_1a0785f47ecccc7ee3738826f70d5c81b1">U32TO8_BIG</link>(c,  v)&#160;&#160;&#160;do { <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link> x = (v); <link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link> *d = (c); d[0] = <link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(x &gt;&gt; 24); d[1] = <link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(x &gt;&gt; 16); d[2] = <link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(x &gt;&gt; 8); d[3] = <link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(x); } while (0)</para>
+</listitem>
+            <listitem><para>#define <link linkend="__hash_whirlpool_8cpp_1a4647f35be316f3daedddfd54c172adf7">U32TO8_LITTLE</link>(c,  v)&#160;&#160;&#160;do { <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link> x = (v); <link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link> *d = (c); d[0] = <link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(x); d[1] = <link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(x &gt;&gt; 8); d[2] = <link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(x &gt;&gt; 16); d[3] = <link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(x &gt;&gt; 24); } while (0)</para>
+</listitem>
+            <listitem><para>#define <link linkend="__hash_whirlpool_8cpp_1a453d6c05303385256d9893904b125483">ROTL32</link>(v,  n)&#160;&#160;&#160;(<link linkend="__hash_whirlpool_8cpp_1a9f52a9d9145a1f027fd1a79070a49e4b">T32</link>((v) &lt;&lt; (n)) | ((v) &gt;&gt; (32 - (n))))</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<section>
+<title>Detailed Description</title>
+
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+ </para>
+<para>
+Definition in file <link linkend="__hash_whirlpool_8cpp_source">HashWhirlpool.cpp</link>.</para>
+</section>
+<section>
+<title>Macro Definition Documentation</title>
+<anchor xml:id="__hash_whirlpool_8cpp_1a6334d34b3f8c1e83c6beaaf7f79ad5af"/><section>
+    <title>LL</title>
+<indexterm><primary>LL</primary><secondary>HashWhirlpool.cpp</secondary></indexterm>
+<indexterm><primary>HashWhirlpool.cpp</primary><secondary>LL</secondary></indexterm>
+<para><computeroutput>#define LL( v)&#160;&#160;&#160;(v##ULL)</computeroutput></para>
+<para><informaltable frame='bottom'><tgroup cols='1'><colspec align='center'/><tbody><row><entry align='center'>
+</entry></row></tbody></tgroup></informaltable>
+ </para>
+<para>
+Definition at line <link linkend="__hash_whirlpool_8cpp_source_1l00054">54</link> of file <link linkend="__hash_whirlpool_8cpp_source">HashWhirlpool.cpp</link>.</para>
+</section>
+<anchor xml:id="__hash_whirlpool_8cpp_1ad036f0165e309c31821319a52a4dc2d1"/><section>
+    <title>ONE16</title>
+<indexterm><primary>ONE16</primary><secondary>HashWhirlpool.cpp</secondary></indexterm>
+<indexterm><primary>HashWhirlpool.cpp</primary><secondary>ONE16</secondary></indexterm>
+<para><computeroutput>#define ONE16&#160;&#160;&#160;0xffffU</computeroutput></para><para>
+Definition at line <link linkend="__hash_whirlpool_8cpp_source_1l00058">58</link> of file <link linkend="__hash_whirlpool_8cpp_source">HashWhirlpool.cpp</link>.</para>
+</section>
+<anchor xml:id="__hash_whirlpool_8cpp_1ad3e56d67d07f5ced4028419807b214dd"/><section>
+    <title>ONE32</title>
+<indexterm><primary>ONE32</primary><secondary>HashWhirlpool.cpp</secondary></indexterm>
+<indexterm><primary>HashWhirlpool.cpp</primary><secondary>ONE32</secondary></indexterm>
+<para><computeroutput>#define ONE32&#160;&#160;&#160;0xffffffffU</computeroutput></para><para>
+Definition at line <link linkend="__hash_whirlpool_8cpp_source_1l00056">56</link> of file <link linkend="__hash_whirlpool_8cpp_source">HashWhirlpool.cpp</link>.</para>
+</section>
+<anchor xml:id="__hash_whirlpool_8cpp_1a94dc5201b3731f408f7d47c3b5ce983c"/><section>
+    <title>ONE64</title>
+<indexterm><primary>ONE64</primary><secondary>HashWhirlpool.cpp</secondary></indexterm>
+<indexterm><primary>HashWhirlpool.cpp</primary><secondary>ONE64</secondary></indexterm>
+<para><computeroutput>#define ONE64&#160;&#160;&#160;<link linkend="__hash_whirlpool_8cpp_1a6334d34b3f8c1e83c6beaaf7f79ad5af">LL</link>(0xffffffffffffffff)</computeroutput></para><para>
+Definition at line <link linkend="__hash_whirlpool_8cpp_source_1l00059">59</link> of file <link linkend="__hash_whirlpool_8cpp_source">HashWhirlpool.cpp</link>.</para>
+</section>
+<anchor xml:id="__hash_whirlpool_8cpp_1aa595954041b9758bbe549d2448167e04"/><section>
+    <title>ONE8</title>
+<indexterm><primary>ONE8</primary><secondary>HashWhirlpool.cpp</secondary></indexterm>
+<indexterm><primary>HashWhirlpool.cpp</primary><secondary>ONE8</secondary></indexterm>
+<para><computeroutput>#define ONE8&#160;&#160;&#160;0xffU</computeroutput></para><para>
+Definition at line <link linkend="__hash_whirlpool_8cpp_source_1l00057">57</link> of file <link linkend="__hash_whirlpool_8cpp_source">HashWhirlpool.cpp</link>.</para>
+</section>
+<anchor xml:id="__hash_whirlpool_8cpp_1a453d6c05303385256d9893904b125483"/><section>
+    <title>ROTL32</title>
+<indexterm><primary>ROTL32</primary><secondary>HashWhirlpool.cpp</secondary></indexterm>
+<indexterm><primary>HashWhirlpool.cpp</primary><secondary>ROTL32</secondary></indexterm>
+<para><computeroutput>#define ROTL32( v,  n)&#160;&#160;&#160;(<link linkend="__hash_whirlpool_8cpp_1a9f52a9d9145a1f027fd1a79070a49e4b">T32</link>((v) &lt;&lt; (n)) | ((v) &gt;&gt; (32 - (n))))</computeroutput></para><para>
+Definition at line <link linkend="__hash_whirlpool_8cpp_source_1l00072">72</link> of file <link linkend="__hash_whirlpool_8cpp_source">HashWhirlpool.cpp</link>.</para>
+</section>
+<anchor xml:id="__hash_whirlpool_8cpp_1a3721df74aa1812d2a89b914bed00a05c"/><section>
+    <title>ROTR64</title>
+<indexterm><primary>ROTR64</primary><secondary>HashWhirlpool.cpp</secondary></indexterm>
+<indexterm><primary>HashWhirlpool.cpp</primary><secondary>ROTR64</secondary></indexterm>
+<para><computeroutput>#define ROTR64( v,  n)&#160;&#160;&#160;(((v) &gt;&gt; (n)) | <link linkend="__hash_whirlpool_8cpp_1ac25644f5912069154e204b1d557d0eda">T64</link>((v) &lt;&lt; (64 - (n))))</computeroutput></para><para>
+Definition at line <link linkend="__hash_whirlpool_8cpp_source_1l00066">66</link> of file <link linkend="__hash_whirlpool_8cpp_source">HashWhirlpool.cpp</link>.</para>
+</section>
+<anchor xml:id="__hash_whirlpool_8cpp_1a51531d8a5e7fb42142ac35c0f6488745"/><section>
+    <title>T16</title>
+<indexterm><primary>T16</primary><secondary>HashWhirlpool.cpp</secondary></indexterm>
+<indexterm><primary>HashWhirlpool.cpp</primary><secondary>T16</secondary></indexterm>
+<para><computeroutput>#define T16( x)&#160;&#160;&#160;((x) &amp; <link linkend="__hash_whirlpool_8cpp_1ad036f0165e309c31821319a52a4dc2d1">ONE16</link>)</computeroutput></para><para>
+Definition at line <link linkend="__hash_whirlpool_8cpp_source_1l00062">62</link> of file <link linkend="__hash_whirlpool_8cpp_source">HashWhirlpool.cpp</link>.</para>
+</section>
+<anchor xml:id="__hash_whirlpool_8cpp_1a9f52a9d9145a1f027fd1a79070a49e4b"/><section>
+    <title>T32</title>
+<indexterm><primary>T32</primary><secondary>HashWhirlpool.cpp</secondary></indexterm>
+<indexterm><primary>HashWhirlpool.cpp</primary><secondary>T32</secondary></indexterm>
+<para><computeroutput>#define T32( x)&#160;&#160;&#160;((x) &amp; <link linkend="__hash_whirlpool_8cpp_1ad3e56d67d07f5ced4028419807b214dd">ONE32</link>)</computeroutput></para><para>
+Definition at line <link linkend="__hash_whirlpool_8cpp_source_1l00063">63</link> of file <link linkend="__hash_whirlpool_8cpp_source">HashWhirlpool.cpp</link>.</para>
+</section>
+<anchor xml:id="__hash_whirlpool_8cpp_1ac25644f5912069154e204b1d557d0eda"/><section>
+    <title>T64</title>
+<indexterm><primary>T64</primary><secondary>HashWhirlpool.cpp</secondary></indexterm>
+<indexterm><primary>HashWhirlpool.cpp</primary><secondary>T64</secondary></indexterm>
+<para><computeroutput>#define T64( x)&#160;&#160;&#160;((x) &amp; <link linkend="__hash_whirlpool_8cpp_1a94dc5201b3731f408f7d47c3b5ce983c">ONE64</link>)</computeroutput></para><para>
+Definition at line <link linkend="__hash_whirlpool_8cpp_source_1l00064">64</link> of file <link linkend="__hash_whirlpool_8cpp_source">HashWhirlpool.cpp</link>.</para>
+</section>
+<anchor xml:id="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db"/><section>
+    <title>T8</title>
+<indexterm><primary>T8</primary><secondary>HashWhirlpool.cpp</secondary></indexterm>
+<indexterm><primary>HashWhirlpool.cpp</primary><secondary>T8</secondary></indexterm>
+<para><computeroutput>#define T8( x)&#160;&#160;&#160;((x) &amp; <link linkend="__hash_whirlpool_8cpp_1aa595954041b9758bbe549d2448167e04">ONE8</link>)</computeroutput></para><para>
+Definition at line <link linkend="__hash_whirlpool_8cpp_source_1l00061">61</link> of file <link linkend="__hash_whirlpool_8cpp_source">HashWhirlpool.cpp</link>.</para>
+</section>
+<anchor xml:id="__hash_whirlpool_8cpp_1a0785f47ecccc7ee3738826f70d5c81b1"/><section>
+    <title>U32TO8_BIG</title>
+<indexterm><primary>U32TO8_BIG</primary><secondary>HashWhirlpool.cpp</secondary></indexterm>
+<indexterm><primary>HashWhirlpool.cpp</primary><secondary>U32TO8_BIG</secondary></indexterm>
+<para><computeroutput>#define U32TO8_BIG( c,  v)&#160;&#160;&#160;do { <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link> x = (v); <link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link> *d = (c); d[0] = <link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(x &gt;&gt; 24); d[1] = <link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(x &gt;&gt; 16); d[2] = <link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(x &gt;&gt; 8); d[3] = <link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(x); } while (0)</computeroutput></para><para>
+Definition at line <link linkend="__hash_whirlpool_8cpp_source_1l00070">70</link> of file <link linkend="__hash_whirlpool_8cpp_source">HashWhirlpool.cpp</link>.</para>
+</section>
+<anchor xml:id="__hash_whirlpool_8cpp_1a4647f35be316f3daedddfd54c172adf7"/><section>
+    <title>U32TO8_LITTLE</title>
+<indexterm><primary>U32TO8_LITTLE</primary><secondary>HashWhirlpool.cpp</secondary></indexterm>
+<indexterm><primary>HashWhirlpool.cpp</primary><secondary>U32TO8_LITTLE</secondary></indexterm>
+<para><computeroutput>#define U32TO8_LITTLE( c,  v)&#160;&#160;&#160;do { <link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link> x = (v); <link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link> *d = (c); d[0] = <link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(x); d[1] = <link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(x &gt;&gt; 8); d[2] = <link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(x &gt;&gt; 16); d[3] = <link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(x &gt;&gt; 24); } while (0)</computeroutput></para><para>
+Definition at line <link linkend="__hash_whirlpool_8cpp_source_1l00071">71</link> of file <link linkend="__hash_whirlpool_8cpp_source">HashWhirlpool.cpp</link>.</para>
+</section>
+<anchor xml:id="__hash_whirlpool_8cpp_1ab66a8dd74414b28a87115ee13468c5b0"/><section>
+    <title>U8TO32_BIG</title>
+<indexterm><primary>U8TO32_BIG</primary><secondary>HashWhirlpool.cpp</secondary></indexterm>
+<indexterm><primary>HashWhirlpool.cpp</primary><secondary>U8TO32_BIG</secondary></indexterm>
+<para><computeroutput>#define U8TO32_BIG( c)&#160;&#160;&#160;(((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(*(c)) &lt;&lt; 24) | ((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(*((c) + 1)) &lt;&lt; 16) | ((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(*((c) + 2)) &lt;&lt; 8) | ((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(*((c) + 3))))</computeroutput></para><para>
+Definition at line <link linkend="__hash_whirlpool_8cpp_source_1l00068">68</link> of file <link linkend="__hash_whirlpool_8cpp_source">HashWhirlpool.cpp</link>.</para>
+</section>
+<anchor xml:id="__hash_whirlpool_8cpp_1ad8184508656107f7393e03463bdd8509"/><section>
+    <title>U8TO32_LITTLE</title>
+<indexterm><primary>U8TO32_LITTLE</primary><secondary>HashWhirlpool.cpp</secondary></indexterm>
+<indexterm><primary>HashWhirlpool.cpp</primary><secondary>U8TO32_LITTLE</secondary></indexterm>
+<para><computeroutput>#define U8TO32_LITTLE( c)&#160;&#160;&#160;(((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(*(c))) | ((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(*((c) + 1)) &lt;&lt; 8) | (<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(*((c) + 2)) &lt;&lt; 16) | ((<link linkend="__x_base_8h_1a0e5b572e67f127f1afb599e257c539cf">XDWORD</link>)<link linkend="__hash_whirlpool_8cpp_1ac9c0c4392247ecd8074c1a53128e08db">T8</link>(*((c) + 3)) &lt;&lt; 24))</computeroutput></para><para>
+Definition at line <link linkend="__hash_whirlpool_8cpp_source_1l00069">69</link> of file <link linkend="__hash_whirlpool_8cpp_source">HashWhirlpool.cpp</link>.</para>
+</section>
+</section>
+</section>

@@ -1,0 +1,235 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source" xml:lang="en-US">
+<title>DIOSPIGPIOMCP23S17.cpp</title>
+<indexterm><primary>D:/Projects/GENFrameWork/GEN/DataIO/Drivers/SPI/DIOSPIGPIOMCP23S17.cpp</primary></indexterm>
+Go to the documentation of this file.<programlisting linenumbering="unnumbered"><anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00001"/>00001 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00029"/>00029 <emphasis role="comment">/*----&#32;PRECOMPILATION&#32;INCLUDES&#32;----------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00030"/>00030 <emphasis role="preprocessor">#pragma&#32;region&#32;PRECOMPILATION_INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00031"/>00031 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00032"/>00032 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__g_e_n___defines_8h">GEN_Defines.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00033"/>00033 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00034"/>00034 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00035"/>00035 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00036"/>00036 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00037"/>00037 <emphasis role="comment">/*----&#32;INCLUDES&#32;------------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00038"/>00038 <emphasis role="preprocessor">#pragma&#32;region&#32;INCLUDES</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00039"/>00039 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00040"/>00040 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8h">DIOSPIGPIOMCP23S17.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00041"/>00041 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00042"/>00042 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_factory_8h">XFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00043"/>00043 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_buffer_8h">XBuffer.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00044"/>00044 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_trace_8h">XTrace.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00045"/>00045 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00046"/>00046 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_factory_8h">DIOFactory.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00047"/>00047 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_s_p_i_config_8h">DIOStreamSPIConfig.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00048"/>00048 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__d_i_o_stream_s_p_i_8h">DIOStreamSPI.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00049"/>00049 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00050"/>00050 <emphasis role="preprocessor">#include&#32;&quot;<link linkend="__x_memory___control_8h">XMemory_Control.h</link>&quot;</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00051"/>00051 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00052"/>00052 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00053"/>00053 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00054"/>00054 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00055"/>00055 <emphasis role="comment">/*----&#32;GENERAL&#32;VARIABLE&#32;----------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00056"/>00056 <emphasis role="preprocessor">#pragma&#32;region&#32;GENERAL_VARIABLE</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00057"/>00057 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00058"/>00058 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00059"/>00059 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00060"/>00060 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00061"/>00061 <emphasis role="comment">/*----&#32;CLASS&#32;MEMBERS&#32;-------------------------------------------------------------------------------------------------*/</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00062"/>00062 <emphasis role="preprocessor">#pragma&#32;region&#32;CLASS_MEMBERS</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00063"/>00063 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00064"/>00064 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00072"/><link linkend="_group___d_a_t_a_i_o_1ga87ed785189436051e26d05dbdd9e8777">00072</link> <link linkend="_group___d_a_t_a_i_o_1ga87ed785189436051e26d05dbdd9e8777">DIOSPIGPIOMCP23S17::DIOSPIGPIOMCP23S17</link>()&#32;:&#32;<link linkend="_class_d_i_o_d_e_v_i_c_e_s_p_i">DIODEVICESPI</link>()
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00073"/>00073 {
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00074"/>00074 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00075"/>00075 }
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00076"/>00076 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00077"/>00077 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00086"/><link linkend="_group___d_a_t_a_i_o_1ga0c24eb0f54d9f6c134a976dd9788d2ce">00086</link> <link linkend="_group___d_a_t_a_i_o_1ga0c24eb0f54d9f6c134a976dd9788d2ce">DIOSPIGPIOMCP23S17::~DIOSPIGPIOMCP23S17</link>()
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00087"/>00087 {
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00088"/>00088 &#32;&#32;<link linkend="_group___d_a_t_a_i_o_1ga542dc13a17a487d75cf4b1301b6d2209">End</link>();
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00089"/>00089 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00090"/>00090 &#32;&#32;Clean();
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00091"/>00091 }
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00092"/>00092 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00093"/>00093 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00103"/><link linkend="_group___d_a_t_a_i_o_1ga4e883e448dea07f5792c7f60c137e5f1">00103</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga4e883e448dea07f5792c7f60c137e5f1">DIOSPIGPIOMCP23S17::IniDevice</link>()
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00104"/>00104 {
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00105"/>00105 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1a848861a0953b0f04002936b66b3f0a17">isdiostreamSPIexternal</link>)
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00106"/>00106 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00107"/>00107 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1aea3a7aa2e2c9cfe6aff684d8cc4e6e84">diostreamcfg</link>&#32;=&#32;<emphasis role="keyword">new</emphasis>&#32;<link linkend="_class_d_i_o_s_t_r_e_a_m_s_p_i_c_o_n_f_i_g">DIOSTREAMSPICONFIG</link>();
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00108"/>00108 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1aea3a7aa2e2c9cfe6aff684d8cc4e6e84">diostreamcfg</link>)&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00109"/>00109 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00110"/>00110 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1aea3a7aa2e2c9cfe6aff684d8cc4e6e84">diostreamcfg</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga39dd4b1eabf187f231431072dfc3e8c7">SetSPIMode</link>(<link linkend="__d_i_o_stream_s_p_i_config_8h_1abb2d3909f7d4a40ee0fb5f20e4c3f189">DIOSTREAMSPI_MODE_0</link>);
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00111"/>00111 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1aea3a7aa2e2c9cfe6aff684d8cc4e6e84">diostreamcfg</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1gab265179c34b916fcb8bddad71d334083">SetNBitsWord</link>(8);
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00112"/>00112 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1aea3a7aa2e2c9cfe6aff684d8cc4e6e84">diostreamcfg</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1gaffe443c31f2a2894cdd645c2007aac21">SetSpeed</link>(10*1000*1000);
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00113"/>00113 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1aea3a7aa2e2c9cfe6aff684d8cc4e6e84">diostreamcfg</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1gac0a0f97f429076d3c43d56b76c6c3258">SetDelay</link>(0);
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00114"/>00114 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00115"/>00115 &#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00116"/>00116 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordtype">int</emphasis>&#32;chipselect&#32;=&#32;0;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00117"/>00117 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1aea3a7aa2e2c9cfe6aff684d8cc4e6e84">diostreamcfg</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga31e115f358c3e26c9d7189c19d8d860e">GetLocalDeviceName</link>()-&gt;<link linkend="_group___x_u_t_i_l_s_1ga2177bf8a150174dfd155c7fe1b7b2af9">Format</link>(<link linkend="__x_string_8h_1a2cbff438813b72648c18c8af875f47c9">__L</link>(<emphasis role="stringliteral">&quot;/dev/spidev0.%d&quot;</emphasis>),&#32;chipselect);
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00118"/>00118 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00119"/>00119 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1a046015b1eddd20cff125bb548c89eabf">diostream</link>&#32;=&#32;(<link linkend="_class_d_i_o_s_t_r_e_a_m_s_p_i">DIOSTREAMSPI</link>*)GEN_DIOFACTORY.CreateStreamIO(<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1aea3a7aa2e2c9cfe6aff684d8cc4e6e84">diostreamcfg</link>);
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00120"/>00120 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1a046015b1eddd20cff125bb548c89eabf">diostream</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00121"/>00121 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00122"/>00122 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00123"/>00123 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00124"/>00124 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1a046015b1eddd20cff125bb548c89eabf">diostream</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00125"/>00125 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00126"/>00126 &#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1aea3a7aa2e2c9cfe6aff684d8cc4e6e84">diostreamcfg</link>&#32;=&#32;(<link linkend="_class_d_i_o_s_t_r_e_a_m_s_p_i_c_o_n_f_i_g">DIOSTREAMSPICONFIG</link>&#32;*)<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1a046015b1eddd20cff125bb548c89eabf">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga1bc0f15764060e62608b1918dcecd9c7">GetConfig</link>();
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00127"/>00127 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1aea3a7aa2e2c9cfe6aff684d8cc4e6e84">diostreamcfg</link>)&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00128"/>00128 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00129"/>00129 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00130"/>00130 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1a046015b1eddd20cff125bb548c89eabf">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga2f0f851406dce28fc0e4bd8da4b43f2b">Open</link>())&#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00131"/>00131 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00132"/>00132 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1a046015b1eddd20cff125bb548c89eabf">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1gacff76db4bc54a48fe2d2ceb165835c2f">WaitToConnected</link>(<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1a8179b4be3aef350bd66e7228b3369d70">timeout</link>))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00133"/>00133 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00134"/>00134 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1ga2ce40a31520cdee813143e1f028ee629">DIODEVICE::Ini</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00135"/>00135 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00136"/>00136 &#32;&#32;<emphasis role="comment">//return&#32;Configure();</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00137"/>00137 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00138"/>00138 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00139"/>00139 }
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00140"/>00140 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00141"/>00141 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00151"/><link linkend="_group___d_a_t_a_i_o_1gace3cf500eef94f30902f2f1ba7449cd3">00151</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gace3cf500eef94f30902f2f1ba7449cd3">DIOSPIGPIOMCP23S17::Configure</link>()
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00152"/>00152 {
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00153"/>00153 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;ioconfig&#32;=&#32;&#32;<link linkend="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8h_1a651ce425e4fb8c2bb3eb04bdcaf1437d">DIOSPIGPIOMCP23S17_BANK_OFF</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;|&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00154"/>00154 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8h_1a3a013bfd9f872165e8c9d72c4bd86e64">DIOSPIGPIOMCP23S17_INT_MIRROR_OFF</link>&#32;|&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00155"/>00155 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8h_1ae6ba269319f1d6ef5443aeccda7a736b">DIOSPIGPIOMCP23S17_SEQOP_OFF</link>&#32;&#32;&#32;&#32;&#32;&#32;|&#32;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00156"/>00156 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8h_1a0e43faca1046f37068eacc28aef206a1">DIOSPIGPIOMCP23S17_DISSLW_OFF</link>&#32;&#32;&#32;&#32;&#32;|&#32;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00157"/>00157 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8h_1aff367820178f49f071bcbcf9762f3a14">DIOSPIGPIOMCP23S17_HAEN_ON</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;|
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00158"/>00158 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8h_1a0b3a68e617d7dde48662a191c2f075a8">DIOSPIGPIOMCP23S17_ODR_OFF</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;|&#32;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00159"/>00159 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8h_1ac74098b2b56cce8a88492d632b0a7da7">DIOSPIGPIOMCP23S17_INTPOL_LOW</link>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00160"/>00160 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00161"/>00161 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;addr&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00162"/>00162 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00163"/>00163 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1ga259876950ca53134f350454f11b45aaa">Write_Register</link>(<link linkend="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8h_1ad33d0c17977b6c37c24dacc7cab2d21e">DIOSPIGPIOMCP23S17_IOCON</link>,&#32;addr,&#32;ioconfig))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00164"/>00164 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00165"/>00165 &#32;&#32;<emphasis role="comment">//&#32;I/O&#32;direction</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00166"/>00166 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1ga259876950ca53134f350454f11b45aaa">Write_Register</link>(<link linkend="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8h_1ab9464fe52f9b07a87c184938fdd7360c">DIOSPIGPIOMCP23S17_IODIRA</link>&#32;,&#32;addr,&#32;0x00))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00167"/>00167 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1ga259876950ca53134f350454f11b45aaa">Write_Register</link>(<link linkend="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8h_1a30d3f73f4c96056e5fce60e027856d97">DIOSPIGPIOMCP23S17_IODIRB</link>&#32;,&#32;addr,&#32;0xFF))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00168"/>00168 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00169"/>00169 &#32;&#32;<emphasis role="comment">//&#32;GPIOB&#32;pull&#32;ups</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00170"/>00170 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1ga259876950ca53134f350454f11b45aaa">Write_Register</link>(<link linkend="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8h_1a2d6456bcb5bf6cb4a626b07cccdf5294">DIOSPIGPIOMCP23S17_GPPUB</link>&#32;&#32;,&#32;addr,&#32;0xFF))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00171"/>00171 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00172"/>00172 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00173"/>00173 }
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00174"/>00174 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00175"/>00175 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00189"/><link linkend="_group___d_a_t_a_i_o_1ga09ae605a68a291526290166a479a5d82">00189</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga09ae605a68a291526290166a479a5d82">DIOSPIGPIOMCP23S17::Read_Register</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;reg,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;addr,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&amp;&#32;data)
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00190"/>00190 {
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00191"/>00191 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;control_byte&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;GetControlByte(<link linkend="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8h_1a4b3942ff817099d3ada4cda7d748fb08">DIOSPIGPIOMCP23S17_READ_CMD</link>,&#32;addr);&#32;&#32;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00192"/>00192 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;tx_buffer[3]&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;{&#32;control_byte,&#32;reg,&#32;0&#32;};
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00193"/>00193 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;rx_buffer[<emphasis role="keyword">sizeof</emphasis>(tx_buffer)];
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00194"/>00194 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00195"/>00195 &#32;&#32;data&#32;=&#32;0;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00196"/>00196 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00197"/>00197 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;status&#32;=&#32;<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1a046015b1eddd20cff125bb548c89eabf">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1gad68789490253c3d92cb7209deab9d6e5">TransferBuffer</link>(rx_buffer,&#32;tx_buffer,&#32;<emphasis role="keyword">sizeof</emphasis>(tx_buffer));
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00198"/>00198 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00199"/>00199 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(status)&#32;data&#32;=&#32;rx_buffer[2];
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00200"/>00200 &#32;&#32;&#32;&#32;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00201"/>00201 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00202"/>00202 }
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00203"/>00203 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00204"/>00204 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00218"/><link linkend="_group___d_a_t_a_i_o_1ga259876950ca53134f350454f11b45aaa">00218</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga259876950ca53134f350454f11b45aaa">DIOSPIGPIOMCP23S17::Write_Register</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;reg,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;addr,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;data)
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00219"/>00219 {
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00220"/>00220 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;control_byte&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;GetControlByte(<link linkend="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8h_1afdfe6215a73b7c10f0b804fbb3030c4b">DIOSPIGPIOMCP23S17_WRITE_CMD</link>,&#32;addr);&#32;&#32;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00221"/>00221 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;tx_buffer[3]&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;{&#32;control_byte,&#32;reg,&#32;data&#32;};
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00222"/>00222 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;rx_buffer[<emphasis role="keyword">sizeof</emphasis>(tx_buffer)];
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00223"/>00223 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00224"/>00224 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1a046015b1eddd20cff125bb548c89eabf">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1gad68789490253c3d92cb7209deab9d6e5">TransferBuffer</link>(rx_buffer,&#32;tx_buffer,&#32;<emphasis role="keyword">sizeof</emphasis>(tx_buffer));
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00225"/>00225 }
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00226"/>00226 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00227"/>00227 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00242"/><link linkend="_group___d_a_t_a_i_o_1gafc6176723b748144c0437352bd396ccb">00242</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gafc6176723b748144c0437352bd396ccb">DIOSPIGPIOMCP23S17::Read_Bit</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;reg,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;addr,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;bitnum,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&amp;&#32;data)
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00243"/>00243 {
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00244"/>00244 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;_data&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00245"/>00245 &#32;&#32;<emphasis role="keywordtype">bool</emphasis>&#32;&#32;status&#32;&#32;=&#32;&#32;<link linkend="_group___d_a_t_a_i_o_1ga09ae605a68a291526290166a479a5d82">Read_Register</link>(reg,&#32;addr,&#32;_data);
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00246"/>00246 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00247"/>00247 &#32;&#32;data&#32;=&#32;((_data&#32;&gt;&gt;&#32;bitnum)&#32;&amp;&#32;0x01);
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00248"/>00248 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00249"/>00249 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;status;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00250"/>00250 }
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00251"/>00251 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00252"/>00252 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00267"/><link linkend="_group___d_a_t_a_i_o_1ga9cd46c828ea524f417f5156e399d6e71">00267</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga9cd46c828ea524f417f5156e399d6e71">DIOSPIGPIOMCP23S17::Write_Bit</link>(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;reg,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;addr,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;bitnum,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;data)
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00268"/>00268 {
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00269"/>00269 &#32;&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;reg_data&#32;=&#32;0;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00270"/>00270 &#32;&#32;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00271"/>00271 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1ga09ae605a68a291526290166a479a5d82">Read_Register</link>(reg,&#32;addr,&#32;reg_data))&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00272"/>00272 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00273"/>00273 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(data)&#32;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00274"/>00274 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00275"/>00275 &#32;&#32;&#32;&#32;&#32;&#32;reg_data&#32;|=&#32;(1&#32;&lt;&lt;&#32;bitnum);&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="comment">//&#32;set</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00276"/>00276 &#32;&#32;&#32;&#32;}&#32;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00277"/>00277 &#32;&#32;&#32;<emphasis role="keywordflow">else</emphasis>&#32;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00278"/>00278 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00279"/>00279 &#32;&#32;&#32;&#32;&#32;&#32;reg_data&#32;&amp;=&#32;0xff&#32;^&#32;(1&#32;&lt;&lt;&#32;bitnum);&#32;&#32;&#32;<emphasis role="comment">//&#32;clear</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00280"/>00280 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00281"/>00281 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00282"/>00282 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga259876950ca53134f350454f11b45aaa">Write_Register</link>(reg,&#32;addr,&#32;reg_data);
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00283"/>00283 }
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00284"/>00284 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00285"/>00285 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00295"/><link linkend="_group___d_a_t_a_i_o_1ga542dc13a17a487d75cf4b1301b6d2209">00295</link> <emphasis role="keywordtype">bool</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1ga542dc13a17a487d75cf4b1301b6d2209">DIOSPIGPIOMCP23S17::End</link>()
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00296"/>00296 {
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00297"/>00297 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_group___d_a_t_a_i_o_1gac96c34c9d5f91768940985b082c0dad2">DIODEVICE::End</link>())&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00298"/>00298 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00299"/>00299 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1a046015b1eddd20cff125bb548c89eabf">diostream</link>)&#32;<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1a046015b1eddd20cff125bb548c89eabf">diostream</link>-&gt;<link linkend="_group___d_a_t_a_i_o_1ga02de4aa3e65df850f7e881dbd78085ba">Close</link>();
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00300"/>00300 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00301"/>00301 &#32;&#32;<emphasis role="keywordflow">if</emphasis>(!<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1a848861a0953b0f04002936b66b3f0a17">isdiostreamSPIexternal</link>)
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00302"/>00302 &#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00303"/>00303 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1a046015b1eddd20cff125bb548c89eabf">diostream</link>)
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00304"/>00304 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00305"/>00305 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;GEN_DIOFACTORY.DeleteStreamIO(<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1a046015b1eddd20cff125bb548c89eabf">diostream</link>);
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00306"/>00306 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1a046015b1eddd20cff125bb548c89eabf">diostream</link>&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00307"/>00307 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00308"/>00308 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00309"/>00309 &#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keywordflow">if</emphasis>(<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1aea3a7aa2e2c9cfe6aff684d8cc4e6e84">diostreamcfg</link>)
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00310"/>00310 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;{
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00311"/>00311 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<emphasis role="keyword">delete</emphasis>&#32;<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1aea3a7aa2e2c9cfe6aff684d8cc4e6e84">diostreamcfg</link>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00312"/>00312 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1aea3a7aa2e2c9cfe6aff684d8cc4e6e84">diostreamcfg</link>&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00313"/>00313 &#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00314"/>00314 &#32;&#32;&#32;&#32;}
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00315"/>00315 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00316"/>00316 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00317"/>00317 }
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00318"/>00318 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00319"/>00319 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00329"/><link linkend="_group___d_a_t_a_i_o_1ga652d22d5489593398624e80b95794e2a">00329</link> <link linkend="_class_d_i_o_s_t_r_e_a_m_s_p_i">DIOSTREAMSPI</link>*&#32;<link linkend="_group___d_a_t_a_i_o_1ga652d22d5489593398624e80b95794e2a">DIOSPIGPIOMCP23S17::GetDIOStreamSPI</link>()
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00330"/>00330 {
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00331"/>00331 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1a046015b1eddd20cff125bb548c89eabf">diostream</link>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00332"/>00332 }
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00333"/>00333 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00334"/>00334 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00344"/><link linkend="_group___d_a_t_a_i_o_1gafd252bee4a48a6f5ce08a29914a6f3ad">00344</link> <emphasis role="keywordtype">void</emphasis>&#32;<link linkend="_group___d_a_t_a_i_o_1gafd252bee4a48a6f5ce08a29914a6f3ad">DIOSPIGPIOMCP23S17::SetDIOStreamSPI</link>(<link linkend="_class_d_i_o_s_t_r_e_a_m_s_p_i">DIOSTREAMSPI</link>*&#32;diostream)
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00345"/>00345 {
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00346"/>00346 &#32;&#32;this-&gt;diostream&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1a046015b1eddd20cff125bb548c89eabf">diostream</link>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00347"/>00347 &#32;&#32;<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1a848861a0953b0f04002936b66b3f0a17">isdiostreamSPIexternal</link>&#32;&#32;=&#32;<emphasis role="keyword">true</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00348"/>00348 }
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00349"/>00349 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00350"/>00350 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00363"/>00363 <link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;DIOSPIGPIOMCP23S17::GetControlByte(<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;rw_cmd,&#32;<link linkend="__x_base_8h_1a7ba3d378cab4450418bec78e604d47da">XBYTE</link>&#32;addr)
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00364"/>00364 {
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00365"/>00365 &#32;&#32;addr&#32;&#32;&#32;&#32;&#32;=&#32;(addr&#32;&lt;&lt;&#32;1)&#32;&amp;&#32;0xE;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00366"/>00366 &#32;&#32;rw_cmd&#32;&#32;&amp;=&#32;1;&#32;<emphasis role="comment">//&#32;just&#32;1&#32;bit&#32;long</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00367"/>00367 &#32;&#32;<emphasis role="keywordflow">return</emphasis>&#32;0x40&#32;|&#32;addr&#32;|&#32;rw_cmd;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00368"/>00368 }
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00369"/>00369 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00370"/>00370 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00379"/>00379 <emphasis role="keywordtype">void</emphasis>&#32;DIOSPIGPIOMCP23S17::Clean()
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00380"/>00380 {
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00381"/>00381 &#32;&#32;<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1a8179b4be3aef350bd66e7228b3369d70">timeout</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;0;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00382"/>00382 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00383"/>00383 &#32;&#32;<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1aea3a7aa2e2c9cfe6aff684d8cc4e6e84">diostreamcfg</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00384"/>00384 &#32;&#32;<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1a046015b1eddd20cff125bb548c89eabf">diostream</link>&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;&#32;=&#32;<link linkend="__x_base_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00385"/>00385 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00386"/>00386 &#32;&#32;<link linkend="_class_d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_1a848861a0953b0f04002936b66b3f0a17">isdiostreamSPIexternal</link>&#32;&#32;=&#32;<emphasis role="keyword">false</emphasis>;
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00387"/>00387 }
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00388"/>00388 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00389"/>00389 
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00390"/>00390 <emphasis role="preprocessor">#pragma&#32;endregion</emphasis>
+<anchor xml:id="__d_i_o_s_p_i_g_p_i_o_m_c_p23_s17_8cpp_source_1l00391"/>00391 
+</programlisting></section>
