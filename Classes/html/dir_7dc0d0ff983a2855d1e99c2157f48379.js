@@ -50,6 +50,8 @@ var dir_7dc0d0ff983a2855d1e99c2157f48379 =
     [ "DIONotificationsManager.h", "_d_i_o_notifications_manager_8h.html", "_d_i_o_notifications_manager_8h" ],
     [ "DIOPCap.cpp", "_d_i_o_p_cap_8cpp.html", null ],
     [ "DIOPCap.h", "_d_i_o_p_cap_8h.html", null ],
+    [ "DIOPCap_Filters.cpp", "_d_i_o_p_cap___filters_8cpp.html", null ],
+    [ "DIOPCap_Filters.h", "_d_i_o_p_cap___filters_8h.html", "_d_i_o_p_cap___filters_8h" ],
     [ "DIORemoteFileCFG.cpp", "_d_i_o_remote_file_c_f_g_8cpp.html", null ],
     [ "DIORemoteFileCFG.h", "_d_i_o_remote_file_c_f_g_8h.html", "_d_i_o_remote_file_c_f_g_8h" ],
     [ "DIOSSHReverse.cpp", "_d_i_o_s_s_h_reverse_8cpp.html", null ],

@@ -29,7 +29,7 @@ var class_x_s_t_r_i_n_g =
     [ "Character_IsAlpha", "group___x_u_t_i_l_s.html#ga0a1285f1f54753ab25a2c7644cda1849", null ],
     [ "Character_IsLowerCase", "group___x_u_t_i_l_s.html#ga81a337e52021be878b2da371a9016bcf", null ],
     [ "Character_IsNOT", "group___x_u_t_i_l_s.html#gacd70302eb3fca30007d31eb9de1c1dba", null ],
-    [ "Character_IsNumber", "group___x_u_t_i_l_s.html#gae1e7978e594142e257d661ea8d23fcce", null ],
+    [ "Character_IsNumber", "group___x_u_t_i_l_s.html#ga187ff0c36507a8c259c6b8d0d0cc1244", null ],
     [ "Character_IsUpperCase", "group___x_u_t_i_l_s.html#ga8e016046c3e9404530b9ffe899a3dcf3", null ],
     [ "Character_ToLower", "group___x_u_t_i_l_s.html#gaab35936c24b21a75ac8ca8c1e619f0a2", null ],
     [ "Character_ToUpper", "group___x_u_t_i_l_s.html#gae2f918611b962d1e4cdf779ea2d0bca7", null ],

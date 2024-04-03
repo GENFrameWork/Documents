@@ -1,5 +1,10 @@
 var NAVTREEINDEX15 =
 {
+"_d_i_o_stream_bluetooth_l_e_remote_enum_devices_8h.html#a6c6ff65efdf42d49920544215aaef50dad9716f52af3166f426a359eca0650dda":[3,0,0,5,6,8,0,1],
+"_d_i_o_stream_bluetooth_l_e_remote_enum_devices_8h.html#a6c6ff65efdf42d49920544215aaef50daf3b496eaa5c9f2df82f6b0ac3614f4d5":[3,0,0,5,6,8,0,0],
+"_d_i_o_stream_bluetooth_l_e_remote_enum_devices_8h_source.html":[3,0,0,5,6,8],
+"_d_i_o_stream_bluetooth_l_e_remote_enum_devices___x_event_8cpp.html":[3,0,0,5,6,9],
+"_d_i_o_stream_bluetooth_l_e_remote_enum_devices___x_event_8cpp_source.html":[3,0,0,5,6,9],
 "_d_i_o_stream_bluetooth_l_e_remote_enum_devices___x_event_8h.html":[3,0,0,5,6,10],
 "_d_i_o_stream_bluetooth_l_e_remote_enum_devices___x_event_8h_source.html":[3,0,0,5,6,10],
 "_d_i_o_stream_bluetooth_local_enum_devices_8cpp.html":[3,0,0,5,6,11],
@@ -244,10 +249,5 @@ var NAVTREEINDEX15 =
 "_d_i_o_stream_enum_devices_8h.html#a002fa6ddc871265914f8862eefde794e":[3,0,0,5,6,36,0],
 "_d_i_o_stream_enum_devices_8h.html#a002fa6ddc871265914f8862eefde794ea0c5c557e03f77f1d801166a2a87331cf":[3,0,0,5,6,36,0,5],
 "_d_i_o_stream_enum_devices_8h.html#a002fa6ddc871265914f8862eefde794ea38b1c621f1083fe75b0ac08241706793":[3,0,0,5,6,36,0,3],
-"_d_i_o_stream_enum_devices_8h.html#a002fa6ddc871265914f8862eefde794ea3e4766eb48edbb217581ae84616812b3":[3,0,0,5,6,36,0,0],
-"_d_i_o_stream_enum_devices_8h.html#a002fa6ddc871265914f8862eefde794ea4040f5de0d8b266bd18664d12cce2287":[3,0,0,5,6,36,0,1],
-"_d_i_o_stream_enum_devices_8h.html#a002fa6ddc871265914f8862eefde794ea5aa959447b77d5f03183cf2481e96d63":[3,0,0,5,6,36,0,8],
-"_d_i_o_stream_enum_devices_8h.html#a002fa6ddc871265914f8862eefde794ea5bcc6ed1fd164d2228eeee03ee7f333d":[3,0,0,5,6,36,0,7],
-"_d_i_o_stream_enum_devices_8h.html#a002fa6ddc871265914f8862eefde794ea6c45052453a0b4a9bf51fb85208bfbfd":[3,0,0,5,6,36,0,4],
-"_d_i_o_stream_enum_devices_8h.html#a002fa6ddc871265914f8862eefde794ea716a03c26cb047f4350b261d292990be":[3,0,0,5,6,36,0,9]
+"_d_i_o_stream_enum_devices_8h.html#a002fa6ddc871265914f8862eefde794ea3e4766eb48edbb217581ae84616812b3":[3,0,0,5,6,36,0,0]
 };

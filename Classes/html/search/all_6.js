@@ -91,9 +91,9 @@ var searchData=
   ['fraction_88',['Fraction',['../_x_base_8cpp.html#a1e8c9a80193adf0dd340ee3508b9889f',1,'Fraction(double value):&#160;XBase.cpp'],['../_x_base_8h.html#a1e8c9a80193adf0dd340ee3508b9889f',1,'Fraction(double value):&#160;XBase.cpp']]],
   ['fractional_89',['fractional',['../class_d_i_o_t_i_m_e_p_a_c_k_e_t.html#a4b364666f5e53c502b0fe54555e93aad',1,'DIOTIMEPACKET']]],
   ['framerate_90',['framerate',['../class_g_r_p_v_i_d_e_o_f_i_l_e___p_r_o_p_e_r_t_y_s.html#a338d673974583b961ca195b8626c0d61',1,'GRPVIDEOFILE_PROPERTYS::framerate'],['../class_g_r_p_s_c_r_e_e_n.html#a2d1303a6313f6cb9a3c6814eb484949f',1,'GRPSCREEN::framerate']]],
-  ['framework_91',['What is GEN FrameWork?',['../md__d_1_2_projects_2_g_e_n_frame_work_2_g_e_n_2_r_e_a_d_m_e.html#autotoc_md6110',1,'']]],
-  ['framework_20cover_92',['What platforms does GEN Framework cover?',['../md__d_1_2_projects_2_g_e_n_frame_work_2_g_e_n_2_r_e_a_d_m_e.html#autotoc_md6112',1,'']]],
-  ['framework_20have_93',['What functionalities does GEN FrameWork have?',['../md__d_1_2_projects_2_g_e_n_frame_work_2_g_e_n_2_r_e_a_d_m_e.html#autotoc_md6111',1,'']]],
+  ['framework_91',['What is GEN FrameWork?',['../md__d_1_2_projects_2_g_e_n_frame_work_2_g_e_n_2_r_e_a_d_m_e.html#autotoc_md6148',1,'']]],
+  ['framework_20cover_92',['What platforms does GEN Framework cover?',['../md__d_1_2_projects_2_g_e_n_frame_work_2_g_e_n_2_r_e_a_d_m_e.html#autotoc_md6150',1,'']]],
+  ['framework_20have_93',['What functionalities does GEN FrameWork have?',['../md__d_1_2_projects_2_g_e_n_frame_work_2_g_e_n_2_r_e_a_d_m_e.html#autotoc_md6149',1,'']]],
   ['free_94',['FREE',['../_x_memory___control_8h.html#a723adebda3a0f9739b4c7644d3531cb7',1,'XMemory_Control.h']]],
   ['free_5ffall_5fdet_95',['free_fall_det',['../unionbmi2__sens__config__types.html#ad53193268a95886757e4b843f894ca1d',1,'bmi2_sens_config_types']]],
   ['freebuffer_96',['FreeBuffer',['../group___x_u_t_i_l_s.html#gaeb17d2eb4d14639da9e55d3aaaef0eb2',1,'XSTRING']]],
@@ -104,5 +104,5 @@ var searchData=
   ['fsmblks_101',['fsmblks',['../structmallinfo.html#a6b1a33ff0fc95bdab9c79ce271f58003',1,'mallinfo']]],
   ['fulllen_102',['fulllen',['../struct_d_i_o_p_i_n_g___i_p_h_d_r.html#a09024de09dc5067860c5a8c183c4bec2',1,'DIOPING_IPHDR']]],
   ['function_103',['function',['../class_x_t_h_r_e_a_d.html#a0a65973669b74163b380696c5fd41bae',1,'XTHREAD']]],
-  ['functionalities_20does_20gen_20framework_20have_104',['What functionalities does GEN FrameWork have?',['../md__d_1_2_projects_2_g_e_n_frame_work_2_g_e_n_2_r_e_a_d_m_e.html#autotoc_md6111',1,'']]]
+  ['functionalities_20does_20gen_20framework_20have_104',['What functionalities does GEN FrameWork have?',['../md__d_1_2_projects_2_g_e_n_frame_work_2_g_e_n_2_r_e_a_d_m_e.html#autotoc_md6149',1,'']]]
 ];
