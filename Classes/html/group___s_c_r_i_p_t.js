@@ -292,8 +292,6 @@ var group___s_c_r_i_p_t =
     [ "SCRIPT::IsRunWithThread", "group___s_c_r_i_p_t.html#ga6e1d41ad1d598cffd61f68343833b682", null ],
     [ "SCRIPT::IsScript", "group___s_c_r_i_p_t.html#gac1cc799014b5e5ee8829639722af36de", null ],
     [ "SCRIPT::Load", "group___s_c_r_i_p_t.html#ga98b453fff432800b9460beab0d387a6c", null ],
-    [ "SCRIPT_LNG_JAVASCRIPT::Load", "group___s_c_r_i_p_t.html#gab6afd0536f3ef855c4021e8d6936f175", null ],
-    [ "SCRIPT_LNG_LUA::Load", "group___s_c_r_i_p_t.html#ga53b943eab0c76f749bac60cdd86f3b60", null ],
     [ "SCRIPT::LoadAdd", "group___s_c_r_i_p_t.html#ga1d9d6a172b73ba5f6e28649c35ef2a7b", null ],
     [ "SCRIPT::LoadScriptAndRun", "group___s_c_r_i_p_t.html#gaafee76de4ed65098643b70fe1c9fb7e3", null ],
     [ "SCRIPT_LNG_G::NotFuncParams", "group___s_c_r_i_p_t.html#ga28afe92e39d0f61303cd1717120f70c2", null ],

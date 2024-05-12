@@ -3489,7 +3489,7 @@ var group___d_a_t_a_i_o =
     [ "DIONTP::GetTime", "group___d_a_t_a_i_o.html#gad7738c073eb1aff2ad03fdce2ef59053", null ],
     [ "DIONTP::GetTime", "group___d_a_t_a_i_o.html#ga0847c0f480200299a8d7dc297343df90", null ],
     [ "DIOCHECKTCPIPCONNECTIONS::GetTimeConnectionChecks", "group___d_a_t_a_i_o.html#ga2a18ea063e5c1afc8d0075916ed2975d", null ],
-    [ "DIOCHECKTCPIPCONNECTION::GetTimeConnexionStatus", "group___d_a_t_a_i_o.html#gab35103c08ad32da9c5a5eeeee5c8e215", null ],
+    [ "DIOCHECKTCPIPCONNECTION::GetTimeConnexionStatus", "group___d_a_t_a_i_o.html#ga8f08d41435af7590ee8ea4e0126eb105", null ],
     [ "DIOPINGREPLY::GetTimeElapsed", "group___d_a_t_a_i_o.html#ga6620f5f01afec5b11f79f36252609e3a", null ],
     [ "DIOIEC60870_5::GetTimeLabelTypeA", "group___d_a_t_a_i_o.html#ga17ae2a6e5d190c06baeab355b760e159", null ],
     [ "DIOIEC60870_5::GetTimeLabelTypeB", "group___d_a_t_a_i_o.html#gaee6350554edb061333813968684238e0", null ],

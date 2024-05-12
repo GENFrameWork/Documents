@@ -14,7 +14,6 @@ var class_x_t_r_a_c_e =
     [ "GetHandleNet", "group___x_u_t_i_l_s.html#ga18d86990828d14892faf4116b40fcb18", null ],
     [ "GetLocalIP", "group___x_u_t_i_l_s.html#ga18a5e440cf932ce8bab7170eaa0b6459", null ],
     [ "GetPublicIP", "group___x_u_t_i_l_s.html#ga0b404bd558191820b3e8825ff0f44aff", null ],
-    [ "GetScraperWebScriptURLDownload", "group___x_u_t_i_l_s.html#gaf4931f074740dd741edba8b3cad20361", null ],
     [ "GetSizeLimit", "group___x_u_t_i_l_s.html#gaa85ab7a0129a5f8c7b1d3f0227d9f28c", null ],
     [ "GetTraceFromDIOStream", "group___x_u_t_i_l_s.html#ga5971606eccdb33c09f1e7e917d35e6c7", null ],
     [ "GetTraceFromXBuffer", "group___x_u_t_i_l_s.html#ga760b1535aedd520bd7294c71e18482f5", null ],
@@ -46,7 +45,6 @@ var class_x_t_r_a_c_e =
     [ "SetLocalIPFilter", "group___x_u_t_i_l_s.html#ga84829bda5ffad30f57448463cdc3bea4", null ],
     [ "SetLocalIPString", "group___x_u_t_i_l_s.html#ga9f5c47de22d7fca8c80542563bd84383", null ],
     [ "SetPublicIPString", "group___x_u_t_i_l_s.html#ga3141332b979836c1973ebbe25d6639c7", null ],
-    [ "SetScraperWebScriptURLDownload", "group___x_u_t_i_l_s.html#ga9bbd536b1bd046021bd148e6a3c47752", null ],
     [ "SetSizeLimit", "group___x_u_t_i_l_s.html#ga14390d313b132d7b22946569c6320c4a", null ],
     [ "SetTarget", "group___x_u_t_i_l_s.html#ga1fdc0f4db9ae3363b4b67469af23170e", null ],
     [ "SetTraceDataToText", "group___x_u_t_i_l_s.html#ga6797c9d5510f02981721603646a790e1", null ],
@@ -61,7 +59,6 @@ var class_x_t_r_a_c_e =
     [ "localIPfilter", "class_x_t_r_a_c_e.html#a2e974ddb6cb7f0124c54ba5603f9bf7f", null ],
     [ "openheader", "class_x_t_r_a_c_e.html#ae672d603f13a6e857a9ac213f499d06b", null ],
     [ "publicIP", "class_x_t_r_a_c_e.html#a8431ec4949d1abad13ce859c04d94847", null ],
-    [ "scraperwebscripturldownload", "class_x_t_r_a_c_e.html#a822a9b7e06d91228ae1b1a3e3bcbd714", null ],
     [ "sequence", "class_x_t_r_a_c_e.html#a934e6aff5084ecda30b374e3797c528c", null ],
     [ "sizelimit", "class_x_t_r_a_c_e.html#ab815a4ad93efdcbe430467f6615c6557", null ],
     [ "targets", "class_x_t_r_a_c_e.html#a867bc145c51f4f68f387cc17c41dabc7", null ]

@@ -5,7 +5,7 @@ var class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n =
     [ "GetElapsedTime", "group___d_a_t_a_i_o.html#ga0e5155f5e431903f99b049deaa99dc86", null ],
     [ "GetID", "group___d_a_t_a_i_o.html#gab3c00aacd0c6331defecddf1c36d6dbd", null ],
     [ "GetNChecks", "group___d_a_t_a_i_o.html#ga65d4fb24f258399c4d8c1c64347d3005", null ],
-    [ "GetTimeConnexionStatus", "group___d_a_t_a_i_o.html#gab35103c08ad32da9c5a5eeeee5c8e215", null ],
+    [ "GetTimeConnexionStatus", "group___d_a_t_a_i_o.html#ga8f08d41435af7590ee8ea4e0126eb105", null ],
     [ "GetURL", "group___d_a_t_a_i_o.html#ga30697b10b00bfb30757a8714fef65217", null ],
     [ "IncNChecks", "group___d_a_t_a_i_o.html#ga4b94e85224ada7361360b5a4103b591b", null ],
     [ "IsConnected", "group___d_a_t_a_i_o.html#ga6c0cee7d0ab753b4a6f8479a5d7d00a9", null ],

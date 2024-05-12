@@ -17,7 +17,7 @@ var searchData=
   ['libmainproclinux_14',['libmainproclinux',['../_main_proc_l_i_n_u_x_8cpp.html#a2f34067d0aceaaed132126c539d9d0ff',1,'MainProcLINUX.cpp']]],
   ['libraryfunctions_15',['libraryfunctions',['../class_s_c_r_i_p_t.html#a480a32f89a05bc1aba8db7572b1fc061',1,'SCRIPT']]],
   ['librarys_16',['librarys',['../class_s_c_r_i_p_t.html#abc81e15ff525fde91d3492935bc2c2f8',1,'SCRIPT']]],
-  ['limit_17',['limit',['../class_u_i___p_r_o_p_e_r_t_y___s_c_r_o_l_l_e_a_b_l_e___s_t_a_t_u_s.html#af8212797ffccd53046cb297a6adba97b',1,'UI_PROPERTY_SCROLLEABLE_STATUS::limit'],['../class_x_l_o_g_b_a_s_e.html#ab2c9eb6357232e378e0733b2288a6c46',1,'XLOGBASE::limit']]],
+  ['limit_17',['limit',['../class_i_n_p_c_a_p_t_u_r_e.html#a9ad9e0978fa345aaeb0c799b22a84c2e',1,'INPCAPTURE::limit'],['../class_u_i___p_r_o_p_e_r_t_y___s_c_r_o_l_l_e_a_b_l_e___s_t_a_t_u_s.html#af8212797ffccd53046cb297a6adba97b',1,'UI_PROPERTY_SCROLLEABLE_STATUS::limit'],['../class_x_l_o_g_b_a_s_e.html#ab2c9eb6357232e378e0733b2288a6c46',1,'XLOGBASE::limit']]],
   ['limits_18',['limits',['../class_x_i_n_t_e_r_p_o_l_a_t_o_r.html#ad4040689d4a102307469c890a957fc78',1,'XINTERPOLATOR']]],
   ['lines_19',['lines',['../class_d_i_o_w_e_b_h_e_a_d_e_r.html#a1c16552a2d5901f64f57c1bbeb5fd70e',1,'DIOWEBHEADER::lines'],['../class_x_f_i_l_e_t_x_t.html#aecfef236a2835b2176d9ecb18cb94e66',1,'XFILETXT::lines']]],
   ['linewidth_20',['linewidth',['../class_g_r_p_c_a_n_v_a_s.html#a93430ec4ed2fef760351400c0630f4ea',1,'GRPCANVAS']]],

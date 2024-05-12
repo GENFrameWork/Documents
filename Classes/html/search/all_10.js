@@ -59,7 +59,7 @@ var searchData=
   ['platform_20linux_56',['Platform Linux',['../group___p_l_a_t_f_o_r_m___l_i_n_u_x.html',1,'']]],
   ['platform_20stm32_57',['Platform STM32',['../group___p_l_a_t_f_o_r_m___s_t_m32.html',1,'']]],
   ['platform_20windows_58',['Platform Windows',['../group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s.html',1,'']]],
-  ['platforms_20does_20gen_20framework_20cover_59',['What platforms does GEN Framework cover?',['../md__d_1_2_projects_2_g_e_n_frame_work_2_g_e_n_2_r_e_a_d_m_e.html#autotoc_md6150',1,'']]],
+  ['platforms_20does_20gen_20framework_20cover_59',['What platforms does GEN Framework cover?',['../md__d_1_2_projects_2_g_e_n_frame_work_2_g_e_n_2_r_e_a_d_m_e.html#autotoc_md6171',1,'']]],
   ['play_60',['Play',['../group___g_r_a_p_h_i_c.html#gaaa10e288b09d72160990b1831dd26ebf',1,'GRPBITMAPSEQUENCE::Play()'],['../group___s_o_u_n_d.html#ga7b76141f58bedcfa3e724a625d89e73e',1,'SNDOPENALSOURCE::Play()'],['../group___u_s_e_r_i_n_t_e_r_f_a_c_e.html#gaabb16370f0f40856131372339553cce6',1,'UI_ELEMENT_ANIMATION::Play()'],['../group___u_s_e_r_i_n_t_e_r_f_a_c_e.html#gaf0080084511b93f943f5581efd107b86',1,'UI_ELEMENT_ANIMATION::Play(int millisecdelay)']]],
   ['playablepageextensions_61',['playablepageextensions',['../class_d_i_o_w_e_b_s_e_r_v_e_r.html#acbb4ab92b90e220caf5d3acc687bd63e',1,'DIOWEBSERVER']]],
   ['plugins_5fadd_62',['Plugins_Add',['../group___d_a_t_a_i_o.html#gae219ee87089994dc58beeb052d764361',1,'DIOWEBSERVER_PLUGINSMANAGER']]],

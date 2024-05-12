@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['value_0',['Value',['../struct_n_o_t_i_f_i_c_a_t_i_o_n___u_s_e_r___i_n_p_u_t___t_i_c_k_e_t.html#a5ea7a471d9f68fa7f86ef908f668d352',1,'NOTIFICATION_USER_INPUT_TICKET']]],
-  ['value_1',['value',['../class_x_b_e_r.html#aed959ccab7772771cc3ddf06789dd5f8',1,'XBER::value'],['../class_x_d_i_c_t_i_o_n_a_r_y_e_n_t_r_y.html#a888f91c2e71748954bd623a2c9cd8f2e',1,'XDICTIONARYENTRY::value'],['../struct_x_f_i_l_e_i_n_i_k_e_y_m_a_p.html#a14fab35008da7704665159d63d2fdfe0',1,'XFILEINIKEYMAP::value']]],
+  ['value_0',['value',['../class_x_b_e_r.html#aed959ccab7772771cc3ddf06789dd5f8',1,'XBER::value'],['../class_x_d_i_c_t_i_o_n_a_r_y_e_n_t_r_y.html#a888f91c2e71748954bd623a2c9cd8f2e',1,'XDICTIONARYENTRY::value'],['../struct_x_f_i_l_e_i_n_i_k_e_y_m_a_p.html#a14fab35008da7704665159d63d2fdfe0',1,'XFILEINIKEYMAP::value']]],
+  ['value_1',['Value',['../struct_n_o_t_i_f_i_c_a_t_i_o_n___u_s_e_r___i_n_p_u_t___t_i_c_k_e_t.html#a5ea7a471d9f68fa7f86ef908f668d352',1,'NOTIFICATION_USER_INPUT_TICKET']]],
   ['value_5fdouble_2',['value_double',['../class_x_s_t_r_i_n_g.html#ad04d6d700f63f70d09c702224dcf443f',1,'XSTRING']]],
   ['value_5fdword_3',['value_dword',['../class_x_s_t_r_i_n_g.html#a415e04e9bb35375dc16ed9771394eca8',1,'XSTRING']]],
   ['value_5ffloat_4',['value_float',['../class_x_s_t_r_i_n_g.html#abac94044fbc82b2fda8262db3501fa45',1,'XSTRING']]],
