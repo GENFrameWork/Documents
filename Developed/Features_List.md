@@ -82,6 +82,9 @@ option(XFILE_FEATURE                                            "XFile"         
 option(XASN_FEATURE                                             "ANS.1"                                                   true )
   
 option(XLICENSE_FEATURE                                         "License"                                                 true )
+
+option(XSOPIPELINE_FEATURE                                      "System operative Pipeline"                               true )
+
   
 option(XTHREADCOLLECTED_FEATURE                                 "Thread Collected"                                        true )
 option(XUUID_FEATURE                                            "UUID functions"                                          true )    
@@ -232,6 +235,9 @@ option(DIO_NODE_FEATURE                                         "Nodes modules" 
 option(DIO_NODEMANAGER_FEATURE                                  "Node manager"                                            true )
 option(DIO_CAMERA_FEATURE                                       "Camera API"                                              true )
 option(DIO_LOCATION_FEATURE                                     "Location API"                                            true ) 
+
+option(DIO_OSPIPELINE_FEATURE                                   "Operative System Pipeline"                               true )
+option(DIO_NATIVEMSGBROWSEREXTENSION_FEATURE                    "Native Message Browser Extension"                        true )
 ``` 
   
   
