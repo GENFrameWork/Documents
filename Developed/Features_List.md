@@ -143,6 +143,8 @@ option(COMPRESS_ZIP_FEATURE                                     "Compres ZIP"   
 ``` 
 option(DIO_FEATURE                                              "Input/Output"                                            true )
   
+option(DIO_PUBLICINTERNETIP_FEATURE                             "Public Internet IP"                                      true )
+
 option(DIO_CHECKCONNECTIONS_FEATURE                             "Check Connections"                                       true )
 option(DIO_NETWORKTINEPROTOCOL_FEATURE                          "Network Time Protocol"                                   true )
 option(DIO_DYNDNS_FEATURE                                       "DynDNS"                                                  true )
