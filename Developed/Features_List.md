@@ -156,8 +156,6 @@ option(DIO_SCRAPERWEB_FEATURE                                   "Scraper Web"   
 option(DIO_ATCMD_FEATURE                                        "AT Commands"                                             true )
 option(DIO_SMTP_FEATURE                                         "SMTP (email)"                                            true )    
   
-option(DIOPING_NATIVE_FEATURE                                   "Ping Native"                                             true )  
-  
 option(DIO_SNMP_FEATURE                                         "SNMP (Simple Network Management Protocol)"               true )
 option(DIO_NOTIFICATIONS_MANAGER_FEATURE                        "Notifications Manager"                                   true )
   
@@ -205,7 +203,8 @@ option(DIO_STREAMSPI_TFTDISPLAY_ST7789_FEATURE                  "Stream SPI TFT 
 option(DIO_STREAMSPI_TOUCHSCREEN_STMPE610_FEATURE               "Stream SPI Touch Screen STMPE610"                        true )
   
 option(DIO_DISPLAYDEVICE_FEATURE                                "Stream Display Device"                                   true )
-  
+
+option(DIOPING_NATIVE_FEATURE                                   "Ping Native"                                             true )    
 option(DIO_PING_FEATURE                                         "Ping"                                                    true )    
   
 option(DIO_PCAP_FEATURE                                         "PCap Library"                                            true )
