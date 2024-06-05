@@ -12,6 +12,7 @@ option(DEBUG_FEATURE                                            "Debug mode"    
 option(GOOGLETEST_FEATURE                                       "Google Test functionality"                               true )   
 option(GOOGLETEST_EXECFORDISCOVER_FEATURE                       "Activate Google Test Execution for discovery"            true )
   
+option(ANONYMOUS_MODE_FEATURE                                   "Activate Anonymous mode"                                 true )
 ``` 
   
   
