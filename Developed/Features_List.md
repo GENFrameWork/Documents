@@ -254,7 +254,7 @@ option(IDENTIFICATION_FEATURE                                   "Identification"
   
 ``` 
 option(USERINTERFACE_FEATURE                                    "User Interace"                                           true )
-option(USERINTERFACE_DEBUG_FEATURE                              "Debug User Interace"                                  
+option(USERINTERFACE_DEBUG_FEATURE                              "Debug User Interace"                                     true )                          
 ``` 
   
   
