@@ -300,6 +300,7 @@ option(GRP_VIDEO_FILE_AVI_FEATURE                               "Graphics Video 
 option(GRP_2D_FEATURE                                           "Graphics 2D"                                             ON )
 option(GRP_3D_FEATURE                                           "Graphics 2D"                                             ON )
 option(GRP_OPENGL_FEATURE                                       "Graphics Open GL"                                        ON )
+option(GRP_DESKTOPMANAGER_FEATURE                               "Graphics Desktop Manager"                                ON )
 ``` 
   
   
@@ -334,7 +335,6 @@ option(DB_SQLITE_FEATURE                                        "DB SQLite"     
 ## Windows  
   
 ``` 
-option(WINDOWS_XDESKTOPMANAGER_FEATURE                          "Windows Desktop Manager"                                 ON )
 option(WINDOWS_XVIRTUALDESKTOPMANAGER_FEATURE                   "Windows Virtual Desktop Manager"                         ON )
 option(WINDOWS_STACKWALKER_FEATURE                              "Windows Stack Walcker Manager"                           ON )
   
