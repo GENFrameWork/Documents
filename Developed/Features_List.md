@@ -30,7 +30,8 @@ option(APPMODE_LIBRARY_DINAMIC_FEATURE                          "Application Lib
   
 ``` 
 option(APP_FEATURE                                              "Application modules"                                     ON )  
-option(APP_CHECKRESOURCESHARDWARE_FEATURE                       "Application Check Resources Hardwar"                     ON )  
+option(APP_EXTENDED_FEATURE                                     "Application Extended"                                    ON )  
+option(APP_CHECKRESOURCESHARDWARE_FEATURE                       "Application Check Resources Hardware"                    ON )  
 option(APP_CONSOLE_FEATURE                                      "Application Console"                                     ON )  
 option(APP_GRAPHICS_FEATURE                                     "Application Graphics"                                    ON )  
 option(APP_INTERNETSERVICES_FEATURE                             "Application Internet Services"                           ON )  
@@ -39,6 +40,7 @@ option(APP_WEBSERVER_FEATURE                                    "Application Web
 option(APP_UPDATE_FEATURE                                       "Application Update"                                      ON )  
 option(APP_ALERTS_FEATURE                                       "Application Alerts"                                      ON )  
   
+option(APP_CFG_FEATURE                                          "Application CFG"                                         ON )  
 option(APP_CFG_REMOTEFILE_FEATURE                               "Application CFG Remote File"                             ON )  
 option(APP_CFG_GENERAL_FEATURE                                  "Application CFG General"                                 ON )  
 option(APP_CFG_LOG_FEATURE                                      "Application CFG LOG"                                     ON )  
