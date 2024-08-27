@@ -31,6 +31,8 @@ option(APPMODE_LIBRARY_DINAMIC_FEATURE                          "Application Lib
 ``` 
 option(APP_FEATURE                                              "Application modules"                                     ON )  
 option(APP_EXTENDED_FEATURE                                     "Application Extended"                                    ON )  
+option(APP_EXTENDED_APPLICATIONHEADER_FEATURE                   "Application Extended Application Header"                 ON )  
+option(APP_EXTENDED_APPLICATIONSTATUS_FEATURE                   "Application Extended Application Status"                 ON )  
 option(APP_CHECKRESOURCESHARDWARE_FEATURE                       "Application Check Resources Hardware"                    ON )  
 option(APP_CONSOLE_FEATURE                                      "Application Console"                                     ON )  
 option(APP_GRAPHICS_FEATURE                                     "Application Graphics"                                    ON )  
@@ -155,6 +157,7 @@ option(DIO_DNSRESOLVER_FEATURE                                  "DNS Resolver"  
 option(DIO_DNSPROTOCOL_MITM_SERVER                              "DNS Protocol Man in the Middle Server"                   ON )
 option(DIO_WEBCLIENT_FEATURE                                    "Web Client"                                              ON )
 option(DIO_WEBSERVER_FEATURE                                    "Web Server"                                              ON )
+option(DIO_WEBSERVER_RESOLVEENDPOINT_FEATURE                    "Web Server Resolved End Point"                           ON )
 option(DIO_SCRAPERWEB_FEATURE                                   "Scraper Web"                                             ON )
 option(DIO_ATCMD_FEATURE                                        "AT Commands"                                             ON )
 option(DIO_SMTP_FEATURE                                         "SMTP (email)"                                            ON )    
