@@ -33,6 +33,7 @@ option(APP_FEATURE                                              "Application mod
 option(APP_EXTENDED_FEATURE                                     "Application Extended"                                    ON )  
 option(APP_EXTENDED_APPLICATIONHEADER_FEATURE                   "Application Extended Application Header"                 ON )  
 option(APP_EXTENDED_APPLICATIONSTATUS_FEATURE                   "Application Extended Application Status"                 ON )  
+option(APP_EXTENDED_INTERNETSTATUS_FEATURE                      "Application Extended Internet Status"                    ON )  
 option(APP_CHECKRESOURCESHARDWARE_FEATURE                       "Application Check Resources Hardware"                    ON )  
 option(APP_CONSOLE_FEATURE                                      "Application Console"                                     ON )  
 option(APP_GRAPHICS_FEATURE                                     "Application Graphics"                                    ON )  
