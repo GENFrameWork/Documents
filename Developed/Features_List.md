@@ -224,6 +224,7 @@ option(DIO_MODBUSCLIENT_FEATURE                                 "ModBus Client (
 option(DIO_ALERTS_FEATURE                                       "Alerts"                                                  ON )
   
 option(DIO_PROTOCOL_FEATURE                                     "Protocol"                                                ON )
+option(DIO_COREPROTOCOL_FEATURE                                 "Core Protocol"                                           ON )
 option(DIO_PROTOCOL_CLI_FEATURE                                 "Protocol in CLI"                                         ON )
 option(DIO_PROTOCOL_CLI_BUS_FEATURE                             "Protocol in CLI Bus"                                     ON )
     
