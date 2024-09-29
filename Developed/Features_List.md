@@ -10,9 +10,9 @@
 option(DEBUG_FEATURE                                            "Debug mode"                                              ON ) 
   
 option(GOOGLETEST_FEATURE                                       "Google Test functionality"                               ON )   
-option(GOOGLETEST_EXECFORDISCOVER_FEATURE                       "Activate Google Test Execution for discovery"            ON )
+option(GOOGLETEST_EXECFORDISCOVER_FEATURE                       "Google Test Execution for discovery"                     ON )
   
-option(ANONYMOUS_MODE_FEATURE                                   "Activate Anonymous mode"                                 ON )
+option(ANONYMOUS_MODE_FEATURE                                   "Anonymous mode"                                          ON )
 ``` 
   
   
@@ -20,8 +20,8 @@ option(ANONYMOUS_MODE_FEATURE                                   "Activate Anonym
   
 ``` 
 option(APPMODE_SERVICE_FEATURE                                  "Application service mode"                                ON ) 
-option(APPMODE_API_LIB_FEATURE                                  "Activates the export/import of classes in a library"     ON )        
-option(APPMODE_API_LIB_EXPORT_FEATURE                           "Activates the export of classes in a library"            ON )      
+option(APPMODE_API_LIB_FEATURE                                  "Export/import of classes in a library"                   ON )        
+option(APPMODE_API_LIB_EXPORT_FEATURE                           "Export of classes in a library"                          ON )      
 option(APPMODE_LIBRARY_DINAMIC_FEATURE                          "Application Library Dinamic mode"                        ON )  
 ``` 
   
@@ -37,6 +37,7 @@ option(APP_EXTENDED_INTERNETSTATUS_FEATURE                      "Application Ext
 option(APP_CHECKRESOURCESHARDWARE_FEATURE                       "Application Check Resources Hardware"                    ON )  
 option(APP_CONSOLE_FEATURE                                      "Application Console"                                     ON )  
 option(APP_GRAPHICS_FEATURE                                     "Application Graphics"                                    ON )  
+option(APP_GRAPHICS_NOTCONSOLE_FEATURE                          "Application Graphics (Deactive Console)"                 ON ) 
 option(APP_INTERNETSERVICES_FEATURE                             "Application Internet Services"                           ON )  
 option(APP_LOG_FEATURE                                          "Application Log"                                         ON )  
 option(APP_WEBSERVER_FEATURE                                    "Application Web Server"                                  ON )  
