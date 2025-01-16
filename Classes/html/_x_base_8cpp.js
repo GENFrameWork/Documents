@@ -18,6 +18,7 @@ var _x_base_8cpp =
     [ "RoundFloat", "_x_base_8cpp.html#a8c6720cc79460977a1880f7a7ef50b23", null ],
     [ "RoundOff", "_x_base_8cpp.html#a9a58704393614ca320f7f8ba0c695ee2", null ],
     [ "RoundOff", "_x_base_8cpp.html#a146e7682be9f853069a01842a0d2583d", null ],
+    [ "SizeBufferASCII", "_x_base_8cpp.html#a1ab2324540beda36467d76239446d92e", null ],
     [ "SwapDWORD", "_x_base_8cpp.html#a4d1da17fcb47e6bff9f2dbc0e680d593", null ],
     [ "SwapQWORD", "_x_base_8cpp.html#a51d327cd1dc2f2ae08c70596880dd85f", null ],
     [ "SwapWORD", "_x_base_8cpp.html#a4194dc6953f7f2e754c0ee59c30f500d", null ],

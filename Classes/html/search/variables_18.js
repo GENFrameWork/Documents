@@ -30,7 +30,7 @@ var searchData=
   ['xtimerconnection_27',['xtimerconnection',['../class_d_i_o_s_t_r_e_a_m.html#a3c8ddca5acceeff84186f7c530f191ca',1,'DIOSTREAM::xtimerconnection'],['../class_d_i_o_w_e_b_s_e_r_v_e_r___c_o_n_n_e_c_t_i_o_n.html#aaeae4873a19cbd6c9a551ab263e9b82d',1,'DIOWEBSERVER_CONNECTION::xtimerconnection']]],
   ['xtimercontrol_28',['xtimercontrol',['../class_d_i_o_w_e_b_s_e_r_v_e_r.html#ad832079d51b36b8dfdb533cc5eb15d9f',1,'DIOWEBSERVER']]],
   ['xtimerdisconnection_29',['xtimerdisconnection',['../class_d_i_o_w_e_b_s_e_r_v_e_r___c_o_n_n_e_c_t_i_o_n.html#ae6e9c79ba99c55b71ae7bd811afdf953',1,'DIOWEBSERVER_CONNECTION']]],
-  ['xtimerglobal_30',['xtimerglobal',['../class_a_p_p_b_a_s_e.html#afb60571ee7c8c7765abfb60f5a103308',1,'APPBASE']]],
+  ['xtimerglobal_30',['xtimerglobal',['../class_a_p_p_f_l_o_w_b_a_s_e.html#a83b285b52fe23553330288570c452bfe',1,'APPFLOWBASE']]],
   ['xtimernotactivity_31',['xtimernotactivity',['../class_d_i_o_s_t_r_e_a_m.html#adc47fa3450adcc4b83c138ed9cfaa6cf',1,'DIOSTREAM']]],
   ['xtimerout_32',['xtimerout',['../class_d_i_o_d_e_v_i_c_e_i2_c.html#ad206923256e4098b522390fdf0ff1429',1,'DIODEVICEI2C::xtimerout'],['../class_d_i_o_d_e_v_i_c_e_s_p_i.html#afdbe2e56f7877f8898f6239f3bd21a72',1,'DIODEVICESPI::xtimerout'],['../class_d_i_o_s_t_r_e_a_m.html#a629e3e985226e5096c3c27ff2a9243a5',1,'DIOSTREAM::xtimerout'],['../class_d_i_o_s_t_r_e_a_m_e_n_u_m_d_e_v_i_c_e_s.html#a3f7d022ce2ebc1b952238437d3e0e282',1,'DIOSTREAMENUMDEVICES::xtimerout']]],
   ['xtimerselected_33',['xtimerselected',['../class_u_i___p_r_o_p_e_r_t_y___s_e_l_e_c_t_a_b_l_e.html#a6ae954e435d8ac1f7667b29ea7e73d4f',1,'UI_PROPERTY_SELECTABLE']]]

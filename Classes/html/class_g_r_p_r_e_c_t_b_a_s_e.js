@@ -7,6 +7,8 @@ var class_g_r_p_r_e_c_t_b_a_s_e =
     [ "Clip", "class_g_r_p_r_e_c_t_b_a_s_e.html#a5508e0fe7ee1fc16e83702b22fe222aa", null ],
     [ "CopyFrom", "class_g_r_p_r_e_c_t_b_a_s_e.html#acd2125688450260f4fa711e324054d1c", null ],
     [ "CopyTo", "class_g_r_p_r_e_c_t_b_a_s_e.html#a474972b37a1757b41534ca62d7094d3c", null ],
+    [ "GetHeight", "class_g_r_p_r_e_c_t_b_a_s_e.html#a1f6c56dcf1f22bdb2d36fec7ab1cf22d", null ],
+    [ "GetWidth", "class_g_r_p_r_e_c_t_b_a_s_e.html#a7e74cfe4d1426672811c69954f712011", null ],
     [ "IsEmpty", "class_g_r_p_r_e_c_t_b_a_s_e.html#a36e9d0093ad2a40692fee5795fc0b19d", null ],
     [ "IsEqual", "class_g_r_p_r_e_c_t_b_a_s_e.html#afdce25df2d2ce2535389d61a1836dc40", null ],
     [ "IsHit", "class_g_r_p_r_e_c_t_b_a_s_e.html#abdba1e5f018b7cd09f77b3a3ea61d073", null ],

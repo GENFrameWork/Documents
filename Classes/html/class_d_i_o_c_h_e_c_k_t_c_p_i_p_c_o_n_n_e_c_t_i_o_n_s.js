@@ -18,8 +18,10 @@ var class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s =
     [ "End", "group___d_a_t_a_i_o.html#ga7281a5e79af57cc8fd164a104f542e0e", null ],
     [ "GetTimeConnectionChecks", "group___d_a_t_a_i_o.html#ga2a18ea063e5c1afc8d0075916ed2975d", null ],
     [ "Ini", "group___d_a_t_a_i_o.html#ga5b1d3b428f700c14c1905ae95e89da63", null ],
+    [ "IsActivedExit", "group___d_a_t_a_i_o.html#gac6ce0cba9f7f71dc39f6138d3141efc8", null ],
     [ "IsCheckTimeConnections", "group___d_a_t_a_i_o.html#gae50e034ede1f1eede08aead8577ec78a", null ],
     [ "Run", "group___d_a_t_a_i_o.html#ga1e83f4fbc5766ff2585db15f0e82c991", null ],
+    [ "SetActivedExit", "group___d_a_t_a_i_o.html#ga6b18546a27c0b0ff23992f1b82e98fb8", null ],
     [ "SetIsCheckTimeConnections", "group___d_a_t_a_i_o.html#ga939c6dde6a8689128fdb18cf7cfe2b08", null ],
     [ "Setup", "group___d_a_t_a_i_o.html#gae61ad4c2cd6a1fced5e217310f3bf8a6", null ]
 ];

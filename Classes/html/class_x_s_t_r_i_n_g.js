@@ -40,7 +40,7 @@ var class_x_s_t_r_i_n_g =
     [ "ConvertBase64ToBinary", "group___x_u_t_i_l_s.html#ga1c68558db6e3e6cc5ffa5eabf54b7f2f", null ],
     [ "ConvertBinaryToBase64", "group___x_u_t_i_l_s.html#ga61dbc7f33192259807766c84302d00ba", null ],
     [ "ConvertFromASCII", "group___x_u_t_i_l_s.html#gaeaf18ddd3d7a983c6ab9dfcd547475a4", null ],
-    [ "ConvertFromBoolean", "group___x_u_t_i_l_s.html#ga5134b389c1c7c4dc793125a6d1a47f5f", null ],
+    [ "ConvertFromBoolean", "group___x_u_t_i_l_s.html#ga03f197c0b9fb3d549595fbfd6e27b5a8", null ],
     [ "ConvertFromDouble", "group___x_u_t_i_l_s.html#gad195cad27ca24f4eb8a34e2d5ffb13ce", null ],
     [ "ConvertFromDoubleToSpanishText", "group___x_u_t_i_l_s.html#gae8410babda3c36061e037e0e8104da2b", null ],
     [ "ConvertFromDWord", "group___x_u_t_i_l_s.html#ga0ab427e952d144fd8f9ec5f65e880075", null ],

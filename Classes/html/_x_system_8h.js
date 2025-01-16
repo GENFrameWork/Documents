@@ -1,5 +1,6 @@
 var _x_system_8h =
 [
+    [ "XSYSTEM_CPUUSAGE_ERROR", "_x_system_8h.html#a15b578901ed45e26a8bbe82228820552", null ],
     [ "XSYSTEM_CHANGESTATUSTYPE", "_x_system_8h.html#accf87c025db021b0dca42722035ad732", [
       [ "XSYSTEM_CHANGESTATUSTYPE_NONE", "_x_system_8h.html#accf87c025db021b0dca42722035ad732ad967cca5d82b238566c38715b040bdce", null ],
       [ "XSYSTEM_CHANGESTATUSTYPE_REBOOT", "_x_system_8h.html#accf87c025db021b0dca42722035ad732a361d7743b4ec4f839be9f119862575bc", null ],

@@ -25,9 +25,9 @@ var group___p_l_a_t_f_o_r_m___s_t_m32 =
       [ "Send", "group___d_a_t_a_i_o.html#ga3e52e90ab2773d38f42a77f9b08a5c68", null ],
       [ "SendData", "group___d_a_t_a_i_o.html#ga4be24a58bffa976afacf2abb201dd597", null ],
       [ "SendData", "group___d_a_t_a_i_o.html#gab343bd8095c0a02979266129f72daa12", null ],
-      [ "SetBrightnessLevel", "group___d_a_t_a_i_o.html#ga0e521697a0838a2bca28a392d33c7b9d", null ],
+      [ "SetBrightnessLevel", "group___d_a_t_a_i_o.html#ga3a25a4addfb90f307b7c627b47b35b64", null ],
       [ "SetDataGPIOEntryID", "group___d_a_t_a_i_o.html#ga414925362dd652f86b7c5285154f7ab6", null ],
-      [ "brightnessLevel", "class_d_i_o_l_e_d_n_e_o_p_i_x_e_l_w_s2812_b.html#aa2579f9f95d3b25730eb3dcabb28192a", null ],
+      [ "brightnesslevel", "class_d_i_o_l_e_d_n_e_o_p_i_x_e_l_w_s2812_b.html#accb142f59c2ee1d2d1450445e0d2ae1b", null ],
       [ "databuffer", "class_d_i_o_l_e_d_n_e_o_p_i_x_e_l_w_s2812_b.html#afb1f136e306e5acea8bce2c37e1beef5", null ],
       [ "GPIOentryID", "class_d_i_o_l_e_d_n_e_o_p_i_x_e_l_w_s2812_b.html#af68df6de8298245c168b9dd9b90b9c46", null ],
       [ "nled", "class_d_i_o_l_e_d_n_e_o_p_i_x_e_l_w_s2812_b.html#a4f9e0c364938db6c2b17f813246f3e8d", null ]
@@ -40,7 +40,7 @@ var group___p_l_a_t_f_o_r_m___s_t_m32 =
       [ "MAINPROCSTM32", "group___p_l_a_t_f_o_r_m___s_t_m32.html#ga45fe43d227050854f5b175d924555a55", null ],
       [ "~MAINPROCSTM32", "group___p_l_a_t_f_o_r_m___s_t_m32.html#ga05ebcae6b036358906fe196cbb2e4484", null ],
       [ "End", "group___p_l_a_t_f_o_r_m___s_t_m32.html#ga1652b8f154cb236f58993b56c493cf75", null ],
-      [ "Ini", "group___p_l_a_t_f_o_r_m___s_t_m32.html#ga19f7d6e90cb564e9f64178ac4d1a0f4c", null ],
+      [ "Ini", "group___p_l_a_t_f_o_r_m___s_t_m32.html#ga7fb78297a711c95ff00f6c81ebd2793d", null ],
       [ "Update", "group___p_l_a_t_f_o_r_m___s_t_m32.html#ga7a0e81794893666e080f71ae21dc0e73", null ]
     ] ],
     [ "XSTM32_FATSD_SPI", "class_x_s_t_m32___f_a_t_s_d___s_p_i.html", [
@@ -253,7 +253,7 @@ var group___p_l_a_t_f_o_r_m___s_t_m32 =
     [ "DIOSTM32GPIO::Ini", "group___p_l_a_t_f_o_r_m___s_t_m32.html#gab078c492b91096e62c5595a488941a5b", null ],
     [ "XSTM32EEPROMMEMORYMANAGER::Ini", "group___p_l_a_t_f_o_r_m___s_t_m32.html#gacb115ad7f1d9503c5d46e1beab7cc351", null ],
     [ "XSTM32RAND::Ini", "group___p_l_a_t_f_o_r_m___s_t_m32.html#ga4e67602cf89a75f3b934a5223085fd95", null ],
-    [ "MAINPROCSTM32::Ini", "group___p_l_a_t_f_o_r_m___s_t_m32.html#ga19f7d6e90cb564e9f64178ac4d1a0f4c", null ],
+    [ "MAINPROCSTM32::Ini", "group___p_l_a_t_f_o_r_m___s_t_m32.html#ga7fb78297a711c95ff00f6c81ebd2793d", null ],
     [ "XSTM32THREAD::Ini", "group___p_l_a_t_f_o_r_m___s_t_m32.html#gabaffa4b27635c473802d0748591e3475", null ],
     [ "XSTM32_FATSD_SPI::Ini", "group___p_l_a_t_f_o_r_m___s_t_m32.html#ga757f5f80503ed3efa19b5322a0dfc8d7", null ],
     [ "XSTM32DATETIME::IsDayLigthSavingTime", "group___p_l_a_t_f_o_r_m___s_t_m32.html#ga9803b220ab416975e11b3e8b9072a03b", null ],

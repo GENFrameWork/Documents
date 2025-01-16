@@ -2,6 +2,7 @@ var class_x_p_r_o_c_e_s_s =
 [
     [ "XPROCESS", "group___x_u_t_i_l_s.html#gace5a698ad9f799dd3751490317f6f83c", null ],
     [ "~XPROCESS", "group___x_u_t_i_l_s.html#gafe2c24f5cdbc3ab923f0213390fa6704", null ],
+    [ "Compare", "group___x_u_t_i_l_s.html#ga50b29a7110682856e671f0b8494b2425", null ],
     [ "CopyFrom", "group___x_u_t_i_l_s.html#ga5b36c465bfebd29141201515e303c694", null ],
     [ "CopyTo", "group___x_u_t_i_l_s.html#gaa4439f49a3312c0468ba122be06a15ec", null ],
     [ "GetID", "group___x_u_t_i_l_s.html#ga5764fd0cbebc0d68f3c588dc0bbbf186", null ],

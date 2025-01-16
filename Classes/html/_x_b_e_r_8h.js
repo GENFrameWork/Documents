@@ -1,5 +1,6 @@
 var _x_b_e_r_8h =
 [
+    [ "XBER_MAXLEVELS", "_x_b_e_r_8h.html#a04e69aa2c7045479132235937f4ef543", null ],
     [ "XBER_TAG_CLASS", "_x_b_e_r_8h.html#ac25ac6ae93c051b3dd1a4d151f6c2880", null ],
     [ "XBER_TAG_ISCONSTRUCTED", "_x_b_e_r_8h.html#ab60ad194bf92001efd689f76fba08c15", null ],
     [ "XBER_TAG_MASKISCONSTRUCTED", "_x_b_e_r_8h.html#ada462c7d6b1c1b71aa408b77491933f4", null ],
@@ -47,6 +48,7 @@ var _x_b_e_r_8h =
       [ "XBER_TAGCLASS_UNIVERSAL", "_x_b_e_r_8h.html#a6c5e23297dd856226a7c5728fc37f33aa08b526645d1f13cd4d8a3d098876646b", null ],
       [ "XBER_TAGCLASS_APPLICATION", "_x_b_e_r_8h.html#a6c5e23297dd856226a7c5728fc37f33aaf8c5d98fde59f11173cfad3379db3787", null ],
       [ "XBER_TAGCLASS_CONTEXT_SPECIFIC", "_x_b_e_r_8h.html#a6c5e23297dd856226a7c5728fc37f33aa972e61dcf9b36fd4020b4e413751c9c8", null ],
-      [ "XBER_TAGCLASS_PRIVATE", "_x_b_e_r_8h.html#a6c5e23297dd856226a7c5728fc37f33aa3de1896e7d05543b7985b35bd8cc8b66", null ]
+      [ "XBER_TAGCLASS_PRIVATE", "_x_b_e_r_8h.html#a6c5e23297dd856226a7c5728fc37f33aa3de1896e7d05543b7985b35bd8cc8b66", null ],
+      [ "XBER_TAGCLASS_UNKNOWN", "_x_b_e_r_8h.html#a6c5e23297dd856226a7c5728fc37f33aac08cbbbd7e3f5eefb3d33a28565a0f51", null ]
     ] ]
 ];

@@ -1,7 +1,5 @@
 var _cipher_r_s_a_8h =
 [
-    [ "CIPHERKEYRSAPUBLIC", "class_c_i_p_h_e_r_k_e_y_r_s_a_p_u_b_l_i_c.html", "class_c_i_p_h_e_r_k_e_y_r_s_a_p_u_b_l_i_c" ],
-    [ "CIPHERKEYRSAPRIVATE", "class_c_i_p_h_e_r_k_e_y_r_s_a_p_r_i_v_a_t_e.html", "class_c_i_p_h_e_r_k_e_y_r_s_a_p_r_i_v_a_t_e" ],
     [ "CIPHERRSA_CONTEXT", "class_c_i_p_h_e_r_r_s_a___c_o_n_t_e_x_t.html", "class_c_i_p_h_e_r_r_s_a___c_o_n_t_e_x_t" ],
     [ "CIPHERRSA_CIPHERDATA", "_cipher_r_s_a_8h.html#a51a97c85a6c1b1b866f931e14ab64bad", null ],
     [ "CIPHERRSA_SINGDATA", "_cipher_r_s_a_8h.html#ad1054a4c2ec28a5571ef69a96804f5a1", null ],

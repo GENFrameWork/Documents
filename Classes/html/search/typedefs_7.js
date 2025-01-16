@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['main_5ffunction_5ftype_0',['MAIN_FUNCTION_TYPE',['../_main_proc_8h.html#ae913413176c8b7b63a653c6f06013296',1,'MainProc.h']]]
+  ['lzw_5fstring_0',['LZW_STRING',['../_compress_l_z_w_8h.html#a72d69ea418f7666d747baecdc5dee1c9',1,'CompressLZW.h']]]
 ];

@@ -6,7 +6,7 @@ var class_c_i_p_h_e_r_r_s_a =
     [ "Cipher", "group___c_i_p_h_e_r.html#ga0fb25c671d924ab26dffce6f0639f5b4", null ],
     [ "Cipher", "class_c_i_p_h_e_r_r_s_a.html#a0fc06658fae446ff6610e286e158eb77", null ],
     [ "Cipher", "group___c_i_p_h_e_r.html#gaa81e1cad545f3af1a7e059982a9cd8e1", null ],
-    [ "GenerateKeys", "group___c_i_p_h_e_r.html#ga7d63b3c4313085260ab0c7364a95d4f1", null ],
+    [ "GenerateKeys", "group___c_i_p_h_e_r.html#ga4c5b80c6e42e6d5ee438ca7a3fb0f99f", null ],
     [ "GetXRand", "group___c_i_p_h_e_r.html#ga9fa65e92093e97e773792103aaeafa70", null ],
     [ "SetKey", "group___c_i_p_h_e_r.html#ga2cf3e3a3b25ac2c52470a5327ef91c78", null ],
     [ "Sign", "group___c_i_p_h_e_r.html#ga0d45960d75743f31ed5339a5ac302900", null ],

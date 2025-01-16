@@ -19,6 +19,7 @@ var _x_trace_8h =
     [ "XTRACE_COLOR_RED", "_x_trace_8h.html#a435ffc0233bcfc5e0e15d9965a071c52", null ],
     [ "XTRACE_COLOR_WARNING", "_x_trace_8h.html#a5fccd55c5f619429b1b4e8fcf2b89a17", null ],
     [ "XTRACE_CRC16", "_x_trace_8h.html#aef5f1a33487ea5527c6f1eb943cb1619", null ],
+    [ "XTRACE_DEACTIVATEALLTARGETS", "_x_trace_8h.html#ad6dbfe5f8c180666b559ee3590c9306c", null ],
     [ "XTRACE_DEFAULT_SPECIALAIM", "_x_trace_8h.html#a98086ef344f2d2806d90150951f167ad", null ],
     [ "XTRACE_IDMSGCLEARSCREEN", "_x_trace_8h.html#a69b7b566e71fee18bcf37d46f3bc5d23", null ],
     [ "XTRACE_IDMSGSTATUS", "_x_trace_8h.html#a7cedd581b17d606f56925fd9a6335db8", null ],

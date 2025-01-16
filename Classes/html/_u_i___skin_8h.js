@@ -1,7 +1,7 @@
 var _u_i___skin_8h =
 [
     [ "UI_SKIN_TEXTBOX_PART", "class_u_i___s_k_i_n___t_e_x_t_b_o_x___p_a_r_t.html", "class_u_i___s_k_i_n___t_e_x_t_b_o_x___p_a_r_t" ],
-    [ "UI_SKIN_TEXTBOX_IMAGE", "class_u_i___s_k_i_n___t_e_x_t_b_o_x___i_m_a_g_e.html", "class_u_i___s_k_i_n___t_e_x_t_b_o_x___i_m_a_g_e" ],
+    [ "UI_SKIN_NAME_DEFAULT", "_u_i___skin_8h.html#aeb913d265b1075538f906e9679c2b38f", null ],
     [ "UI_SKIN_NAME_FLAT", "_u_i___skin_8h.html#abc33ee50bbfb3f86e05391b67e898b44", null ],
     [ "UI_SKIN_NAME_UNKNOWN", "_u_i___skin_8h.html#af399621607b872e513e6704228ad33b8", null ],
     [ "UI_SKIN_DRAWMODE", "_u_i___skin_8h.html#aec4c6b56082895bd5199a50cea2a225f", [

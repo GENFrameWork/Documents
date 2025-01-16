@@ -9,6 +9,5 @@ var class_g_r_p_l_i_n_u_x_s_c_r_e_e_n_f_r_a_m_e_b_u_f_f_e_r =
     [ "Resize", "group___p_l_a_t_f_o_r_m___l_i_n_u_x.html#gaa8a9d6fbec61230c33945db4b8804fdb", null ],
     [ "Show", "group___p_l_a_t_f_o_r_m___l_i_n_u_x.html#ga7d70df099125264e0a3cd86fb84fd7d3", null ],
     [ "ShowCursor", "group___p_l_a_t_f_o_r_m___l_i_n_u_x.html#gab047b2c3ffbb998e55c0c156418a9410", null ],
-    [ "Update", "group___p_l_a_t_f_o_r_m___l_i_n_u_x.html#ga81522ad5e4c413f706b2c1b22f589688", null ],
     [ "Update", "group___p_l_a_t_f_o_r_m___l_i_n_u_x.html#gaea072475ec78ac0a93ee2c8d93be456e", null ]
 ];

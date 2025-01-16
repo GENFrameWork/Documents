@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['plzw_5fstring_0',['PLZW_STRING',['../_compress_l_z_w_8h.html#af74cd347579f84547858503d4262bc8f',1,'CompressLZW.h']]],
-  ['pointer_1',['POINTER',['../_x_base_8h.html#ae51a81000f343b8ec43bca1f6a723d7b',1,'XBase.h']]],
-  ['progress_5ffunction_2',['PROGRESS_FUNCTION',['../_x_base_8h.html#a2bfb71242aa8e6d8889f4dbed1ca400c',1,'XBase.h']]]
+  ['notification_5fuser_5finput_5fticket_0',['NOTIFICATION_USER_INPUT_TICKET',['../_d_i_o_w_i_n_d_o_w_s_notifications_manager_8h.html#ad2d34685fa54c28b148ee8bfbd81361a',1,'DIOWINDOWSNotificationsManager.h']]]
 ];

@@ -7,7 +7,7 @@ var class_m_a_i_n_p_r_o_c_a_n_d_r_o_i_d =
     [ "GetAndroidApplication", "group___p_l_a_t_f_o_r_m___a_n_d_r_o_i_d.html#ga2ea7472f8de2c70a83a50cfebcfba0f8", null ],
     [ "GetDPI", "group___p_l_a_t_f_o_r_m___a_n_d_r_o_i_d.html#gaa7e4381a67463c26bdb493e21f88a993", null ],
     [ "GetPackageResourcePath", "group___p_l_a_t_f_o_r_m___a_n_d_r_o_i_d.html#gaafbe931cf5e2278f27de0a4d61c5833c", null ],
-    [ "Ini", "group___p_l_a_t_f_o_r_m___a_n_d_r_o_i_d.html#ga4b56b26aa7b6972891c3928a752ac8e6", null ],
+    [ "Ini", "group___p_l_a_t_f_o_r_m___a_n_d_r_o_i_d.html#ga641c2e9bdbb8758108a5151e2a171a58", null ],
     [ "OnActivate", "group___p_l_a_t_f_o_r_m___a_n_d_r_o_i_d.html#ga195a404fc74de45858c662068b70f758", null ],
     [ "OnConfigurationChanged", "group___p_l_a_t_f_o_r_m___a_n_d_r_o_i_d.html#ga529913ec2e0198bef1ab93210067b5b1", null ],
     [ "OnCreateWindow", "group___p_l_a_t_f_o_r_m___a_n_d_r_o_i_d.html#gae4dd3fe37d2648962f491fc8ca604bfc", null ],

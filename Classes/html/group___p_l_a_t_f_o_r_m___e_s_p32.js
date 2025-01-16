@@ -18,7 +18,7 @@ var group___p_l_a_t_f_o_r_m___e_s_p32 =
       [ "MAINPROCESP32", "group___p_l_a_t_f_o_r_m___e_s_p32.html#gaf5b9e53e042a3b0ec90ae59d3127969d", null ],
       [ "~MAINPROCESP32", "group___p_l_a_t_f_o_r_m___e_s_p32.html#gaab2df037e1bc3f2192aa157ac5f7f566", null ],
       [ "End", "group___p_l_a_t_f_o_r_m___e_s_p32.html#ga0bb7e714f447b16cd8234965171a82e2", null ],
-      [ "Ini", "group___p_l_a_t_f_o_r_m___e_s_p32.html#gaf38ce0158158700947fe5f02dd7ba7c6", null ],
+      [ "Ini", "group___p_l_a_t_f_o_r_m___e_s_p32.html#ga74328b651693b3abe3118a80246050c7", null ],
       [ "Update", "group___p_l_a_t_f_o_r_m___e_s_p32.html#ga180a814ea1b38ca519fa4260cee39a98", null ]
     ] ],
     [ "XESP32DATETIME", "class_x_e_s_p32_d_a_t_e_t_i_m_e.html", [
@@ -151,7 +151,7 @@ var group___p_l_a_t_f_o_r_m___e_s_p32 =
     [ "DIOESP32GPIO::Ini", "group___p_l_a_t_f_o_r_m___e_s_p32.html#ga786bf0040f4ca3927ceaa89e118028b5", null ],
     [ "XESP32EEPROMMEMORYMANAGER::Ini", "group___p_l_a_t_f_o_r_m___e_s_p32.html#gafe3c8ca79f4264814df9c018f45d8d08", null ],
     [ "XESP32RAND::Ini", "group___p_l_a_t_f_o_r_m___e_s_p32.html#ga33584e36fbadecbe42fdfd23694dc918", null ],
-    [ "MAINPROCESP32::Ini", "group___p_l_a_t_f_o_r_m___e_s_p32.html#gaf38ce0158158700947fe5f02dd7ba7c6", null ],
+    [ "MAINPROCESP32::Ini", "group___p_l_a_t_f_o_r_m___e_s_p32.html#ga74328b651693b3abe3118a80246050c7", null ],
     [ "XESP32THREAD::Ini", "group___p_l_a_t_f_o_r_m___e_s_p32.html#ga8fb0e89f6c6f02d00e0784938e9b96db", null ],
     [ "XESP32DATETIME::IsDayLigthSavingTime", "group___p_l_a_t_f_o_r_m___e_s_p32.html#ga8f4a6e486f5e4b8110618ddf740b645e", null ],
     [ "XESP32MUTEX::Lock", "group___p_l_a_t_f_o_r_m___e_s_p32.html#ga1d18947602a5dda1a5e5c8207e2dafd2", null ],

@@ -11,11 +11,12 @@ var hierarchy =
     [ "ANDROIDNATIVEINPUT_HANDLER", "class_a_n_d_r_o_i_d_n_a_t_i_v_e_i_n_p_u_t___h_a_n_d_l_e_r.html", [
       [ "MAINPROCANDROID", "class_m_a_i_n_p_r_o_c_a_n_d_r_o_i_d.html", null ]
     ] ],
-    [ "APPALERTS", "class_a_p_p_a_l_e_r_t_s.html", null ],
-    [ "APPGRAPHICS", "class_a_p_p_g_r_a_p_h_i_c_s.html", null ],
-    [ "APPLOG", "class_a_p_p_l_o_g.html", null ],
-    [ "APPMAIN", "class_a_p_p_m_a_i_n.html", null ],
-    [ "APPUPDATE_CFG", "class_a_p_p_u_p_d_a_t_e___c_f_g.html", null ],
+    [ "APPFLOWALERTS", "class_a_p_p_f_l_o_w_a_l_e_r_t_s.html", null ],
+    [ "APPFLOWEXTENDED", "class_a_p_p_f_l_o_w_e_x_t_e_n_d_e_d.html", null ],
+    [ "APPFLOWGRAPHICS", "class_a_p_p_f_l_o_w_g_r_a_p_h_i_c_s.html", null ],
+    [ "APPFLOWLOG", "class_a_p_p_f_l_o_w_l_o_g.html", null ],
+    [ "APPFLOWMAIN", "class_a_p_p_f_l_o_w_m_a_i_n.html", null ],
+    [ "APPFLOWUPDATE_CFG", "class_a_p_p_f_l_o_w_u_p_d_a_t_e___c_f_g.html", null ],
     [ "bmi2_acc_self_test_status", "structbmi2__acc__self__test__status.html", null ],
     [ "bmi2_accel_config", "structbmi2__accel__config.html", null ],
     [ "bmi2_accel_foc_g_value", "structbmi2__accel__foc__g__value.html", null ],
@@ -82,13 +83,15 @@ var hierarchy =
     [ "CIPHERCURVE25519", "class_c_i_p_h_e_r_c_u_r_v_e25519.html", null ],
     [ "CIPHERDES_CONTEXT", "struct_c_i_p_h_e_r_d_e_s___c_o_n_t_e_x_t.html", null ],
     [ "CIPHERKEY", "class_c_i_p_h_e_r_k_e_y.html", [
-      [ "CIPHERKEYRSAPRIVATE", "class_c_i_p_h_e_r_k_e_y_r_s_a_p_r_i_v_a_t_e.html", null ],
-      [ "CIPHERKEYRSAPUBLIC", "class_c_i_p_h_e_r_k_e_y_r_s_a_p_u_b_l_i_c.html", null ],
+      [ "CIPHERKEYCERTIFICATE", "class_c_i_p_h_e_r_k_e_y_c_e_r_t_i_f_i_c_a_t_e.html", null ],
+      [ "CIPHERKEYPRIVATERSA", "class_c_i_p_h_e_r_k_e_y_p_r_i_v_a_t_e_r_s_a.html", null ],
+      [ "CIPHERKEYPUBLICRSA", "class_c_i_p_h_e_r_k_e_y_p_u_b_l_i_c_r_s_a.html", null ],
       [ "CIPHERKEYSYMMETRICAL", "class_c_i_p_h_e_r_k_e_y_s_y_m_m_e_t_r_i_c_a_l.html", null ]
     ] ],
     [ "CIPHERKEYSFILEGKF", "class_c_i_p_h_e_r_k_e_y_s_f_i_l_e_g_k_f.html", null ],
-    [ "CIPHERKEYSFILEPEM", "class_c_i_p_h_e_r_k_e_y_s_f_i_l_e_p_e_m.html", null ],
+    [ "CIPHERKEYSFILEPEM_ENTRYBUFFER", "struct_c_i_p_h_e_r_k_e_y_s_f_i_l_e_p_e_m___e_n_t_r_y_b_u_f_f_e_r.html", null ],
     [ "CIPHERKEYSFILEPEM_TYPECERTIFICATE", "class_c_i_p_h_e_r_k_e_y_s_f_i_l_e_p_e_m___t_y_p_e_c_e_r_t_i_f_i_c_a_t_e.html", null ],
+    [ "CIPHERROOTCERTIFICATES", "class_c_i_p_h_e_r_r_o_o_t_c_e_r_t_i_f_i_c_a_t_e_s.html", null ],
     [ "CIPHERRSA_CONTEXT", "class_c_i_p_h_e_r_r_s_a___c_o_n_t_e_x_t.html", null ],
     [ "COMMON_DEFAULTXTRACECFG", "class_c_o_m_m_o_n___d_e_f_a_u_l_t_x_t_r_a_c_e_c_f_g.html", null ],
     [ "COMPRESSBASE", "class_c_o_m_p_r_e_s_s_b_a_s_e.html", [
@@ -147,6 +150,17 @@ var hierarchy =
     [ "DIOCHECKTCPIPCONNECTION", "class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n.html", null ],
     [ "DIOCHECKTCPIPCONNECTION_CUT", "class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n___c_u_t.html", null ],
     [ "DIOCHECKTCPIPCONNECTIONS", "class_d_i_o_c_h_e_c_k_t_c_p_i_p_c_o_n_n_e_c_t_i_o_n_s.html", null ],
+    [ "DIOCLIPROTOCOL", "class_d_i_o_c_l_i_p_r_o_t_o_c_o_l.html", [
+      [ "DIOCLIPROTOCOLBUS", "class_d_i_o_c_l_i_p_r_o_t_o_c_o_l_b_u_s.html", null ]
+    ] ],
+    [ "DIOCLIPROTOCOLANSWER", "class_d_i_o_c_l_i_p_r_o_t_o_c_o_l_a_n_s_w_e_r.html", null ],
+    [ "DIOCLIPROTOCOLCOMMAND", "class_d_i_o_c_l_i_p_r_o_t_o_c_o_l_c_o_m_m_a_n_d.html", null ],
+    [ "DIOCOREPROTOCOL", "class_d_i_o_c_o_r_e_p_r_o_t_o_c_o_l.html", null ],
+    [ "DIOCOREPROTOCOL_CFG", "class_d_i_o_c_o_r_e_p_r_o_t_o_c_o_l___c_f_g.html", null ],
+    [ "DIOCOREPROTOCOL_COMMAND", "class_d_i_o_c_o_r_e_p_r_o_t_o_c_o_l___c_o_m_m_a_n_d.html", null ],
+    [ "DIOCOREPROTOCOL_MESSAGE", "class_d_i_o_c_o_r_e_p_r_o_t_o_c_o_l___m_e_s_s_a_g_e.html", null ],
+    [ "DIOCOREPROTOCOL_MESSAGES", "class_d_i_o_c_o_r_e_p_r_o_t_o_c_o_l___m_e_s_s_a_g_e_s.html", null ],
+    [ "DIOCOREPROTOCOL_UPDATECLASS", "class_d_i_o_c_o_r_e_p_r_o_t_o_c_o_l___u_p_d_a_t_e_c_l_a_s_s.html", null ],
     [ "DIODEVICE", "class_d_i_o_d_e_v_i_c_e.html", [
       [ "DIODEVICEI2C", "class_d_i_o_d_e_v_i_c_e_i2_c.html", [
         [ "DIOI2C6AXISTRACKINGBMI270", "class_d_i_o_i2_c6_a_x_i_s_t_r_a_c_k_i_n_g_b_m_i270.html", null ],
@@ -225,7 +239,7 @@ var hierarchy =
       [ "DIOIP", "class_d_i_o_i_p.html", null ]
     ] ],
     [ "DIOLEDNEOPIXELWS2812B", "class_d_i_o_l_e_d_n_e_o_p_i_x_e_l_w_s2812_b.html", [
-      [ "DIOLINUXLEDNEOPIXELWS2812BRASPBERRYPI", "class_d_i_o_l_i_n_u_x_l_e_d_n_e_o_p_i_x_e_l_w_s2812_b_r_a_s_p_b_e_r_r_y_p_i.html", null ],
+      [ "DIOLINUXLEDNEOPIXELWS2812BRPI", "class_d_i_o_l_i_n_u_x_l_e_d_n_e_o_p_i_x_e_l_w_s2812_b_r_p_i.html", null ],
       [ "DIOSTM32LEDNEOPIXELWS2812B", "class_d_i_o_s_t_m32_l_e_d_n_e_o_p_i_x_e_l_w_s2812_b.html", null ]
     ] ],
     [ "DIOLINUXDBUS_ARGUMENTS", "class_d_i_o_l_i_n_u_x_d_b_u_s___a_r_g_u_m_e_n_t_s.html", null ],
@@ -234,7 +248,7 @@ var hierarchy =
     [ "DIOLINUXFACTORY", "class_d_i_o_l_i_n_u_x_f_a_c_t_o_r_y.html", null ],
     [ "DIOLINUXGPIOARM", "class_d_i_o_l_i_n_u_x_g_p_i_o_a_r_m.html", null ],
     [ "DIOLINUXGPIOPCPARALLEL", "class_d_i_o_l_i_n_u_x_g_p_i_o_p_c_p_a_r_a_l_l_e_l.html", null ],
-    [ "DIOLINUXGPIORASPBERRYPI", "class_d_i_o_l_i_n_u_x_g_p_i_o_r_a_s_p_b_e_r_r_y_p_i.html", null ],
+    [ "DIOLINUXGPIORPI", "class_d_i_o_l_i_n_u_x_g_p_i_o_r_p_i.html", null ],
     [ "DIOLINUXPCAP", "class_d_i_o_l_i_n_u_x_p_c_a_p.html", null ],
     [ "DIOLINUXSTREAMBLUETOOTH", "class_d_i_o_l_i_n_u_x_s_t_r_e_a_m_b_l_u_e_t_o_o_t_h.html", null ],
     [ "DIOLINUXSTREAMBLUETOOTHLEREMOTEENUMDEVICES", "class_d_i_o_l_i_n_u_x_s_t_r_e_a_m_b_l_u_e_t_o_o_t_h_l_e_r_e_m_o_t_e_e_n_u_m_d_e_v_i_c_e_s.html", null ],
@@ -255,6 +269,7 @@ var hierarchy =
     [ "DIOMACMANUFACTURED", "class_d_i_o_m_a_c_m_a_n_u_f_a_c_t_u_r_e_d.html", null ],
     [ "DIOMODBUS_CLIENT", "class_d_i_o_m_o_d_b_u_s___c_l_i_e_n_t.html", null ],
     [ "DIOMPSSE", "class_d_i_o_m_p_s_s_e.html", null ],
+    [ "DIONATIVEMSGBROWSEREXTENSION", "class_d_i_o_n_a_t_i_v_e_m_s_g_b_r_o_w_s_e_r_e_x_t_e_n_s_i_o_n.html", null ],
     [ "DIONODEITEMHANDLER_ENTRYGPIO", "class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r___e_n_t_r_y_g_p_i_o.html", null ],
     [ "DIONODEMANAGER", "class_d_i_o_n_o_d_e_m_a_n_a_g_e_r.html", null ],
     [ "DIONOTIFICATION", "class_d_i_o_n_o_t_i_f_i_c_a_t_i_o_n.html", null ],
@@ -267,6 +282,9 @@ var hierarchy =
     [ "DIONTPFULLPACKET", "class_d_i_o_n_t_p_f_u_l_l_p_a_c_k_e_t.html", null ],
     [ "DIONTPRESPONSE", "class_d_i_o_n_t_p_r_e_s_p_o_n_s_e.html", null ],
     [ "DIOOBEXPUSHFILE", "class_d_i_o_o_b_e_x_p_u_s_h_f_i_l_e.html", null ],
+    [ "DIOOSPIPELINE", "class_d_i_o_o_s_p_i_p_e_l_i_n_e.html", [
+      [ "DIOWINDOWSOSPIPELINE", "class_d_i_o_w_i_n_d_o_w_s_o_s_p_i_p_e_l_i_n_e.html", null ]
+    ] ],
     [ "DIOPCAP", "class_d_i_o_p_c_a_p.html", null ],
     [ "DIOPCAP_FILTER_ENTRY", "class_d_i_o_p_c_a_p___f_i_l_t_e_r___e_n_t_r_y.html", null ],
     [ "DIOPCAP_FILTERS", "class_d_i_o_p_c_a_p___f_i_l_t_e_r_s.html", null ],
@@ -283,12 +301,8 @@ var hierarchy =
     [ "DIOPROTOCOL_COMMAND", "class_d_i_o_p_r_o_t_o_c_o_l___c_o_m_m_a_n_d.html", null ],
     [ "DIOPROTOCOL_CONNECTION", "class_d_i_o_p_r_o_t_o_c_o_l___c_o_n_n_e_c_t_i_o_n.html", null ],
     [ "DIOPROTOCOL_FILE", "class_d_i_o_p_r_o_t_o_c_o_l___f_i_l_e.html", null ],
-    [ "DIOPROTOCOLCLI", "class_d_i_o_p_r_o_t_o_c_o_l_c_l_i.html", [
-      [ "DIOPROTOCOLCLIBUS", "class_d_i_o_p_r_o_t_o_c_o_l_c_l_i_b_u_s.html", null ]
-    ] ],
-    [ "DIOPROTOCOLCLIANSWER", "class_d_i_o_p_r_o_t_o_c_o_l_c_l_i_a_n_s_w_e_r.html", null ],
-    [ "DIOPROTOCOLCLICOMMAND", "class_d_i_o_p_r_o_t_o_c_o_l_c_l_i_c_o_m_m_a_n_d.html", null ],
     [ "DIOPROTOCOLCONNECTIONSINUSEDEFINITIONS", "class_d_i_o_p_r_o_t_o_c_o_l_c_o_n_n_e_c_t_i_o_n_s_i_n_u_s_e_d_e_f_i_n_i_t_i_o_n_s.html", null ],
+    [ "DIOPUBLICINTERNETIP", "class_d_i_o_p_u_b_l_i_c_i_n_t_e_r_n_e_t_i_p.html", null ],
     [ "DIOSCRAPERWEB", "class_d_i_o_s_c_r_a_p_e_r_w_e_b.html", [
       [ "DIOSCRAPERWEBGEOLOCATIONIP", "class_d_i_o_s_c_r_a_p_e_r_w_e_b_g_e_o_l_o_c_a_t_i_o_n_i_p.html", null ],
       [ "DIOSCRAPERWEBMACMANUFACTURER", "class_d_i_o_s_c_r_a_p_e_r_w_e_b_m_a_c_m_a_n_u_f_a_c_t_u_r_e_r.html", null ],
@@ -445,7 +459,9 @@ var hierarchy =
         [ "XWINDOWSTIMER", "class_x_w_i_n_d_o_w_s_t_i_m_e_r.html", null ]
       ] ]
     ] ],
+    [ "GEN_CONTROL", "class_g_e_n___c_o_n_t_r_o_l.html", null ],
     [ "GEN_DEFINES", "class_g_e_n___d_e_f_i_n_e_s.html", null ],
+    [ "GPIO_PIN_T", "struct_g_p_i_o___p_i_n___t.html", null ],
     [ "GRP2DCOLOR", "class_g_r_p2_d_c_o_l_o_r.html", null ],
     [ "GRP2DREBUILDAREA", "class_g_r_p2_d_r_e_b_u_i_l_d_a_r_e_a.html", null ],
     [ "GRP2DREBUILDAREAS", "class_g_r_p2_d_r_e_b_u_i_l_d_a_r_e_a_s.html", [
@@ -479,6 +495,14 @@ var hierarchy =
       [ "GRPANDROIDCONTEXT", "class_g_r_p_a_n_d_r_o_i_d_c_o_n_t_e_x_t.html", null ],
       [ "GRPWINDOWSCONTEXT", "class_g_r_p_w_i_n_d_o_w_s_c_o_n_t_e_x_t.html", null ]
     ] ],
+    [ "GRPDESKTOPMANAGER", "class_g_r_p_d_e_s_k_t_o_p_m_a_n_a_g_e_r.html", [
+      [ "GRPLINUXDESKTOPMANAGER", "class_g_r_p_l_i_n_u_x_d_e_s_k_t_o_p_m_a_n_a_g_e_r.html", null ],
+      [ "GRPWINDOWSDESKTOPMANAGER", "class_g_r_p_w_i_n_d_o_w_s_d_e_s_k_t_o_p_m_a_n_a_g_e_r.html", null ]
+    ] ],
+    [ "GRPDESKTOPMONITORS", "class_g_r_p_d_e_s_k_t_o_p_m_o_n_i_t_o_r_s.html", [
+      [ "GRPLINUXDESKTOPMONITORS", "class_g_r_p_l_i_n_u_x_d_e_s_k_t_o_p_m_o_n_i_t_o_r_s.html", null ],
+      [ "GRPWINDOWSDESKTOPMONITORS", "class_g_r_p_w_i_n_d_o_w_s_d_e_s_k_t_o_p_m_o_n_i_t_o_r_s.html", null ]
+    ] ],
     [ "GRPFACTORY", "class_g_r_p_f_a_c_t_o_r_y.html", [
       [ "GRPANDROIDFACTORY", "class_g_r_p_a_n_d_r_o_i_d_f_a_c_t_o_r_y.html", null ],
       [ "GRPLINUXFACTORY", "class_g_r_p_l_i_n_u_x_f_a_c_t_o_r_y.html", null ],
@@ -501,6 +525,44 @@ var hierarchy =
     [ "GRPRECT", "class_g_r_p_r_e_c_t.html", null ],
     [ "GRPRECTBASE< T >", "class_g_r_p_r_e_c_t_b_a_s_e.html", null ],
     [ "GRPRECTBASE< int >", "class_g_r_p_r_e_c_t_b_a_s_e.html", null ],
+    [ "GRPVECTORFILECONFIG", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_c_o_n_f_i_g.html", [
+      [ "GRPVECTORFILEDXFCONFIG", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_c_o_n_f_i_g.html", null ]
+    ] ],
+    [ "GRPVECTORFILEDXFDEFTEXTSECTION", "struct_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_d_e_f_t_e_x_t_s_e_c_t_i_o_n.html", null ],
+    [ "GRPVECTORFILEDXFENTITY", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_e_n_t_i_t_y.html", null ],
+    [ "GRPVECTORFILEDXFENTITYDEFPOINT", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_e_n_t_i_t_y_d_e_f_p_o_i_n_t.html", null ],
+    [ "GRPVECTORFILEDXFENTITYDEFSTRINGLIST", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_e_n_t_i_t_y_d_e_f_s_t_r_i_n_g_l_i_s_t.html", null ],
+    [ "GRPVECTORFILEDXFENTITYDEFSTRINGVALUE", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_e_n_t_i_t_y_d_e_f_s_t_r_i_n_g_v_a_l_u_e.html", null ],
+    [ "GRPVECTORFILEDXFENTITYDEFVERTEX", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_e_n_t_i_t_y_d_e_f_v_e_r_t_e_x.html", null ],
+    [ "GRPVECTORFILEDXFENTITYOBJ", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_e_n_t_i_t_y_o_b_j.html", [
+      [ "GRPVECTORFILEDXFENTITYOBJ3DFACE", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_e_n_t_i_t_y_o_b_j3_d_f_a_c_e.html", null ],
+      [ "GRPVECTORFILEDXFENTITYOBJARC", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_e_n_t_i_t_y_o_b_j_a_r_c.html", null ],
+      [ "GRPVECTORFILEDXFENTITYOBJCIRCLE", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_e_n_t_i_t_y_o_b_j_c_i_r_c_l_e.html", null ],
+      [ "GRPVECTORFILEDXFENTITYOBJELLIPSE", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_e_n_t_i_t_y_o_b_j_e_l_l_i_p_s_e.html", null ],
+      [ "GRPVECTORFILEDXFENTITYOBJLINE", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_e_n_t_i_t_y_o_b_j_l_i_n_e.html", null ],
+      [ "GRPVECTORFILEDXFENTITYOBJLWPOLYLINE", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_e_n_t_i_t_y_o_b_j_l_w_p_o_l_y_l_i_n_e.html", null ],
+      [ "GRPVECTORFILEDXFENTITYOBJMTEXT", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_e_n_t_i_t_y_o_b_j_m_t_e_x_t.html", null ],
+      [ "GRPVECTORFILEDXFENTITYOBJPOINT", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_e_n_t_i_t_y_o_b_j_p_o_i_n_t.html", null ],
+      [ "GRPVECTORFILEDXFENTITYOBJPOLYLINE", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_e_n_t_i_t_y_o_b_j_p_o_l_y_l_i_n_e.html", null ],
+      [ "GRPVECTORFILEDXFENTITYOBJTEXT", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_e_n_t_i_t_y_o_b_j_t_e_x_t.html", null ]
+    ] ],
+    [ "GRPVECTORFILEDXFTEXTBLOCK", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_t_e_x_t_b_l_o_c_k.html", null ],
+    [ "GRPVECTORFILEDXFTEXTPART", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_t_e_x_t_p_a_r_t.html", [
+      [ "GRPVECTORFILEDXFTEXTSECTION", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_t_e_x_t_s_e_c_t_i_o_n.html", [
+        [ "GRPVECTORFILEDXFTEXTSECTIONBLOCKS", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_t_e_x_t_s_e_c_t_i_o_n_b_l_o_c_k_s.html", null ],
+        [ "GRPVECTORFILEDXFTEXTSECTIONENTITIES", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_t_e_x_t_s_e_c_t_i_o_n_e_n_t_i_t_i_e_s.html", null ],
+        [ "GRPVECTORFILEDXFTEXTSECTIONHEADER", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_t_e_x_t_s_e_c_t_i_o_n_h_e_a_d_e_r.html", null ]
+      ] ]
+    ] ],
+    [ "GRPVECTORFILEDXFTEXTSECTIONBLOCKDEF", "struct_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_t_e_x_t_s_e_c_t_i_o_n_b_l_o_c_k_d_e_f.html", null ],
+    [ "GRPVECTORFILEDXFTEXTSECTIONBLOCKDEFTYPE", "struct_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_t_e_x_t_s_e_c_t_i_o_n_b_l_o_c_k_d_e_f_t_y_p_e.html", null ],
+    [ "GRPVECTORFILEDXFTEXTSECTIONENTITYDEF", "struct_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_t_e_x_t_s_e_c_t_i_o_n_e_n_t_i_t_y_d_e_f.html", null ],
+    [ "GRPVECTORFILEDXFTEXTSECTIONENTITYDEFTYPE", "struct_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_t_e_x_t_s_e_c_t_i_o_n_e_n_t_i_t_y_d_e_f_t_y_p_e.html", null ],
+    [ "GRPVECTORFILEDXFTEXTSECTIONGENERICDEFTYPE", "struct_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_t_e_x_t_s_e_c_t_i_o_n_g_e_n_e_r_i_c_d_e_f_t_y_p_e.html", null ],
+    [ "GRPVECTORFILEDXFTEXTSECTIONHEADERDEFVALUE", "struct_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_t_e_x_t_s_e_c_t_i_o_n_h_e_a_d_e_r_d_e_f_v_a_l_u_e.html", null ],
+    [ "GRPVECTORFILEDXFTEXTSECTIONHEADERDEFVARIABLE", "struct_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_t_e_x_t_s_e_c_t_i_o_n_h_e_a_d_e_r_d_e_f_v_a_r_i_a_b_l_e.html", null ],
+    [ "GRPVECTORFILEDXFVALUE", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_v_a_l_u_e.html", null ],
+    [ "GRPVECTORFILEDXFXDATACTRL", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_x_d_a_t_a_c_t_r_l.html", null ],
     [ "GRPVIDEOFILE", "class_g_r_p_v_i_d_e_o_f_i_l_e.html", [
       [ "GRPVIDEOFILEAVI", "class_g_r_p_v_i_d_e_o_f_i_l_e_a_v_i.html", null ]
     ] ],
@@ -573,6 +635,8 @@ var hierarchy =
     [ "POSTGRESQL_QUERY", "class_p_o_s_t_g_r_e_s_q_l___q_u_e_r_y.html", null ],
     [ "POSTGRESQL_RESULT", "class_p_o_s_t_g_r_e_s_q_l___r_e_s_u_l_t.html", null ],
     [ "RES_RECORD", "struct_r_e_s___r_e_c_o_r_d.html", null ],
+    [ "RP1_SPI_INSTANCE_T", "struct_r_p1___s_p_i___i_n_s_t_a_n_c_e___t.html", null ],
+    [ "RP1_T", "struct_r_p1___t.html", null ],
     [ "SCRIPT_CACHE", "class_s_c_r_i_p_t___c_a_c_h_e.html", null ],
     [ "SCRIPT_ERRORCODE", "class_s_c_r_i_p_t___e_r_r_o_r_c_o_d_e.html", null ],
     [ "SCRIPT_LANGUAGE_G", "class_s_c_r_i_p_t___l_a_n_g_u_a_g_e___g.html", null ],
@@ -619,6 +683,7 @@ var hierarchy =
     [ "tagLZW_STRING", "structtag_l_z_w___s_t_r_i_n_g.html", null ],
     [ "UI_ANIMATION", "class_u_i___a_n_i_m_a_t_i_o_n.html", null ],
     [ "UI_ANIMATIONS", "class_u_i___a_n_i_m_a_t_i_o_n_s.html", null ],
+    [ "UI_BACKGROUND", "class_u_i___b_a_c_k_g_r_o_u_n_d.html", null ],
     [ "UI_BOUNDARYLINE", "class_u_i___b_o_u_n_d_a_r_y_l_i_n_e.html", null ],
     [ "UI_COLOR", "class_u_i___c_o_l_o_r.html", null ],
     [ "UI_COLORS", "class_u_i___c_o_l_o_r_s.html", null ],
@@ -649,7 +714,6 @@ var hierarchy =
     [ "UI_SKIN", "class_u_i___s_k_i_n.html", [
       [ "UI_SKINCANVAS", "class_u_i___s_k_i_n_c_a_n_v_a_s.html", null ]
     ] ],
-    [ "UI_SKIN_TEXTBOX_IMAGE", "class_u_i___s_k_i_n___t_e_x_t_b_o_x___i_m_a_g_e.html", null ],
     [ "UI_SKIN_TEXTBOX_PART", "class_u_i___s_k_i_n___t_e_x_t_b_o_x___p_a_r_t.html", null ],
     [ "UI_TEXT", "class_u_i___t_e_x_t.html", null ],
     [ "UI_TEXTS", "class_u_i___t_e_x_t_s.html", null ],
@@ -659,20 +723,15 @@ var hierarchy =
       [ "XVECTORSTL< T >", "class_x_v_e_c_t_o_r_s_t_l.html", null ]
     ] ],
     [ "VERSIONFRAMEWORK", "class_v_e_r_s_i_o_n_f_r_a_m_e_w_o_r_k.html", null ],
-    [ "VERSIONFRAMEWORKFRAMEWORK", "class_v_e_r_s_i_o_n_f_r_a_m_e_w_o_r_k_f_r_a_m_e_w_o_r_k.html", null ],
     [ "WEBSOCKET_HEADERFRAME", "struct_w_e_b_s_o_c_k_e_t___h_e_a_d_e_r_f_r_a_m_e.html", null ],
     [ "WHIRLPOOL", "struct_w_h_i_r_l_p_o_o_l.html", null ],
     [ "XANDROIDDEBUGTRACE", "class_x_a_n_d_r_o_i_d_d_e_b_u_g_t_r_a_c_e.html", null ],
     [ "XANDROIDTRACE", "class_x_a_n_d_r_o_i_d_t_r_a_c_e.html", null ],
-    [ "XASN1", "class_x_a_s_n1.html", null ],
     [ "XASN1_OID_PROPERTY", "struct_x_a_s_n1___o_i_d___p_r_o_p_e_r_t_y.html", null ],
     [ "XAVLNODE< K >", "class_x_a_v_l_n_o_d_e.html", null ],
     [ "XAVLTREE< K, Comparator >", "class_x_a_v_l_t_r_e_e.html", null ],
     [ "XAVLTREE< XPAIR< K, E >, XLESS< XPAIR< K, E > > >", "class_x_a_v_l_t_r_e_e.html", null ],
     [ "XBASE", "class_x_b_a_s_e.html", null ],
-    [ "XBER", "class_x_b_e_r.html", [
-      [ "DIOSNMP_XBER", "class_d_i_o_s_n_m_p___x_b_e_r.html", null ]
-    ] ],
     [ "XBINARYMAP< K, E, comparator, container >", "class_x_b_i_n_a_r_y_m_a_p.html", null ],
     [ "XBUFFER", "class_x_b_u_f_f_e_r.html", null ],
     [ "XBUFFERBITS", "class_x_b_u_f_f_e_r_b_i_t_s.html", null ],
@@ -691,11 +750,13 @@ var hierarchy =
     [ "XERRORSMSG", "class_x_e_r_r_o_r_s_m_s_g.html", null ],
     [ "XESP32TRACE", "class_x_e_s_p32_t_r_a_c_e.html", null ],
     [ "XEVENT", "class_x_e_v_e_n_t.html", [
-      [ "APPCHECKRESOURCESHARDWARE_XEVENT", "class_a_p_p_c_h_e_c_k_r_e_s_o_u_r_c_e_s_h_a_r_d_w_a_r_e___x_e_v_e_n_t.html", null ],
-      [ "APPINTERNETSERVICES_XEVENT", "class_a_p_p_i_n_t_e_r_n_e_t_s_e_r_v_i_c_e_s___x_e_v_e_n_t.html", null ],
-      [ "APP_XEVENT", "class_a_p_p___x_e_v_e_n_t.html", null ],
+      [ "APPFLOWCHECKRESOURCESHARDWARE_XEVENT", "class_a_p_p_f_l_o_w_c_h_e_c_k_r_e_s_o_u_r_c_e_s_h_a_r_d_w_a_r_e___x_e_v_e_n_t.html", null ],
+      [ "APPFLOWINTERNETSERVICES_XEVENT", "class_a_p_p_f_l_o_w_i_n_t_e_r_n_e_t_s_e_r_v_i_c_e_s___x_e_v_e_n_t.html", null ],
+      [ "APPFLOW_XEVENT", "class_a_p_p_f_l_o_w___x_e_v_e_n_t.html", null ],
       [ "DIOAPPLICATIONUPDATE_XEVENT", "class_d_i_o_a_p_p_l_i_c_a_t_i_o_n_u_p_d_a_t_e___x_e_v_e_n_t.html", null ],
       [ "DIOCAMERA_XEVENT", "class_d_i_o_c_a_m_e_r_a___x_e_v_e_n_t.html", null ],
+      [ "DIOCOREPROTOCOL_CONNECTIONSMANAGER_XEVENT", "class_d_i_o_c_o_r_e_p_r_o_t_o_c_o_l___c_o_n_n_e_c_t_i_o_n_s_m_a_n_a_g_e_r___x_e_v_e_n_t.html", null ],
+      [ "DIOCOREPROTOCOL_XEVENT", "class_d_i_o_c_o_r_e_p_r_o_t_o_c_o_l___x_e_v_e_n_t.html", null ],
       [ "DIODNSPROTOCOL_MITM_SERVER_XEVENT", "class_d_i_o_d_n_s_p_r_o_t_o_c_o_l___m_i_t_m___s_e_r_v_e_r___x_e_v_e_n_t.html", null ],
       [ "DIOIEC60870_5_XEVENT", "class_d_i_o_i_e_c60870__5___x_e_v_e_n_t.html", null ],
       [ "DIOLINUXDBUS_XEVENT", "class_d_i_o_l_i_n_u_x_d_b_u_s___x_e_v_e_n_t.html", null ],
@@ -705,18 +766,20 @@ var hierarchy =
       [ "DIOPROTOCOL_CONNECTIONSMANAGER_XEVENT", "class_d_i_o_p_r_o_t_o_c_o_l___c_o_n_n_e_c_t_i_o_n_s_m_a_n_a_g_e_r___x_e_v_e_n_t.html", null ],
       [ "DIOPROTOCOL_XEVENT", "class_d_i_o_p_r_o_t_o_c_o_l___x_e_v_e_n_t.html", null ],
       [ "DIOSTREAMBLUETOOTHLEREMOTEENUMDEVICES_XEVENT", "class_d_i_o_s_t_r_e_a_m_b_l_u_e_t_o_o_t_h_l_e_r_e_m_o_t_e_e_n_u_m_d_e_v_i_c_e_s___x_e_v_e_n_t.html", null ],
-      [ "DIOSTREAMXEVENT", "class_d_i_o_s_t_r_e_a_m_x_e_v_e_n_t.html", null ],
+      [ "DIOSTREAM_XEVENT", "class_d_i_o_s_t_r_e_a_m___x_e_v_e_n_t.html", null ],
       [ "DIOWEBCLIENT_XEVENT", "class_d_i_o_w_e_b_c_l_i_e_n_t___x_e_v_e_n_t.html", null ],
       [ "DIOWEBPAGEHTMLCREATOR_XEVENT", "class_d_i_o_w_e_b_p_a_g_e_h_t_m_l_c_r_e_a_t_o_r___x_e_v_e_n_t.html", null ],
       [ "DIOWEBSERVER_XEVENT", "class_d_i_o_w_e_b_s_e_r_v_e_r___x_e_v_e_n_t.html", null ],
+      [ "GRPVECTORFILE_XEVENT", "class_g_r_p_v_e_c_t_o_r_f_i_l_e___x_e_v_e_n_t.html", null ],
       [ "GRPXEVENT", "class_g_r_p_x_e_v_e_n_t.html", null ],
       [ "INPCAPTURE_XEVENT", "class_i_n_p_c_a_p_t_u_r_e___x_e_v_e_n_t.html", null ],
       [ "SCRIPT_XEVENT", "class_s_c_r_i_p_t___x_e_v_e_n_t.html", null ],
       [ "SNDFACTORY_XEVENT", "class_s_n_d_f_a_c_t_o_r_y___x_e_v_e_n_t.html", null ],
       [ "UI_XEVENT", "class_u_i___x_e_v_e_n_t.html", null ],
+      [ "XBER_XEVENT", "class_x_b_e_r___x_e_v_e_n_t.html", null ],
       [ "XDRIVEIMAGEMANAGER_XEVENT", "class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r___x_e_v_e_n_t.html", null ],
       [ "XFILEZIP_XEVENT", "class_x_f_i_l_e_z_i_p___x_e_v_e_n_t.html", null ],
-      [ "XLICENSEXEVENT", "class_x_l_i_c_e_n_s_e_x_e_v_e_n_t.html", null ],
+      [ "XLICENSE_XEVENT", "class_x_l_i_c_e_n_s_e___x_e_v_e_n_t.html", null ],
       [ "XSCHEDULER_XEVENT", "class_x_s_c_h_e_d_u_l_e_r___x_e_v_e_n_t.html", null ]
     ] ],
     [ "XFACTORY", "class_x_f_a_c_t_o_r_y.html", [
@@ -784,9 +847,11 @@ var hierarchy =
       [ "DIOATCMDS", "class_d_i_o_a_t_c_m_d_s.html", [
         [ "DIOATCMDGSM", "class_d_i_o_a_t_c_m_d_g_s_m.html", null ]
       ] ],
+      [ "DIOCOREPROTOCOL_CONNECTION", "class_d_i_o_c_o_r_e_p_r_o_t_o_c_o_l___c_o_n_n_e_c_t_i_o_n.html", null ],
       [ "DIOLINUXSTREAMTCPIP", "class_d_i_o_l_i_n_u_x_s_t_r_e_a_m_t_c_p_i_p.html", [
         [ "DIOANDROIDSTREAMTCPIP", "class_d_i_o_a_n_d_r_o_i_d_s_t_r_e_a_m_t_c_p_i_p.html", null ]
       ] ],
+      [ "DIOLINUXSTREAMTCPIPSERVER", "class_d_i_o_l_i_n_u_x_s_t_r_e_a_m_t_c_p_i_p_s_e_r_v_e_r.html", null ],
       [ "DIOLINUXSTREAMUDP", "class_d_i_o_l_i_n_u_x_s_t_r_e_a_m_u_d_p.html", null ],
       [ "DIOOBEXPUSH", "class_d_i_o_o_b_e_x_p_u_s_h.html", null ],
       [ "DIOSTREAMI2C", "class_d_i_o_s_t_r_e_a_m_i2_c.html", [
@@ -799,6 +864,7 @@ var hierarchy =
         [ "DIOWINDOWSSTREAMSPI", "class_d_i_o_w_i_n_d_o_w_s_s_t_r_e_a_m_s_p_i.html", null ]
       ] ],
       [ "DIOWINDOWSSTREAMTCPIP", "class_d_i_o_w_i_n_d_o_w_s_s_t_r_e_a_m_t_c_p_i_p.html", null ],
+      [ "DIOWINDOWSSTREAMTCPIPSERVER", "class_d_i_o_w_i_n_d_o_w_s_s_t_r_e_a_m_t_c_p_i_p_s_e_r_v_e_r.html", null ],
       [ "DIOWINDOWSSTREAMUDP", "class_d_i_o_w_i_n_d_o_w_s_s_t_r_e_a_m_u_d_p.html", null ],
       [ "SNDOPENALPLAYITEM", "class_s_n_d_o_p_e_n_a_l_p_l_a_y_i_t_e_m.html", null ],
       [ "SNDOPENALPLAYITEM", "class_s_n_d_o_p_e_n_a_l_p_l_a_y_i_t_e_m.html", null ]
@@ -813,8 +879,8 @@ var hierarchy =
     [ "XLESS< T >", "struct_x_l_e_s_s.html", null ],
     [ "XLESS< K >", "struct_x_l_e_s_s.html", null ],
     [ "XLESS< XPAIR< K, E > >", "struct_x_l_e_s_s.html", null ],
-    [ "XLICENSE_XEVENT", "class_x_l_i_c_e_n_s_e___x_e_v_e_n_t.html", null ],
     [ "XLICENSEID", "class_x_l_i_c_e_n_s_e_i_d.html", null ],
+    [ "XLINUXIDRPI", "class_x_l_i_n_u_x_i_d_r_p_i.html", null ],
     [ "XLINUXTRACE", "class_x_l_i_n_u_x_t_r_a_c_e.html", null ],
     [ "XLIST< T >", "class_x_l_i_s_t.html", [
       [ "XORDEREDLIST< T, Compare >", "class_x_o_r_d_e_r_e_d_l_i_s_t.html", null ]
@@ -828,26 +894,31 @@ var hierarchy =
     ] ],
     [ "XLOGENTRY", "class_x_l_o_g_e_n_t_r_y.html", null ],
     [ "XMAP< KEY, ELEMENT >", "class_x_m_a_p.html", null ],
-    [ "XMAP< HWND, GRPWINDOWSSCREEN * >", "class_x_m_a_p.html", null ],
+    [ "XMAP< DIOCOREPROTOCOL_MESSAGE *, DIOCOREPROTOCOL_MESSAGE * >", "class_x_m_a_p.html", null ],
+    [ "XMAP< DIOSTREAMCONFIG *, DIOSTREAM * >", "class_x_m_a_p.html", null ],
     [ "XMAP< int, INPDEVICE * >", "class_x_m_a_p.html", null ],
     [ "XMAP< int, XFSMACHINESTATE * >", "class_x_m_a_p.html", null ],
+    [ "XMAP< void *, GRPSCREEN * >", "class_x_m_a_p.html", null ],
     [ "XMAP< XBYTE, GRPBITMAPFILEBMPCOLORPALETE * >", "class_x_m_a_p.html", null ],
     [ "XMAP< XDWORD, GRPBITMAP * >", "class_x_m_a_p.html", null ],
     [ "XMAP< XDWORD, XDWORD >", "class_x_m_a_p.html", null ],
     [ "XMAP< XDWORD, XSTRING * >", "class_x_m_a_p.html", null ],
     [ "XMAP< XDWORD, XSUBJECT * >", "class_x_m_a_p.html", null ],
     [ "XMAP< XSTRING *, DIOSCRAPERWEBCACHE_RESULT * >", "class_x_m_a_p.html", null ],
+    [ "XMAP< XSTRING *, int >", "class_x_m_a_p.html", null ],
     [ "XMAP< XSTRING *, XPATH * >", "class_x_m_a_p.html", null ],
     [ "XMAP< XSTRING *, XSTRING * >", "class_x_m_a_p.html", null ],
+    [ "XMAP< XSTRING *, XVARIANT * >", "class_x_m_a_p.html", null ],
     [ "XMEMORY_CONTROL", "class_x_m_e_m_o_r_y___c_o_n_t_r_o_l.html", null ],
     [ "XMPINTEGER", "class_x_m_p_i_n_t_e_g_e_r.html", null ],
     [ "XOBSERVER", "class_x_o_b_s_e_r_v_e_r.html", [
-      [ "APPCHECKRESOURCESHARDWARE", "class_a_p_p_c_h_e_c_k_r_e_s_o_u_r_c_e_s_h_a_r_d_w_a_r_e.html", null ],
-      [ "APPCONSOLE", "class_a_p_p_c_o_n_s_o_l_e.html", null ],
-      [ "APPINTERNETSERVICES", "class_a_p_p_i_n_t_e_r_n_e_t_s_e_r_v_i_c_e_s.html", null ],
-      [ "APPUPDATE", "class_a_p_p_u_p_d_a_t_e.html", null ],
-      [ "APPWEBSERVER", "class_a_p_p_w_e_b_s_e_r_v_e_r.html", null ],
+      [ "APPFLOWCHECKRESOURCESHARDWARE", "class_a_p_p_f_l_o_w_c_h_e_c_k_r_e_s_o_u_r_c_e_s_h_a_r_d_w_a_r_e.html", null ],
+      [ "APPFLOWINTERNETSERVICES", "class_a_p_p_f_l_o_w_i_n_t_e_r_n_e_t_s_e_r_v_i_c_e_s.html", null ],
+      [ "APPFLOWUPDATE", "class_a_p_p_f_l_o_w_u_p_d_a_t_e.html", null ],
+      [ "APPFLOWWEBSERVER", "class_a_p_p_f_l_o_w_w_e_b_s_e_r_v_e_r.html", null ],
+      [ "CIPHERKEYSFILEPEM", "class_c_i_p_h_e_r_k_e_y_s_f_i_l_e_p_e_m.html", null ],
       [ "DIOCAMERA", "class_d_i_o_c_a_m_e_r_a.html", null ],
+      [ "DIOCOREPROTOCOL_CONNECTIONSMANAGER", "class_d_i_o_c_o_r_e_p_r_o_t_o_c_o_l___c_o_n_n_e_c_t_i_o_n_s_m_a_n_a_g_e_r.html", null ],
       [ "DIOLINUXNETWORKMANAGER", "class_d_i_o_l_i_n_u_x_n_e_t_w_o_r_k_m_a_n_a_g_e_r.html", null ],
       [ "DIOWEBSERVER", "class_d_i_o_w_e_b_s_e_r_v_e_r.html", null ],
       [ "UI_MANAGER", "class_u_i___m_a_n_a_g_e_r.html", null ]
@@ -865,11 +936,16 @@ var hierarchy =
     [ "XRECT", "class_x_r_e_c_t.html", null ],
     [ "XSCHEDULERTASK", "class_x_s_c_h_e_d_u_l_e_r_t_a_s_k.html", null ],
     [ "XSERIALIZABLE", "class_x_s_e_r_i_a_l_i_z_a_b_l_e.html", [
+      [ "DIOCOREPROTOCOL_HEADER", "class_d_i_o_c_o_r_e_p_r_o_t_o_c_o_l___h_e_a_d_e_r.html", null ],
+      [ "DIOCOREPROTOCOL_REGISTERDATA", "class_d_i_o_c_o_r_e_p_r_o_t_o_c_o_l___r_e_g_i_s_t_e_r_d_a_t_a.html", null ],
       [ "DIONODE", "class_d_i_o_n_o_d_e.html", null ],
       [ "DIONODEITEM", "class_d_i_o_n_o_d_e_i_t_e_m.html", null ],
       [ "DIONODEITEMVALUE", "class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e.html", null ],
       [ "DIONODEITEMVALUEUNITFORMAT", "class_d_i_o_n_o_d_e_i_t_e_m_v_a_l_u_e_u_n_i_t_f_o_r_m_a_t.html", null ],
-      [ "DIOWEBSERVER_RESOLVEENDPOINT", "class_d_i_o_w_e_b_s_e_r_v_e_r___r_e_s_o_l_v_e_e_n_d_p_o_i_n_t.html", null ],
+      [ "DIOWEBSERVER_RESOLVEENDPOINT", "class_d_i_o_w_e_b_s_e_r_v_e_r___r_e_s_o_l_v_e_e_n_d_p_o_i_n_t.html", [
+        [ "APPFLOWEXTENDED_APPLICATIONSTATUS", "class_a_p_p_f_l_o_w_e_x_t_e_n_d_e_d___a_p_p_l_i_c_a_t_i_o_n_s_t_a_t_u_s.html", null ],
+        [ "APPFLOWEXTENDED_INTERNETSTATUS", "class_a_p_p_f_l_o_w_e_x_t_e_n_d_e_d___i_n_t_e_r_n_e_t_s_t_a_t_u_s.html", null ]
+      ] ],
       [ "XINTERPOLATOR", "class_x_i_n_t_e_r_p_o_l_a_t_o_r.html", null ]
     ] ],
     [ "XSERIALIZATIONMETHOD", "class_x_s_e_r_i_a_l_i_z_a_t_i_o_n_m_e_t_h_o_d.html", [
@@ -905,15 +981,17 @@ var hierarchy =
       [ "XPATH", "class_x_p_a_t_h.html", null ]
     ] ],
     [ "XSUBJECT", "class_x_s_u_b_j_e_c_t.html", [
-      [ "APPBASE", "class_a_p_p_b_a_s_e.html", [
-        [ "APPCONSOLE", "class_a_p_p_c_o_n_s_o_l_e.html", null ]
+      [ "APPFLOWBASE", "class_a_p_p_f_l_o_w_b_a_s_e.html", [
+        [ "APPFLOWCONSOLE", "class_a_p_p_f_l_o_w_c_o_n_s_o_l_e.html", null ]
       ] ],
-      [ "APPCHECKRESOURCESHARDWARE", "class_a_p_p_c_h_e_c_k_r_e_s_o_u_r_c_e_s_h_a_r_d_w_a_r_e.html", null ],
-      [ "APPINTERNETSERVICES", "class_a_p_p_i_n_t_e_r_n_e_t_s_e_r_v_i_c_e_s.html", null ],
-      [ "APPUPDATE", "class_a_p_p_u_p_d_a_t_e.html", null ],
-      [ "APPWEBSERVER", "class_a_p_p_w_e_b_s_e_r_v_e_r.html", null ],
+      [ "APPFLOWCHECKRESOURCESHARDWARE", "class_a_p_p_f_l_o_w_c_h_e_c_k_r_e_s_o_u_r_c_e_s_h_a_r_d_w_a_r_e.html", null ],
+      [ "APPFLOWINTERNETSERVICES", "class_a_p_p_f_l_o_w_i_n_t_e_r_n_e_t_s_e_r_v_i_c_e_s.html", null ],
+      [ "APPFLOWUPDATE", "class_a_p_p_f_l_o_w_u_p_d_a_t_e.html", null ],
+      [ "APPFLOWWEBSERVER", "class_a_p_p_f_l_o_w_w_e_b_s_e_r_v_e_r.html", null ],
       [ "DIOAPPLICATIONUPDATE", "class_d_i_o_a_p_p_l_i_c_a_t_i_o_n_u_p_d_a_t_e.html", null ],
       [ "DIOCAMERA", "class_d_i_o_c_a_m_e_r_a.html", null ],
+      [ "DIOCOREPROTOCOL_CONNECTION", "class_d_i_o_c_o_r_e_p_r_o_t_o_c_o_l___c_o_n_n_e_c_t_i_o_n.html", null ],
+      [ "DIOCOREPROTOCOL_CONNECTIONSMANAGER", "class_d_i_o_c_o_r_e_p_r_o_t_o_c_o_l___c_o_n_n_e_c_t_i_o_n_s_m_a_n_a_g_e_r.html", null ],
       [ "DIODNSPROTOCOL_MITM_SERVER", "class_d_i_o_d_n_s_p_r_o_t_o_c_o_l___m_i_t_m___s_e_r_v_e_r.html", null ],
       [ "DIOIEC60870_5", "class_d_i_o_i_e_c60870__5.html", null ],
       [ "DIOLINUXDBUS", "class_d_i_o_l_i_n_u_x_d_b_u_s.html", null ],
@@ -938,6 +1016,10 @@ var hierarchy =
         [ "DIOSTREAMTCPIP", "class_d_i_o_s_t_r_e_a_m_t_c_p_i_p.html", [
           [ "DIOLINUXSTREAMTCPIP", "class_d_i_o_l_i_n_u_x_s_t_r_e_a_m_t_c_p_i_p.html", null ],
           [ "DIOWINDOWSSTREAMTCPIP", "class_d_i_o_w_i_n_d_o_w_s_s_t_r_e_a_m_t_c_p_i_p.html", null ]
+        ] ],
+        [ "DIOSTREAMTCPIPSERVER", "class_d_i_o_s_t_r_e_a_m_t_c_p_i_p_s_e_r_v_e_r.html", [
+          [ "DIOLINUXSTREAMTCPIPSERVER", "class_d_i_o_l_i_n_u_x_s_t_r_e_a_m_t_c_p_i_p_s_e_r_v_e_r.html", null ],
+          [ "DIOWINDOWSSTREAMTCPIPSERVER", "class_d_i_o_w_i_n_d_o_w_s_s_t_r_e_a_m_t_c_p_i_p_s_e_r_v_e_r.html", null ]
         ] ],
         [ "DIOSTREAMTLS", "class_d_i_o_s_t_r_e_a_m_t_l_s.html", null ],
         [ "DIOSTREAMUART", "class_d_i_o_s_t_r_e_a_m_u_a_r_t.html", null ],
@@ -981,6 +1063,10 @@ var hierarchy =
       [ "DIOWEBPAGEHTMLCREATOR", "class_d_i_o_w_e_b_p_a_g_e_h_t_m_l_c_r_e_a_t_o_r.html", null ],
       [ "DIOWEBSERVER", "class_d_i_o_w_e_b_s_e_r_v_e_r.html", null ],
       [ "GRPSCREEN", "class_g_r_p_s_c_r_e_e_n.html", null ],
+      [ "GRPVECTORFILE", "class_g_r_p_v_e_c_t_o_r_f_i_l_e.html", [
+        [ "GRPVECTORFILEDXF", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f.html", null ]
+      ] ],
+      [ "GRPVECTORFILEDXFTEXTSECTION", "class_g_r_p_v_e_c_t_o_r_f_i_l_e_d_x_f_t_e_x_t_s_e_c_t_i_o_n.html", null ],
       [ "INPCAPTURE", "class_i_n_p_c_a_p_t_u_r_e.html", [
         [ "INPWINDOWSCAPTURE", "class_i_n_p_w_i_n_d_o_w_s_c_a_p_t_u_r_e.html", null ]
       ] ],
@@ -1011,11 +1097,15 @@ var hierarchy =
         [ "UI_ELEMENT_TEXTBOX", "class_u_i___e_l_e_m_e_n_t___t_e_x_t_b_o_x.html", null ]
       ] ],
       [ "UI_MANAGER", "class_u_i___m_a_n_a_g_e_r.html", null ],
+      [ "XASN1", "class_x_a_s_n1.html", null ],
+      [ "XBER", "class_x_b_e_r.html", [
+        [ "DIOSNMP_XBER", "class_d_i_o_s_n_m_p___x_b_e_r.html", null ]
+      ] ],
       [ "XDRIVEIMAGEMANAGER", "class_x_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r.html", [
         [ "XWINDOWSDRIVEIMAGEMANAGER", "class_x_w_i_n_d_o_w_s_d_r_i_v_e_i_m_a_g_e_m_a_n_a_g_e_r.html", null ]
       ] ],
       [ "XFILECFG", "class_x_f_i_l_e_c_f_g.html", [
-        [ "APPCFG", "class_a_p_p_c_f_g.html", null ],
+        [ "APPFLOWCFG", "class_a_p_p_f_l_o_w_c_f_g.html", null ],
         [ "DIOREMOTEFILECFG", "class_d_i_o_r_e_m_o_t_e_f_i_l_e_c_f_g.html", null ]
       ] ],
       [ "XFILEUNZIP", "class_x_f_i_l_e_u_n_z_i_p.html", null ],
@@ -1056,6 +1146,12 @@ var hierarchy =
     [ "XVECTOR< DIOATCMD * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< DIOCHECKTCPIPCONNECTION * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< DIOCHECKTCPIPCONNECTION_CUT * >", "class_x_v_e_c_t_o_r.html", null ],
+    [ "XVECTOR< DIOCLIPROTOCOLANSWER * >", "class_x_v_e_c_t_o_r.html", null ],
+    [ "XVECTOR< DIOCLIPROTOCOLCOMMAND * >", "class_x_v_e_c_t_o_r.html", null ],
+    [ "XVECTOR< DIOCOREPROTOCOL_COMMAND * >", "class_x_v_e_c_t_o_r.html", null ],
+    [ "XVECTOR< DIOCOREPROTOCOL_CONNECTION * >", "class_x_v_e_c_t_o_r.html", null ],
+    [ "XVECTOR< DIOCOREPROTOCOL_MESSAGE * >", "class_x_v_e_c_t_o_r.html", null ],
+    [ "XVECTOR< DIOCOREPROTOCOL_UPDATECLASS * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< DIODNSRESOLVER_DNSSERVER * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< DIODNSRESOLVER_HOSTRESOLVED * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< DIOGPIO_ENTRY * >", "class_x_v_e_c_t_o_r.html", null ],
@@ -1069,14 +1165,15 @@ var hierarchy =
     [ "XVECTOR< DIOPROTOCOL_ANSWER * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< DIOPROTOCOL_COMMAND * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< DIOPROTOCOL_CONNECTION * >", "class_x_v_e_c_t_o_r.html", null ],
-    [ "XVECTOR< DIOPROTOCOLCLIANSWER * >", "class_x_v_e_c_t_o_r.html", null ],
-    [ "XVECTOR< DIOPROTOCOLCLICOMMAND * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< DIOSCRAPERWEBCACHE_RESULT * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< DIOSMTPATTACHMENT * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< DIOSMTPRECIPIENT * >", "class_x_v_e_c_t_o_r.html", null ],
+    [ "XVECTOR< DIOSTREAM * >", "class_x_v_e_c_t_o_r.html", null ],
+    [ "XVECTOR< DIOSTREAMCONFIG * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< DIOSTREAMDEVICE * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< DIOSTREAMDEVICEBLUETOOTHSDPSERVICE * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< DIOSTREAMICMPDATAGRAM * >", "class_x_v_e_c_t_o_r.html", null ],
+    [ "XVECTOR< DIOSTREAMTCPIP * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< DIOSTREAMUDPDATAGRAM * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< DIOURL * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< DIOWEBSERVER_AUTHENTICATION * >", "class_x_v_e_c_t_o_r.html", null ],
@@ -1089,10 +1186,17 @@ var hierarchy =
     [ "XVECTOR< GRPBITMAP * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< GRPBITMAPFILEBMPCOLORPALETE * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< GRPBITMAPFRAME * >", "class_x_v_e_c_t_o_r.html", null ],
+    [ "XVECTOR< GRPRECTBASE * >", "class_x_v_e_c_t_o_r.html", null ],
+    [ "XVECTOR< GRPSCREEN * >", "class_x_v_e_c_t_o_r.html", null ],
+    [ "XVECTOR< GRPVECTORFILEDXFENTITY * >", "class_x_v_e_c_t_o_r.html", null ],
+    [ "XVECTOR< GRPVECTORFILEDXFENTITYDEFSTRINGVALUE * >", "class_x_v_e_c_t_o_r.html", null ],
+    [ "XVECTOR< GRPVECTORFILEDXFENTITYOBJ * >", "class_x_v_e_c_t_o_r.html", null ],
+    [ "XVECTOR< GRPVECTORFILEDXFTEXTBLOCK * >", "class_x_v_e_c_t_o_r.html", null ],
+    [ "XVECTOR< GRPVECTORFILEDXFTEXTSECTION * >", "class_x_v_e_c_t_o_r.html", null ],
+    [ "XVECTOR< GRPVECTORFILEDXFVALUE * >", "class_x_v_e_c_t_o_r.html", null ],
+    [ "XVECTOR< GRPVECTORFILEDXFXDATACTRL * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< GRPVIDEOFILEAVI_INDEXENTRY * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< GRPVIEWPORT * >", "class_x_v_e_c_t_o_r.html", null ],
-    [ "XVECTOR< GRPWINDOWSSCREEN * >", "class_x_v_e_c_t_o_r.html", null ],
-    [ "XVECTOR< HWND >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< INPBUTTON * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< INPCURSOR * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< INPCURSORMOTIONPOINT * >", "class_x_v_e_c_t_o_r.html", null ],
@@ -1100,7 +1204,6 @@ var hierarchy =
     [ "XVECTOR< INPLINUXDEVICEID * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< int >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< KEY >", "class_x_v_e_c_t_o_r.html", null ],
-    [ "XVECTOR< RECT * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< SCRIPT_LIB * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< SCRIPT_LIB_FUNCTION * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< SCRIPT_LNG_G_COMMAND * >", "class_x_v_e_c_t_o_r.html", null ],
@@ -1111,7 +1214,7 @@ var hierarchy =
     [ "XVECTOR< UI_ANIMATION * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< UI_ELEMENT * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< UI_LAYOUT * >", "class_x_v_e_c_t_o_r.html", null ],
-    [ "XVECTOR< UI_SKIN * >", "class_x_v_e_c_t_o_r.html", null ],
+    [ "XVECTOR< void * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< XBER * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< XBYTE >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< XDWORD >", "class_x_v_e_c_t_o_r.html", null ],
@@ -1143,16 +1246,16 @@ var hierarchy =
     [ "XVECTOR< XTREE_NODE< T > * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< XTREE_NODE< XFILECOBOL_FIELD * > * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< XTREE_NODE< XFILERIFF_LIST * > * >", "class_x_v_e_c_t_o_r.html", null ],
+    [ "XVECTOR< XVARIANT * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< XWINDOWSSYSTEM_CPUUSAGESTATUS * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XVECTOR< XWINDOWSVIRTUALDESKTOP * >", "class_x_v_e_c_t_o_r.html", null ],
     [ "XWINDOWSACCESSCONTROLLISTS", "class_x_w_i_n_d_o_w_s_a_c_c_e_s_s_c_o_n_t_r_o_l_l_i_s_t_s.html", null ],
-    [ "XWINDOWSDESKTOPMANAGER", "class_x_w_i_n_d_o_w_s_d_e_s_k_t_o_p_m_a_n_a_g_e_r.html", null ],
-    [ "XWINDOWSDESKTOPMONITORS", "class_x_w_i_n_d_o_w_s_d_e_s_k_t_o_p_m_o_n_i_t_o_r_s.html", null ],
     [ "XWINDOWSDRIVEIMAGE_DEVICE_NUMBER", "struct_x_w_i_n_d_o_w_s_d_r_i_v_e_i_m_a_g_e___d_e_v_i_c_e___n_u_m_b_e_r.html", null ],
     [ "XWINDOWSREGISTRYMANAGER", "class_x_w_i_n_d_o_w_s_r_e_g_i_s_t_r_y_m_a_n_a_g_e_r.html", null ],
     [ "XWINDOWSSERVICEBASE", "class_x_w_i_n_d_o_w_s_s_e_r_v_i_c_e_b_a_s_e.html", [
       [ "WINDOWSSERVICE", "class_w_i_n_d_o_w_s_s_e_r_v_i_c_e.html", null ]
     ] ],
+    [ "XWINDOWSSYSTEM_CPUUSAGE", "class_x_w_i_n_d_o_w_s_s_y_s_t_e_m___c_p_u_u_s_a_g_e.html", null ],
     [ "XWINDOWSSYSTEM_CPUUSAGESTATUS", "class_x_w_i_n_d_o_w_s_s_y_s_t_e_m___c_p_u_u_s_a_g_e_s_t_a_t_u_s.html", null ],
     [ "XWINDOWSSYSTEM_PERFCOUNTERS< T >", "class_x_w_i_n_d_o_w_s_s_y_s_t_e_m___p_e_r_f_c_o_u_n_t_e_r_s.html", null ],
     [ "XWINDOWSTRACE", "class_x_w_i_n_d_o_w_s_t_r_a_c_e.html", null ],

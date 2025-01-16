@@ -12,7 +12,7 @@ var _d_i_o_application_update_8h =
     [ "DIOAPPLICATIONUPDATE_GENERALSECTION_SYSTEMMUSTBEINIT", "_d_i_o_application_update_8h.html#af44c02f05701f1e0ed2f87deac37b72a", null ],
     [ "DIOAPPLICATIONUPDATE_GENERALSECTION_VERSION", "_d_i_o_application_update_8h.html#a40126c5891ef9385f6a6669990f3627a", null ],
     [ "DIOAPPLICATIONUPDATE_INIFILE", "_d_i_o_application_update_8h.html#ab610ea0372c8fc0e86c0bba80d4d59c5", null ],
-    [ "DIOAPPLICATIONUPDATE_LOG_SECTIONID_APPUPDATE", "_d_i_o_application_update_8h.html#aad84d33ee4b1686540ce4f6e9ca1b78b", null ],
+    [ "DIOAPPLICATIONUPDATE_LOG_SECTIONID_APPFLOWUPDATE", "_d_i_o_application_update_8h.html#a2ccdb4a94b40e8ec975bdd391c7378de", null ],
     [ "DIOAPPLICATIONUPDATE_MAXINDEXFILES", "_d_i_o_application_update_8h.html#a09480948c337d97446583a8621dc5840", null ],
     [ "DIOAPPLICATIONUPDATE_PORTDEFAULT", "_d_i_o_application_update_8h.html#ad0f656dd02b9c7209c3627c33de31fd7", null ],
     [ "DIOAPPLICATIONUPDATE_RESTOREDIR_ID", "_d_i_o_application_update_8h.html#a329da0f18b45370cc1a4df5cf82e7907", null ],

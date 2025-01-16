@@ -2,29 +2,34 @@ var group___p_l_a_t_f_o_r_m___c_o_m_m_o_n =
 [
     [ "COMMON_DEFAULTXTRACECFG", "class_c_o_m_m_o_n___d_e_f_a_u_l_t_x_t_r_a_c_e_c_f_g.html", null ],
     [ "FACTORYBASE", "class_f_a_c_t_o_r_y_b_a_s_e.html", null ],
+    [ "GEN_CONTROL", "class_g_e_n___c_o_n_t_r_o_l.html", null ],
     [ "GEN_DEFINES", "class_g_e_n___d_e_f_i_n_e_s.html", null ],
-    [ "VERSIONFRAMEWORKFRAMEWORK", "class_v_e_r_s_i_o_n_f_r_a_m_e_w_o_r_k_f_r_a_m_e_w_o_r_k.html", null ],
     [ "VERSIONFRAMEWORK", "class_v_e_r_s_i_o_n_f_r_a_m_e_w_o_r_k.html", [
       [ "GetAppCreationYear", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#ga1c36355695a0f5328a6ce12417fdf19f", null ],
+      [ "GetAppExecName", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#gaacd4c30ac1865d1cb5facb4b0ea51f74", null ],
+      [ "GetAppName", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#ga7dc80d560a44115bb919f6646689680f", null ],
       [ "GetAppOwner", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#gada9a0ab9c63893ce24c9e03c2cb78555", null ],
       [ "GetAppTitle", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#ga609e024e5a0119750fd66fcb281afb91", null ],
       [ "GetAppVersion", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#ga53384a42ee224dbeed6c5a40d21918d0", null ],
-      [ "GetAppVersion", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#ga7f6430dd0184caa99caa43448093b44a", null ],
       [ "GetAppVersion", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#ga66e4033e4a8acbded98f14e95d5564b4", null ],
+      [ "GetAppVersions", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#ga07433e00e546fd3a8c7fa01073988a85", null ],
       [ "GetAppVersionStatus", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#gaf2fdf56f202a0756fae1dc17c85d4608", null ],
       [ "GetCodeName", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#gabc8441e4001d09a87a5fe15b62b841ea", null ],
       [ "GetName", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#gac4e23437c9bba70c1e81f831b91d4de8", null ],
       [ "GetVersion", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#ga9a4101a923d7b2df53aed8d57200d0e2", null ],
       [ "GetVersion", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#ga7914033f2e2957a976170887ddca4f9a", null ],
-      [ "SetAppVersion", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#ga63ab7952da9752b329f69461485598a4", null ]
+      [ "SetAppVersion", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#gad140a2ac712dcea8488a0c417a530042", null ],
+      [ "UpdateYearAppVersion", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#gad82bbd03dbd7a1d53a0f193b785752c4", null ]
     ] ],
     [ "VERSIONFRAMEWORK::DelInstance", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#ga976591f98f344ea7f0413f092098a19e", null ],
     [ "VERSIONFRAMEWORK::GetAppCreationYear", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#ga1c36355695a0f5328a6ce12417fdf19f", null ],
+    [ "VERSIONFRAMEWORK::GetAppExecName", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#gaacd4c30ac1865d1cb5facb4b0ea51f74", null ],
+    [ "VERSIONFRAMEWORK::GetAppName", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#ga7dc80d560a44115bb919f6646689680f", null ],
     [ "VERSIONFRAMEWORK::GetAppOwner", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#gada9a0ab9c63893ce24c9e03c2cb78555", null ],
     [ "VERSIONFRAMEWORK::GetAppTitle", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#ga609e024e5a0119750fd66fcb281afb91", null ],
     [ "VERSIONFRAMEWORK::GetAppVersion", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#ga53384a42ee224dbeed6c5a40d21918d0", null ],
-    [ "VERSIONFRAMEWORK::GetAppVersion", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#ga7f6430dd0184caa99caa43448093b44a", null ],
     [ "VERSIONFRAMEWORK::GetAppVersion", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#ga66e4033e4a8acbded98f14e95d5564b4", null ],
+    [ "VERSIONFRAMEWORK::GetAppVersions", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#ga07433e00e546fd3a8c7fa01073988a85", null ],
     [ "VERSIONFRAMEWORK::GetAppVersionStatus", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#gaf2fdf56f202a0756fae1dc17c85d4608", null ],
     [ "VERSIONFRAMEWORK::GetCodeName", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#gabc8441e4001d09a87a5fe15b62b841ea", null ],
     [ "VERSIONFRAMEWORK::GetInstance", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#ga1bcda897cc783663be5ba496d1d122c0", null ],
@@ -32,5 +37,6 @@ var group___p_l_a_t_f_o_r_m___c_o_m_m_o_n =
     [ "VERSIONFRAMEWORK::GetName", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#gac4e23437c9bba70c1e81f831b91d4de8", null ],
     [ "VERSIONFRAMEWORK::GetVersion", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#ga9a4101a923d7b2df53aed8d57200d0e2", null ],
     [ "VERSIONFRAMEWORK::GetVersion", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#ga7914033f2e2957a976170887ddca4f9a", null ],
-    [ "VERSIONFRAMEWORK::SetAppVersion", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#ga63ab7952da9752b329f69461485598a4", null ]
+    [ "VERSIONFRAMEWORK::SetAppVersion", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#gad140a2ac712dcea8488a0c417a530042", null ],
+    [ "VERSIONFRAMEWORK::UpdateYearAppVersion", "group___p_l_a_t_f_o_r_m___c_o_m_m_o_n.html#gad82bbd03dbd7a1d53a0f193b785752c4", null ]
 ];

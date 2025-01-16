@@ -3,10 +3,9 @@ var _d_i_o_stream_config_8h =
     [ "DIOSTREAMMODE", "_d_i_o_stream_config_8h.html#ae47ddf801d21b825b353ae3a3008cecc", [
       [ "DIOSTREAMMODE_NONE", "_d_i_o_stream_config_8h.html#ae47ddf801d21b825b353ae3a3008cecca8d384c76aa61efb7669312f1783782b7", null ],
       [ "DIOSTREAMMODE_SERVER", "_d_i_o_stream_config_8h.html#ae47ddf801d21b825b353ae3a3008cecca3fe2791007dc244b29efb7227d887c4e", null ],
-      [ "DIOSTREAMMODE_HOST", "_d_i_o_stream_config_8h.html#ae47ddf801d21b825b353ae3a3008cecca087b8d0b7c1e4b71b998ffafa9971a97", null ],
       [ "DIOSTREAMMODE_MASTER", "_d_i_o_stream_config_8h.html#ae47ddf801d21b825b353ae3a3008ceccaf1e4ddefa116da1bfbe2ed3d2caedaa8", null ],
+      [ "DIOSTREAMMODE_SERVERMULTISOCKET", "_d_i_o_stream_config_8h.html#ae47ddf801d21b825b353ae3a3008cecca3a8e146603939746befa8e30b4dcbf84", null ],
       [ "DIOSTREAMMODE_SEMISERVER", "_d_i_o_stream_config_8h.html#ae47ddf801d21b825b353ae3a3008cecca13f10360a30a52789cc91e2cec94d890", null ],
-      [ "DIOSTREAMMODE_SEMIHOST", "_d_i_o_stream_config_8h.html#ae47ddf801d21b825b353ae3a3008cecca161413f39d4f263d4bde7d7674b00925", null ],
       [ "DIOSTREAMMODE_SEMIMASTER", "_d_i_o_stream_config_8h.html#ae47ddf801d21b825b353ae3a3008ceccad142e1ba565379dd5c6608f71aac2fc3", null ],
       [ "DIOSTREAMMODE_CLIENT", "_d_i_o_stream_config_8h.html#ae47ddf801d21b825b353ae3a3008ceccae2f1cd5b3bdb86e59afda7eb0f8a91a8", null ],
       [ "DIOSTREAMMODE_SLAVE", "_d_i_o_stream_config_8h.html#ae47ddf801d21b825b353ae3a3008cecca6f21237dbdeb82235c36e04a454b416c", null ]

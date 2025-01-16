@@ -27,6 +27,7 @@ var _x_thread_8h =
       [ "XTHREADGROUPID_DIOCHECKTCPIPCONNECTIONS", "_x_thread_8h.html#a32ad650cdcf0656f543da04bc3ac68a6a46e6aa0a6448629ccf25ba6d13b62b3f", null ],
       [ "XTHREADGROUPID_DIOPROTOCOL", "_x_thread_8h.html#a32ad650cdcf0656f543da04bc3ac68a6a8dce842e574ea112a8e631392ccc611e", null ],
       [ "XTHREADGROUPID_DIOPROTOCOL_CONNECTIONMANAGER", "_x_thread_8h.html#a32ad650cdcf0656f543da04bc3ac68a6adeb7510774d91a5e4bd4f69d61f9a36d", null ],
+      [ "XTHREADGROUPID_DIOCOREPROTOCOL_CONNECTIONMANAGER", "_x_thread_8h.html#a32ad650cdcf0656f543da04bc3ac68a6af308d8af7698b240d25b8d6c3a06dcca", null ],
       [ "XTHREADGROUPID_DIOPROTOCOL_CLI_BUS", "_x_thread_8h.html#a32ad650cdcf0656f543da04bc3ac68a6a451f3b33bc0fcceff7e105bd021b53cd", null ],
       [ "XTHREADGROUPID_DIOWEBSERVER", "_x_thread_8h.html#a32ad650cdcf0656f543da04bc3ac68a6a47da7ae89a8ab44bce4f7bfa034be687", null ],
       [ "XTHREADGROUPID_DIOATCMS", "_x_thread_8h.html#a32ad650cdcf0656f543da04bc3ac68a6a19f067386794af4e73a4c53286d885a7", null ],
@@ -38,6 +39,7 @@ var _x_thread_8h =
       [ "XTHREADGROUPID_GRPLOADER", "_x_thread_8h.html#a32ad650cdcf0656f543da04bc3ac68a6aa67db9172e56655681ad13d1ae437d73", null ],
       [ "XTHREADGROUPID_GRPFRAMERATE", "_x_thread_8h.html#a32ad650cdcf0656f543da04bc3ac68a6aac673710f46730f51da8d069d3350330", null ],
       [ "XTHREADGROUPID_SOUND", "_x_thread_8h.html#a32ad650cdcf0656f543da04bc3ac68a6a48169cf8e177204033dcc6613ab82d60", null ],
+      [ "XTHREADGROUPID_APPFLOWEXTENDED", "_x_thread_8h.html#a32ad650cdcf0656f543da04bc3ac68a6af75ff2ec5a62a4678d77f400ccea175c", null ],
       [ "XTHREADGROUPID_APPOWNER", "_x_thread_8h.html#a32ad650cdcf0656f543da04bc3ac68a6aad4478226de0b952e69aedb96c97aa0c", null ]
     ] ],
     [ "XTHREADPRIORITY", "_x_thread_8h.html#a9082e176800b19a3e755ff93b5678735", [

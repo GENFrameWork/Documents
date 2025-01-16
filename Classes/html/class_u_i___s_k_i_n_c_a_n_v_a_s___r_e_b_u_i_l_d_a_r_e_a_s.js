@@ -1,6 +1,6 @@
 var class_u_i___s_k_i_n_c_a_n_v_a_s___r_e_b_u_i_l_d_a_r_e_a_s =
 [
-    [ "UI_SKINCANVAS_REBUILDAREAS", "group___u_s_e_r_i_n_t_e_r_f_a_c_e.html#ga9c13f0bed1d2c4b510535fb5b63cb507", null ],
+    [ "UI_SKINCANVAS_REBUILDAREAS", "group___u_s_e_r_i_n_t_e_r_f_a_c_e.html#ga7c1306e8ad6cf3567c81030f1a418341", null ],
     [ "~UI_SKINCANVAS_REBUILDAREAS", "group___u_s_e_r_i_n_t_e_r_f_a_c_e.html#gaec4ef2e50e10848903b8d54dfc3e4470", null ],
     [ "CreateRebuildArea", "group___u_s_e_r_i_n_t_e_r_f_a_c_e.html#gaffb7abba42e9302db9edd8f33e61720b", null ],
     [ "GetBitmap", "group___u_s_e_r_i_n_t_e_r_f_a_c_e.html#ga48226490c420b5908068aa1d8ff727db", null ],

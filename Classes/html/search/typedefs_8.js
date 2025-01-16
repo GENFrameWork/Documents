@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['notification_5fuser_5finput_5fticket_0',['NOTIFICATION_USER_INPUT_TICKET',['../_d_i_o_w_i_n_d_o_w_s_notifications_manager_8h.html#ad2d34685fa54c28b148ee8bfbd81361a',1,'DIOWINDOWSNotificationsManager.h']]]
+  ['main_5ffunction_5ftype_0',['MAIN_FUNCTION_TYPE',['../_main_proc_8h.html#ae913413176c8b7b63a653c6f06013296',1,'MainProc.h']]]
 ];

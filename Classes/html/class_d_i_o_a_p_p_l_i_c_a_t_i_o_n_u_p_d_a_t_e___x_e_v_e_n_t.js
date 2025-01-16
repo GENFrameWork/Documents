@@ -1,6 +1,6 @@
 var class_d_i_o_a_p_p_l_i_c_a_t_i_o_n_u_p_d_a_t_e___x_e_v_e_n_t =
 [
-    [ "DIOAPPLICATIONUPDATE_XEVENT", "group___d_a_t_a_i_o.html#ga6c1813830c94eb0e7758f60ae1b10559", null ],
+    [ "DIOAPPLICATIONUPDATE_XEVENT", "group___d_a_t_a_i_o.html#ga6bb40033ebe795f411c7c327cc84f480", null ],
     [ "~DIOAPPLICATIONUPDATE_XEVENT", "group___d_a_t_a_i_o.html#gae08d01c2c9b4564e65e5453cab644769", null ],
     [ "GetActualFileToUpdate", "group___d_a_t_a_i_o.html#ga19c406562f4a898a07f44f6ed166bcee", null ],
     [ "GetActualUnzipFileName", "group___d_a_t_a_i_o.html#gacb3b2c4ecef174b27b9845c69722439d", null ],

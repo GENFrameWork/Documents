@@ -43,6 +43,7 @@ var class_u_i___e_l_e_m_e_n_t =
     [ "SetPreSelect", "group___u_s_e_r_i_n_t_e_r_f_a_c_e.html#ga07dd565c77a4cae2797f4e06841bdc39", null ],
     [ "SetRoundRect", "group___u_s_e_r_i_n_t_e_r_f_a_c_e.html#gaf0a488e23a3f1b968e168ffc923a6d7c", null ],
     [ "SetSelected", "group___u_s_e_r_i_n_t_e_r_f_a_c_e.html#ga9639c47526651328271446139a183081", null ],
+    [ "SetToRedraw", "class_u_i___e_l_e_m_e_n_t.html#aa5646188b4bf257eb1e0243d7aee860c", null ],
     [ "SetTransitionStateShow", "group___u_s_e_r_i_n_t_e_r_f_a_c_e.html#gad8cf5d25baa89426d1fb81184448c0be", null ],
     [ "SetType", "group___u_s_e_r_i_n_t_e_r_f_a_c_e.html#ga67b400c42d86043b10046bbbb7de3d82", null ],
     [ "SetVisible", "group___u_s_e_r_i_n_t_e_r_f_a_c_e.html#ga2ba0f4b219ecb797cd141dbae50293b8", null ],

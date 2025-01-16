@@ -19,11 +19,12 @@ var searchData=
   ['windowsposy_16',['windowsposy',['../_script___lib___window_8cpp.html#a9285079eec854291139c795f1e1c30fa',1,'Script_Lib_Window.cpp']]],
   ['wm_5flvl_17',['wm_lvl',['../structbmi2__fifo__frame.html#a5e7f8592f84554b05760c56e8052e66b',1,'bmi2_fifo_frame']]],
   ['word_18',['word',['../union_d_i_o_a_n_d_r_o_i_d_s_t_r_e_a_m_i2_c___s_m_b_u_s___t_i_c_k_e_t.html#a10f2488597a8b6d54aa45fb98faa9253',1,'DIOANDROIDSTREAMI2C_SMBUS_TICKET::word'],['../union_d_i_o_l_i_n_u_x_s_t_r_e_a_m_i2_c___s_m_b_u_s___t_i_c_k_e_t.html#affa1953ffc64b26e811903285022061b',1,'DIOLINUXSTREAMI2C_SMBUS_TICKET::word']]],
-  ['wrist_5fgest_19',['wrist_gest',['../unionbmi2__sens__config__types.html#ae166a25bcbbc43a5dd74a545c65521af',1,'bmi2_sens_config_types']]],
-  ['wrist_5fgest_5fw_20',['wrist_gest_w',['../unionbmi2__sens__config__types.html#af5343c9422165dc99a93c6d202a3e0ef',1,'bmi2_sens_config_types']]],
-  ['wrist_5fgesture_5foutput_21',['wrist_gesture_output',['../unionbmi2__sens__data.html#a2fee88902e2aba718a653366d3173574',1,'bmi2_sens_data']]],
-  ['wrist_5fwear_5fwake_5fup_22',['wrist_wear_wake_up',['../unionbmi2__sens__config__types.html#a06e5f3fba68c879bbaee8ac72c2712b0',1,'bmi2_sens_config_types']]],
-  ['wrist_5fwear_5fwake_5fup_5fwh_23',['wrist_wear_wake_up_wh',['../unionbmi2__sens__config__types.html#a2ef3b3645bacb378e11a6ea7f978af4d',1,'bmi2_sens_config_types']]],
-  ['write_5ferror_24',['write_error',['../structbmi2__vfrm__err__status.html#a8e1a6a253aa806346ffdc7072b079990',1,'bmi2_vfrm_err_status']]],
-  ['writemode_25',['writemode',['../class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r___e_n_t_r_y_g_p_i_o.html#a6479aacb28c920bc59bb99f5260ce136',1,'DIONODEITEMHANDLER_ENTRYGPIO']]]
+  ['workregion_19',['workregion',['../class_g_r_p_p_r_o_p_e_r_t_i_e_s.html#a4274603d6b0ffaa66df29044ac637db9',1,'GRPPROPERTIES']]],
+  ['wrist_5fgest_20',['wrist_gest',['../unionbmi2__sens__config__types.html#ae166a25bcbbc43a5dd74a545c65521af',1,'bmi2_sens_config_types']]],
+  ['wrist_5fgest_5fw_21',['wrist_gest_w',['../unionbmi2__sens__config__types.html#af5343c9422165dc99a93c6d202a3e0ef',1,'bmi2_sens_config_types']]],
+  ['wrist_5fgesture_5foutput_22',['wrist_gesture_output',['../unionbmi2__sens__data.html#a2fee88902e2aba718a653366d3173574',1,'bmi2_sens_data']]],
+  ['wrist_5fwear_5fwake_5fup_23',['wrist_wear_wake_up',['../unionbmi2__sens__config__types.html#a06e5f3fba68c879bbaee8ac72c2712b0',1,'bmi2_sens_config_types']]],
+  ['wrist_5fwear_5fwake_5fup_5fwh_24',['wrist_wear_wake_up_wh',['../unionbmi2__sens__config__types.html#a2ef3b3645bacb378e11a6ea7f978af4d',1,'bmi2_sens_config_types']]],
+  ['write_5ferror_25',['write_error',['../structbmi2__vfrm__err__status.html#a8e1a6a253aa806346ffdc7072b079990',1,'bmi2_vfrm_err_status']]],
+  ['writemode_26',['writemode',['../class_d_i_o_n_o_d_e_i_t_e_m_h_a_n_d_l_e_r___e_n_t_r_y_g_p_i_o.html#a6479aacb28c920bc59bb99f5260ce136',1,'DIONODEITEMHANDLER_ENTRYGPIO']]]
 ];

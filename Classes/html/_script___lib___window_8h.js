@@ -1,7 +1,7 @@
 var _script___lib___window_8h =
 [
     [ "SCRIPT_LIB_NAME_WINDOW", "_script___lib___window_8h.html#a43749120984e0f6ac2048a237e3857e3", null ],
-    [ "SCRIPT_SET_LIB_APPGRAPHICS", "_script___lib___window_8h.html#a228addda18aba9831efed9ec0be79cbf", null ],
+    [ "SCRIPT_SET_LIB_APPFLOWGRAPHICS", "_script___lib___window_8h.html#ac8e210be5bc56bdb47d9115d607f0ef5", null ],
     [ "Call_Window_GetPosX", "_script___lib___window_8h.html#a7b8ad655c2e9a6ce5cac04142869f492", null ],
     [ "Call_Window_GetPosY", "_script___lib___window_8h.html#a5f897921a65d9ee77d2ee8bf8e83bbc9", null ],
     [ "Call_Window_Maximize", "_script___lib___window_8h.html#a0334b63e607be640ac40f6793429ed42", null ],

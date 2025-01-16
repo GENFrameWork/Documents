@@ -41,7 +41,7 @@ var searchData=
   ['script_5flng_5fg_5fversion_38',['SCRIPT_LNG_G_VERSION',['../_script___language___g_8h.html#abc827b403057d6932f08ac2b2ca00b0c',1,'Script_Language_G.h']]],
   ['script_5flng_5fjavascript_5fmainfunctionname_39',['SCRIPT_LNG_JAVASCRIPT_MAINFUNCTIONNAME',['../_script___language___javascript_8h.html#acfdee653eaa088e90e12a74f1c1582e8',1,'Script_Language_Javascript.h']]],
   ['script_5flng_5flua_5fmainfunctionname_40',['SCRIPT_LNG_LUA_MAINFUNCTIONNAME',['../_script___language___lua_8h.html#af1e9bb7fdb8fc489ef76d04f191f6854',1,'Script_Language_Lua.h']]],
-  ['script_5fset_5flib_5fappgraphics_41',['SCRIPT_SET_LIB_APPGRAPHICS',['../_script___lib___window_8h.html#a228addda18aba9831efed9ec0be79cbf',1,'Script_Lib_Window.h']]],
+  ['script_5fset_5flib_5fappflowgraphics_41',['SCRIPT_SET_LIB_APPFLOWGRAPHICS',['../_script___lib___window_8h.html#ac8e210be5bc56bdb47d9115d607f0ef5',1,'Script_Lib_Window.h']]],
   ['script_5fset_5flib_5fcfg_42',['SCRIPT_SET_LIB_CFG',['../_script___lib___c_f_g_8h.html#ac0c9e107325460f9541dcf08919381e7',1,'Script_Lib_CFG.h']]],
   ['security_5fwin32_43',['SECURITY_WIN32',['../_x_w_i_n_d_o_w_s_system_8cpp.html#a1859fb1234511b94993fe8566eba866b',1,'XWINDOWSSystem.cpp']]],
   ['sha256_5fexp_44',['SHA256_EXP',['../_hash_s_h_a2_8cpp.html#ab8a6f2451d7c54b4cb271bc5a79e1a8a',1,'HashSHA2.cpp']]],
@@ -68,5 +68,6 @@ var searchData=
   ['swapdword_65',['SWAPDWORD',['../_x_base_8h.html#a3a8bb12790711eb5164bf14eecd1cc4b',1,'XBase.h']]],
   ['swapoff_5fargs_66',['SWAPOFF_ARGS',['../_x_l_i_n_u_x_system_8h.html#aafc89fd9cdab3cd5ca51d339a30bf778',1,'XLINUXSystem.h']]],
   ['swapqword_67',['SWAPQWORD',['../_x_base_8h.html#a0a01412990f8f070e16468914d231b68',1,'XBase.h']]],
-  ['swapword_68',['SWAPWORD',['../_x_base_8h.html#afacb625223a89d4cdf212ac4482a7e5c',1,'XBase.h']]]
+  ['swapvar_68',['SWAPVAR',['../_x_base_8h.html#ad4cf2f08e9a7187992735d125d118d93',1,'XBase.h']]],
+  ['swapword_69',['SWAPWORD',['../_x_base_8h.html#afacb625223a89d4cdf212ac4482a7e5c',1,'XBase.h']]]
 ];

@@ -10,9 +10,14 @@ var _x_string_8h =
     [ "XSTRING_TABLE64BITS", "_x_string_8h.html#a91b28196e54322536c4a035515ddc8f5", null ],
     [ "XSTRING_VALIDCHARSFLOAT", "_x_string_8h.html#ae12345c9f219a6ffa322abf638194771", null ],
     [ "XSTRING_VALIDCHARSINT", "_x_string_8h.html#ab2e2bc65d8fd0bf51ddfcef5b3be0bb3", null ],
+    [ "XSTRINGBOOLEANMODE_COMPUTER", "_x_string_8h.html#aab9a5c1e691891e5168dc364f03e1d76", null ],
+    [ "XSTRINGBOOLEANMODE_HUMAN", "_x_string_8h.html#ac0e8a64c4e0a008d30e567826c153c35", null ],
+    [ "XSTRINGBOOLEANMODE_LOWERCASE", "_x_string_8h.html#a088715c2158ab8216144d4cbb19d2be5", null ],
+    [ "XSTRINGBOOLEANMODE_UPPERCASE", "_x_string_8h.html#a26f15cb646e5b3aae3c59de96c31d6a0", null ],
     [ "XCHAR", "_x_string_8h.html#a03209152a681f02e4ba73b6681dd4968", null ],
     [ "XSTRINGCODING", "_x_string_8h.html#a04c413c2e4c3c1495baeff53b97d06c4", [
       [ "XSTRINGCODING_UNKWOWN", "_x_string_8h.html#a04c413c2e4c3c1495baeff53b97d06c4ab43b3c69192c5dec49e94d4d93d0c7fb", null ],
+      [ "XSTRINGCODING_ASCII", "_x_string_8h.html#a04c413c2e4c3c1495baeff53b97d06c4a74e2f4c4ba80c8719465f51b6a25dd9a", null ],
       [ "XSTRINGCODING_UTF8", "_x_string_8h.html#a04c413c2e4c3c1495baeff53b97d06c4acdd26ad6088cff5683bb8f286ec6fdd3", null ],
       [ "XSTRINGCODING_UTF16", "_x_string_8h.html#a04c413c2e4c3c1495baeff53b97d06c4a626372b108dbd6930b592939e3098218", null ],
       [ "XSTRINGCODING_UTF32", "_x_string_8h.html#a04c413c2e4c3c1495baeff53b97d06c4ac8883f0febfbfecdae28224106591c69", null ]

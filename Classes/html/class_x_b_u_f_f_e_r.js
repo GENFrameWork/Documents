@@ -36,6 +36,7 @@ var class_x_b_u_f_f_e_r =
     [ "DecodeBCD", "group___x_u_t_i_l_s.html#ga3c41a101ef869b1d34cc6baf2be58d3e", null ],
     [ "DecodeBCDLong", "group___x_u_t_i_l_s.html#gaaac92b3ebc2f24d48c96336ff457770b", null ],
     [ "Delete", "group___x_u_t_i_l_s.html#ga0395231705663a2aeeee3b4be9d292bb", null ],
+    [ "DeleteByte", "group___x_u_t_i_l_s.html#gaa66a817182d1cd120c4b7d2a75734f06", null ],
     [ "Empty", "group___x_u_t_i_l_s.html#ga3c14ba0ca9dfbf20b5127c87b275cb93", null ],
     [ "Extract", "group___x_u_t_i_l_s.html#ga5ca161e058d647a5b28145666c21f5cb", null ],
     [ "Extract", "group___x_u_t_i_l_s.html#ga50e9fb6a3bb7cd69f7ab050db2d74a24", null ],

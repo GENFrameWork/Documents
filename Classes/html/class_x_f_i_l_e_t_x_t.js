@@ -3,6 +3,7 @@ var class_x_f_i_l_e_t_x_t =
     [ "XFILETXT", "group___x_u_t_i_l_s.html#ga205601eaa0984971ff6a9224e35ecc17", null ],
     [ "~XFILETXT", "group___x_u_t_i_l_s.html#ga1976e94551783227ca542573255de95e", null ],
     [ "AddBufferLines", "group___x_u_t_i_l_s.html#ga4c595dd2a0b60a724f099fbd3477978a", null ],
+    [ "AddLine", "group___x_u_t_i_l_s.html#ga8d8dfd7eb649c769701f44c85f006d1f", null ],
     [ "AddLine", "group___x_u_t_i_l_s.html#gac89021392bbe923e2a51fc208db30d9e", null ],
     [ "AddLine", "group___x_u_t_i_l_s.html#ga5026bf356e4ebffc62f5dd59609bb878", null ],
     [ "AddLine", "group___x_u_t_i_l_s.html#ga72f5edf417b590a2502c9bbfbb193522", null ],

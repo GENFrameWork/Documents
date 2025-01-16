@@ -2,8 +2,10 @@ var class_x_u_u_i_d =
 [
     [ "XUUID", "group___x_u_t_i_l_s.html#ga7cc05ceec8967eef6945e76afe26e606", null ],
     [ "~XUUID", "group___x_u_t_i_l_s.html#ga454d86ddc1d2827c8e016c93cb8992ec", null ],
+    [ "Compare", "group___x_u_t_i_l_s.html#gaf3142fcc95cf39771ac6912bf9e6ebf7", null ],
     [ "CopyFrom", "group___x_u_t_i_l_s.html#ga620b7572fae2e76b9c9e2f56021924d7", null ],
     [ "CopyTo", "group___x_u_t_i_l_s.html#gae7a3f30545dba5a4940275be29d4a441", null ],
+    [ "Empty", "group___x_u_t_i_l_s.html#ga97dcdcb053bb8413e9582d26208ab563", null ],
     [ "GenerateRandom", "group___x_u_t_i_l_s.html#gae135d799e0e0c720af11adb6face6dc8", null ],
     [ "GetData1", "group___x_u_t_i_l_s.html#gad85f89a3e4f6cf4d78f5316decc81715", null ],
     [ "GetData2", "group___x_u_t_i_l_s.html#ga0bd08879d3ed106ed52eea138b4befca", null ],
@@ -12,6 +14,7 @@ var class_x_u_u_i_d =
     [ "GetData5", "class_x_u_u_i_d.html#a9a8ba341af6a4f838e212779a0f26fd1", null ],
     [ "GetData6", "group___x_u_t_i_l_s.html#ga29e9b6168b3d50ee3fff7dc0ce1d8b20", null ],
     [ "GetToString", "group___x_u_t_i_l_s.html#gaf5fdd5d094a22d2ed69614a4544e2618", null ],
+    [ "IsEmpty", "group___x_u_t_i_l_s.html#ga2bc73ca6c0aa70ab77af450cdafea62f", null ],
     [ "Set", "group___x_u_t_i_l_s.html#ga642c0604dde11d3273f9a3e51325c7e2", null ],
     [ "SetData1", "group___x_u_t_i_l_s.html#gab35a126484a57dff399f937a4d1663fc", null ],
     [ "SetData2", "group___x_u_t_i_l_s.html#ga41d982fe7dbd4808c56c4a5df9c87980", null ],

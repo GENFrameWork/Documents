@@ -6,7 +6,7 @@ var topics =
     [ "Sound", "group___s_o_u_n_d.html", "group___s_o_u_n_d" ],
     [ "Graphics", "group___g_r_a_p_h_i_c.html", "group___g_r_a_p_h_i_c" ],
     [ "Main Procedure", "group___m_a_i_n___p_r_o_c_e_d_u_r_e.html", "group___m_a_i_n___p_r_o_c_e_d_u_r_e" ],
-    [ "Application", "group___a_p_p_l_i_c_a_t_i_o_n.html", "group___a_p_p_l_i_c_a_t_i_o_n" ],
+    [ "AppFlow", "group___a_p_p_f_l_o_w.html", "group___a_p_p_f_l_o_w" ],
     [ "Cipher", "group___c_i_p_h_e_r.html", "group___c_i_p_h_e_r" ],
     [ "Compress", "group___c_o_m_p_r_e_s_s.html", "group___c_o_m_p_r_e_s_s" ],
     [ "Databases", "group___d_a_t_a_b_a_s_e_s.html", "group___d_a_t_a_b_a_s_e_s" ],
