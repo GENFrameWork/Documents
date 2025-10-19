@@ -3,13 +3,13 @@
 ## Compilate Targets platforms
 
 ### Windows x32      
--DTARGET=PC
-
+-DTARGET=INTEL
+  
 ### Windows x64
--DTARGET=PC
+-DTARGET=INTEL
       
-### Linux PC x64
--DTARGET=PC
+### Linux INTEL x64
+-DTARGET=INTEL
       
 ### Linux ARM 64
 -DTARGET=ARM_64
