@@ -347,12 +347,12 @@ option(DB_SQLITE_FEATURE                                        "DB SQLite"     
 ## Windows  
   
 ``` 
+option(WINDOWS_APPMODE_DINAMIC                                  "Windows Activates Dinamic mode /MD"                      ON )    
 option(WINDOWS_XVIRTUALDESKTOPMANAGER_FEATURE                   "Windows Virtual Desktop Manager"                         ON )
-option(WINDOWS_STACKWALKER_FEATURE                              "Windows Stack Walcker Manager"                           ON )
-  
-option(APPMODE_WINDOWS_DINAMIC                                  "Activates Windows Dinamic mode /MD"                      ON )    
-option(X_WINDOWS_VIRTUALDESKTOPMANAGER_FEATURE                  "Windows Virtual Desktop Manager"                         ON )                      
-option(INP_WINDOWS_KEYBOARDHOOK_FEATURE                         "Windows Keyboard Hook"                                   ON )                 
+option(WINDOWS_STACKWALKER_FEATURE                              "Windows Stack Walcker Manager"                           ON ) 
+option(WINDOWS_XWINGET_FEATURE                                  "Windows Win Get API"                                     ON ) 
+
+#option(WINDOWS_INP_KEYBOARDHOOK_FEATURE                         "Windows Keyboard Hook"                                   ON )                 
 ``` 
   
   
@@ -364,8 +364,8 @@ option(LINUX_VISUALSTUDIOUTF8_FEATURE                           "Linux CodePage 
   
 option(LINUX_X11_FEATURE                                        "Linux X11"                                               ON )
   
-option(DIO_LINUX_DBUS_FEATURE                                   "Linux DBus"                                              ON )              
-option(DIO_LINUX_NETWORKMANAGER_FEATURE                         "Linux Network Manager"                                   ON )
+option(LINUX_DIO_DBUS_FEATURE                                   "Linux DBus"                                              ON )              
+option(LINUX_DIO_NETWORKMANAGER_FEATURE                         "Linux Network Manager"                                   ON )
 ```
 
 
