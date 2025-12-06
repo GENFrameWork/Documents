@@ -21,7 +21,8 @@ option(ANONYMOUS_MODE_FEATURE                                   "Anonymous mode"
 option(APPMODE_SERVICE_FEATURE                                  "Application service mode"                                ON ) 
 option(APPMODE_API_LIB_FEATURE                                  "Export/import of classes in a library"                   ON )        
 option(APPMODE_API_LIB_EXPORT_FEATURE                           "Export of classes in a library"                          ON )      
-option(APPMODE_LIBRARY_DINAMIC_FEATURE                          "Application Library Dinamic mode"                        ON )  
+option(APPMODE_LIBRARYDINAMIC_FEATURE                           "Application Library Dinamic mode"                        ON )  
+option(APPMODE_LIBRARYSTATIC_FEATURE                            "Application Library Static mode"                         ON )  
 ``` 
   
               
