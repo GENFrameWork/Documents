@@ -59,5 +59,5 @@ var class_x_p_a_t_h =
     [ "Slash_HaveAtLast", "group___x_u_t_i_l_s.html#gaafb954c8ccc621da26ea77904fcf3685", null ],
     [ "Slash_Normalize", "group___x_u_t_i_l_s.html#gae4d3272dfd7abca52a5154e8a4e14c9e", null ],
     [ "Split", "group___x_u_t_i_l_s.html#ga913d9a5ff563e415893c6af33b9c28aa", null ],
-    [ "Split", "class_x_p_a_t_h.html#a0f711ca43bf1dc82adf5ed070729cda1", null ]
+    [ "Split", "group___x_u_t_i_l_s.html#ga0f711ca43bf1dc82adf5ed070729cda1", null ]
 ];

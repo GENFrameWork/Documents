@@ -422,8 +422,8 @@ var group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s =
       [ "Find", "group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s.html#ga18f4c20646dd98c97e739404283b9800", null ],
       [ "Find", "group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s.html#ga0bd8639f712a3a941facd0b46dec6ba9", null ],
       [ "InstallModule", "group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s.html#ga12c7ddbeb3b7d37a26d569aecd392771", null ],
-      [ "List", "class_x_w_i_n_d_o_w_s_w_i_n_g_e_t.html#ae555401a93164001cbf5995f17d90e90", null ],
-      [ "List", "class_x_w_i_n_d_o_w_s_w_i_n_g_e_t.html#a7b112e3b92f28a89371a082b83aa1109", null ],
+      [ "List", "group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s.html#gae555401a93164001cbf5995f17d90e90", null ],
+      [ "List", "group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s.html#ga7b112e3b92f28a89371a082b83aa1109", null ],
       [ "ListUpdateAvailable", "group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s.html#ga8c86e569345d462d52a4c9dd0703cc8d", null ]
     ] ],
     [ "XWINDOWSWMIINTERFACE", "class_x_w_i_n_d_o_w_s_w_m_i_i_n_t_e_r_f_a_c_e.html", [
@@ -639,6 +639,8 @@ var group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s =
     [ "INPWINDOWSSIMULATE::Key_UnPressByLiteral", "group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s.html#gaa077de23aa9b5817de8a4d7831113153", null ],
     [ "LIBRARY_End", "group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s.html#gac1b22aec6c3c9fe904ea42e8ab080582", null ],
     [ "LIBRARY_Ini", "group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s.html#gaffa943e933fe0527de723b65238a5c80", null ],
+    [ "XWINDOWSWINGET::List", "group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s.html#gae555401a93164001cbf5995f17d90e90", null ],
+    [ "XWINDOWSWINGET::List", "group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s.html#ga7b112e3b92f28a89371a082b83aa1109", null ],
     [ "XWINDOWSWINGET::ListUpdateAvailable", "group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s.html#ga8c86e569345d462d52a4c9dd0703cc8d", null ],
     [ "XWINDOWSMUTEX::Lock", "group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s.html#ga473bade3a30df12ab7cf496d065c72fe", null ],
     [ "MAINPROCWINDOWS::MainLoop", "group___p_l_a_t_f_o_r_m___w_i_n_d_o_w_s.html#ga7b8d0bb8a4ab407fd7fdca3d0fc35ce4", null ],

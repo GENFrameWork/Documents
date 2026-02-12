@@ -93,7 +93,7 @@ var searchData=
   ['fraction_90',['Fraction',['../group___x_u_t_i_l_s.html#ga1e8c9a80193adf0dd340ee3508b9889f',1,'Fraction(double value):&#160;XBase.cpp'],['../group___x_u_t_i_l_s.html#ga1e8c9a80193adf0dd340ee3508b9889f',1,'Fraction(double value):&#160;XBase.cpp']]],
   ['fractional_91',['fractional',['../class_d_i_o_t_i_m_e_p_a_c_k_e_t.html#a4b364666f5e53c502b0fe54555e93aad',1,'DIOTIMEPACKET']]],
   ['framerate_92',['framerate',['../class_g_r_p_v_i_d_e_o_f_i_l_e___p_r_o_p_e_r_t_y_s.html#a338d673974583b961ca195b8626c0d61',1,'GRPVIDEOFILE_PROPERTYS::framerate'],['../class_g_r_p_s_c_r_e_e_n.html#a2d1303a6313f6cb9a3c6814eb484949f',1,'GRPSCREEN::framerate']]],
-  ['framework_93',['What is GEN FrameWork?',['../dir_2e040ec9b9d60820d043c7ee76236f58.html#autotoc_md7266',1,'']]],
+  ['framework_93',['FrameWork',['../index.html',1,'GEN FrameWork'],['../dir_2e040ec9b9d60820d043c7ee76236f58.html#autotoc_md7266',1,'What is GEN FrameWork?']]],
   ['framework_20cover_94',['What platforms does GEN Framework cover?',['../dir_2e040ec9b9d60820d043c7ee76236f58.html#autotoc_md7268',1,'']]],
   ['framework_20have_95',['What functionalities does GEN FrameWork have?',['../dir_2e040ec9b9d60820d043c7ee76236f58.html#autotoc_md7267',1,'']]],
   ['free_96',['FREE',['../_x_memory___control_8h.html#a723adebda3a0f9739b4c7644d3531cb7',1,'XMemory_Control.h']]],

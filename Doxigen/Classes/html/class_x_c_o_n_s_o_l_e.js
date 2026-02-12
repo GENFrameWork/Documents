@@ -8,7 +8,7 @@ var class_x_c_o_n_s_o_l_e =
     [ "GetChar", "group___x_u_t_i_l_s.html#gadd51abefd09e5ace9e8145ef12e793e9", null ],
     [ "GetSize", "group___x_u_t_i_l_s.html#gaa089d33155a679653b0425375ea85707", null ],
     [ "GetSizeText", "group___x_u_t_i_l_s.html#ga3647300075e6ceb5a6cb4581b7e27933", null ],
-    [ "GetSymbolsUsed", "class_x_c_o_n_s_o_l_e.html#a61d9535357f8b5e9689fc28a7b2591c6", null ],
+    [ "GetSymbolsUsed", "group___x_u_t_i_l_s.html#ga61d9535357f8b5e9689fc28a7b2591c6", null ],
     [ "Hide", "group___x_u_t_i_l_s.html#gac94714a45477d0c12ffe23beb03486db", null ],
     [ "IsHide", "group___x_u_t_i_l_s.html#gac3bde30fac30f211a9419c56855c924a", null ],
     [ "KBHit", "group___x_u_t_i_l_s.html#gaec5ca06d2b95b432ff795d0b394f995e", null ],

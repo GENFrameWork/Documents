@@ -3699,6 +3699,7 @@ var group___d_a_t_a_i_o =
     [ "DIOSTREAMTLS_MSG_HANDSHAKE_SERVERHELLO::GetLegacyVersion", "group___d_a_t_a_i_o.html#ga6f93b912e1cf90dfd67778952beb48c4", null ],
     [ "DIOSTREAMTLS_MSG_EXTENSION::GetLength", "group___d_a_t_a_i_o.html#gae88f272c7861d098795d2de769e1108e", null ],
     [ "DIOSTREAMTLS_MSG_INTERFACE::GetLengthBuffer", "group___d_a_t_a_i_o.html#ga0dbe129a4873d7ecdd4dae3e68d0cea5", null ],
+    [ "DIOSTREAMTLS_MSG_EXTENSION_KEY::GetLengthKeyData", "group___d_a_t_a_i_o.html#gacf2148693fc5964d1c085784a0ea3617", null ],
     [ "DIOWEBHEADER::GetLines", "group___d_a_t_a_i_o.html#ga67d33c9ff383eeb01bd49acba99156c9", null ],
     [ "DIOWEBHEADER::GetLines", "group___d_a_t_a_i_o.html#gafb516abec48efd5d8414f9676262d476", null ],
     [ "DIOAPPLICATIONUPDATE::GetListOfVersionsToRestore", "group___d_a_t_a_i_o.html#gaa4e376dd6261a87a9402364d10b44a44", null ],
