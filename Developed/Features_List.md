@@ -12,6 +12,9 @@ option(GOOGLETEST_FEATURE                                       "Google Test fun
 option(GOOGLETEST_EXECFORDISCOVER_FEATURE                       "Google Test Execution for discovery"                     ON )
   
 option(ANONYMOUS_MODE_FEATURE                                   "Anonymous mode"                                          ON )
+
+option(USE_CLANG_COMPILER_FEATURE                               "Use Clang Compiler"                                      ON )
+
 ``` 
   
   
